@@ -1,12 +1,17 @@
-import React from "react"
-import { Link } from "gatsby"
-import Layout from '../components/layout';
+import React from "react";
+import Layout from "../components/Layouts/layout";
+import Sorting from "../components/Sorting/index";
 
 const IndexPage = () => (
-    <Layout>
-        <h1>Я Главная страница </h1>
-        <Link to={'/books'} >на страницу книги</Link>
-    </Layout>
+  <Layout>
+      <div className="section__top">
+        <div className="section__title-wrap">
+            <div className="section__title">Книги</div>
+            <div className="section__subtitle">книжная полка</div>
+        </div>
+        <Sorting />
+      </div>
+  </Layout>
 );
 
-export default IndexPage
+export default IndexPage;

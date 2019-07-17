@@ -1,0 +1,26 @@
+@import 'config'
+
+.wrapper
+    display: flex
+
+.section
+    display: flex
+    max-width: calc(100% - 620px)
+    width: 100%
+    margin: 0 auto
+    border-top: 1px solid $black
+    height: 100%
+    justify-content: space-between
+    padding: 30px 40px 60px 40px
+    &__top
+        display: flex
+        width: 100%
+        align-items: flex-end
+
+    &__title
+        @extend %sectiontitle
+
+    &__subtitle
+        @extend %sectionsubtitle
+        margin-top: 25px
+

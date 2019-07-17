@@ -1,0 +1,53 @@
+@charset "UTF-8"
+// 100 Extra Light or Ultra Light;
+// 200 Light or Thin; 300 Book or Demi;
+// 400 Regular or Normal;
+// 500 Medium;
+// 600 Semibold or Demibold;
+// 700 Bold;
+// 800 Black or Extra Bold or Heavy;
+// 900 Extra Black or Fat or Ultra Black
+@mixin font($f-name, $f-style, $f-weight, $f-url)
+  @font-face
+    font-family: $f-name
+    font-style: $f-style
+    font-weight: $f-weight
+    src: url($f-url) format('woff')
+
+// WaverlyCF (основной шрифт)
+@include font('Waverly CF', normal, 100, '../../../static/fonts/WaverlyCF-Thin.woff2')
+@include font('Waverly CF', normal, 300, '../../../static/fonts/WaverlyCF-Light.woff2')
+@include font('Waverly CF', normal, 500, '../../../static/fonts/WaverlyCF-Medium.woff2')
+@include font('Waverly CF Demi', normal, 600, '../../../static/fonts/WaverlyCF-DemiBold.woff2')
+@include font('Waverly CF', normal, bold, '../../../static/fonts/WaverlyCF-Bold.woff2')
+@include font('Waverly CF Extra', normal, 800, '../../../static/fonts/WaverlyCF-ExtraBold.woff2')
+
+// Vogue (основной шрифт)
+@include font('Vogue Highline Serif', normal, 500, '../../../static/fonts/VogueHighlineSerif-Medium.woff2')
+
+// Lumen (шрифт названия Patina)
+@include font('Lumen', normal, bold, '../../../static/fonts/Lumen-Bold.woff2')
+@include font('Lumen', normal, normal, '../../../static/fonts/Lumen-Regular.woff2')
+
+// MADE TheArtist Sans PERSONAL USE (шрифт заголовков главной страницы)
+@include font('MADE TheArtist Sans', normal, normal, '../../../static/fonts/MADETheArtistSans.woff2')
+
+// FuturaNewBook (шрифт подзаголовков и статей главной страницы)
+@include font('Futura New Book', normal, normal, '../../../static/fonts/FuturaNewBook-Reg.woff2')
+
+// IZVESTIA (шрифт заголовков страниц с рецензиями)
+@include font('Izvestija', normal, normal, '../../../static/fonts/Izvestija.woff2')
+
+// Cheque (основной шрифт страницы Эвенты)
+@include font('Cheque', normal, normal, '../../../static/fonts/Cheque-Regular.woff2')
+@include font('Cheque', normal, 900, '../../../static/fonts/Cheque-Black.woff2')
+
+
+
+
+
+
+
+
+
+
