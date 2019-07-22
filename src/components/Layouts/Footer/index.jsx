@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "../../static/images/icons/logotype.svg";
+import Img from "../../../static/images/icons/logotype.svg";
 
 const Footer = () => (
   <footer className="footer">

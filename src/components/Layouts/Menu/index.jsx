@@ -1,15 +1,15 @@
 import React from "react";
 import {Link} from "gatsby";
-import Img from "../../static/images/icons/loupe.svg";
+import Img from "../../../static/images/icons/loupe.svg";
 
 const Menu = () => {
   return (
     <nav className="menu">
       <div className="menu__container">
-        <Link to={'/'} className="menu__link">
+        <Link to={'/books'} className="menu__link">
           книги
         </Link>
-        <Link to={'/'} className="menu__link">
+        <Link to={'/tops'} className="menu__link">
           топы
         </Link>
         <Link to={'/'} className="menu__link">
@@ -18,7 +18,7 @@ const Menu = () => {
         <Link to={'/'} className="menu__link">
           эвенты
         </Link>
-        <Link to={'/'} className="menu__link">
+        <Link to={'/news'} className="menu__link">
           что нового
         </Link>
       </div>
