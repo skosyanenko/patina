@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../components/Layouts/layout"
+import Layout from "../components/Layouts/Layout"
 import Sorting from "../components/Sorting/index"
 
 const IndexPage = () => (

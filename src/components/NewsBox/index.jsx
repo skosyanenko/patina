@@ -14,8 +14,8 @@ const NewsBox = ({horizontal, img, title, text}) => {
                 </div>
                 { (horizontal) ?
                     <div className="box__icons box__icons--horizontal">
-                        <Icons/>
-                        <Link to={'/news'} className="box__button box__button--horizontal">Далее</Link>
+                        <Icons like={16} views={16} clock={16}/>
+                        <Link to={'/new'} className="box__button box__button--horizontal">Далее</Link>
                     </div> : '' }
             </div>
             <div className={ horizontal ? 'box__text box__text--horizontal' : 'box__text'}>
@@ -25,13 +25,13 @@ const NewsBox = ({horizontal, img, title, text}) => {
                 </div>
                 { (!horizontal) ?
                     <div className="box__icons">
-                        <Icons/>
-                        <Link to={'/news'} className="box__button">Далее</Link>
+                        <Icons like={16} views={16} clock={16}/>
+                        <Link to={'/new'} className="box__button">Далее</Link>
                     </div>
                     : '' }
             </div>
         </div>
-  )
+    )
 };
 
 NewsBox.propTypes = {

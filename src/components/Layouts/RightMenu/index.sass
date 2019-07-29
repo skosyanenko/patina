@@ -1,27 +1,51 @@
 @import '../../../static/sass/include/config'
 
 .rightmenu
-  width: 310px
-  display: flex
-  justify-content: center
-  border-left: 1px solid $black
-  padding: 0 40px
-
-  &__content
+    width: 310px
     display: flex
-    flex-direction: column
-    text-align: justify
+    justify-content: center
+    border-left: 1px solid $black
+    padding: 0 40px
+    border-top: 2px solid $white
+    position: relative
+    &:before
+        content: ''
+        width: 100%
+        height: 3px
+        position: absolute
+        top: -3px
+        background: $white
 
-  &__title
-    margin-top: 75px
-    margin-bottom: 50px
-    font:  normal 25px/100% $waverly
-    color: $darkgray
-    text-transform: uppercase
+    +maxwidth($desktop)
+        display: none
 
-  &__book
-    margin-bottom: 10px
-    font:  normal 20px/100% $waverly
-    color: $darkgray
-    font-style: italic
-    text-align: justify
+    &__content
+        display: flex
+        flex-direction: column
+        width: 100%
+
+    &__title
+        margin-top: 75px
+        margin-bottom: 50px
+        font:  normal 25px/100% $waverly
+        color: $darkgray
+        text-transform: uppercase
+
+    &__book
+        margin-bottom: 10px
+        font:  normal 20px/110% $waverly
+        color: $darkgray
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+        background: linear-gradient(90deg, #000, #000 20%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
+        &-title
+            padding-right: 2px
+            margin-right: 3em
+        &-num
+            padding-left: 5px
+        &-title, &-num
+            bottom: -5px
+            background-color: #fff
+
+

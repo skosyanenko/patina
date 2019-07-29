@@ -18,8 +18,8 @@ const NewText = () => {
               </div>
               <div className="new-text__date">02.07.2019</div>
               <div className="new-text__nav">
-                  <Icons/>
-                  <Link to={'/news'} className="button-return">Назад</Link>
+                  <Icons like={16} views={16}/>
+                  <Link to={'/news'} className="button-green">Назад</Link>
                   <Socials/>
               </div>
           </div>

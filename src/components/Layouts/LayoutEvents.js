@@ -10,24 +10,23 @@ import("./RightMenu/index.sass");
 import("./Footer/index.sass");
 import("../../static/sass/project.sass");
 
-const Layout = ({ children }) => {
+const LayoutEvents = ({ children }) => {
     return (
     <React.Fragment>
         <Header />
         <div className="wrapper">
             <Menu />
-            <main className="section">
+            <main className="section-events">
                 {children}
             </main>
-            <RightMenu />
         </div>
         <Footer />
     </React.Fragment>
     )
 };
 
-Layout.propTypes = {
+LayoutEvents.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export default LayoutEvents;

@@ -1,0 +1,30 @@
+@import '../../static/sass/include/config'
+
+.container
+    max-width: 100%
+    display: flex
+    flex-direction: column
+    margin-top: 110px
+
+    &__title
+        font: normal 80px/75% $artist
+        color: $carbonic
+        position: relative
+        &:after
+            position: absolute
+            top: 0
+            bottom: 0
+            margin: auto
+            left: 310px
+            content: ''
+            width: 100%
+            height: 5px
+            background: $carbonic
+
+    &__subtitle
+        width: 100%
+        font: normal 30px/100% $futura
+        text-transform: uppercase
+        color: $darkgray
+        margin-top: 20px
+        margin-left: 310px

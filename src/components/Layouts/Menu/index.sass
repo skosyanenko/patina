@@ -5,12 +5,13 @@
     display: flex
     align-items: center
     flex-direction: column
-    border-top: 1px solid $black
     padding: 0
     background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
     background-position: right
     background-size: 1px 10px
     background-repeat: repeat-y
+    +maxwidth($desktop)
+        border-top: none
 
     &__container
         display: flex
@@ -20,7 +21,7 @@
 
     &__link
         margin-top: 100px
-        font:  bold 25px/100% $waverly
+        font:  bold 25px/100% $waverlyExtra
         color: $black
         text-transform: uppercase
 

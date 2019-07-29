@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layouts/layout";
+import Layout from "../components/Layouts/Layout";
 import NewText from "../components/NewText";
 import NewImg from "../components/NewImg";
 import("../static/sass/include/_base.sass");

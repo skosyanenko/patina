@@ -1,0 +1,59 @@
+@import '../../static/sass/include/config'
+
+.container
+    display: flex
+    flex-direction: column
+    margin-top: 50px
+
+    &__top
+        display: flex
+        height: 100%
+        &-flower
+            width: 100%
+            height: 270%
+            background-repeat: no-repeat
+            background-position: 0% 0%
+            background-size: contain
+            transform: rotate(90deg)
+            margin-top: -30px
+        &-dandelion
+            width: 100%
+            height: 270%
+            background-repeat: no-repeat
+            background-position: 0% 0%
+            background-size: contain
+            transform: scale(-1, 1)
+            margin-top: -30px
+        &-butterfly
+            width: 100%
+            background-repeat: no-repeat
+            background-position: 0% 0%
+            background-size: contain
+            transform: scale(1, 1)
+            margin-top: -30px
+
+        &-date
+            font: 500 72px/75% $cheque
+            color: $black
+
+    &__left
+        display: flex
+        flex-direction: column
+        margin-left: 50px
+        color: $black
+        &-day
+            font: 500 18px/80% $waverly
+        &-time
+            font: 100 14px/80% $waverly
+            margin-top: 10px
+
+    &__bottom
+        display: flex
+        flex-direction: column
+        margin-top: 20px
+        &-name
+            font: 500 18px/80% $waverly
+        &-about
+            font: 100 14px/80% $waverly
+            margin-top: 7px
+

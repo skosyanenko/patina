@@ -7,8 +7,12 @@ const TopBox = ({number, title, author, text}) => {
   return (
       <div className="top-box">
           <div className="top-box__name">
-              <Link to={'/'} className="top-box__title">{title}</Link>
-              <div className="top-box__number">{number}</div>
+              <div className="top-box__title">
+                  <Link to={'/book'}>{title}</Link>
+              </div>
+              <div className="top-box__number">
+                  <span>{number}</span>
+              </div>
           </div>
           <div className="top-box__author">{author}</div>
           <div className="top-box__text">{text}</div>

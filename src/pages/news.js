@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layouts/layout";
+import Layout from "../components/Layouts/Layout";
 import Pagination from "../components/Pagination";
 import SectionTop from "../components/SectionTop";
 import NewsBox from "../components/NewsBox";

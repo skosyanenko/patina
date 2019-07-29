@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 
 const SectionTop = ({title, subtitle, isSorting}) => {
     return (
-      <div className="section__top">
-        <div className="section__title-wrap">
-          <div className="section__title">{title}</div>
-          <div className="section__subtitle">{subtitle}</div>
+        <div className="section__top">
+            <div className="section__title-wrap">
+                <div className="section__title">{title}</div>
+                <div className="section__subtitle">{subtitle}</div>
+            </div>
+            { isSorting ? <Sorting/> : '' }
         </div>
-        { isSorting ? <Sorting/> : '' }
-      </div>
     )
 };
 
