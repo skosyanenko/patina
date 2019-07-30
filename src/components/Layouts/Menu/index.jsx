@@ -2,9 +2,9 @@ import React from "react";
 import {Link} from "gatsby";
 import Img from "../../../static/images/icons/loupe.svg";
 
-const Menu = () => {
+const Menu = React.forwardRef((props, ref) => {
     return (
-        <nav className="menu">
+        <nav className={props.index ? 'menu menu--index close' : 'menu'} ref={ref}>
             <div className="menu__container">
                 <Link to={'/tops'} className="menu__link">
                     топы
@@ -27,6 +27,6 @@ const Menu = () => {
             </div>
         </nav>
     )
-};
+});
 
 export default Menu;

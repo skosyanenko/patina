@@ -3,7 +3,6 @@ import Layout from "../components/Layouts/Layout";
 import Pagination from "../components/Pagination";
 import SectionTop from "../components/SectionTop";
 import NewsBox from "../components/NewsBox";
-import("../static/sass/include/_base.sass");
 
 const NewsPage = () => (
   <Layout>

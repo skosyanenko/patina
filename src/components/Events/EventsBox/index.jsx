@@ -12,7 +12,7 @@ const EventsBox = ({date, image, day, time, name, about}) => {
                     <div className="container-events__left-time">{time}</div>
                 </div>
                 { image ?
-                    <div style={{backgroundImage: 'url('+require(`../../static/images/events/${image}.svg`)+')'}} className={'container-events__top-' + image}/>
+                    <div style={{backgroundImage: 'url('+require(`../../../static/images/events/${image}.svg`)+')'}} className={'container-events__top-' + image}/>
                     : ''}
             </div>
             <div className="container-events__bottom">

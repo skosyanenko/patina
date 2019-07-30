@@ -4,7 +4,6 @@ import Pagination from "../components/Pagination";
 import SectionTop from "../components/SectionTop";
 import Alphabet from "../components/Alphabet";
 import ListBook from "../components/ListBook";
-import("../static/sass/include/_base.sass");
 
 const BooksPage = () => (
   <Layout>

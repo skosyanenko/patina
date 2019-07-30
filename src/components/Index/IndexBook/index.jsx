@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.sass";
 import {Link} from "gatsby";
-import Rating from "../Rating";
+import Rating from "../../Rating";
 
 const IndexBook = () => {
   return (
-      <div className="index-book">
+      <div className="index-book index-wrapper">
           <div className="index-book__about">
               <div className="index-book__about-title">
                   <div className="index-book__about-numb">02</div>

@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.sass";
-import Icons from "../Icons";
+import Icons from "../../Icons";
 import {Link} from "gatsby";
 
 const IndexNew = () => {
   return (
-      <div className="index-new">
+      <div className="index-new index-wrapper">
           <div className="index-new__img">
               <img src={require('static/images/news/1.png')} alt=""/>
           </div>

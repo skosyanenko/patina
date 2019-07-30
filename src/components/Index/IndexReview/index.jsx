@@ -4,7 +4,7 @@ import {Link} from "gatsby";
 
 const IndexReview = () => {
   return (
-      <div className="index-review">
+      <div className="index-review index-wrapper">
           <div className="index-review__slider">
               <div className="index-review__slider-left">
                   <img src={require('static/images/review/1.jpg')} alt=""/>

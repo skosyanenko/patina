@@ -3,7 +3,6 @@ import Layout from "../components/Layouts/Layout";
 import {Link} from "gatsby";
 import BookText from "../components/BookText";
 import BookImg from "../components/BookImg";
-import("../static/sass/include/_base.sass");
 
 const BookPage = () => (
   <Layout>

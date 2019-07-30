@@ -4,7 +4,6 @@ import Socials from "../components/Socials";
 import TopBox from "../components/TopBox";
 import {Link} from "gatsby";
 import("../static/sass/include/_buttons.sass");
-import("../static/sass/include/_base.sass");
 
 const TopsPage = () => (
   <Layout>

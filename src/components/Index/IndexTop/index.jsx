@@ -2,9 +2,9 @@ import React from "react";
 import "./index.sass";
 import {Link} from "gatsby";
 
-const IndexTop = () => {
+const IndexTop = ({title, subtitle}) => {
   return (
-      <div className="index-top">
+      <div className="index-top index-wrapper">
           <div className="index-top__slider">
               <div className="index-top__slider-img">
                   <img src={require('static/images/tops/index/1.jpg')} alt=""/>

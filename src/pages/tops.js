@@ -4,7 +4,6 @@ import Pagination from "../components/Pagination";
 import SectionTop from "../components/SectionTop";
 import ListTop from "../components/ListTop";
 import TopImg from "../components/TopImg";
-import("../static/sass/include/_base.sass");
 
 const TopsPage = () => (
   <Layout>

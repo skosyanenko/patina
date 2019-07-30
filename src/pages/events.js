@@ -1,16 +1,15 @@
 import React from "react";
-import LayoutEvents from "../components/Layouts/LayoutEvents";
-import EventsTitle from "../components/EventsTitle";
-import EventsGrid from "../components/EventsGrid";
-import("../static/sass/include/_base.sass");
+import EventsTitle from "../components/Events/EventsTitle";
+import EventsGrid from "../components/Events/EventsGrid";
+import Layout from "../components/Layouts/Layout";
 
 const EventsPage = () => (
-  <LayoutEvents>
+  <Layout>
       <EventsTitle/>
       <div className='content'>
           <EventsGrid/>
       </div>
-  </LayoutEvents>
+  </Layout>
 );
 
 export default EventsPage;

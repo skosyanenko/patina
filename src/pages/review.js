@@ -3,7 +3,6 @@ import Layout from "../components/Layouts/Layout";
 import {Link} from "gatsby";
 import ReviewAuthor from "../components/ReviewAuthor";
 import ReviewText from "../components/ReviewText";
-import("../static/sass/include/_base.sass");
 
 const ReviewPage = () => (
   <Layout>
