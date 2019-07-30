@@ -43,10 +43,6 @@ const IndexBook = () => {
                   <div className="index-book__slider-next">03</div>
               </div>
           </div>
-
-
-
-
       </div>
   )
 };

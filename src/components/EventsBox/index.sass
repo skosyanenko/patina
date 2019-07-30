@@ -1,6 +1,6 @@
 @import '../../static/sass/include/config'
 
-.container
+.container-events
     display: flex
     flex-direction: column
     margin-top: 50px
@@ -8,31 +8,36 @@
     &__top
         display: flex
         height: 100%
-        &-flower
-            width: 100%
-            height: 270%
-            background-repeat: no-repeat
-            background-position: 0% 0%
-            background-size: contain
-            transform: rotate(90deg)
-            margin-top: -30px
-        &-dandelion
-            width: 100%
-            height: 270%
-            background-repeat: no-repeat
-            background-position: 0% 0%
-            background-size: contain
-            transform: scale(-1, 1)
-            margin-top: -30px
-        &-butterfly
-            width: 100%
-            background-repeat: no-repeat
-            background-position: 0% 0%
-            background-size: contain
-            transform: scale(1, 1)
-            margin-top: -30px
 
-        &-date
+    &__top-flower
+        width: 100%
+        height: 270%
+        background-repeat: no-repeat
+        background-position: 0% 0%
+        background-size: contain
+        transform: rotate(90deg)
+        margin-top: -30px
+        margin-left: -50px
+
+    &__top-dandelion
+        width: 100%
+        height: 270%
+        background-repeat: no-repeat
+        background-position: 0% 0%
+        background-size: contain
+        transform: scale(-1, 1)
+        margin-top: -30px
+        margin-left: -50px
+
+    &__top-butterfly
+        width: 100%
+        background-repeat: no-repeat
+        background-position: 0% 0%
+        background-size: contain
+        transform: scale(1, 1)
+        margin-top: -30px
+
+    &__top-date
             font: 500 72px/75% $cheque
             color: $black
 
@@ -41,19 +46,23 @@
         flex-direction: column
         margin-left: 50px
         color: $black
-        &-day
-            font: 500 18px/80% $waverly
-        &-time
-            font: 100 14px/80% $waverly
-            margin-top: 10px
+
+    &__left-day
+        font: 500 18px/80% $waverly
+
+    &__left-time
+        font: 100 14px/80% $waverly
+        margin-top: 10px
 
     &__bottom
         display: flex
         flex-direction: column
         margin-top: 20px
-        &-name
-            font: 500 18px/80% $waverly
-        &-about
-            font: 100 14px/80% $waverly
-            margin-top: 7px
+
+    &__bottom-name
+        font: 500 18px/80% $waverly
+
+    &__bottom-about
+        font: 100 14px/80% $waverly
+        margin-top: 7px
 
