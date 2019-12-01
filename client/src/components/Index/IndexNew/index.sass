@@ -1,0 +1,80 @@
+@import 'config'
+
+.index-new
+    flex-direction: row !important
+
+    &__img
+        width: 314px
+        height: 467px
+        display: flex
+
+        img
+            width: 100%
+            height: 100%
+
+    &__about
+        max-width: 60%
+        width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        margin-right: auto
+
+    &__title
+        padding-left: 40px
+        font: normal 60px/100% $artist
+        color: $pink
+        background: $carbonic
+
+    &__text
+        padding-left: 40px
+        text-align: justify
+        font: normal 16px/100% $futura
+        color: $lightgray
+
+        p
+            text-indent: 35px
+            margin-bottom: 25px
+            &:last-child
+              margin-bottom: 0
+
+    &__nav
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: flex-end
+
+    &__arrows
+        width: 82px
+        height: 81px
+        background: $carbonic
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+
+    &__arrow
+        width: 50px
+        height: 36px
+        &:last-child
+            transform: scale(-1, 1)
+
+        img
+            width: 100%
+            height: 100%
+
+    &__slider-numb
+        margin-left: auto
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+
+
+    &__slider-prev, &__slider-next
+        font: normal 60px/75% $artist
+        color: rgba(31, 31, 31, 0.6)
+
+    &__slider-pres
+        font: normal 80px/75% $artist
+        color: $carbonic

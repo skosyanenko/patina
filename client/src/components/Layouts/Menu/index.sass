@@ -1,0 +1,93 @@
+@import 'config'
+
+.menu
+    width: 310px
+    display: flex
+    align-items: center
+    flex-direction: column
+    padding: 0
+    background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
+    background-position: right
+    background-size: 1px 10px
+    background-repeat: repeat-y
+    transition: all .7s ease
+    +maxwidth($desktop)
+        border-top: none
+
+    &.close
+        transform: translateX(-100%)
+        opacity: 0
+        width: 0
+        visibility: hidden
+
+    &--index
+        background-image: none
+        position: fixed
+
+    &__burger
+        top: 0
+        left: 80px
+        width: 44px
+        height: 24px
+        display: flex
+        align-items: center
+        position: relative
+        cursor: pointer
+        z-index: 50
+
+        &-center
+            width: 30px
+            height: 2px
+            background: $carbonic
+            transition: all .2s ease
+            &:before, &:after
+                content: ''
+                height: 2px
+                background: $carbonic
+                position: absolute
+
+            &:before
+                width: 44px
+                top: 0
+
+            &:after
+                width: 15px
+                bottom: 0
+
+        &.open
+            .menu__burger-center
+                transform: rotate(45deg)
+                &:before
+                    transform: rotate(270deg)
+                    width: 30px
+                &:after
+                    display: none
+
+
+
+    &__container
+        display: flex
+        flex-direction: column
+        text-align: left
+        margin-top: 20px
+        position: relative
+
+    &__link
+        margin-top: 100px
+        font:  bold 25px/100% $waverlyExtra
+        color: $black
+        text-transform: uppercase
+
+    &__search
+        margin-top: 140px
+        margin-bottom: 60px
+        width: 42px
+        height: 42px
+        display: flex
+        justify-content: center
+
+    &__loupe
+        width: 100%
+        height: 100%
+        opacity: 0.5
+

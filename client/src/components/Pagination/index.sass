@@ -1,0 +1,18 @@
+@import 'config'
+
+.pages
+    max-width: calc(50% - 50px)
+    width: 100%
+    margin-left: auto
+    display: flex
+    justify-content: space-between
+    font: normal 18px/100% $waverly
+
+    &__prev, &__next, &__button
+        color: $darkgray
+
+    &__button
+        margin-right: 20px
+
+    &__button:last-child
+        margin-right: 0

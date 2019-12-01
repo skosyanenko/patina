@@ -1,0 +1,61 @@
+@import 'config'
+
+.new-text
+    max-width: calc(50% + 50px)
+    width: 100%
+    &:before,
+    &:after
+        content: ''
+        position: absolute
+        width: 1px
+        height: 57vh
+        background: $green
+    &:before
+        top: 0
+        right: calc(50% - 90px)
+    &:after
+        bottom: 0
+
+    &__title
+        width: 100%
+        font: 500 62px/120% $vogue
+        color: $black
+        text-align: right
+        margin-bottom: 30px
+        letter-spacing: 0.2px
+
+    &__about
+        white-space: pre-line
+        padding: 50px 0 0 40px
+        font: 600 16px/160% $vogue
+        color: $black
+        text-align: justify
+        width: 100%
+        position: relative
+        &:after
+            content: ''
+            position: absolute
+            width: calc(100% - 49px)
+            height: 3px
+            background: $green
+            top: 0
+            right: 0
+
+        p
+            text-indent: 35px
+            margin-bottom: 25px
+
+    &__date
+        text-align: right
+        font: 600 16px/160% $vogue
+        color: $darkgray
+        font-style: italic
+        margin-top: 20px
+
+    &__nav
+        margin-left: 40px
+        margin-top: 50px
+        display: flex
+        align-items: center
+        justify-content: space-between
+

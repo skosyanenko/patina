@@ -1,0 +1,78 @@
+@import 'config'
+
+.index-book
+    flex-direction: row !important
+
+    &__about
+        max-width: 50%
+        width: 100%
+        padding-right: 70px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        &-title
+            width: 100%
+            padding-right: 30px
+            background: $carbonic
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+        &-numb
+            font: normal 80px/75% $artist
+            color: #d6a795
+
+        &-name
+            font: normal 40px/75% $artist
+            color: $darkpink
+
+        &-tags
+            display: flex
+            justify-content: space-between
+
+        &-rating
+            display: flex
+            justify-content: space-between
+
+        &-text
+            font: normal 16px/100% $futura
+            color: $darkgray
+            text-align: justify
+
+    &__slider
+        max-width: 50%
+        width: 100%
+        display: flex
+        justify-content: space-between
+
+        &-arrow
+            width: 50px
+            display: flex
+            &:first-child
+                transform: scale(-1, 1)
+            img
+                width: 100%
+
+        &-img
+            width: 318px
+            height: 466px
+            img
+                width: 100%
+                height: 100%
+
+
+        &-numb
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: space-between
+
+
+        &-prev, &-next
+            font: normal 60px/75% $artist
+            color: rgba(31, 31, 31, 0.6)
+
+        &-pres
+            font: normal 80px/75% $artist
+            color: $carbonic
