@@ -1,8 +1,8 @@
-import React from "react";
-import {Link} from 'react-router-dom';
-import Layout from "../components/Layouts/Layout";
-import BookText from "../components/BookText";
-import BookImg from "../components/BookImg";
+import React from 'react'
+import {Link} from 'react-router-dom'
+import Layout from '../components/Layouts/Layout'
+import BookText from '../components/BookText'
+import BookImg from '../components/BookImg'
 
 const BookPage = () => (
     <Layout>

@@ -1,11 +1,11 @@
-import React from "react";
-import "./index.sass";
-import EventsBox from "../EventsBox";
-import EventsBanner from "../EventsBanner";
+import React from 'react'
+import './index.sass'
+import EventsBox from '../EventsBox'
+import EventsBanner from '../EventsBanner'
 
 const EventsGrid = () => {
   return (
-      <div className="events-grid">
+      <div className="eventsGrid">
           <EventsBox
               day={'вс'}
               about={'История любви'}

@@ -1,23 +1,23 @@
-import React from "react";
-import {Link} from 'react-router-dom';
-import "./index.sass";
-import PropTypes from "prop-types";
+import React from 'react'
+import {Link} from 'react-router-dom'
+import './index.sass'
+import PropTypes from 'prop-types'
 
 const TopBox = ({number, title, author, text}) => {
-  return (
-      <div className="top-box">
-          <div className="top-box__name">
-              <div className="top-box__title">
-                  <Link to={'/book'}>{title}</Link>
-              </div>
-              <div className="top-box__number">
-                  <span>{number}</span>
-              </div>
-          </div>
-          <div className="top-box__author">{author}</div>
-          <div className="top-box__text">{text}</div>
-      </div>
-  )
+    return (
+        <div className="topBox">
+            <div className="topBox__name">
+                <div className="topBox__title">
+                    <Link to={'/book'}>{title}</Link>
+                </div>
+                <div className="topBox__number">
+                    <span>{number}</span>
+                </div>
+            </div>
+            <div className="topBox__author">{author}</div>
+            <div className="topBox__text">{text}</div>
+        </div>
+    )
 };
 
 TopBox.propTypes = {

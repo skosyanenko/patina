@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react'
 import {Link} from 'react-router-dom'
-import "./index.sass"
-import Icons from "../Icons"
+import './index.sass'
+import Icons from '../Icons'
 import PropTypes from 'prop-types'
 
 const NewsBox = ({horizontal, img, title, text}) => {
-    console.log(img);
     return (
         <div className={horizontal ? 'box box--horizontal': 'box'}>
             <div className="box__row">

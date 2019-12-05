@@ -1,7 +1,13 @@
-import React from "react";
-import {Link} from 'react-router-dom';;
+import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Menu = React.forwardRef((props, ref) => {
+    const links = document.querySelectorAll('.menu__link');
+    links.forEach(item => (
+          item.addEventListener('onclick', () => (
+                this.add('active').sibling.classList.remove('active')
+          ))
+    ));
     return (
         <nav className={props.index ? 'menu menu--index close' : 'menu'} ref={ref}>
             <div className="menu__container">

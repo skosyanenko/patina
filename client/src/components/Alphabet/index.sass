@@ -4,17 +4,44 @@
     max-width: calc(50% - 50px)
     width: 100%
     display: flex
-    flex-direction: row
     flex-wrap: wrap
     justify-content: space-between
-    margin-top: 48px
+    margin-top: 50px
+    position: relative
+    min-height: 600px
+    max-height: 600px
+    &--blur
+        cursor: pointer
+        .alphabet__letter
+            opacity: 0.3
+            filter: blur(3px)
+
 
     &__letter
-          font:  500 48px/100% $waverly
-          text-transform: uppercase
-          margin-top: 60px
-          width: calc(100% / 8)
+        margin-top: 60px
+        width: calc(100% / 8)
+        font:  500 48px/100% $waverly
+        text-transform: uppercase
+        cursor: pointer
+        transition: .5s ease
 
     &__letter:last-child
           margin-right: auto
 
+    &__invisible
+        opacity: 0
+
+    &__active
+        width: fit-content
+        margin: auto
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        position: absolute
+        opacity: 1
+        font: 500 30rem/140% $vogue
+        color: $darkgreen
+        text-transform: uppercase
+        pointer-events: none
+        transition: .6s ease

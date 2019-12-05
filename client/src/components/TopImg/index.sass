@@ -1,21 +1,22 @@
 @import 'config'
 
-.top-img
+.topImg
     max-width: calc(50% - 90px)
     width: 100%
     margin-top: 70px
+    position: relative
     display: flex
     flex-direction: column
-    position: relative
 
     &__quote-top
         width: 83px
         height: 65px
         margin-left: -10px
+
         &:last-child
-            position: absolute
             bottom: 0
             right: calc(100% + 155px)
+            position: absolute
             transform: rotate(90deg) scale(-1, -1)
 
     &__quote
@@ -26,8 +27,8 @@
     &__container
         display: flex
 
-    &__left-box
-        display: flex
+        &-box
+            display: flex
 
     &__background
         width: 352px
@@ -42,29 +43,29 @@
         border: 3px solid $sand
         margin-left: 82px
 
-    &__citation-box
+    &__citation
         display: flex
         flex-direction: column
         position: relative
         width: 100%
 
-    &__citation-wrap
-        display: flex
-        width: 100%
-        height: calc(100% - 130px)
+        &-box
+            font:  500 18px/100% $waverly
+            color: $darkgray
+            transform: rotate(-90deg) translate(-85%, 50%)
+            transform-origin: 0 0
+            width: 400px
+            max-height: 74px
+            border-left: 10px solid $lightpink
+            padding-left: 26px
+            overflow-wrap: break-word
+            position: absolute
+            top: 0
 
-    &__citation
-        font:  500 18px/100% $waverly
-        color: $darkgray
-        transform: rotate(-90deg) translate(-85%, 50%)
-        transform-origin: 0 0
-        width: 400px
-        max-height: 74px
-        border-left: 10px solid $lightpink
-        padding-left: 26px
-        overflow-wrap: break-word
-        position: absolute
-        top: 0
+    //&__citation-wrap
+    //    display: flex
+    //    width: 100%
+    //    height: calc(100% - 130px)
 
     &__author
         font:  500 18px/100% $waverly

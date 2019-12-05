@@ -1,26 +1,52 @@
-import React from "react";
-import {Link} from 'react-router-dom';
-import "./index.sass";
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
+import './index.sass';
+import data from 'startData/listBook';
 
-const ListBook = () => {
-  return (
-      <div className="list-book">
-        <Link to={'/book'} className="list-book__link">«Адвокат дъявола» Эндрю НАйдерман</Link>
-        <Link to={'/book'} className="list-book__link">«Алая буква» Натаниэль Готорн</Link>
-        <Link to={'/book'} className="list-book__link">«Алая смерть» Джек Лондон</Link>
-        <Link to={'/book'} className="list-book__link">«Асфальт» Евгений Гришковец</Link>
-        <Link to={'/book'} className="list-book__link">«Алиса в стране чудес» Лбюис Кэрол</Link>
-        <Link to={'/book'} className="list-book__link">«Алиса в зазеркалье» Льюис Кэрол</Link>
-        <Link to={'/book'} className="list-book__link">«А зори здесь тихие...» Борис Васильев</Link>
-        <Link to={'/book'} className="list-book__link">«Алхимик» Пауло Коэльо</Link>
-        <Link to={'/book'} className="list-book__link">«Ася» Иван Тургенев</Link>
-        <Link to={'/book'} className="list-book__link">«Алые паруса» Александр Грин</Link>
-        <Link to={'/book'} className="list-book__link">«Аргонавты. Мифы Древней Греции»</Link>
-        <Link to={'/book'} className="list-book__link">«Автостопом по галактике» Дуглас Адамс</Link>
-        <Link to={'/book'} className="list-book__link">«Алая нить» Лариса Райт</Link>
-        <Link to={'/book'} className="list-book__link">«Анна Каренина» Лев Толстой</Link>
-      </div>
-  )
-};
+class ListBook extends Component {
+    state = {
+        filteredBooks: []
+    };
+
+    componentDidMount() {
+        this.getBooks();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.activeLetter !== this.props.activeLetter) {
+            const isLetter = this.props.activeLetter.length > 0;
+            const filteredBooks = isLetter ?
+                this.props.books.filter(book => book.title[0].toLowerCase() === this.props.activeLetter) :
+                this.props.books;
+
+            this.setState({filteredBooks});
+        }
+    }
+
+    getBooks = () => {
+        this.setState({
+            filteredBooks: data.items
+        });
+    };
+
+    render() {
+        const {filteredBooks} = this.state;
+
+        return (
+            <div className="listBook">
+                {filteredBooks && filteredBooks.map((item, key) => (
+                    <Link to={'/book'}
+                          key={key}
+                          className="listBook__link"
+                    >
+                        {`${item.title} ${item.author}`}
+                    </Link>
+                ))}
+            </div>
+        );
+    }
+}
+
+ListBook.propTypes = {};
 
 export default ListBook;

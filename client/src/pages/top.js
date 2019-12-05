@@ -1,45 +1,23 @@
-import React from "react";
-import {Link} from 'react-router-dom';
-import Layout from "../components/Layouts/Layout";
-import Socials from "../components/Socials";
-import TopBox from "../components/TopBox";
-import '../static/sass/include/_buttons.sass';
+import React from 'react'
+import {Link} from 'react-router-dom'
+import Layout from '../components/Layouts/Layout'
+import Socials from '../components/Socials'
+import TopBox from '../components/TopBox'
+import '../static/sass/include/_buttons.sass'
+import data from '../startData/listTop'
 
 const TopPage = () => (
     <Layout>
         <div className="top-title">ТОП 10</div>
         <div className="content">
             <div className="top-grid">
-                  <TopBox number="01"
-                          title="СТО ЛЕТ ОДИНОЧЕСТВА"
-                          author={"Габриэль Гарсиа Маркес"}
-                          text={"Здесь излишни слова. В этом романе жизнь каждого героя пронизана одиночеством, впрочем, как и городка, где живут эти люди."}
-                  />
-                  <TopBox number={"02"}
-                          title={"1984"}
-                          author={"Джордж Оруэлл"}
-                          text={"Три тоталитарных государства, где контролируются даже мысли. Мир ненависти, но есть люди, которые еще могут противостоять системе."}
-                  />
-                  <TopBox number={"03"}
-                          title={"1984"}
-                          author={"Джордж Оруэлл"}
-                          text={"Три тоталитарных государства, где контролируются даже мысли. Мир ненависти, но есть люди, которые еще могут противостоять системе."}
-                  />
-                  <TopBox number={"04"}
-                          title={"1984"}
-                          author={"Джордж Оруэлл"}
-                          text={"Три тоталитарных государства, где контролируются даже мысли. Мир ненависти, но есть люди, которые еще могут противостоять системе."}
-                  />
-                  <TopBox number={"05"}
-                          title={"1984"}
-                          author={"Джордж Оруэлл"}
-                          text={"Три тоталитарных государства, где контролируются даже мысли. Мир ненависти, но есть люди, которые еще могут противостоять системе."}
-                  />
-                  <TopBox number={"06"}
-                          title={"1984"}
-                          author={"Джордж Оруэлл"}
-                          text={"Три тоталитарных государства, где контролируются даже мысли. Мир ненависти, но есть люди, которые еще могут противостоять системе."}
-                  />
+                {data && data.items.map(item =>(
+                    <TopBox number={item.id}
+                            title={item.title}
+                            author={item.author}
+                            text={item.text}
+                    />
+                ))}
             </div>
         </div>
         <div className="icons">

@@ -3,20 +3,24 @@
 .patina
     max-width: calc(100% - 310px)
     width: 100%
+    margin-left: 415px
+    margin-top: 30px
+    position: relative
+    display: flex
     font: normal 130px/100% $lumen
     color: $black
-    margin-top: 30px
-    display: flex
-    margin-left: 415px
-    position: relative
-    &:after, &:before
-        position: absolute
-        top: -82px
-        content: ''
-        width: 5px
-        height: 340px
-        background: $carbonic
-    &:after
-        left: 205px
+
+    &:after,
     &:before
-      left: 195px
+        width: 6px
+        height: 340px
+        top: -82px
+        position: absolute
+        content: ''
+        background: $black
+
+    &:after
+        left: 207px
+
+    &:before
+        left: 196px

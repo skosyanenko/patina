@@ -1,15 +1,18 @@
 @import 'config'
 
 .box
-    display: flex
-    justify-content: space-between
+    width: calc(50% - 20px)
     height: 320px
     margin-top: 55px
-    width: calc(50% - 20px)
+    display: flex
+    justify-content: space-between
+
     &--horizontal
         flex-direction: column
+
         .box__title:after
             display: none
+
         .box__about
             margin-top: 15px
 
@@ -20,18 +23,19 @@
     &__wrap
         height: 321px
         width: 216px
+
         &--horizontal
             height: 154px
             width: 288px
             position: relative
+
             &:after
-                content: ''
                 width: 1px
                 height: 100%
-                background: $green
                 right: -25%
                 position: absolute
-
+                content: ''
+                background: $green
     &__img
         height: 100%
         width: 100%
@@ -39,10 +43,11 @@
     &__text
         max-width: 385px
         height: 100%
+        margin-left: 15px
         display: flex
         flex-direction: column
         justify-content: space-between
-        margin-left: 15px
+
         &--horizontal
             max-width: 100%
             margin-left: 0
@@ -52,14 +57,15 @@
     &__title
         position: relative
         font: 800 28px/100% $waverly
+
         &:after
-            content: ''
-            position: absolute
             width: 100%
             height: 1px
-            background: $green
             bottom: -20px
             left: 0
+            position: absolute
+            content: ''
+            background: $green
 
     &__about
         margin-top: 40px
@@ -72,10 +78,11 @@
         display: flex
         justify-content: space-between
         align-items: center
+
         &--horizontal
-            flex-direction: column
             margin-top: 25px
             margin-bottom: 25px
+            flex-direction: column
 
     &__button
         width: 150px
@@ -87,15 +94,18 @@
         font:  300 18px/100% $waverly
         color: $white
         transition: all .3s ease
+
         &:hover
             color: $green
             background: $white
             border: 1px solid $green
+
         &--horizontal
+            margin-top: 25px
             border: 1px solid $green
             background-color: $white
-            margin-top: 25px
             color: $green
+
             &:hover
                 background: $green
                 color: $white

@@ -1,6 +1,6 @@
-import React from "react";
-import Sorting from "../Sorting";
-import PropTypes from "prop-types";
+import React from 'react'
+import Sorting from '../Sorting'
+import PropTypes from 'prop-types'
 
 const SectionTop = ({title, subtitle, isSorting}) => {
     return (

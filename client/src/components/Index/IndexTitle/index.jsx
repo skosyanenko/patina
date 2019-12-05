@@ -1,6 +1,6 @@
-import React from "react";
-import "./index.sass";
-import PropTypes from "prop-types";
+import React from 'react'
+import './index.sass'
+import PropTypes from 'prop-types'
 
 const IndexTitle = ({title, subtitle}) => {
   return (

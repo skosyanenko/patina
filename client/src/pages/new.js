@@ -1,15 +1,15 @@
-import React from "react";
-import Layout from "../components/Layouts/Layout";
-import NewText from "../components/NewText";
-import NewImg from "../components/NewImg";
+import React from 'react'
+import Layout from '../components/Layouts/Layout'
+import NewText from '../components/NewText'
+import NewImg from '../components/NewImg'
 
 const NewPage = () => (
-  <Layout>
-      <div className='content new'>
+    <Layout>
+        <div className="content new">
             <NewText/>
             <NewImg/>
-      </div>
-  </Layout>
+        </div>
+    </Layout>
 );
 
 export default NewPage;

@@ -1,62 +1,66 @@
 @import 'config'
 
-.index-top
+.indexTop
 
     &__slider
         margin-top: 50px
+        position: relative
         display: flex
         justify-content: space-between
-        position: relative
 
         &-img
             width: 795px
             height: 527px
             display: flex
+
             img
                 width: 100%
 
         &-about
             width: 38%
+            margin-left: 40px
             display: flex
             flex-direction: column
             justify-content: space-between
-            margin-left: 40px
+
             &:last-child
                 align-items: flex-end
 
         &-title
             width: 647px
-            background: $carbonic
             margin-top: 40px
-            font: normal 54px/120% $artist
             padding-left: 65px
             padding-right: 20px
+            position: absolute
+            background: $carbonic
+            font: normal 54px/120% $artist
             color: $darkpink
             text-align: right
-            position: absolute
 
         &-text
             width: 100%
+            margin-top: 260px
             font: normal 18px/100% $futura
             color: $black
             text-align: justify
-            margin-top: 260px
 
     &__numb
+        margin-top: 60px
         display: flex
         justify-content: center
         align-items: center
-        margin-top: 60px
 
-        &-prev, &-next
+        &-prev,
+        &-next
             font: normal 30px/75% $artist
             color: rgba(31, 31, 31, 0.6)
 
         &-pres
-            font: normal 50px/75% $artist
-            color: $carbonic
             margin-left: 90px
             margin-right: 90px
+            font: normal 50px/75% $artist
+            color: $carbonic
+
 
 
 

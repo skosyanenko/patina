@@ -1,10 +1,10 @@
-import React from "react";
-import "./index.sass";
+import React from 'react'
+import './index.sass'
 
 const Patina = () => {
-  return (
-      <div className="patina">PATINA</div>
-  )
+    return (
+        <div className="patina">PATINA</div>
+    )
 };
 
 export default Patina;

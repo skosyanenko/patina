@@ -1,60 +1,76 @@
-import React, {useRef} from "react";
-import PropTypes from "prop-types";
-import "../../static/sass/project.sass";
-import Header from "./Header";
-import Menu from "./Menu";
-import RightMenu from "./RightMenu";
-import Footer from "./Footer";
-import("./Header/index.sass");
-import("./Menu/index.sass");
-import("./RightMenu/index.sass");
-import("./Footer/index.sass");
+import React, {Component, useRef} from 'react';
+import PropTypes from 'prop-types';
+import Header from './Header';
+import Menu from './Menu';
+import RightMenu from './RightMenu';
+import Footer from './Footer';
 
-const Layout = ({ children }) => {
-
-    let currLoc = window.location.pathname,
-      currClass = '',
-      isRightMenu = true,
-      isIndex = false;
-
-    const menuContainer = useRef();
-
-    switch (currLoc) {
-        case '/':
-            currClass = 'section section--index';
-            isRightMenu = false;
-            isIndex = true;
-            break;
-        case '/events':
-            currClass = 'section section--events';
-            isRightMenu = false;
-            break;
-        default:
-            currClass = 'section';
-    }
-
-    const toggleMenu = (e) => {
-        e.target.classList.toggle('open');
-        menuContainer.current.classList.toggle('close');
+class Layout extends Component {
+    state = {
+        currLoc: window.location.pathname,
+        currClass: '',
+        isRightMenu: true,
+        isIndex: false,
+        books: this.props.books,
+        menuContainer: useRef
     };
 
-    return (
-      <React.Fragment>
-          <Header index={isIndex}/>
-          <div className="wrapper">
-              <div className="menu__burger" onClick={e => toggleMenu(e)}>
-                  <span className="menu__burger-center"/>
-              </div>
-              <Menu index={isIndex} ref={menuContainer}/>
-              <main className={currClass}>
-                  {children}
-              </main>
-              { (isRightMenu) ? <RightMenu /> : ''}
-          </div>
-          <Footer />
-      </React.Fragment>
-    )
-};
+    componentDidMount() {
+        this.getCurrentState();
+    }
+
+
+    getCurrentState = () => {
+        switch (this.state.currLoc) {
+            case '/':
+                this.setState({
+                    currClass: 'section section--index',
+                    isRightMenu: false,
+                    isIndex: true
+            });
+                break;
+            case '/events':
+                this.setState({
+                    currClass: 'section section--events',
+                    isRightMenu: false
+            });
+                break;
+            default:
+                this.setState({
+                    currClass: 'section'
+            });
+        }
+    };
+
+    toggleMenu = () => {
+        this.setState(prevState => ({
+            isIndex: !prevState.isIndex,
+        }));
+    };
+
+
+
+    render() {
+        const {currClass, isRightMenu, isIndex, menuContainer, books} = this.state;
+
+        return (
+            <>
+                <Header index={isIndex}/>
+                <div className="wrapper">
+                    <div className={`menu__burger open ${isIndex && 'close'}`} onClick={this.toggleMenu}>
+                    <span className="menu__burger-center"/>
+                </div>
+                <Menu index={isIndex} ref={menuContainer}/>
+                    <main className={currClass}>
+                        {this.props.children}
+                    </main>
+                { (isRightMenu) ? <RightMenu books={books} /> : ''}
+                </div>
+                <Footer />
+            </>
+        );
+    }
+}
 
 Layout.propTypes = {
     children: PropTypes.node.isRequired,

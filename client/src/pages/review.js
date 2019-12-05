@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Layout from 'components/Layouts/Layout'
-import ReviewAuthor from 'components/ReviewAuthor'
-import ReviewText from 'components/ReviewText'
+import Layout from '../components/Layouts/Layout'
+import ReviewAuthor from '../components/ReviewAuthor'
+import ReviewText from '../components/ReviewText'
 
 const ReviewPage = () => (
     <Layout>

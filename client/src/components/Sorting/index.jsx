@@ -1,9 +1,9 @@
-import React from "react";
-import {Link} from 'react-router-dom';
-import "./index.sass";
+import React from 'react'
+import {Link} from 'react-router-dom'
+import './index.sass'
 
 const Sorting = () => {
-  return (
+    return (
         <div className="sorting">
             <div className="sorting__title">
                 Cортировать по:
@@ -14,7 +14,7 @@ const Sorting = () => {
                 <Link to={'/'} className="sorting__type">рейтингу</Link>
             </div>
         </div>
-  )
+    )
 };
 
 export default Sorting;
