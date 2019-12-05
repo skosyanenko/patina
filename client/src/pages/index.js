@@ -8,37 +8,41 @@ import Patina from '../components/Patina'
 import Layout from '../components/Layouts/Layout'
 
 const PatinaPage = () => (
-    <Layout>
-    <Patina/>
+    <Layout
+        mainClassName={'section section--index'}
+        isRightMenu={false}
+        isIndex={true}
+    >
+        <Patina/>
 
-    <IndexTitle
-        title={'Топы'}
-        subtitle={'ПОДБОРКИ КНИГ НА РАЗЛИЧНЫЕ ТЕМЫ'}
-    />
-    <IndexTop />
+        <IndexTitle
+            title={'Топы'}
+            subtitle={'ПОДБОРКИ КНИГ НА РАЗЛИЧНЫЕ ТЕМЫ'}
+        />
+        <IndexTop />
 
-    <IndexTitle
+        <IndexTitle
         title={'Книги'}
         subtitle={'КНИЖНАЯ ПОЛКА'}
-    />
-    <IndexBook/>
+        />
+        <IndexBook/>
 
-    <IndexTitle
+        <IndexTitle
         title={'Критика'}
         subtitle={'РЕЦЕНЗИИ НА КНИГИ РАЗЛИЧНЫХ АВТОРОВ И ЖАНРОВ'}
-    />
-    <IndexReview/>
+        />
+        <IndexReview/>
 
-    <IndexTitle
+        <IndexTitle
         title={'Что нового'}
         subtitle={'НОВОСТИ ИЗ МИРА ЛИТЕРАТУРЫ'}
-    />
-    <IndexNew/>
+        />
+        <IndexNew/>
 
-    <IndexTitle
+        <IndexTitle
         title={'Эвенты'}
         subtitle={'МЕРОПРИЯТИЯ В РОСТОВЕ-НА-ДОНУ'}
-    />
+        />
     </Layout>
 );
 

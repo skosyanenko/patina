@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import './index.sass';
-import data from 'startData/rightMenu';
-
+import data from 'startData/books';
 
 class RightMenu extends Component {
     state = {
@@ -11,17 +10,18 @@ class RightMenu extends Component {
         randomBooks: []
     };
 
-    componentDidUpdate(prevProps, prevState) {
+	componentDidMount() {
+		
+	}
+
+	componentDidUpdate(prevProps, prevState) {
         if (prevProps.books) {
-            const arrOfBooks = this.state.books;
+            const arrOfBooks = data.books;
             const randomBooks = arrOfBooks.filter(book => {
-                if (randomBooks.length >= 10) {
-                    let index = Math.floor(Math.random() * arrOfBooks.length);
-                    arrOfBooks.slice(index, 1);
-                    randomBooks.push(book);
-                }
-                console.log(randomBooks);
-            })
+            	let index = Math.floor(Math.random() * arrOfBooks.length);
+            	return randomBooks.length <= 14 && arrOfBooks[index]
+            });
+	        console.log(randomBooks);
         }
     }
 
