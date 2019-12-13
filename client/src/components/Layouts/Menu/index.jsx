@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './index.sass';
 
 class Menu extends Component {
@@ -11,33 +11,32 @@ class Menu extends Component {
 		this.props.isIndex && this.toggleMenu();
 	}
 
-
 	toggleMenu = () => {
 		this.setState(state => ({
 			leftMenuToggle: !state.leftMenuToggle
 		}));
-	}
+	};
 
     render() {
     	const {leftMenuToggle} = this.state;
         return (
 			<>
 				<div
-					className={`menu__burger ${!leftMenuToggle ? 'open' : 'close'}`}
+					className={`navigate menu__burger ${this.props.isIndex ? leftMenuToggle ? 'close' : 'open' : 'block'} `}
 					onClick={this.toggleMenu}
 				>
 			        <span className="menu__burger-center"/>
 				</div>
-				<nav className={leftMenuToggle ? 'menu menu--index close' : 'menu'}>
+				<nav className={`menu ${this.props.isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
 					<div className="menu__container">
-						<Link to="/tops" className="menu__link">топы</Link>
-						<Link to="/books" className="menu__link">книги</Link>
-						<Link to="/review" className="menu__link">критика</Link>
-						<Link to="/news" className="menu__link">что нового</Link>
-						<Link to="/events" className="menu__link">эвенты</Link>
+						<NavLink to="/books" className="menu__link">книги</NavLink>
+						<NavLink to="/tops" className="menu__link">топы</NavLink>
+						<NavLink to="/review" className="menu__link">критика</NavLink>
+						<NavLink to="/news" className="menu__link">что нового</NavLink>
+						<NavLink to="/events" className="menu__link">эвенты</NavLink>
 					</div>
-					<div className="menu__search">
-						<img src="/images/icons/loupe.svg" alt="" className="menu__loupe"/>
+					<div className="menu__search ">
+						<div className="menu__loupe navigate"/>
 					</div>
 				</nav>
 			</>

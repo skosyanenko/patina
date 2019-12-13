@@ -1,7 +1,8 @@
 @import 'config'
 
 .menu
-    width: 310px
+    max-width: 310px
+    min-width: 310px
     padding: 0
     display: flex
     align-items: center
@@ -24,15 +25,16 @@
         visibility: hidden
 
     &--index
-        background-image: none
+        background-image: none !important
         position: fixed
 
     &__burger
         width: 44px
         height: 24px
+        margin-top: 80px
         top: 0
         left: 80px
-        position: relative
+        position: fixed
         z-index: 50
         display: flex
         align-items: center
@@ -69,6 +71,9 @@
                 &:after
                     display: none
 
+        &.block
+            display: none
+
     &__container
         margin-top: 20px
         position: relative
@@ -97,15 +102,15 @@
                 width: 100%
                 height: 1px
                 margin: 10px
-                right: -50%
+                right: -55%
                 position: absolute
                 content: ''
                 background: linear-gradient(90deg, #264d4b, #264d4b 55%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
-
+                transition: all .7s ease
             &:after
                 width: 20px
                 height: 20px
-                right: -77px
+                right: -85px
                 position: absolute
                 content: ''
                 border-radius: 50%
@@ -114,26 +119,28 @@
     &__search
         width: 42px
         height: 42px
-        margin-top: 140px
-        display: flex
-        justify-content: center
-        //background: url('/../../../../public/images/icons/loupe.svg') no-repeat center / contain
+        margin-top: 120px
         +maxwidth($desktop)
             width: 40px
             height: 40px
-            margin-top: 120px
+            margin-top: 100px
         +maxwidth($tablet)
             width: 38px
             height: 38px
-            margin-top: 100px
+            margin-top: 80px
         +maxwidth($mobail)
             width: 36px
             height: 36px
-            margin-top: 80px
+            margin-top: 60px
 
     &__loupe
         width: 100%
         height: 100%
         opacity: 0.5
-
+        background: url('/images/icons/loupe.svg') no-repeat center / contain
+        transition: all 0.2s ease
+        cursor: pointer
+        &:hover
+            transition: all 0.2s ease 0.05s
+            transform: rotate(-92deg)
 

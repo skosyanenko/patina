@@ -1,7 +1,7 @@
-import React from 'react'
-import './index.sass'
-import EventsBox from '../EventsBox'
-import EventsBanner from '../EventsBanner'
+import React from 'react';
+import './index.sass';
+import EventsBox from '../EventsBox';
+import EventsBanner from '../EventsBanner';
 
 const EventsGrid = () => {
   return (

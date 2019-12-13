@@ -6,11 +6,12 @@ import Footer from './Footer';
 import 'static/sass/project.sass';
 
 class Layout extends Component {
+
     static defaultProps = {
         mainClassName: 'section',
         isRightMenu: true,
         isIndex: false
-    }
+    };
 
     render() {
         const {mainClassName, isRightMenu, isIndex, children} = this.props;

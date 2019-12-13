@@ -1,16 +1,21 @@
-import React from 'react'
-import './index.sass'
-import {Link} from 'react-router-dom'
-import data from 'startData/listTops'
+import React, {Component} from 'react';
+import './index.sass';
+import {Link} from 'react-router-dom';
+import data from 'startData/tops';
 
-const ListTop = () => (
-    <div className="listTop">
-        {data && data.items.map((item, key) => (
-            <Link to={'/top'} key={key} className="listTop__link">
-                {item.title}
-            </Link>
-        ))}
-    </div>
-);
+class ListTop extends Component {
+
+    render() {
+        return (
+            <div className="listTop">
+                {data && data.tops.map((item, key) => (
+                    <Link to={'/top'} key={key} className="listTop__link">
+                        {item.title}
+                    </Link>
+                ))}
+            </div>
+        )
+    }
+}
 
 export default ListTop;

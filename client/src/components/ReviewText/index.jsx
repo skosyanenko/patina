@@ -1,7 +1,7 @@
-import React from 'react'
-import './index.sass'
-import Socials from '../Socials'
-import Icons from '../Icons'
+import React from 'react';
+import './index.sass';
+import Socials from '../Socials';
+import Icons from '../Icons';
 
 const ReviewText = () => {
     return(

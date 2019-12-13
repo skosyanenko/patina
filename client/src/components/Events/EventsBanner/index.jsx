@@ -2,32 +2,45 @@ import React, {Component} from 'react';
 import './index.sass';
 
 class EventsBanner extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {date: new Date()};
-    }
+    state = {
+        currentTime: '',
+        dayOfWeek: ''
+    };
+
     componentDidMount() {
+        this.getTime();
         this.timerID = setInterval(
-          () => this.tick(),
+          () => this.getTime(),
           1000
         );
+        this.getDayOfWeek();
     }
+
     componentWillUnmount() {
         clearInterval(this.timerID);
     }
-    tick() {
-        this.setState({
-            date: new Date()
-        });
-    }
 
+    getTime = () => {
+        this.setState({
+            currentTime: new Date().toLocaleTimeString().slice(0, 5)
+        })
+    };
+
+    getDayOfWeek = () => {
+        const daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+        let currentDay = new Date().getDay();
+        this.setState({
+            dayOfWeek: daysOfWeek[currentDay]
+        })
+    };
 
     render() {
+        const {dayOfWeek} = this.state;
         return (
         <div className="banner">
             <div className="banner__row">
-                <div className="banner__row-time">{this.state.date.toLocaleTimeString()}</div>
-                <div className="banner__row-date">Чт {this.state.date.getDate() + '.' + this.state.date.getMonth()}</div>
+                <div className="banner__row-time">{this.state.currentTime}</div>
+                <div className="banner__row-date">{`${dayOfWeek} ${new Date().toLocaleDateString().slice(0, 5)}`}</div>
             </div>
             <div className="banner__icons">
                 <div className="banner__column">
@@ -64,7 +77,5 @@ class EventsBanner extends Component {
         );
     }
 }
-
-
 
 export default EventsBanner;

@@ -3,7 +3,7 @@
 .bookImg
     max-width: calc(50% - 50px)
     width: 100%
-    margin-top: 180px
+    margin-top: 140px
     display: flex
 
     &__container
@@ -15,14 +15,15 @@
         width: 100%
         height: 100%
 
-    &__let-big
-        font: 500 714px/100% $vogue
-        color: $white
-        position: absolute
+    &__letBig
         margin-top: -91px
         margin-left: 61px
+        position: absolute
+        font: 500 714px/100% $vogue
+        color: $white
+        z-index: 1
 
-    &__let-small
+    &__letSmall
         font: 500 434px/100% $vogue
         color: rgba(255, 255, 255, 0.5)
         position: absolute
@@ -33,6 +34,7 @@
         position: absolute
         margin-top: 380px
         margin-left: 380px
+        z-index: 2
 
     &__name
         max-width: 120px

@@ -3,19 +3,18 @@
 .alphabet
     max-width: calc(50% - 50px)
     width: 100%
+    min-height: 600px
+    max-height: 600px
     display: flex
     flex-wrap: wrap
     justify-content: space-between
-    margin-top: 50px
     position: relative
-    min-height: 600px
-    max-height: 600px
+
     &--blur
         cursor: pointer
         .alphabet__letter
             opacity: 0.3
             filter: blur(3px)
-
 
     &__letter
         margin-top: 60px

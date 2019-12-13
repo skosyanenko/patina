@@ -13,14 +13,14 @@ class RightMenu extends Component {
 	componentDidMount() {
 		const arrOfBooks = data.books;
 		const randomBooks = [];
-		for (let i = 0; i <=13; i++) {
+		for (let i = 0; i <= 9; i++) {
 			let index = Math.floor(Math.random() * arrOfBooks.length);
 			randomBooks.push(arrOfBooks[index]);
 		}
 		this.setState({
 			randomBooks: [...new Set(randomBooks)]
 		})
-	}
+	};
 
     render() {
         return (

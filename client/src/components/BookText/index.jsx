@@ -1,7 +1,7 @@
-import React from 'react'
-import './index.sass'
-import {Link} from 'react-router-dom'
-import Socials from '../Socials'
+import React from 'react';
+import './index.sass';
+import {Link} from 'react-router-dom';
+import Socials from '../Socials';
 
 const BookText = () => {
     return (
