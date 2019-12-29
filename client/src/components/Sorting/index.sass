@@ -6,10 +6,10 @@
     margin-left: auto
     display: flex
     flex-direction: column
+    font:  300 17px/100% $waverly
+    color: $darkgray
 
     &__title
-        font:  normal 18px/100% $waverly
-        color: $darkgray
         text-align: right
 
     &__container
@@ -19,6 +19,10 @@
         justify-content: space-between
 
     &__type
-        font:  normal 18px/100% $waverly
-        color: $darkgray
+        cursor: pointer
+        &:hover
+            color: $green
+        &.active
+            font:  bold 17px/100% $waverly
+            color: $green
 

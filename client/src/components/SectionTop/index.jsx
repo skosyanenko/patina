@@ -14,7 +14,7 @@ class SectionTop extends Component {
         const animatedTitle = new TextFx(this.title, effectForTitle);
         animatedTitle.hide();
         setTimeout(() => {
-            animatedTitle.show(effectForTitle, () => this.subtitle.classList.add('active'));
+            animatedTitle.show(effectForTitle, () => this.subtitle && this.subtitle.classList.add('active'));
         }, 300);
     };
 

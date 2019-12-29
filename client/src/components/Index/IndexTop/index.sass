@@ -5,7 +5,7 @@
     &__slider
         margin-top: 50px
         position: relative
-        display: flex
+        display: flex !important
         justify-content: space-between
 
         &-img
@@ -33,33 +33,41 @@
             padding-right: 20px
             position: absolute
             background: $carbonic
-            font: normal 54px/120% $artist
-            color: $darkpink
+            font: normal 54px/120% $vogue
+            color: red
             text-align: right
 
         &-text
             width: 100%
             margin-top: 260px
-            font: normal 18px/100% $futura
+            font: normal 18px/100% $vogue
             color: $black
             text-align: justify
 
     &__numb
-        margin-top: 60px
-        display: flex
+        display: flex !important
         justify-content: center
         align-items: center
+        list-style-type: none
+        position: absolute
+        bottom: -120px
+        margin: 0 auto
+        right: 0
+        left: 0
 
-        &-prev,
-        &-next
-            font: normal 30px/75% $artist
+        .slick-active
+            .indexTop__numb-dot
+                margin: 0 90px
+                font: normal 50px/75% $vogue
+                color: $carbonic
+
+        &-dot
+            height: 37px
+            font: normal 30px/75% $vogue
             color: rgba(31, 31, 31, 0.6)
+            transition: .3s ease
 
-        &-pres
-            margin-left: 90px
-            margin-right: 90px
-            font: normal 50px/75% $artist
-            color: $carbonic
+
 
 
 

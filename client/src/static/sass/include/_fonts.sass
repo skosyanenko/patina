@@ -13,29 +13,24 @@
         font-family: $f-name
         font-style: $f-style
         font-weight: $f-weight
-        src: url($f-url) format('woff')
+        src: url($f-url)
 
+// Open Sans Condensed (основной шрифт)
+@include font('Open Sans Condensed', normal, 300, '../../fonts/OpenSansCondensed-Light.ttf')
+@include font('Open Sans Condensed', normal, bold, '../../fonts/OpenSansCondensed-Bold.ttf')
 
 // WaverlyCF (основной шрифт)
 @include font('Waverly CF', normal, 100, '../../fonts/WaverlyCF-Thin.woff2')
 @include font('Waverly CF', normal, 300, '../../fonts/WaverlyCF-Light.woff2')
 @include font('Waverly CF', normal, 500, '../../fonts/WaverlyCF-Medium.woff2')
-@include font('Waverly CF Demi', normal, 600, '../../fonts/WaverlyCF-DemiBold.woff2')
 @include font('Waverly CF', normal, bold, '../../fonts/WaverlyCF-Bold.woff2')
 @include font('Waverly CF Extra', normal, 800, '../../fonts/WaverlyCF-ExtraBold.woff2')
 
-// Vogue (основной шрифт)
-@include font('Vogue Highline Serif', normal, 500, '../../fonts/VogueHighlineSerif-Medium.woff2')
+// Vogue (шрифт заголовков и подзаголовков)
+@include font('Vogue Highline Serif', normal, 500, '../../fonts/Vogue.otf')
 
 // Lumen (шрифт названия Patina)
-@include font('Lumen', normal, bold, '../../fonts/Lumen-Bold.woff2')
 @include font('Lumen', normal, normal, '../../fonts/Lumen-Regular.woff2')
-
-// MADE TheArtist Sans PERSONAL USE (шрифт заголовков главной страницы)
-@include font('MADE TheArtist Sans', normal, normal, '../../fonts/MADETheArtistSans.woff2')
-
-// FuturaNewBook (шрифт подзаголовков и статей главной страницы)
-@include font('Futura New Book', normal, normal, '../../fonts/FuturaNewBook-Reg.woff2')
 
 // IZVESTIA (шрифт заголовков страниц с рецензиями)
 @include font('Izvestija', normal, normal, '../../fonts/Izvestija.woff2')

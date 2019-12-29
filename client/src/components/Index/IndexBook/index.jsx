@@ -1,48 +1,73 @@
-import React from 'react'
-import './index.sass'
-import {Link} from 'react-router-dom'
-import Rating from '../../Rating'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import Slider from 'react-slick';
+import './index.sass';
+import data from 'startData/booksTest';
+import Rating from '../../Rating';
 
-const IndexBook = () => {
-  return (
-      <div className="indexBook index-wrapper">
-          <div className="indexBook__about">
-              <div className="indexBook__about-title">
-                  <div className="indexBook__about-numb">02</div>
-                  <div className="indexBook__about-name">Над пропастью во ржи</div>
-              </div>
-              <div className="indexBook__about-tags">
-                  <Link to={'/top'} className="tag-white">Роман</Link>
-                  <Link to={'/top'} className="tag-white">Взросление</Link>
-                  <Link to={'/top'} className="tag-white">Классика</Link>
-              </div>
-              <div className="indexBook__about-rating">
-                  <Rating/>
-                  <Link to={'/top'} className="button-black">Далее</Link>
-              </div>
-              <div className="indexBook__about-text">
-                  Роман написан от лица семнадцатилетнего Холдена Колфилда, находящегося на лечении в клинике: он рассказывает об истории, случившейся с ним прошлой зимой и предшествовавшей его болезни. События, о которых он повествует, разворачиваются в
-                  предрождественские дни декабря 1949 года. Воспоминания юноши начинаются со дня его отбытия из закрытой школы Пэнси, откуда он был отчислен за неуспеваемость.
-              </div>
-          </div>
-          <div className="indexBook__slider">
-              <div className="indexBook__slider-arrow">
-                  <img src="/images/icons/arrow.svg" alt=""/>
-              </div>
-              <div className="indexBook__slider-img">
-                  <img src="images/books/index/1.jpg" alt=""/>
-              </div>
-              <div className="indexBook__slider-arrow">
-                  <img src="/images/icons/arrow.svg" alt=""/>
-              </div>
-              <div className="indexBook__slider-numb">
-                  <div className="indexBook__slider-prev">01</div>
-                  <div className="indexBook__slider-pres">02</div>
-                  <div className="indexBook__slider-next">03</div>
-              </div>
-          </div>
-      </div>
-  )
-};
+class IndexBook extends Component {
+    constructor(props) {
+        super(props);
+        this.next = this.next.bind(this);
+        this.previous = this.previous.bind(this);
+    }
+    next() {
+        this.slider.slickNext();
+    }
+    previous() {
+        this.slider.slickPrev();
+    }
+
+    render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dotsClass: 'indexBook__numb',
+            customPaging: i => (
+                <div className="indexBook__numb-dot">
+                    {(i + 1 <= 9) ? `0${i + 1}` : i + 1}
+                </div>
+            )
+        };
+        return (
+            <Slider ref={c => (this.slider = c)} {...settings}>
+                {data && data.books.map((item, key) => (
+                    <div className="indexBook index-wrapper" key={1}>
+                        <div className="indexBook__about">
+                            <div className="indexBook__about-title">
+                                <div className="indexBook__about-numb">02</div>
+                                <div className="indexBook__about-name">{item.title}</div>
+                            </div>
+                            <div className="indexBook__about-tags">
+                                {item && item.tags.map((tag, key) => (
+                                  <Link to={'/top'} className="tag">{tag}</Link>
+                                ))}
+                            </div>
+                            <div className="indexBook__about-rating">
+                                <Rating/>
+                                <Link to={'/top'} className="button-black">Далее</Link>
+                            </div>
+                            <div className="indexBook__about-text">
+                                {item.shortDescription}
+                            </div>
+                        </div>
+                        <div className="indexBook__slider">
+                            <div className="indexBook__slider-arrow" onClick={this.previous}/>
+                            <div className="indexBook__slider-img">
+                                <img src={item.coverImage} alt=""/>
+                            </div>
+                            <div className="indexBook__slider-arrow" onClick={this.next}/>
+                        </div>
+                    </div>
+                ))}
+            </Slider>
+        )
+    }
+}
+
+IndexBook.propTypes = {};
 
 export default IndexBook;

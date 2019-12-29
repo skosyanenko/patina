@@ -3,31 +3,26 @@
 // Цвета
 // ===================
 
-$black: #000000 // base
-$white: #ffffff // base
-$darkgray: #444444 // base
-$lightgray: #7c7c7c // base
-$darkgreen: #003835 // base
-$browngray: #8a8a6e //base
-$carbonic: #1f1f1f // page Main
-$lightbrown: #d6a795 //page Main
-$darkpink: #ffc7b1 //page Main
-$sand: #cdb7aa // page Tops
-$lightpink: #f7ede3 // page Tops
-$green: #264d4b //page Books
-$citric: #d0d762 //page News
-$pink: #d9b2af //Page Review
+$black: #000000
+$carbonic: #1f1f1f
+$darkgray: #444444
+$lightgray: #7c7c7c
+$white: #ffffff
+$darkgreen: #003835
+$green: #264d4b
+$browngray: #8a8a6e
+$sand: #cdb7aa
+$lightpink: #f7ede3
+$pink: #d9b2af
 
 // Шрифты
 // ===================
 
 $waverly: 'Waverly CF'
-$waverlyDemi: 'Waverly CF Demi'
 $waverlyExtra: 'Waverly CF Extra'
 $vogue: 'Vogue Highline Serif'
 $lumen: 'Lumen'
-$artist: 'MADE TheArtist Sans'
-$futura: 'Futura New Book'
+$openSans: 'Open Sans Condensed'
 $izvestia: 'Izvestija'
 $cheque: 'Cheque'
 
@@ -35,23 +30,22 @@ $cheque: 'Cheque'
 // ===================
 
 %sectiontitle
-    color: $black
-    text-transform: uppercase
-    font: 500 70px/78% $vogue
     display: flex
     align-items: center
     flex-wrap: wrap
+    color: $black
+    font: 500 70px/78% $vogue
+    text-transform: uppercase
     [class*="letter"]
         transform-origin: 0% 50%
 
 %sectionsubtitle
     color: $darkgray
-    font: normal 30px/100% $vogue
-    padding-left: 5px
+    font: 500 33px/78% $vogue
 
 %sectiontext
     color: $darkgray
-    font: normal 16px/78% $vogue
+    font: 300 21px/100% $openSans
 
 // Основные разрешения
 // ===================

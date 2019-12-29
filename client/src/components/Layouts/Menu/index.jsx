@@ -4,11 +4,13 @@ import './index.sass';
 
 class Menu extends Component {
     state = {
+    	lineWidth: null,
         leftMenuToggle: false,
     };
 
 	componentDidMount() {
-		this.props.isIndex && this.toggleMenu();
+		this.props.isIndex &&
+		this.toggleMenu();
 	}
 
 	toggleMenu = () => {
@@ -17,8 +19,20 @@ class Menu extends Component {
 		}));
 	};
 
+	lineAnimate = e => {
+		const {target} = e;
+		const rightOffset = +target.getBoundingClientRect().right.toFixed();
+		const lineWidth = 300 - rightOffset;
+	};
+
     render() {
-    	const {leftMenuToggle} = this.state;
+    	const {leftMenuToggle, lineWidth} = this.state;
+
+    	const defaults = {
+    		className: 'menu__link',
+			onClick: this.lineAnimate
+		};
+
         return (
 			<>
 				<div
@@ -29,11 +43,26 @@ class Menu extends Component {
 				</div>
 				<nav className={`menu ${this.props.isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
 					<div className="menu__container">
-						<NavLink to="/books" className="menu__link">книги</NavLink>
-						<NavLink to="/tops" className="menu__link">топы</NavLink>
-						<NavLink to="/review" className="menu__link">критика</NavLink>
-						<NavLink to="/news" className="menu__link">что нового</NavLink>
-						<NavLink to="/events" className="menu__link">эвенты</NavLink>
+						<NavLink to="/books" {...defaults}>
+							<i className="menu__line"/>
+							книги
+						</NavLink>
+						<NavLink to="/tops" {...defaults}>
+							<i className="menu__line"/>
+							топы
+						</NavLink>
+						<NavLink to="/review" {...defaults}>
+							<i className="menu__line"/>
+							критика
+						</NavLink>
+						<NavLink to="/events" {...defaults}>
+							<i className="menu__line"/>
+							эвенты
+						</NavLink>
+						<NavLink to="/news" {...defaults}>
+							<i className="menu__line"/>
+							что нового
+						</NavLink>
 					</div>
 					<div className="menu__search ">
 						<div className="menu__loupe navigate"/>

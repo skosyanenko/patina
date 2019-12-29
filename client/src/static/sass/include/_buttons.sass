@@ -1,66 +1,48 @@
 @import 'config'
-
-.button-green
+.button
     width: 150px
     height: 36px
     display: flex
     justify-content: center
     align-items: center
-    background-color: $green
-    font:  300 18px/100% $waverly
-    color: $white
+    font:  300 16px/100% $openSans
     transition: all .3s ease
+
+.buttonGreen
+    background-color: $green
+    color: $white
     border: none
 
     &:hover
-        color: $green
         background: $white
+        color: $green
         border: 1px solid $green
 
-.button-white
-    width: 150px
+.buttonWhite
+    background-color: $white
+    color: $green
+    border: 1px solid $green
+
+    &:hover
+        background: $green
+        color: $white
+        border: none
+
+.tag
     height: 36px
+    padding: 10px
     display: flex
     justify-content: center
     align-items: center
     background-color: $white
-    font:  300 18px/100% $waverly
     color: $green
-    transition: all .3s ease
     border: 1px solid $green
+    border-radius: 10px
+    font:  normal 13px/100% $openSans
+    transition: all .3s ease
 
     &:hover
         color: $white
         background: $green
         border: none
-
-.button-black
-    width: 150px
-    height: 36px
-    display: flex
-    justify-content: center
-    align-items: center
-    background-color: $carbonic
-    font:  300 18px/100% $waverly
-    letter-spacing: 3.6px
-    color: $white
-    transition: all .3s ease
-    border: none
-
-    &:hover
-        color: $carbonic
-        background: none
-        border: 1px solid $carbonic
-
-.tag-white
-    width: 150px
-    height: 36px
-    display: flex
-    justify-content: center
-    align-items: center
-    background-color: $white
-    font:  normal 14px/100% $futura
-    color: $carbonic
-    transition: all .3s ease
-    border: 1px solid $carbonic
 

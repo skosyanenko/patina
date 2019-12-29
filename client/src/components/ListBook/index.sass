@@ -1,20 +1,23 @@
 @import 'config'
 
 .listBook
-    max-width: calc(50% - 150px)
     width: 100%
-    margin-top: 40px
+    margin-top: 30px
     display: flex
     flex-direction: column
     align-items: flex-end
 
     &__link
-        margin-top: 20px
+        margin-top: 30px
         font: 300 24px/100% $waverly
         color: $darkgray
 
+        &:hover
+            font: 500 24px/100% $waverly
+            color: $green
+
     &__link:first-letter
-        font: bold 24px/100% $waverly
+        font: 800 24px/100% $waverly
         color: $green
 
 

@@ -1,3 +1,5 @@
+import React from "react";
+
 export const alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж',
 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р',
 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э',
@@ -28,4 +30,19 @@ export const effectForTitle = {
         rotateY: 45
     }
 };
+
+export const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dotsClass: 'indexNew',
+    customPaging: i => (
+        <div className="indexNew__numb-dot">
+            {(i + 1 <= 9) ? `0${i + 1}` : i + 1}
+        </div>
+    )
+};
+
 

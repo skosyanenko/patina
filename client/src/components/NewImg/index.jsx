@@ -1,5 +1,5 @@
-import React from 'react'
-import './index.sass'
+import React from 'react';
+import './index.sass';
 
 const NewImg = () => {
     return (

@@ -24,7 +24,9 @@ class EventsTitle extends Component {
     animateTitle = () => {
         const animatedTitle = new TextFx(this.title, effectForTitle);
         animatedTitle.hide();
-        setTimeout(() => animatedTitle.show(), 300);
+        setTimeout(() => {
+            animatedTitle.show(effectForTitle, () => this.subtitle && this.subtitle.classList.add('active'));
+        }, 300);
     };
 
     render() {
@@ -34,7 +36,7 @@ class EventsTitle extends Component {
                 <div className="eventsWrap__title" ref={node => this.title = node}>
                     {month}
                 </div>
-                <div className="eventsWrap__subtitle">в Ростове-на-Дону</div>
+                <div className="eventsWrap__subtitle" ref={node => this.subtitle = node}>в Ростове-на-Дону</div>
             </div>
         )
     }
