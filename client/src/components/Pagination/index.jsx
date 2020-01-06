@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
-import PropTypes from 'prop-types';
 
 class Pagination extends Component {
+
     render() {
+        const {classNamePrefix} = this.props;
         return (
-            <div className="container">
+            <div  className={`container ${classNamePrefix}`}>
                 <div className="container__filter">
                     Выводить по:
                     <div className="container__filter-number">

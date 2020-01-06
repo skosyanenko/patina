@@ -1,0 +1,63 @@
+@import 'config'
+
+.containerEvents
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+
+    &__top
+        height: 100%
+        display: flex
+
+        &-flower, &-dandelion, &-butterfly
+            width: 100%
+            margin-left: -100px
+            background-repeat: no-repeat
+            background-position: 0% 0%
+            background-size: contain
+
+        &-flower
+            height: 270%
+            margin-top: -20px
+            transform: rotate(90deg)
+
+        &-dandelion
+            height: 270%
+            margin-top: -50px
+            transform: scale(-1, 1)
+
+        &-butterfly
+            margin-top: -30px
+            margin-left: 0
+            transform: scale(1, 1)
+
+        &-date
+            font: 300 72px/75% $cheque
+            color: $darkgray
+
+    &__left
+        margin-left: 50px
+        display: flex
+        flex-direction: column
+        color: $carbonic
+
+        &-day
+            font: 500 17px/80% $waverlyExtra
+
+        &-time
+            margin-top: 10px
+            font: 100 14px/80% $waverly
+
+    &__bottom
+        margin-top: 20px
+        display: flex
+        flex-direction: column
+
+        &-name
+            font: 500 18px/80% $waverly
+
+        &-about
+            margin-top: 7px
+            font: 100 14px/80% $waverly
+
+

@@ -1,19 +1,18 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import Layout from '../components/Layouts/Layout'
-import ReviewAuthor from '../components/ReviewAuthor'
-import ReviewText from '../components/ReviewText'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import ReviewAuthor from '../components/PageReview/ReviewAuthor';
+import ReviewText from '../components/PageReview/ReviewText';
 
 const ReviewPage = () => (
-    <Layout>
-        <Link to="/books" className="arrow-backwards">
-            <img src="/images/icons/arrow.svg" alt="" className="arrow-backwards__img" />
+    <>
+        <Link to="/reviews">
+            <img src="/images/icons/arrow.svg" alt=""  className="arrowBackwards"/>
         </Link>
-        <div className='content new'>
+        <div className="content">
             <ReviewAuthor/>
             <ReviewText/>
         </div>
-    </Layout>
+    </>
 );
 
 export default ReviewPage;

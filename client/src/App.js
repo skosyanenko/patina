@@ -1,5 +1,7 @@
-import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 import PatinaPage from './pages'
 import BooksPage from './pages/books'
 import BookPage from './pages/book'
@@ -10,24 +12,32 @@ import NewsPage from './pages/news'
 import NewPage from './pages/new'
 import ReviewsPage from './pages/reviews'
 import ReviewPage from './pages/review'
+import SearchPage from './pages/search'
+import RegistrationPage from './pages/registration'
 import UndefinedPage from './pages/404'
+import Main from "./main";
+
+const routes = [
+    {path: '/', component: PatinaPage},
+    {path: '/books', component: BooksPage},
+    {path: '/book', component: BookPage},
+    {path: '/events', component: EventsPage},
+    {path: '/tops', component: TopsPage},
+    {path: '/top', component: TopPage},
+    {path: '/news', component: NewsPage},
+    {path: '/new', component: NewPage},
+    {path: '/reviews', component: ReviewsPage},
+    {path: '/review', component: ReviewPage},
+    {path: '/search', component: SearchPage},
+    {path: '/registration', component: RegistrationPage},
+    {path: '*', component: UndefinedPage}
+];
+
+const MainComponent = withRouter(Main);
 
 const App = () => (
     <Router>
-        <Switch>
-
-            <Route exact path="/" component={PatinaPage}/>
-            <Route exact path="/books" component={BooksPage}/>
-            <Route exact path="/book" component={BookPage}/>
-            <Route exact path="/events" component={EventsPage}/>
-            <Route exact path="/tops" component={TopsPage}/>
-            <Route exact path="/top" component={TopPage}/>
-            <Route exact path="/news" component={NewsPage}/>
-            <Route exact path="/new" component={NewPage}/>
-            <Route exact path="/reviews" component={ReviewsPage}/>
-            <Route exact path="/review" component={ReviewPage}/>
-            <Route path="*" render={UndefinedPage}/>
-        </Switch>
+        <MainComponent routes={routes}/>
     </Router>
 );
 

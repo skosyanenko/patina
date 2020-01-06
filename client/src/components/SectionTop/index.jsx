@@ -19,14 +19,14 @@ class SectionTop extends Component {
     };
 
     render() {
-        const {title, subtitle, isSorting} = this.props;
+        const {title, subtitle, isSorting, classNamePrefix} = this.props;
         return (
             <div className="section__top">
                 <div className="section__title-wrap">
                     <div className="section__title" ref={node => this.title = node}>
                         {title}
                     </div>
-                    <div className="section__subtitle"  ref={node => this.subtitle = node}>
+                    <div className={`section__subtitle ${classNamePrefix}`}  ref={node => this.subtitle = node}>
                         {subtitle}
                     </div>
                 </div>

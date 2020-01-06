@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import Layout from '../components/Layouts/Layout';
 import Pagination from '../components/Pagination';
 import SectionTop from '../components/SectionTop';
-import AlphabetFilter from '../components/Alphabet';
-import ListBook from '../components/ListBook';
+import AlphabetFilter from '../components/PageBooks/Alphabet';
+import ListBook from '../components/PageBooks/ListBook';
 import Search from '../components/Search';
 import data from 'startData/listBook';
-import PropTypes from "prop-types";
 
 
 class BooksPage extends Component {
@@ -29,9 +27,7 @@ class BooksPage extends Component {
 
     render() {
         return (
-            <Layout books={this.state.books}
-                    status={this.props.status}
-            >
+            <>
                 <SectionTop
                     title={"Книги"}
                     subtitle={"книжная полка"}
@@ -39,7 +35,9 @@ class BooksPage extends Component {
                 />
                 <div className='content'>
                     <div className="content__containerBook">
-                        <Search/>
+                        <Search
+                            classNamePrefix=" "
+                        />
                         <AlphabetFilter hookLetter={this.hookLetter}/>
                     </div>
                     <div className='content__containerBook'>
@@ -49,8 +47,7 @@ class BooksPage extends Component {
                         <Pagination/>
                     </div>
                 </div>
-
-            </Layout>
+            </>
         );
     }
 }

@@ -1,0 +1,52 @@
+@import 'config'
+
+.rating
+    width: 160px
+    height: 25px
+    margin-bottom: 24px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    position: relative
+    &:hover
+        &:before
+            width: 137px
+            padding: 6px 20px
+            bottom: 35px
+            left: 60px
+            content: '4.9 по 21 оценке'
+            font: 300 17px/100% $openSans
+            color: $white
+            position: absolute
+            background: $green
+            opacity: 0.6
+            border-radius: 5px
+        &:after
+            width: 3px
+            height: 1px
+            bottom: 17px
+            left: 75px
+            content: ''
+            position: absolute
+            opacity: 0.6
+            border: 6px solid transparent
+            border-top: 12px solid $green
+
+    &__elem
+        width: 25px
+        height: 25px
+        cursor: pointer
+        transition: all 1s ease
+
+        svg
+            width: 25px
+            height: 25px
+            fill: $white
+            stroke: $green
+            stroke-width: 20
+            color: $green
+            transition: .5s
+
+            &.active
+                fill: currentColor
+

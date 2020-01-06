@@ -1,12 +1,11 @@
-import React from 'react'
-import Layout from '../components/Layouts/Layout'
-import Pagination from '../components/Pagination'
-import SectionTop from '../components/SectionTop'
-import ListTop from '../components/ListTop'
-import TopImg from '../components/TopImg'
+import React from 'react';
+import Pagination from '../components/Pagination';
+import SectionTop from '../components/SectionTop';
+import ListTop from '../components/PageTops/ListTop';
+import TopImg from '../components/PageTops/TopImg';
 
 const TopsPage = () => (
-    <Layout>
+    <>
         <SectionTop
             title={"Топы"}
             subtitle={"подборки книг на различные темы"}
@@ -19,7 +18,7 @@ const TopsPage = () => (
                 <Pagination/>
             </div>
         </div>
-    </Layout>
+    </>
 );
 
 export default TopsPage;

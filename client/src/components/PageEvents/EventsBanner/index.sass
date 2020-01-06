@@ -1,0 +1,64 @@
+@import 'config'
+
+.banner
+    max-width: 100%
+    height: calc(100% - 50px)
+    margin: 50px 40px 0 0
+    padding: 35px 40px 40px 40px
+    background: $darkgreen
+    display: grid
+    grid-row-start: 1
+    grid-row-end: 3
+    grid-column-start: 3
+    grid-column-end: 5
+    opacity: 0.75
+    display: flex
+    justify-content: space-between
+
+    &__weather
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        &-img
+            display: flex
+            justify-content: center
+            align-items: center
+
+        &-icon
+            width: 85px
+            height: 100%
+
+        &-text
+            margin-left: 15px
+            font: 100 38px/100% $waverly
+            color: $white
+
+        &-numb
+            display: flex
+
+        &-temperature
+            margin-left: 15px
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            font: 100 26px/100% $waverly
+            color: $white
+
+    &__date
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        &-text
+            font: bold 80px/75% $cheque
+            color: $white
+
+        &-date
+            font: 100 48px/100% $waverly
+            color: $white
+
+
+
+
+

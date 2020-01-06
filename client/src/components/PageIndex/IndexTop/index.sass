@@ -1,0 +1,74 @@
+@import 'config'
+
+.indexTop
+    max-height: 685px!important
+    display: flex
+    flex-direction: column!important
+
+    &__slider
+        margin-top: 50px
+        position: relative
+        display: flex !important
+        justify-content: space-between
+
+        &-img
+            width: 795px
+            height: 527px
+            display: flex
+
+            img
+                width: 100%
+
+        &-about
+            width: 38%
+            margin-left: 40px
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+
+        &-title
+            font: 500 46px/79% $vogue
+            color: $darkgray
+
+        &-text
+            @extend %sectiontext
+            width: 100%
+            font: normal 18px/100% $openSans
+            text-align: justify
+
+        &-buttons
+            margin-top: 15px
+            display: flex
+            justify-content: space-between
+
+    &__numb
+        width: 320px
+        height: 45px
+        margin: 60px auto
+
+        &-dot
+            height: 50px
+            display: flex!important
+            align-items: center
+            font: normal 30px/90% $vogue
+            color: rgba(31, 31, 31, 0.6)
+            transition: .3s ease
+
+        .slick-current
+            .indexTop__numb-dot
+                font: normal 50px/90% $vogue
+                color: $carbonic
+
+        .slick-list
+            width: 297px
+
+
+
+
+
+
+
+
+
+
+
