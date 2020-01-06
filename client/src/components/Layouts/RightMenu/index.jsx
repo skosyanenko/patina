@@ -13,14 +13,14 @@ class RightMenu extends Component {
 	componentDidMount() {
 		const arrOfBooks = data.books;
 		const randomBooks = [];
-		for (let i = 0; i <=13; i++) {
+		for (let i = 0; i <= 9; i++) {
 			let index = Math.floor(Math.random() * arrOfBooks.length);
 			randomBooks.push(arrOfBooks[index]);
 		}
 		this.setState({
 			randomBooks: [...new Set(randomBooks)]
 		})
-	}
+	};
 
     render() {
         return (
@@ -30,7 +30,7 @@ class RightMenu extends Component {
                         содержание
                     </div>
                     {this.state.randomBooks && this.state.randomBooks.map((item, key) => (
-                        <Link to={item.link} className="rightMenu__book" key={item.id}>
+                        <Link to="/book" className="rightMenu__book" key={item.id}>
                             <span className="rightMenu__book-title">{item.title}</span>
                             <span className="rightMenu__book-num">{key + 1}</span>
                         </Link>

@@ -8,7 +8,7 @@
     max-width: calc(100% - 620px)
     height: 100%
     margin: 0 auto
-    padding: 30px 40px 60px 40px
+    padding: 40px
     position: relative
     display: flex
     justify-content: space-between
@@ -30,6 +30,12 @@
     &__subtitle
         @extend %sectionsubtitle
         margin-top: 25px
+        opacity: 0
+
+        &.active
+            opacity: 1
+            transition: .3s ease-in
+
 
     &--index
         max-width: calc(100% - 310px)
@@ -39,10 +45,19 @@
         margin-right: 310px
 
 .content
-    margin-bottom: 60px
     display: flex
     flex-direction: row
     justify-content: space-between
+
+    &__containerBook
+        max-width: calc(50% - 50px)
+        width: 100%
+        display: flex
+        flex-direction: column
+
+    &__containerTop
+        max-width: 50%
+        width: 100%
 
 .news
     flex-wrap: wrap
@@ -57,11 +72,6 @@
 
     &__socials
         margin-right: 80px
-
-.top-title
-    margin-bottom: 50px
-    font: 500 48px/100% $vogue
-    color: $black
 
 .arrow-backwards
     width: 50px
@@ -81,11 +91,36 @@
     width: 100%
     max-width: calc(100% - 310px)
     margin-top: 50px
-    display: flex
+    display: flex !important
     flex-direction: column
     justify-content: space-between
 
+.section-enter
+    opacity: 0
+    transform: scale(1.1)
+
+.section-enter-active
+    opacity: 1
+    transform: scale(1)
+    transition: opacity 300ms, transform 300ms
+
+.section-exit
+    opacity: 1
+    transform: scale(1)
 
 
+.section-exit-active
+    opacity: 0
+    transform: scale(0.9)
+    transition: opacity 300ms, transform 300ms
 
+
+.fade
+    &-appear, &-enter
+        opacity: 0
+        z-index: 1
+
+        &-active
+            opacity: 1
+            transition: .6s ease-in
 

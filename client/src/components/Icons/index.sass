@@ -14,16 +14,46 @@
         font: 500 11px/0.4 "Times New Roman", sans-serif
         color: $green
 
-    &__like
-        width: 28px
-        margin-top: 8px
-
     &__views
         width: 38px
+        height: 31px
         margin-top: 5px
+        background: url("/images/icons/views.svg") no-repeat center / contain
 
     &__clock
         width: 29px
+        height: 29px
         margin-top: 7px
+        background: url("/images/icons/clock.svg") no-repeat center / contain
+
+    &__like
+        width: 28px
+        height: 27px
+        margin-top: 8px
+        background: url("/images/icons/like.svg") no-repeat center / contain
+        position: relative
+
+        &:after
+            content: url("/images/icons/likeBold.svg")
+            position: absolute
+            width: 28px
+            height: 27px
+            left: 0
+            top: 0
+            z-index: 1
+            transform: scale(0)
+            opacity: 0
+            transition: none
+
+.activated:after
+    animation: scaleFade 0.5s forwards
+
+@keyframes scaleFade
+    50%
+        opacity: 1
+        transform: scale(1)
+    100%
+        opacity: 0
+        transform: scale(2.5)
 
 

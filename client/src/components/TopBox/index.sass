@@ -31,7 +31,6 @@
         border: 3px solid $sand
         font: 500 48px/100% $vogue
         transition: all .3s ease
-        cursor: pointer
 
         &:hover
             background: $sand
@@ -43,25 +42,21 @@
         max-width: 320px
         width: 100%
         min-height: 90px
-        margin-top: -20px
-        margin-left: 45px
+        margin: -20px 0 0 45px
         padding: 20px 69px
         position: absolute
         background-color: $lightpink
 
         a
-            font: 800 25px/100% $waverly
+            font: 800 25px/100% $waverlyExtra
             color: $black
 
     &__author
-        margin-top: 20px
-        margin-bottom: 15px
-        font: 800 25px/100% $waverlyExtra
+        margin: 20px 0 15px 0
+        font: 500 25px/100% $waverly
         color: $black
 
     &__text
         max-width: calc(100% - 30px)
-        font: 800 18px/125%  $waverly
-        color: $lightgray
-        font-style: italic
+        @extend %sectiontext
 

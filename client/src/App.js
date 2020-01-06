@@ -8,12 +8,14 @@ import TopsPage from './pages/tops'
 import TopPage from './pages/top'
 import NewsPage from './pages/news'
 import NewPage from './pages/new'
+import ReviewsPage from './pages/reviews'
 import ReviewPage from './pages/review'
 import UndefinedPage from './pages/404'
 
 const App = () => (
     <Router>
         <Switch>
+
             <Route exact path="/" component={PatinaPage}/>
             <Route exact path="/books" component={BooksPage}/>
             <Route exact path="/book" component={BookPage}/>
@@ -22,6 +24,7 @@ const App = () => (
             <Route exact path="/top" component={TopPage}/>
             <Route exact path="/news" component={NewsPage}/>
             <Route exact path="/new" component={NewPage}/>
+            <Route exact path="/reviews" component={ReviewsPage}/>
             <Route exact path="/review" component={ReviewPage}/>
             <Route path="*" render={UndefinedPage}/>
         </Switch>

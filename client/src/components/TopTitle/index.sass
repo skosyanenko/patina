@@ -1,0 +1,20 @@
+@import 'config'
+
+.topTitle
+    width: 100%
+    margin-bottom: 60px
+    display: flex
+    justify-content: space-between
+
+    &__arrow
+        width: 50px
+        height: 36px
+        transform: rotate(180deg)
+        background: url('/images/icons/arrow.svg') no-repeat center / contain
+        &:hover
+            transform: translate(100)
+
+    &__title
+        font: 500 50px/100% $vogue
+        color: $black
+

@@ -1,0 +1,1643 @@
+{
+    "authors": [
+        {
+            "id": 1,
+            "author": "Пауло Коэльо",
+            "authorImage": "/images/author/PauloCoelho.png",
+            "years": "1947—н.в.",
+            "books": ["11 минут"]
+        },
+        {
+            "id": 2,
+            "author": "Илья Ильф, Евгений Петров",
+            "authorImage": "/images/authors/IlfPetrov.png",
+            "years": "1897—1937, 1903—1942",
+            "books": ["12 стульев", "Золотой теленок", "Одноэтажная Америка"]
+        },
+        {
+            "id": 3,
+            "author": "Джордж Оруэлл",
+            "authorImage": "/images/authors/GeorgeOrwell.png",
+            "years": "1903—1950",
+            "books": ["1984", "Скотный двор"]
+        },
+        {
+            "id": 4,
+            "author": "Рэй Брэдбери",
+            "authorImage": "/images/authors/RayBradbury.png",
+            "years": "1920—2012",
+            "books": ["451 градус по Фаренгейту", "Марсианские хроники", "Надвигается беда"]
+        },
+        {
+            "id": 5,
+            "author": "Лина Мур",
+            "authorImage": "/images/authors/LinaMoore.png",
+            "years": "1990—н.в.",
+            "books": ["50 и одно дыхание глубже"]
+        },
+        {
+            "id": 6,
+            "author": "Дуглас Адамс",
+            "authorImage": "/images/authors/DouglasAdams.png",
+            "years": "1952—2001",
+            "books": ["Автостопом по Галактике. Ресторан «У конца Вселенной»"]
+        },
+        {
+            "id": 7,
+            "author": "Вальтер Скотт",
+            "authorImage": "/images/authors/WalterScott.png",
+            "years": "1771—1832",
+            "books": ["Айвенго"]
+        },
+        {
+            "id": 8,
+            "author": "Курбан Саид",
+            "authorImage": "/images/authors/KurbanSaid.png",
+            "years": "1887—1943",
+            "books": ["Али и Нино"]
+        },
+        {
+            "id": 9,
+            "author": "Льюис Кэрролл",
+            "authorImage": "/images/authors/LewisCarroll.png",
+            "years": "1832—1898",
+            "books": ["Алиса в Стране чудес"]
+        },
+        {
+            "id": 10,
+            "author": "Жоржи Амаду",
+            "authorImage": "/images/authors/GeorgesAmadou.png",
+            "years": "1912—2001",
+            "books": ["Генералы песчаных карьеров"]
+        },
+        {
+            "id": 11,
+            "author": "Джеймс Роллинс",
+            "authorImage": "/images/authors/JamesRollins.png",
+            "years": "1961—н.в.",
+            "books": ["Амазония"]
+        },
+        {
+            "id": 12,
+            "author": "Майкл Ондатже",
+            "authorImage": "/images/authors/MaiklOndatje.png",
+            "years": "1943—н.в.",
+            "books": ["Английский пациент"]
+        },
+        {
+            "id": 13,
+            "author": "Лев Толстой",
+            "authorImage": "/images/authors/LevTolstoy.png",
+            "years": "1862—1910",
+            "books": ["Анна Каренина", "Война и мир"]
+        },
+        {
+            "id": 14,
+            "author": "Айн Рэнд",
+            "authorImage": "/images/authors/AynRand.png",
+            "years": "1905—1982",
+            "books": ["Атлант расправил плечи. Трилогия"]
+        },
+        {
+            "id": 15,
+            "author": "Стивен Кинг",
+            "authorImage": "/images/authors/StephenKing.png",
+            "years": "1947—н.в.",
+            "books": ["Бегущий человек", "Оно", "Рита Хейуорт и спасение из Шоушенка", "Сияние", "Талисман", "Тёмная Башня", "Дьюма-Ки", "Зеленая миля"]
+        },
+        {
+            "id": 16,
+            "author": "Дина Рубина",
+            "authorImage": "/images/authors/DinaRubina.png",
+            "years": "1953—н.в.",
+            "books": ["Белая голубка Кордовы"]
+        },
+        {
+            "id": 17,
+            "author": "Гавриил Троепольский",
+            "authorImage": "/images/authors/GabrielTroepolsky.png",
+            "years": "1905—1995",
+            "books": ["Белый Бим Чёрное ухо"]
+        },
+        {
+            "id": 18,
+            "author": "Джек Лондон",
+            "authorImage": "/images/authors/JackLondon.png",
+            "years": "1876—1916",
+            "books": ["Белый Клык", "Мартин Иден", "Сердца трёх"]
+        },
+        {
+            "id": 19,
+            "author": "Джанет Фитч",
+            "authorImage": "/images/authors/JanetFitch.png",
+            "years": "1955—н.в.",
+            "books": ["Белый олеандр"]
+        },
+        {
+            "id": 20,
+            "author": "Артур Дойль",
+            "authorImage": "/images/authors/ArturDoyl.png",
+            "years": "1859—1930",
+            "books": ["Белый отряд", "Приключения Шерлока Холмса"]
+        },
+        {
+            "id": 21,
+            "author": "Чингиз Айтматов",
+            "authorImage": "/images/authors/ChingizAitmatov.png",
+            "years": "1928—2008",
+            "books": ["Белый пароход"]
+        },
+        {
+            "id": 22,
+            "author": "Данте Алигьери",
+            "authorImage": "/images/authors/DanteAlighieri.png",
+            "years": "1265—1321",
+            "books": ["Божественная комедия"]
+        },
+        {
+            "id": 23,
+            "author": "Курт Воннегут",
+            "authorImage": "/images/authors/KurtVonnegut.png",
+            "years": "1922—2007",
+            "books": ["Бойня номер пять, или Крестовый поход детей", "Галапагосы"]
+        },
+        {
+            "id": 24,
+            "author": "Чак Паланик",
+            "authorImage": "/images/authors/ChuckPalahniuk.png",
+            "years": "1962—н.в.",
+            "books": ["Бойцовский клуб"]
+        },
+        {
+            "id": 25,
+            "author": "Сомерсет Моэм",
+            "authorImage": "/images/authors/SomersetMaugham.png",
+            "years": "1874—1965",
+            "books": ["Бремя страстей человеческих", "Театр"]
+        },
+        {
+            "id": 26,
+            "author": "Сэмюэл Беккет",
+            "authorImage": "/images/authors/SamuelBeckett.png",
+            "years": "1906—1989",
+            "books": ["В ожидании Годо"]
+        },
+        {
+            "id": 27,
+            "author": "Хуан Галан",
+            "authorImage": "/images/authors/JuanGalan.png",
+            "years": "1948—н.в.",
+            "books": ["В поисках единорога"]
+        },
+        {
+            "id": 28,
+            "author": "Фрэнсис Фицджеральд",
+            "authorImage": "/images/authors/FrancisFitzgerald.png",
+            "years": "1896—1940",
+            "books": ["Великий Гэтсби"]
+        },
+        {
+            "id": 29,
+            "author": "Аркадий Вайнер, Георгий Вайнер",
+            "authorImage": "/images/authors/brothersWeiner.png",
+            "years": "1931—2005, 1938—2009",
+            "books": ["Визит к минотавру"]
+        },
+        {
+            "id": 30,
+            "author": "Джон Толкин",
+            "authorImage": "/images/authors/JohnTolkien.png",
+            "years": "1892—1973",
+            "books": ["Властелин колец"]
+        },
+        {
+            "id": 31,
+            "author": "Чарлз Дахигг",
+            "authorImage": "/images/authors/CharlesDahigg.png",
+            "years": "1974—н.в.",
+            "books": ["Власть привычки"]
+        },
+        {
+            "id": 32,
+            "author": "Эрих Ремарк",
+            "authorImage": "/images/authors/ErichRemarque.png",
+            "years": "1898—1970",
+            "books": ["Возлюби ближнего своего", "Искра жизни", "На западном фронте без перемен", "Три товарища", "Триумфальная арка"]
+        },
+        {
+            "id": 33,
+            "author": "Александр Волков",
+            "authorImage": "/images/authors/AlexanderVolkov.png",
+            "years": "1891—1977",
+            "books": ["Волшебник Изумрудного города"]
+        },
+        {
+            "id": 34,
+            "author": "Джен Синсеро",
+            "authorImage": "/images/authors/JenCincero.png",
+            "years": "1965—н.в.",
+            "books": ["НИ СЫ"]
+        },
+        {
+            "id": 35,
+            "author": "Фредрик Бакман",
+            "authorImage": "/images/authors/FredrickBuckman.png",
+            "years": "1981—н.в.",
+            "books": ["Вторая жизнь Уве"]
+        },
+        {
+            "id": 36,
+            "author": "Янн Мартел",
+            "authorImage": "/images/authors/YannMartel.png",
+            "years": "1963—н.в.",
+            "books": ["Высокие Горы Португалии", "Жизнь Пи"]
+        },
+        {
+            "id": 37,
+            "author": "Оливер Сакс",
+            "authorImage": "/images/authors/OliverSachs.png",
+            "years": "1933—2015",
+            "books": ["Галлюцинации", "Человек, который принял жену за шляпу"]
+        },
+        {
+            "id": 38,
+            "author": "Алекс Гарленд",
+            "authorImage": "/images/authors/AlexGarland.png",
+            "years": "1970—н.в.",
+            "books": ["Пляж", "Тессеракт"]
+        },
+        {
+            "id": 39,
+            "author": "Джоан Роулинг",
+            "authorImage": "/images/authors/JoanneRowling.png",
+            "years": "1965—н.в.",
+            "books": ["Гарри Поттер"]
+        },
+        {
+            "id": 40,
+            "author": "Алексей Иванов",
+            "authorImage": "/images/authors/AlekseyIvanov.png",
+            "years": "1969—н.в.",
+            "books": ["Географ глобус пропил"]
+        },
+        {
+            "id": 41,
+            "author": "Михаил Лермонтов",
+            "authorImage": "/images/authors/MikhailLermontov.png",
+            "years": "1814—1841",
+            "books": ["Герой нашего времени"]
+        },
+        {
+            "id": 42,
+            "author": "Елена Бочоришвили",
+            "authorImage": "/images/authors/ElenaBochorishvili.png",
+            "years": "1966—н.в.",
+            "books": ["Голова моего отца"]
+        },
+        {
+            "id": 43,
+            "author": "Джейн Остин",
+            "authorImage": "/images/authors/JaneAusten.png",
+            "years": "1775—1817",
+            "books": ["Гордость и предубеждение"]
+        },
+        {
+            "id": 44,
+            "author": "Вальтер Мёрс",
+            "authorImage": "/images/authors/WalterMoers.png",
+            "years": "1957—н.в.",
+            "books": ["Город мечтающих книг"]
+        },
+        {
+            "id": 45,
+            "author": "Ферит Памук",
+            "authorImage": "/images/authors/FeritPamuk.png",
+            "years": "1974—н.в.",
+            "books": ["Стамбул. Город воспоминаний"]
+        },
+        {
+            "id": 46,
+            "author": "Александр Дюма",
+            "authorImage": "/images/authors/AlexandrDuma.png",
+            "years": "1802—1870",
+            "books": ["Граф Монте-Кристо", "Три мушкетера"]
+        },
+        {
+            "id": 47,
+            "author": "Эмили Бронте",
+            "authorImage": "/images/authors/EmilyBronte.png",
+            "years": "1818—1848",
+            "books": ["Грозовой перевал"]
+        },
+        {
+            "id": 48,
+            "author": "О. Генри",
+            "authorImage": "/images/authors/OHenry.png",
+            "years": "1862—1910",
+            "books": ["Дары волхвов"]
+        },
+        {
+            "id": 49,
+            "author": "Самуил Маршак",
+            "authorImage": "/images/authors/SamuelMarshak.png",
+            "years": "1887—1964",
+            "books": ["Двенадцать месяцев"]
+        },
+        {
+            "id": 50,
+            "author": "Джоджо Мойес",
+            "authorImage": "/images/authors/JojoMoyes.png",
+            "years": "1969—н.в.",
+            "books": ["Девушка, которую ты покинул", "До встречи с тобой"]
+        },
+        {
+            "id": 51,
+            "author": "Виктор Гюго",
+            "authorImage": "/images/authors/VictorHugo.png",
+            "years": "1802—1885",
+            "books": ["Девяносто третий год", "Отверженные", "Собор Парижской Богоматери", "Человек, который смеется"]
+        },
+        {
+            "id": 52,
+            "author": "Лорен Оливер",
+            "authorImage": "/images/authors/LorenOliver.png",
+            "years": "1982—н.в.",
+            "books": ["Делириум"]
+        },
+        {
+            "id": 53,
+            "author": "Герман Гессе",
+            "authorImage": "/images/authors/HermannHesse.png",
+            "years": "1877—1962",
+            "books": ["Демиан", "Степной волк"]
+        },
+        {
+            "id": 54,
+            "author": "Агата Кристи",
+            "authorImage": "/images/authors/AgathaChristie.png",
+            "years": "1890—1976",
+            "books": ["Десять негритят"]
+        },
+        {
+            "id": 55,
+            "author": "Жуль Верн",
+            "authorImage": "/images/authors/JulesVerne.png",
+            "years": "1828—1905",
+            "books": ["Дети капитана Гранта", "Таинственный остров"]
+        },
+        {
+            "id": 56,
+            "author": "Шарлотта Бронте",
+            "authorImage": "/images/authors/CharlotteBronte.png",
+            "years": "1816—1855",
+            "books": ["Джейн Эйр"]
+        },
+        {
+            "id": 57,
+            "author": "Владимир Короткевич",
+            "authorImage": "/images/authors/VladimirKorotkevich.png",
+            "years": "1930—1984",
+            "books": ["Дикая охота короля Стаха"]
+        },
+
+        {
+            "id": 58,
+            "author": "Борис Пастернак",
+            "authorImage": "/images/authors/BorisPasternak.png",
+            "years": "1890—1960",
+            "books": ["Доктор Живаго"]
+        },
+        {
+            "id": 59,
+            "author": "Альберт Швейцер",
+            "authorImage": "/images/authors/AlbertSchweitzer.png",
+            "years": "1875—1965",
+            "books": ["Доктор из джунглей"]
+        },
+        {
+            "id": 60,
+            "author": "Чеслав Милош",
+            "authorImage": "/images/authors/CheslavMilos.png",
+            "years": "1911—2004",
+            "books": ["Долина Иссы"]
+        },
+        {
+            "id": 61,
+            "author": "Пол Боулз",
+            "authorImage": "/images/authors/PaulBowles.png",
+            "years": "1910—1999",
+            "books": ["Дом паука"]
+        },
+        {
+            "id": 62,
+            "author": "Марина Москвина",
+            "authorImage": "/images/authors/MarinaMoskvina.png",
+            "years": "1954—н.в.",
+            "books": ["Дорога на Аннапурну"]
+        },
+        {
+            "id": 63,
+            "author": "Даниэль Пейдж",
+            "authorImage": "/images/authors/DanielPage.png",
+            "years": "1986—н.в.",
+            "books": ["Дороти должна умереть"]
+        },
+        {
+            "id": 64,
+            "author": "Джеймс Джойс",
+            "authorImage": "/images/authors/JamesJoyce.png",
+            "years": "1882—1941",
+            "books": ["Дублинцы"]
+        },
+
+        {
+            "id": 65,
+            "author": "Александр Пушкин",
+            "authorImage": "/images/authors/AlexanderPushkin.png",
+            "years": "1799—1837",
+            "books": ["Евгений Онегин"]
+        },
+        {
+            "id": 66,
+            "author": "Сара Джио",
+            "authorImage": "/images/authors/SarahGio.png",
+            "years": "1978—н.в.",
+            "books": ["Ежевичная зима"]
+        },
+        {
+            "id": 67,
+            "author": "Джоанн Харрис",
+            "authorImage": "/images/authors/JoanneHarris.png",
+            "years": "1964—н.в.",
+            "books": ["Ежевичное вино"]
+        },
+        {
+            "id": 68,
+            "author": "Фэнни Флэгг",
+            "authorImage": "/images/authors/FannyFlagg.png",
+            "years": "1944—н.в.",
+            "books": ["Жареные зеленые помидоры в кафе \"Полустанок\""]
+        },
+        {
+            "id": 69,
+            "author": "Джон Фаулз",
+            "authorImage": "/images/authors/JohnFowles.png",
+            "years": "1926—2005",
+            "books": ["Любовница французского лeйтенанта", "Коллекционер"]
+        },
+        {
+            "id": 70,
+            "author": "Гюнтер Грасс",
+            "authorImage": "/images/authors/GunterGrass.png",
+            "years": "1927—2015",
+            "books": ["Жестяной барабан"]
+        },
+        {
+            "id": 71,
+            "author": "Даниель Дефо",
+            "authorImage": "/images/authors/DanielDefoe.png",
+            "years": "1660—1731",
+            "books": ["Жизнь и удивительные приключения морехода Робинзона Крузо"]
+        },
+        {
+            "id": 72,
+            "author": "Майю Лассила",
+            "authorImage": "/images/authors/MayuLassila.png",
+            "years": "1868—1918",
+            "books": ["За спичками"]
+        },
+        {
+            "id": 73,
+            "author": "Энтони Бёрджесс",
+            "authorImage": "/images/authors/AnthonyBurgess.png",
+            "years": "1917—1993",
+            "books": ["Заводной апельсин"]
+        },
+        {
+            "id": 74,
+            "author": "Борис Васильев",
+            "authorImage": "/images/authors/BorisVasiliev.png",
+            "years": "1924—2013",
+            "books": ["Завтра была война"]
+        },
+        {
+            "id": 75,
+            "author": "Ишмаэль Бих",
+            "authorImage": "/images/authors/IshmaelBih.png",
+            "years": "1980—н.в.",
+            "books": ["Завтра я иду убивать"]
+        },
+        {
+            "id": 76,
+            "author": "Франц Кафка",
+            "authorImage": "/images/authors/FranzKafka.png",
+            "years": "1883—1924",
+            "books": ["Замок"]
+        },
+        {
+            "id": 77,
+            "author": "Арчибалд Кронин",
+            "authorImage": "/images/authors/ArchibaldCronin.png",
+            "years": "1896—1981",
+            "books": ["Замок Броуди", "Ключи царства", "Юные годы. Путь Шеннона"]
+        },
+        {
+            "id": 78,
+            "author": "Джаннетт Уоллс",
+            "authorImage": "/images/authors/JannettWall.png",
+            "years": "1960—н.в.",
+            "books": ["Замок из стекла"]
+        },
+        {
+            "id": 79,
+            "author": "Дмитрий Правдин",
+            "authorImage": "/images/authors/DmitryPravdin.png",
+            "years": "1975—н.в.",
+            "books": ["Записки из арабской тюрьмы"]
+        },
+        {
+            "id": 80,
+            "author": "Беатрикс Маннель",
+            "authorImage": "/images/authors/BeatrixMannel.png",
+            "years": "1961—н.в.",
+            "books": ["Затерянный остров"]
+        },
+        {
+            "id": 81,
+            "author": "Василий Аксёнов",
+            "authorImage": "/images/authors/VasilyAksyonov.png",
+            "years": "1932—2009",
+            "books": ["Звездный билет"]
+        },
+        {
+            "id": 82,
+            "author": "Фридрих Дюрренматт",
+            "authorImage": "/images/authors/FriedrichDurrenmatt.png",
+            "years": "1921—1990",
+            "books": ["Зимняя война в Тибете"]
+        },
+        {
+            "id": 83,
+            "author": "Джон Стейнбек",
+            "authorImage": "/images/authors/JohnErns.png",
+            "years": "1902—1968",
+            "books": ["Золотая Чаша"]
+        },
+        {
+            "id": 84,
+            "author": "Алексей Толстой",
+            "authorImage": "/images/authors/AlexeyTolstoy.png",
+            "years": "1883—1945",
+            "books": ["Золотой ключик, или Приключения Буратино", "Петр Первый"]
+        },
+        {
+            "id": 85,
+            "author": "Джордж Мартин",
+            "authorImage": "/images/authors/GeorgeMartin.png",
+            "years": "1948—н.в.",
+            "books": ["Игра престолов", "Песнь Льда и Пламени"]
+        },
+        {
+            "id": 86,
+            "author": "Сильвия Назар",
+            "authorImage": "/images/authors/SylviaNazar.png",
+            "years": "1947—н.в.",
+            "books": ["Игры разума"]
+        },
+        {
+            "id": 87,
+            "author": "Симона Элькелес",
+            "authorImage": "/images/authors/SimoneElkeles.png",
+            "years": "1970—н.в.",
+            "books": ["Идеальная химия"]
+        },
+        {
+            "id": 88,
+            "author": "Фёдор Достоевский",
+            "authorImage": "/images/authors/FedorDostoevsky.png",
+            "years": "1821—1881",
+            "books": ["Идиот", "Преступление и наказание"]
+        },
+        {
+            "id": 89,
+            "author": "Эрих Фромм",
+            "authorImage": "/images/authors/ErichFromm.png",
+            "years": "1900—1980",
+            "books": ["Иметь или быть", "Искусство любить"]
+        },
+        {
+            "id": 90,
+            "author": "Бернар Вербер",
+            "authorImage": "/images/authors/BernardWerber.png",
+            "years": "1961—н.в.",
+            "books": ["Империя ангелов"]
+        },
+        {
+            "id": 91,
+            "author": "Ханс Андерсен",
+            "authorImage": "/images/authors/HansAndersen.png",
+            "years": "1805—1875",
+            "books": ["Импровизатор"]
+        },
+        {
+            "id": 92,
+            "author": "Умберто Эко",
+            "authorImage": "/images/authors/UmbertoEco.png",
+            "years": "1932—2016",
+            "books": ["Имя розы"]
+        },
+        {
+            "id": 93,
+            "author": "Иэн Макьюэн",
+            "authorImage": "/images/authors/IanMcEwan.png",
+            "years": "1948—н.в.",
+            "books": ["Искупление"]
+        },
+        {
+            "id": 94,
+            "author": "Харуки Мураками",
+            "authorImage": "/images/authors/HarukiMurakami.png",
+            "years": "1949—н.в.",
+            "books": ["К югу от границы, на запад от солнца", "Кафка на пляже", "Норвежский лес", "Послемрак", "Слушай песню ветра", "Страна чудес без тормозов и конец света", "Токийские легенды"]
+        },
+        {
+            "id": 95,
+            "author": "Николай Островский",
+            "authorImage": "/images/authors/NikolaiOstrovsky.png",
+            "years": "1904—1936",
+            "books": ["Как закалялась сталь"]
+        },
+        {
+            "id": 96,
+            "author": "Владимир Набоков",
+            "authorImage": "/images/authors/VladimirNabokov.png",
+            "years": "1899—1977",
+            "books": ["Камера обскура", "Лолита", "Приглашение на казнь"]
+        },
+        {
+            "id": 97,
+            "author": "Джеймс Кервуд",
+            "authorImage": "/images/authors/JamesCurwood.png",
+            "years": "1878—1927",
+            "books": ["В дебрях севера"]
+        },
+        {
+            "id": 98,
+            "author": "Осне Сейерстад",
+            "authorImage": "/images/authors/OsneSayerstad.png",
+            "years": "1970—н.в.",
+            "books": ["Книготорговец из Кабула"]
+        },
+        {
+            "id": 99,
+            "author": "Маркус Зусак",
+            "authorImage": "/images/authors/MarcusZusak.png",
+            "years": "1975—н.в.",
+            "books": ["Книжный вор"]
+        },
+        {
+            "id": 100,
+            "author": "Кейт Мортон",
+            "authorImage": "/images/authors/KateMorton.png",
+            "years": "1976—н.в.",
+            "books": ["Когда рассеется туман"]
+        },
+        {
+            "id": 101,
+            "author": "Дэн Браун",
+            "authorImage": "/images/authors/DanBrown.png",
+            "years": "1964—н.в.",
+            "books": ["Код да Винчи"]
+        },
+        {
+            "id": 102,
+            "author": "Василий Аксенов",
+            "authorImage": "/images/authors/VasilyAksenov.png",
+            "years": "1932—2009",
+            "books": ["Коллеги"]
+        },
+        {
+            "id": 103,
+            "author": "Грэм Грин",
+            "authorImage": "/images/authors/GrahamGreen.png",
+            "years": "1904—1991",
+            "books": ["Комедианты", "Тихий американец"]
+        },
+        {
+            "id": 104,
+            "author": "Артуро Реверте",
+            "authorImage": "/images/authors/ArturoGutierrez.png",
+            "years": "1951—н.в.",
+            "books": ["Королева Юга"]
+        },
+        {
+            "id": 105,
+            "author": "Кэтрин Скоулс",
+            "authorImage": "/images/authors/KatherineScholes.png",
+            "years": "1959—н.в.",
+            "books": ["Королева дождя"]
+        },
+        {
+            "id": 106,
+            "author": "Решат Гюнтекин",
+            "authorImage": "/images/authors/ReshatGyuntekin.png",
+            "years": "1889—1956",
+            "books": ["Королек - птичка певчая"]
+        },
+        {
+            "id": 107,
+            "author": "Андрей Платонов",
+            "authorImage": "/images/authors/AndreyPlatonov.png",
+            "years": "1899–1951",
+            "books": ["Котлован"]
+        },
+        {
+            "id": 108,
+            "author": "Фредерик Стендаль",
+            "authorImage": "/images/authors/FrederickStendhal.png",
+            "years": "1783–1842",
+            "books": ["Красное и черное"]
+        },
+        {
+            "id": 109,
+            "author": "Марио Пьюзо",
+            "authorImage": "/images/authors/MarioPyuzo.png",
+            "years": "1920–1999",
+            "books": ["Крестный отец"]
+        },
+        {
+            "id": 110,
+            "author": "Робин Слоун",
+            "authorImage": "/images/authors/RobinSloan.png",
+            "years": "1979–н.в.",
+            "books": ["Круглосуточный книжный мистера Пенумбры"]
+        },
+        {
+            "id": 111,
+            "author": "Махбод Сераджи",
+            "authorImage": "/images/authors/MahbodSeraji.png",
+            "years": "1956–н.в.",
+            "books": ["Крыши Тегерана"]
+        },
+        {
+            "id": 112,
+            "author": "Антонио Ларрета",
+            "authorImage": "/images/authors/AntonioLarreta.png",
+            "years": "1922–2015",
+            "books": ["Кто убил герцогиню Альба, или Волаверунт"]
+        },
+        {
+            "id": 113,
+            "author": "Ричард Матесон",
+            "authorImage": "/images/authors/RichardMatheson.png",
+            "years": "1926–2013",
+            "books": ["Куда приводят мечты"]
+        },
+        {
+            "id": 114,
+            "author": "Эмир Кустурица",
+            "authorImage": "/images/authors/EmirKusturica.png",
+            "years": "1954–н.в.",
+            "books": ["Кустурица. Автобиография"]
+        },
+        {
+            "id": 115,
+            "author": "Татьяна Толстая",
+            "authorImage": "/images/authors/TatyanaTolstaya.png",
+            "years": "1951–н.в.",
+            "books": ["Кысь"]
+        },
+        {
+            "id": 116,
+            "author": "Макс Фрай",
+            "authorImage": "/images/authors/MaxFray.png",
+            "years": "1965–н.в.",
+            "books": ["Лабиринты Ехо", "Мастер ветров и закатов"]
+        },
+        {
+            "id": 117,
+            "author": "Фредерик Бегбедер",
+            "authorImage": "/images/authors/FrederickBegbeder.png",
+            "years": "1965–н.в.",
+            "books": ["Любовь живет три года"]
+        },
+        {
+            "id": 118,
+            "author": "Наринэ Абгарян",
+            "authorImage": "/images/authors/NarineAbgaryan.png",
+            "years": "19715–н.в.",
+            "books": ["Люди, которые всегда со мной"]
+        },
+        {
+            "id": 119,
+            "author": "Мари Кондо",
+            "authorImage": "/images/authors/MarieCondo.png",
+            "years": "1984–н.в.",
+            "books": ["Магическая уборка"]
+        },
+        {
+            "id": 120,
+            "author": "Антуан де Сент-Экзюпери",
+            "authorImage": "/images/authors/AntoineDeSaintExupery.png",
+            "years": "1900–1944",
+            "books": ["Маленький принц", "Цитадель"]
+        },
+        {
+            "id": 121,
+            "author": "Астрид Линдгрен",
+            "authorImage": "/images/authors/AstridLindgren.png",
+            "years": "1907–2002",
+            "books": ["Малыш и Карлсон, который живет на крыше", "Пеппи Длинный чулок"]
+        },
+        {
+            "id": 122,
+            "author": "Джон ван де Рюит",
+            "authorImage": "/images/authors/JohnVanDeRuit.png",
+            "years": "1975–н.в.",
+            "books": ["Малёк"]
+        },
+        {
+            "id": 123,
+            "author": "Энди Вейер",
+            "authorImage": "/images/authors/AndyWeyer.png",
+            "years": "1972–н.в.",
+            "books": ["Марсианин"]
+        },
+        {
+            "id": 124,
+            "author": "Йозеф Рот",
+            "authorImage": "/images/authors/JosephRoth.png",
+            "years": "1894–1939",
+            "books": ["Марш Радецкого"]
+        },
+        {
+            "id": 125,
+            "author": "Михаил Булгаков",
+            "authorImage": "/images/authors/MichaelBulgakov.png",
+            "years": "1891–1940",
+            "books": ["Мастер и Маргарита", "Собачье сердце"]
+        },
+        {
+            "id": 126,
+            "author": "Владимир Медведев",
+            "authorImage": "/images/authors/VladimirMedvedev.png",
+            "years": "н.в.",
+            "books": ["Заххок"]
+        },
+        {
+            "id": 127,
+            "author": "Дэниел Мейсон",
+            "authorImage": "/images/authors/MasonPhilip.png",
+            "years": "1976–н.в.",
+            "books": ["Настройщик"]
+        },
+        {
+            "id": 128,
+            "author": "Артур Голден",
+            "authorImage": "/images/authors/ArthurGolden.png",
+            "years": "1956–н.в.",
+            "books": ["Мемуары гейши"]
+        },
+        {
+            "id": 129,
+            "author": "Джжин Сэссон",
+            "authorImage": "/images/authors/GeneSesson.png",
+            "years": "1947–н.в.",
+            "books": ["Мемуары принцессы"]
+        },
+        {
+            "id": 130,
+            "author": "Николай Гоголь",
+            "authorImage": "/images/authors/NikolayGogol.png",
+            "years": "1809–1852",
+            "books": ["Мертвые души"]
+        },
+        {
+            "id": 131,
+            "author": "Джон Ирвинг",
+            "authorImage": "/images/authors/JohnIrving.png",
+            "years": "1942–н.в.",
+            "books": ["Мир глазами Гарпа"]
+        },
+        {
+            "id": 132,
+            "author": "Герман Мелвилл",
+            "authorImage": "/images/authors/HermanMelville.png",
+            "years": "1819–1891",
+            "books": ["Моби Дик"]
+        },
+        {
+            "id": 133,
+            "author": "Томас Харрис",
+            "authorImage": "/images/authors/ThomasHarris.png",
+            "years": "1940–н.в.",
+            "books": ["Молчание ягнят"]
+        },
+        {
+            "id": 134,
+            "author": "Торнтон Уайлдер",
+            "authorImage": "/images/authors/ThorntonWilder.png",
+            "years": "1897–1975",
+            "books": ["Мост короля Людовика Святого"]
+        },
+        {
+            "id": 135,
+            "author": "Джеральд Даррелл",
+            "authorImage": "/images/authors/GeraldDarrell.png",
+            "years": "1925–1995",
+            "books": ["Моя семья и другие звери", "Три билета до Эдвенчер"]
+        },
+        {
+            "id": 136,
+            "author": "Евгений Замятин",
+            "authorImage": "/images/authors/EvgenyZamyatin.png",
+            "years": "1884–1937",
+            "books": ["Мы"]
+        },
+        {
+            "id": 137,
+            "author": "Ирвин Уэлш",
+            "authorImage": "/images/authors/IrwinWelch.png",
+            "years": "1958—н.в.",
+            "books": ["На игле"]
+        },
+        {
+            "id": 138,
+            "author": "Кен Кизи",
+            "authorImage": "/images/authors/KenKesey.png",
+            "years": "1935—2001",
+            "books": ["Над кукушкиным гнездом"]
+        },
+        {
+            "id": 139,
+            "author": "Джэром Сэлинджер",
+            "authorImage": "/images/authors/JeromeSalinger.png",
+            "years": "1919—2010",
+            "books": ["Над пропастью во ржи"]
+        },
+        {
+            "id": 140,
+            "author": "Кадзуо Исигуро",
+            "authorImage": "/images/authors/KazuoIshiguro.png",
+            "years": "1954—н.в.",
+            "books": ["Не отпускай меня"]
+        },
+        {
+            "id": 141,
+            "author": "Карен Хорни",
+            "authorImage": "/images/authors/KarenHorney.png",
+            "years": "1885—1952",
+            "books": ["Невротическая личность нашего времени"]
+        },
+        {
+            "id": 142,
+            "author": "Милан Кундера",
+            "authorImage": "/images/authors/MilanKundera.png",
+            "years": "1929—н.в.",
+            "books": ["Невыносимая легкость бытия"]
+        },
+        {
+            "id": 143,
+            "author": "Сефани Цвейг",
+            "authorImage": "/images/authors/SephanyZweig.png",
+            "years": "1932—2014",
+            "books": ["Нигде в Африке"]
+        },
+        {
+            "id": 144,
+            "author": "Нил Гейман",
+            "authorImage": "/images/authors/NeilGaiman.png",
+            "years": "1960—н.в.",
+            "books": ["Никогде"]
+        },
+        {
+            "id": 145,
+            "author": "Дениз Вудз",
+            "authorImage": "/images/authors/DeniseWoods.png",
+            "years": "1958—н.в.",
+            "books": ["Ночной поезд в Инсбрук"]
+        },
+        {
+            "id": 146,
+            "author": "Олдос Хаксли",
+            "authorImage": "/images/authors/AldousHuxley.png",
+            "years": "1894—1963",
+            "books": ["О дивный новый мир"]
+        },
+        {
+            "id": 147,
+            "author": "Дэвид Митчелл",
+            "authorImage": "/images/authors/DavidMitchell.png",
+            "years": "1969—н.в.",
+            "books": ["Облачный атлас", "Тысяча осеней Якоба де Зута"]
+        },
+        {
+            "id": 148,
+            "author": "Этель Войнич",
+            "authorImage": "/images/authors/EthelVoynich.png",
+            "years": "1864—1960",
+            "books": ["Овод"]
+        },
+        {
+            "id": 149,
+            "author": "Януш Вишневский",
+            "authorImage": "/images/authors/JanuszWisniewski.png",
+            "years": "1954—н.в.",
+            "books": ["Одиночество в сети"]
+        },
+        {
+            "id": 150,
+            "author": "Даниил Гранин",
+            "authorImage": "/images/authors/DaniilGranin.png",
+            "years": "1919—2017",
+            "books": ["Однофамилец"]
+        },
+        {
+            "id": 152,
+            "author": "Томас Мартинес",
+            "authorImage": "/images/authors/ThomasMartinez.png",
+            "years": "1934—2010",
+            "books": ["Он поет танго"]
+        },
+        {
+            "id": 153,
+            "author": "Мелисса Алберт",
+            "authorImage": "/images/authors/MelissaAlbert.png",
+            "years": "н.в.",
+            "books": ["Ореховый лес"]
+        },
+        {
+            "id": 154,
+            "author": "Иэн Бэнкс",
+            "authorImage": "/images/authors/IanBanks.png",
+            "years": "1954—2013",
+            "books": ["Осиная Фабрика"]
+        },
+        {
+            "id": 155,
+            "author": "Эрнест Хемингуэй",
+            "authorImage": "/images/authors/ErnestHemingway.png",
+            "years": "1899—1961",
+            "books": ["Острова в океане", "По ком звонит колокол", "Прощай, оружие!", "Старик и море"]
+        },
+        {
+            "id": 156,
+            "author": "Оноре де Бальзак",
+            "authorImage": "/images/authors/HonoreDeBalzac.png",
+            "years": "1799—1829",
+            "books": ["Отец Горио"]
+        },
+        {
+            "id": 157,
+            "author": "Иван Тургенев",
+            "authorImage": "/images/authors/IvanTurgenev.png",
+            "years": "1818—1883",
+            "books": ["Отцы и дети"]
+        },
+        {
+            "id": 158,
+            "author": "Зигмунд Фрейд",
+            "authorImage": "/images/authors/SigmundFreud.png",
+            "years": "1856—1939",
+            "books": ["Очерки по психологии сексуальности"]
+        },
+        {
+            "id": 159,
+            "author": "Альберт Пиньоль",
+            "authorImage": "/images/authors/AlbertPignolle.png",
+            "years": "1965—н.в.",
+            "books": ["Пандора в Конго"]
+        },
+        {
+            "id": 160,
+            "author": "Анне-Катарина Вестли",
+            "authorImage": "/images/authors/AnneKatarinaWestley.png",
+            "years": "1920—2008",
+            "books": ["Папа, мама, бабушка, восемь детей и грузовик"]
+        },
+        {
+            "id": 161,
+            "author": "Патрик Зюскинд",
+            "authorImage": "/images/authors/PatrickSuskind.png",
+            "years": "1949—н.в.",
+            "books": ["Парфюмер. История одного убийцы"]
+        },
+        {
+            "id": 162,
+            "author": "Антон Макаренко",
+            "authorImage": "/images/authors/AntonMakarenko.png",
+            "years": "1888—1939",
+            "books": ["Педагогическая поэма"]
+        },
+        {
+            "id": 163,
+            "author": "Борис Виан",
+            "authorImage": "/images/authors/BorisVian.png",
+            "years": "1920—1959",
+            "books": ["Пена дней"]
+        },
+        {
+            "id": 164,
+            "author": "Аркадий Стругацкий, Борис Стругацкий",
+            "authorImage": "/images/authors/brothersStrugatsky.png",
+            "years": "1925—1991, 1933—2012",
+            "books": ["Пикник на обочине", "Понедельник начинается в субботу", "Улитка на склоне"]
+        },
+        {
+            "id": 165,
+            "author": "Хосе Лопес",
+            "authorImage": "/images/authors/JoseLopez.png",
+            "years": "1920—2004",
+            "books": ["Пирамида Кецалькоатля"]
+        },
+        {
+            "id": 166,
+            "author": "Джеймс Барри",
+            "authorImage": "/images/authors/JamesBarry.png",
+            "years": "1860—1937",
+            "books": ["Питер Пэн"]
+        },
+        {
+            "id": 167,
+            "author": "Кнут Гамсун",
+            "authorImage": "/images/authors/KnutHamsun.png",
+            "years": "1859—1952",
+            "books": ["Плоды земли"]
+        },
+        {
+            "id": 168,
+            "author": "Алекс Гарленд",
+            "authorImage": "/images/authors/AlexGarland.png",
+            "years": "1970—н.в.",
+            "books": ["Пляж"]
+        },
+        {
+            "id": 169,
+            "author": "Уильям Голдинг",
+            "authorImage": "/images/authors/WilliamGolding.png",
+            "years": "1911—1933",
+            "books": ["Повелитель мух"]
+        },
+        {
+            "id": 170,
+            "author": "Борис Полевой",
+            "authorImage": "/images/authors/BorisPolevoy.png",
+            "years": "1908—1981",
+            "books": ["Повесть о настоящем человеке"]
+        },
+        {
+            "id": 171,
+            "author": "Элеанор Портер",
+            "authorImage": "/images/authors/EleanorPorter.png",
+            "years": "1868—1920",
+            "books": ["Поллианна"]
+        },
+        {
+            "id": 172,
+            "author": "Чимаманда Адичи",
+            "authorImage": "/images/authors/ChimamandaAdichi.png",
+            "years": "1977—н.в.",
+            "books": ["Половина желтого солнца"]
+        },
+        {
+            "id": 173,
+            "author": "Джозеф Хеллер",
+            "authorImage": "/images/authors/JosephHeller.png",
+            "years": "1923—1999",
+            "books": ["Поправка-22"]
+        },
+        {
+            "id": 174,
+            "author": "Оскар Уайльд",
+            "authorImage": "/images/authors/OscarWilde.png",
+            "years": "1854—1900",
+            "books": ["Портрет Дориана Грея"]
+        },
+        {
+            "id": 175,
+            "author": "Жиль Фоден",
+            "authorImage": "/images/authors/GillesFoden.png",
+            "years": "1967—н.в.",
+            "books": ["Последний король Шотландии"]
+        },
+        {
+            "id": 176,
+            "author": "Альбер Камю",
+            "authorImage": "/images/authors/AlberCamus.png",
+            "years": "1913—1960",
+            "books": ["Посторонний", "Чума"]
+        },
+        {
+            "id": 177,
+            "author": "Джеральд Бром",
+            "authorImage": "/images/authors/GeraldBrom.png",
+            "years": "1965—н.в.",
+            "books": ["Похититель детей"]
+        },
+        {
+            "id": 178,
+            "author": "Колин Маккалоу",
+            "authorImage": "/images/authors/ColinMcCullough.png",
+            "years": "1937—2015",
+            "books": ["Поющие в терновнике"]
+        },
+        {
+            "id": 179,
+            "author": "Кристофер Прист",
+            "authorImage": "/images/authors/ChristopherPriest.png",
+            "years": "1943—н.в.",
+            "books": ["Престиж"]
+        },
+        {
+            "id": 180,
+            "author": "Марк Твен",
+            "authorImage": "/images/authors/MarkTwain.png",
+            "years": "1835—1910",
+            "books": ["Приключения Тома Сойера"]
+        },
+        {
+            "id": 181,
+            "author": "Кэтрин Стокетт",
+            "authorImage": "/images/authors/KatherineStockett.png",
+            "years": "1969—н.в.",
+            "books": ["Прислуга"]
+        },
+        {
+            "id": 182,
+            "author": "Эдуард Лимонов",
+            "authorImage": "/images/authors/EduardLimonov.png",
+            "years": "1943—н.в.",
+            "books": ["Психо"]
+        },
+        {
+            "id": 183,
+            "author": "Карл Юнг",
+            "authorImage": "/images/authors/CarlJung.png",
+            "years": "1875—1961",
+            "books": ["Психологические типы"]
+        },
+        {
+            "id": 184,
+            "author": "Эдвард Форстер",
+            "authorImage": "/images/authors/EdwardForster.png",
+            "years": "1879—1970",
+            "books": ["Путешествие в Индию"]
+        },
+        {
+            "id": 185,
+            "author": "Джонатан Свифт",
+            "authorImage": "/images/authors/JonathanSwift.png",
+            "years": "1667—1745",
+            "books": ["Путешествия Гулливера"]
+        },
+        {
+            "id": 186,
+            "author": "Мигель Сильва",
+            "authorImage": "/images/authors/MiguelSilva.png",
+            "years": "1908—1985",
+            "books": ["Пятеро, которые молчали"]
+        },
+        {
+            "id": 187,
+            "author": "Гэри Чепмен",
+            "authorImage": "/images/authors/GaryChapman.png",
+            "years": "1938—н.в.",
+            "books": ["Пять языков любви"]
+        },
+        {
+            "id": 188,
+            "author": "Константин Паустовский",
+            "authorImage": "/images/authors/KonstantinPaustovsky.png",
+            "years": "1892—1968",
+            "books": ["Рассказы Константина Паустовского"]
+        },
+        {
+            "id": 189,
+            "author": "Валентин Пикуль",
+            "authorImage": "/images/authors/ValentinPikul.png",
+            "years": "1928—1990",
+            "books": ["Реквием каравану РQ-17"]
+        },
+        {
+            "id": 190,
+            "author": "Хьюберт Селби",
+            "authorImage": "/images/authors/HubertSelby.png",
+            "years": "1928—2004",
+            "books": ["Реквием по мечте"]
+        },
+        {
+            "id": 191,
+            "author": "Холли Борн",
+            "authorImage": "/images/authors/HollyBourne.png",
+            "years": "н.в.",
+            "books": ["Родственные души"]
+        },
+        {
+            "id": 192,
+            "author": "Бора Чосич",
+            "authorImage": "/images/authors/BoraOсosic.png",
+            "years": "1932—н.в.",
+            "books": ["Роль моей семьи в мировой революции"]
+        },
+        {
+            "id": 193,
+            "author": "Хантер Томпсон",
+            "authorImage": "/images/authors/HunterThompson.png",
+            "years": "1937—2005",
+            "books": ["Ромовый дневник"]
+        },
+        {
+            "id": 194,
+            "author": "Владимир Кунин",
+            "authorImage": "/images/authors/VladimirKunin.png",
+            "years": "1927—2011",
+            "books": ["Русские на Мариенплац"]
+        },
+        {
+            "id": 195,
+            "author": "Анджей Сапковский",
+            "authorImage": "/images/authors/AndrzejSapkowski.png",
+            "years": "1948—н.в.",
+            "books": ["Сага о ведьмаке"]
+        },
+        {
+            "id": 196,
+            "author": "Джеймс Клавелл",
+            "authorImage": "/images/authors/JamesClavell.png",
+            "years": "1921—1994",
+            "books": ["Сегун"]
+        },
+        {
+            "id": 197,
+            "author": "Рафик Шами",
+            "authorImage": "/images/authors/RafikShami.png",
+            "years": "1946—н.в.",
+            "books": ["Секрет каллиграфа"]
+        },
+        {
+            "id": 198,
+            "author": "Стивен Кови",
+            "authorImage": "/images/authors/StephenCovey.png",
+            "years": "1932—2012",
+            "books": ["Семь навыков высокоэффективных людей"]
+        },
+        {
+            "id": 199,
+            "author": "Дмитрий Медведев",
+            "authorImage": "/images/authors/DmitryMedvedev.png",
+            "years": "1898—1954",
+            "books": ["Сильные духом"]
+        },
+        {
+            "id": 200,
+            "author": "Александр Грин",
+            "authorImage": "/images/authors/AlexanderGreen.png",
+            "years": "1880—1932",
+            "books": ["Слон и моська"]
+        },
+        {
+            "id": 201,
+            "author": "Питер Хёг",
+            "authorImage": "/images/authors/PeterHog.png",
+            "years": "1957—н.в.",
+            "books": ["Смилла и её чувство снега"]
+        },
+        {
+            "id": 202,
+            "author": "Борис Акунин",
+            "authorImage": "/images/authors/BorisAkunin.png",
+            "years": "1956—н.в.",
+            "books": ["Сокол и ласточка"]
+        },
+        {
+            "id": 203,
+            "author": "Станислав Лем",
+            "authorImage": "/images/authors/StanislavLem.png",
+            "years": "1921—2006",
+            "books": ["Солярис"]
+        },
+        {
+            "id": 204,
+            "author": "Томас Кенилли",
+            "authorImage": "/images/authors/ThomasKenilli.png",
+            "years": "1935—н.в.",
+            "books": ["Список Шиндлера"]
+        },
+        {
+            "id": 205,
+            "author": "Луис Сепульведа",
+            "authorImage": "/images/authors/LuisSepulveda.png",
+            "years": "1949—н.в.",
+            "books": ["Старик, который читал любовные романы"]
+        },
+        {
+            "id": 206,
+            "author": "Габриэль Маркес",
+            "authorImage": "/images/authors/GabrielMarquez.png",
+            "years": "1927—2014",
+            "books": ["Сто лет одиночества"]
+        },
+        {
+            "id": 207,
+            "author": "Амин Маалуф",
+            "authorImage": "/images/authors/AminMaaluf.png",
+            "years": "1949—н.в.",
+            "books": ["Странствие Бальдасара"]
+        },
+        {
+            "id": 208,
+            "author": "Олесь Бузина",
+            "authorImage": "/images/authors/OlesBuzina.png",
+            "years": "1969—2015",
+            "books": ["Тайная история Украины-Руси"]
+        },
+        {
+            "id": 209,
+            "author": "Морис Сендак",
+            "authorImage": "/images/authors/MauriceSendak.png",
+            "years": "1928—2012",
+            "books": ["Там, где живут чудовища"]
+        },
+        {
+            "id": 210,
+            "author": "Нагиб Махфуз",
+            "authorImage": "/images/authors/NagibMahfouz.png",
+            "years": "1911—2006",
+            "books": ["Торжество возвышенного"]
+        },
+        {
+            "id": 211,
+            "author": "Грег Мортенсон",
+            "authorImage": "/images/authors/GregMortenson.png",
+            "years": "1957—н.в.",
+            "books": ["Три чашки чая"]
+        },
+        {
+            "id": 212,
+            "author": "Диана Сеттерфилд",
+            "authorImage": "/images/authors/DianaSetterfield.png",
+            "years": "1964—н.в.",
+            "books": ["Тринадцатая сказка"]
+        },
+        {
+            "id": 213,
+            "author": "Дженнифер Броуди",
+            "authorImage": "/images/authors/JenniferBrody.png",
+            "years": "н.в.",
+            "books": ["Тринадцатый ковчег"]
+        },
+        {
+            "id": 214,
+            "author": "Филип Дик",
+            "authorImage": "/images/authors/PhilipDick.png",
+            "years": "1928—1982",
+            "books": ["Убик"]
+        },
+        {
+            "id": 215,
+            "author": "Нелл Харпер Ли",
+            "authorImage": "/images/authors/NellHarperLee.png",
+            "years": "1926—2016",
+            "books": ["Убить пересмешника"]
+        },
+        {
+            "id": 216,
+            "author": "Сидни Шелдон",
+            "authorImage": "/images/authors/SydneySheldon.png",
+            "years": "1917—2007",
+            "books": ["Узы крови"]
+        },
+        {
+            "id": 217,
+            "author": "Джеймс Джойс",
+            "authorImage": "/images/authors/JamesJoyce.png",
+            "years": "1882—1941",
+            "books": ["Улисс"]
+        },
+        {
+            "id": 218,
+            "author": "Маргарет Митчелл",
+            "authorImage": "/images/authors/MargaretMitchell.png",
+            "years": "1900—1949",
+            "books": ["Унесенные ветром"]
+        },
+        {
+            "id": 219,
+            "author": "Иоганн Гёте",
+            "authorImage": "/images/authors/JohannGoethe.png",
+            "years": "1749—1832",
+            "books": ["Фауст"]
+        },
+        {
+            "id": 220,
+            "author": "Ричард Флэнаган",
+            "authorImage": "/images/authors/RichardFlanagan.png",
+            "years": "1961—н.в.",
+            "books": ["Желание"]
+        },
+        {
+            "id": 221,
+            "author": "Уинстон Грум",
+            "authorImage": "/images/authors/WinstonGroom.png",
+            "years": "1943—н.в.",
+            "books": ["Форрест Гамп"]
+        },
+        {
+            "id": 222,
+            "author": "Юрий Домбровский",
+            "authorImage": "/images/authors/YuriDombrovsky.png",
+            "years": "1909—1978",
+            "books": ["Хранитель древностей"]
+        },
+        {
+            "id": 223,
+            "author": "Роджер Желязны",
+            "authorImage": "/images/authors/RogerZhelyazny.png",
+            "years": "1937—1995",
+            "books": ["Хроники Амбера"]
+        },
+        {
+            "id": 224,
+            "author": "Ричард Бах",
+            "authorImage": "/images/authors/RichardBach.png",
+            "years": "1936–н.в.",
+            "books": ["Чайка по имени Джонатан Ливингстон"]
+        },
+        {
+            "id": 225,
+            "author": "Виктор Пелевин",
+            "authorImage": "/images/authors/VictorPelevin.png",
+            "years": "1962–н.в.",
+            "books": ["Чапаев и Пустота"]
+        },
+        {
+            "id": 226,
+            "author": "Роальд Даль",
+            "authorImage": "/images/authors/RoaldDahl.png",
+            "years": "1916–1990",
+            "books": ["Чарли и шоколадная фабрика"]
+        },
+        {
+            "id": 227,
+            "author": "Корнелия Функе",
+            "authorImage": "/images/authors/CorneliaFunke.png",
+            "years": "1958—н.в.",
+            "books": ["Чернильное сердце"]
+        },
+        {
+            "id": 228,
+            "author": "Бернхард Шлинк",
+            "authorImage": "/images/authors/BernhardSchlink.png",
+            "years": "1944—н.в.",
+            "books": ["Чтец"]
+        },
+        {
+            "id": 229,
+            "author": "Сельма Лагерлёф",
+            "authorImage": "/images/authors/SelmaLagerlof.png",
+            "years": "1858—1940",
+            "books": ["Чудесное путешествие Нильса с дикими гусями"]
+        },
+        {
+            "id": 230,
+            "author": "Мам Сомали",
+            "authorImage": "/images/authors/MomSomalia.png",
+            "years": "1970—н.в",
+            "books": ["Шепот ужаса"]
+        },
+        {
+            "id": 231,
+            "author": "Исаак Башевис-Зингер",
+            "authorImage": "/images/authors/IsaacBashevisSinger.png",
+            "years": "1902—1991",
+            "books": ["Шоша"]
+        },
+        {
+            "id": 232,
+            "author": "Уильям Фолкнер",
+            "authorImage": "/images/authors/WilliamFaulkner.png",
+            "years": "1897—1962",
+            "books": ["Шум и ярость"]
+        },
+        {
+            "id": 233,
+            "author": "Донна Тартт",
+            "authorImage": "/images/authors/DonnaTartt.png",
+            "years": "1963—н.в.",
+            "books": ["Щегол"]
+        },
+        {
+            "id": 234,
+            "author": "Богумил Грабал",
+            "authorImage": "/images/authors/BohumilGrabal.png",
+            "books": ["Я обслуживал английского короля"]
+        },
+        {
+            "id": 235,
+            "author": "Дана Шварц",
+            "authorImage": "/images/authors/DanaSchwartz.png",
+            "years": "н.в.",
+            "books": ["Я уезжаю!"]
+        }
+    ]
+}

@@ -1,8 +1,8 @@
-import React from 'react'
-import './index.sass'
-import Icons from '../Icons'
-import {Link} from 'react-router-dom'
-import Socials from '../Socials'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './index.sass';
+import Icons from '../Icons';
+import Socials from '../Socials';
 
 const NewText = () => {
     return(

@@ -26,20 +26,24 @@
         flex-direction: column
 
     &__title
-        margin-top: 75px
-        margin-bottom: 50px
-        font:  normal 25px/100% $waverly
+        margin-top: 70px
+        margin-bottom: 28px
+        font:  300 25px/100% $waverly
         color: $darkgray
         text-transform: uppercase
 
     &__book
         margin-bottom: 10px
-        font:  normal 20px/110% $waverly
+        font:  100 20px/100% $waverly
         color: $darkgray
         display: flex
         align-items: flex-end
         justify-content: space-between
         background: linear-gradient(90deg, #000, #000 20%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
+
+        &:hover
+            font:  500 20px/100% $waverly
+            color: $green
 
         &-title
             padding-right: 2px

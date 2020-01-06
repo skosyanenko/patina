@@ -1,7 +1,7 @@
-import React from 'react'
-import './index.sass'
-import Socials from '../Socials'
-import Icons from '../Icons'
+import React from 'react';
+import './index.sass';
+import Socials from '../Socials';
+import Icons from '../Icons';
 
 const ReviewText = () => {
     return(
@@ -26,11 +26,11 @@ const ReviewText = () => {
                         </div>
                         <div className="reviewBox__user-rating">
                             <div className="like">
-                                <i className="icon-like" style={{backgroundImage: `url(/images/icons/thumbsup.svg)`}}/>
+                                <div className="icon-like"/>
                                 <span className="like-count">13</span>
                             </div>
                             <div className="dislike">
-                                <i className="icon-dislike" style={{backgroundImage: `url(/images/icons/thumbsup.svg)`}}/>
+                                <div className="icon-dislike"/>
                                 <span className="like-count">13</span>
                             </div>
                         </div>

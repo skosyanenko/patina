@@ -1,6 +1,6 @@
-import React from 'react'
-import './index.sass'
-import PropTypes from 'prop-types'
+import React from 'react';
+import './index.sass';
+import PropTypes from 'prop-types';
 
 const EventsBox = ({date, image, day, time, name, about}) => {
     return (
@@ -23,7 +23,7 @@ const EventsBox = ({date, image, day, time, name, about}) => {
 
 EventsBox.propTypes = {
   date: PropTypes.string.isRequired,
-  item: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   day: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

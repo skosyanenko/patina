@@ -4,7 +4,10 @@ import Pagination from '../components/Pagination';
 import SectionTop from '../components/SectionTop';
 import AlphabetFilter from '../components/Alphabet';
 import ListBook from '../components/ListBook';
+import Search from '../components/Search';
 import data from 'startData/listBook';
+import PropTypes from "prop-types";
+
 
 class BooksPage extends Component {
     state = {
@@ -26,19 +29,27 @@ class BooksPage extends Component {
 
     render() {
         return (
-            <Layout books={this.state.books} >
+            <Layout books={this.state.books}
+                    status={this.props.status}
+            >
                 <SectionTop
                     title={"Книги"}
                     subtitle={"книжная полка"}
                     isSorting={true}
                 />
                 <div className='content'>
-                    <AlphabetFilter hookLetter={this.hookLetter}/>
-                    <ListBook activeLetter={this.state.activeLetter}
-                              books={this.state.books}
-                    />
+                    <div className="content__containerBook">
+                        <Search/>
+                        <AlphabetFilter hookLetter={this.hookLetter}/>
+                    </div>
+                    <div className='content__containerBook'>
+                        <ListBook activeLetter={this.state.activeLetter}
+                                  books={this.state.books}
+                        />
+                        <Pagination/>
+                    </div>
                 </div>
-                <Pagination/>
+
             </Layout>
         );
     }

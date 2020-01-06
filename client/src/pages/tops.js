@@ -14,9 +14,11 @@ const TopsPage = () => (
         />
         <div className="content">
             <TopImg/>
-            <ListTop/>
+            <div className="content__containerTop">
+                <ListTop/>
+                <Pagination/>
+            </div>
         </div>
-        <Pagination/>
     </Layout>
 );
 

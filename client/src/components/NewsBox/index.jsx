@@ -1,8 +1,8 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './index.sass'
-import Icons from '../Icons'
-import PropTypes from 'prop-types'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './index.sass';
+import Icons from '../Icons';
 
 const NewsBox = ({horizontal, img, title, text}) => {
     return (

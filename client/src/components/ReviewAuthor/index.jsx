@@ -1,5 +1,5 @@
-import React from 'react'
-import './index.sass'
+import React from 'react';
+import './index.sass';
 
 const ReviewAuthor = () => {
     return (
@@ -18,13 +18,13 @@ const ReviewAuthor = () => {
             <div className="review__end">
                 <img src="/images/author/Golding.png" alt="" className="review__end-img"/>
                 <div className="review__end-quote">
-                    <img src="/images/icons/black-quote.svg" alt="" className="review__end-quoteImg"/>
+                    <div className="review__end-quoteImg"/>
                 </div>
-                <div className="review__end-pinkCircle"> </div>
-                <div className="review__end-bigCircle"> </div>
-                <div className="review__end-smallCircle"> </div>
+                <div className="review__end-pinkCircle"/>
+                <div className="review__end-bigCircle"/>
+                <div className="review__end-smallCircle"/>
                 <div className="review__end-quote">
-                    <img src="/images/icons/black-quote.svg" alt="" className="review__end-quoteImg"/>
+                    <div className="review__end-quoteImg"/>
                 </div>
             </div>
         </div>

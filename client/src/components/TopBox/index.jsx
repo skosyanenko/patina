@@ -1,7 +1,7 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './index.sass'
-import PropTypes from 'prop-types'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './index.sass';
 
 const TopBox = ({number, title, author, text}) => {
     return (

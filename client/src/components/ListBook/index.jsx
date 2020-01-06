@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import './index.sass';
 import data from 'startData/listBook';
 
@@ -39,7 +39,7 @@ class ListBook extends Component {
                           key={key}
                           className="listBook__link"
                     >
-                        {`${item.title} ${item.author}`}
+                        {`«${item.title}» ${item.author}`}
                     </Link>
                 ))}
             </div>

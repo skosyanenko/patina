@@ -3,10 +3,10 @@
 .indexReview
 
     &__slider
-        width: 100%
-        display: flex
-        justify-content: space-between
-        align-items: center
+        width: 100% !important
+        display: flex !important
+        justify-content: space-between !important
+        align-items: center !important
 
         &-left,
         &-right
@@ -46,10 +46,9 @@
             &:before
                 right: auto
 
-        &-center
-            max-width: 60%
+        &-active
             width: 100%
-            display: flex
+            display: flex !important
             position: relative
 
         &-img
@@ -67,14 +66,14 @@
             flex-direction: column
             justify-content: space-between
             align-items: center
-            background: $lightbrown
+            background: red
 
         &-title
             left: 0
             right: 0
             margin: 0 auto
             position: absolute
-            font: normal 60px/75% $artist
+            font: normal 60px/75% $vogue
             -webkit-text-stroke-width: 2px
             -webkit-text-stroke-color: $black
             color: transparent
@@ -84,7 +83,7 @@
             width: 100%
             margin-top: 180px
             position: relative
-            font: normal 16px/100% $futura
+            font: normal 16px/100% $vogue
             color: $darkgray
             text-align: justify
 
@@ -107,25 +106,48 @@
                 position: absolute
                 background: $black
 
+        &-blur
+            &:last-child
+                display: none
+
     &__numb
-        margin-top: 60px
-        display: flex
+        display: flex !important
         justify-content: center
         align-items: center
+        list-style-type: none
+        position: absolute
+        bottom: -120px
+        margin: 0 auto
+        right: 0
+        left: 0
 
-        &-prev,
-        &-next
-            font: normal 30px/75% $artist
+        .slick-active
+            .indexReview__numb-dot
+                margin: 0 90px
+                font: normal 50px/75% $vogue
+                color: $carbonic
+
+        &-dot
+            height: 37px
+            font: normal 30px/75% $vogue
             color: rgba(31, 31, 31, 0.6)
-
-        &-pres
-            margin-left: 90px
-            margin-right: 90px
-            font: normal 50px/75% $artist
-            color: $carbonic
+            transition: .3s ease
 
 
 
+
+.slick-center
+    max-width: 60%
+    width: 700px !important
+
+
+
+.slick-track, .slick-list
+    display: flex !important
+    justify-content: center !important
+
+.slick-slide
+    width: 182px
 
 
 

@@ -6,6 +6,8 @@ import IndexReview from '../components/Index/IndexReview'
 import IndexNew from '../components/Index/IndexNew'
 import Patina from '../components/Patina'
 import Layout from '../components/Layouts/Layout'
+import 'static/css/slick-theme.css'
+import 'static/css/slick.css'
 
 const PatinaPage = () => (
     <Layout

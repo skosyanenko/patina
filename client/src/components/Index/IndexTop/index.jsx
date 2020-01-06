@@ -1,28 +1,47 @@
-import React from 'react'
-import './index.sass'
-import {Link} from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import Slider from 'react-slick';
+import './index.sass';
+import data from 'startData/tops';
 
-const IndexTop = ({title, subtitle}) => {
-  return (
-      <div className="indexTop index-wrapper">
-          <div className="indexTop__slider">
-              <div className="indexTop__slider-img">
-                  <img src="/images/tops/index/1.jpg" alt=""/>
+class IndexTop extends Component {
+    render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dotsClass: 'indexTop__numb',
+            customPaging: i => (
+              <div className="indexTop__numb-dot" onClick={this.slider}>
+                  {(i + 1 <= 9) ? `0${i + 1}` : i + 1}
               </div>
-              <div className="indexTop__slider-about">
-                  <Link to={'/top'} className="indexTop__slider-title">Книги, от которых трудно оторваться</Link>
-                  <div className="indexTop__slider-text">Ты, ничего не подозревая, за завтраком неспешно открываешь первую страницу, скользишь взглядом по буквам все дальше, дальше… и приходишь в себя только когда у тебя окончательно затекает "мадам Сижу", в животе наяривает оркестр похлеще Финберговского, а солнце уже практически скатилось за горизонт. Да-да, есть такие книги, с которыми забываешь обо всем на свете: поесть, поспать, а в особо тяжелых случаях – даже сходить на работу.
-                  </div>
-                  <Link to={'/top'} className="button-black">Далее</Link>
-              </div>
-          </div>
-          <div className="indexTop__numb">
-              <div className="indexTop__numb-prev">01</div>
-              <div className="indexTop__numb-pres">01</div>
-              <div className="indexTop__numb-next">01</div>
-          </div>
-      </div>
-  )
-};
+            )
+        };
+        return (
+            <div className="indexTop index-wrapper">
+                <Slider {...settings}>
+                    {data && data.tops.map((item, key) => (
+                        <div className="indexTop__slider">
+                            <div className="indexTop__slider-img">
+                                <img src={item.image} alt=""/>
+                            </div>
+                            <div className="indexTop__slider-about">
+                                <Link to={'/top'} className="indexTop__slider-title">
+                                    {item.title}
+                                </Link>
+                                <div className="indexTop__slider-text">
+                                    {item.description}
+                                </div>
+                                <Link to={'/top'} className="button-black">Далее</Link>
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+        );
+    }
+}
 
 export default IndexTop;
