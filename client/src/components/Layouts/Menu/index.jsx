@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './index.sass';
 
 class Menu extends Component {
     state = {
+    	navLinks: [
+			{title: 'книги', path: '/books'},
+			{title: 'топы', path: '/tops'},
+			{title: 'критика', path: '/reviews'},
+			{title: 'эвенты', path: '/events'},
+			{title: 'что нового', path: '/news'}
+		],
     	lineWidth: null,
         leftMenuToggle: false,
     };
 
 	componentDidMount() {
-		this.props.isIndex &&
+		this.props.location &&
+		this.props.location.pathname === '/' &&
 		this.toggleMenu();
 	}
 
@@ -22,11 +31,17 @@ class Menu extends Component {
 	lineAnimate = e => {
 		const {target} = e;
 		const rightOffset = +target.getBoundingClientRect().right.toFixed();
-		const lineWidth = 300 - rightOffset;
+		const lineWidth = 280 - rightOffset;
+		this.setState({lineWidth});
 	};
 
     render() {
-    	const {leftMenuToggle, lineWidth} = this.state;
+    	const {leftMenuToggle, lineWidth, navLinks} = this.state;
+    	const {location} = this.props;
+
+		if (!location) return false;
+
+    	const isIndex = location.pathname === '/';
 
     	const defaults = {
     		className: 'menu__link',
@@ -36,37 +51,23 @@ class Menu extends Component {
         return (
 			<>
 				<div
-					className={`navigate menu__burger ${this.props.isIndex ? leftMenuToggle ? 'close' : 'open' : 'block'} `}
+					className={`navigate menu__burger ${isIndex ? leftMenuToggle ? 'close' : 'open' : 'block'} `}
 					onClick={this.toggleMenu}
 				>
 			        <span className="menu__burger-center"/>
 				</div>
-				<nav className={`menu ${this.props.isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
+				<nav className={`menu ${isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
 					<div className="menu__container">
-						<NavLink to="/books" {...defaults}>
-							<i className="menu__line"/>
-							книги
-						</NavLink>
-						<NavLink to="/tops" {...defaults}>
-							<i className="menu__line"/>
-							топы
-						</NavLink>
-						<NavLink to="/review" {...defaults}>
-							<i className="menu__line"/>
-							критика
-						</NavLink>
-						<NavLink to="/events" {...defaults}>
-							<i className="menu__line"/>
-							эвенты
-						</NavLink>
-						<NavLink to="/news" {...defaults}>
-							<i className="menu__line"/>
-							что нового
-						</NavLink>
+						{navLinks.map((item, key) => (
+							<NavLink to={item.path} key={key} {...defaults}>
+								<i className="menu__line" style={{width: lineWidth}}/>
+								{item.title}
+							</NavLink>
+						))}
 					</div>
-					<div className="menu__search ">
+					<Link to={'/search'} className="menu__search ">
 						<div className="menu__loupe navigate"/>
-					</div>
+					</Link>
 				</nav>
 			</>
         )

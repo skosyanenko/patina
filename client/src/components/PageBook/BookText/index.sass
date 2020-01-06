@@ -1,0 +1,29 @@
+@import 'config'
+
+.bookText
+    width: 50%
+    margin-top: 70px
+    display: flex
+    flex-direction: column
+    z-index: 2
+
+    &__title
+        margin-bottom: 80px
+        font: 500 46px/79% $vogue
+        color: $black
+        text-transform: uppercase
+        text-align: left
+
+    &__about
+        margin-bottom: 40px
+        @extend %sectiontext
+        text-align: justify
+
+        p
+            text-indent: 35px
+            margin-bottom: 25px
+
+    &__buttons
+        margin-bottom: 35px
+        display: flex
+        justify-content: space-between

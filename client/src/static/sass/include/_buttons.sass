@@ -28,21 +28,79 @@
         color: $white
         border: none
 
-.tag
-    height: 36px
-    padding: 10px
+.tags
+    width: 206px
+    display: flex
+    flex-wrap: wrap
+
+    &__elem
+        height: 36px
+        width: fit-content
+        margin: 5px 5px 0 0
+        padding: 10px
+        display: flex
+        justify-content: center
+        align-items: center
+        background-color: $white
+        color: $green
+        border: 1px solid $green
+        border-radius: 10px
+        font:  normal 13px/100% $openSans
+        transition: all .3s ease
+
+        &:hover
+            color: $white
+            background: $green
+            border: none
+
+.buttonWriteReview
+    width: 150px
+
+.buttonWriteTop
+    width: 165px
+
+    &__img
+        background: url('/images/icons/newTop.svg') no-repeat center / contain
+
+        svg
+            animation: none
+
+.buttonWriteReview,
+.buttonWriteTop
+    margin-top: 15px
     display: flex
     justify-content: center
     align-items: center
-    background-color: $white
-    color: $green
-    border: 1px solid $green
-    border-radius: 10px
-    font:  normal 13px/100% $openSans
-    transition: all .3s ease
+    cursor: pointer
 
-    &:hover
-        color: $white
-        background: $green
-        border: none
+    &__img
+        width: 23px
+        height: 23px
+        display: flex
+        cursor: pointer
+        position: relative
+        transition: all 1s ease
+
+        svg
+            width: 100%
+            height: 100%
+            fill: white
+            stroke: $green
+            stroke-width: 50
+            stroke-dasharray: 550 0
+            stroke-dashoffset: 1000
+            animation: dasharray 5s infinite alternate
+            &:hover
+                animation: none
+
+    &__text
+            margin-left: 7px
+            font: 300 17px/100% $openSans
+            color: $green
+
+@keyframes dasharray
+    100%
+        stroke-dasharray: 0 550
+
+
 

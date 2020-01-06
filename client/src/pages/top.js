@@ -1,14 +1,13 @@
-import React from 'react'
-import Layout from '../components/Layouts/Layout'
-import Socials from '../components/Socials'
-import TopBox from '../components/TopBox'
-import '../static/sass/include/_buttons.sass'
-import TopTitle from '../components/TopTitle';
-import data from '../startData/listTop'
+import React from 'react';
+import Socials from '../components/Socials';
+import TopBox from '../components/PageTop/TopBox';
+import '../static/sass/include/_buttons.sass';
+import TopTitle from '../components/PageTop/TopTitle';
+import data from '../startData/listTop';
 
 
 const TopPage = () => (
-    <Layout>
+    <>
         <TopTitle/>
         <div className="content">
             <div className="top-grid">
@@ -26,7 +25,7 @@ const TopPage = () => (
                 <Socials/>
             </div>
         </div>
-    </Layout>
+    </>
 );
 
 export default TopPage;

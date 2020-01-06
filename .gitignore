@@ -1,2 +1,5 @@
 .idea/
 node_modules/
+client/public/images/coverImage/
+client/public/images/reviewImage/
+client/public/images/topImage/
