@@ -1,0 +1,53 @@
+@import 'config'
+
+.ReactModal__Overlay
+    background-color: rgba($black, 0.7) !important
+    z-index: 15
+
+.modal
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 100%
+
+    &__circle
+        width: 130px
+        height: 130px
+        margin-bottom: 18%
+        border-radius: 50%
+        background: $white
+
+    &__content
+        width: 480px
+        height: 360px
+        padding: 40px
+        position: absolute
+        background: $white
+        border-radius: 20px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+
+        &-user
+            width: 66px
+            height: 71px
+            top: -8%
+            position: absolute
+            background: url('/images/icons/user/user.svg') no-repeat center / contain
+
+        &-close
+            background: url('/images/icons/close.svg') no-repeat center / contain
+            width: 21px
+            height: 21px
+            margin-left: auto
+            cursor: pointer
+
+        .registration__group
+            max-width: 100%
+
+        input
+            max-width: 100%
+

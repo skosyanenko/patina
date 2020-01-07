@@ -3,9 +3,8 @@ import {Link} from 'react-router-dom';
 import './index.sass';
 
 class BookText extends Component {
-
-
     render() {
+        const {toggleModal} = this.props;
         return (
             <div className="bookText">
                 <h1 className="bookText__title">повелитель мух</h1>
@@ -15,9 +14,9 @@ class BookText extends Component {
                     <p>Роман учит нас тому, что любой человек – взрослый он или ребёнок, – выбравшись из цивилизованного общества, начинает морально деградировать, возвращаясь к своим «дикарским» корням, становясь жестоким; он теряет разум и превращается в настоящего дикаря. Роман так же говорит нам и о том, что абсолютно в любом человеке всегда продолжает жить внутренний зверь, разбудить которого ничего не стоит.</p>
                 </div>
                 <div className="bookText__buttons">
-                    <Link to={'/'} className="button buttonWhite">Читать</Link>
+                    <div className="button buttonWhite">Читать</div>
                     <Link to={'/review'} className="button buttonGreen">Рецензии</Link>
-                    <Link to={'/'} className="button buttonGreen">Экранизации</Link>
+                    <div className="button buttonGreen"  onClick={toggleModal}>Экранизации</div>
                 </div>
             </div>
         );

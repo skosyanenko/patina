@@ -9,10 +9,10 @@ const BookInform = () => {
     return (
         <div className="bookInform">
             {data && data.books.map((item, key) => (
-                <div className="tags">
+                <div className="tags" key={key}>
                     <div className="indexBook__about-tags">
                         {item && item.tags.map((tag, key) => (
-                            <Link to={'/'} className="tags__elem">{tag}</Link>
+                            <Link to={'/'} className="tags__elem" key={key}>{tag}</Link>
                         ))}
                     </div>
                 </div>

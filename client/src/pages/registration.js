@@ -1,10 +1,10 @@
 import React from 'react';
-import RegistrationForm from "../components/PageRegistration";
+import RegistrationForm from '../components/PageRegistration';
 
 const RegistrationPage = () => (
     <>
-        <div className="registrationContainer">
-            <div className="registrationContainer__title">Регистрация</div>
+        <div className="registration-container">
+            <div className="registration-container__title">Регистрация</div>
             <RegistrationForm/>
         </div>
     </>
