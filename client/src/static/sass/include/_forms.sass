@@ -1,11 +1,30 @@
 @import 'config'
 
+.form,
+.registration-container
+    display: flex
+    justify-content: space-between
+
+.form
+    padding: 0
+    display: flex
+    justify-content: center
+
 .registration-container
     padding: 0 120px
     margin-bottom: 100px
-    display: flex
     flex-direction: column
 
+.form-book
+    max-width: 70%
+    min-width: 70%
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.registration-container,
+.form-book
     &__title
         margin-bottom: 20px
         text-align: center
@@ -20,22 +39,56 @@
         display: flex
         flex-direction: column
 
-        &-img
-            width: 25px
+.form-book
+    &__group
+        width: 100%
+
+        input
+            width: 100% !important
+
+    &__avatar
+        height: 60px
+        margin: 10px 0
+
+        &-text
             height: 100%
-            position: absolute
+            justify-content: space-between
+
+        &-img
+            max-width: 50px !important
+            width: 100% !important
+            height: 50px !important
+
+            img
+                width: 25px !important
+                height: 50px !important
+
+.registration,
+.form-book
 
     &__group
         max-height: 50px
         position: relative
         margin: 20px 0
 
+        &-img
+            width: 25px
+            height: 100%
+            position: absolute
+
+        textarea
+            width: 100% !important
+            height: 100%
+            resize: none
+
         input,
-        label
+        label,
+        textarea
             font: 300 25px/100% $openSans
             color: $lightgray
 
-        input
+        input,
+        textarea
             padding: 10px 10px 5px 35px
             display: block
             width: 450px
@@ -52,6 +105,11 @@
             transition: 0.2s ease all
 
         input:focus ~ label, input:valid ~ label
+            top: -20px
+            font-size: 16px
+            color: $green
+
+        textarea:focus ~ label, textarea:valid ~ label
             top: -20px
             font-size: 16px
             color: $green
@@ -77,6 +135,9 @@
             input:focus ~ .registration__column-bar:before, input:focus ~ .registration__column-bar:after
                 width: 50%
 
+            textarea:focus ~ .form-book__column-bar:before, textarea:focus ~ .form-book__column-bar:after
+                width: 50%
+
             &-highlight
                 position: absolute
                 height: 60%
@@ -87,6 +148,9 @@
                 opacity: 0.5
 
             input:focus ~ .registration__column-highlight
+                animation: inputHighlighter 0.3s ease
+
+            textarea:focus ~ .form-book__column-highlight
                 animation: inputHighlighter 0.3s ease
 
     &__radio
@@ -136,10 +200,20 @@
                 transition: .5s ease
                 opacity: .3
     &__avatar
-        width: 300px
+        width: 360px
         display: flex
         align-items: center
         cursor: pointer
+
+        &-text
+            display: flex
+            flex-direction: column
+            justify-content: center
+
+        &-fileName
+            margin-top: 10px
+            span
+                color: $green !important
 
         input
             width: 0
@@ -168,6 +242,23 @@
     .button
         margin-top: 33px
         margin-left: auto
+
+.select
+    width: 360px
+    margin: 10px 0
+    display: flex
+    flex-direction: column
+
+    label,
+    option,
+    select
+        font: 300 25px/100% $openSans
+        color: #7c7c7c
+
+    select,
+    option
+        width: 100%
+        height: 40px
 
 
 @-webkit-keyframes inputHighlighter

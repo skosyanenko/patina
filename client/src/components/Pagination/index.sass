@@ -7,36 +7,52 @@
     flex-direction: row
     justify-content: space-between
 
-    &__filter
+    &__counter
         font: 300 18px/100% $waverly
         display: flex
         justify-content: center
         align-items: center
+        position: relative
 
-        &-number
-            display: flex
-            flex-direction: column
-            justify-content: center
-            position: relative
-
-        &-type
+        .count
             margin-left: 15px
-            display: none
-            position: absolute
             font: 800 18px/100% $waverly
             cursor: pointer
-            &:nth-child(2)
-                bottom: 20px
+
+    &__dropdown
+        display: flex
+        flex-direction: column
+        align-items: center
+        position: absolute
+        background: $white
+        border-radius: 4px
+        padding: 5px 10px
+        right: -10px
+        top: 20px
+        transition: .4s ease
+        &.exited
+            opacity: 0
+            z-index: -1
+            visibility: hidden
+            height: 0
+        span
+            margin-left: 0 !important
+            margin-bottom: 7px
+            transition: .3s ease
+            &:hover
+                opacity: 0.7
+                color: $green
             &:last-child
-                bottom: 50px
-            &.active
-                display: flex
+                margin-bottom: 0
 
     &__pagination
         margin-left: auto
         display: flex
         align-items: center
         font: 300 18px/100% $waverly
+
+        .previous
+            transform: rotate(180deg)
 
         &-button,
         &-arrow
@@ -53,9 +69,6 @@
             display: flex
             justify-content: center
             align-items: center
-
-            &:first-child
-                transform: rotate(180deg)
 
             svg
                 width: 15px
@@ -84,7 +97,7 @@
                 background: $green
 
 .container--view
-    .container__filter
+    .container__counter
         display: none
 
 .container--search

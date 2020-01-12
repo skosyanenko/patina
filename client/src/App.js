@@ -14,6 +14,9 @@ import ReviewsPage from './pages/reviews'
 import ReviewPage from './pages/review'
 import SearchPage from './pages/search'
 import RegistrationPage from './pages/registration'
+import ProfileHomePage from './pages/profile-home'
+import ProfileFollowingPage from './pages/profile-following';
+import FormPage from './pages/form';
 import UndefinedPage from './pages/404'
 import Main from "./main";
 
@@ -30,6 +33,9 @@ const routes = [
     {path: '/review', component: ReviewPage},
     {path: '/search', component: SearchPage},
     {path: '/registration', component: RegistrationPage},
+    {path: '/profile-home', component: ProfileHomePage},
+    {path: '/profile-following', component: ProfileFollowingPage},
+    {path: '/form', component: FormPage},
     {path: '*', component: UndefinedPage}
 ];
 

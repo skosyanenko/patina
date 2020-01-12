@@ -10,6 +10,7 @@ class ListBook extends Component {
 
     componentDidMount() {
         this.getBooks();
+        //this.props.fetchData(this.props.getList);
     }
 
     componentDidUpdate(prevProps) {
@@ -33,16 +34,21 @@ class ListBook extends Component {
         const {filteredBooks} = this.state;
 
         return (
-            <div className="listBook">
-                {filteredBooks && filteredBooks.map((item, key) => (
-                    <Link to={'/book'}
-                          key={key}
-                          className="listBook__link"
-                    >
-                        {`«${item.title}» ${item.author}`}
-                    </Link>
-                ))}
-            </div>
+            <>
+                <div className="listBook">
+                    {filteredBooks && filteredBooks.map((item, key) => (
+                        <Link to={'/book'}
+                              key={key}
+                              className="listBook__link"
+                        >
+                            {`«${item.title}» ${item.author}`}
+                        </Link>
+                    ))}
+                </div>
+
+                {/*{books.length && this.props.pagination || ''}*/}
+
+            </>
         );
     }
 }

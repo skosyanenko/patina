@@ -6,12 +6,12 @@
 .section
     width: 100%
     max-width: calc(100% - 620px)
-    height: 100%
+    min-height: 100vh
     margin: 0 auto
     padding: 40px
     position: relative
     display: flex
-    justify-content: space-between
+    //justify-content: space-between
     flex-direction: column
     +maxwidth($desktop)
         border-top: none
@@ -39,6 +39,19 @@
             opacity: 1
             transition: .3s ease-in
 
+    &__profile
+        margin-left: 40px
+        display: flex
+        align-items: center
+
+    &__blocks
+        display: flex
+        justify-content: space-between
+
+        &-title
+            margin-bottom: 20px
+            font: 300 17px/100% $openSans
+            color: $darkgray
 
     &--index
         max-width: calc(100% - 310px)

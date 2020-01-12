@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import Pagination from '../components/Pagination';
+import paginationWrap from '../components/HOC';
 import SectionTop from '../components/SectionTop';
 import AlphabetFilter from '../components/PageBooks/Alphabet';
 import ListBook from '../components/PageBooks/ListBook';
 import Search from '../components/Search';
 import data from 'startData/listBook';
 
+const BooksWithPagination = paginationWrap(ListBook);
 
 class BooksPage extends Component {
     state = {
         activeLetter: '',
-        books: []
+        books: [],
+        pageOfBooks: []
     };
 
     componentDidMount() {
@@ -41,10 +43,11 @@ class BooksPage extends Component {
                         <AlphabetFilter hookLetter={this.hookLetter}/>
                     </div>
                     <div className='content__containerBook'>
-                        <ListBook activeLetter={this.state.activeLetter}
-                                  books={this.state.books}
+                        <BooksWithPagination
+                            activeLetter={this.state.activeLetter}
+                            books={this.state.books}
                         />
-                        <Pagination/>
+                        {/*<Pagination/>*/}
                     </div>
                 </div>
             </>

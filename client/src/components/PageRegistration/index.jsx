@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './index.sass';
 
 class registration extends Component {
 
@@ -8,21 +7,21 @@ class registration extends Component {
             <div className="registration">
                 <div className="registration__column">
                     <div className="registration__group">
-                        <img src="images/icons/user/user.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/user.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Имя</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/email.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/email.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>E-mail</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/placeholder.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/placeholder.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
@@ -40,21 +39,21 @@ class registration extends Component {
                         </div>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/socials/telegram.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/socials/telegram.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Настроить импорт/ экспорт</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/books.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/books.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Укажите любимые книги</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/author.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/author.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
@@ -63,21 +62,21 @@ class registration extends Component {
                 </div>
                 <div className="registration__column">
                     <div className="registration__group">
-                        <img src="images/icons/user/user.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/user.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Фамилия</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/telephone.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/telephone.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Мобильный телефон</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/password.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/password.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
@@ -91,14 +90,14 @@ class registration extends Component {
                         <span>Загрузите ваше фото</span>
                     </label>
                     <div className="registration__group">
-                        <img src="images/icons/socials/vk.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/socials/vk.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>
                         <label>Настроить импорт/ экспорт</label>
                     </div>
                     <div className="registration__group">
-                        <img src="images/icons/user/wishlist.svg" alt="" className="registration__column-img"/>
+                        <img src="images/icons/user/wishlist.svg" alt="" className="registration__group-img"/>
                         <input type="text" required/>
                         <span className="registration__group-highlight"/>
                         <span className="registration__group-bar"/>

@@ -20,9 +20,9 @@ const ReviewsPage = () => (
             <ReviewsContainer/>
         </div>
 
-        <Pagination
-            classNamePrefix="container--view"
-        />
+        {/*<Pagination*/}
+        {/*    classNamePrefix="container--view"*/}
+        {/*/>*/}
     </>
 );
 

@@ -15,7 +15,7 @@ const TopsPage = () => (
             <TopImg/>
             <div className="content__containerTop">
                 <ListTop/>
-                <Pagination/>
+                {/*<Pagination/>*/}
             </div>
         </div>
     </>

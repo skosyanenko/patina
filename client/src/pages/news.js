@@ -34,7 +34,7 @@ const NewsPage = () => (
                   <NewsLink/>
                   <NewsLink/>
                   <NewsLink/>
-                  <Pagination/>
+                  {/*<Pagination/>*/}
               </div>
           </div>
       </div>

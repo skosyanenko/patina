@@ -1,13 +1,24 @@
 @import 'config'
-.button
-    width: 150px
-    height: 36px
+.button, .user-button, .follow-button
     display: flex
     justify-content: center
     align-items: center
     font:  300 16px/100% $openSans
     cursor: pointer
     transition: all .3s ease
+
+.button
+    width: 150px
+    height: 36px
+
+.user-button
+    width: 120px
+    height: 30px
+
+.follow-button
+    width: fit-content
+    padding: 5px
+    margin-top: 10px
 
 .buttonGreen
     background-color: $green

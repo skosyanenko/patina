@@ -13,9 +13,9 @@ const SearchPage = () => (
             <PageSearch/>
         </div>
 
-        <Pagination
-            classNamePrefix="container--search"
-        />
+        {/*<Pagination*/}
+        {/*    classNamePrefix="container--search"*/}
+        {/*/>*/}
     </>
 );
 
