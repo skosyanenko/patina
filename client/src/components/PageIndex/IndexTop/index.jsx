@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Slider from 'react-slick';
 import './index.sass';
 import data from 'startData/tops';
-import Socials from "../../Socials";
+import Socials from "../../SocialsGroup";
 
 class IndexTop extends Component {
     constructor(props) {

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "name",
+    "label": "Имя писателя",
+    "img": "author",
+    "type": "text"
+  },
+  {
+    "name": "years",
+    "label": "Годы жизни писателя",
+    "img": "clock",
+    "type": "text"
+  },
+  {
+    "name": "picture",
+    "label": "Изображение писателя",
+    "img": "fun",
+    "type": "file"
+  },
+  {
+    "name": "books",
+    "label": "Произведения писателя",
+    "img": "books",
+    "type": "select"
+  }
+]

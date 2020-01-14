@@ -14,7 +14,7 @@ class Socials extends Component {
                 </Link>
                 <div className="socials__bookmark">
                     <svg viewBox="-120 0 511 511.99905">
-                        <use href="/images/icons/socials/bookmark.svg#bookmark"/>
+                        <use href="/images/icons/socialsGroup/bookmark.svg#bookmark"/>
                     </svg>
                 </div>
             </div>

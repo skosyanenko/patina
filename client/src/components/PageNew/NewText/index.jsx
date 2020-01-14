@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.sass';
 import Icons from '../../Icons';
-import Socials from '../../Socials';
+import Socials from '../../SocialsGroup';
 
 const NewText = () => {
     return(

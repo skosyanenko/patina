@@ -1,0 +1,29 @@
+[
+  {
+    "name": "title",
+    "label": "Название мероприятия",
+    "img": "author",
+    "type": "text"
+  },
+  {
+    "name": "place",
+    "label": "Место проведения мероприятия",
+    "img": "author",
+    "type": "text"
+  },
+  {
+    "name": "date",
+    "img": "clock",
+    "type": "date"
+  },
+  {
+    "name": "timeStart",
+    "img": "clock",
+    "type": "time"
+  },
+  {
+    "name": "timeEnd",
+    "img": "clock",
+    "type": "time"
+  }
+]

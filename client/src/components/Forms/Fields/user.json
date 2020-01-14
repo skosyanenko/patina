@@ -1,0 +1,78 @@
+[
+  {
+    "name": "firstName",
+    "label": "Имя",
+    "img": "user",
+    "type": "text"
+  },
+  {
+    "name": "email",
+    "label": "E-mail",
+    "img": "email",
+    "type": "text"
+  },
+  {
+    "name": "city",
+    "label": "Город",
+    "img": "placeholder",
+    "type": "text"
+  },
+  {
+    "name": "sex",
+    "label": "Пол",
+    "type": "radiobutton"
+  },
+  {
+    "name": "telegram",
+    "label": "Настроить импорт/ экспорт",
+    "img": "telegram",
+    "type": "text"
+  },
+  {
+    "name": "books",
+    "label": "Укажите любимые книги",
+    "img": "books",
+    "type": "creatable"
+  },
+  {
+    "name": "authors",
+    "label": "Укажите любимых писателей",
+    "img": "author",
+    "type": "creatable"
+  },
+  {
+    "name": "lastName",
+    "label": "Фамилия",
+    "img": "user",
+    "type": "text"
+  },
+  {
+    "name": "phone",
+    "label": "Мобильный телефон",
+    "img": "telephone",
+    "type": "text"
+  },
+  {
+    "name": "password",
+    "label": "Пароль",
+    "img": "password",
+    "type": "text"
+  },
+  {
+    "name": "avatar",
+    "label": "Загрузите ваше фото",
+    "type": "file"
+  },
+  {
+    "name": "vk",
+    "label": "Настроить импорт/ экспорт",
+    "img": "vk",
+    "type": "text"
+  },
+  {
+    "name": "genres",
+    "label": "Укажите любимые жанры",
+    "img": "wishlist",
+    "type": "creatable"
+  }
+]

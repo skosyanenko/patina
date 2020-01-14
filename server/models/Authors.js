@@ -6,6 +6,6 @@ const authorSchema = new mongoose.Schema({
 	picture: String,
 	years: String,
 	books: [{type: ObjectId, ref: 'Books'}]
-})
+});
 
 module.exports = mongoose.model('Authors', authorSchema);

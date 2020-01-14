@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.sass';
-import Socials from '../../Socials';
+import Socials from '../../SocialsGroup';
 
 const ReviewText = () => {
     return(

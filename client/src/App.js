@@ -16,9 +16,14 @@ import SearchPage from './pages/search'
 import RegistrationPage from './pages/registration'
 import ProfileHomePage from './pages/profile-home'
 import ProfileFollowingPage from './pages/profile-following';
-import FormPage from './pages/form';
+import FormBookPage from './pages/form-book';
+import FormAuthorPage from './pages/form-author';
+import FormTopsPage from './pages/form-tops';
+import FormEventsPage from './pages/form-events';
+import FormNewsPage from './pages/form-news';
+import FormFilmsPage from './pages/form-films';
 import UndefinedPage from './pages/404'
-import Main from "./main";
+import Main from './main';
 
 const routes = [
     {path: '/', component: PatinaPage},
@@ -35,7 +40,12 @@ const routes = [
     {path: '/registration', component: RegistrationPage},
     {path: '/profile-home', component: ProfileHomePage},
     {path: '/profile-following', component: ProfileFollowingPage},
-    {path: '/form', component: FormPage},
+    {path: '/form-book', component: FormBookPage},
+    {path: '/form-author', component: FormAuthorPage},
+    {path: '/form-tops', component: FormTopsPage},
+    {path: '/form-events', component: FormEventsPage},
+    {path: '/form-news', component: FormNewsPage},
+    {path: '/form-films', component: FormFilmsPage},
     {path: '*', component: UndefinedPage}
 ];
 

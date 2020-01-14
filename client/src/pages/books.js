@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import paginationWrap from '../components/HOC';
+import paginationWrap from '../components/HOC/paginationWrap';
 import SectionTop from '../components/SectionTop';
 import AlphabetFilter from '../components/PageBooks/Alphabet';
 import ListBook from '../components/PageBooks/ListBook';

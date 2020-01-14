@@ -1,5 +1,5 @@
 import React from 'react';
-import Socials from '../components/Socials';
+import Socials from '../components/SocialsGroup';
 import TopBox from '../components/PageTop/TopBox';
 import '../static/sass/include/_buttons.sass';
 import TopTitle from '../components/PageTop/TopTitle';

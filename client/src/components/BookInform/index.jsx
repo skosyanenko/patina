@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.sass';
-import Socials from '../Socials';
+import Socials from '../SocialsGroup';
 import Rating from '../Rating';
 import {Link} from 'react-router-dom';
 import data from 'startData/booksTest';

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "title",
+    "label": "Название новости",
+    "img": "author",
+    "type": "text"
+  },
+  {
+    "name": "description",
+    "label": "Описание новости",
+    "img": "author",
+    "type": "textarea"
+  },
+  {
+    "name": "cover",
+    "label": "Изображение для новости",
+    "type": "file"
+  }
+]

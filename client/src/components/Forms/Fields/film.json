@@ -1,0 +1,19 @@
+[
+  {
+    "name": "title",
+    "label": "Название экранизации",
+    "img": "films",
+    "type": "text"
+  },
+  {
+    "name": "description",
+    "label": "Описание экранизации",
+    "img": "author",
+    "type": "textarea"
+  },
+  {
+    "name": "image",
+    "label": "Картинка из экранизации",
+    "type": "file"
+  }
+]

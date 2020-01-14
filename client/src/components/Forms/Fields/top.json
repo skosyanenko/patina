@@ -1,0 +1,25 @@
+[
+  {
+    "name": "title",
+    "label": "Название топа",
+    "img": "wishlist",
+    "type": "text"
+  },
+  {
+    "name": "description",
+    "label": "Описание топа",
+    "img": "author",
+    "type": "textarea"
+  },
+  {
+    "name": "image",
+    "label": "Обложка топа",
+    "type": "file"
+  },
+  {
+    "name": "image",
+    "label": "Выберите книги",
+    "img": "books",
+    "type": "select"
+  }
+]

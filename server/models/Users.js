@@ -11,8 +11,8 @@ const userSchema = new mongoose.Schema({
 	registrationDate: Date,
 	avatar: String,
 	socials: {
-		Telegram: String,
-		Vk: String
+		telegram: String,
+		vk: String
 	},
 	prefers: {
 		books: [String],
