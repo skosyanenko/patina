@@ -21,6 +21,7 @@
     "name": "books",
     "label": "Произведения писателя",
     "img": "books",
-    "type": "select"
+    "type": "select",
+    "isMulti": true
   }
 ]

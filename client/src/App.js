@@ -17,11 +17,13 @@ import RegistrationPage from './pages/registration'
 import ProfileHomePage from './pages/profile-home'
 import ProfileFollowingPage from './pages/profile-following';
 import FormBookPage from './pages/form-book';
-import FormAuthorPage from './pages/form-author';
+import FormReviewPage from './pages/form-review';
 import FormTopsPage from './pages/form-tops';
 import FormEventsPage from './pages/form-events';
 import FormNewsPage from './pages/form-news';
+import FormAuthorPage from './pages/form-author';
 import FormFilmsPage from './pages/form-films';
+import FormCategoriesPage from './pages/form-categories';
 import UndefinedPage from './pages/404'
 import Main from './main';
 
@@ -41,11 +43,13 @@ const routes = [
     {path: '/profile-home', component: ProfileHomePage},
     {path: '/profile-following', component: ProfileFollowingPage},
     {path: '/form-book', component: FormBookPage},
-    {path: '/form-author', component: FormAuthorPage},
+    {path: '/form-review', component: FormReviewPage},
     {path: '/form-tops', component: FormTopsPage},
     {path: '/form-events', component: FormEventsPage},
     {path: '/form-news', component: FormNewsPage},
+    {path: '/form-author', component: FormAuthorPage},
     {path: '/form-films', component: FormFilmsPage},
+    {path: '/form-categories', component: FormCategoriesPage},
     {path: '*', component: UndefinedPage}
 ];
 

@@ -19,7 +19,7 @@ class SelectField extends Component {
     };
     render() {
         const {selectedOption} = this.state;
-        const {label, img, register, type} = this.props;
+        const {label, img, register, type, isMulti} = this.props;
         const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
 
 
@@ -28,7 +28,7 @@ class SelectField extends Component {
                 <label htmlFor="category">{label}</label>
                 <img src={`images/icons/user/${img}.svg`} alt="" className="form__group-img select__img"/>
                 <SelectComponent
-                    isMulti
+                    isMulti={isMulti}
                     value={selectedOption}
                     onChange={this.handleChange}
                     options={options}

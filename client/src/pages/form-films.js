@@ -8,6 +8,7 @@ const FormFilmsPage = () => (
             fields={fields}
             button={"Добавить"}
             title={"Добавить экранизацию"}
+            API={"film"}
         />
     </div>
 );

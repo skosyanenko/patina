@@ -20,7 +20,9 @@
   {
     "name": "sex",
     "label": "Пол",
-    "type": "radiobutton"
+    "type": "radio",
+    "optionFirst": "Мужской",
+    "optionSecond": "Женский"
   },
   {
     "name": "telegram",
@@ -32,13 +34,15 @@
     "name": "books",
     "label": "Укажите любимые книги",
     "img": "books",
-    "type": "creatable"
+    "type": "creatable",
+    "isMulti": true
   },
   {
     "name": "authors",
     "label": "Укажите любимых писателей",
     "img": "author",
-    "type": "creatable"
+    "type": "creatable",
+    "isMulti": true
   },
   {
     "name": "lastName",
@@ -73,6 +77,7 @@
     "name": "genres",
     "label": "Укажите любимые жанры",
     "img": "wishlist",
-    "type": "creatable"
+    "type": "creatable",
+    "isMulti": true
   }
 ]

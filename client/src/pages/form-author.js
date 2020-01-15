@@ -8,6 +8,7 @@ const FormAuthorPage = () => (
             fields={fields}
             button={"Добавить"}
             title={"Добавить писателя"}
+            API={"author"}
         />
     </div>
 );

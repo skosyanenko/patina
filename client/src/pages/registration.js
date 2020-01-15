@@ -9,6 +9,7 @@ const RegistrationPage = () => (
                    button={"Зарегистрироваться"}
                    classNamePrefix={"registration"}
                    classNamePref={"registration__grid"}
+                   API={"users"}
       />
   </div>
 );

@@ -60,6 +60,7 @@
     "name": "category",
     "label": "Выберите категории:",
     "img": "wishlist",
-    "type": "select"
+    "type": "select",
+    "isMulti": true
   }
 ]

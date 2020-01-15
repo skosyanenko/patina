@@ -1,0 +1,32 @@
+[
+  {
+    "name": "bookId",
+    "label": "Укажите название литературного произведения",
+    "img": "books",
+    "type": "select",
+    "isMulti": false
+  },
+  {
+    "name": "title",
+    "label": "Укажите название Вашей рецензии",
+    "img": "author",
+    "type": "text"
+  },
+  {
+    "name": "viewType",
+    "label": "Выберите отображение рецензии:",
+    "type": "radio",
+    "optionFirst": "Количество символов до 1000 знаков, без картинок",
+    "optionSecond": "Количество символов более 1000 знаков, с картинками"
+  },
+  {
+    "name": "description",
+    "label": "Напишите Вашу рецензию",
+    "type": "editor"
+  },
+  {
+    "name": "pictures",
+    "label": "Прикрепить изображение",
+    "type": "file"
+  }
+]

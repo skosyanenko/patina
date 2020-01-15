@@ -8,6 +8,7 @@ const FormEventsPage = () => (
             fields={fields}
             button={"Добавить"}
             title={"Добавить эвент"}
+            API={"events"}
         />
     </div>
 );

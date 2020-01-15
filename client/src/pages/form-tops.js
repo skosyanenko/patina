@@ -8,6 +8,7 @@ const FormTopsPage = () => (
             fields={fields}
             button={"Добавить"}
             title={"Добавить топ"}
+            API={"top"}
         />
     </div>
 );

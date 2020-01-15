@@ -1,16 +1,16 @@
 import React from 'react';
 import FormManager from '../components/Forms/FormManager';
-import fields from '../components/Forms/Fields/news';
+import fields from '../components/Forms/Fields/categories';
 
-const FormNewsPage = () => (
+const FormCategoriesPage = () => (
     <div className="section--form">
         <FormManager
             fields={fields}
             button={"Добавить"}
-            title={"Добавить новость"}
-            API={"news"}
+            title={"Добавить категорию"}
+            API={"categories"}
         />
     </div>
 );
 
-export default FormNewsPage;
+export default FormCategoriesPage;

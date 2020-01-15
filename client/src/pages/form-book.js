@@ -8,6 +8,7 @@ const FormBookPage = () => (
             fields={fields}
             button={"Добавить"}
             title={"Добавить книгу"}
+            API={"book"}
         />
     </div>
 );

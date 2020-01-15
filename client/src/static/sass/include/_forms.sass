@@ -30,6 +30,9 @@
         &-radio
             margin-top: 7px
 
+        span
+            margin-bottom: 10px
+
         span,
         label
             font: 300 25px/100% $openSans
@@ -334,6 +337,97 @@
     option
         width: 100%
         height: 40px
+
+.RichEditor-root
+    margin: 20px 0
+    padding: 15px
+    background: $white
+    border: 1px solid #ddd
+    font: 300 18px/100% $openSans
+    text-align: justify
+
+
+.RichEditor-title
+    margin-top: 20px
+    font: 300 25px/100% $openSans
+    color: $lightgray
+
+.RichEditor-editor
+    margin-top: 10px
+    border-top: 1px solid #ddd
+    cursor: text
+    font: 300 20px/100% $openSans
+
+.RichEditor-editor .public-DraftEditorPlaceholder-root,
+.RichEditor-editor .public-DraftEditor-content
+    margin: 0 -15px -15px
+    padding: 15px
+
+.RichEditor-editor .public-DraftEditor-content
+    min-height: 100px
+    &:first-letter
+        font: normal 50px/100% $izvestia
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root
+    display: none
+
+.RichEditor-editor .RichEditor-custom
+    margin: 16px 0
+    padding: 0 30px
+    border-left: 6px solid $carbonic
+    color: $carbonic
+    font: 300 20px/100% $openSans
+    font-style: italic
+    text-align: justify
+
+.RichEditor-editor .RichEditor-blockquote
+    padding: 0 30px
+    color: $carbonic
+    font: 300 20px/100% $openSans
+    position: relative
+    &:after,
+    &:before
+        width: 37px
+        height: 31px
+        position: absolute
+        content: url('/images/icons/black-quote.svg')
+        opacity: 0.5
+    &:after
+        top: 0
+        left: 0
+    &:before
+        bottom: 0
+        right: 0
+        transform: rotate(180deg)
+
+.RichEditor-editor .public-DraftStyleDefault-pre
+    padding: 20px
+    background-color: rgba(0, 0, 0, 0.05)
+    font: 300 20px/100% $openSans
+
+.RichEditor-controls
+    text-align: center
+    font: 300 18px/100% $openSans
+    margin-bottom: 5px
+    user-select: none
+
+.RichEditor-styleButton
+    color: $darkgray
+    cursor: pointer
+    margin-right: 16px
+    padding: 2px 0
+    display: inline-block
+
+.RichEditor-activeButton
+    font-weight: bold
+    color: $green
+
+.public-DraftStyleDefault-ol,
+.public-DraftStyleDefault-ul
+    padding-left: 30px
+
+.public-DraftEditorPlaceholder-inner
+    color: $lightgray
 
 
 @-webkit-keyframes inputHighlighter
