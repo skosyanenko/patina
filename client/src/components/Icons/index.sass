@@ -1,40 +1,71 @@
 @import 'config'
 
-.iconsContainer
+.icons
     width: 140px
     display: flex
     justify-content: space-between
+    +maxwidth($tablet)
+        width: 120px
+    +maxwidth($mobail)
+        width: 100px
 
-    &__box
+    &__wrapper
         display: flex
         flex-direction: column
         align-items: center
 
     &__counter
-        font: 500 11px/0.4 "Times New Roman", sans-serif
-        color: $green
+        font: 600 11px/0.4 $openSans
+        color: $lightgray
+        +maxwidth($mobail)
+            font-size: 10px
 
     &__views
         width: 38px
         height: 31px
         margin-top: 5px
-        background: url("/images/icons/views.svg") no-repeat center / contain
+        background: url('/images/icons/views.svg') no-repeat center / contain
+        +maxwidth($tablet)
+            width: 33px
+            height: 26px
+        +maxwidth($mobail)
+            margin-top: 3px
+            width: 28px
+            height: 21px
 
     &__clock
-        width: 29px
-        height: 29px
+        width: 27px
+        height: 27px
         margin-top: 7px
-        background: url("/images/icons/clock.svg") no-repeat center / contain
+        background: url('/images/icons/clock.svg') no-repeat center / contain
+        +maxwidth($tablet)
+            width: 22px
+            height: 22px
+        +maxwidth($mobail)
+            margin-top: 5px
+            width: 17px
+            height: 17px
 
     &__like
         width: 28px
         height: 27px
         margin-top: 8px
-        background: url("/images/icons/like.svg") no-repeat center / contain
+        background: url('/images/icons/like.svg') no-repeat center / contain
         position: relative
+        transition: .5s
+        +maxwidth($tablet)
+            width: 23px
+            height: 22px
+        +maxwidth($mobail)
+            margin-top: 6px
+            width: 18px
+            height: 17px
+
+        &.active
+            background: url('/images/icons/likeBold.svg') no-repeat center / contain
 
         &:after
-            content: url("/images/icons/likeBold.svg")
+            content: url('/images/icons/likeBold.svg')
             position: absolute
             width: 28px
             height: 27px
@@ -44,16 +75,13 @@
             transform: scale(0)
             opacity: 0
             transition: none
+            +maxwidth($tablet)
+                width: 23px
+                height: 22px
+            +maxwidth($mobail)
+                width: 18px
+                height: 17px
 
-.activated:after
-    animation: scaleFade 0.5s forwards
 
-@keyframes scaleFade
-    50%
-        opacity: 1
-        transform: scale(1)
-    100%
-        opacity: 0
-        transform: scale(2.5)
 
 

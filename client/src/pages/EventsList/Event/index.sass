@@ -1,0 +1,181 @@
+@import 'config'
+
+.event
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+    +maxwidth($desktop)
+        margin-top: 40px
+
+    &__date
+        height: 100%
+        display: flex
+        position: relative
+
+        &-skates,
+        &-ball,
+        &-bullfinch,
+        &-flower,
+        &-dandelion,
+        &-butterfly,
+        &-dragonfly,
+        &-raspberries,
+        &-shell,
+        &-umbrella,
+        &-acorn,
+        &-leaf
+            position: absolute
+
+        &-skates, &-butterfly, &-dragonfly, &-umbrella
+            width: 65px
+            top: -30px
+            left: 110px
+            transform: scale(2, 2)
+            +maxwidth($desktop)
+                left: 100px
+            +maxwidth($tablet)
+                width: 45px
+                top: -20px
+                left: 80px
+            +maxwidth($sm-mobail)
+                width: 35px
+
+        &-skates
+            left: 150px
+            +maxwidth($tablet)
+                left: 120px
+
+        &-butterfly
+            transform: scale(1, 1)
+            width: 80px
+            +maxwidth($sm-mobail)
+                width: 60px
+
+        &-dragonfly
+            transform: scale(1, 1)
+
+        &-umbrella
+            width: 35px
+            transform: scale(-1, 1)
+            +maxwidth($tablet)
+                width: 30px
+            +maxwidth($mobail)
+                width: 25px
+
+        &-ball, &-flower, &-raspberries, &-acorn
+            height: 270%
+            top: -55px
+            +maxwidth($desktop)
+                height: 240%
+                top: -40px
+                left: -25px
+            +maxwidth($mobail)
+                top: -35px
+                left: -15px
+            +maxwidth($sm-mobail)
+                top: -20px
+                height: 170%
+
+        &-flower
+            transform: rotate(90deg)
+
+        &-raspberries, &-flower
+            left: 0
+
+        &-acorn
+            height: 310%
+            top: -85px
+            left: 0
+
+        &-bullfinch, &-dandelion, &-shell, &-leaf
+            height: 270%
+            transform: scale(-1, 1)
+            top: -50px
+            left: -50px
+            +maxwidth($desktop)
+                height: 240%
+            +maxwidth($mobail)
+                top: -20px
+                left: -60px
+            +maxwidth($sm-mobail)
+                left: -15px
+                height: 170%
+
+        &-dandelion
+            +maxwidth($sm-mobail)
+                height: 140%
+
+        &-shell
+            height: 170%
+            top: -20px
+            +maxwidth($mobail)
+                height: 140%
+                left: 20px
+            +maxwidth($sm-mobail)
+                height: 110%
+                left: 0
+
+        &-leaf
+            transform: rotate(45deg)
+            left: 0
+            +maxwidth($tablet)
+                top: -50px
+            +maxwidth($sm-mobail)
+                left: 25px
+
+        &-digit
+            font: 300 72px/75% $cheque
+            color: $darkgray
+            +maxwidth($desktop)
+                font-size: 62px
+            +maxwidth($tablet)
+                font-size: 52px
+            +maxwidth($sm-mobail)
+                cursor: pointer
+
+    &__text
+        margin-left: 50px
+        display: flex
+        flex-direction: column
+        color: $carbonic
+        +maxwidth($desktop)
+            margin-left: 40px
+        +maxwidth($tablet)
+            margin-left: 30px
+
+        &-day
+            font: 500 18px/80% $waverlyExtra
+            +maxwidth($desktop)
+                font-size: 16px
+            +maxwidth($tablet)
+                font-size: 14px
+
+        &-time
+            margin-top: 10px
+            font: 100 14px/80% $waverly
+            +maxwidth($tablet)
+                margin-top: 7px
+
+    &__description
+        margin-top: 20px
+        display: flex
+        flex-direction: column
+        +maxwidth($desktop)
+            margin-top: 15px
+        +maxwidth($tablet)
+            margin-top: 10px
+
+        &-title
+            font: 500 18px/80% $waverly
+            +maxwidth($desktop)
+                font-size: 16px
+            +maxwidth($tablet)
+                font-size: 14px
+
+        &-text
+            margin-top: 7px
+            font: 100 14px/80% $waverly
+            +maxwidth($tablet)
+                margin-top: 5px
+
+

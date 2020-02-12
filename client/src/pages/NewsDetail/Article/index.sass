@@ -1,0 +1,57 @@
+@import 'config'
+
+.article
+    max-width: calc(50% + 70px)
+    width: 100%
+    padding-left: 70px
+    +maxwidth($desktop)
+        max-width: 100%
+        margin-top: 50px
+        padding-left: 0
+    +maxwidth($tablet)
+        margin-top: 35px
+    +maxwidth($mobail)
+        margin-top: 20px
+
+    &__title
+        width: 100%
+        margin-bottom: 30px
+        font: 500 60px/120% $vogue
+        color: $black
+        text-align: right
+        letter-spacing: 0.2px
+        +maxwidth($tablet)
+            margin-bottom: 25px
+            font-size: 50px
+        +maxwidth($mobail)
+            margin-bottom: 20px
+            font-size: 40px
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+
+        &-text
+            width: 100%
+            padding-top: 50px
+            position: relative
+            white-space: pre-line
+            @extend %sectiontext
+            text-align: justify
+            border-top: 3px solid $green
+            +maxwidth($tablet)
+                padding-top: 40px
+            +maxwidth($mobail)
+                padding-top: 30px
+                border-top: 2px solid $green
+
+        &-nav
+            margin-top: 50px
+            display: flex
+            align-items: center
+            justify-content: space-between
+            +maxwidth($tablet)
+                margin-top: 40px
+            +maxwidth($mobail)
+                margin-top: 30px
+

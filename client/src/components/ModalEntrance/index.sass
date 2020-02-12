@@ -13,30 +13,38 @@
     height: 100%
 
     &__circle
+        position: absolute
         width: 130px
         height: 130px
-        margin-bottom: 18%
+        top: -65px
         border-radius: 50%
         background: $white
 
-    &__content
-        width: 480px
-        height: 360px
+        &-user
+            width: 66px
+            height: 71px
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            margin: auto
+            position: absolute
+            background: url('/images/icons/form/user.svg') no-repeat center / contain
+            +maxwidth(400px)
+                width: 60px
+                height: 65px
+
+    &__wrapper
         padding: 40px
-        position: absolute
+        position: relative
         background: $white
         border-radius: 20px
         display: flex
         flex-direction: column
         justify-content: space-between
         align-items: center
-
-        &-user
-            width: 66px
-            height: 71px
-            top: -8%
-            position: absolute
-            background: url('/images/icons/user/user.svg') no-repeat center / contain
+        +maxwidth(400px)
+            max-width: 80%
 
         &-close
             background: url('/images/icons/close.svg') no-repeat center / contain
@@ -45,9 +53,5 @@
             margin-left: auto
             cursor: pointer
 
-        .registration__group
-            max-width: 100%
-
-        input
-            max-width: 100%
-
+    .button
+        margin-top: 30px

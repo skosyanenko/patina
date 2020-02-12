@@ -2,13 +2,13 @@
   {
     "name": "title",
     "label": "Название экранизации",
-    "img": "films",
+    "icon": "films",
     "type": "text"
   },
   {
     "name": "description",
     "label": "Описание экранизации",
-    "img": "author",
+    "icon": "author",
     "type": "textarea"
   },
   {

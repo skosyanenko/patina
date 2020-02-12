@@ -3,38 +3,43 @@ import './index.sass';
 
 class Sorting extends Component {
     state = {
-        isActiveSort: false
+        params: [
+            {value: 1, label: 'названию'},
+            {value: 2, label: 'автору'},
+            {value: 3, label: 'рейтингу'},
+        ]
     };
 
-    componentDidMount() {
-        this.activeSortLink();
-    }
-
-    activeSortLink = () => {
-        const sortingLinks = document.querySelectorAll('.sorting__type');
-            sortingLinks.forEach(item => item.addEventListener('click', (e) => {
-                e.preventDefault();
-                item.classList.remove('active');
-                this.classList.add('active');
-        }))
+    handleSort = value => {
+        this.setState(state => ({
+            params: state.params.map(x => {
+                x.active = x.value === value;
+                return x;
+            })
+        }));
     };
 
     render() {
+
         return (
             <div className="sorting">
-                <div className="sorting__title">
+                <span className="sorting__title">
                     Cортировать по:
-                </div>
-                <div className="sorting__container">
-                    <div className="sorting__type">названию</div>
-                    <div className="sorting__type">автору</div>
-                    <div className="sorting__type">рейтингу</div>
+                </span>
+                <div className="sorting__wrapper">
+                    {this.state.params.map((param, key) => (
+                        <span
+                            key={key}
+                            className={`sorting__wrapper-type ${param.active && 'active'}`}
+                            onClick={() => this.handleSort(param.value)}
+                        >
+                            {param.label}
+                        </span>
+                    ))}
                 </div>
             </div>
         )
     }
 }
-
-Sorting.propTypes = {};
 
 export default Sorting;

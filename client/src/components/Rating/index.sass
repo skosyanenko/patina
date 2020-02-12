@@ -8,6 +8,14 @@
     flex-direction: row
     justify-content: space-between
     position: relative
+    +maxwidth($tablet)
+        width: 140px
+        height: 20px
+        margin-bottom: 20px
+    +maxwidth($mobail)
+        width: 120px
+        height: 15px
+        margin-bottom: 15px
     &:hover
         &:before
             width: 137px
@@ -21,6 +29,12 @@
             background: $green
             opacity: 0.6
             border-radius: 5px
+            +maxwidth($tablet)
+                left: 45px
+                bottom: 30px
+            +maxwidth($mobail)
+                display: none
+
         &:after
             width: 3px
             height: 1px
@@ -31,12 +45,23 @@
             opacity: 0.6
             border: 6px solid transparent
             border-top: 12px solid $green
+            +maxwidth($tablet)
+                left: 64px
+                bottom: 12px
+            +maxwidth($mobail)
+                display: none
 
-    &__elem
+    &__item
         width: 25px
         height: 25px
         cursor: pointer
         transition: all 1s ease
+        +maxwidth($tablet)
+            width: 20px
+            height: 20px
+        +maxwidth($mobail)
+            width: 15px
+            height: 15px
 
         svg
             width: 25px
@@ -46,6 +71,12 @@
             stroke-width: 20
             color: $green
             transition: .5s
+            +maxwidth($tablet)
+                width: 20px
+                height: 20px
+            +maxwidth($mobail)
+                width: 15px
+                height: 15px
 
             &.active
                 fill: currentColor

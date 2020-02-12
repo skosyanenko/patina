@@ -2,19 +2,21 @@
   {
     "name": "firstName",
     "label": "Имя",
-    "img": "user",
+    "icon": "user",
     "type": "text"
   },
   {
     "name": "email",
     "label": "E-mail",
-    "img": "email",
-    "type": "text"
+    "icon": "email",
+    "type": "email",
+    "value": "[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}",
+    "message": "Некорректный E-mail"
   },
   {
     "name": "city",
     "label": "Город",
-    "img": "placeholder",
+    "icon": "placeholder",
     "type": "text"
   },
   {
@@ -22,45 +24,48 @@
     "label": "Пол",
     "type": "radio",
     "optionFirst": "Мужской",
-    "optionSecond": "Женский"
+    "optionSecond": "Женский",
+    "prefix": "registration"
   },
   {
     "name": "telegram",
     "label": "Настроить импорт/ экспорт",
-    "img": "telegram",
+    "icon": "telegram",
     "type": "text"
   },
   {
     "name": "books",
     "label": "Укажите любимые книги",
-    "img": "books",
+    "icon": "books",
     "type": "creatable",
     "isMulti": true
   },
   {
     "name": "authors",
     "label": "Укажите любимых писателей",
-    "img": "author",
+    "icon": "author",
     "type": "creatable",
     "isMulti": true
   },
   {
     "name": "lastName",
     "label": "Фамилия",
-    "img": "user",
+    "icon": "user",
     "type": "text"
   },
   {
     "name": "phone",
     "label": "Мобильный телефон",
-    "img": "telephone",
-    "type": "text"
+    "icon": "telephone",
+    "type": "tel"
   },
   {
     "name": "password",
-    "label": "Пароль",
-    "img": "password",
-    "type": "text"
+    "label": "Пароль (латинские буквы и цифры)",
+    "icon": "password",
+    "type": "password",
+    "value": "(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}",
+    "message": "Некорректный пароль. Пароль должен состоять из цифр и латинских букв"
   },
   {
     "name": "avatar",
@@ -70,13 +75,13 @@
   {
     "name": "vk",
     "label": "Настроить импорт/ экспорт",
-    "img": "vk",
+    "icon": "vk",
     "type": "text"
   },
   {
     "name": "genres",
     "label": "Укажите любимые жанры",
-    "img": "wishlist",
+    "icon": "wishlist",
     "type": "creatable",
     "isMulti": true
   }

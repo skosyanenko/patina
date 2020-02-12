@@ -2,28 +2,28 @@
   {
     "name": "title",
     "label": "Название мероприятия",
-    "img": "author",
+    "icon": "author",
     "type": "text"
   },
   {
     "name": "place",
     "label": "Место проведения мероприятия",
-    "img": "author",
+    "icon": "author",
     "type": "text"
   },
   {
     "name": "date",
-    "img": "clock",
+    "icon": "clock",
     "type": "date"
   },
   {
     "name": "timeStart",
-    "img": "clock",
+    "icon": "clock",
     "type": "time"
   },
   {
     "name": "timeEnd",
-    "img": "clock",
+    "icon": "clock",
     "type": "time"
   }
 ]

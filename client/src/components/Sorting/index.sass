@@ -8,21 +8,36 @@
     flex-direction: column
     font:  300 17px/100% $waverly
     color: $darkgray
+    +maxwidth($tablet)
+        max-width: 100%
+        margin-right: auto
+        font-size: 15px
+    +maxwidth($mobail)
+        font-size: 13px
 
     &__title
         text-align: right
+        +maxwidth($tablet)
+            text-align: left
 
-    &__container
+    &__wrapper
         margin-top: 30px
         display: flex
         flex-direction: row
         justify-content: space-between
+        +maxwidth($tablet)
+            margin-top: 20px
+            justify-content: initial
+        +maxwidth($mobail)
+            margin-top: 10px
 
-    &__type
-        cursor: pointer
-        &:hover
-            color: $green
-        &.active
-            font:  bold 17px/100% $waverly
-            color: $green
+        &-type
+            cursor: pointer
+            +maxwidth($tablet)
+                margin: 0 70px 10px 0
+            &:hover
+                color: $green
+            &.active
+                font:  bold 17px/100% $waverly
+                color: $green
 

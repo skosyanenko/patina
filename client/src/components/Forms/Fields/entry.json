@@ -1,0 +1,16 @@
+[
+  {
+    "name": "email",
+    "label": "E-mail",
+    "icon": "email",
+    "type": "text",
+    "value": "/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i",
+    "message": "Некорректный E-mail"
+  },
+  {
+    "name": "password",
+    "label": "Пароль",
+    "icon": "password",
+    "type": "password"
+  }
+]

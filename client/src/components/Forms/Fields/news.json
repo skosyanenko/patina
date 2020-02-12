@@ -2,13 +2,13 @@
   {
     "name": "title",
     "label": "Название новости",
-    "img": "author",
+    "icon": "author",
     "type": "text"
   },
   {
     "name": "description",
     "label": "Описание новости",
-    "img": "author",
+    "icon": "author",
     "type": "textarea"
   },
   {

@@ -24,15 +24,15 @@ class RightMenu extends Component {
 
     render() {
         return (
-            <div className="rightMenu">
-                <div className="rightMenu__content">
-                    <div className="rightMenu__title">
+            <div className="content">
+                <div className="content__wrapper">
+                    <div className="content__title">
                         содержание
                     </div>
                     {this.state.randomBooks && this.state.randomBooks.map((item, key) => (
-                        <Link to="/book" className="rightMenu__book" key={item.id}>
-                            <span className="rightMenu__book-title">{item.title}</span>
-                            <span className="rightMenu__book-num">{key + 1}</span>
+                        <Link to="/book" className="content__item" key={item.id}>
+                            <span className="content__item-title">{item.title}</span>
+                            <span className="content__item-num">{key + 1}</span>
                         </Link>
                     ))}
                 </div>
@@ -40,6 +40,5 @@ class RightMenu extends Component {
         );
     }
 }
-
 
 export default RightMenu;

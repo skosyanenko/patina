@@ -1,0 +1,31 @@
+@import 'config'
+
+.depiction
+    display: flex
+    flex-direction: column
+
+    &__wrapper
+        width: 100%
+        margin-bottom: 20px
+        display: flex
+        justify-content: space-between
+
+        &-title
+            font: 500 50px/100% $vogue
+            color: $black
+            +maxwidth($tablet)
+                font-size: 46px
+            +maxwidth($mobail)
+                font-size: 42px
+            +maxwidth($sm-mobail)
+                font-size: 38px
+
+    &__description
+        width: 100%
+        padding-bottom: 40px
+        @extend  %sectiontext
+        +maxwidth($tablet)
+            padding-bottom: 30px
+        +maxwidth($mobail)
+            padding-bottom: 0
+            text-align: justify

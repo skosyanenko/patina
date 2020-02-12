@@ -1,33 +1,42 @@
 import React from 'react';
 import Modal from 'react-modal';
+import {useForm} from 'react-hook-form';
+import InputText from '../Forms/Input';
+import entry from '../Forms/Fields/entry';
 import './index.sass';
 
-const ModalEntrance = ({isOpen, toggleModal}) => (
-   <Modal className="modal" isOpen={isOpen}>
-        <div className="modal__circle"/>
-        <div className="modal__content">
-            <div className="modal__content-user"/>
-            <div
-                className="modal__content-close"
-                onClick={() => toggleModal(false)}
-            />
-            <div className="registration__group">
-                <img src="images/icons/user/email.svg" alt="" className="registration__column-img"/>
-                <input type="text" required/>
-                <span className="registration__group-highlight"/>
-                <span className="registration__group-bar"/>
-                <label>E-mail</label>
-            </div>
-            <div className="registration__group">
-                <img src="images/icons/user/password.svg" alt="" className="registration__column-img"/>
-                <input type="text" required/>
-                <span className="registration__group-highlight"/>
-                <span className="registration__group-bar"/>
-                <label>Пароль</label>
-            </div>
-            <div className="button buttonGreen">Войти</div>
-        </div>
-   </Modal>
-);
+const ModalEntrance = ({isOpen, toggleModal}) => {
+    const {handleSubmit, register, errors} = useForm();
+
+    const onSubmit = values => {
+        console.log(values);
+    };
+
+    return (
+        <Modal className="modal" isOpen={isOpen} ariaHideApp={false}>
+            <form className="modal__wrapper" onSubmit={handleSubmit(onSubmit)}>
+                <div className="modal__circle">
+                    <div className="modal__circle-user"/>
+                </div>
+
+                <div
+                  className="modal__wrapper-close"
+                  onClick={() => toggleModal(false)}
+                />
+                {entry.map((field, key) => (
+                    <InputText
+                        key={key}
+                        {...field}
+                        register={register}
+                        errors={errors}
+                    />
+                ))}
+                <button type="submit" className="button button-green">
+                    Войти
+                </button>
+            </form>
+        </Modal>
+    )
+};
 
 export default ModalEntrance;

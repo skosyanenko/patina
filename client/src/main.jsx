@@ -17,11 +17,11 @@ class Main extends Component {
     switchClasses = (path) => {
         switch(path) {
             case '/events':
-                return 'section--events';
+                return 'page--events';
             case '/':
-                return 'section--index';
+                return 'page--index';
             default:
-                return 'section';
+                return 'page';
         }
     };
 
@@ -32,10 +32,10 @@ class Main extends Component {
         const {location, routes} = this.props;
 
         return (
-            <div className={`${modalIsOpen && 'blur'}`}>
+            <div className={`${modalIsOpen && 'blur' || 'wrapper'}`}>
                 <Header location={location} toggleModal={this.toggleModal}/>
 
-                    <div className="wrapper">
+                    <div className="wrapper__layout">
 
                         <Menu location={location}/>
 

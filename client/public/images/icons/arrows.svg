@@ -6,18 +6,4 @@
 	<g id="chevron-right">
 		<polygon id="arrow" points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"/>
 	</g>
-
-	<linearGradient id="stripes"
-					x1="0" y1="0" x2="100%" y2="0%">
-          <stop stop-color="hsl(45,100%,65%)" offset="0"/>
-		<stop stop-color="hsl(320,100%,65%)" offset="50%"/>
-		<stop stop-color="hsl(200,100%,60%)" offset="100%"/>
-    </linearGradient>
-
-	<linearGradient id="stripes2" x1="0" y1="0"
-					x2="0" y2="100%">
-          <stop stop-color="rgba(0,0,0,.2)"/>
-		<stop stop-color="rgba(0,0,0,.02)" offset="90"/>
-    </linearGradient>
-
 </svg>

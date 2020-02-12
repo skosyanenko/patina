@@ -1,0 +1,18 @@
+@import 'config'
+
+.backwards
+    width: 50px
+    height: 36px
+    transform: rotate(180deg)
+    background: url('/images/icons/arrow.svg') no-repeat center / contain
+    +maxwidth($mobail)
+        height: 30px
+
+    &:hover
+        transform: translate(100)
+
+    &__link
+        z-index: 4
+
+
+

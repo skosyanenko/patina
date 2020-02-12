@@ -8,12 +8,18 @@
     justify-content: center
     align-items: center
     background-color: $browngray
+    +maxwidth($tablet)
+        height: 45px
+    +maxwidth($mobail)
+        height: 40px
 
-    &__container
+    &__text
         display: flex
         justify-content: center
         align-items: center
         font: 100 17px/100% $waverly
         color: $darkgray
+        +maxwidth($mobail)
+            font-size: 15px
 
 

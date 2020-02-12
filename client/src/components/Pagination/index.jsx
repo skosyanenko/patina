@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactPaginate from 'react-paginate';
 import {Transition} from 'react-transition-group';
 import PropTypes from 'prop-types';
-import ArrowPagination from "./ArrowPagination/index";
+import ArrowPagination from './ArrowPagination/index';
 import './index.sass';
 
 class Pagination extends Component {
@@ -18,25 +18,25 @@ class Pagination extends Component {
         const {classNamePrefix, pageCount, handlePageClick, perPage, setPerPage} = this.props;
 
         return (
-            <div className={`container ${classNamePrefix}`}>
+            <div className={`pagination ${classNamePrefix}`}>
                 <ReactPaginate
                     pageCount={pageCount}
                     onPageChange={handlePageClick}
-                    containerClassName={'container__pagination'}
+                    containerClassName={'pagination__wrapper'}
                     breakLabel={'...'}
                     breakClassName={'break'}
                     previousLabel={<ArrowPagination/>}
                     nextLabel={<ArrowPagination/>}
                     activeClassName={'active'}
                 />
-                <div className="container__counter">
+                <div className="pagination__counter">
                     Выводить по:
                     <span className="count" onClick={this.toggleDropdown}>
                         {perPage}
                     </span>
                     <Transition in={pageDropdown} timeout={50}>
                         {state => (
-                            <div className={'container__dropdown ' + state}>
+                            <div className={'pagination__dropdown ' + state}>
                                 {valuesDropdown.map(item => (
                                     <span
                                         className="count" key={item}
@@ -58,11 +58,10 @@ class Pagination extends Component {
 }
 
 Pagination.propTypes = {
-    pageCount: PropTypes.number.isRequired,
-    perPage: PropTypes.number.isRequired,
+    pageCount:       PropTypes.number.isRequired,
+    perPage:         PropTypes.number.isRequired,
     handlePageClick: PropTypes.func.isRequired,
-    setPerPage: PropTypes.func.isRequired
+    setPerPage:      PropTypes.func.isRequired
 };
-
 
 export default Pagination;

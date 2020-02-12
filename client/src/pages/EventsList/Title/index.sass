@@ -1,0 +1,39 @@
+@import 'config'
+
+.events-wrap
+    display: flex
+    align-items: flex-end
+    +maxwidth($sm-mobail)
+        align-items: flex-start
+        flex-direction: column
+
+    &__title
+        font: 500 70px/78% $cheque
+        color: $black
+        text-transform: uppercase
+        +maxwidth($tablet)
+            font-size: 55px
+        +maxwidth($mobail)
+            font-size: 40px
+
+    &__subtitle
+        margin-left: 35px
+        font: bold 30px/100% $cheque
+        color: $black
+        opacity: 0
+        +maxwidth($tablet)
+            margin-left: 25px
+            font-size: 25px
+        +maxwidth($mobail)
+            margin-left: 15px
+            font-size: 20px
+        +maxwidth($sm-mobail)
+            margin-left: 0
+            margin-top: 10px
+
+        &.active
+            opacity: 1
+            transition: .3s ease-in
+
+
+

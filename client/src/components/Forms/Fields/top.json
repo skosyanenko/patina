@@ -1,25 +1,26 @@
 [
   {
     "name": "title",
-    "label": "Название топа",
-    "img": "wishlist",
+    "label": "Название подборки",
+    "icon": "wishlist",
     "type": "text"
   },
   {
     "name": "description",
-    "label": "Описание топа",
-    "img": "author",
-    "type": "textarea"
+    "label": "Напишите описание подборки:",
+    "icon": "author",
+    "type": "editor",
+    "placeholder": "Описание подборки . . ."
   },
   {
     "name": "image",
-    "label": "Обложка топа",
+    "label": "Обложка подборки",
     "type": "file"
   },
   {
-    "name": "image",
+    "name": "books",
     "label": "Выберите книги",
-    "img": "books",
+    "icon": "books",
     "type": "select",
     "isMulti": true
   }

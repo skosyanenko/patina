@@ -1,0 +1,184 @@
+@import 'config'
+
+.review-wrap
+    width: 100%
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+    text-align: justify
+    +maxwidth($tablet)
+        margin-top: 40px
+    +maxwidth($mobail)
+        margin-top: 30px
+    +maxwidth($sm-mobail)
+        margin-top: 20px
+
+    &__paragraph
+        @extend %sectiontext
+        &:first-child
+            &:first-letter
+                font: normal 50px/100% $izvestia
+                color: $green
+                +maxwidth($tablet)
+                    font-size: 46px
+                +maxwidth($mobail)
+                    font-size: 42px
+                +maxwidth($sm-mobail)
+                    font-size: 38px
+
+    &__heading
+        @extend %inputtext
+
+    mark
+        @extend %inputtext
+        padding-left: 30px
+        border-left: 6px solid $carbonic
+        color: $carbonic
+        font-style: italic
+        background-color: white
+        margin: 30px 0
+        +maxwidth($tablet)
+            margin: 20px 0
+            padding-left: 20px
+            border-left: 4px solid $carbonic
+        +maxwidth($mobail)
+            padding-left: 10px
+
+    &__quote
+        width: 100%
+        padding: 0 20px
+        @extend %sectiontext
+        position: relative
+        margin: 25px 0
+        &:after, &:before
+            width: 37px
+            height: 31px
+            position: absolute
+            content: url('/images/icons/black-quote.svg')
+            opacity: 0.5
+        &:after
+            top: 0
+            left: 0
+        &:before
+            bottom: 0
+            right: 0
+            transform: rotate(180deg)
+
+    &__image
+        max-width: 525px
+        width: 100%
+        margin: 30px auto
+        +maxwidth($tablet)
+            margin: 25px auto
+        +maxwidth($mobail)
+            margin: 20px 0
+        +maxwidth($sm-mobail)
+            margin: 15px 0
+
+    &__delimiter
+        font: 300 40px/100% $openSans
+        margin: 15px auto
+        +maxwidth($tablet)
+            margin: 10px auto
+        +maxwidth($mobail)
+            font-size: 30px
+
+.review-wrapper
+    max-width: calc(50% + 250px)
+    width: 100%
+    margin-right: -40px
+    background: $lightpink
+    position: relative
+    display: flex
+    flex-direction: column
+
+    &__triangle
+        height: 40px
+        width: 3vw
+        margin: 0 auto
+        right: 0
+        left: 0
+        position: absolute
+        border-top: 1px solid $white
+        overflow: hidden
+        background: $white
+
+        &:before,
+        &:after
+            width: 3vw
+            height: 250%
+            top: -1px
+            left: 47%
+            position: absolute
+            content: ''
+            border: 1px solid $white
+            border-radius: 100%
+            background: $lightpink
+
+        &:after
+            left: auto
+            right: 47%
+
+    &__title
+        margin: 70px 0 0
+        font: 500 58px/100% $izvestia
+        color: $black
+        text-transform: uppercase
+        text-align: center
+
+    &__subtitle
+        margin: 60px 0 0
+        padding: 30px 40px
+        position: relative
+        @extend %sectiontext
+        text-align: right
+
+        span
+            width: 100%
+            display: flex
+
+        &:before,
+        &:after
+            width: 100%
+            height: 2px
+            left: 0
+            position: absolute
+            content: ''
+            background: $black
+
+        &:before
+            top: 0
+
+        &:after
+            bottom: 0
+
+    &__user
+        width: 30%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__text
+        margin-top: 35px
+        display: flex
+
+    &__description
+        padding: 10px 30px
+        max-width: 70%
+        margin-bottom: 40px
+        z-index: 2
+        white-space: pre-line
+        @extend %sectiontext
+        text-align: justify
+        border-left: 1px solid $black
+
+    &__number
+        max-height: 412px
+        bottom: -9px
+        right: -60px
+        position: absolute
+        z-index: 1
+        font: 500 598px/69.5% $vogue
+        color:  rgba(139, 136, 116, 0.24)
+        pointer-events: none
+

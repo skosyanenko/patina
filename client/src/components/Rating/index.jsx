@@ -1,43 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './index.sass';
-import PropTypes from 'prop-types';
 
-class Rating extends Component {
-
-
-    render() {
-        return (
-            <div className="rating">
-                <div className="rating__elem">
-                    <svg viewBox="0 0 406.125 406.125">
-                        <use href="/images/icons/star.svg#star"/>
-                    </svg>
-                </div>
-                <div className="rating__elem">
-                    <svg viewBox="0 0 406.125 406.125">
-                        <use href="/images/icons/star.svg#star"/>
-                    </svg>
-                </div>
-                <div className="rating__elem">
-                    <svg viewBox="0 0 406.125 406.125">
-                        <use href="/images/icons/star.svg#star"/>
-                    </svg>
-                </div>
-                <div className="rating__elem">
-                    <svg viewBox="0 0 406.125 406.125">
-                        <use href="/images/icons/star.svg#star"/>
-                    </svg>
-                </div>
-                <div className="rating__elem">
-                    <svg viewBox="0 0 406.125 406.125">
-                        <use href="/images/icons/star.svg#star"/>
-                    </svg>
-                </div>
+const Rating = () => (
+    <div className="rating">
+        {[1, 2 ,3, 4, 5].map(star => (
+            <div key={star} className="rating__item">
+                <svg viewBox="0 0 406.125 406.125">
+                    <use href="/images/icons/star.svg#star"/>
+                </svg>
             </div>
-        );
-    }
-}
-
-Rating.propTypes = {};
+        ))}
+    </div>
+);
 
 export default Rating;

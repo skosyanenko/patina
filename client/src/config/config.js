@@ -45,4 +45,34 @@ export const sliderSettings = {
     )
 };
 
+export const effectForImage = {
+    movement: {
+        imgWrapper: {
+            translation: {x: 0, y: 0, z: 0},
+            rotation: {x: -15, y: 15, z: 0},
+            reverseAnimation: {
+                duration: 1200,
+                easing: 'easeOutElastic',
+                elasticity: 600
+            }
+        },
+        lines: {
+            translation: {x: 10, y: 10, z: [0, 10]},
+            reverseAnimation: {
+                duration: 1000,
+                easing: 'easeOutExpo',
+                elasticity: 600
+            }
+        },
+        shine: {
+            translation: {x: 50, y: 50, z: 0},
+            reverseAnimation: {
+                duration: 1200,
+                easing: 'easeOutElastic',
+                elasticity: 600
+            }
+        }
+    }
+};
+
 

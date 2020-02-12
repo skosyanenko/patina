@@ -1,6 +1,6 @@
 @import 'config'
 
-.rightMenu
+.content
     width: 310px
     padding: 0 40px
     position: relative
@@ -8,6 +8,8 @@
     justify-content: center
     border-left: 1px solid $black
     border-top: 2px solid $white
+    +maxwidth(1640px)
+        display: none
 
     &:before
         width: 100%
@@ -17,22 +19,19 @@
         content: ''
         background: $white
 
-    +maxwidth($desktop)
-        display: none
-
-    &__content
+    &__wrapper
         width: 100%
         display: flex
         flex-direction: column
 
     &__title
-        margin-top: 70px
+        margin-top: 75px
         margin-bottom: 28px
         font:  300 25px/100% $waverly
         color: $darkgray
         text-transform: uppercase
 
-    &__book
+    &__item
         margin-bottom: 10px
         font:  100 20px/100% $waverly
         color: $darkgray
@@ -44,7 +43,7 @@
 
         &:hover
             font-weight: 500
-            transform: scale(1.1)
+            transform: scale(1.01)
             color: $green
 
         &-title

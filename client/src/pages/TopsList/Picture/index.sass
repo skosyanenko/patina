@@ -1,0 +1,151 @@
+@import 'config'
+
+.picture
+    max-width: calc(50% - 90px)
+    width: 100%
+    margin-top: 70px
+    position: relative
+    display: flex
+    flex-direction: column
+    +maxwidth($tablet)
+        max-width: 465px
+        margin-top: 40px
+    +maxwidth($mobail)
+        max-width: 285px
+        margin-top: 30px
+
+
+    &__quote
+        width: 83px
+        height: 65px
+        margin-left: -10px
+        background: url('/images/icons/quote.svg') no-repeat center / contain
+        opacity: 0.5
+        +maxwidth($tablet)
+            width: 65px
+            height: 55px
+        +maxwidth($mobail)
+            width: 60px
+            height: 50px
+        +maxwidth($sm-mobail)
+            width: 45px
+            height: 35px
+        &:last-child
+            bottom: 0
+            right: calc(100% + 125px)
+            position: absolute
+            transform: rotate(90deg) scale(-1, -1)
+            +maxwidth($tablet)
+                right: calc(100% + 110px)
+            +maxwidth($mobail)
+                right: calc(100% + 90px)
+            +maxwidth($sm-mobail)
+                right:  calc(100% + 30px)
+
+    &__wrapper
+        display: flex
+
+    &__image
+        position: relative
+
+        &-background
+            max-width: 352px
+            width: 100%
+            margin-top: 53px
+            position: absolute
+            filter: brightness(1.2)
+            transform-style: preserve-3d
+            will-change: transform
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)
+            +maxwidth($tablet)
+                max-width: 300px
+            +maxwidth($mobail)
+                max-width: 250px
+            +maxwidth($sm-mobail)
+                max-width: 180px
+                margin-top: 30px
+
+        &-border
+            width: 324px
+            height: 475px
+            border: 3px solid $sand
+            margin-left: 82px
+            +maxwidth($tablet)
+                width: 300px
+                height: 406px
+                margin-left: 58px
+            +maxwidth($mobail)
+                width: 250px
+                height: 338px
+                margin-left: 50px
+            +maxwidth($sm-mobail)
+                width: 180px
+                height: 250px
+                margin-left: 30px
+
+    &__citation
+        width: 100%
+        margin-left: 20px
+        display: flex
+        flex-direction: column
+        position: relative
+        +maxwidth($tablet)
+            width: fit-content
+            margin-left: 15px
+        +maxwidth($mobail)
+            margin-left: 10px
+
+        &-wrap
+            width: 400px
+            max-height: 74px
+            height: 70px
+            padding-left: 26px
+            top: 0
+            position: absolute
+            font:  500 18px/100% $waverly
+            color: $darkgray
+            transform: rotate(-90deg) translate(-85%, 50%)
+            transform-origin: 0 0
+            border-left: 10px solid $sand
+            overflow-wrap: break-word
+            +maxwidth($desktop)
+                transform: rotate(-90deg) translate(-85%, 15%)
+            +maxwidth($tablet)
+                width: 350px
+                max-height: 64px
+                height: 60px
+                padding-left: 21px
+                font-size: 16px
+                border-left: 7px solid $sand
+            +maxwidth($mobail)
+                width: 300px
+                max-height: 54px
+                height: 50px
+                padding-left: 16px
+                font-size: 14px
+            +maxwidth($sm-mobail)
+                width: 250px
+                max-height: 58px
+                height: 58px
+                border-left: 4px solid $sand
+                transform: rotate(-90deg) translate(-85%, 10%)
+                font-size: 12px
+
+        &-author
+            margin-top: auto
+            position: absolute
+            right: calc(100% + 15px)
+            top: 50%
+            transform: rotate(90deg)
+            font:  500 18px/100% $waverly
+            color: $darkgray
+            text-align: right
+            +maxwidth($tablet)
+                top: 45%
+                right: calc(100% + 5px)
+                font-size: 16px
+            +maxwidth($mobail)
+                font-size: 14px
+
+
+

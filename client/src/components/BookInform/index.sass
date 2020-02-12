@@ -1,12 +1,18 @@
 @import 'config'
 
-.bookInform
+.book-inform
     max-width: 100%
-    //margin-top: 75px
+    margin-top: 70px
     display: flex
     z-index: 10
+    +maxwidth($tablet)
+        margin-top: 40px
+    +maxwidth($mobail)
+        margin-top: 20px
 
     &__container
         margin-left: 20px
         display: flex
         flex-direction: column
+        +maxwidth($tablet)
+            margin-left: 0

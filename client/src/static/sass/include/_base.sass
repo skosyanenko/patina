@@ -1,61 +1,158 @@
 @import 'config'
 
-.wrapper
-    display: flex
+body
+    height: 100%
 
-.section
+#root
+    height: 100%
+
+p
+    text-indent: 35px
+    margin-bottom: 25px
+    &:last-child
+        margin-bottom: 0
+
+.wrapper
+    height: 100%
+
+    &__layout
+        display: flex
+        min-height: calc(100% - 50px - 80px)
+        +maxwidth($tablet)
+            min-height: calc(100% - 45px - 70px)
+        +maxwidth($mobail)
+            min-height: calc(100% - 40px - 60px)
+
+.page
     width: 100%
     max-width: calc(100% - 620px)
-    min-height: 100vh
     margin: 0 auto
     padding: 40px
     position: relative
     display: flex
-    //justify-content: space-between
     flex-direction: column
-    +maxwidth($desktop)
+    +maxwidth(1640px)
+        max-width: calc(100% - 250px)
         border-top: none
-        max-width: calc(100% - 210px)
-    +maxwidth($tablet)
+    +maxwidth(1140px)
         max-width: 100%
+    +maxwidth($tablet)
+        padding: 30px
+        min-height: calc(100% - 45px)
+    +maxwidth($mobail)
+        padding: 20px
+        min-height: calc(100% - 40px)
 
-    &__top
+    &.page-enter
+        opacity: 0
+        transform: scale(1.1)
+
+    &.page-enter-active
+        opacity: 1
+        transform: scale(1)
+        transition: opacity 300ms, transform 300ms
+
+    &.page-exit
+        opacity: 1
+        transform: scale(1)
+
+    &.page-exit-active
+        opacity: 0
+        transform: scale(0.9)
+        transition: opacity 300ms, transform 300ms
+
+    &__wrapper
         width: 100%
         display: flex
         align-items: flex-end
 
-    &__title
-        @extend %sectiontitle
+        .sorting
+            +maxwidth($tablet)
+                display: none
 
-    &__subtitle
-        @extend %sectionsubtitle
-        margin-top: 25px
-        opacity: 0
+    &__wrap
+        display: flex
+        flex-direction: column
 
-        &--reviews
-            width: 65%
+        &-title
+            @extend %sectiontitle
 
-        &.active
-            opacity: 1
-            transition: .3s ease-in
+        &-subtitle
+            @extend %sectionsubtitle
+            margin-top: 25px
+            opacity: 0
+            +maxwidth($tablet)
+                margin-top: 20px
+            +maxwidth($mobail)
+                margin-top: 15px
 
-    &__profile
+            &--reviews
+                width: 65%
+                +maxwidth($mobail)
+                    width: 100%
+
+            &.active
+                opacity: 1
+                transition: .3s ease-in
+
+    &--container
         margin-left: 40px
         display: flex
         align-items: center
+        +maxwidth($desktop)
+            width: fit-content
+            margin: 0 auto
+        +maxwidth($mobail)
+            flex-direction: column
 
-    &__blocks
+    &--profile
         display: flex
         justify-content: space-between
+        +maxwidth($desktop)
+            flex-direction: column
+
+        &-block
+            max-width: calc(50% - 20px)
+            width: 100%
+            +maxwidth($desktop)
+                max-width: 80%
+                margin: 0 auto
+            +maxwidth($mobail)
+                max-width: 100%
+
+        &-follow
+            display: flex
+            flex-direction: column
+
+        &-wrap
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+
+            .published
+                max-width: calc(50% - 20px)
+                width: 100%
+                +maxwidth($mobail)
+                    max-width: 100%
 
         &-title
             margin-bottom: 20px
-            font: 300 17px/100% $openSans
+            font: 300 18px/100% $openSans
             color: $darkgray
+            +maxwidth($tablet)
+                margin-bottom: 15px
+                font-size: 16px
+            +maxwidth($mobail)
+                margin-bottom: 10px
+                font-size: 14px
 
     &--index
         max-width: calc(100% - 310px)
         margin: 0 0 0 auto
+        +maxwidth(1640px)
+            max-width: calc(100% - 250px)
+        +maxwidth($desktop)
+            max-width: 100%
 
     &--events
         width: 100%
@@ -64,67 +161,80 @@
         display: flex
         justify-content: space-between
         flex-direction: column
+        +maxwidth($tablet)
+            padding: 30px
+        +maxwidth($mobail)
+            padding: 20px
 
     &--form
         display: flex
         flex-direction: column
         align-items: center
 
-.content
+.container
     display: flex
     flex-direction: row
     justify-content: space-between
+    +maxwidth($tablet)
+        flex-direction: column
 
-    &__containerBook
+    &__container-book
         max-width: calc(50% - 50px)
         width: 100%
         display: flex
         flex-direction: column
+        +maxwidth($tablet)
+            max-width: 100%
 
-    &__containerTop
+    &__container-top
         max-width: 50%
         width: 100%
-
-.news
-    flex-wrap: wrap
-
-    &__container
-        display: flex
-        justify-content: space-between
-
-        &-content
+        +maxwidth($tablet)
             max-width: 100%
-            margin: 25px 0 0 40px
-            display: flex
+            margin-top: 120px
+        +maxwidth($mobail)
+            margin-top: 70px
+
+    &--book-detail
+        +maxwidth(1280px)
             flex-direction: column
 
-.icons
+    &--top-detail
+        +maxwidth($tablet)
+            align-items: center
+
+    &--new
+        margin-bottom: 0
+        +maxwidth($desktop)
+            flex-direction: column
+
+    .sorting
+        display: none
+        +maxwidth($tablet)
+            display: flex
+
+.events-wrapper
+    width: 100%
+    display: grid
+    grid-template-rows: repeat(5, 1fr)
+    grid-template-columns: repeat(5, 1fr)
+    +maxwidth(1780px)
+        grid-template-rows: repeat(7, 1fr)
+        grid-template-columns: repeat(4, 1fr)
+    +maxwidth($tablet)
+        grid-template-rows: repeat(9, 1fr)
+        grid-template-columns: repeat(3, 1fr)
+    +maxwidth($sm-mobail)
+        grid-template-rows: repeat(13, 1fr)
+        grid-template-columns: repeat(2, 1fr)
+
+.icons-wrap
     display: flex
     justify-content: flex-end
     align-items: center
 
     &__socials
         margin-right: 80px
-
-.section-enter
-    opacity: 0
-    transform: scale(1.1)
-
-.section-enter-active
-    opacity: 1
-    transform: scale(1)
-    transition: opacity 300ms, transform 300ms
-
-.section-exit
-    opacity: 1
-    transform: scale(1)
-
-
-.section-exit-active
-    opacity: 0
-    transform: scale(0.9)
-    transition: opacity 300ms, transform 300ms
-
 
 .fade
     &-appear, &-enter
@@ -134,17 +244,6 @@
         &-active
             opacity: 1
             transition: .6s ease-in
-
-.arrowBackwards
-    width: 50px
-    height: 36px
-    transform: rotate(180deg)
-    background: url('/images/icons/arrow.svg') no-repeat center / contain
-    &:hover
-        transform: translate(100)
-
-.arrowBackwardsLink
-    z-index: 4
 
 .blur
     filter: blur(2px)

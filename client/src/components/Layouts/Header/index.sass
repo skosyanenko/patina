@@ -9,21 +9,35 @@
     align-items: center
     border-bottom: 1px solid $black
     background-color: $white
+    +maxwidth($tablet)
+        height: 70px
+    +maxwidth($mobail)
+        height: 60px
 
     &--index
         border-bottom: none
 
     &__container
-        width: 44px
-        height: 44px
         display: flex
         justify-content: center
         align-items: center
 
-    &__logo
-        width: 50px
-        height: 50px
-        background: url('/images/icons/logotype.svg') no-repeat center / contain
+        &-logo
+            width: 50px
+            height: 50px
+            background: url('/images/icons/logotype.svg') no-repeat center / contain
+            +maxwidth($tablet)
+                width: 40px
+                height: 40px
+            +maxwidth($mobail)
+                width: 30px
+                height: 30px
+
+    &__menu, &__user
+        //width: 310px
+        display: flex
+        justify-content: center
+        align-items: center
 
 
 

@@ -1,25 +1,40 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const RadioButton = ({label, name, optionFirst, optionSecond}) => {
+const RadioButton = ({label, name, optionFirst, onChange, optionSecond, prefix, register, errors}) => {
+    const required = {value: true, message: 'Обязательное поле!'};
+
+    const handleChange = ({target: {value}}) => onChange(name, value);
+
     return (
-        <div className="registration__radio">
+        <div className={`${prefix}__radio `} ref={register({name}, {required})}>
             <span>{label}</span>
-            <div className="registration__radio-radio">
-                <input type="radio" name={name} id="man"/>
-                <label htmlFor="man">{optionFirst}</label>
+            <div className={`${prefix}__radio-radio`}>
+                <input
+                    id={optionFirst}
+                    type="radio"
+                    value={optionFirst}
+                    onChange={handleChange}
+                    name={name}
+                />
+                <label htmlFor={optionFirst}>
+                    {optionFirst}
+                </label>
             </div>
-            <div className="registration__radio-radio">
-                <input type="radio" name={name} id="woman"/>
-                <label htmlFor="woman">{optionSecond}</label>
+            <div className={`${prefix}__radio-radio`}>
+                <input
+                    id={optionSecond}
+                    type="radio"
+                    value={optionSecond}
+                    onChange={handleChange}
+                    name={name}
+                />
+                <label htmlFor={optionSecond}>
+                    {optionSecond}
+                </label>
             </div>
+            <div className={`${prefix}__radio-error`}>{errors[name] && errors[name].message}</div>
         </div>
     )
-};
-
-RadioButton.propTypes = {
-    optionFirst:   PropTypes.string.isRequired,
-    optionSecond:  PropTypes.string.isRequired
 };
 
 export default RadioButton;

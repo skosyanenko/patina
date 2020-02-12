@@ -57,7 +57,7 @@ class Menu extends Component {
 			        <span className="menu__burger-center"/>
 				</div>
 				<nav className={`menu ${isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
-					<div className="menu__container">
+					<div className="menu__wrapper">
 						{navLinks.map((item, key) => (
 							<NavLink to={item.path} key={key} {...defaults}>
 								<i className="menu__line" style={{width: lineWidth}}/>
@@ -65,8 +65,8 @@ class Menu extends Component {
 							</NavLink>
 						))}
 					</div>
-					<Link to={'/search'} className="menu__search ">
-						<div className="menu__loupe navigate"/>
+					<Link to={'/search'} className="menu__search">
+						<div className="menu__search-loupe navigate"/>
 					</Link>
 				</nav>
 			</>

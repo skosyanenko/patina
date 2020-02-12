@@ -1,42 +1,48 @@
 @import 'config'
 
-.form-container
+.form-wrapper
     max-width: 70%
     width: 100%
+    +maxwidth(1640px)
+        max-width: 100%
 
-.registration
-    max-width: 100% !important
-    padding: 0 120px
+.form, .registration
 
-    &__grid
-        display: grid !important
-        grid-template-columns: repeat(2, 1fr)
-        grid-template-rows: repeat(7, 1fr)
-        grid-auto-flow: column
-        grid-column-gap: 60px
-
-        button
-            margin: auto 0 30px
-            height: 50px
-            width: 100%
-            font-size: 22px
+    &__title
+        margin-bottom: 20px
+        text-align: center
+        font: 500 50px/100% $waverly
+        +maxwidth($tablet)
+            margin-bottom: 15px
+            font-size: 45px
+        +maxwidth($mobail)
+            margin-bottom: 10px
+            font-size: 40px
 
     &__radio
-        max-height: 104px
-        margin-left: 36px
+        height: 100%
+        margin-left: 35px
         display: flex
         flex-direction: column
+        @extend %formtext
+        +maxwidth($tablet)
+            max-height: 84px
+            margin-bottom: 15px
+        +maxwidth($mobail)
+            max-height: 64px
+            margin-bottom: 10px
+
+        &-error
+            @extend %formtext
+            margin-top: 10px
+            margin-left: -35px
 
         &-radio
             margin-top: 7px
 
-        span
-            margin-bottom: 10px
-
         span,
         label
-            font: 300 25px/100% $openSans
-            color: $lightgray
+            @extend %inputtext
 
         input
             z-index: -1
@@ -49,49 +55,83 @@
 
         label
             position: relative
-            &:before
+            &:before, &:after
                 content: ''
+                border-radius: 50%
+                position: absolute
+            &:before
                 width: 20px
                 height: 20px
-                border-radius: 50%
                 border: 1px solid $green
                 background: $white
-                position: absolute
                 left: -30px
                 top: 10px
             &:after
-                content: ''
                 width: 10px
                 height: 10px
                 background: $green
-                border-radius: 50%
-                position: absolute
                 left: -25px
                 top: 15px
                 transition: .5s ease
                 opacity: .3
 
-.form
-    width: 100%
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-
-    &__title
-        margin-bottom: 20px
-        text-align: center
-        font: 500 50px/100% $waverly
-
     &__group
         width: 100%
         max-height: 50px
+        height: 50px
+        margin: 15px 0
         position: relative
-        margin: 20px 0
+        @extend %formtext
+        +maxwidth($tablet)
+            max-height: 40px
 
         &-img
             width: 25px
             height: 100%
             position: absolute
+            +maxwidth($tablet)
+                width: 20px
+                margin-top: 5px
+            +maxwidth($mobail)
+                margin-top: 0
+
+        &-user
+            background: url('/images/icons/form/user.svg') no-repeat center / contain
+        &-email
+            background: url('/images/icons/form/email.svg') no-repeat center / contain
+            margin-top: 5px
+
+        &-placeholder
+            background: url('/images/icons/form/placeholder.svg') no-repeat center / contain
+        &-telegram
+            background: url('/images/icons/form/telegram.svg') no-repeat center / contain
+        &-books
+            background: url('/images/icons/form/books.svg') no-repeat center / contain
+        &-author
+            background: url('/images/icons/form/author.svg') no-repeat center / contain
+        &-telephone
+            background: url('/images/icons/form/telephone.svg') no-repeat center / contain
+        &-password
+            background: url('/images/icons/form/password.svg') no-repeat center / contain
+        &-vk
+            background: url('/images/icons/form/vk.svg') no-repeat center / contain
+        &-wishlist
+            background: url('/images/icons/form/wishlist.svg') no-repeat center / contain
+            +maxwidth($mobail)
+                margin-top: 7px !important
+        &-films
+            background: url('/images/icons/form/films.svg') no-repeat center / contain
+        &-quote
+            background: url('/images/icons/form/quote.svg') no-repeat center / contain
+        &-clock
+            background: url('/images/icons/form/clock.svg') no-repeat center / contain
+        &-fun
+            background: url('/images/icons/form/fun.svg') no-repeat center / contain
+            margin-top: 8px
+            +maxwidth($tablet)
+                margin-top: 10px
+            +maxwidth($mobail)
+                margin-top: 7px
 
         textarea
             width: 100%
@@ -101,12 +141,12 @@
         input,
         label,
         textarea
-            font: 300 25px/100% $openSans
-            color: $lightgray
+            @extend  %inputtext
 
         input,
         textarea
             padding: 10px 10px 5px 35px
+            margin-bottom: 10px
             display: block
             width: 100%
             border: none
@@ -118,23 +158,30 @@
             position: absolute
             pointer-events: none
             left: 35px
-            top: 15px
+            top: 12px
             transition: 0.2s ease all
+            +maxwidth($tablet)
+                left: 30px
 
-        input:focus ~ label, input:valid ~ label
+        input:focus ~ label, input:not(:placeholder-shown) ~ label
             top: -20px
             font-size: 16px
             color: $green
+            +maxwidth($mobail)
+                top: -15px
+                font-size: 14px
 
-        textarea:focus ~ label, textarea:valid ~ label
+        textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label
             top: -20px
             font-size: 16px
             color: $green
+            +maxwidth($mobail)
+                top: -15px
+                font-size: 14px
 
             &-bar
                 position: relative
                 display: block
-                width: 450px
                 &:before,
                 &:after
                     content: ''
@@ -170,66 +217,26 @@
             textarea:focus ~ .form__group-highlight
                 animation: inputHighlighter 0.3s ease
 
-    &__radio
-        max-height: 104px
-        margin-left: 36px
-        display: flex
-        flex-direction: column
-
-        &-radio
-            margin-top: 7px
-
-        span
-            margin-bottom: 10px
-
-        span,
-        label
-            font: 300 25px/100% $openSans
-            color: $lightgray
-
-        input
-            z-index: -1
-            opacity: 0
-            width: 0
-            height: 0
-            visibility: hidden
-            &:checked + label:after
-                opacity: 1
-
-        label
-            position: relative
-            &:before
-                content: ''
-                width: 20px
-                height: 20px
-                border-radius: 50%
-                border: 1px solid $green
-                background: $white
-                position: absolute
-                left: -30px
-                top: 10px
-            &:after
-                content: ''
-                width: 10px
-                height: 10px
-                background: $green
-                border-radius: 50%
-                position: absolute
-                left: -25px
-                top: 15px
-                transition: .5s ease
-                opacity: .3
     &__upload
         width: 100%
         height: 60px
-        margin: 10px 0
         display: flex
         align-items: center
+        margin-top: 20px
+        +maxwidth($tablet)
+            height: 50px
+        +maxwidth($mobail)
+            height: 40px
+            margin-top: 30px
 
         label
             width: 50px
             display: flex
             margin-right: 20px
+            +maxwidth($tablet)
+                margin-right: 15px
+            +maxwidth($mobail)
+                margin-right: 10px
 
         &-text
             width: 100%
@@ -248,10 +255,13 @@
                 color: $green !important
 
         &-close
-            background: url('/images/icons/user/delite.svg') no-repeat center / cover
+            background: url('/images/icons/form/delite.svg') no-repeat center / cover
             width: 15px
             height: 15px
             cursor: pointer
+            +maxwidth($mobail)
+                width: 12px
+                height: 12px
 
         input
             width: 0
@@ -259,29 +269,102 @@
 
         span
             white-space: nowrap
-            font: 300 25px/100% $openSans
-            color: $lightgray
+            @extend %inputtext
 
         &-img
+            background: url('/images/icons/form/upload.svg') no-repeat center / contain
+            background-size: 30px
             min-width: 50px
-            max-width: 50px
             width: 100%
             height: 50px
             margin-right: 20px
             border: 1px solid $green
             border-radius: 20px
             display: flex
-            justify-content: center
-            align-items: center
             cursor: pointer
+            +maxwidth($mobail)
+                background-size: 25px
+                min-width: 40px
+                height: 40px
+                border-radius: 10px
 
-            img
-                width: 25px
-                height: 50px
+    &__success
+        display: none
+        margin: 20%
+        text-align: center
+        font: bold 40px/100% $openSans
+        color: $green
+        +maxwidth($tablet)
+            font-size: 32px
+        +maxwidth($mobail)
+            font-size: 24px
+        &.success-error
+            margin: 20px
+            font: bold 30px/100% $openSans
+            color: red
+            +maxwidth($tablet)
+                font-size: 25px
+            +maxwidth($mobail)
+                font-size: 20px
 
-.registration__column
-    .button
-        margin-left: auto
+.registration
+    max-width: 100% !important
+    padding: 0 120px
+    +maxwidth(1640px)
+        padding: 0
+
+    &__grid
+        display: grid !important
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(7, 1fr)
+        grid-auto-flow: column
+        grid-column-gap: 60px
+        +maxwidth($mobail)
+            grid-template-columns: repeat(1, 1fr)
+            grid-template-rows: repeat(14, 1fr)
+            max-height: 100%
+
+        button
+            margin: auto 0 20px
+            height: 50px
+            width: 100%
+            font-size: 22px
+            +maxwidth($tablet)
+                margin: auto 0 10px
+                height: 40px
+                font-size: 20px
+            +maxwidth($mobail)
+                margin-bottom: 0
+                font-size: 18px
+
+    &__radio
+        max-height: 120px
+        margin-top: -15px
+
+.form
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    margin-bottom: 100px
+    +maxwidth($mobail)
+        margin-bottom: 30px
+
+    button
+        height: 50px
+        margin: auto
+        font-size: 22px
+        +maxwidth($tablet)
+            margin-top: 30px
+            height: 40px
+            font-size: 20px
+        +maxwidth($mobail)
+            font-size: 18px
+
+    &__radio
+        max-height: 104px
+        margin-bottom: 20px
+        margin-top: 30px !important
 
 .select
     width: 100%
@@ -289,10 +372,15 @@
     display: flex
     flex-direction: column
     position: relative
+    @extend %formtext
     &:focus
         border: none
         outline: none !important
         box-shadow: none !important
+
+    &__placeholder
+        top: 60% !important
+        @extend %inputtext
 
     &__control
         border: none !important
@@ -306,7 +394,7 @@
         z-index: 3 !important
 
     &__option
-        font: 300 18px/100% $openSans !important
+        @extend %formtext
         color: $black
         padding: 12px !important
         &:hover
@@ -317,136 +405,75 @@
 
     &__value-container
         padding: 5px 35px !important
-
-    &__multi-value__label
-        padding: 5px !important
-        font: 300 16px/100% $openSans !important
+        +maxwidth($mobail)
+            padding: 5px 30px !important
 
     &__img
-        position: absolute
-        top: 10px
         z-index: 2
+        +maxwidth($mobail)
+            margin-top: 10px
 
     label,
     option,
     select
-        font: 300 25px/100% $openSans
-        color: #7c7c7c
+        @extend %inputtext
 
     select,
     option
         width: 100%
         height: 40px
 
-.RichEditor-root
-    margin: 20px 0
-    padding: 15px
-    background: $white
+.editor
+    display: flex
+    flex-direction: column
+    @extend %formtext
+    margin-bottom: 30px
+    +maxwidth($mobail)
+        margin-bottom: 20px
+
+    &__title
+        margin: 40px 0 20px 35px
+        @extend %inputtext
+
+    &__error
+
+    .button
+        margin-top: 20px
+        +maxwidth($tablet)
+            margin-top: 15px
+        +maxwidth($mobail)
+            margin-top: 10px
+
+.codex-editor
+    margin-bottom: 15px
     border: 1px solid #ddd
-    font: 300 18px/100% $openSans
-    text-align: justify
+    +maxwidth($tablet)
+        margin-bottom: 10px
+    +maxwidth($mobail)
+        margin-bottom: 5px
 
+.codex-editor__redactor
+    min-height: 200px
+    padding-bottom: 0 !important
 
-.RichEditor-title
-    margin-top: 20px
-    font: 300 25px/100% $openSans
-    color: $lightgray
+.ce-block__content
+    max-width: 90% !important
+    width: 100%
+    @extend %formtext
 
-.RichEditor-editor
-    margin-top: 10px
-    border-top: 1px solid #ddd
-    cursor: text
-    font: 300 20px/100% $openSans
+.ce-toolbar__plus
+    left: -60px
 
-.RichEditor-editor .public-DraftEditorPlaceholder-root,
-.RichEditor-editor .public-DraftEditor-content
-    margin: 0 -15px -15px
-    padding: 15px
+.ce-toolbox__button
+    &:hover
+        fill: $green
 
-.RichEditor-editor .public-DraftEditor-content
-    min-height: 100px
-    &:first-letter
-        font: normal 50px/100% $izvestia
-
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root
-    display: none
-
-.RichEditor-editor .RichEditor-custom
-    margin: 16px 0
-    padding: 0 30px
-    border-left: 6px solid $carbonic
-    color: $carbonic
-    font: 300 20px/100% $openSans
-    font-style: italic
-    text-align: justify
-
-.RichEditor-editor .RichEditor-blockquote
-    padding: 0 30px
-    color: $carbonic
-    font: 300 20px/100% $openSans
-    position: relative
-    &:after,
-    &:before
-        width: 37px
-        height: 31px
-        position: absolute
-        content: url('/images/icons/black-quote.svg')
-        opacity: 0.5
-    &:after
-        top: 0
-        left: 0
-    &:before
-        bottom: 0
-        right: 0
-        transform: rotate(180deg)
-
-.RichEditor-editor .public-DraftStyleDefault-pre
-    padding: 20px
-    background-color: rgba(0, 0, 0, 0.05)
-    font: 300 20px/100% $openSans
-
-.RichEditor-controls
-    text-align: center
-    font: 300 18px/100% $openSans
-    margin-bottom: 5px
-    user-select: none
-
-.RichEditor-styleButton
-    color: $darkgray
-    cursor: pointer
-    margin-right: 16px
-    padding: 2px 0
-    display: inline-block
-
-.RichEditor-activeButton
-    font-weight: bold
+.ce-toolbar__plus--active,
+.ce-toolbar__plus:hover
     color: $green
 
-.public-DraftStyleDefault-ol,
-.public-DraftStyleDefault-ul
-    padding-left: 30px
-
-.public-DraftEditorPlaceholder-inner
-    color: $lightgray
+.ce-toolbox__button--active,
+.ce-toolbox__button:hover
+    color: $green
 
 
-@-webkit-keyframes inputHighlighter
-    from
-        background: #5264AE
-    to
-        width: 0
-        background: transparent
-
-@-moz-keyframes inputHighlighter
-    from
-        background: #5264AE
-    to
-        width: 0
-        background: transparent
-
-@keyframes inputHighlighter
-    from
-        background: #5264AE
-    to
-        width: 0
-        background: transparent

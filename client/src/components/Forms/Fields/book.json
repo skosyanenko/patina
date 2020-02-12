@@ -2,43 +2,43 @@
   {
     "name": "book",
     "label": "Название книги",
-    "img": "books",
+    "icon": "books",
     "type": "text"
   },
   {
     "name": "author",
     "label": "Автор",
-    "img": "fun",
+    "icon": "fun",
     "type": "text"
   },
   {
     "name": "weight",
     "label": "Количество страниц в книге",
-    "img": "books",
+    "icon": "books",
     "type": "text"
   },
   {
     "name": "films",
     "label": "Фильмы, снятые по книге",
-    "img": "films",
+    "icon": "films",
     "type": "text"
   },
   {
     "name": "quote",
     "label": "Цитата из книги",
-    "img": "quote",
+    "icon": "quote",
     "type": "text"
   },
   {
     "name": "shortDescription",
     "label": "Краткое описание книги",
-    "img": "author",
+    "icon": "author",
     "type": "textarea"
   },
   {
     "name": "fullDescription",
     "label": "Описание книги",
-    "img": "author",
+    "icon": "author",
     "type": "textarea"
   },
   {
@@ -59,7 +59,7 @@
   {
     "name": "category",
     "label": "Выберите категории:",
-    "img": "wishlist",
+    "icon": "wishlist",
     "type": "select",
     "isMulti": true
   }

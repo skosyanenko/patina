@@ -1,0 +1,59 @@
+@import 'config'
+
+.user-info
+    width: fit-content
+    display: flex
+    flex-direction: column
+    +maxwidth($mobail)
+        position: relative
+
+    &__wrapper
+        margin-bottom: 30px
+        display: flex
+        flex-direction: column
+
+    .socials__tg,
+    .socials__vk
+        fill: $darkgray
+
+    .socials__bookmark
+        &:hover
+            &:before
+                background: $darkgray
+            &:after
+                border-top-color: $darkgray
+        svg
+            stroke: $darkgray
+            &.active
+                fill: $darkgray
+
+    &__like
+        margin-top: 25px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        +maxwidth($mobail)
+            position: absolute
+            top: 0
+            right: 0
+
+        &-counter
+            margin-bottom: 5px
+            font: 300 13px/100% $openSans
+            color: $darkgray
+            +maxwidth($mobail)
+                font-size: 11px
+
+        &-icon
+            width: 42px
+            height: 41px
+            background: url('/images/icons/like.svg') no-repeat center / contain
+            position: relative
+            transition: .5s
+            +maxwidth($tablet)
+                width: 37px
+                height: 36px
+            +maxwidth($mobail)
+                width: 32px
+                height: 31px

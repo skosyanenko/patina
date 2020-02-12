@@ -1,0 +1,96 @@
+@import 'config'
+
+.reviews
+    width: 100%
+    margin-top: 50px
+    display: flex
+    +maxwidth($tablet)
+        margin-top: 35px
+    +maxwidth($mobail)
+        margin-top: 20px
+        flex-direction: column
+
+    &__wrapper
+        margin-right: 20px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        +maxwidth($tablet)
+            margin-right: 10px
+        +maxwidth($mobail)
+            margin-right: 0
+            align-items: center
+
+        &:last-child
+            margin-right: 0
+
+        &-img
+            max-width: 260px
+            width: 100%
+
+        &-image
+            max-width: 350px
+            width: 100%
+            +maxwidth($mobail)
+                max-width: 260px
+
+    &__text
+        display: flex
+        flex-direction: column
+        +maxwidth($mobail)
+            margin: 20px 0
+
+        &-title
+            margin-bottom: 10px
+            font: bold 22px/100% $waverlyExtra
+            color: $black
+            +maxwidth($tablet)
+                font-size: 20px
+            +maxwidth($mobail)
+                font-size: 18px
+
+        &-users
+            display: flex
+            flex-direction: column
+
+            a
+                margin-bottom: 5px
+                font: 300 20px/100% $waverly
+                color: $darkgray
+                +maxwidth($tablet)
+                    font-size: 18px
+                +maxwidth($mobail)
+                    font-size: 16px
+
+.order-1
+    +maxwidth($mobail)
+        order: 1
+
+.order-2
+    +maxwidth($mobail)
+        order: 2
+
+.order-3
+    +maxwidth($mobail)
+        order: 3
+
+.order-4
+    +maxwidth($mobail)
+        order: 4
+
+.order-5
+    +maxwidth($mobail)
+        order: 5
+
+.order-6
+    +maxwidth($mobail)
+        order: 6
+
+.order-7
+    +maxwidth($mobail)
+        order: 7
+
+.order-8
+    +maxwidth($mobail)
+        order: 8
+

@@ -1,0 +1,46 @@
+@import 'config'
+
+.selection
+    width: 100%
+    padding-left: 50px
+    margin-top: -20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-image: linear-gradient(to right, $sand 1px, rgba(255,255,255,0) 1px)
+    background-position: center
+    background-size: 100% 260px
+    background-repeat: no-repeat
+    +maxwidth(1470px)
+        background-image: none
+    +maxwidth($tablet)
+        margin-top: 0
+        padding-left: 40px
+    +maxwidth($mobail)
+        padding-left: 0
+
+    &__link
+        margin-top: 35px
+        font: 300 30px/100% $waverly
+        color: $black
+        text-align: center
+        transition: .4s ease
+        +maxwidth($desktop)
+            font-size: 26px
+        +maxwidth($tablet)
+            margin-top: 25px
+            font-size: 28px
+        +maxwidth($mobail)
+            margin-top: 15px
+            font-size: 26px
+        +maxwidth($sm-mobail)
+            font-size: 24px
+
+        &:hover
+            font-weight: 500
+            transform: scale(1.2)
+            color: $sand
+
+        &:first-child
+            margin-top: 0
+

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class InputFile extends Component  {
     state = {};
 
-    handleFile = ( selectorFiles ) => {
-        const { name } = this.props;
+    handleFile = (selectorFiles) => {
+        const {name} = this.props;
         let files = this.state[name] || [];
         let fileNames = this.state[name + '_LABEL'] || [];
 
         for (let file of selectorFiles) {
             this.makeBase64(file).then(data => {
-                files.push({ value: data, label: file.name });
+                files.push({value: data, label: file.name});
             });
             fileNames.push(file.name);
         }
@@ -19,7 +19,7 @@ class InputFile extends Component  {
         this.setState({
             [name]: files,
             [name + '_LABEL']: fileNames
-        });
+        }, () => this.setFieldValue(this.state[name]));
     };
 
     makeBase64(file) {
@@ -44,28 +44,33 @@ class InputFile extends Component  {
         return newArr;
     }
 
+    setFieldValue = value => this.props.onChange(this.props.name, value);
+
     render() {
-        const {name, label} = this.props;
+        const {name, label, register} = this.props;
         const labels = this.state[name + '_LABEL'];
 
         return (
             <div className="form__upload">
-                <label htmlFor={ name }>
-                    <input type="file"
-                           id={ name }
-                           name={ name }
-                           onChange={ e => this.handleFile(e.target.files) }
+                <label htmlFor={name}>
+                    <input
+                        type="file"
+                        id={name}
+                        name={name}
+                        onChange={e => this.handleFile(e.target.files)}
+                        ref={register}
                     />
-                    <div className="form__upload-img">
-                        <img src="images/icons/user/upload.svg" alt=""/>
-                    </div>
+                    <div className="form__upload-img"/>
                 </label>
                 <div className="form__upload-text">
-                    <span>{ label }</span>
-                    { labels && labels.map((item, key) => (
-                        <div className="form__upload-fileName">
-                            <span key={key}>{item}</span>
-                            <div className="form__upload-close" onClick={() => this.deleteFile(name, item)}/>
+                    <span>{label}</span>
+
+                    {labels && labels.map((item, key) => (
+                        <div className="form__upload-fileName" key={key}>
+                            <span>{item}</span>
+                            <div className="form__upload-close"
+                                 onClick={() => this.deleteFile(name, item)}
+                            />
                         </div>
                     ))}
                 </div>

@@ -1,0 +1,66 @@
+@import 'config'
+
+.profile-menu
+    display: flex
+    flex-direction: column
+    +maxwidth($mobail)
+        width: 90%
+        flex-direction: row
+        justify-content: space-between
+    +maxwidth($sm-mobail)
+        width: 100%
+
+    &__link
+        margin-bottom: 20px
+        display: flex
+        justify-content: center
+        align-items: center
+        +maxwidth($tablet)
+            margin-bottom: 15px
+        +maxwidth($mobail)
+            margin-bottom: 10px
+        &:nth-child(2)
+            svg
+                width: 30px!important
+        &:hover
+            span
+                color: $green
+            svg
+                fill: $green
+
+        &.active
+            span
+                color: $green
+            svg
+                fill: $green
+
+        &-text
+            margin-left: 20px
+            font: 300 24px/100% $openSans
+            color: $darkgray
+            +maxwidth($tablet)
+                margin-left: 15px
+                font-size: 22px
+            +maxwidth($mobail)
+                margin-left: 10px
+                font-size: 20px
+            +maxwidth($sm-mobail)
+                margin-left: 5px
+                font-size: 18px
+
+        &-image
+            max-width: 30px
+            width: 100%
+            display: flex
+            justify-content: center
+            +maxwidth($tablet)
+                max-width: 25px
+
+            svg
+                min-height: 23px
+                width: 23px
+                fill: $darkgray
+                +maxwidth($tablet)
+                    min-height: 18px
+                    width: 18px
+

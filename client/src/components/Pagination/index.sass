@@ -1,6 +1,6 @@
 @import 'config'
 
-.container
+.pagination
     width: 100%
     margin-top: 60px
     display: flex
@@ -45,7 +45,7 @@
             &:last-child
                 margin-bottom: 0
 
-    &__pagination
+    &__wrapper
         margin-left: auto
         display: flex
         align-items: center
@@ -96,11 +96,11 @@
                 color: $white
                 background: $green
 
-.container--view
-    .container__counter
+.pagination--view
+    .pagination__counter
         display: none
 
-.container--search
+.pagination--search
     width: 50%
     margin-left: 50%
 

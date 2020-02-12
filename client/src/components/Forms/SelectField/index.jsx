@@ -1,50 +1,35 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import PropTypes from 'prop-types';
+import {Controller} from 'react-hook-form';
 
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'vanilla', label: 'Vanilla' }
 ];
 
-class SelectField extends Component {
-    state = {
-        selectedOption: null,
-    };
-    handleChange = selectedOption => {
-        this.setState({selectedOption});
-        console.log(`Option selected:`, selectedOption);
-    };
-    render() {
-        const {selectedOption} = this.state;
-        const {label, img, register, type, isMulti} = this.props;
-        const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
-
-
-        return (
-            <div className="select">
-                <label htmlFor="category">{label}</label>
-                <img src={`images/icons/user/${img}.svg`} alt="" className="form__group-img select__img"/>
-                <SelectComponent
-                    isMulti={isMulti}
-                    value={selectedOption}
-                    onChange={this.handleChange}
-                    options={options}
-                    placeholder={"..."}
-                    className="form__group"
-                    classNamePrefix="select"
-                    name={'category'}
-                    ref={register({required: true})}
-                />
-            </div>
-        );
-    }
-}
-
-SelectField.propTypes = {
-    register: PropTypes.func
+const SelectField = ({type, name, label, icon, isMulti, errors, control}) => {
+    const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
+    const required = {value: true, message: 'Обязательное поле!'};
+    return (
+        <div className="select">
+            <div className={`form__group-img select__img form__group-${icon}`}/>
+            <Controller
+                as={<SelectComponent options={options} />}
+                control={control}
+                rules={{required: required.message}}
+                onChange={([selected]) => ({value: selected})}
+                name={name}
+                isMulti={isMulti}
+                placeholder={label}
+                className="form__group"
+                classNamePrefix="select"
+                maxMenuHeight={150}
+            />
+            {errors[name] && errors[name].message}
+        </div>
+    );
 };
 
 export default SelectField;

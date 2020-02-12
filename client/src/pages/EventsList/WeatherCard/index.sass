@@ -1,0 +1,126 @@
+@import 'config'
+
+.banner
+    max-width: 100%
+    height: calc(100% - 50px)
+    margin: 50px 40px 0 0
+    padding: 35px
+    background: $darkgreen
+    display: grid
+    grid-row-start: 1
+    grid-row-end: 3
+    grid-column-start: 3
+    grid-column-end: 5
+    opacity: 0.75
+    display: flex
+    justify-content: space-between
+    +maxwidth(1780px)
+        margin: 40px 0 0 0
+        padding: 30px
+    +maxwidth($desktop)
+        padding: 25px
+    +maxwidth($tablet)
+        padding: 20px
+        grid-column-start: 2
+        grid-column-end: 4
+    +maxwidth($sm-mobail)
+        flex-direction: column
+        grid-column-start: 1
+        grid-column-end: 3
+        padding: 30px 15px
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        +maxwidth($sm-mobail)
+            flex-direction: row
+
+        &-img
+            display: flex
+            justify-content: center
+            align-items: center
+
+        &-icon
+            width: 85px
+            min-height: 100%
+            +maxwidth($desktop)
+                width: 75px
+            +maxwidth($tablet)
+                width: 65px
+            +maxwidth($mobail)
+                width: 55px
+
+        &-text
+            max-width: 155px
+            width: 100%
+            margin-left: 15px
+            font: 100 34px/100% $waverly
+            color: $white
+            +maxwidth($desktop)
+                font-size: 30px
+            +maxwidth($tablet)
+                margin-left: 10px
+                font-size: 26px
+            +maxwidth($mobail)
+                max-width: 100px
+                margin-left: 5px
+                font-size: 18px
+
+    &__numb
+        display: flex
+
+        &-text
+            @extend %wethercard
+            +maxwidth($sm-mobail)
+                margin: auto 0
+
+        &-temperature
+            margin-left: 15px
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            font: 100 26px/100% $waverly
+            color: $white
+            +maxwidth($desktop)
+                margin-left: 10px
+                font-size: 22px
+            +maxwidth($tablet)
+                margin-left: 7px
+                font-size: 18px
+            +maxwidth($mobail)
+                margin-left: 5px
+                font-size: 16px
+            +maxwidth($sm-mobail)
+                margin-left: 0
+                font-size: 14px
+
+    &__date
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        +maxwidth($sm-mobail)
+            flex-direction: row
+
+        &-text
+            margin-left: auto
+            @extend %wethercard
+            +maxwidth($sm-mobail)
+                margin-left: 0
+
+        &-date
+            font: 100 48px/100% $waverly
+            color: $white
+            +maxwidth($desktop)
+                font-size: 44px
+            +maxwidth($tablet)
+                font-size: 40px
+            +maxwidth($mobail)
+                font-size: 36px
+            +maxwidth($sm-mobail)
+                font-size: 32px
+
+
+
+
+
