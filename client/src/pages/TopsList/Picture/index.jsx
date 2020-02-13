@@ -20,7 +20,7 @@ class Picture extends Component {
                 <div className="picture__quote"/>
                 <div className="picture__wrapper">
                     <div className="picture__image">
-                        <img src="/images/tops/bg.png" alt="" className="picture__image-background" ref={node => (this.rootNode = node)}/>
+                        <div className="picture__image-background" ref={node => (this.rootNode = node)}/>
                         <div className="picture__image-border"/>
                     </div>
 
