@@ -14,9 +14,9 @@ class Event extends Component {
                         <span className="event__text-time">{time}</span>
                      </div>
                     {picture &&
-                        <img src={'/images/events/' + picture + '.svg'} alt=""
-                             className={'event__date-' + picture}
-                        />
+                        <svg className={'event__date-' + picture}>
+                            <use href={`/images/icons/sprite.svg#${picture}`}/>
+                        </svg>
                     }
                 </div>
                 <div className="event__description">

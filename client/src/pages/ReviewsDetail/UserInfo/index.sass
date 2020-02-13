@@ -12,9 +12,10 @@
         display: flex
         flex-direction: column
 
-    .socials__tg,
+    .socials__tg
+        background: url('/images/icons/sprite.svg#telegram-gray') no-repeat center / contain
     .socials__vk
-        fill: $darkgray
+        background: url('/images/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
 
     .socials__bookmark
         &:hover
@@ -48,7 +49,7 @@
         &-icon
             width: 42px
             height: 41px
-            background: url('/images/icons/like.svg') no-repeat center / contain
+            fill: $darkgray
             position: relative
             transition: .5s
             +maxwidth($tablet)

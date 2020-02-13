@@ -15,11 +15,13 @@ class Container extends Component {
         return (
             <div className={`interests__wrapper ${isActive && 'extended' || ''}`}>
                 <div className="interests__wrapper-container">
-                    <div className={`interests__wrapper-${icon}`}/>
+                    <svg className="interests__wrapper-icon">
+                        <use href={`/images/icons/sprite.svg#${icon}`}/>
+                    </svg>
                     <div className="interests__wrapper-title">{title}</div>
                     <div className={`interests__wrapper-arrow ${isActive && 'toggle' || ''}`} onClick={this.openBlock}>
-                        <svg viewBox="0 0 306 306">
-                            <use href="/images/icons/arrows.svg#arrow"/>
+                        <svg>
+                            <use href="/images/icons/sprite.svg#arrow"/>
                         </svg>
                     </div>
                 </div>

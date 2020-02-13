@@ -71,8 +71,10 @@
             top: -35px
         +maxwidth($sm-mobail)
             top: 0
-        svg
-            fill: $white
+
+        &-icon
+            background: url('/images/icons/sprite.svg#close-view') no-repeat center / contain
+            margin-left: auto
             opacity: 0.3
             width: 25px
             height: 25px
@@ -97,7 +99,7 @@
     .slick-prev
         &:before
             content: '' !important
-            background: url('/images/icons/arrowWite.svg') no-repeat center / cover !important
+            background: url('/images/icons/sprite.svg#arrow-view') no-repeat center / contain !important
             opacity: 0.3
             height: 40px
             width: 40px

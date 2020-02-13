@@ -87,51 +87,46 @@
 
         &-img
             width: 25px
-            height: 100%
+            height: 25px
+            bottom: 10px
             position: absolute
             +maxwidth($tablet)
                 width: 20px
-                margin-top: 5px
-            +maxwidth($mobail)
-                margin-top: 0
+                height: 20px
+                bottom: 5px
+            +maxwidth($sm-mobail)
+                bottom: 9px
 
         &-user
-            background: url('/images/icons/form/user.svg') no-repeat center / contain
-        &-email
-            background: url('/images/icons/form/email.svg') no-repeat center / contain
-            margin-top: 5px
-
-        &-placeholder
-            background: url('/images/icons/form/placeholder.svg') no-repeat center / contain
-        &-telegram
-            background: url('/images/icons/form/telegram.svg') no-repeat center / contain
-        &-books
-            background: url('/images/icons/form/books.svg') no-repeat center / contain
+            background: url('/images/icons/sprite.svg#user-view') no-repeat center / contain
         &-author
-            background: url('/images/icons/form/author.svg') no-repeat center / contain
-        &-telephone
-            background: url('/images/icons/form/telephone.svg') no-repeat center / contain
+            background: url('/images/icons/sprite.svg#author-view') no-repeat center / contain
+        &-books
+            background: url('/images/icons/sprite.svg#books-view') no-repeat center / contain
+        &-email
+            background: url('/images/icons/sprite.svg#email-view') no-repeat center / contain
+            +maxwidth($sm-mobail)
+                bottom: 6px
+        &-films
+            background: url('/images/icons/sprite.svg#films-view') no-repeat center / contain
+        &-fun
+            background: url('/images/icons/sprite.svg#fun-view') no-repeat center / contain
+            bottom: 5px
         &-password
-            background: url('/images/icons/form/password.svg') no-repeat center / contain
-        &-vk
-            background: url('/images/icons/form/vk.svg') no-repeat center / contain
+            background: url('/images/icons/sprite.svg#password-view') no-repeat center / contain
+        &-placeholder
+            background: url('/images/icons/sprite.svg#placeholder-view') no-repeat center / contain
+        &-telephone
+            background: url('/images/icons/sprite.svg#telephone-view') no-repeat center / contain
+        &-quote
+            background: url('/images/icons/sprite.svg#quote-green') no-repeat center / contain
+        &-clock
+            background: url('/images/icons/sprite.svg#clock-green') no-repeat center / contain
         &-wishlist
-            background: url('/images/icons/form/wishlist.svg') no-repeat center / contain
+            background: url('/images/icons/sprite.svg#wishlist-view') no-repeat center / contain
             +maxwidth($mobail)
                 margin-top: 7px !important
-        &-films
-            background: url('/images/icons/form/films.svg') no-repeat center / contain
-        &-quote
-            background: url('/images/icons/form/quote.svg') no-repeat center / contain
-        &-clock
-            background: url('/images/icons/form/clock.svg') no-repeat center / contain
-        &-fun
-            background: url('/images/icons/form/fun.svg') no-repeat center / contain
-            margin-top: 8px
-            +maxwidth($tablet)
-                margin-top: 10px
-            +maxwidth($mobail)
-                margin-top: 7px
+
 
         textarea
             width: 100%
@@ -255,10 +250,10 @@
                 color: $green !important
 
         &-close
-            background: url('/images/icons/form/delite.svg') no-repeat center / cover
             width: 15px
             height: 15px
             cursor: pointer
+            background: url('/images/icons/sprite.svg#close-green') no-repeat center / contain
             +maxwidth($mobail)
                 width: 12px
                 height: 12px
@@ -272,8 +267,8 @@
             @extend %inputtext
 
         &-img
-            background: url('/images/icons/form/upload.svg') no-repeat center / contain
-            background-size: 30px
+            background: url('/images/icons/sprite.svg#upload-view') no-repeat center / contain
+            background-size: 30px 30px
             min-width: 50px
             width: 100%
             height: 50px
@@ -283,9 +278,9 @@
             display: flex
             cursor: pointer
             +maxwidth($mobail)
-                background-size: 25px
                 min-width: 40px
                 height: 40px
+                background-size: 25px 25px
                 border-radius: 10px
 
     &__success
@@ -409,9 +404,14 @@
             padding: 5px 30px !important
 
     &__img
+        bottom: 20px
         z-index: 2
+        +maxwidth($tablet)
+            bottom: 30px
         +maxwidth($mobail)
-            margin-top: 10px
+            bottom: 20px
+        +maxwidth($sm-mobail)
+            bottom: 15px
 
     label,
     option,

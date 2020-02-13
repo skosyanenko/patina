@@ -14,7 +14,9 @@ class UserInfo extends Component {
                 <Socials/>
                 <div className="user-info__like">
                     <span className="user-info__like-counter">2</span>
-                    <div className="user-info__like-icon"/>
+                    <svg className="user-info__like-icon">
+                        <use href="/images/icons/sprite.svg#like"/>
+                    </svg>
                 </div>
             </div>
         );

@@ -40,7 +40,7 @@ class Icons extends Component {
                     <div className="icons__wrapper" key={key}>
                         <div className="icons__counter">{this.props[item]}</div>
                         <div className={`icons__${item} ${isLiked && 'active'}`}
-                                      onClick={this.activate}
+                             onClick={this.activate}
                         />
                     </div>
                 ))}

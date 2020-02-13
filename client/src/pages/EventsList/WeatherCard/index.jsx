@@ -63,7 +63,9 @@ class WeatherCard extends Component {
                     <div className="banner__wrapper-img">
                         {weather &&
                             <>
-                                <img className="banner__wrapper-icon" src={`/images/icons/weather/${weather.icon}.svg`} alt=""/>
+                                <svg className="banner__wrapper-icon">
+                                    <use href={`/images/icons/sprite.svg#${weather.icon}`}/>
+                                </svg>
                                 <div className="banner__wrapper-text">
                                     {weather.description}
                                 </div>

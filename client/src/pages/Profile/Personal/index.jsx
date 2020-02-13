@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import './index.sass';
 
 class Personal extends Component {
     state = {
         contacts: [
-            {title: 'E-mail', classNamePrefix: 'email', contact: 'kosyanenko89@mail.ru'},
-            {title: 'Телефон', classNamePrefix: 'phone', contact: '+7 (988) 530 88 13'},
-            {title: 'Адрес', classNamePrefix: 'city', contact: 'Ростов-на-Дону'}
+            {title: 'E-mail', icon: 'email', contact: 'kosyanenko89@mail.ru'},
+            {title: 'Телефон', icon: 'telephone', contact: '+7 (988) 530 88 13'},
+            {title: 'Адрес', icon: 'placeholder', contact: 'Ростов-на-Дону'}
         ],
     };
 
@@ -25,12 +24,16 @@ class Personal extends Component {
                         <span className="personal__wrapper-name">Тётя Мотя</span>
 
                         <div className="personal__wrapper-socials">
-                            <Link to={'/'}>
-                                <div className="socials__vk"/>
-                            </Link>
-                            <Link to={'/'}>
-                                <div className="socials__tg"/>
-                            </Link>
+                            <a href="/">
+                                <svg className="socials__vk">
+                                    <use href="/images/icons/sprite.svg#vkontakte"/>
+                                </svg>
+                            </a>
+                            <a href="/">
+                                <svg className="socials__tg">
+                                    <use href="/images/icons/sprite.svg#telegram"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                     <span className="personal__status">Субъективные заметки профессионального любителя</span>
@@ -43,7 +46,9 @@ class Personal extends Component {
                 <div className="personal__contacts">
                     {contacts.map((item, key) => (
                         <div key={key} className="personal__contacts-wrap">
-                            <div className={`personal__contacts-${item.classNamePrefix}`}/>
+                            <svg className="personal__contacts-icon">
+                                <use href={`/images/icons/sprite.svg#${item.icon}`}/>
+                            </svg>
                             <div className="personal__contacts-text">
                                 <span>{item.title}</span>
                                 <div>{item.contact}</div>

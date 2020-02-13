@@ -65,12 +65,9 @@ class ModalFilms extends Component {
                     </div>
                 </Slider>
                 <div className="films__close">
-                    <svg
-                      viewBox="0 0 386.667 386.667"
-                      onClick={() => toggleModal(false)}
-                    >
-                        <use href="/images/icons/close.svg#close"/>
-                    </svg>
+                    <div className="films__close-icon"
+                         onClick={() => toggleModal(false)}
+                    />
                 </div>
             </Modal>
         );

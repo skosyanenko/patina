@@ -27,32 +27,34 @@
             position: absolute
 
         &-skates, &-butterfly, &-dragonfly, &-umbrella
-            width: 65px
-            top: -30px
+            width: 110px
+            top: -55px
             left: 110px
-            transform: scale(2, 2)
             +maxwidth($desktop)
                 left: 100px
             +maxwidth($tablet)
-                width: 45px
-                top: -20px
+                width: 100px
+                top: -75px
                 left: 80px
             +maxwidth($sm-mobail)
-                width: 35px
+                width: 70px
 
         &-skates
             left: 150px
             +maxwidth($tablet)
-                left: 120px
+                left: 100px
+            +maxwidth($sm-mobail)
+                left: 90px
 
         &-butterfly
-            transform: scale(1, 1)
             width: 80px
             +maxwidth($sm-mobail)
                 width: 60px
 
         &-dragonfly
-            transform: scale(1, 1)
+            +maxwidth($tablet)
+                width: 65px
+                top: -75px
 
         &-umbrella
             width: 35px
@@ -63,43 +65,50 @@
                 width: 25px
 
         &-ball, &-flower, &-raspberries, &-acorn
-            height: 270%
-            top: -55px
+            top: -25px
+            left: 10px
+            width: 165px
+            transform: scale(1.4)
             +maxwidth($desktop)
-                height: 240%
+                transform: scale(1)
+                width: 165px
                 top: -40px
                 left: -25px
             +maxwidth($mobail)
                 top: -35px
                 left: -15px
             +maxwidth($sm-mobail)
-                top: -20px
-                height: 170%
+                left: -20px
+                width: 155px
 
         &-flower
             transform: rotate(90deg)
+            +maxwidth($sm-mobail)
+                width: 130px
 
         &-raspberries, &-flower
             left: 0
+
+        &-raspberries
+            +maxwidth($sm-mobail)
+                width: 125px
 
         &-acorn
             height: 310%
             top: -85px
             left: 0
+            +maxwidth($sm-mobail)
+                height: 260%
+                left: -30px
+                top: -55px
 
         &-bullfinch, &-dandelion, &-shell, &-leaf
-            height: 270%
+            width: 200px
             transform: scale(-1, 1)
-            top: -50px
-            left: -50px
-            +maxwidth($desktop)
-                height: 240%
-            +maxwidth($mobail)
-                top: -20px
-                left: -60px
+            top: -30px
+            left: -10px
             +maxwidth($sm-mobail)
-                left: -15px
-                height: 170%
+                width: 150px
 
         &-dandelion
             +maxwidth($sm-mobail)
@@ -121,7 +130,8 @@
             +maxwidth($tablet)
                 top: -50px
             +maxwidth($sm-mobail)
-                left: 25px
+                width: 90px
+                left: 35px
 
         &-digit
             font: 300 72px/75% $cheque

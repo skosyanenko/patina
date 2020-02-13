@@ -18,10 +18,8 @@ const ModalEntrance = ({isOpen, toggleModal}) => {
                 <div className="modal__circle">
                     <div className="modal__circle-user"/>
                 </div>
-
-                <div
-                  className="modal__wrapper-close"
-                  onClick={() => toggleModal(false)}
+                <div className="modal__wrapper-close"
+                     onClick={() => toggleModal(false)}
                 />
                 {entry.map((field, key) => (
                     <InputText

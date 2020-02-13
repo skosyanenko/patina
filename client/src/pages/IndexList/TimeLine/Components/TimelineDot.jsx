@@ -39,6 +39,19 @@ class TimelineDot extends Component {
         }
     };
 
+    iconsSwitcher = type => {
+        switch (type) {
+            case 'review':
+                return 'pencil';
+            case 'book':
+                return 'books';
+            case 'top':
+                return 'wishlist';
+            case 'news':
+                return 'author'
+        }
+    };
+
     showDescription = () => {
         this.setState(prevState => ({
             isActive: !prevState.isActive
@@ -83,7 +96,9 @@ class TimelineDot extends Component {
             >
                 <div className="event-dot__wrapper">
                     <div className={`${!isActive && 'invisible'} event-dot__icon`}>
-                        <img src={`/images/icons/timeline/${type}.svg`} alt=""/>
+                        <svg>
+                            <use href={`/images/icons/sprite.svg#${this.iconsSwitcher(type)}`}/>
+                        </svg>
                     </div>
                     <div className="event-dot__item" onClick={this.showDescription}>
                         <div className={`${!isActive && 'invisible'} event-dot__item-after`}/>

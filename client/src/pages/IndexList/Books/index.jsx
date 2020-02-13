@@ -55,13 +55,17 @@ class Books extends Component {
                         </div>
                         <div className="books__wrapper">
                             <div className="books__arrow">
-                                <div className="books__arrow-prev"  onClick={this.previous}/>
+                                <svg className="books__arrow-prev"  onClick={this.previous}>
+                                    <use href="/images/icons/sprite.svg#arrow"/>
+                                </svg>
                             </div>
                             <div className="books__img">
                                 <img src={item.coverImage} alt=""/>
                             </div>
                             <div className="books__arrow">
-                                <div className="books__arrow-next" onClick={this.next}/>
+                                <svg className="books__arrow-next" onClick={this.next}>
+                                    <use href="/images/icons/sprite.svg#arrow"/>
+                                </svg>
                             </div>
                         </div>
                     </div>

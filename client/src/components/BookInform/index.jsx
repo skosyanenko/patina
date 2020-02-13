@@ -23,8 +23,8 @@ const BookInform = ({bookId}) => {
                 <Socials/>
                 <div className="button-write-review">
                     <div className="button-write-review__img">
-                        <svg viewBox="0 0 512 512.00004">
-                            <use href="/images/icons/pencil.svg#pencil"/>
+                        <svg>
+                            <use href="/images/icons/sprite.svg#pencil"/>
                         </svg>
                     </div>
                     <Link to={'/form-review'} className="button-write-review__text">
