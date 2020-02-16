@@ -8,25 +8,17 @@
         flex-direction: column
 
     &__title
-        font: 500 70px/78% $cheque
-        color: $black
+        @include style-text(70px, 15px, $cheque, $black, 78%, 500, false)
         text-transform: uppercase
-        +maxwidth($tablet)
-            font-size: 55px
-        +maxwidth($mobail)
-            font-size: 40px
 
     &__subtitle
         margin-left: 35px
-        font: bold 30px/100% $cheque
-        color: $black
+        @include style-text(30px, 5px, $cheque, $black, 100%, bold, false)
         opacity: 0
         +maxwidth($tablet)
             margin-left: 25px
-            font-size: 25px
         +maxwidth($mobail)
             margin-left: 15px
-            font-size: 20px
         +maxwidth($sm-mobail)
             margin-left: 0
             margin-top: 10px

@@ -7,24 +7,21 @@
         max-width: 100%
 
 .form, .registration
-
     &__title
         margin-bottom: 20px
         text-align: center
-        font: 500 50px/100% $waverly
+        @include style-text(50px, 5px, $waverly, $black, 100%, 500, false)
         +maxwidth($tablet)
             margin-bottom: 15px
-            font-size: 45px
         +maxwidth($mobail)
             margin-bottom: 10px
-            font-size: 40px
 
     &__radio
         height: 100%
         margin-left: 35px
         display: flex
         flex-direction: column
-        @extend %formtext
+        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 84px
             margin-bottom: 15px
@@ -33,7 +30,7 @@
             margin-bottom: 10px
 
         &-error
-            @extend %formtext
+            @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
             margin-top: 10px
             margin-left: -35px
 
@@ -42,7 +39,7 @@
 
         span,
         label
-            @extend %inputtext
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
         input
             z-index: -1
@@ -81,7 +78,7 @@
         height: 50px
         margin: 15px 0
         position: relative
-        @extend %formtext
+        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 40px
 
@@ -99,6 +96,10 @@
 
         &-user
             background: url('/images/icons/sprite.svg#user-view') no-repeat center / contain
+        &-vk
+            background: url('/images/icons/sprite.svg#vkontakte-green') no-repeat center / contain
+        &-telegram
+            background: url('/images/icons/sprite.svg#telegram-green') no-repeat center / contain
         &-author
             background: url('/images/icons/sprite.svg#author-view') no-repeat center / contain
         &-books
@@ -127,7 +128,6 @@
             +maxwidth($mobail)
                 margin-top: 7px !important
 
-
         textarea
             width: 100%
             height: 100%
@@ -136,7 +136,7 @@
         input,
         label,
         textarea
-            @extend  %inputtext
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
         input,
         textarea
@@ -264,7 +264,7 @@
 
         span
             white-space: nowrap
-            @extend %inputtext
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
         &-img
             background: url('/images/icons/sprite.svg#upload-view') no-repeat center / contain
@@ -287,20 +287,10 @@
         display: none
         margin: 20%
         text-align: center
-        font: bold 40px/100% $openSans
-        color: $green
-        +maxwidth($tablet)
-            font-size: 32px
-        +maxwidth($mobail)
-            font-size: 24px
+        @include style-text(40px, 8px, $openSans, $green, 100%, bold, false)
         &.success-error
             margin: 20px
-            font: bold 30px/100% $openSans
-            color: red
-            +maxwidth($tablet)
-                font-size: 25px
-            +maxwidth($mobail)
-                font-size: 20px
+            @include style-text(30px, 5px, $openSans, red, 100%, bold, false)
 
 .registration
     max-width: 100% !important
@@ -367,7 +357,7 @@
     display: flex
     flex-direction: column
     position: relative
-    @extend %formtext
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
     &:focus
         border: none
         outline: none !important
@@ -375,7 +365,7 @@
 
     &__placeholder
         top: 60% !important
-        @extend %inputtext
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
     &__control
         border: none !important
@@ -389,8 +379,7 @@
         z-index: 3 !important
 
     &__option
-        @extend %formtext
-        color: $black
+        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         padding: 12px !important
         &:hover
             background: rgba(38, 77, 75, 0.3)
@@ -416,7 +405,7 @@
     label,
     option,
     select
-        @extend %inputtext
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
     select,
     option
@@ -426,14 +415,14 @@
 .editor
     display: flex
     flex-direction: column
-    @extend %formtext
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
     margin-bottom: 30px
     +maxwidth($mobail)
         margin-bottom: 20px
 
     &__title
         margin: 40px 0 20px 35px
-        @extend %inputtext
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
     &__error
 
@@ -459,7 +448,7 @@
 .ce-block__content
     max-width: 90% !important
     width: 100%
-    @extend %formtext
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
 
 .ce-toolbar__plus
     left: -60px

@@ -64,7 +64,7 @@
 
         &-title
             width: fit-content
-            @extend %profiletitle
+            @include style-text(26px, 2px, $openSans, $black, 100%, 300, true)
             white-space: nowrap
 
         &-text
@@ -74,7 +74,7 @@
             transition: .3s ease
             height: 0
             opacity: 0
-            @extend %sectiontext
+            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             +maxwidth($mobail)
                 margin-left: 50px
 

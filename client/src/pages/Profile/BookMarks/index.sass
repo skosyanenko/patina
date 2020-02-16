@@ -29,17 +29,18 @@
 
         &-title
             margin-bottom: 20px
-            @extend %profiletitle
+            @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)
             +maxwidth($tablet)
                 margin-bottom: 15px
             +maxwidth($mobail)
                 margin-bottom: 10px
 
         &-type
-            @extend %profiletype
+            @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)
 
         &-name
-            @extend %profilename
+            margin-top: 5px
+            @include style-text(18px, 2px, $openSans, $darkgray, 100%, 300, false)
 
     &__img
         max-height: 130px

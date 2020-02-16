@@ -42,12 +42,7 @@
 
         &-title
             margin-bottom: 10px
-            font: bold 22px/100% $waverlyExtra
-            color: $black
-            +maxwidth($tablet)
-                font-size: 20px
-            +maxwidth($mobail)
-                font-size: 18px
+            @include style-text(22px, 2px, $waverlyExtra, $black, 100%, bold, false)
 
         &-users
             display: flex
@@ -55,12 +50,7 @@
 
             a
                 margin-bottom: 5px
-                font: 300 20px/100% $waverly
-                color: $darkgray
-                +maxwidth($tablet)
-                    font-size: 18px
-                +maxwidth($mobail)
-                    font-size: 16px
+                @include style-text(20px, 2px, $waverly, $darkgray, 100%, 300, false)
 
 .order-1
     +maxwidth($mobail)

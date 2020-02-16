@@ -29,10 +29,19 @@
                 margin-top: 20px
 
         &-name
-            @extend %authorname
+            max-width: 120px
+            margin-bottom: 40px
+            @include style-text(26px, 0, $waverlyExtra, $black, 100%, bold, false)
+            text-transform: uppercase
+            +maxwidth($mobail)
+                max-width: 100px
+                margin-bottom: 30px
+            +maxwidth($sm-mobail)
+                max-width: 90px
+                margin-bottom: 20px
 
         &-date
-            @extend %authordate
+            @include style-text(26px, 0, $waverly, $black, 100%, 100, false)
 
         &-citation
             width: 370px
@@ -41,8 +50,7 @@
             right: -100%
             bottom: 0
             position: absolute
-            font: 300 14px/115% $waverly
-            color: $darkgray
+            @include style-text(14px, 0, $waverly, $darkgray, 115%, 300, false)
             transform: rotate(-90deg)
             transform-origin: 0 0
             border-left: 5px solid $sand

@@ -85,27 +85,13 @@
 
     &__link
         margin-top: 105px
-        font:  300 26px/100% $waverly
-        color: $black
+        @include style-text(26px, 2px, $waverly, $black, 100%, 300, true)
         text-transform: uppercase
         width: fit-content
         background: #ffffff
-        +maxwidth($desktop)
-            font-size: 24px
-        +maxwidth($tablet)
-            font-size: 22px
-        +maxwidth($mobail)
-            font-size: 20px
 
         &.active
-            color: $green
-            font:  bold 26px/100% $waverlyExtra
-            +maxwidth($desktop)
-                font-size: 24px
-            +maxwidth($tablet)
-                font-size: 22px
-            +maxwidth($mobail)
-                font-size: 20px
+            @include style-text(26px, 2px, $waverlyExtra, $green, 100%, bold, true)
 
             .menu__line
                 opacity: 1

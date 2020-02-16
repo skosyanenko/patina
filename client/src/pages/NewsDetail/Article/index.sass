@@ -16,16 +16,13 @@
     &__title
         width: 100%
         margin-bottom: 30px
-        font: 500 60px/120% $vogue
-        color: $black
+        @include style-text(60px, 10px, $vogue, $black, 120%, 500, false)
         text-align: right
         letter-spacing: 0.2px
         +maxwidth($tablet)
             margin-bottom: 25px
-            font-size: 50px
         +maxwidth($mobail)
             margin-bottom: 20px
-            font-size: 40px
 
     &__wrapper
         display: flex
@@ -36,7 +33,7 @@
             padding-top: 50px
             position: relative
             white-space: pre-line
-            @extend %sectiontext
+            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             text-align: justify
             border-top: 3px solid $green
             +maxwidth($tablet)

@@ -51,16 +51,13 @@
             align-items: center
             border-radius: 50%
             background: #d0d0d0
-            font: 600 60px/100% $openSans
-            color: $darkgray
+            @include style-text(60px, 15px, $openSans, $darkgray, 100%, 600, false)
             +maxwidth($tablet)
                 width: 70px
                 height: 70px
-                font-size: 40px
             +maxwidth($mobail)
                 width: 50px
                 height: 50px
-                font-size: 30px
 
     &__wrapper
         display: flex
@@ -68,14 +65,7 @@
         justify-content: space-between
 
         &-name
-            font: 300 40px/100% $openSans
-            color: $darkgray
-            +maxwidth($tablet)
-                font-size: 34px
-            +maxwidth($mobail)
-                font-size: 28px
-            +maxwidth($sm-mobail)
-                font-size: 22px
+            @include style-text(40px, 6px, $openSans, $darkgray, 100%, 300, true)
 
         &-socials
             display: flex
@@ -84,19 +74,17 @@
 
     &__status
         margin: 20px 0
-        @extend %formtext
-        color: $darkgray
+        @include style-text(20px, 2px, $openSans, $darkgray, 100%, 300, false)
         +maxwidth($tablet)
             margin: 15px 0
         +maxwidth($mobail)
             margin: 10px 0
-            font-size: 16px
 
     &__follow
         display: flex
         align-items: center
         justify-content: space-between
-        @extend %profiletype
+        @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)
 
         &-following
             margin-right: 20px
@@ -148,7 +136,7 @@
             margin-left: 20px
             display: flex
             flex-direction: column
-            @extend %profiletype
+            @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)
             +maxwidth($mobail)
                 margin-left: 10px
                 margin-top: 10px
@@ -157,6 +145,5 @@
                 margin-left: 0
 
             span
-                font-weight: bold
-                color: $green
+                @include style-text(16px, 2px, $openSans, $green, 120%, bold, false)
                 margin-bottom: 5px

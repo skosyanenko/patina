@@ -38,10 +38,10 @@
             margin-top: 10px
 
         &-title
-            @extend %slidertitle
+            @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
 
         &-description
-            @extend %sectiontext
+            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             text-align: justify
             +maxwidth($desktop)
                 margin-top: 20px

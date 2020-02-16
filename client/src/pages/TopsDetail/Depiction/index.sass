@@ -11,19 +11,12 @@
         justify-content: space-between
 
         &-title
-            font: 500 50px/100% $vogue
-            color: $black
-            +maxwidth($tablet)
-                font-size: 46px
-            +maxwidth($mobail)
-                font-size: 42px
-            +maxwidth($sm-mobail)
-                font-size: 38px
+            @include style-text(50px, 4px, $vogue, $black, 100%, 500, true)
 
     &__description
         width: 100%
         padding-bottom: 40px
-        @extend  %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         +maxwidth($tablet)
             padding-bottom: 30px
         +maxwidth($mobail)

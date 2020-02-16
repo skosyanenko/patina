@@ -130,8 +130,7 @@
 
     &__date
         margin-top: 25px
-        font: 300 16px/100% $openSans
-        color: $green
+        @include style-text(16px, 1px, $openSans, $green, 100%, 300, false)
         transition: all .4s ease
 
     &__description
@@ -147,8 +146,7 @@
 
         &-text
             margin-bottom: 5px
-            font: 300 16px/100% $openSans
-            color: $green
+            @include style-text(16px, 1px, $openSans, $green, 100%, 300, false)
 
 .invisible
     opacity: 0

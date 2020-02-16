@@ -1,6 +1,6 @@
 @charset "UTF-8"
 
-// Основные разрешения
+// Permissions
 // ===================
 
 $desktop: 1330px
@@ -13,7 +13,7 @@ $min-width: 320px
     @media only screen and (max-width: $w)
         @content
 
-// Цвета
+// Colors
 // ===================
 
 $black: #000000
@@ -27,7 +27,7 @@ $browngray: #8a8a6e
 $sand: #cdb7aa
 $lightpink: #f7ede3
 
-// Шрифты
+// Fonts
 // ===================
 
 $waverly: 'Waverly CF'
@@ -38,115 +38,35 @@ $openSans: 'Open Sans Condensed'
 $izvestia: 'Izvestija'
 $cheque: 'Cheque'
 
-// Форматирование текста
+// Text style
 // ===================
 
-%sectiontitle
-    display: flex
-    align-items: center
-    flex-wrap: wrap
-    color: $black
-    font: 500 70px/78% $vogue
-    text-transform: uppercase
+@mixin style-text($size, $step, $font, $color, $line-height, $weight, $true)
+    font: $weight $size $font
+    line-height: $line-height
+    color: $color
     +maxwidth($tablet)
-        font-size: 55px
+        font-size: $size - $step
     +maxwidth($mobail)
-        font-size: 40px
-    [class*="letter"]
-        transform-origin: 0% 50%
+        font-size: $size - $step * 2
+        @if ($true == true)
+            +maxwidth($sm-mobail)
+                font-size: $size - $step * 3
 
-%sectionsubtitle
-    color: $darkgray
-    font: 500 33px/100% $vogue
-    +maxwidth($tablet)
-        font-size: 29px
-    +maxwidth($mobail)
-        font-size: 25px
-
-%sectiontext
-    color: $darkgray
-    font: 300 20px/120% $openSans
-    +maxwidth($tablet)
-        font-size: 18px
-    +maxwidth($mobail)
-        font-size: 16px
-
-%inputtext
-    font: 300 25px/120% $openSans
-    color: $lightgray
-    +maxwidth($tablet)
-        font-size: 23px
-    +maxwidth($mobail)
-        font-size: 21px
-    +maxwidth($sm-mobail)
-        font-size: 19px
-
-%formtext
-    font: 300 20px/100% $openSans
-    color: $lightgray
-    +maxwidth($tablet)
-        font-size: 18px
-
-%profiletitle
-    font: 300 26px/100% $openSans
-    color: $black
-    +maxwidth($tablet)
-        font-size: 22px
-    +maxwidth($mobail)
-        font-size: 20px
-    +maxwidth($sm-mobail)
-        font-size: 18px
-
-%profiletype
-    font: 300 16px/100% $openSans
-    color: $darkgray
-    +maxwidth($tablet)
-        font-size: 14px
-    +maxwidth($mobail)
-        font-size: 12px
-
-%profilename
-    margin-top: 5px
-    font: 300 18px/100% $openSans
-    color: $black
-    +maxwidth($tablet)
-        font-size: 16px
-    +maxwidth($mobail)
-        font-size: 14px
-
-%wethercard
-    font: bold 80px/75% $cheque
-    color: $white
+@mixin style-text-events($size, $step, $font, $color, $line-height, $weight, $mob, $sm-mob)
+    font: $weight $size $font
+    line-height: $line-height
+    color: $color
     +maxwidth($desktop)
-        font-size: 70px
+        font-size: $size - $step
     +maxwidth($tablet)
-        font-size: 60px
-    +maxwidth($mobail)
-        font-size: 50px
-    +maxwidth($sm-mobail)
-        font-size: 40px
+        font-size: $size - $step * 2
+        @if ($mob == true)
+            +maxwidth($mobail)
+                font-size: $size - $step * 3
+        @if ($sm-mob == true)
+            +maxwidth($mobail)
+                font-size: $size - $step * 3
 
-%slidertitle
-    font: 500 46px/100% $vogue
-    color: $darkgray
-    +maxwidth($tablet)
-        font-size: 40px
-    +maxwidth($mobail)
-        font-size: 34px
-    +maxwidth($sm-mobail)
-        font-size: 28px
 
-%authorname
-    max-width: 120px
-    font: bold 26px/100% $waverlyExtra
-    color: $black
-    text-transform: uppercase
-    +maxwidth($mobail)
-        max-width: 100px
-    +maxwidth($sm-mobail)
-        max-width: 90px
 
-%authordate
-    margin-top: 40px
-    font: 100 26px/100% $waverly
-    color: $black

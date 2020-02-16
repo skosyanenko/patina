@@ -60,16 +60,14 @@
         align-items: center
         justify-content: center
         border: 3px solid $sand
-        font: 500 48px/100% $vogue
+        @include style-text(48px, 4px, $vogue, $black, 100%, 500, false)
         transition: all .3s ease
         +maxwidth($tablet)
             width: 85px
             height: 85px
-            font-size: 44px
         +maxwidth($mobail)
             width: 75px
             height: 75px
-            font-size: 40px
 
         &:hover
             background: $sand
@@ -103,27 +101,19 @@
             max-width: 220px
 
         a
-            font: 800 25px/100% $waverlyExtra
-            color: $black
-            +maxwidth($tablet)
-                font-size: 23px
-            +maxwidth($mobail)
-                font-size: 21px
+            @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
 
     &__author
         margin: 20px 0 15px 0
-        font: 500 25px/100% $waverly
-        color: $black
+        @include style-text(25px, 3px, $waverly, $black, 100%, 500, false)
         +maxwidth($tablet)
             padding: 15px 0 10px 0
-            font-size: 21px
         +maxwidth($mobail)
             padding: 10px 0 5px 0
-            font-size: 19px
 
     &__description
         max-width: calc(100% - 30px)
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         +maxwidth($tablet)
             max-width: calc(100% - 50px)
         +maxwidth($mobail)

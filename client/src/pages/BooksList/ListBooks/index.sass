@@ -14,17 +14,14 @@
 
     &__link
         margin-top: 30px
-        font: 300 24px/100% $waverly
+        @include style-text(24px, 3px, $waverly, $darkgray, 100%, 300, false)
         text-align: right
-        color: $darkgray
         transition: .4s ease
         +maxwidth($tablet)
             margin-top: 20px
-            font-size: 20px
             text-align: left
         +maxwidth($mobail)
             margin-top: 15px
-            font-size: 18px
 
         &:hover
             font-weight: 500
@@ -32,11 +29,6 @@
             color: $green
 
     &__link:first-letter
-        font: 800 24px/100% $waverly
-        color: $green
-        +maxwidth($tablet)
-            font-size: 20px
-        +maxwidth($mobail)
-            font-size: 18px
+        @include style-text(24px, 3px, $waverly, $green, 100%, 800, false)
 
 

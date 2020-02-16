@@ -14,23 +14,20 @@
 
     &__title
         margin-bottom: 80px
-        font: 500 46px/79% $vogue
-        color: $black
+        @include style-text(46px, 5px, $vogue, $black, 79%, 500, false)
         text-transform: uppercase
         text-align: left
         +maxwidth($tablet)
             margin-bottom: 50px
-            font-size: 41px
         +maxwidth($mobail)
             margin-bottom: 30px
-            font-size: 36px
         +maxwidth($sm-mobail)
             line-height: 100%
             text-align: center
 
     &__text
         margin-bottom: 40px
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-align: justify
         +maxwidth($tablet)
             margin-bottom: 30px

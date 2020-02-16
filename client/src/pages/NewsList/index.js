@@ -27,9 +27,9 @@ const NewsPage = () => (
                 text={"Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина. Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина."}
           />
 
-          <div className="news__container">
+          {/*<div className="news__container">*/}
               <NewsContainer/>
-              <div className="news__container-content">
+              <div className="news__container">
                   <NewsElem/>
                   <NewsElem/>
                   <NewsLink/>
@@ -37,7 +37,7 @@ const NewsPage = () => (
                   <NewsLink/>
                   {/*<Pagination/>*/}
               </div>
-          </div>
+          {/*</div>*/}
       </div>
   </>
 );

@@ -18,7 +18,7 @@
         margin-right: auto
 
     &__title
-        @extend %profiletitle
+        @include style-text(26px, 2px, $openSans, $black, 100%, 300, true)
         display: flex
         justify-content: center!important
 
@@ -42,8 +42,9 @@
         width: 50%
 
         &-type
-            @extend %profiletype
+            @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)
 
         &-name
-            @extend %profilename
+            margin-top: 5px
+            @include style-text(18px, 2px, $openSans, $black, 100%, 300, false)
 

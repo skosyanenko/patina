@@ -6,14 +6,10 @@
     margin-left: auto
     display: flex
     flex-direction: column
-    font:  300 17px/100% $waverly
-    color: $darkgray
+    @include style-text(17px, 2px, $waverly, $darkgray, 100%, 300, false)
     +maxwidth($tablet)
         max-width: 100%
         margin-right: auto
-        font-size: 15px
-    +maxwidth($mobail)
-        font-size: 13px
 
     &__title
         text-align: right
@@ -38,6 +34,5 @@
             &:hover
                 color: $green
             &.active
-                font:  bold 17px/100% $waverly
-                color: $green
+                @include style-text(17px, 2px, $waverly, $green, 100%, bold, false)
 

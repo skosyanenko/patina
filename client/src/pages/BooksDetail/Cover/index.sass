@@ -83,17 +83,18 @@
             z-index: 2
 
         &-name
-            @extend %authorname
-
-        &-date
-            @extend %authordate
-
-        &-name,
-        &-date
-            +maxwidth($tablet)
-                font-size: 24px
+            @include style-text(26px, 3px, $waverlyExtra, $black, 100%, bold, true)
+            max-width: 120px
+            margin-bottom: 40px
+            text-transform: uppercase
             +maxwidth($mobail)
-                font-size: 20px
+                max-width: 100px
+                margin-bottom: 30px
             +maxwidth($sm-mobail)
-                font-size: 18px
+                max-width: 90px
+                margin-bottom: 20px
+
+        &-date
+            @include style-text(26px, 3px, $waverly, $black, 100%, 100, true)
+
 

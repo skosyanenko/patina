@@ -36,17 +36,13 @@
 
         &-text
             margin-left: 20px
-            font: 300 24px/100% $openSans
-            color: $darkgray
+            @include style-text(24px, 2px, $openSans, $darkgray, 100%, 300, true)
             +maxwidth($tablet)
                 margin-left: 15px
-                font-size: 22px
             +maxwidth($mobail)
                 margin-left: 10px
-                font-size: 20px
             +maxwidth($sm-mobail)
                 margin-left: 5px
-                font-size: 18px
 
         &-image
             width: 30px

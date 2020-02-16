@@ -134,14 +134,7 @@
                 left: 35px
 
         &-digit
-            font: 300 72px/75% $cheque
-            color: $darkgray
-            +maxwidth($desktop)
-                font-size: 62px
-            +maxwidth($tablet)
-                font-size: 52px
-            +maxwidth($sm-mobail)
-                cursor: pointer
+            @include style-text-events(72px, 10px, $cheque, $darkgray, 75%, 300, false, false)
 
     &__text
         margin-left: 50px
@@ -154,15 +147,11 @@
             margin-left: 30px
 
         &-day
-            font: 500 18px/80% $waverlyExtra
-            +maxwidth($desktop)
-                font-size: 16px
-            +maxwidth($tablet)
-                font-size: 14px
+            @include style-text-events(18px, 2px, $waverlyExtra, $darkgray, 80%, 50, false, false)
 
         &-time
             margin-top: 10px
-            font: 100 14px/80% $waverly
+            @include style-text-events(14px, 0, $waverly, $darkgray, 80%, 100, false, false)
             +maxwidth($tablet)
                 margin-top: 7px
 
@@ -176,15 +165,11 @@
             margin-top: 10px
 
         &-title
-            font: 500 18px/80% $waverly
-            +maxwidth($desktop)
-                font-size: 16px
-            +maxwidth($tablet)
-                font-size: 14px
+            @include style-text-events(18px, 2px, $waverly, $darkgray, 80%, 500, false, false)
 
         &-text
             margin-top: 7px
-            font: 100 14px/80% $waverly
+            @include style-text-events(14px, 0, $waverly, $lightgray, 80%, 100, false, false)
             +maxwidth($tablet)
                 margin-top: 5px
 

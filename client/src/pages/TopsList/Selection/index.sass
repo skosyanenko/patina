@@ -21,20 +21,15 @@
 
     &__link
         margin-top: 35px
-        font: 300 30px/100% $waverly
-        color: $black
+        @include style-text(30px, 2px, $waverly, $black, 100%, 300, true)
         text-align: center
         transition: .4s ease
         +maxwidth($desktop)
             font-size: 26px
         +maxwidth($tablet)
             margin-top: 25px
-            font-size: 28px
         +maxwidth($mobail)
             margin-top: 15px
-            font-size: 26px
-        +maxwidth($sm-mobail)
-            font-size: 24px
 
         &:hover
             font-weight: 500

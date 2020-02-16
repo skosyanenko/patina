@@ -17,9 +17,6 @@
         display: flex
         justify-content: center
         align-items: center
-        font: 100 17px/100% $waverly
-        color: $darkgray
-        +maxwidth($mobail)
-            font-size: 15px
+        @include style-text(18px, 2px, $waverly, $darkgray, 100%, 100, false)
 
 

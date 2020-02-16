@@ -4,35 +4,25 @@
 .news-container,
 .news-elem,
 .news-link
-    min-width: calc(50% - 20px)
-    max-width: calc(50% - 20px)
-    width: 100%
-    margin-top: 50px
+    width: calc(50% - 20px)
+    //margin-top: 50px
     display: flex
     +maxwidth($tablet)
-        min-width: 100%
-        max-width: 100%
-        margin-top: 40px
+        width: 100%
+        //margin-top: 40px
     +maxwidth($mobail)
-
-        margin-top: 30px
+        //margin-top: 30px
 
     &__title
-        font: 800 25px/100% $waverly
-        color: $black
+        @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
         overflow: hidden
         text-overflow: ellipsis
         display: -webkit-box
         -webkit-line-clamp: 2
         -webkit-box-orient: vertical
-        +maxwidth($tablet)
-            font-size: 23px
-        +maxwidth($mobail)
-            font-size: 21px
 
     &__text
-        font: 300 16px/120% $openSans
-        color: $lightgray
+        @include style-text(16px, 2px, $openSans, $lightgray, 120%, 300, false)
         text-align: justify
         text-indent: 35px
         overflow: hidden
@@ -40,10 +30,6 @@
         display: -webkit-box
         -webkit-line-clamp: 5
         -webkit-box-orient: vertical
-        +maxwidth($tablet)
-            text-indent: 30px
-        +maxwidth($mobail)
-            font-size: 14px
 
     &__img
         width: 100%
@@ -57,7 +43,6 @@
 
 .news-elem,
 .news-link
-    min-width: 100%
     border-bottom: 1px solid $carbonic
     justify-content: space-between
 
@@ -172,13 +157,11 @@
 
     &__title
         margin: 25px 0
-        font: bold 32px/100% $waverly
+        @include style-text(32px, 2px, $waverlyExtra, $black, 100%, bold, false)
         +maxwidth($tablet)
             margin: 20px 0
-            font-size: 30px
         +maxwidth($mobail)
             margin: 15px 0
-            font-size: 28px
 
     &__text
         margin-bottom: 35px
@@ -193,6 +176,7 @@
         justify-content: space-between
 
 .news-elem
+    width: 100%
     max-height: 200px
     height: 100%
     margin-top: 25px
@@ -213,6 +197,10 @@
 
     &__text
         margin-top: 20px
+        +maxwidth($tablet)
+            margin-top: 15px
+        +maxwidth($mobail)
+            margin-top: 10px
 
     &__img
         width: 250px
@@ -221,6 +209,7 @@
             display: none
 
 .news-link
+    width: 100%
     margin-top: 0
     padding: 25px 0
     align-items: center
@@ -230,14 +219,11 @@
         padding: 15px 0
 
     &__title
-        font-size: 21px
-        +maxwidth($tablet)
-            font-size: 19px
-        +maxwidth($mobail)
-            font-size: 17px
+        @include style-text(21px, 2px, $waverlyExtra, $black, 100%, 800, false)
 
 .news
     flex-wrap: wrap
+    display: flex
     +maxwidth($tablet)
         align-items: flex-start
     +maxwidth($mobail)
@@ -247,16 +233,9 @@
     &__container
         display: flex
         justify-content: space-between
+        width: calc(50% - 20px)
+        flex-direction: column
         +maxwidth($tablet)
-            flex-direction: column
-
-        &-content
-            max-width: 100%
-            margin: 25px 0 0 40px
-            display: flex
-            flex-direction: column
-            +maxwidth($tablet)
-                margin: 20px 0 0 0
-            +maxwidth($mobail)
-                width: 100%
-                margin-top: 15px
+            width: 100%
+        +maxwidth($mobail)
+            width: 100%

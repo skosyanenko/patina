@@ -5,12 +5,7 @@
     flex-direction: column
 
     &__title
-        font: 300 34px/100% $openSans
-        color: $black
-        +maxwidth($tablet)
-            font-size: 30px
-        +maxwidth($mobail)
-            font-size: 26px
+        @include style-text(34px, 4px, $openSans, $black, 100%, 300, false)
 
     &__result
         display: flex
@@ -53,11 +48,7 @@
 
         &-title
             margin-bottom: 15px
-            font: bold 22px/100% $openSans
-            +maxwidth($tablet)
-                font-size: 20px
-            +maxwidth($mobail)
-                font-size: 18px
+            @include style-text(22px, 2px, $openSans, $black, 100%, bold, false)
 
         &-author,
         &-weight

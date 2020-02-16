@@ -45,7 +45,7 @@
             margin: 0 auto
 
         &-title
-            @extend %slidertitle
+            @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
             +maxwidth($desktop)
                 margin-bottom: 20px
             +maxwidth($tablet)
@@ -54,7 +54,7 @@
                 margin-bottom: 10px
 
         &-description
-            @extend %sectiontext
+            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             width: 100%
             text-align: justify
 
@@ -83,14 +83,10 @@
             height: 50px
             display: flex!important
             align-items: center
-            font: normal 30px/90% $vogue
-            color: rgba(31, 31, 31, 0.6)
+            @include style-text(30px, 4px, $vogue, rgba(31, 31, 31, 0.6), 90%, normal, false)
             transition: .3s ease
-            +maxwidth($tablet)
-                font-size: 26px
             +maxwidth($mobail)
                 height: 40px
-                font-size: 22px
 
     .slick-center
         width: 115px

@@ -14,26 +14,18 @@
         margin-top: 20px
 
     &__paragraph
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         &:first-child
             &:first-letter
-                font: normal 50px/100% $izvestia
-                color: $green
-                +maxwidth($tablet)
-                    font-size: 46px
-                +maxwidth($mobail)
-                    font-size: 42px
-                +maxwidth($sm-mobail)
-                    font-size: 38px
+                @include style-text(50px, 4px, $izvestia, $green, 100%, normal, true)
 
     &__heading
-        @extend %inputtext
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
 
     mark
-        @extend %inputtext
+        @include style-text(25px, 2px, $openSans, $carbonic, 120%, 300, true)
         padding-left: 30px
         border-left: 6px solid $carbonic
-        color: $carbonic
         font-style: italic
         background-color: white
         margin: 30px 0
@@ -47,7 +39,7 @@
     &__quote
         width: 100%
         padding: 0 20px
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         position: relative
         margin: 25px 0
         &:after, &:before
@@ -77,12 +69,10 @@
             margin: 15px 0
 
     &__delimiter
-        font: 300 40px/100% $openSans
+        @include style-text(40px, 5px, $openSans, $carbonic, 100%, 300, false)
         margin: 15px auto
         +maxwidth($tablet)
             margin: 10px auto
-        +maxwidth($mobail)
-            font-size: 30px
 
 .review-wrapper
     max-width: calc(50% + 250px)
@@ -122,8 +112,7 @@
 
     &__title
         margin: 70px 0 0
-        font: 500 58px/100% $izvestia
-        color: $black
+        @include style-text(58px, 8px, $izvestia, $black, 100%, 500, true)
         text-transform: uppercase
         text-align: center
 
@@ -131,7 +120,7 @@
         margin: 60px 0 0
         padding: 30px 40px
         position: relative
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-align: right
 
         span
@@ -169,7 +158,7 @@
         margin-bottom: 40px
         z-index: 2
         white-space: pre-line
-        @extend %sectiontext
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-align: justify
         border-left: 1px solid $black
 
@@ -179,7 +168,6 @@
         right: -60px
         position: absolute
         z-index: 1
-        font: 500 598px/69.5% $vogue
-        color:  rgba(139, 136, 116, 0.24)
+        @include style-text(600px, 50px, $vogue, rgba(139, 136, 116, 0.24), 69.5%, 500, true)
         pointer-events: none
 
