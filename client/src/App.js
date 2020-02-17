@@ -1,48 +1,76 @@
-import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
-import {withRouter} from 'react-router';
+import React, {Component} from 'react';
+import {Route, Switch} from 'react-router-dom';
+import {routes} from 'routes';
+import {CSSTransition} from 'react-transition-group';
+import Header from './components/Layouts/Header';
+import Menu from './components/Layouts/Menu';
+import RightMenu from './components/Layouts/RightMenu';
+import ModalEntrance from './components/ModalEntrance';
+import Footer from './components/Layouts/Footer';
+import 'static/sass/project.sass';
 
-import PatinaPage from './pages/IndexList'
-import BooksPage from './pages/BooksList'
-import BookPage from './pages/BooksDetail'
-import TopsPage from './pages/TopsList'
-import TopPage from './pages/TopsDetail'
-import ReviewsPage from './pages/ReviewsList'
-import ReviewPage from './pages/ReviewsDetail'
-import EventsPage from './pages/EventsList'
-import NewsPage from './pages/NewsList'
-import NewPage from './pages/NewsDetail'
-import SearchPage from './pages/SearchList'
-import RegistrationPage from './pages/Registration'
-import Profile from './pages/Profile'
-import AddForm from './pages/Forms';
-import UndefinedPage from './pages/404'
-import Main from './main';
+class App extends Component {
+    state = {
+        modalIsOpen: false
+    };
 
-const routes = [
-    {path: '/', component: PatinaPage},
-    {path: '/books', component: BooksPage},
-    {path: '/book', component: BookPage},
-    {path: '/tops', component: TopsPage},
-    {path: '/top', component: TopPage},
-    {path: '/reviews', component: ReviewsPage},
-    {path: '/review', component: ReviewPage},
-    {path: '/events', component: EventsPage},
-    {path: '/news', component: NewsPage},
-    {path: '/new', component: NewPage},
-    {path: '/search', component: SearchPage},
-    {path: '/registration', component: RegistrationPage},
-    {path: '/profile/:page', component: Profile},
-    {path: '/form/:type', component: AddForm},
-    {path: '*', component: UndefinedPage}
-];
+    switchClasses = (path) => {
+        switch(path) {
+            case '/events':
+                return 'page--events';
+            case '/':
+                return 'page--index';
+            default:
+                return 'page';
+        }
+    };
 
-const MainComponent = withRouter(Main);
+    toggleModal = bool => this.setState({modalIsOpen: bool});
 
-const App = () => (
-    <Router>
-        <MainComponent routes={routes}/>
-    </Router>
-);
+    render() {
+        const {modalIsOpen} = this.state;
+        const {location} = this.props;
 
-export default App
+        return(
+            <div className={`${modalIsOpen && 'blur' || 'wrapper'}`}>
+                <Header location={location} toggleModal={this.toggleModal}/>
+
+                <div className="wrapper__layout">
+
+                    <Menu location={location}/>
+
+                    <CSSTransition
+                        in={true}
+                        appear={true}
+                        timeout={600}
+                        classNames="fade"
+                    >
+                        <main className={location && this.switchClasses(location.pathname)}>
+                            <Switch>
+                                {routes.map(route => (
+                                    <Route
+                                        key={route.path}
+                                        exact={route.path !== '*'}
+                                        path={route.path}
+                                        component={route.component}
+                                    />
+                                ))}
+                            </Switch>
+                        </main>
+                    </CSSTransition>
+
+                    {location.pathname !== '/' && location.pathname !== '/events' && <RightMenu/>}
+
+                    <ModalEntrance
+                        isOpen={modalIsOpen}
+                        toggleModal={this.toggleModal}
+                    />
+                </div>
+                <Footer/>
+            </div>
+        )
+    }
+
+};
+
+export default App;

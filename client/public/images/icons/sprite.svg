@@ -189,7 +189,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#user" width="10" height="10" x="0" y="170"/>
-    <view id="user-view" viewBox="0 170 10 10" />
+    <view id="user-green" viewBox="0 170 10 10" />
 
     <symbol id="author" viewBox="0 0 964.07 964.07">
         <g>
@@ -209,7 +209,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#author" width="10" height="10" x="0" y="180"/>
-    <view id="author-view" viewBox="0 180 10 10" />
+    <view id="author-green" viewBox="0 180 10 10" />
 
     <symbol id="books" viewBox="0 0 335.08 335.079">
         <g>
@@ -236,7 +236,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#books" width="10" height="10" x="0" y="190"/>
-    <view id="books-view" viewBox="0 190 10 10" />
+    <view id="books-green" viewBox="0 190 10 10" />
 
     <symbol id="email" viewBox="0 0 483.3 483.3">
         <g>
@@ -250,7 +250,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#email" width="10" height="10" x="0" y="200"/>
-    <view id="email-view" viewBox="0 200 10 10" />
+    <view id="email-green" viewBox="0 200 10 10" />
 
     <symbol id="films" viewBox="0 0 512 512">
         <g>
@@ -258,7 +258,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#films" width="10" height="10" x="0" y="210"/>
-    <view id="films-view" viewBox="0 210 10 10" />
+    <view id="films-green" viewBox="0 210 10 10" />
 
     <symbol id="fun" viewBox="0 0 512.002 512.002">
         <g>
@@ -298,7 +298,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#fun" width="10" height="10" x="0" y="220"/>
-    <view id="fun-view" viewBox="0 220 10 10" />
+    <view id="fun-green" viewBox="0 220 10 10" />
 
     <symbol id="password" viewBox="0 0 512 512">
         <g>
@@ -311,7 +311,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#password" width="10" height="10" x="0" y="230"/>
-    <view id="password-view" viewBox="0 230 10 10" />
+    <view id="password-green" viewBox="0 230 10 10" />
 
     <symbol id="placeholder" viewBox="0 0 512 512">
         <g>
@@ -326,7 +326,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#placeholder" width="10" height="10" x="0" y="240"/>
-    <view id="placeholder-view" viewBox="0 240 10 10" />
+    <view id="placeholder-green" viewBox="0 240 10 10" />
 
     <symbol id="telephone" viewBox="0 0 482.6 482.6">
         <g>
@@ -348,7 +348,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#telephone" width="10" height="10" x="0" y="250"/>
-    <view id="telephone-view" viewBox="0 250 10 10" />
+    <view id="telephone-green" viewBox="0 250 10 10" />
 
     <symbol id="upload" viewBox="0 0 514.105 514.105">
         <g>
@@ -363,7 +363,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#upload" width="10" height="10" x="0" y="260"/>
-    <view id="upload-view" viewBox="0 260 10 10" />
+    <view id="upload-green" viewBox="0 260 10 10" />
 
     <symbol id="wishlist" viewBox="0 0 512.001 512.001">
         <g>
@@ -392,7 +392,7 @@
         </g>
     </symbol>
     <use fill="#264d4b" href="#wishlist" width="10" height="10" x="0" y="270"/>
-    <view id="wishlist-view" viewBox="0 270 10 10" />
+    <view id="wishlist-green" viewBox="0 270 10 10" />
 
 <!--    Socials icons-->
 

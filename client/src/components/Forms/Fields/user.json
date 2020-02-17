@@ -75,7 +75,7 @@
   {
     "name": "vk",
     "label": "Настроить импорт/ экспорт",
-    "icon": "vk",
+    "icon": "vkontakte",
     "type": "text"
   },
   {

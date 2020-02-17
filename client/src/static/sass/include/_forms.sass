@@ -94,37 +94,14 @@
             +maxwidth($sm-mobail)
                 bottom: 9px
 
-        &-user
-            background: url('/images/icons/sprite.svg#user-view') no-repeat center / contain
-        &-vk
-            background: url('/images/icons/sprite.svg#vkontakte-green') no-repeat center / contain
-        &-telegram
-            background: url('/images/icons/sprite.svg#telegram-green') no-repeat center / contain
-        &-author
-            background: url('/images/icons/sprite.svg#author-view') no-repeat center / contain
-        &-books
-            background: url('/images/icons/sprite.svg#books-view') no-repeat center / contain
         &-email
-            background: url('/images/icons/sprite.svg#email-view') no-repeat center / contain
             +maxwidth($sm-mobail)
                 bottom: 6px
-        &-films
-            background: url('/images/icons/sprite.svg#films-view') no-repeat center / contain
+
         &-fun
-            background: url('/images/icons/sprite.svg#fun-view') no-repeat center / contain
             bottom: 5px
-        &-password
-            background: url('/images/icons/sprite.svg#password-view') no-repeat center / contain
-        &-placeholder
-            background: url('/images/icons/sprite.svg#placeholder-view') no-repeat center / contain
-        &-telephone
-            background: url('/images/icons/sprite.svg#telephone-view') no-repeat center / contain
-        &-quote
-            background: url('/images/icons/sprite.svg#quote-green') no-repeat center / contain
-        &-clock
-            background: url('/images/icons/sprite.svg#clock-green') no-repeat center / contain
+
         &-wishlist
-            background: url('/images/icons/sprite.svg#wishlist-view') no-repeat center / contain
             +maxwidth($mobail)
                 margin-top: 7px !important
 
@@ -267,7 +244,7 @@
             @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
 
         &-img
-            background: url('/images/icons/sprite.svg#upload-view') no-repeat center / contain
+            background: url('/images/icons/sprite.svg#upload-green') no-repeat center / contain
             background-size: 30px 30px
             min-width: 50px
             width: 100%
@@ -291,6 +268,12 @@
         &.success-error
             margin: 20px
             @include style-text(30px, 5px, $openSans, red, 100%, bold, false)
+
+$icons: (user,vkontakte,telegram,author, author, books, email, films, fun, password, placeholder, telephone, quote, clock, wishlist)
+
+@each $icon in $icons
+    .form__group-#{$icon}
+        background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain
 
 .registration
     max-width: 100% !important

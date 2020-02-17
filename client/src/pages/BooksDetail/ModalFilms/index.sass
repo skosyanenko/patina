@@ -33,8 +33,7 @@
         padding: 15px
         background: $white
         opacity: 0.78
-        font: 300 16px/120% $openSans
-        color: $black
+        @include style-text(16px, 1px, $openSans, $black, 120%, 300, false)
         margin-left: auto
         position: absolute
         right: 0
@@ -43,23 +42,18 @@
             position: initial
             max-width: 100%
             padding: 10px
-            font-size: 14px
 
     &__title
         max-width: 440px
         padding: 10px 15px
         background: $white
-        font: 500 40px/100% $vogue
-        color: black
+        @include style-text(40px, 8px, $vogue, $black, 100%, 500, false)
         position: absolute
         left: 0
         top: -40px
-        +maxwidth($tablet)
-            font-size: 30px
         +maxwidth($mobail)
             position: initial
             max-width: 100%
-            font-size: 24px
 
     &__close
         width: 100%
