@@ -8,8 +8,8 @@ const RegistrationPage = () => (
                API={"users"}
                title={"Регистрация"}
                button={"Зарегистрироваться"}
-               classNamePrefix={"registration"}
-               classNamePref={"registration__grid"}
+               prefix={"registration"}
+               classPrefix={"registration__grid"}
   />
 );
 

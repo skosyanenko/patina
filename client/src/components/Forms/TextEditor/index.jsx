@@ -1,8 +1,19 @@
 import React, {Component} from 'react';
 import EditorJs from 'react-editor-js';
-import {EditorConfig} from "./config";
+import {EditorConfig_1, EditorConfig_2, EditorConfig_3} from './config';
 
 class TextEditor extends Component {
+
+    configSwitcher = () => {
+        switch (this.props.typeView) {
+            case 'view_1':
+                return EditorConfig_2;
+            case 'view_2':
+                return EditorConfig_3;
+            default:
+                return EditorConfig_1;
+        }
+    };
 
     handleSave = async() => {
         await this.editorInstance.save()
@@ -23,12 +34,15 @@ class TextEditor extends Component {
                     {label}
                 </span>
                 <EditorJs
+                    enableReInitialize={true}
                     instanceRef={instance => this.editorInstance = instance}
                     ref={register({name, type: 'custom'}, {required})}
                     placeholder={placeholder}
-                    tools={EditorConfig}
+                    tools={this.configSwitcher()}
                 />
-                {errors[name] && errors[name].message}
+                <div className="form__group-error">
+                    {errors[name] && errors[name].message}
+                </div>
                 <button type="button" className="button button-white"
                         onClick={this.handleSave}
                 >

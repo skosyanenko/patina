@@ -16,7 +16,6 @@ const NewsElem = () => {
             </Link>
         </div>
     )
-
 };
 
 export default NewsElem;

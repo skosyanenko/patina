@@ -12,6 +12,12 @@
     "type": "textarea"
   },
   {
+    "name": "book",
+    "label": "Название книги, по которой снята экранизация",
+    "icon": "books",
+    "type": "select"
+  },
+  {
     "name": "image",
     "label": "Картинка из экранизации",
     "type": "file"

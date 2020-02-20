@@ -3,8 +3,11 @@
 .form-wrapper
     max-width: 70%
     width: 100%
+    margin-bottom: 100px
     +maxwidth(1640px)
         max-width: 100%
+    +maxwidth($mobail)
+        margin-bottom: 30px
 
 .form, .registration
     &__title
@@ -24,14 +27,10 @@
         @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 84px
-            margin-bottom: 15px
         +maxwidth($mobail)
             max-height: 64px
-            margin-bottom: 10px
 
-        &-error
-            @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
-            margin-top: 10px
+        .form__group-error
             margin-left: -35px
 
         &-radio
@@ -39,7 +38,7 @@
 
         span,
         label
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
 
         input
             z-index: -1
@@ -56,19 +55,20 @@
                 content: ''
                 border-radius: 50%
                 position: absolute
+                top: 0
+                bottom: 0
+                margin: auto 0
             &:before
                 width: 20px
                 height: 20px
                 border: 1px solid $green
                 background: $white
                 left: -30px
-                top: 10px
             &:after
                 width: 10px
                 height: 10px
                 background: $green
                 left: -25px
-                top: 15px
                 transition: .5s ease
                 opacity: .3
 
@@ -76,11 +76,15 @@
         width: 100%
         max-height: 50px
         height: 50px
-        margin: 15px 0
+        margin: 20px 0
         position: relative
         @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 40px
+
+        &-error
+            @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, true)
+            margin-top: 10px
 
         &-img
             width: 25px
@@ -94,17 +98,6 @@
             +maxwidth($sm-mobail)
                 bottom: 9px
 
-        &-email
-            +maxwidth($sm-mobail)
-                bottom: 6px
-
-        &-fun
-            bottom: 5px
-
-        &-wishlist
-            +maxwidth($mobail)
-                margin-top: 7px !important
-
         textarea
             width: 100%
             height: 100%
@@ -113,7 +106,7 @@
         input,
         label,
         textarea
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
 
         input,
         textarea
@@ -223,6 +216,8 @@
             justify-content: space-between
             align-items: center
             margin-top: 10px
+            +maxwidth($sm-mobail)
+                margin-top: 0
             span
                 color: $green !important
 
@@ -241,7 +236,7 @@
 
         span
             white-space: nowrap
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
+            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
 
         &-img
             background: url('/images/icons/sprite.svg#upload-green') no-repeat center / contain
@@ -275,6 +270,18 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
     .form__group-#{$icon}
         background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain
 
+.form__group-email
+    +maxwidth($sm-mobail)
+        bottom: 6px
+
+.form__group-fun
+    bottom: 5px
+
+.form__group-wishlist
+    +maxwidth($mobail)
+        margin-top: 7px !important
+
+
 .registration
     max-width: 100% !important
     padding: 0 120px
@@ -293,46 +300,45 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
             max-height: 100%
 
         button
-            margin: auto 0 20px
+            margin: 12px auto 0 !important
             height: 50px
             width: 100%
             font-size: 22px
             +maxwidth($tablet)
-                margin: auto 0 10px
+                margin: 12px auto 0 !important
                 height: 40px
                 font-size: 20px
             +maxwidth($mobail)
-                margin-bottom: 0
+                margin: 0 auto !important
                 font-size: 18px
 
     &__radio
         max-height: 120px
         margin-top: -15px
+        +maxwidth($tablet)
+            margin-bottom: 15px
+        +maxwidth($mobail)
+            margin-bottom: 10px
 
 .form
     width: 100%
     display: flex
     flex-direction: column
     justify-content: space-between
-    margin-bottom: 100px
-    +maxwidth($mobail)
-        margin-bottom: 30px
 
     button
         height: 50px
-        margin: auto
+        margin: 50px auto 0
         font-size: 22px
         +maxwidth($tablet)
-            margin-top: 30px
+            margin: 30px auto 0
             height: 40px
             font-size: 20px
         +maxwidth($mobail)
             font-size: 18px
 
     &__radio
-        max-height: 104px
-        margin-bottom: 20px
-        margin-top: 30px !important
+        max-height: fit-content
 
 .select
     width: 100%
@@ -340,7 +346,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
     display: flex
     flex-direction: column
     position: relative
-    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, true)
     &:focus
         border: none
         outline: none !important
@@ -348,7 +354,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
     &__placeholder
         top: 60% !important
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
 
     &__control
         border: none !important
@@ -375,15 +381,13 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
         +maxwidth($mobail)
             padding: 5px 30px !important
 
-    &__img
-        bottom: 20px
+    .form__group-img
+        bottom: 5px
         z-index: 2
         +maxwidth($tablet)
-            bottom: 30px
+            bottom: 0px
         +maxwidth($mobail)
-            bottom: 20px
-        +maxwidth($sm-mobail)
-            bottom: 15px
+            bottom: 5px
 
     label,
     option,
@@ -395,19 +399,22 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
         width: 100%
         height: 40px
 
+
 .editor
+    margin-top: 30px
     display: flex
     flex-direction: column
     @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
-    margin-bottom: 30px
-    +maxwidth($mobail)
-        margin-bottom: 20px
 
     &__title
-        margin: 40px 0 20px 35px
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
-
-    &__error
+        padding: 0 0 20px 35px
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+        background: url('/images/icons/sprite.svg#author-green') no-repeat left top / contain
+        background-size: 25px 25px
+        +maxwidth($tablet)
+            background-size: 20px 20px
+        +maxwidth($mobail)
+            padding: 0 0 10px 30px
 
     .button
         margin-top: 20px
@@ -433,6 +440,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
     width: 100%
     @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
 
+
 .ce-toolbar__plus
     left: -60px
 
@@ -447,5 +455,4 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 .ce-toolbox__button--active,
 .ce-toolbox__button:hover
     color: $green
-
 

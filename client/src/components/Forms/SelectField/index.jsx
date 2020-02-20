@@ -13,7 +13,7 @@ const SelectField = ({type, name, label, icon, isMulti, errors, control}) => {
     const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
     const required = {value: true, message: 'Обязательное поле!'};
     return (
-        <div className="select">
+        <div className="form__group select">
             <div className={`form__group-img select__img form__group-${icon}`}/>
             <Controller
                 as={<SelectComponent options={options} />}
@@ -23,11 +23,12 @@ const SelectField = ({type, name, label, icon, isMulti, errors, control}) => {
                 name={name}
                 isMulti={isMulti}
                 placeholder={label}
-                className="form__group"
                 classNamePrefix="select"
                 maxMenuHeight={150}
             />
-            {errors[name] && errors[name].message}
+            <div className="form__group-error">
+                {errors[name] && errors[name].message}
+            </div>
         </div>
     );
 };

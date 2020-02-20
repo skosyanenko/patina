@@ -8,7 +8,7 @@ const Header = ({location, toggleModal}) => (
         {/*<div className="header__menu"/>*/}
         <div className="header__container">
             <Link to={'/'}>
-                <div className="header__container-logo"/>
+                <div  className="header__container-logo"/>
             </Link>
         </div>
 

@@ -6,7 +6,48 @@ import Quote from "@editorjs/quote";
 import Marker from "@editorjs/marker";
 import Delimiter from "@editorjs/delimiter";
 
-export const EditorConfig = {
+export const EditorConfig_1 = {
+    paragraph: {
+        toolbox: {
+            title: 'Текст'
+        }
+    },
+    list: {
+        class: List,
+        toolbox: {
+            title: 'Список'
+        },
+        inlineToolbar: true
+    }
+};
+
+export const EditorConfig_2 = {
+    paragraph: {
+        toolbox: {
+            title: 'Текст'
+        }
+    },
+    list: {
+        class: List,
+        toolbox: {
+            title: 'Список'
+        },
+        inlineToolbar: true
+    },
+    quote: {
+        class: Quote,
+        inlineToolbar: true,
+        toolbox: {
+            title: 'Цитата'
+        },
+        config: {
+            quotePlaceholder: 'Напишите цитату',
+            captionPlaceholder: 'Укажите автора цитаты',
+        }
+    }
+};
+
+export const EditorConfig_3 = {
     paragraph: {
         toolbox: {
             title: 'Текст'
@@ -22,14 +63,14 @@ export const EditorConfig = {
             placeholder: 'Заголовок',
         }
     },
-    // image: {
-    //     class: Image,
-    //     toolbox: {
-    //         title: 'Изображение'
-    //     },
-    //     inlineToolbar: ['link'],
-    // },
-    simpleImage: SimpleImage,
+    image: {
+        class: Image,
+        toolbox: {
+            title: 'Изображение'
+        },
+        inlineToolbar: ['link'],
+    },
+    // simpleImage: SimpleImage,
 
     list: {
         class: List,
@@ -61,4 +102,5 @@ export const EditorConfig = {
             title: 'Разделитель'
         }
     }
-}
+};
+

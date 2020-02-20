@@ -58,7 +58,9 @@ const InputText = ({type, name, register, icon, label, value, message, errors, c
             <span className="form__group-highlight"/>
             <span className="form__group-bar"/>
             <label>{label}</label>
-            {errors[name] && errors[name].message}
+            <div className="form__group-error">
+                {errors[name] && errors[name].message}
+            </div>
         </div>
     )
 };

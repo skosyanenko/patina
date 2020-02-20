@@ -7,7 +7,7 @@
   },
   {
     "name": "author",
-    "label": "Автор",
+    "label": "Автор книги",
     "icon": "fun",
     "type": "text"
   },

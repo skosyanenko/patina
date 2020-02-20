@@ -5,12 +5,15 @@ import HookForm from './HookForm';
 
 class FormManager extends Component {
     state = {
-        success: false
+        success: false,
+        typeView: ''
     };
+
+    hookView = typeView => this.setState({typeView});
 
     static defaultProps = {
         button: 'Добавить',
-        classNamePrefix: '',
+        prefix: '',
         classNamePref: ''
     };
 
@@ -27,7 +30,7 @@ class FormManager extends Component {
     };
 
     render() {
-        const {success} = this.state;
+        const {success, typeView} = this.state;
 
         return (
             <div className="page--form">
@@ -38,25 +41,27 @@ class FormManager extends Component {
                 <HookForm
                   {...this.props}
                   onSubmit={this.onSubmit}
+                  hookView={this.hookView}
+                  typeView={typeView}
                 />
 
                 {success &&
                     <div className="form__success">
-                        Заявка успешно отправлена!
+                        Форма успешно отправлена!
                     </div>
                 }
             </div>
         );
     }
-};
+}
 
 FormManager.propTypes = {
     fields:          PropTypes.array,
     API:             PropTypes.string,
     title:           PropTypes.string,
     button:          PropTypes.string,
-    classNamePrefix: PropTypes.string,
-    classNamePref:   PropTypes.string,
+    prefix:          PropTypes.string,
+    classPrefix:     PropTypes.string,
     updateState:     PropTypes.bool,
     isSave:          PropTypes.bool
 };
