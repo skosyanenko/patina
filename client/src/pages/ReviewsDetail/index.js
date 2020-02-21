@@ -1,35 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import ArrowBackwards from 'components/ArrowBackwards';
-import Writer from './Writer';
-import Title from './Title';
 import View_1 from './Views/View_1';
 import View_2 from './Views/View_2';
+import review from './review';
 
-const ReviewPage = () => (
-    <>
-        <Link to="/reviews">
-           <ArrowBackwards/>
-        </Link>
+class ReviewPage extends Component {
+    viewSwitcher = view => {
+        switch (view) {
+            case 'view_1':
+                return View_1;
+            case 'view_2':
+                return View_2;
+        }
+    };
 
-        {/*<div className="container-review">*/}
-        {/*    <Writer/>*/}
-
-        {/*    <Title/>*/}
-        {/*</div>*/}
-        {/*<View_1/>*/}
-
-        <div className="view-2">
-            <div className="container-review">
-                <Writer/>
-
-                <Title/>
-
-                <View_2/>
-            </div>
-            <View_1/>
-        </div>
-    </>
-);
+    render () {
+        return(
+            <>
+                <Link to="/reviews">
+                    <ArrowBackwards/>
+                </Link>
+                {review && review.map((item, key) => {
+                    const Component = this.viewSwitcher(item.view);
+                    return(
+                        <Component
+                            key={key}
+                            {...item}
+                        />
+                    )
+                })}
+            </>
+        )
+    }
+}
 
 export default ReviewPage;

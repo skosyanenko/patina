@@ -8,7 +8,7 @@ class UserInfo extends Component {
         return (
             <div className="user-info">
                 <div className="user-info__wrapper">
-                    <Author isTimeToRead={12}/>
+                    <Author isTimeToRead={true} textLength={this.props.textLength}/>
                     <div className="follow-button">Подписаться</div>
                 </div>
                 <Socials/>

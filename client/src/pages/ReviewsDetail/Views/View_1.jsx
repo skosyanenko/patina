@@ -1,46 +1,47 @@
 import React, {Component} from 'react';
+import UserInfo from '../UserInfo';
+import Writer from '../Writer';
 import './index.sass';
-import UserInfo from "../UserInfo";
 
 class View_1 extends Component {
-    formatType = (type, value) => {
-        switch (type) {
-            case 'Paragraph':
-            case 'List':
-                return <div className="review-wrap__paragraph">{value}</div>;
-            case 'Marker':
-                return <mark>{value}</mark>;
-            case 'Quote':
-                return <span className="review-wrap__quote">{value}</span>;
-            case 'Image':
-                return <img src="images/topImage/1.jpg" alt="" className="review-wrap__image"/>;
-            case 'Header':
-                return <h1 className="review-wrap__heading">{value}</h1>;
-            case 'Delimiter':
-                return <p className="review-wrap__delimiter">* * *</p>;
-        }
-    };
-
     render() {
+        const {title, subtitle, description, date, likes} = this.props;
+        const objValues = Object.keys(description).map(x => description[x]);
+        const textLength = Array.from(objValues)
+          .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+
         return (
-            <>
-                <div className="review-wrap">
-                    {/*{data.items && data.items.map((item, key) => {*/}
-                    {/*    const Component = this.formatType(item.type, item.text.value);*/}
-                    {/*        return (*/}
-                    {/*        <Component key={key} className={`review-wrap__${item.type}`}/>*/}
-                    {/*    );*/}
-                    {/*})}*/}
-                    <p className="review-wrap__paragraph">	результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им 	        отсюда спастись. В результате соперничества появляется второй лидер – мальчик по имени Джек – за которым на другую часть острова уходит всё больше и больше детей, пока Ральф не остаётся один вместе с тремя друзьями: толстым Хрюшей и близнецами Эриком и Сэмом.</p>
-                    <p className="review-wrap__paragraph">	результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им 	        отсюда спастись. В результате соперничества появляется второй лидер – мальчик по имени Джек – за которым на другую часть острова уходит всё больше и больше детей, пока Ральф не остаётся один вместе с тремя друзьями: толстым Хрюшей и близнецами Эриком и Сэмом.</p>
-                    <mark>результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им 	</mark>
-                    <span className="review-wrap__quote">результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им </span>
-                    <img src="images/topImage/1.jpg" alt="" className="review-wrap__image"/>
-                    <p className="review-wrap__delimiter">* * *</p>
+            <div className="review-wrapper">
+                <div className="review-wrapper__wrap">
+                    <Writer/>
+
+                    <div className="review-wrapper__text">
+                        <h1 className="review-wrapper__text-title">{title}</h1>
+                        <span className="review-wrapper__text-subtitle">{subtitle}</span>
+                    </div>
                 </div>
-                <UserInfo/>
-            </>
-        );
+                <div className="review-wrapper__page">
+                    <div className="review-wrapper__page-triangle"/>
+                    <h1 className="review-wrapper__page-title">{title}</h1>
+                    <div className="review-wrapper__page-subtitle">
+                        <span>{subtitle}</span>
+                    </div>
+                    <div className="review-wrapper__page-text">
+                        <div className="review-wrapper__user">
+                            <UserInfo textLength={textLength}/>
+                        </div>
+                        <div className="review-wrapper__description">
+                            {description && Object.keys(description).map(item => (
+                              <p className={`review-wrap__${item}`} key={item}>
+                                  {description[item]}
+                              </p>
+                            ))}
+                        </div>
+                    <span className="review-wrapper__number">1</span>
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 

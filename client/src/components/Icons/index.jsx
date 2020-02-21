@@ -8,22 +8,22 @@ class Icons extends Component {
     };
 
     static propTypes = {
-        like: PropTypes.number.isRequired,
+        likes: PropTypes.number.isRequired,
         views: PropTypes.number.isRequired,
-        clock: PropTypes.number.isRequired
+        date: PropTypes.number.isRequired
     };
 
     static defaultProps = {
-        like: 0,
+        likes: 0,
         views: 0,
-        clock: 0
+        date: 0
     };
 
     activate = e => {
         const self = e.target;
         const activatedClass = 'activated';
 
-        if (!self.classList.contains(activatedClass) && self.classList.contains('icons__like')) {
+        if (!self.classList.contains(activatedClass) && self.classList.contains('icons__likes')) {
             self.classList.add(activatedClass);
             setTimeout(() =>  {
                 self.classList.remove(activatedClass);

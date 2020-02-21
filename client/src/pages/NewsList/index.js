@@ -1,45 +1,54 @@
-import React from 'react';
-import Pagination from 'components/Pagination';
+import React, {Component} from 'react';
 import TitleOfPage from 'components/TitleOfPage';
-import NewsBox from './View/NewsBox';
-import NewsContainer from './View/NewsContainer';
+import NewsBlock from './View/NewsBlock';
+import NewsVertical from './View/NewsVertical';
+import NewsHorizontal from './View/NewsHorizontal';
 import NewsElem from './View/NewsElem';
 import NewsLink from './View/NewsLink';
+import Pagination from 'components/Pagination';
+import items from './items';
 
-const NewsPage = () => (
-  <>
-      <TitleOfPage title={"Новости"}
-                  subtitle={"новости из мира литературы"}
-                  isSorting={false}
-      />
-      <div className="container news">
-          <NewsBox
-                horizontal={false}
-                img="/images/news/1.png"
-                title={"Книга «Ветра зимы» выйдет в 2020 году"}
-                text={"Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина, чтобы узнать альтернативный. Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина."}
-          />
+class NewsPage extends Component {
 
-          <NewsBox
-                horizontal={true}
-                img="/images/news/2.png"
-                title={"На Западном Урале проходит эко-арт фестиваль «По следам Маяковского»"}
-                text={"Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина. Поклонники Вселенной Мартина остались недовольны финалом сериала «Игра Престолов», Петиция о пересъемке 8 сезона набирает обороты, но все же фанам придется дождаться выхода книг Джорджа Мартина."}
-          />
+    viewSwitcher = view => {
+        switch (view) {
+            case 'view_1':
+                return NewsVertical;
+            case 'view_2':
+                return NewsHorizontal;
+            case 'view_3':
+                return NewsBlock;
+            case 'view_4':
+                return NewsElem;
+            case 'view_5':
+                return NewsLink;
+        }
+    };
+    
+    render () {
 
-          {/*<div className="news__container">*/}
-              <NewsContainer/>
-              <div className="news__container">
-                  <NewsElem/>
-                  <NewsElem/>
-                  <NewsLink/>
-                  <NewsLink/>
-                  <NewsLink/>
-                  {/*<Pagination/>*/}
-              </div>
-          {/*</div>*/}
-      </div>
-  </>
-);
+        return(
+            <>
+                <TitleOfPage title={"Новости"}
+                    subtitle={"новости из мира литературы"}
+                    isSorting={false}
+                />
+                <div className="news">
+                    {items && items.map((item, key) => {
+                        const Component = this.viewSwitcher(item.view);
+                        return(
+                            <Component
+                                key={key}
+                                {...item}
+                            />
+                        )
+                    })}
+                </div>
+
+                {/*<Pagination/>*/}
+            </>
+        )
+    }
+}
 
 export default NewsPage;

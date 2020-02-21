@@ -39,10 +39,10 @@ class FormManager extends Component {
                 </div>
 
                 <HookForm
-                  {...this.props}
-                  onSubmit={this.onSubmit}
-                  hookView={this.hookView}
-                  typeView={typeView}
+                    {...this.props}
+                    onSubmit={this.onSubmit}
+                    hookView={this.hookView}
+                    typeView={typeView}
                 />
 
                 {success &&

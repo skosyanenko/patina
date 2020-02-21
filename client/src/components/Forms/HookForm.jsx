@@ -30,28 +30,29 @@ const HookForm = props => {
                 return TextEditor;
         }
     };
+    
     return (
         <form className={`form-wrapper ${props.prefix}`} onSubmit={handleSubmit(props.onSubmit)}>
             <div className={`form ${props.classPrefix}`}>
                 {props.fields && props.fields.map((field, key) => {
                     const Component = typeSwitcher(field.type);
-                    return (
-                        <Component
-                            key={key}
-                            {...props}
-                            {...field}
-                            register={register}
-                            onChange={setValue}
-                            isSubmit={formState.isSubmitting}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                })}
+                        return (
+                            <Component
+                                key={key}
+                                {...props}
+                                {...field}
+                                register={register}
+                                onChange={setValue}
+                                isSubmit={formState.isSubmitting}
+                                control={control}
+                                errors={errors}
+                            />
+                        )
+                    }
+                )}
                 <button type="submit" className={`button button-green ${Object.keys(errors).length && 'disabled' || ''}`}>
                     {props.button}
                 </button>
-
             </div>
         </form>
     );

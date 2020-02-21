@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import TimeToRead from 'components/TimeToRead';
 import PropTypes from 'prop-types';
 import './index.sass';
 
 class Author extends Component {
+
     render() {
-        const {isTimeToRead} = this.props;
+        const {isTimeToRead, textLength} = this.props;
+
         return (
             <div className="author">
                 <div className="author__avatar">
@@ -14,7 +17,9 @@ class Author extends Component {
                 <div className="author__inform">
                     <span className="author__inform-name">Тетя Мотя</span>
                     <span className="author__inform-date">01.11.19</span>
-                    {isTimeToRead && <span className="author__inform-time">12 мин. читать</span>}
+                    {isTimeToRead &&
+                        <TimeToRead textLength={textLength}/>
+                    }
                 </div>
             </div>
         );

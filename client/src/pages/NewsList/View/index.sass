@@ -1,17 +1,36 @@
 @import 'config'
 
-.box,
-.news-container,
+.news
+    column-gap: 40px
+    column-count: 2
+    height: 100%
+    width: 100%
+    margin-top: 30px
+    +maxwidth($tablet)
+        column-count: 1
+        margin-top: 25px
+    +maxwidth($mobail)
+        margin-top: 20px
+    &:first-child
+        margin-top: 0
+    .news-link:first-child
+        padding-top: 0
+
+.news-horizontal,
+.news-vertical,
+.news-block,
 .news-elem,
 .news-link
-    width: calc(50% - 20px)
-    //margin-top: 50px
+    //break-inside: avoid
+    //break-after: right
+    width: 100%
     display: flex
+    margin: 20px 0
     +maxwidth($tablet)
         width: 100%
-        //margin-top: 40px
-    +maxwidth($mobail)
-        //margin-top: 30px
+        margin: 15px 0
+    +maxwidth($sm-mobail)
+        margin: 10px
 
     &__title
         @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
@@ -41,114 +60,133 @@
             width: 100%
             height: 100%
 
-.news-elem,
-.news-link
-    border-bottom: 1px solid $carbonic
-    justify-content: space-between
-
-.box
-    height: 100%
-    +maxwidth($tablet)
-        max-height: 300px
-    +maxwidth($mobail)
-        max-height: 280px
+.news-horizontal,
+.news-vertical
+    display: flex
     +maxwidth($sm-mobail)
         flex-direction: column
 
-    &--horizontal
-        flex-direction: column
-
-        .box__title:after
-            display: none
-
-        .box__about
-            margin-top: 15px
-            +maxwidth($mobail)
-                margin-top: 10px
-
-    &__row
+    &__wrapper
         display: flex
         justify-content: space-between
 
-    &__wrap
-        max-width: 215px
-        min-width: 215px
-        height: 100%
-        +maxwidth($tablet)
-            max-width: 185px
-            min-width: 185px
-        +maxwidth($mobail)
-            max-width: 155px
-            min-width: 155px
+    &__link
+        transition: .5s ease
+        &:hover
+            opacity: 0.7
 
-        &--horizontal
-            max-width: 300px
-            min-width: 300px
-            height: 100%
-            position: relative
+.news-horizontal
+    flex-direction: column
+
+    &__wrapper
+        +maxwidth($sm-mobail)
+            flex-direction: column
+
+        &-nav
+            display: flex
+            justify-content: space-between
+            align-items: center
+            flex-direction: column
             +maxwidth($tablet)
-                max-width: 270px
-                min-width: 270px
-            +maxwidth($mobail)
-                max-width: 240px
-                min-width: 240px
+                height: 115px
+                margin: auto 0
+            +maxwidth($sm-mobail)
+                height: fit-content
+                flex-direction: row
+                margin: 15px 0 10px
+
+    &__link
+        width: 52%
+        +maxwidth($sm-mobail)
+            width: 100%
+
+        &-img
+            width: 100%
+            position: relative
 
             &:after
                 width: 1px
                 height: 100%
-                right: -25%
+                left: 122%
                 position: absolute
                 content: ''
                 background: $green
-    &__img
-        height: 100%
+                +maxwidth($sm-mobail)
+                    display: none
 
-    &__about
-        max-width: 385px
+            img
+                width: 100%
+
+    &__description
+        max-width: 100%
+        margin-left: 0
+        margin-top: 10px
+
+        &-wrap
+            margin-top: 10px
+            border-top: none
+            -webkit-line-clamp: 7
+            +maxwidth($tablet)
+                margin-top: 15px
+                padding-top: 15px
+                -webkit-line-clamp: 5
+            +maxwidth($mobail)
+                margin-top: 10px
+                padding-top: 10px
+
+    &__text
+        margin-top: 15px
+        +maxwidth($mobail)
+            margin-top: 10px
+
+.news-vertical
+    &__link
+        width: 39%
+        +maxwidth($tablet)
+            width: 280px
+        +maxwidth($sm-mobail)
+            margin: 0 auto 15px
+
+        &-img
+            width: 100%
+
+            img
+                width: 100%
+
+    &__description
+        width: 61%
         margin-left: 15px
         display: flex
         flex-direction: column
         justify-content: space-between
-        +maxwidth($mobail)
-            margin-left: 10px
-
-        &--horizontal
-            max-width: 100%
-            margin-left: 0
-            margin-top: 10px
-            .box__text
-                margin-top: 10px
-                border-top: none
-
-    &__text
-        margin-top: 20px
-        padding-top: 20px
-        border-top: 1px solid $green
-        -webkit-line-clamp: 7
         +maxwidth($tablet)
-            margin-top: 15px
-            padding-top: 15px
-            -webkit-line-clamp: 5
-        +maxwidth($mobail)
-            margin-top: 10px
-            padding-top: 10px
+            width: 100%
+        +maxwidth($sm-mobail)
+            margin-left: 0
 
-    &__icons
-        display: flex
-        justify-content: space-between
-        align-items: center
+        &-wrap
+            +maxwidth($sm-mobail)
+                margin-bottom: 15px
 
-        &--horizontal
-            margin: 25px 0
-            flex-direction: column
-            +maxwidth($tablet)
-                margin: 20px 0
-            +maxwidth($mobail)
-                margin: 15px 0
+        &-nav
+            display: flex
+            justify-content: space-between
+            align-items: center
 
-.news-container
-    height: 100%
+    &__title
+        border-bottom: 1px solid $green
+        position: relative
+        margin-bottom: 40px
+        +maxwidth($tablet)
+            margin-bottom: 30px
+        +maxwidth($sm-mobail)
+            border-bottom: none
+            margin-bottom: 10px
+
+.news-block
     flex-direction: column
+    &:first-child
+        margin-top: 0
 
     &__img
         min-width: 100%
@@ -174,12 +212,10 @@
         width: 100%
         display: flex
         justify-content: space-between
+        align-items: center
 
 .news-elem
-    width: 100%
-    max-height: 200px
-    height: 100%
-    margin-top: 25px
+    margin-bottom: 0
     padding-bottom: 25px
     +maxwidth($tablet)
         margin-top: 20px
@@ -208,34 +244,35 @@
         +maxwidth($sm-mobail)
             display: none
 
+
 .news-link
-    width: 100%
-    margin-top: 0
+    margin: 0
     padding: 25px 0
     align-items: center
+    border-bottom-style: double
+    border-color: $lightgray
     +maxwidth($tablet)
         padding: 20px 0
     +maxwidth($mobail)
         padding: 15px 0
 
+    &:first-child
+        padding-top: 0
+
     &__title
         @include style-text(21px, 2px, $waverlyExtra, $black, 100%, 800, false)
+        max-width: 400px
+        +maxwidth($sm-mobail)
+            max-width: 150px
 
-.news
-    flex-wrap: wrap
+.news-elem,
+.news-link
     display: flex
-    +maxwidth($tablet)
-        align-items: flex-start
-    +maxwidth($mobail)
-        display: flex
-        flex-direction: column
+    justify-content: space-between
+    border-bottom-style: double
+    border-color: $lightgray
 
-    &__container
-        display: flex
-        justify-content: space-between
-        width: calc(50% - 20px)
-        flex-direction: column
-        +maxwidth($tablet)
-            width: 100%
-        +maxwidth($mobail)
-            width: 100%
+
+
+
+

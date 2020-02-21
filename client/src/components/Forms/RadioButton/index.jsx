@@ -42,6 +42,6 @@ class RadioButton extends Component {
             </div>
         )
     }
-};
+}
 
 export default RadioButton;
