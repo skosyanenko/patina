@@ -5,10 +5,7 @@ import './index.sass';
 
 class View_1 extends Component {
     render() {
-        const {title, subtitle, description, date, likes} = this.props;
-        const objValues = Object.keys(description).map(x => description[x]);
-        const textLength = Array.from(objValues)
-          .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+        const {title, subtitle, description, textLength, date, likes} = this.props;
 
         return (
             <div className="review-wrapper">
@@ -32,9 +29,9 @@ class View_1 extends Component {
                         </div>
                         <div className="review-wrapper__description">
                             {description && Object.keys(description).map(item => (
-                              <p className={`review-wrap__${item}`} key={item}>
-                                  {description[item]}
-                              </p>
+                                <p className={`review-wrap__${item}`} key={item}>
+                                    {description[item]}
+                                </p>
                             ))}
                         </div>
                     <span className="review-wrapper__number">1</span>

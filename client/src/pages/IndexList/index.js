@@ -5,10 +5,10 @@ import Books from './Books';
 import Patina from './Patina';
 import MainTimeline from './TimeLine';
 import NewsBlock from '../NewsList/View/NewsBlock';
+import NewsElem from '../NewsList/View/NewsElem';
+import NewsLink from '../NewsList/View/NewsLink';
 import 'static/css/slick-theme.css';
 import 'static/css/slick.css';
-import NewsElem from "../NewsList/View/NewsElem";
-import NewsLink from "../NewsList/View/NewsLink";
 
 const PatinaPage = () => (
     <>
@@ -26,15 +26,13 @@ const PatinaPage = () => (
             subtitle={'новости из мира литературы'}
         />
 
-        <div className="main news__container">
+        <div className="main news">
             <NewsBlock/>
-            <div>
-                <NewsElem/>
-                <NewsElem/>
-                <NewsLink/>
-                <NewsLink/>
-                <NewsLink/>
-            </div>
+            <NewsElem/>
+            <NewsElem/>
+            <NewsLink/>
+            <NewsLink/>
+            <NewsLink/>
         </div>
 
         <Title

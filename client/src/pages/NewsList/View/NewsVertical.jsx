@@ -4,8 +4,7 @@ import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 import './index.sass';
 
-const NewsVertical = ({title, description, cover, likes, views, date}) => (
-
+const NewsVertical = ({title, description, textLength, cover, likes, views, date}) => (
     <div className="news-vertical">
         <Link to={'/new'} className="news-vertical__link">
             <div className="news-vertical__link-img">
@@ -19,7 +18,7 @@ const NewsVertical = ({title, description, cover, likes, views, date}) => (
             </div>
             <div className="news-vertical__description-nav">
                 <Icons likes={likes} views={views} date={date}/>
-                <TimeToRead/>
+                <TimeToRead textLength={textLength}/>
                 <Link to={'/new'} className="button button-white">Подробнее</Link>
             </div>
         </div>

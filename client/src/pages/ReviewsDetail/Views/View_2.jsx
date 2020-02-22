@@ -23,7 +23,7 @@ class View_2 extends Component {
     };
 
     render() {
-        const {title, subtitle, description, date, likes} = this.props;
+        const {title, subtitle, description, textLength, date, likes} = this.props;
 
         return (
             <>
@@ -37,20 +37,11 @@ class View_2 extends Component {
                 </div>
 
                 <div className="review-wrap">
-                    {description && Object.keys(description).map((item, key) => {
-                        const Component = this.formatType(item, description[item]);
-                        return(
-                          <Component key={key}/>
-                        )
-                    })}
-                    {/*<p className="review-wrap__paragraph">	</p>*/}
-                    {/*<p className="review-wrap__paragraph">	результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им 	        отсюда спастись. В результате соперничества появляется второй лидер – мальчик по имени Джек – за которым на другую часть острова уходит всё больше и больше детей, пока Ральф не остаётся один вместе с тремя друзьями: толстым Хрюшей и близнецами Эриком и Сэмом.</p>*/}
-                    {/*<mark>результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им 	</mark>*/}
-                    {/*<p className="review-wrap__quote">результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им </p>*/}
-                    {/*<img src="images/topImage/1.jpg" alt="" className="review-wrap__image"/>*/}
-                    {/*<p className="review-wrap__delimiter">* * *</p>*/}
+                    {description && Object.keys(description).map(item => (
+                        this.formatType(item, description[item])
+                    ))}
                 </div>
-                <UserInfo/>
+                <UserInfo textLength={textLength}/>
             </>
         );
     }

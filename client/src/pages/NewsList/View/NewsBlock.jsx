@@ -4,8 +4,7 @@ import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 import './index.sass';
 
-const NewsBlock = ({title, description, cover, likes, views, date}) => (
-
+const NewsBlock = ({title, description, textLength, cover, likes, views, date}) => (
     <div className="news-block">
         <Link to={'/new'}>
             <div className="news-block__img">
@@ -16,7 +15,7 @@ const NewsBlock = ({title, description, cover, likes, views, date}) => (
         <span className="news-block__text">{description}</span>
         <div className="news-block__nav">
             <Icons likes={likes} views={views} date={date}/>
-            <TimeToRead/>
+            <TimeToRead textLength={textLength}/>
             <Link to={'/new'} className="button button-white">Подробнее</Link>
         </div>
     </div>

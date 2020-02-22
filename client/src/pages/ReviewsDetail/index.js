@@ -23,10 +23,14 @@ class ReviewPage extends Component {
                 </Link>
                 {review && review.map((item, key) => {
                     const Component = this.viewSwitcher(item.view);
+                    const objValues = Object.keys(item.description).map(x => item.description[x]);
+                    const textLength = Array.from(objValues)
+                        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
                     return(
                         <Component
                             key={key}
                             {...item}
+                            textLength={textLength}
                         />
                     )
                 })}
