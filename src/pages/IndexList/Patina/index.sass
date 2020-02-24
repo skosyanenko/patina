@@ -13,4 +13,23 @@
         height: 370px
         position: absolute
         top: -68px
-        left: -21.5px
+        left: -19.5px
+
+.logo-lines
+    fill: none
+    stroke: $black
+    stroke-dasharray: 2000
+    stroke-dashoffset: 2000
+    animation: showLines 4s linear forwards
+    animation-delay: 2s
+
+.logo-lines
+    &:nth-child(10)
+        animation-delay: 10s
+
+.letters
+    fill: transparent
+    animation: showTitle 2s linear forwards
+    transition: all ease-in
+    animation-delay: 2s
+

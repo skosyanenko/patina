@@ -4,11 +4,15 @@ import './index.sass';
 const Rating = () => (
     <div className="rating">
         {[1, 2 ,3, 4, 5].map(star => (
-            <div key={star} className="rating__item">
-                <svg>
-                    <use href="/images/icons/sprite.svg#star"/>
-                </svg>
-            </div>
+            <>
+                <input
+                    id={star}
+                    type="radio"
+                    name={star}
+                    value={star}
+                />
+                <label htmlFor={star}/>
+            </>
         ))}
     </div>
 );

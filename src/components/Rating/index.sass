@@ -1,26 +1,15 @@
 @import 'config'
 
 .rating
-    width: 160px
-    height: 25px
+    width: fit-content
+    height: 33px
     margin-bottom: 24px
-    display: flex
-    flex-direction: row
-    justify-content: space-between
     position: relative
-    +maxwidth($tablet)
-        width: 140px
-        height: 20px
-        margin-bottom: 20px
-    +maxwidth($mobail)
-        width: 120px
-        height: 15px
-        margin-bottom: 15px
     &:hover
         &:before
             width: 137px
             padding: 6px 20px
-            bottom: 35px
+            bottom: 38px
             left: 60px
             content: '4.9 по 21 оценке'
             @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
@@ -30,14 +19,14 @@
             border-radius: 5px
             +maxwidth($tablet)
                 left: 45px
-                bottom: 30px
+                bottom: 33px
             +maxwidth($mobail)
                 display: none
 
         &:after
             width: 3px
             height: 1px
-            bottom: 17px
+            bottom: 20px
             left: 75px
             content: ''
             position: absolute
@@ -46,39 +35,32 @@
             border-top: 12px solid $green
             +maxwidth($tablet)
                 left: 64px
-                bottom: 12px
+                bottom: 15px
             +maxwidth($mobail)
                 display: none
 
-    &__item
-        width: 25px
-        height: 25px
+    label
+        float: right
+        position: relative
+        width: 33px
+        height: 33px
         cursor: pointer
-        transition: all 1s ease
-        +maxwidth($tablet)
-            width: 20px
-            height: 20px
-        +maxwidth($mobail)
-            width: 15px
-            height: 15px
 
-        svg
-            width: 25px
-            height: 25px
-            fill: $white
-            stroke: $green
-            stroke-width: 20
+        &:not(:first-of-type)
+            padding-right: 2px
+
+        &:before
+            content: "\2605"
+            font-size: 33px
             color: $green
+            opacity: 0.5
+            line-height: 1
             transition: .5s
-            +maxwidth($tablet)
-                width: 20px
-                height: 20px
-            +maxwidth($mobail)
-                width: 15px
-                height: 15px
 
-            &.active
-                fill: currentColor
+    input
+        display: none
 
-
-
+    input:checked ~ label:before,
+    &:not(:checked) > label:hover:before,
+    &:not(:checked) > label:hover ~ label:before
+        opacity: 1
