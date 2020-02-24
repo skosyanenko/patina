@@ -1,7 +1,7 @@
-const { Category } = require('../db/models');
+const { Event } = require('../db/models');
 const { validationResult } = require('express-validator');
 
-exports.addCategory = async (req, res) => {
+exports.addEvent = async (req, res) => {
 
 	const errors = validationResult(req);
 
@@ -10,10 +10,8 @@ exports.addCategory = async (req, res) => {
 	}
 
 	try {
-		Category
-			.build({
-				title: req.body.title,
-			})
+		Event
+			.build({...req.body})
 			.save()
 			.then(() => {
 				res.status(200).send('Success');
@@ -27,12 +25,10 @@ exports.addCategory = async (req, res) => {
 	}
 };
 
-exports.getCategories = async (req, res) => {
+exports.getEvents = async (req, res) => {
 	try {
-		Category.findAll({
-			attributes: ['id', 'title']
-		})
-			.then(categories => res.status(200).json(categories))
+		Event.findAll()
+			.then(events => res.status(200).json(events))
 			.catch(err => console.log('Не удалось получить элементы \n', err));
 	} catch (e) {
 		throw Error(e);

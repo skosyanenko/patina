@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import Title from './Title';
 import Event from './Event';
 import WeatherCard from './WeatherCard';
@@ -6,6 +7,7 @@ import events from './events';
 
 class EventsPage extends Component {
     state = {
+    	events: [],
         quarter: Math.floor(new Date().getMonth() / 3),
         pictures: [
             [
@@ -31,7 +33,26 @@ class EventsPage extends Component {
         ]
     };
 
-    render() {
+    fetchAllEvents = async () => {
+		return await axios.get('/api/v1/events')
+			.then(res => {
+				console.log(res.data);
+				if (res.data) {
+					return res.data;
+				}
+			})
+			.catch(err => {
+				console.log('Ошибка получения элементов из бд' + err)
+			});
+    };
+
+	componentDidMount() {
+		this.fetchAllEvents().then(res => {
+			this.setState({events: res})
+		});
+	}
+
+	render() {
         const {quarter, pictures} = this.state;
 
         return (

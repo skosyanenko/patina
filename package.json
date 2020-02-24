@@ -38,7 +38,7 @@
         "vanilla-tilt": "^1.7.0"
     },
     "scripts": {
-        "start:server": "NODE_ENV=development nodemon --exec babel-node -- index.js",
+        "start:server": "NODE_ENV=development nodemon app.js",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -47,7 +47,7 @@
     "eslintConfig": {
         "extends": "react-app"
     },
-    "proxy": "http://localhost:8080",
+    "proxy": "http://localhost:5000",
     "browserslist": {
         "production": [
             ">0.2%",
