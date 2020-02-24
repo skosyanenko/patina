@@ -1,10 +1,10 @@
-const books = require('./books');
+const category = require('./category');
 
 const routes = [
-	books
-]
+	category,
+];
 
-module.exports = routes.flat();
+module.exports = routes;
 
 
 

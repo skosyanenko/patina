@@ -10,6 +10,7 @@
         "body-parser": "^1.19.0",
         "eslint-config-webpractik": "^0.1.6",
         "express": "^4.17.1",
+        "express-validator": "^6.4.0",
         "gsap": "^2.0.2",
         "node-sass": "^4.13.0",
         "pg": "^7.18.2",
@@ -37,7 +38,7 @@
         "vanilla-tilt": "^1.7.0"
     },
     "scripts": {
-        "start:server": "NODE_ENV=development nodemon index.js",
+        "start:server": "NODE_ENV=development nodemon --exec babel-node -- index.js",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -60,6 +61,11 @@
         ]
     },
     "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.4",
+        "@babel/node": "^7.8.4",
+        "@babel/preset-env": "^7.8.4",
+        "@babel/preset-react": "^7.8.3",
         "@editorjs/delimiter": "^1.1.0",
         "@editorjs/header": "^2.3.2",
         "@editorjs/image": "^2.3.3",
@@ -68,6 +74,7 @@
         "@editorjs/paragraph": "^2.6.1",
         "@editorjs/quote": "^2.3.0",
         "concurrently": "^5.1.0",
+        "express-swagger-generator": "^1.1.17",
         "nodemon": "^2.0.2",
         "react-editor-js": "^1.4.2"
     }
