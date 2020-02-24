@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const swaggerUi = require('swagger-ui-express');
 const expressSwagger = require('express-swagger-generator')(app);
 const options = require('./config/swagger');
 const db = require('./db/models/index');
@@ -20,8 +19,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup());
 
 app.get('/ping', (req, res) => {
 	return res.send('pong');

@@ -1,7 +1,5 @@
 const options = {
 	swaggerDefinition: {
-		routePrefix: '/documentation',
-		exposeRoute: true,
 		info: {
 			description: 'This is a sample server',
 			title: 'Swagger',
@@ -14,17 +12,17 @@ const options = {
 			"application/xml"
 		],
 		schemes: ['http', 'https'],
-		securityDefinitions: {
-			JWT: {
-				type: 'apiKey',
-				in: 'header',
-				name: 'Authorization',
-				description: "",
-			}
-		}
+		// securityDefinitions: {
+		// 	JWT: {
+		// 		type: 'apiKey',
+		// 		in: 'header',
+		// 		name: 'Authorization',
+		// 		description: "",
+		// 	}
+		// }
 	},
 	basedir: __dirname,
-	files: ['./routes/**/*.js']
+	files: ['../routes/*.js']
 };
 
 module.exports = options;
