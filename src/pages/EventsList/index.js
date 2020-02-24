@@ -3,7 +3,6 @@ import axios from 'axios';
 import Title from './Title';
 import Event from './Event';
 import WeatherCard from './WeatherCard';
-import events from './events';
 
 class EventsPage extends Component {
     state = {
@@ -36,8 +35,8 @@ class EventsPage extends Component {
     fetchAllEvents = async () => {
 		return await axios.get('/api/v1/events')
 			.then(res => {
-				console.log(res.data);
 				if (res.data) {
+                    res.data.unshift({type: 'card'});
 					return res.data;
 				}
 			})
@@ -53,14 +52,14 @@ class EventsPage extends Component {
 	}
 
 	render() {
-        const {quarter, pictures} = this.state;
+        const {quarter, pictures, events} = this.state;
 
         return (
             <>
                 <Title/>
                 <div className="container">
                     <div className="events-wrapper">
-                        {events.map((field, key) => {
+                        {events && events.map((field, key) => {
                             const picture = pictures[quarter].find(item => item.key === key);
                             const Component = field.type === 'card' ? WeatherCard : Event;
                             return <Component key={key} picture={picture && picture.name} {...field}/>;

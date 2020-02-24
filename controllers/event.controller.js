@@ -10,7 +10,12 @@ exports.addEvent = async (req, res) => {
 	}
 
 	try {
-		Event
+		const {timeStart, timeEnd, date} = req.body;
+
+		req.body.timeStart = new Date(date + ' ' + timeStart);
+		req.body.timeEnd = new Date(date + ' ' + timeEnd);
+
+		await Event
 			.build({...req.body})
 			.save()
 			.then(() => {
@@ -27,9 +32,23 @@ exports.addEvent = async (req, res) => {
 
 exports.getEvents = async (req, res) => {
 	try {
-		Event.findAll()
+		await Event.findAll()
 			.then(events => res.status(200).json(events))
 			.catch(err => console.log('Не удалось получить элементы \n', err));
+	} catch (e) {
+		throw Error(e);
+	}
+};
+
+exports.deleteEvent = async (req, res) => {
+	try {
+		await Event.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(() => res.status(200).send('Success'))
+		.catch(err => console.log('Не удалось удалить элемент \n', err));
 	} catch (e) {
 		throw Error(e);
 	}

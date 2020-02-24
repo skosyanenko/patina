@@ -8,7 +8,9 @@ export default class TextFx {
     }
 
     _init = () => {
-        window.charming(this.el, {classPrefix: 'letter'});
+        if (window.charming) {
+            window.charming(this.el, {classPrefix: 'letter'});
+        }
         this.letters = [].slice.call(this.el.querySelectorAll('span'));
     };
 

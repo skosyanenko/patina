@@ -19,7 +19,7 @@ class FormManager extends Component {
 
     onSubmit = values => {
         console.log(values);
-        axios.post(`/api/${this.props.API}`, values)
+        axios.post(`/api/v1/${this.props.API}`, values)
             .then(res => {
                 console.log('Submit Response: ', res.data);
                 this.setState({success: true});
@@ -29,8 +29,23 @@ class FormManager extends Component {
             });
     };
 
+    componentDidMount() {
+        axios.get('/api/v1/events')
+          .then(({data: events}) => this.setState({events}))
+          .catch(err => console.log(err));
+    }
+
+    deleteEvent = id => {
+        axios.delete(`/api/v1/events/${id}`)
+          .then(res => res.status && console.log('Удалено успешно'))
+          .then(() => this.setState(state => ({
+              events: state.events.filter(event => event.id !== id)
+          })))
+          .catch(err => console.log(err));
+    };
+
     render() {
-        const {success, typeView} = this.state;
+        const {success, typeView, events} = this.state;
 
         return (
             <div className="page--form">
@@ -44,6 +59,13 @@ class FormManager extends Component {
                     hookView={this.hookView}
                     typeView={typeView}
                 />
+
+                {events && events.map(event => (
+                  <div style={{width: '200px', display: 'flex', justifyContent: 'space-between'}}>
+                      <strong>{event.title}</strong>
+                      <span style={{color: 'red'}} onClick={() => this.deleteEvent(event.id)}>Удалить</span>
+                  </div>
+                ))}
 
                 {success &&
                     <div className="form__success">

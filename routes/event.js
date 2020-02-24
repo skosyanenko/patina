@@ -39,4 +39,16 @@ router.get(
 	EventController.getEvents,
 );
 
+/**
+ * @route DELETE /api/v1/events/:id
+ * @group events
+ * @param {integer} id.required - id
+ * @returns {object} 200 - Success
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete(
+	'/api/v1/events/:id',
+	EventController.deleteEvent,
+);
+
 module.exports = router;
