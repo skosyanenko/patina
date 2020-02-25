@@ -26,14 +26,14 @@ const PatinaPage = () => (
             subtitle={'новости из мира литературы'}
         />
 
-        <div className="main news">
-            <NewsBlock/>
-            <NewsElem/>
-            <NewsElem/>
-            <NewsLink/>
-            <NewsLink/>
-            <NewsLink/>
-        </div>
+        {/*<div className="main news">*/}
+        {/*    <NewsBlock/>*/}
+        {/*    <NewsElem/>*/}
+        {/*    <NewsElem/>*/}
+        {/*    <NewsLink/>*/}
+        {/*    <NewsLink/>*/}
+        {/*    <NewsLink/>*/}
+        {/*</div>*/}
 
         <Title
             title={'Топы'}

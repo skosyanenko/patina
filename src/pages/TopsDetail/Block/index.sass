@@ -62,6 +62,7 @@
         border: 3px solid $sand
         @include style-text(48px, 4px, $vogue, $black, 100%, 500, false)
         transition: all .3s ease
+        cursor: pointer
         +maxwidth($tablet)
             width: 85px
             height: 85px
@@ -69,10 +70,12 @@
             width: 75px
             height: 75px
 
+        a
+            color: $black
+
         &:hover
             background: $sand
-
-            span
+            a
                 color: $white
 
     &__title

@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
-import data from 'startData/listBook';
 
 class ListBooks extends Component {
     state = {
@@ -10,7 +9,6 @@ class ListBooks extends Component {
 
     componentDidMount() {
         this.getBooks();
-        //this.props.fetchData(this.props.getList);
     }
 
     componentDidUpdate(prevProps) {
@@ -26,7 +24,7 @@ class ListBooks extends Component {
 
     getBooks = () => {
         this.setState({
-            filteredBooks: data.items
+            filteredBooks: this.props.books
         });
     };
 
@@ -34,7 +32,7 @@ class ListBooks extends Component {
         const {filteredBooks} = this.state;
 
         return (
-            <>
+            <Fragment>
                 <div className="list-book">
                     {filteredBooks && filteredBooks.map((item, key) => (
                         <Link to={'/book'}
@@ -48,7 +46,7 @@ class ListBooks extends Component {
 
                 {/*{books.length && this.props.pagination || ''}*/}
 
-            </>
+            </Fragment>
         );
     }
 }

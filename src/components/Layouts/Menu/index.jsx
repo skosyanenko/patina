@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import './index.sass';
+import {Transition} from "react-transition-group";
 
 class Menu extends Component {
     state = {
@@ -13,6 +14,7 @@ class Menu extends Component {
 			{title: 'что нового', path: '/news'}
 		],
     	lineWidth: null,
+		topActive: null,
         leftMenuToggle: false,
     };
 
@@ -33,10 +35,14 @@ class Menu extends Component {
 		const rightOffset = +target.getBoundingClientRect().right.toFixed();
 		const lineWidth = 280 - rightOffset;
 		this.setState({lineWidth});
+
+		const topOffset = +target.getBoundingClientRect().top.toFixed();
+		const topActive = topOffset + 25;
+		this.setState({topActive});
 	};
 
     render() {
-    	const {leftMenuToggle, lineWidth, navLinks} = this.state;
+    	const {leftMenuToggle, lineWidth, navLinks, topActive} = this.state;
     	const {location} = this.props;
 
 		if (!location) return false;
@@ -49,27 +55,37 @@ class Menu extends Component {
 		};
 
         return (
-			<>
+			<Fragment>
 				<div
-					className={`navigate menu__burger ${isIndex ? leftMenuToggle ? 'close' : 'open' : 'block'} `}
+					className={`burger ${leftMenuToggle ? ' close' : 'open'} ${isIndex ? 'burger--index' : ''}`}
 					onClick={this.toggleMenu}
 				>
-			        <span className="menu__burger-center"/>
+			        <span className="burger__center"/>
 				</div>
-				<nav className={`menu ${isIndex && 'menu--index'} ${!leftMenuToggle ? 'open' : 'menu close  '}`}>
+				<nav className={`menu ${isIndex && 'menu--index'} ${!leftMenuToggle ? 'open active' : 'menu close  '}`}>
 					<div className="menu__wrapper">
 						{navLinks.map((item, key) => (
 							<NavLink to={item.path} key={key} {...defaults}>
-								<i className="menu__line" style={{width: lineWidth}}/>
+								<i className="menu__link-line" style={{width: lineWidth}}/>
 								{item.title}
 							</NavLink>
 						))}
+						<span className={`menu__link-circle ${isIndex ? 'block' : ''}`} style={{top: topActive}}/>
+						<Link to={'/search'} className="menu__search">
+							<div className="menu__search-loupe"/>
+						</Link>
 					</div>
-					<Link to={'/search'} className="menu__search">
-						<div className="menu__search-loupe navigate"/>
-					</Link>
+					<Transition
+						in={leftMenuToggle}
+						timeout={50}
+					>
+						{state =>
+							<div className={'menu__overlay ' + state}/>
+						}
+					{/*<div className={`menu__overlay ${leftMenuToggle ? '' : 'active'}`}/>*/}
+					</Transition>
 				</nav>
-			</>
+			</Fragment>
         )
     }
 }

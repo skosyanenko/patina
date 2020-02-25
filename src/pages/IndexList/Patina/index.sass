@@ -7,6 +7,15 @@
     margin-left: 455px
     position: relative
     display: flex
+    +maxwidth(1140px)
+        margin-left: 0
+        max-width: 100%
+    +maxwidth($tablet)
+        height: 295px
+    +maxwidth($mobail)
+        height: 265px
+    +maxwidth($sm-mobail)
+        height: 235px
 
     &__logo
         width: 370px
@@ -14,6 +23,20 @@
         position: absolute
         top: -68px
         left: -19.5px
+        +maxwidth(1140px)
+            left: 0
+            right: 0
+            top: -45px
+            margin: 0 auto
+        +maxwidth($tablet)
+            width: 340px
+            height: 340px
+        +maxwidth($mobail)
+            width: 310px
+            height: 310px
+        +maxwidth($sm-mobail)
+            width: 280px
+            height: 280px
 
 .logo-lines
     fill: none

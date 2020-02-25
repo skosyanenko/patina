@@ -3,9 +3,10 @@ import './index.sass';
 
 const Rating = () => (
     <div className="rating">
-        {[1, 2 ,3, 4, 5].map(star => (
+        {[1, 2 ,3, 4, 5].map((star, key) => (
             <>
                 <input
+                    key={key}
                     id={star}
                     type="radio"
                     name={star}

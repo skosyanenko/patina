@@ -13,13 +13,13 @@ class Container extends Component {
         const {title, icon, text} = this.props;
         const {isActive} = this.state;
         return (
-            <div className={`interests__wrapper ${isActive && 'extended' || ''}`}>
+            <div className={`interests__wrapper ${isActive ? 'extended' : ''}`}>
                 <div className="interests__wrapper-container">
                     <svg className="interests__wrapper-icon">
                         <use href={`/images/icons/sprite.svg#${icon}`}/>
                     </svg>
                     <div className="interests__wrapper-title">{title}</div>
-                    <div className={`interests__wrapper-arrow ${isActive && 'toggle' || ''}`} onClick={this.openBlock}>
+                    <div className={`interests__wrapper-arrow ${isActive ?'toggle' : ''}`} onClick={this.openBlock}>
                         <svg>
                             <use href="/images/icons/sprite.svg#arrow"/>
                         </svg>

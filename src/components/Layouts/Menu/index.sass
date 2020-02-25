@@ -2,7 +2,7 @@
 
 .menu
     max-width: 310px
-    min-width: 310px
+    width: 100%
     padding: 0
     position: relative
     display: flex
@@ -15,11 +15,25 @@
     transition: all .7s ease
     +maxwidth(1640px)
         border-top: none
-        min-width: 250px
         max-width: 250px
-        width: 100%
     +maxwidth(1140px)
-        display: none
+        height: calc(100vh + 80px)
+        top: -80px
+        left: -100%
+        position: fixed
+        z-index: 40
+        background-color: white
+        transition: 0.8s
+    +maxwidth($tablet)
+        height: calc(100vh + 90px)
+        top: -70px
+    +maxwidth($sm-mobail)
+        max-width: 190px
+
+    &.active
+        +maxwidth(1140px)
+            left: 0
+            transition: 0.4s
 
     &.close
         width: 0
@@ -28,95 +42,72 @@
         visibility: hidden
 
     &--index
-        background-image: none !important
+        background-image: none
         position: fixed
-
-    &__burger
-        width: 44px
-        height: 24px
-        margin-top: 80px
-        top: 0
-        left: 80px
-        position: fixed
-        z-index: 50
-        display: flex
-        align-items: center
-        cursor: pointer
-
-        &-center
-            width: 30px
-            height: 2px
-            background: $carbonic
-            transition: all .2s ease
-
-            &:before, &:after
-                height: 2px
-                position: absolute
-                content: ''
-                background: $carbonic
-
-            &:before
-                width: 44px
-                top: 0
-
-            &:after
-                width: 15px
-                bottom: 0
-
-        &.open
-            .menu__burger-center
-                transform: rotate(45deg)
-
-                &:before
-                    transform: rotate(270deg)
-                    width: 30px
-
-                &:after
-                    display: none
-
-        &.block
-            display: none
+        +maxwidth(1140px)
+            background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
+            background-position: right
+            background-size: 1px 10px
+            background-repeat: repeat-y
 
     &__wrapper
         margin-top: 20px
         display: flex
         flex-direction: column
         text-align: left
+        +maxwidth(1140px)
+            margin-top: 60px
+        +maxwidth($tablet)
+            margin-top: 50px
+        +maxwidth($sm-mobail)
+            margin: auto 0
 
     &__link
-        margin-top: 105px
+        padding-top: 105px
         @include style-text(26px, 2px, $waverly, $black, 100%, 300, true)
         text-transform: uppercase
         width: fit-content
         background: #ffffff
+        +maxwidth($sm-mobail)
+            padding-top: 60px
 
         &.active
             @include style-text(26px, 2px, $waverlyExtra, $green, 100%, bold, true)
 
-            .menu__line
+            .menu__link-line
                 opacity: 1
                 width: 200px
-            &:after
-                width: 20px
-                height: 20px
-                right: -10px
-                position: absolute
-                content: ''
-                border-radius: 50%
-                background: $green
-                cursor: initial
 
-    &__line
-        opacity: 0
-        width: 0
-        height: 1px
-        margin: 10px
-        right: 0
-        position: absolute
-        content: ''
-        background: linear-gradient(90deg, #264d4b, #264d4b 55%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
-        transition: .5s ease
-        cursor: initial
+        &-circle
+            width: 20px
+            height: 20px
+            right: -10px
+            position: absolute
+            border-radius: 50%
+            background: $green
+            cursor: initial
+            z-index: 6
+            transition: 0.8s
+            +maxwidth($sm-mobail)
+                width: 15px
+                height: 15px
+                right: -7.5px
+
+            &.block
+                display: none
+
+
+        &-line
+            opacity: 0
+            width: 0
+            height: 1px
+            margin: 10px
+            right: 0
+            position: absolute
+            content: ''
+            background: linear-gradient(90deg, #264d4b, #264d4b 55%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
+            transition: .5s ease
+            cursor: initial
 
     &__search
         width: 42px
@@ -132,7 +123,6 @@
         +maxwidth($mobail)
             width: 36px
             height: 36px
-            margin-top: 25px
 
         &-loupe
             background: url('/images/icons/sprite.svg#magnifier-view') no-repeat center / contain
@@ -146,3 +136,81 @@
                 transition: all 0.2s ease 0.05s
                 transform: rotate(3deg)
 
+    &__overlay
+        +maxwidth(1140px)
+            position: fixed
+            background-color: rgba(0, 0, 0, 0.5)
+            top: 0
+            left: 250px
+            width: calc(100% - 250px)
+            height: 102vh
+            transition: .4s ease
+        +maxwidth($sm-mobail)
+            left: 190px
+            width: calc(100% - 190px)
+
+        &.exited
+            transition: .4s ease
+            opacity: 1
+            z-index: -1
+
+        &.entered
+            transition: .4s ease
+            opacity: 0
+            z-index: 8
+
+.burger
+    width: 44px
+    height: 24px
+    margin-top: 80px
+    top: 0
+    left: 80px
+    position: fixed
+    z-index: 50
+    display: none
+    align-items: center
+    cursor: pointer
+    +maxwidth(1140px)
+        display: flex
+        margin-top: 20px
+    +maxwidth($tablet)
+        left: 55px
+    +maxwidth($sm-mobail)
+        left: 35px
+
+    &--index
+        display: flex
+
+    &__center
+        width: 30px
+        height: 2px
+        background: $carbonic
+        transition: all .2s ease
+
+        &:before, &:after
+            height: 2px
+            position: absolute
+            content: ''
+            background: $carbonic
+
+        &:before
+            width: 44px
+            top: 0
+
+        &:after
+            width: 15px
+            bottom: 0
+
+    &.open
+        .burger__center
+            transform: rotate(45deg)
+
+            &:before
+                transform: rotate(270deg)
+                width: 30px
+
+            &:after
+                display: none
+
+    &.block
+        display: none

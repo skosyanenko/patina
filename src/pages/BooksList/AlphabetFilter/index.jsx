@@ -28,15 +28,16 @@ class AlphabetFilter extends Component {
 
     render() {
         const {isBlur, activeLetter} = this.state;
+
         return (
-            <div className={`alphabet ${isBlur && 'alphabet--blur'}`} onClick={this.resetFilter}>
-                {alphabet.map((item, key) => (
+            <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`} onClick={this.resetFilter}>
+                {alphabet && alphabet.map((item, key) => (
                     <div className="alphabet__letter" key={key} onClick={() => this.showLetter(item)}>
                         {item}
                     </div>
                 ))}
 
-                <div className={`alphabet__invisible ${isBlur && 'alphabet__active'}`}>
+                <div className={`alphabet__invisible ${isBlur ? 'alphabet__active' : ''}`}>
                     {activeLetter && activeLetter.length > 0 && isBlur ?
                         activeLetter : ''
                     }

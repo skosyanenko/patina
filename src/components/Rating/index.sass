@@ -1,10 +1,14 @@
 @import 'config'
 
 .rating
-    width: fit-content
+    width: 165px
     height: 33px
     margin-bottom: 24px
     position: relative
+    +maxwidth($mobail)
+        width: 135px
+        height: 27px
+        margin-bottom: 15px
     &:hover
         &:before
             width: 137px
@@ -45,17 +49,22 @@
         width: 33px
         height: 33px
         cursor: pointer
+        +maxwidth($mobail)
+            width: 27px
+            height: 27px
 
         &:not(:first-of-type)
             padding-right: 2px
 
         &:before
             content: "\2605"
-            font-size: 33px
+            font-size: 27px
             color: $green
             opacity: 0.5
             line-height: 1
             transition: .5s
+            +maxwidth($mobail)
+                font-size: 27px
 
     input
         display: none
