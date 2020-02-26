@@ -12,7 +12,7 @@ import SearchPage from './pages/SearchList'
 import RegistrationPage from './pages/Registration'
 import Profile from './pages/Profile'
 import AddForm from './pages/Forms';
-import UndefinedPage from './pages/404'
+import UndefinedPage from './pages/UndefinedPage';
 
 export const routes = [
     {path: '/', component: PatinaPage},
