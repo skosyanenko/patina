@@ -5,7 +5,7 @@ import InputText from '../Forms/Input';
 import entry from '../Forms/Fields/entry';
 import './index.sass';
 
-const ModalEntrance = ({isOpen, toggleModal}) => {
+const EntranceModal = ({isOpen, toggleModal}) => {
     const {handleSubmit, register, errors} = useForm();
 
     const onSubmit = values => {
@@ -37,4 +37,4 @@ const ModalEntrance = ({isOpen, toggleModal}) => {
     )
 };
 
-export default ModalEntrance;
+export default EntranceModal;

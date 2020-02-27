@@ -5,7 +5,7 @@ import {CSSTransition} from 'react-transition-group';
 import Header from './components/Layouts/Header';
 import Menu from './components/Layouts/Menu';
 import RightMenu from './components/Layouts/RightMenu';
-import ModalEntrance from './components/ModalEntrance';
+import EntranceModal from './components/EntranceModal';
 import Footer from './components/Layouts/Footer';
 import 'static/sass/project.sass';
 
@@ -61,7 +61,7 @@ class App extends Component {
 
                     {location.pathname !== '/' && location.pathname !== '/events' && <RightMenu/>}
 
-                    <ModalEntrance
+                    <EntranceModal
                         isOpen={modalIsOpen}
                         toggleModal={this.toggleModal}
                     />

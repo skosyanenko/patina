@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Typed from 'react-typed';
 import Socials from '../SocialsGroup';
 import Rating from '../Rating';
 import PropTypes from 'prop-types';
@@ -27,7 +28,16 @@ const BookInform = ({bookId}) => {
                             <use href="/images/icons/sprite.svg#pencil"/>
                         </svg>
                     </div>
-                    <Link to={'/form-review'} className="button-write-review__text">
+                    <Typed className="button-write-review__animate"
+                           strings = {[". . ."]}
+                           typeSpeed = {100}
+                           backSpeed = {0}
+                           startDelay = {300}
+                           showCursor = {false}
+                           backDelay = {1}
+                           loop = {true}
+                    />
+                    <Link to={'/form/review'} className="button-write-review__text">
                         Написать рецензию
                     </Link>
                 </div>
