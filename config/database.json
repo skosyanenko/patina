@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": 13307878,
+    "password": 151237,
     "database": "patina_development",
     "host": "127.0.0.1",
     "dialect": "postgres"

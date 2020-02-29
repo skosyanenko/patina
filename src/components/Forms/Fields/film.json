@@ -3,19 +3,15 @@
     "name": "title",
     "label": "Название экранизации",
     "icon": "films",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "description",
     "label": "Описание экранизации",
     "icon": "author",
-    "type": "textarea"
-  },
-  {
-    "name": "book",
-    "label": "Название книги, по которой снята экранизация",
-    "icon": "books",
-    "type": "select"
+    "type": "textarea",
+    "req": true
   },
   {
     "name": "image",

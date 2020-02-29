@@ -7,7 +7,7 @@ const Header = ({location, toggleModal}) => (
     <header className={location.pathname === '/' ? 'header header--index' : 'header'}>
         <div className="header__menu"/>
         <div className="header__container">
-            <Link to={'/'}>
+            <Link to={{pathname: '/', state: {from: location.pathname}}}>
                 <div  className="header__container-logo"/>
             </Link>
         </div>

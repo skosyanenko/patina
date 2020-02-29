@@ -35,7 +35,7 @@ class EntranceProfile extends Component {
                     </div>
                     :
                     <div className="entrance__false">
-                        <Link to={'/form/registration'}>
+                        <Link to={'/registration'}>
                             <div className="button follow-button button-white">Создать профиль</div>
                         </Link>
                         <div className="button follow-button button-white"

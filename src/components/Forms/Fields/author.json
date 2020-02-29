@@ -3,13 +3,22 @@
     "name": "name",
     "label": "Имя писателя",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "years",
-    "label": "Годы жизни писателя",
+    "label": "Дата рождения писателя",
     "icon": "clock",
-    "type": "text"
+    "type": "date",
+    "req": true
+  },
+  {
+    "name": "years",
+    "label": "Дата смерти писателя",
+    "icon": "clock",
+    "type": "date",
+    "req": true
   },
   {
     "name": "picture",

@@ -3,25 +3,23 @@
 .menu
     max-width: 310px
     width: 100%
-    padding: 0
     position: relative
+    padding: 0
     display: flex
-    align-items: center
-    flex-direction: column
     background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
     background-position: right
     background-size: 1px 10px
     background-repeat: repeat-y
     transition: all .7s ease
+    z-index: 1001
     +maxwidth(1640px)
         border-top: none
         max-width: 250px
     +maxwidth(1140px)
         height: calc(100vh + 80px)
+        position: fixed
         top: -80px
         left: -100%
-        position: fixed
-        z-index: 40
         background-color: white
         transition: 0.8s
     +maxwidth($tablet)
@@ -30,7 +28,7 @@
     +maxwidth($sm-mobail)
         max-width: 190px
 
-    &.active
+    &.open
         +maxwidth(1140px)
             left: 0
             transition: 0.4s
@@ -44,39 +42,71 @@
     &--index
         background-image: none
         position: fixed
-        +maxwidth(1140px)
-            background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
-            background-position: right
-            background-size: 1px 10px
-            background-repeat: repeat-y
+        top: -80px
+        z-index: 1001
+
+        .menu__wrap
+            height: 100vh
+            background: $white
+            z-index: 1000
+            margin-top: 80px
+            +maxwidth($tablet)
+                margin-top: 70px
+
+        .menu__wrapper
+            margin-top: 80px
+            +maxwidth(1140px)
+                margin-top: 30px
+            +maxwidth($tablet)
+                margin-top: 50px
+
+        .menu__link-circle
+            display: none
+
+    &__wrap
+        width: 100%
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: center
 
     &__wrapper
-        margin-top: 20px
         display: flex
         flex-direction: column
         text-align: left
         +maxwidth(1140px)
-            margin-top: 60px
-        +maxwidth($tablet)
-            margin-top: 50px
-        +maxwidth($sm-mobail)
-            margin: auto 0
+            margin-top: 110px
+
+    &__links
+        display: flex
+        position: relative
 
     &__link
-        padding-top: 105px
+        margin-top: 105px
         @include style-text(26px, 2px, $waverly, $black, 100%, 300, true)
         text-transform: uppercase
-        width: fit-content
-        background: #ffffff
+        z-index: 120
+        +maxwidth(1140px)
+            margin-top: 95px
         +maxwidth($sm-mobail)
-            padding-top: 60px
+            margin-top: 60px
+
+        span
+            background: $white
+            padding-right: 7px
 
         &.active
             @include style-text(26px, 2px, $waverlyExtra, $green, 100%, bold, true)
 
             .menu__link-line
                 opacity: 1
-                width: 200px
+                width: 225px
+                +maxwidth(1640px)
+                    width: 195px
+                +maxwidth($tablet)
+                    width: 190px
+                +maxwidth($sm-mobail)
+                    width: 145px
 
         &-circle
             width: 20px
@@ -93,21 +123,19 @@
                 height: 15px
                 right: -7.5px
 
-            &.block
-                display: none
-
-
         &-line
-            opacity: 0
             width: 0
             height: 1px
             margin: 10px
-            right: 0
+            bottom: 5px
             position: absolute
-            content: ''
+            opacity: 0
+            z-index: -1
             background: linear-gradient(90deg, #264d4b, #264d4b 55%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
             transition: .5s ease
             cursor: initial
+            +maxwidth($tablet)
+                bottom: 0
 
     &__search
         width: 42px
@@ -138,41 +166,34 @@
 
     &__overlay
         +maxwidth(1140px)
+            width: 100%
+            min-height: 105vh
             position: fixed
-            background-color: rgba(0, 0, 0, 0.5)
             top: 0
-            left: 250px
-            width: calc(100% - 250px)
-            height: 102vh
-            transition: .4s ease
-        +maxwidth($sm-mobail)
-            left: 190px
-            width: calc(100% - 190px)
-
-        &.exited
-            transition: .4s ease
-            opacity: 1
             z-index: -1
+            transition: .4s ease
+            background-color: rgba(0, 0, 0, 0.5)
 
         &.entered
-            transition: .4s ease
+            opacity: 1
+            z-index: 1000
+
+        &.exited
             opacity: 0
-            z-index: 8
 
 .burger
     width: 44px
     height: 24px
-    margin-top: 80px
+    position: fixed
+    margin-top: 30px
     top: 0
     left: 80px
-    position: fixed
-    z-index: 50
+    z-index: 1002
     display: none
     align-items: center
     cursor: pointer
     +maxwidth(1140px)
         display: flex
-        margin-top: 20px
     +maxwidth($tablet)
         left: 55px
     +maxwidth($sm-mobail)
@@ -192,11 +213,9 @@
             position: absolute
             content: ''
             background: $carbonic
-
         &:before
             width: 44px
             top: 0
-
         &:after
             width: 15px
             bottom: 0
@@ -204,13 +223,8 @@
     &.open
         .burger__center
             transform: rotate(45deg)
-
             &:before
                 transform: rotate(270deg)
                 width: 30px
-
             &:after
                 display: none
-
-    &.block
-        display: none

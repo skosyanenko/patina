@@ -15,13 +15,15 @@
     "name": "title",
     "label": "Заголовок новости",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "description",
     "label": "Описание новости",
     "icon": "author",
-    "type": "textarea"
+    "type": "textarea",
+    "req": true
   },
   {
     "name": "cover",

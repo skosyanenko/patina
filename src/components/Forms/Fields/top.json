@@ -3,7 +3,8 @@
     "name": "title",
     "label": "Название подборки",
     "icon": "wishlist",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "description",

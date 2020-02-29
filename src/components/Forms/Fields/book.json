@@ -3,43 +3,51 @@
     "name": "book",
     "label": "Название книги",
     "icon": "books",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "author",
-    "label": "Автор книги",
+    "label": "Укажите автора книги",
     "icon": "fun",
-    "type": "text"
+    "type": "select",
+    "isMulti": true,
+    "req": true
   },
   {
     "name": "weight",
     "label": "Количество страниц в книге",
     "icon": "books",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "films",
-    "label": "Фильмы, снятые по книге",
+    "label": "Укажите фильмы, снятые по книге",
     "icon": "films",
-    "type": "text"
+    "type": "select",
+    "isMulti": true
   },
   {
     "name": "quote",
     "label": "Цитата из книги",
     "icon": "quote",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "shortDescription",
     "label": "Краткое описание книги",
     "icon": "author",
-    "type": "textarea"
+    "type": "textarea",
+    "req": true
   },
   {
     "name": "fullDescription",
     "label": "Описание книги",
     "icon": "author",
-    "type": "textarea"
+    "type": "textarea",
+    "req": true
   },
   {
     "name": "coverImage",

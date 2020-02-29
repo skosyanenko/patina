@@ -12,7 +12,8 @@
     "name": "title",
     "label": "Напишите название Вашей рецензии",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "book",

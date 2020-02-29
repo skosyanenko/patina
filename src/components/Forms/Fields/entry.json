@@ -5,12 +5,14 @@
     "icon": "email",
     "type": "email",
     "value": "[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}",
-    "message": "Некорректный E-mail"
+    "message": "Некорректный E-mail",
+    "req": true
   },
   {
     "name": "password",
     "label": "Пароль",
     "icon": "password",
-    "type": "password"
+    "type": "password",
+    "req": true
   }
 ]

@@ -3,6 +3,7 @@
     "name": "text",
     "label": "Укажите название тега / литературного жанра",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   }
 ]

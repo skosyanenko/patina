@@ -7,8 +7,7 @@ import data from 'startData/listTop';
 
 class TopPage extends Component {
     state = {
-        currentTop: [],
-        currentBooks: []
+        currentTop: []
     };
 
     fetchCurrentTop = async () => {
@@ -23,28 +22,10 @@ class TopPage extends Component {
             });
     };
 
-    fetchCurrentBooks = async () => {
-        return await axios.get('/api/v1/books')
-            .then(res =>{
-                    if (res.data) {
-                    return res.data;
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
     componentDidMount() {
         this.fetchCurrentTop().then(res => {
             this.setState({currentTop: res})
         });
-
-        // this.fetchCurrentBooks().then(res => {
-        //     this.setState(state => ({
-        //         currentBooks: state.currentBooks.filter(res => res.id !== id)
-        //     }))
-        // })
     }
 
     render() {

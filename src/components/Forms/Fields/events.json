@@ -3,27 +3,35 @@
     "name": "title",
     "label": "Название мероприятия",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "place",
     "label": "Место проведения мероприятия",
     "icon": "author",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "date",
+    "label": "Дата проведения мероприятия",
     "icon": "clock",
-    "type": "date"
+    "type": "date",
+    "req": true
   },
   {
     "name": "timeStart",
+    "label": "Время начала мероприятия",
     "icon": "clock",
-    "type": "time"
+    "type": "time",
+    "req": false
   },
   {
     "name": "timeEnd",
+    "label": "Время окончания мероприятия",
     "icon": "clock",
-    "type": "time"
+    "type": "time",
+    "req": false
   }
 ]

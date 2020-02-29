@@ -3,7 +3,8 @@
     "name": "firstName",
     "label": "Имя",
     "icon": "user",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "email",
@@ -11,13 +12,15 @@
     "icon": "email",
     "type": "email",
     "value": "[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}",
-    "message": "Некорректный E-mail"
+    "message": "Некорректный E-mail",
+    "req": true
   },
   {
     "name": "city",
     "label": "Город",
     "icon": "placeholder",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "sex",
@@ -30,9 +33,10 @@
   },
   {
     "name": "telegram",
-    "label": "Настроить импорт/ экспорт",
+    "label": "Привяжите ваш телеграмм аккаунт",
     "icon": "telegram",
-    "type": "text"
+    "type": "text",
+    "req": false
   },
   {
     "name": "books",
@@ -52,13 +56,15 @@
     "name": "lastName",
     "label": "Фамилия",
     "icon": "user",
-    "type": "text"
+    "type": "text",
+    "req": true
   },
   {
     "name": "phone",
     "label": "Мобильный телефон",
     "icon": "telephone",
-    "type": "tel"
+    "type": "tel",
+    "req": false
   },
   {
     "name": "password",
@@ -66,7 +72,8 @@
     "icon": "password",
     "type": "password",
     "value": "(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}",
-    "message": "Некорректный пароль. Пароль должен состоять из цифр и латинских букв"
+    "message": "Некорректный пароль. Пароль должен состоять из цифр и латинских букв",
+    "req": true
   },
   {
     "name": "avatar",
@@ -75,9 +82,10 @@
   },
   {
     "name": "vk",
-    "label": "Настроить импорт/ экспорт",
+    "label": "Привяжите вашу страничку в вк",
     "icon": "vkontakte",
-    "type": "text"
+    "type": "text",
+    "req": false
   },
   {
     "name": "genres",
