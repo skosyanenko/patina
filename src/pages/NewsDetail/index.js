@@ -1,6 +1,7 @@
 import React from 'react';
 import Article from './Article';
 import Image from './Image';
+import CommentBlock from "../../components/CommentBlock";
 
 const NewPage = () => (
     <>
@@ -11,6 +12,8 @@ const NewPage = () => (
             <Article/>
 
         </div>
+
+        <CommentBlock/>
     </>
 );
 

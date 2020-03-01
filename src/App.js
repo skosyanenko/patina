@@ -11,7 +11,8 @@ import 'static/sass/project.sass';
 
 class App extends Component {
     state = {
-        modalIsOpen: false
+        modalIsOpen: false,
+        isAnimate: false
     };
 
     switchClasses = (path) => {
@@ -25,10 +26,16 @@ class App extends Component {
         }
     };
 
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState({isAnimate: !prevState.isAnimate})
+        }
+    }
+
     toggleModal = bool => this.setState({modalIsOpen: bool});
 
     render() {
-        const {modalIsOpen} = this.state;
+        const {modalIsOpen, isAnimate} = this.state;
         const {location} = this.props;
 
         return(
@@ -40,7 +47,7 @@ class App extends Component {
                     <Menu location={location}/>
 
                     <CSSTransition
-                        in={true}
+                        in={isAnimate}
                         appear={true}
                         timeout={600}
                         classNames="fade"
@@ -70,7 +77,6 @@ class App extends Component {
             </div>
         )
     }
-
 };
 
 export default App;

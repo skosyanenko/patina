@@ -3,7 +3,7 @@ import CommentForm from './component/CommentForm';
 import CommentList from './component/CommentList';
 import axios from "axios";
 
-class CommentBox extends Component {
+class CommentBlock extends Component {
     state = {
         comments: []
     };
@@ -74,4 +74,4 @@ class CommentBox extends Component {
     }
 }
 
-export default CommentBox;
+export default CommentBlock;

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import UserInfo from '../UserInfo';
 import Writer from '../Writer';
+import CommentBlock from 'components/CommentBlock';
 import './index.sass';
-import CommentBox from '../../../components/Comment';
 
 class View_1 extends Component {
     render() {
@@ -40,7 +40,7 @@ class View_1 extends Component {
                         </div>
                     </div>
                 </div>
-                <CommentBox/>
+                <CommentBlock/>
             </>
         )
     }

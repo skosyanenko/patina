@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UserInfo from '../UserInfo';
 import Writer from '../Writer';
+import CommentBlock from 'components/CommentBlock';
 import './index.sass';
 
 class View_2 extends Component {
@@ -42,6 +43,7 @@ class View_2 extends Component {
                     ))}
                 </div>
                 <UserInfo textLength={textLength}/>
+                <CommentBlock/>
             </>
         );
     }

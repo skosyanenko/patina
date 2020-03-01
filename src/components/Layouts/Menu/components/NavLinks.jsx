@@ -49,13 +49,6 @@ class NavLinks extends Component {
         }
     };
 
-    // positionCircle = (el) => {
-    //     const target = el && el.target || el;
-    //     const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
-    //     const topCoord = this.calcTop(topOffset);
-    //     this.setState({topCoord, toggleCircle: 1});
-    // };
-
     render() {
         const { navLinks, topCoord, toggleCircle } = this.state;
         const { location: {pathname} } = this.props;

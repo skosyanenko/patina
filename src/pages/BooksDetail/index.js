@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Description from './Description';
 import Cover from './Cover';
 import ModalFilms from './ModalFilms';
+import CommentBlock from 'components/CommentBlock';
 
 class BookPage extends Component {
     state = {
@@ -22,6 +23,7 @@ class BookPage extends Component {
 
                     <Description toggleModal={this.toggleModal}/>
                 </div>
+                <CommentBlock/>
 
                 <ModalFilms
                     isOpen={modalIsOpen}

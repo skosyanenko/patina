@@ -25,10 +25,10 @@ class EntranceProfile extends Component {
                         <Link to={'/profile/home'}>
                             <div className="entrance__true-profile"/>
                         </Link>
-                        <div className="entrance__true-wrap">
+                        <Link to={'/profile/statistic'} className="entrance__true-wrap">
                             <div className="entrance__true-bell"/>
                             <span className="entrance__true-counter">1</span>
-                        </div>
+                        </Link>
                         <div className="entrance__true-exit"
                              onClick={this.exitProfile}
                         />

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import Slider from 'react-slick';
+import {Transition} from 'react-transition-group';
 import './index.sass';
-import {Transition} from "react-transition-group";
 
 class ModalFilms extends Component {
 
@@ -12,7 +12,10 @@ class ModalFilms extends Component {
         return (
             <Transition in={isOpen} timeout={50}>
                 {state =>
-                    <Modal className={'films ' + state} isOpen={isOpen}>
+                    <Modal className={`films ` + state}
+                           isOpen={isOpen}
+                           closeTimeoutMS={1000}
+                    >
                         <Slider
                             ref={c => (this.slider = c)}
                             dots={true}

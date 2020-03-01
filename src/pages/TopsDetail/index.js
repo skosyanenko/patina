@@ -3,6 +3,7 @@ import axios from 'axios';
 import Socials from 'components/SocialsGroup';
 import Block from './Block';
 import Depiction from './Depiction';
+import CommentBlock from 'components/CommentBlock';
 import data from 'startData/listTop';
 
 class TopPage extends Component {
@@ -50,6 +51,7 @@ class TopPage extends Component {
                         <Socials/>
                     </div>
                 </div>
+                <CommentBlock/>
             </Fragment>
         );
     }

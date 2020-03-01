@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import {Transition} from 'react-transition-group';
 import {useForm} from 'react-hook-form';
 import InputText from '../Forms/Input';
 import entry from '../Forms/Fields/entry';
@@ -13,27 +14,35 @@ const EntranceModal = ({isOpen, toggleModal}) => {
     };
 
     return (
-        <Modal className="modal" isOpen={isOpen} ariaHideApp={false}>
-            <form className="modal__wrapper" onSubmit={handleSubmit(onSubmit)}>
-                <div className="modal__circle">
-                    <div className="modal__circle-user"/>
-                </div>
-                <div className="modal__wrapper-close"
-                     onClick={() => toggleModal(false)}
-                />
-                {entry.map((field, key) => (
-                    <InputText
-                        key={key}
-                        {...field}
-                        register={register}
-                        errors={errors}
-                    />
-                ))}
-                <button type="submit" className="button button-green">
-                    Войти
-                </button>
-            </form>
-        </Modal>
+        <Transition in={isOpen} timeout={50}>
+            {state =>
+                <Modal className={`modal `  + state}
+                    isOpen={isOpen}
+                    ariaHideApp={false}
+                    closeTimeoutMS={1000}
+                >
+                    <form className="modal__wrapper" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="modal__circle">
+                            <div className="modal__circle-user"/>
+                        </div>
+                        <div className="modal__wrapper-close"
+                            onClick={() => toggleModal(false)}
+                        />
+                        {entry.map((field, key) => (
+                            <InputText
+                                key={key}
+                                {...field}
+                                register={register}
+                                errors={errors}
+                            />
+                        ))}
+                        <button type="submit" className="button button-green">
+                            Войти
+                        </button>
+                    </form>
+                </Modal>
+            }
+        </Transition>
     )
 };
 
