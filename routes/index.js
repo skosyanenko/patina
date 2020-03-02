@@ -1,6 +1,6 @@
 const category = require('./category');
 const event = require('./event');
-// const author = require('./author');
+const author = require('./author');
 // const book = require('./book');
 // const chart = require('./chart');
 // const news = require('./news');
@@ -12,7 +12,7 @@ const event = require('./event');
 const routes = [
 	category,
 	event,
-	// author,
+	author,
 	// book,
 	// chart,
 	// news,

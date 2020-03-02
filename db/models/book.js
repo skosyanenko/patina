@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING
   }, {});
   Book.associate = ({Author, Film, Review, Category, Comment, Chart}) => {
-  	Book.belongsTo(Author);
+  	Book.belongsToMany(Author, {through: 'booksAuthor'});
   	Book.belongsToMany(Category, {through: 'booksCategory'});
   	Book.belongsToMany(Chart, {through: 'booksCharts'});
 	Book.hasMany(Film);

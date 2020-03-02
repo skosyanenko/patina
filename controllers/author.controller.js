@@ -1,7 +1,8 @@
-const { Category } = require('../db/models');
+const { Author } = require('../db/models');
 const { validationResult } = require('express-validator');
 
-exports.addCategory = async (req, res) => {
+
+exports.addAuthor = async (req, res) => {
 
 	const errors = validationResult(req);
 
@@ -9,11 +10,17 @@ exports.addCategory = async (req, res) => {
 		return res.status(422).json({ errors: errors.array() });
 	}
 
+	if (!req.file || Object.keys(req.file).length === 0) {
+		return res.status(400).send('No files were uploaded.');
+	}
+
 	try {
-		Category
-			.build({
-				title: req.body.title,
-			})
+		const { fieldname, path } = req.file;
+
+		req.body[fieldname] = path;
+
+		await Author
+			.build({...req.body})
 			.save()
 			.then(() => {
 				res.status(200).send('Success');
@@ -28,12 +35,10 @@ exports.addCategory = async (req, res) => {
 	}
 };
 
-exports.getCategories = async (req, res) => {
+exports.getAuthors = async (req, res) => {
 	try {
-		Category.findAll({
-			attributes: ['id', 'title']
-		})
-			.then(categories => res.status(200).json(categories))
+		await Author.findAll()
+			.then(events => res.status(200).json(events))
 			.catch(err => console.log('Не удалось получить элементы \n', err));
 	} catch (e) {
 		throw Error(e);

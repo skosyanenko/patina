@@ -23,6 +23,7 @@ exports.addEvent = async (req, res) => {
 			})
 			.catch(err => {
 				console.log(err);
+				return res.status(500).end('Error sending to db');
 			});
 
 	} catch (e) {
