@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
+const multer = require('multer');
+const options = require('../config/multer');
+const upload = multer(options);
 
 const CategoryController = require('../controllers/category.controller');
 
@@ -18,6 +21,7 @@ const CategoryController = require('../controllers/category.controller');
  */
 router.post(
 	'/api/v1/categories',
+	upload.none(),
 	[check('title').notEmpty()],
 	CategoryController.addCategory,
 );

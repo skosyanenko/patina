@@ -7,7 +7,6 @@ import WeatherCard from './WeatherCard';
 class EventsPage extends Component {
     state = {
     	events: [],
-        quarter: Math.floor(new Date().getMonth() / 3),
         pictures: [
             [
                 {name: 'skates', key: 4},
@@ -32,6 +31,19 @@ class EventsPage extends Component {
         ]
     };
 
+    showPictures = (number) => {
+        switch (number) {
+            case 1 || 2 || 12:
+                return 0;
+            case 3 || 4 || 5:
+                return 1;
+            case 6 || 7 || 8:
+                return 2;
+            case 9 || 10 || 11:
+                return 3;
+        }
+    };
+
     fetchAllEvents = async () => {
 		return await axios.get('/api/v1/events')
 			.then(res => {
@@ -52,7 +64,7 @@ class EventsPage extends Component {
 	}
 
 	render() {
-        const {quarter, pictures, events} = this.state;
+        const {pictures, events} = this.state;
 
         return (
             <>
@@ -60,7 +72,7 @@ class EventsPage extends Component {
                 <div className="container">
                     <div className="events-wrapper">
                         {events && events.map((field, key) => {
-                            const picture = pictures[quarter].find(item => item.key === key);
+                            const picture = pictures[this.showPictures(new Date().getMonth() + 1)].find(item => item.key === key);
                             const Component = field.type === 'card' ? WeatherCard : Event;
                             return <Component key={key} picture={picture && picture.name} {...field}/>;
                         })}

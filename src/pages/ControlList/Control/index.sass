@@ -1,0 +1,56 @@
+@import 'config'
+
+.control
+    display: flex
+    flex-direction: column
+
+    &__title
+        @include style-text(34px, 2px, $waverly, $black, 100%, 500, true)
+        margin: 0 auto 30px
+
+    &__wrapper
+        margin-bottom: 30px
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: auto
+        grid-column-gap: 60px
+        +maxwidth($mobail)
+            grid-template-columns: repeat(1, 1fr)
+            max-height: 100%
+
+    &__wrap
+        width: 100%
+        margin: 20px auto 0
+        display: flex
+        align-items: center
+
+        &-title
+            @include style-text(24px, 2px, $waverly, $darkgray, 100%, 300, true)
+
+        &-icon
+            width: 25px
+            height: 25px
+            margin-right: 10px
+            +maxwidth($tablet)
+                width: 20px
+                height: 20px
+
+        &-delete
+            min-width: 15px
+            height: 15px
+            margin-left: auto
+            background: url('/images/icons/sprite.svg#close-green') no-repeat center / contain
+            opacity: 0.5
+            transition: .4s ease
+            cursor: pointer
+            &:hover
+                opacity: 1
+
+        .button
+            margin-left: auto
+
+$icons: (author, books, films, fun, clock, wishlist, quote)
+
+@each $icon in $icons
+    .control__add-#{$icon}
+        background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain

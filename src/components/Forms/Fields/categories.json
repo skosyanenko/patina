@@ -1,6 +1,6 @@
 [
   {
-    "name": "text",
+    "name": "title",
     "label": "Укажите название тега / литературного жанра",
     "icon": "author",
     "type": "text",

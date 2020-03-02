@@ -1,75 +1,201 @@
 @import 'config'
-
+.ratingMask
+    width: 50%
 .rating
-    width: 165px
-    height: 33px
-    margin-bottom: 24px
     position: relative
-    +maxwidth($mobail)
-        width: 135px
-        height: 27px
-        margin-bottom: 15px
-    &:hover
-        &:before
-            width: 137px
-            padding: 6px 20px
-            bottom: 38px
-            left: 60px
-            content: '4.9 по 21 оценке'
-            @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
+    margin-bottom: 25px
+
+    &__user
+        opacity: 0
+        transition: .1s
+        &:hover
+            opacity: 1
+            transition: .1s
+
+        &-wrap
+            padding: 10px 0
+            left: -4px
             position: absolute
-            background: $green
-            opacity: 0.6
+            cursor: pointer
+            z-index: 9999
+            background-color: #ffffff
             border-radius: 5px
-            +maxwidth($tablet)
-                left: 45px
-                bottom: 33px
-            +maxwidth($mobail)
-                display: none
+            width: 155px
+            height: 31px
 
-        &:after
-            width: 3px
-            height: 1px
-            bottom: 20px
-            left: 75px
-            content: ''
-            position: absolute
-            opacity: 0.6
-            border: 6px solid transparent
-            border-top: 12px solid $green
-            +maxwidth($tablet)
-                left: 64px
-                bottom: 15px
-            +maxwidth($mobail)
-                display: none
+.rating.voted .userRating
+    background-color: #598a86
 
-    label
-        float: right
-        position: relative
-        width: 33px
-        height: 33px
-        cursor: pointer
-        +maxwidth($mobail)
-            width: 27px
-            height: 27px
+.rating .passiveRatingHolder
+    position: relative
+    width: 155px
+    height: 29px
+    left: 50%
+    margin-left: -89px
+    display: block
 
-        &:not(:first-of-type)
-            padding-right: 2px
+.rating .passiveRatingHolder > div
+    position: absolute
+    left: 0
+    top: 0
+    height: 29px
+    background-image: url("/images/icons/stars.svg#stars-view")
+    background-repeat: no-repeat
+    background-size: 155px
+    opacity: 0.3
 
-        &:before
-            content: "\2605"
-            font-size: 27px
-            color: $green
-            opacity: 0.5
-            line-height: 1
-            transition: .5s
-            +maxwidth($mobail)
-                font-size: 27px
+.rating .passiveRatingHolder .ratingBg
+    background-position: 0 0
+    width: 155px
+    z-index: 1
+.rating .passiveRatingHolder .ratingMask
+    background-position: 0 -36px
+    z-index: 99
 
-    input
-        display: none
+.rating .vote
+    transition: .2s
+    position: absolute
+    top: 0
+    cursor: pointer
+    z-index: 99999
+    width: 32px
+    height: 31px
+    background-image: url("/images/icons/stars.svg#stars-view")
+    background-repeat: no-repeat
+    background-position: 0 0
+    background-size: 155px
+    opacity: 0.7
 
-    input:checked ~ label:before,
-    &:not(:checked) > label:hover:before,
-    &:not(:checked) > label:hover ~ label:before
-        opacity: 1
+.rating .vote:hover ~ .vote, .vote.active ~ .vote
+    transition: .2s
+    background-position: 0 -36px
+.rating .vote:hover, .ratingHolder.voted .vote.active
+    transition: .2s
+    background-position: 0 -70px
+    opacity: 1
+
+.rating .votingHolder
+     direction: rtl
+     position: relative
+     top: -10px
+
+.rating .vote.onestar
+    left: 80%
+.rating .vote.twostar
+    left: 60%
+.rating .vote.threestar
+    left: 40%
+.rating .vote.fourstar
+    left: 20%
+.rating .vote.fivestar
+    left: 0
+
+.rating.voted .vote
+    pointer-events: none
+
+.rating.voted .vote:hover
+    background-position: 0 0
+.rating.voted .vote.active ~ .vote
+    background-position: 0 -41px
+.rating.voted .vote.active:hover
+    background-position: 0 -81px
+
+.rating .rateNumbers
+    text-align: center
+    width: 100%
+    color: #a1a1a1
+    font-size: 14px
+.rating .rateNumbers .ratingvalue
+    color: #2d2d2d
+    font-size: 26px
+.rating .rateNumbers .bestrating
+    margin-bottom: 4px
+    display: inline-block
+    font-size: 20px
+
+.rating .text
+    color: #4f8d88
+    text-align: center
+    margin: 0
+    opacity: 0
+    transition: .1s
+    height: 0px
+.rating.voted .text
+    opacity: 1
+    margin: 10px 0 0 0
+    transition: .1s
+    height: auto
+
+//.rating
+//    width: 165px
+//    height: 33px
+//    margin-bottom: 24px
+//    position: relative
+//    +maxwidth($mobail)
+//        width: 135px
+//        height: 27px
+//        margin-bottom: 15px
+//    &:hover
+//        &:before
+//            width: 137px
+//            padding: 6px 20px
+//            bottom: 38px
+//            left: 60px
+//            content: '4.9 по 21 оценке'
+//            @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
+//            position: absolute
+//            background: $green
+//            opacity: 0.6
+//            border-radius: 5px
+//            +maxwidth($tablet)
+//                left: 45px
+//                bottom: 33px
+//            +maxwidth($mobail)
+//                display: none
+//
+//        &:after
+//            width: 3px
+//            height: 1px
+//            bottom: 20px
+//            left: 75px
+//            content: ''
+//            position: absolute
+//            opacity: 0.6
+//            border: 6px solid transparent
+//            border-top: 12px solid $green
+//            +maxwidth($tablet)
+//                left: 64px
+//                bottom: 15px
+//            +maxwidth($mobail)
+//                display: none
+//
+//    label
+//        float: right
+//        position: relative
+//        width: 33px
+//        height: 33px
+//        cursor: pointer
+//        +maxwidth($mobail)
+//            width: 27px
+//            height: 27px
+//
+//        &:not(:first-of-type)
+//            padding-right: 2px
+//
+//        &:before
+//            content: "\2605"
+//            font-size: 27px
+//            color: $green
+//            opacity: 0.5
+//            line-height: 1
+//            transition: .5s
+//            +maxwidth($mobail)
+//                font-size: 27px
+//
+//    input
+//        display: none
+//
+//    input:checked ~ label:before,
+//    &:not(:checked) > label:hover:before,
+//    &:not(:checked) > label:hover ~ label:before
+//        opacity: 1

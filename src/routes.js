@@ -12,6 +12,7 @@ import SearchPage from './pages/SearchList'
 import RegistrationPage from './pages/Registration'
 import Profile from './pages/Profile'
 import AddForm from './pages/Forms';
+import ControlPage from './pages/ControlList';
 import UndefinedPage from './pages/UndefinedPage';
 
 export const routes = [
@@ -29,5 +30,6 @@ export const routes = [
     {path: '/registration', component: RegistrationPage},
     {path: '/profile/:page', component: Profile},
     {path: '/form/:type', component: AddForm},
+    {path: '/control', component: ControlPage},
     {path: '*', component: UndefinedPage}
 ];

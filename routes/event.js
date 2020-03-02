@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
+const multer = require('multer');
+const options = require('../config/multer');
+const upload = multer(options);
+
 const EventController = require('../controllers/event.controller');
 
 /**
@@ -24,6 +28,7 @@ const EventController = require('../controllers/event.controller');
  */
 router.post(
 	'/api/v1/events',
+	upload.none(),
 	[check(['date', 'timeStart', 'timeEnd', 'title', 'place']).notEmpty()],
 	EventController.addEvent,
 );

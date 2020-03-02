@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import {Transition} from 'react-transition-group';
 import HookForm from './HookForm';
 
 class FormManager extends Component {
@@ -14,38 +15,33 @@ class FormManager extends Component {
     static defaultProps = {
         button: 'Добавить',
         prefix: '',
-        classNamePref: ''
+        classPref: ''
     };
 
     onSubmit = values => {
+        const formData = new FormData();
+
         console.log(values);
-        axios.post(`/api/v1/${this.props.API}`, values)
+
+        Object.keys(values).map(key => {
+            if (typeof values[key][0] === 'object') return formData.append(key, values[key][0]);
+            formData.append(key, values[key]);
+        });
+
+        axios.post(`/api/v1/${this.props.API}`, formData, {
+            headers: {'content-type': 'multipart/form-data'},
+        })
             .then(res => {
                 console.log('Submit Response: ', res.data);
-                this.setState({success: true});
+                res.status && this.setState({success: true});
             })
             .catch(err => {
                 console.log('Ошибка при отправке формы, попробуйте позже!' + err)
             });
     };
 
-    componentDidMount() {
-        axios.get('/api/v1/events')
-          .then(({data: events}) => this.setState({events}))
-          .catch(err => console.log(err));
-    }
-
-    deleteEvent = id => {
-        axios.delete(`/api/v1/events/${id}`)
-          .then(res => res.status && console.log('Удалено успешно'))
-          .then(() => this.setState(state => ({
-              events: state.events.filter(event => event.id !== id)
-          })))
-          .catch(err => console.log(err));
-    };
-
     render() {
-        const {success, typeView, events} = this.state;
+        const {success, typeView} = this.state;
 
         return (
             <div className="page--form">
@@ -53,25 +49,25 @@ class FormManager extends Component {
                     {this.props.title}
                 </div>
 
-                <HookForm
-                    {...this.props}
-                    onSubmit={this.onSubmit}
-                    hookView={this.hookView}
-                    typeView={typeView}
-                />
+                <Transition in={success} timeout={50}>
+                    {state =>
+                        <HookForm
+                            {...this.props}
+                            onSubmit={this.onSubmit}
+                            hookView={this.hookView}
+                            typeView={typeView}
+                            classAnimate={state}
+                        />
+                    }
+                </Transition>
 
-                {events && events.map(event => (
-                  <div style={{width: '200px', display: 'flex', justifyContent: 'space-between'}}>
-                      <strong>{event.title}</strong>
-                      <span style={{color: 'red'}} onClick={() => this.deleteEvent(event.id)}>Удалить</span>
-                  </div>
-                ))}
-
-                {success &&
-                    <div className="form__success">
-                        Форма успешно отправлена!
-                    </div>
-                }
+                <Transition in={success} timeout={50}>
+                    {state =>
+                        <div className={`form__success ` + state}>
+                            Форма успешно отправлена!
+                        </div>
+                    }
+                </Transition>
             </div>
         );
     }

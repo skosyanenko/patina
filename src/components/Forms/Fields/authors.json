@@ -7,14 +7,14 @@
     "req": true
   },
   {
-    "name": "years",
+    "name": "birth",
     "label": "Дата рождения писателя",
     "icon": "clock",
     "type": "date",
     "req": true
   },
   {
-    "name": "years",
+    "name": "death",
     "label": "Дата смерти писателя",
     "icon": "clock",
     "type": "date",
@@ -25,12 +25,5 @@
     "label": "Изображение писателя",
     "icon": "fun",
     "type": "file"
-  },
-  {
-    "name": "books",
-    "label": "Произведения писателя",
-    "icon": "books",
-    "type": "select",
-    "isMulti": true
   }
 ]

@@ -29,15 +29,16 @@
         &-skates, &-butterfly, &-dragonfly, &-umbrella
             width: 110px
             top: -55px
-            left: 110px
+            left: 155px
             +maxwidth($desktop)
-                left: 100px
+                left: 140px
             +maxwidth($tablet)
                 width: 100px
+                left: 110px
                 top: -75px
-                left: 80px
             +maxwidth($sm-mobail)
                 width: 70px
+                left: 80px
 
         &-skates
             left: 150px
@@ -165,7 +166,7 @@
             margin-top: 10px
 
         &-title
-            @include style-text-events(18px, 2px, $waverly, $darkgray, 80%, 500, false, false)
+            @include style-text-events(18px, 2px, $waverlyExtra, $black, 80%, 500, false, false)
 
         &-text
             margin-top: 7px

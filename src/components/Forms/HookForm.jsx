@@ -32,7 +32,9 @@ const HookForm = props => {
     };
     
     return (
-        <form className={`form-wrapper ${props.prefix}`} onSubmit={handleSubmit(props.onSubmit)}>
+        <form className={`form-wrapper ${props.prefix} ${props.classAnimate}`}
+              onSubmit={handleSubmit(props.onSubmit)}
+        >
             <div className={`form ${props.classPrefix}`}>
                 {props.fields && props.fields.map((field, key) => {
                     const Component = typeSwitcher(field.type);

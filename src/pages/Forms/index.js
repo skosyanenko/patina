@@ -1,25 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import FormManager from 'components/Forms/FormManager';
+import UndefinedPage from "../UndefinedPage";
+import {formRoutes} from 'config/config';
 
 const AddForm = ({match}) => {
 
     const type = match.params.type;
 
-    const formStore = {
-        book: {title: 'Добавить книгу'},
-        film: {title: 'Добавить экранизацию'},
-        author: {title: 'Добавить писателя'},
-        categories: {title: 'Добавить категорию'},
-        top: {title: 'Создать подборку книг'},
-        review: {title: 'Добавить рецензию'},
-        events: {title: 'Добавить эвент'},
-        news: {title: 'Добавить новость'}
-    };
-
-    const [config, setConfig] = useState(formStore);
+    const [config, setConfig] = useState(formRoutes);
 
     const setCurrentForm = async () => {
-        const result = formStore[type];
+        const result = formRoutes[type];
 
         await import(`components/Forms/Fields/${type}`)
             .then(data => {
@@ -37,7 +28,11 @@ const AddForm = ({match}) => {
         setCurrentForm();
     }, []);
 
-    return <FormManager {...config[type]} prefix={'form'}/>;
+    if (!Object.keys(formRoutes).includes(type)) {
+        return <UndefinedPage />;
+    }
+
+    return <FormManager {...config[type]} prefix={'form'} classPrefix={' '}/>;
 };
 
 export default AddForm;

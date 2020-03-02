@@ -10,26 +10,17 @@ class InputFile extends Component  {
         let fileNames = this.state[name + '_LABEL'] || [];
 
         for (let file of selectorFiles) {
-            this.makeBase64(file).then(data => {
-                files.push({value: data, label: file.name});
-            });
+            files.push({value: file, label: file.name});
             fileNames.push(file.name);
         }
 
         this.setState({
             [name]: files,
             [name + '_LABEL']: fileNames
-        }, () => this.setFieldValue(this.state[name]));
-    };
-
-    makeBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
+        }, () => {
+            this.setFieldValue(this.state[name][0].value);
         });
-    }
+    };
 
     deleteFile = (name, item) => {
         let newArr = this.deleteValue(this.state[name], item);
@@ -37,12 +28,12 @@ class InputFile extends Component  {
         this.setState({[name]: newArr, [name + '_LABEL']: newNames});
     };
 
-    deleteValue(arr, value) {
+    deleteValue = (arr, value) => {
         let newArr = arr;
         let index = newArr.findIndex(item => Object.values(item).includes(value));
         if (index >= 0) newArr.splice( index, 1 );
         return newArr;
-    }
+    };
 
     setFieldValue = value => this.props.onChange(this.props.name, value);
 
@@ -59,6 +50,7 @@ class InputFile extends Component  {
                         name={name}
                         onChange={e => this.handleFile(e.target.files)}
                         ref={register}
+                        accept="image/*"
                     />
                     <div className="form__upload-img"/>
                 </label>
