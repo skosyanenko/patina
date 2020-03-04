@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './index.sass';
+import axios from "axios";
 
 class Rating extends  Component {
     state = {
@@ -45,6 +46,24 @@ class Rating extends  Component {
 
         target.classList.add('active');
     };
+
+    fetchRating = async () => {
+        return await axios.get('/api/v1/books')
+            .then(res => {
+                if (res.data) {
+                    return res.data;
+                }
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
+    };
+
+    componentDidMount() {
+        this.fetchRating().then(res => {
+            this.setState({rating: res})
+        });
+    }
 
     render() {
         const {inactive, stars, mediumRate, counters, maskWidth} = this.state;

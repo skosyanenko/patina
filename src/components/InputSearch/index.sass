@@ -19,8 +19,14 @@
         position: relative
         display: flex
         align-items: center
+        transition: .2s ease-in
         +maxwidth($tablet)
             width: 100%
+
+        &.active
+            border-bottom: none
+            border-bottom-right-radius: 0
+            border-bottom-left-radius:  0
 
     &__image
         background: url('/images/icons/sprite.svg#magnifier-view') no-repeat center / contain
@@ -35,6 +41,46 @@
 
         &.active
             opacity: 0
+
+    &__autocomplete
+        top: 40px
+        width: 260px
+        position: absolute
+        background: $white
+        z-index: 150
+        +maxwidth($tablet)
+            width: 100%
+
+    &__options
+        @include style-text(18px, 0, $openSans, $black, 100%, 300, false)
+        display: block
+        list-style: none
+        transition: .4s ease-in
+        margin: auto
+        position: relative
+        border: 1px solid $green
+        border-top: none
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
+
+        &-item
+            height: 30px
+            padding-left: 10px
+            display: flex
+            align-items: center
+            &:hover
+                font-weight: bold
+                color: $green
+                cursor: pointer
+                transition: 0.3s all
+
+            &.active
+                background: #e9eded
+                color: $green
+                font-weight: bold
+                &:last-child
+                    border-bottom-left-radius: 10px
+                    border-bottom-right-radius: 10px
 
     &--position
         position: absolute
