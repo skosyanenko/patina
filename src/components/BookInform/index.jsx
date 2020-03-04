@@ -42,7 +42,7 @@ const BookInform = ({bookId}) => {
                     </Link>
                 </div>
             </div>
-          </div>
+        </div>
     );
 };
 

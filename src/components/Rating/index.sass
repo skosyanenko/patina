@@ -1,201 +1,215 @@
 @import 'config'
-.ratingMask
-    width: 50%
+
 .rating
     position: relative
-    margin-bottom: 25px
-
-    &__user
-        opacity: 0
-        transition: .1s
-        &:hover
+    margin-bottom: 20px
+    &:hover
+        .rating-user,
+        .rating__rate
             opacity: 1
-            transition: .1s
+            transition: .1s ease-in
 
-        &-wrap
-            padding: 10px 0
-            left: -4px
-            position: absolute
-            cursor: pointer
-            z-index: 9999
-            background-color: #ffffff
-            border-radius: 5px
+    &__passive
+        width: 155px
+        height: 31px
+        position: relative
+        display: block
+        +maxwidth($tablet)
+            width: 135px
+            height: 25px
+        +maxwidth($sm-mobail)
+            width: 120px
+            height: 23px
+
+        &-background
             width: 155px
-            height: 31px
+            background-position: 0 0
+            z-index: 1
+            +maxwidth($tablet)
+                width: 135px
+            +maxwidth($sm-mobail)
+                width: 120px
 
-.rating.voted .userRating
-    background-color: #598a86
+        &-mask
+            opacity: 0.6 !important
+            background-position: 0 -41px
+            z-index: 99
 
-.rating .passiveRatingHolder
-    position: relative
-    width: 155px
-    height: 29px
-    left: 50%
-    margin-left: -89px
-    display: block
+    &__passive > div
+        height: 31px
+        top: 0
+        position: absolute
+        background: url('/images/icons/sprite.svg#stars-view') no-repeat
+        background-size: 155px 100px
+        background-position: 0 0
+        cursor: pointer
+        opacity: 0.4
+        transition: .2s ease-in
+        +maxwidth($tablet)
+            height: 25px
+            background-size: 135px 85px
+        +maxwidth($sm-mobail)
+            height: 23px
+            background-size: 120px 75px
 
-.rating .passiveRatingHolder > div
-    position: absolute
-    left: 0
-    top: 0
-    height: 29px
-    background-image: url("/images/icons/stars.svg#stars-view")
-    background-repeat: no-repeat
-    background-size: 155px
-    opacity: 0.3
+    &__text
+        width: 155px
+        height: 0
+        margin: 0
+        @include style-text(17px, 0, $openSans, $green, 100%, 300, false)
+        position: absolute
+        text-align: center
+        opacity: 0
+        transition: .1s ease-in
+        +maxwidth($tablet)
+            width: 135px
+        +maxwidth($mobail)
+            width: 120px
 
-.rating .passiveRatingHolder .ratingBg
-    background-position: 0 0
-    width: 155px
-    z-index: 1
-.rating .passiveRatingHolder .ratingMask
-    background-position: 0 -36px
-    z-index: 99
+    &__rate
+        width: fit-content
+        display: flex
+        position: absolute
+        opacity: 0
+        padding: 6px 20px
+        bottom: 44px
+        left: 44px
+        content: '4.9 по 21 оценке'
+        @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
+        background: rgba(38, 77, 75, 0.6)
+        border-radius: 5px
+        +maxwidth($tablet)
+            left: 40px
+            bottom: 38px
+        +maxwidth($mobail)
+            display: none
 
-.rating .vote
-    transition: .2s
-    position: absolute
-    top: 0
-    cursor: pointer
-    z-index: 99999
-    width: 32px
-    height: 31px
-    background-image: url("/images/icons/stars.svg#stars-view")
-    background-repeat: no-repeat
-    background-position: 0 0
-    background-size: 155px
-    opacity: 0.7
+        &:after
+            width: 3px
+            height: 1px
+            bottom: -18px
+            left: 27px
+            content: ''
+            position: absolute
+            opacity: 0.6
+            border: 6px solid transparent
+            border-top: 12px solid $green
+            +maxwidth($tablet)
+                left: 27px
+                bottom: -18px
+            +maxwidth($mobail)
+                display: none
 
-.rating .vote:hover ~ .vote, .vote.active ~ .vote
-    transition: .2s
-    background-position: 0 -36px
-.rating .vote:hover, .ratingHolder.voted .vote.active
-    transition: .2s
-    background-position: 0 -70px
-    opacity: 1
-
-.rating .votingHolder
-     direction: rtl
-     position: relative
-     top: -10px
-
-.rating .vote.onestar
-    left: 80%
-.rating .vote.twostar
-    left: 60%
-.rating .vote.threestar
-    left: 40%
-.rating .vote.fourstar
-    left: 20%
-.rating .vote.fivestar
-    left: 0
-
-.rating.voted .vote
-    pointer-events: none
-
-.rating.voted .vote:hover
-    background-position: 0 0
-.rating.voted .vote.active ~ .vote
-    background-position: 0 -41px
-.rating.voted .vote.active:hover
-    background-position: 0 -81px
-
-.rating .rateNumbers
-    text-align: center
-    width: 100%
-    color: #a1a1a1
-    font-size: 14px
-.rating .rateNumbers .ratingvalue
-    color: #2d2d2d
-    font-size: 26px
-.rating .rateNumbers .bestrating
-    margin-bottom: 4px
-    display: inline-block
-    font-size: 20px
-
-.rating .text
-    color: #4f8d88
-    text-align: center
-    margin: 0
+.rating-user
     opacity: 0
-    transition: .1s
-    height: 0px
-.rating.voted .text
-    opacity: 1
-    margin: 10px 0 0 0
-    transition: .1s
-    height: auto
+    transition: .1s ease-in
 
-//.rating
-//    width: 165px
-//    height: 33px
-//    margin-bottom: 24px
-//    position: relative
-//    +maxwidth($mobail)
-//        width: 135px
-//        height: 27px
-//        margin-bottom: 15px
-//    &:hover
-//        &:before
-//            width: 137px
-//            padding: 6px 20px
-//            bottom: 38px
-//            left: 60px
-//            content: '4.9 по 21 оценке'
-//            @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
-//            position: absolute
-//            background: $green
-//            opacity: 0.6
-//            border-radius: 5px
-//            +maxwidth($tablet)
-//                left: 45px
-//                bottom: 33px
-//            +maxwidth($mobail)
-//                display: none
-//
-//        &:after
-//            width: 3px
-//            height: 1px
-//            bottom: 20px
-//            left: 75px
-//            content: ''
-//            position: absolute
-//            opacity: 0.6
-//            border: 6px solid transparent
-//            border-top: 12px solid $green
-//            +maxwidth($tablet)
-//                left: 64px
-//                bottom: 15px
-//            +maxwidth($mobail)
-//                display: none
-//
-//    label
-//        float: right
-//        position: relative
-//        width: 33px
-//        height: 33px
-//        cursor: pointer
-//        +maxwidth($mobail)
-//            width: 27px
-//            height: 27px
-//
-//        &:not(:first-of-type)
-//            padding-right: 2px
-//
-//        &:before
-//            content: "\2605"
-//            font-size: 27px
-//            color: $green
-//            opacity: 0.5
-//            line-height: 1
-//            transition: .5s
-//            +maxwidth($mobail)
-//                font-size: 27px
-//
-//    input
-//        display: none
-//
-//    input:checked ~ label:before,
-//    &:not(:checked) > label:hover:before,
-//    &:not(:checked) > label:hover ~ label:before
-//        opacity: 1
+    &__wrapper
+        width: 155px
+        height: 31px
+        padding: 10px 0
+        position: absolute
+        z-index: 9999
+        background-color: $white
+        border-radius: 5px
+        cursor: pointer
+        +maxwidth($tablet)
+            width: 135px
+            height: 25px
+        +maxwidth($sm-mobail)
+            width: 120px
+            height: 23px
+
+    &__voting
+        direction: rtl
+        position: relative
+        top: -10px
+
+        &-vote
+            width: 30px
+            height: 30px
+            top: 0
+            left: 0
+            position: absolute
+            background: url('/images/icons/sprite.svg#stars-view') no-repeat
+            background-size: 155px 100px
+            cursor: pointer
+            z-index: 99999
+            transition: .2s ease-in
+            +maxwidth($tablet)
+                width: 28px
+                height: 24px
+                background-size: 135px 85px
+            +maxwidth($sm-mobail)
+                width: 26px
+                background-size: 120px 75px
+            &:hover
+                transition: .2s
+                background-position: 0 -36px
+                +maxwidth($tablet)
+                    background-position: 0 -32px
+                +maxwidth($sm-mobail)
+                    background-position: 0 -28px
+
+            &.active
+                transition: .2s
+                background-position: 0 -36px
+                +maxwidth($tablet)
+                    background-position: 0 -32px
+                +maxwidth($sm-mobail)
+                    background-position: 0 -28px
+
+        &-one
+            left: 77%
+        &-two
+            left: 58%
+        &-three
+            left: 39%
+        &-four
+            left: 19%
+        &-five
+            left: 0
+
+.rating-user__voting-vote:hover ~ .rating-user__voting-vote, .rating-user__voting-vote.active ~ .rating-user__voting-vote
+    transition: .2s
+    background-position: 0 -36px
+    +maxwidth($tablet)
+        background-position: 0 -32px
+    +maxwidth($sm-mobail)
+        background-position: 0 -28px
+.rating .rating-user__voting-vote:hover, .rating.voted .rating-user__voting-vote.active
+    transition: .2s
+    background-position: 0 -36px
+    +maxwidth($tablet)
+        background-position: 0 -32px
+    +maxwidth($sm-mobail)
+        background-position: 0 -28px
+
+.voted
+    .rating-user
+        pointer-events: none
+        opacity: 1
+        transition: .1s ease-in
+
+    .rating-user__voting-vote
+        &:hover
+            background-position: 0 0
+        &.active
+            transition: .2s ease-in
+            background-position: 0 -36px
+            opacity: 1
+            +maxwidth($tablet)
+                background-position: 0 -32px
+            +maxwidth($sm-mobail)
+                background-position: 0 -28px
+            &:hover
+                background-position: 0 -81px
+
+    .rating__text
+        opacity: 1
+        transition: .1s ease-in
+        height: auto
+
+
+
+
