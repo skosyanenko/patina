@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './index.sass';
-import axios from "axios";
 
 class Control extends Component {
     state = {
         forms: [
-            {title: 'Добавить писателя', path: 'author', icon: 'fun'},
+            {title: 'Добавить писателя', path: 'authors', icon: 'fun'},
             {title: 'Добавить экранизацию', path: 'film', icon: 'films'},
             {title: 'Добавить категорию', path: 'categories', icon: 'author'},
             {title: 'Добавить книгу', path: 'book', icon: 'books'},

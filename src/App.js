@@ -7,6 +7,7 @@ import Menu from './components/Layouts/Menu';
 import RightMenu from './components/Layouts/RightMenu';
 import EntranceModal from './components/EntranceModal';
 import Footer from './components/Layouts/Footer';
+import BtnScrollToTop from './components/BtnScrollToTop';
 import 'static/sass/project.sass';
 
 class App extends Component {
@@ -67,6 +68,8 @@ class App extends Component {
                     </CSSTransition>
 
                     {location.pathname !== '/' && location.pathname !== '/events' && <RightMenu/>}
+
+                    <BtnScrollToTop/>
 
                     <EntranceModal
                         isOpen={modalIsOpen}
