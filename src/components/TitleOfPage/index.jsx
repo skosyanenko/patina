@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Sorting from '../Sorting';
 import TextFx from 'services/TextFx';
 import {effectForTitle} from 'config/config';
 
@@ -19,7 +18,7 @@ class TitleOfPage extends Component {
     };
 
     render() {
-        const {title, subtitle, isSorting, classNamePrefix} = this.props;
+        const {title, subtitle, classNamePrefix} = this.props;
         return (
             <div className="page__wrapper">
                 <div className="page__wrap">
@@ -30,7 +29,6 @@ class TitleOfPage extends Component {
                         {subtitle}
                     </div>
                 </div>
-                {isSorting && <Sorting/>}
             </div>
         );
     }
@@ -38,8 +36,7 @@ class TitleOfPage extends Component {
 
 TitleOfPage.propTypes = {
     title:     PropTypes.string.isRequired,
-    subtitle:  PropTypes.string.isRequired,
-    isSorting: PropTypes.bool.isRequired
+    subtitle:  PropTypes.string.isRequired
 };
 
 export default TitleOfPage;

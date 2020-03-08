@@ -7,16 +7,37 @@ class Sorting extends Component {
             {value: 1, label: 'названию'},
             {value: 2, label: 'автору'},
             {value: 3, label: 'рейтингу'},
-        ]
+        ],
+        books: this.props.books,
+        sortingBooks: []
     };
 
     handleSort = value => {
         this.setState(state => ({
             params: state.params.map(x => {
                 x.active = x.value === value;
+                this.sortBooks(value);
                 return x;
             })
         }));
+    };
+
+    sortBooks = (value) => {
+        let sortingBooks = [];
+        switch (value) {
+            case 1:
+                sortingBooks = this.state.books.filter(book => book.title.sort());
+                this.setState({sortingBooks});
+            case 2:
+                sortingBooks = this.state.books.filter(book => book.author.sort());
+                this.setState({sortingBooks});
+            case 3:
+                sortingBooks = this.state.books.filter(book => book.rating.sort((a, b) => {return a -b}));
+                this.setState({sortingBooks});
+            default:
+                sortingBooks = this.state.books.filter(book => book.title.sort());
+                this.setState({sortingBooks});
+        }
     };
 
     render() {

@@ -20,7 +20,8 @@
     "label": "Название литературного произведения",
     "icon": "books",
     "type": "select",
-    "isMulti": false
+    "isMulti": false,
+    "api": "books"
   },
   {
     "name": "description",

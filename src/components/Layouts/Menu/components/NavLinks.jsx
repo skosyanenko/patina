@@ -30,20 +30,23 @@ class NavLinks extends Component {
 
     calcTop = offset => {
         const width = window.innerWidth;
-        if (width < 575) return offset + 75;
+        if (width < 575) return offset + 70;
+        if (width <= 767) return offset + 75;
         return width <= 1140 ? offset + 75 : offset - 80;
     };
 
     positionCircle = (el, loc) => {
         const arrOfPath = [];
-        this.state.navLinks.map((item, key) => {
+        this.state.navLinks.map(item => {
             arrOfPath.push(item.path);
         });
         if (arrOfPath.includes(loc)){
-            const target = el && el.target || el;
-            const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
-            const topCoord = this.calcTop(topOffset);
-            this.setState({topCoord, toggleCircle: 1});
+            let target = el && el.target || el;
+            if (target.current !== null) {
+                const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
+                const topCoord = this.calcTop(topOffset);
+                this.setState({topCoord, toggleCircle: 1});
+            }
         } else {
             this.setState({toggleCircle: 0});
         }

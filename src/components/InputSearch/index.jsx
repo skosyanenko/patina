@@ -20,6 +20,12 @@ class InputSearch extends Component {
                 optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
         );
 
+        if (this.state.filteredOptions) {
+            this.setState(prevState =>({
+                showOptions: !prevState.showOptions
+            }))
+        }
+
         this.setState({
             activeOption: 0,
             filteredOptions,
@@ -39,23 +45,24 @@ class InputSearch extends Component {
 
     onKeyDown = e => {
         const {activeOption, filteredOptions} = this.state;
-
-        if (e.keyCode === 13) {
-            this.setState({
-                activeOption: 0,
-                showOptions: false,
-                userInput: filteredOptions[activeOption]
-            });
-        } else if (e.keyCode === 38) {
-            if (activeOption === 0) {
-                return;
-            }
-            this.setState({ activeOption: activeOption - 1 });
-        } else if (e.keyCode === 40) {
-            if (activeOption === filteredOptions.length - 1) {
-                return;
-            }
-            this.setState({ activeOption: activeOption + 1 });
+        switch(e.keyCode) {
+            case 13:
+                this.setState({
+                    activeOption: 0,
+                    showOptions: false,
+                    userInput: filteredOptions[activeOption]
+                });
+            case 38:
+                if (activeOption === 0) {
+                    return;
+                }
+                this.setState({ activeOption: activeOption - 1 });
+            case 40:
+                if (activeOption === filteredOptions.length - 1) {
+                    return;
+                }
+                this.setState({ activeOption: activeOption + 1 });
+            default: return '';
         }
     };
 
@@ -111,7 +118,7 @@ class InputSearch extends Component {
         return(
             <div  className={`quest ${classNamePrefix}`}>
                 <input type="text"
-                       className={`quest__wrapper ${showOptions ? 'active' : ''}`}
+                       className={`quest__wrapper ${showOptions && filteredOptions.length > 0 && userInput.length ? 'active' : ''}`}
                        onChange={this.onChange}
                        onKeyDown={this.onKeyDown}
                        value={userInput}

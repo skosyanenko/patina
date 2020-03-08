@@ -9,7 +9,6 @@ const ReviewsPage = () => (
         <TitleOfPage
             title={"Критика"}
             subtitle={"рецензи на книги различных авторов и жанров"}
-            isSorting={false}
             classNamePrefix="page__wrap-subtitle--reviews"
         />
 

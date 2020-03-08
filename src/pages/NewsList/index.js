@@ -53,7 +53,6 @@ class NewsPage extends Component {
             <Fragment>
                 <TitleOfPage title={"Новости"}
                     subtitle={"новости из мира литературы"}
-                    isSorting={false}
                 />
                 <div className="news">
                     {news && news.map((item, key) => {

@@ -35,7 +35,6 @@ class TopsPage extends Component {
                 <TitleOfPage
                     title={"Топы"}
                     subtitle={"подборки книг на различные темы"}
-                    isSorting={false}
                 />
                 <div className="container container--top-detail">
                     <Picture/>

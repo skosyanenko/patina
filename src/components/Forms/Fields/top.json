@@ -23,6 +23,7 @@
     "label": "Выберите книги",
     "icon": "books",
     "type": "select",
-    "isMulti": true
+    "isMulti": true,
+    "api": "books"
   }
 ]

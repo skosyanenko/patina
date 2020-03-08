@@ -42,11 +42,11 @@ const Event = ({
 };
 
 Event.propTypes = {
-  date:        PropTypes.string.isRequired,
-  title:       PropTypes.string.isRequired,
-  timeStart:       PropTypes.string.isRequired,
-  timeEnd:       PropTypes.string.isRequired,
-  place: PropTypes.string.isRequired
+  date:          PropTypes.string,
+  title:         PropTypes.string,
+  timeStart:     PropTypes.string,
+  timeEnd:       PropTypes.string,
+  place:         PropTypes.string
 };
 
 export default Event;

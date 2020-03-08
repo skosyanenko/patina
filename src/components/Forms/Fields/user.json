@@ -43,14 +43,16 @@
     "label": "Укажите любимые книги",
     "icon": "books",
     "type": "creatable",
-    "isMulti": true
+    "isMulti": true,
+    "api": "books"
   },
   {
     "name": "authors",
     "label": "Укажите любимых писателей",
     "icon": "author",
     "type": "creatable",
-    "isMulti": true
+    "isMulti": true,
+    "api": "authors"
   },
   {
     "name": "lastName",
@@ -92,6 +94,7 @@
     "label": "Укажите любимые жанры",
     "icon": "wishlist",
     "type": "creatable",
-    "isMulti": true
+    "isMulti": true,
+    "api": "categories"
   }
 ]

@@ -12,6 +12,7 @@ const BooksWithPagination = paginationWrap(ListBooks);
 class BooksPage extends Component {
     state = {
         activeLetter: '',
+        sortingBooks: [],
         books: []
     };
 
@@ -35,23 +36,31 @@ class BooksPage extends Component {
 
     hookLetter = activeLetter => this.setState({activeLetter});
 
+    hookSortingBooks = sortingBooks => this.setState({sortingBooks});
+
     render() {
         return (
             <Fragment>
-                <TitleOfPage
-                    title={"Книги"}
-                    subtitle={"книжная полка"}
-                    isSorting={true}
-                />
+                <div className="books-title">
+                    <TitleOfPage
+                        title={"Книги"}
+                        subtitle={"книжная полка"}
+                    />
+                    <Sorting books={this.state.books}/>
+                </div>
+
                 <div className='container'>
                     <div className="container__container-book">
                         <InputSearch classNamePrefix=" "/>
-                        <Sorting/>
+                        <Sorting books={this.state.books}
+                                 //hookSortingBooks={this.hookSortingBooks()}
+                        />
                         <AlphabetFilter hookLetter={this.hookLetter}/>
                     </div>
                     <div className='container__container-book'>
                         <BooksWithPagination
                             activeLetter={this.state.activeLetter}
+                            sortingBooks={this.state.sortingBooks}
                             books={this.state.books}
                         />
                         {/*<Pagination/>*/}

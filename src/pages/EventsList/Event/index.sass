@@ -1,5 +1,34 @@
 @import 'config'
 
+.event-picture
+    display: grid
+    grid-row-start: 3
+    grid-row-end: 4
+    grid-column-start: 3
+    grid-column-end: 4
+    +maxwidth($tablet)
+        grid-column-start: 2
+        grid-column-end: 3
+    +maxwidth($sm-mobail)
+        grid-column-start: 1
+        grid-column-end: 2
+
+    &:nth-child(2)
+        grid-row-start: 5
+        grid-row-end: 6
+        grid-column-start: 4
+        grid-column-end: 5
+        +maxwidth($tablet)
+            grid-row-start: 8
+            grid-row-end: 9
+            grid-column-start: 3
+            grid-column-end: 4
+        +maxwidth($sm-mobail)
+            grid-row-start: 12
+            grid-row-end: 13
+            grid-column-start: 2
+            grid-column-end: 3
+
 .event
     margin-top: 50px
     display: flex

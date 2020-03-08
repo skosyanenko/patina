@@ -3,52 +3,58 @@ import axios from 'axios';
 import Title from './Title';
 import Event from './Event';
 import WeatherCard from './WeatherCard';
+import EventPicture from './EventPicture';
 
 class EventsPage extends Component {
     state = {
     	events: [],
         pictures: [
             [
-                {name: 'skates', key: 4},
-                {name: 'ball', key: 9},
-                {name: 'bullfinch', key: 20}
+                {name: 'skates', key: 6},
+                {name: 'ball', key: 2},
+                {name: 'bullfinch', key: 1}
             ],
             [
-                {name: 'butterfly', key: 4},
-                {name: 'flower', key: 9},
-                {name: 'dandelion', key: 20}
+                {name: 'butterfly', key: 6},
+                {name: 'flower', key: 2},
+                {name: 'dandelion', key: 1}
             ],
             [
-                {name: 'dragonfly', key: 4},
-                {name: 'raspberries', key: 9},
-                {name: 'shell', key: 20}
+                {name: 'dragonfly', key: 6},
+                {name: 'raspberries', key: 2},
+                {name: 'shell', key: 1}
             ],
             [
-                {name: 'umbrella', key: 4},
-                {name: 'acorn', key: 9},
-                {name: 'leaf', key: 20}
+                {name: 'umbrella', key: 6},
+                {name: 'acorn', key: 2},
+                {name: 'leaf', key: 1}
             ]
-        ]
+        ],
+        quarters: {
+    	    0: [1, 2, 12],
+            1: [3, 4, 5],
+            2: [6, 7, 8],
+            3: [9, 10, 11]
+        }
     };
 
-    showPictures = (number) => {
-        switch (number) {
-            case 1 || 2 || 12:
-                return 0;
-            case 3 || 4 || 5:
-                return 1;
-            case 6 || 7 || 8:
-                return 2;
-            case 9 || 10 || 11:
-                return 3;
-        }
+    showPictures = () => {
+        const {quarters, pictures} = this.state;
+        const month = new Date().getMonth() + 1;
+        const index = Object.keys(quarters).find(item => quarters[item].includes(month));
+        return pictures[index];
     };
 
     fetchAllEvents = async () => {
 		return await axios.get('/api/v1/events')
 			.then(res => {
 				if (res.data) {
-                    res.data.unshift({type: 'card'});
+				    const additionalItems = [
+                        {type: 'picture'},
+                        {type: 'picture'},
+                        {type: 'card'}
+                    ];
+                    additionalItems.forEach(item => res.data.unshift(item));
 					return res.data;
 				}
 			})
@@ -63,8 +69,19 @@ class EventsPage extends Component {
 		});
 	}
 
+	switchTypes = (type) => {
+	    switch(type) {
+            case 'card':
+                return WeatherCard;
+            case 'picture':
+                return EventPicture;
+            default:
+                return Event;
+        }
+    };
+
 	render() {
-        const {pictures, events} = this.state;
+        const { events } = this.state;
 
         return (
             <>
@@ -72,8 +89,8 @@ class EventsPage extends Component {
                 <div className="container">
                     <div className="events-wrapper">
                         {events && events.map((field, key) => {
-                            const picture = pictures[this.showPictures(new Date().getMonth() + 1)].find(item => item.key === key);
-                            const Component = field.type === 'card' ? WeatherCard : Event;
+                            const picture = this.showPictures().find(item => item.key === key);
+                            const Component = this.switchTypes(field.type);
                             return <Component key={key} picture={picture && picture.name} {...field}/>;
                         })}
                     </div>

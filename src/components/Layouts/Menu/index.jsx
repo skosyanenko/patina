@@ -20,11 +20,13 @@ const Menu = ({location}) => {
 		const burgerPost = toggle ? 'open' : 'close';
 		const menuPost = toggle ? 'open' : 'close';
 
+		const isResponsive = window.width <= 1140;
+
 		const burgerIndex = 'burger--index ' + burgerPost;
 		const menuIndex = 'menu--index ' + menuPost;
 
 		setState({
-			toggle: !isIndex ? true : toggle,
+			toggle: (!isIndex && isResponsive) ? true : toggle,
 			burger: isIndex ? burgerIndex : burgerPost,
 			menu: isIndex ? menuIndex : menuPost,
 		});

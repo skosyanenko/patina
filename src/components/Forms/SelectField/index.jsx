@@ -4,19 +4,13 @@ import CreatableSelect from 'react-select/creatable';
 import {Controller} from 'react-hook-form';
 import axios from "axios";
 
-// const options = [
-//     { value: 'chocolate', label: 'Chocolate' },
-//     { value: 'strawberry', label: 'Strawberry' },
-//     { value: 'vanilla', label: 'Vanilla' }
-// ];
-
 class SelectField extends Component {
     state = {
         options: []
     };
 
     fetchAllOptions = async () => {
-        return await axios.get('/api/v1/categories')
+        return await axios.get(`/api/v1/categories`)
             .then(res => {
                 if (res.data) {
                     return res.data;
@@ -29,15 +23,20 @@ class SelectField extends Component {
 
     componentDidMount() {
         this.fetchAllOptions().then(res => {
-            this.setState({options: res})
+            let options = res.map(item => (
+                {value: item.id, label: item.title}
+            ));
+            this.setState({options: options});
         });
     }
     render() {
         const {type, name, label, icon, isMulti, errors, control} = this.props;
+
         const {options} = this.state;
+
         const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
         const required = {value: true, message: 'Обязательное поле!'};
-        console.log(options);
+        //console.log(this.props.api)
         return (
             <div className="form__group select">
                 <div className={`form__group-img select__img form__group-${icon}`}/>
@@ -58,6 +57,6 @@ class SelectField extends Component {
             </div>
         );
     }
-};
+}
 
 export default SelectField;

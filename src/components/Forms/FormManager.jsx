@@ -18,10 +18,10 @@ class FormManager extends Component {
         classPref: ''
     };
 
-    onSubmit = values => {
+    onSubmit = (values, e) => {
         const formData = new FormData();
 
-        console.log(values);
+        e.preventDefault();
 
         Object.keys(values).map(key => {
             if (typeof values[key][0] === 'object') return formData.append(key, values[key][0]);
