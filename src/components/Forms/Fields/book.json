@@ -23,14 +23,6 @@
     "req": true
   },
   {
-    "name": "films",
-    "label": "Укажите фильмы, снятые по книге",
-    "icon": "films",
-    "type": "select",
-    "isMulti": true,
-    "api": "films"
-  },
-  {
     "name": "quote",
     "label": "Цитата из книги",
     "icon": "quote",
@@ -63,11 +55,12 @@
   },
   {
     "name": "readLink",
-    "label": "Добавить pdf-книги",
-    "type": "file"
+    "icon": "author",
+    "label": "Добавить ссылку на скачивание",
+    "type": "text"
   },
   {
-    "name": "category",
+    "name": "CategoryId",
     "label": "Выберите категории:",
     "icon": "wishlist",
     "type": "select",

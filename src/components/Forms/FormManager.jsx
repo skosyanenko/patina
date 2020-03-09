@@ -18,26 +18,38 @@ class FormManager extends Component {
         classPref: ''
     };
 
-    onSubmit = (values, e) => {
-        const formData = new FormData();
+    onSubmit = async (values) => {
+	    const formData = new FormData();
+	    const { fields } = this.props;
+	    console.log(values);
 
-        e.preventDefault();
+	    Object.keys(values).map(key => {
+		    const currentType = fields.find(field => field.name === key).type;
 
-        Object.keys(values).map(key => {
-            if (typeof values[key][0] === 'object') return formData.append(key, values[key][0]);
-            formData.append(key, values[key]);
-        });
+		    switch(currentType) {
+			    case 'file':
+				    return formData.append(key, values[key][0]);
+			    case 'select':
+				    return 'select';
+			    default:
+				    return formData.set(key, values[key]);
+		    }
+	    });
 
-        axios.post(`/api/v1/${this.props.API}`, formData, {
-            headers: {'content-type': 'multipart/form-data'},
-        })
-            .then(res => {
-                console.log('Submit Response: ', res.data);
-                res.status && this.setState({success: true});
-            })
-            .catch(err => {
-                console.log('Ошибка при отправке формы, попробуйте позже!' + err)
-            });
+        await this.postToDB(formData);
+    };
+
+    postToDB = data => {
+	    axios.post(`/api/v1/${this.props.API}`, data, {
+	    	headers: { 'Content-Type': 'multipart/form-data' }
+	    })
+		    .then(res => {
+			    res.status === 200 &&
+			    this.setState({success: true});
+		    })
+		    .catch(err => {
+			    console.log('Ошибка при отправке формы, попробуйте позже!' + err)
+		    });
     };
 
     render() {

@@ -39,7 +39,7 @@
         "vanilla-tilt": "^1.7.0"
     },
     "scripts": {
-        "start:server": "NODE_ENV=development nodemon app.js",
+        "start:server": "NODE_ENV=development nodemon app.js --exec babel-node",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
@@ -65,6 +65,8 @@
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.8.4",
         "@babel/node": "^7.8.4",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/preset-env": "^7.8.4",
         "@babel/preset-react": "^7.8.3",
         "@editorjs/delimiter": "^1.1.0",
@@ -74,6 +76,8 @@
         "@editorjs/marker": "^1.2.2",
         "@editorjs/paragraph": "^2.6.1",
         "@editorjs/quote": "^2.3.0",
+        "babel-loader": "^8.0.6",
+        "babel-preset-env": "^1.7.0",
         "concurrently": "^5.1.0",
         "express-swagger-generator": "^1.1.17",
         "nodemon": "^2.0.2",

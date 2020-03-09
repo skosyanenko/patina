@@ -1,0 +1,27 @@
+[
+    {
+        "name": "book",
+        "label": "Книга",
+        "icon": "books",
+        "type": "select"
+    },
+    {
+        "name": "title",
+        "label": "Название экранизации",
+        "icon": "films",
+        "type": "text",
+        "req": true
+    },
+    {
+        "name": "description",
+        "label": "Описание экранизации",
+        "icon": "author",
+        "type": "textarea",
+        "req": true
+    },
+    {
+        "name": "image",
+        "label": "Картинка",
+        "type": "file"
+    }
+]

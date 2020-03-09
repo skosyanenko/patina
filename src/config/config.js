@@ -84,9 +84,8 @@ export const formRoutes = {
     authors: {title: 'Добавить писателя'},
     categories: {title: 'Добавить категорию'},
     events: {title: 'Добавить эвент'},
-
     book: {title: 'Добавить книгу'},
-    film: {title: 'Добавить экранизацию'},
+    films: {title: 'Добавить экранизацию'},
     top: {title: 'Создать подборку книг'},
     review: {title: 'Добавить рецензию'},
     news: {title: 'Добавить новость'}

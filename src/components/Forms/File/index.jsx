@@ -10,16 +10,18 @@ class InputFile extends Component  {
         let fileNames = this.state[name + '_LABEL'] || [];
 
         for (let file of selectorFiles) {
-            files.push({value: file, label: file.name});
-            fileNames.push(file.name);
+	        files.push({value: file, label: file.name});
+	        fileNames.push(file.name);
         }
 
-        this.setState({
-            [name]: files,
-            [name + '_LABEL']: fileNames
-        }, () => {
-            this.setFieldValue(this.state[name][0].value);
-        });
+        if (files.length > 0) {
+	        this.setState({
+		        [name]: files,
+		        [name + '_LABEL']: fileNames
+	        }, () => {
+		        this.setFieldValue(this.state[name][0].value);
+	        });
+        }
     };
 
     deleteFile = (name, item) => {
@@ -38,7 +40,7 @@ class InputFile extends Component  {
     setFieldValue = value => this.props.onChange(this.props.name, value);
 
     render() {
-        const {name, label, register} = this.props;
+        const {name, label, register, errors} = this.props;
         const labels = this.state[name + '_LABEL'];
 
         return (
@@ -49,14 +51,16 @@ class InputFile extends Component  {
                         id={name}
                         name={name}
                         onChange={e => this.handleFile(e.target.files)}
-                        ref={register}
+                        ref={register({
+	                        required: 'Обязательное поле',
+	                        validate: value => value[0].size < 3 * 1024 * 1024 || 'Превышен лимит 3мб'
+                        })}
                         accept="image/*"
                     />
                     <div className="form__upload-img"/>
                 </label>
                 <div className="form__upload-text">
                     <span>{label}</span>
-
                     {labels && labels.map((item, key) => (
                         <div className="form__upload-fileName" key={key}>
                             <span>{item}</span>
@@ -65,6 +69,7 @@ class InputFile extends Component  {
                             />
                         </div>
                     ))}
+	                {errors && errors[name] && errors[name].message}
                 </div>
             </div>
         )
