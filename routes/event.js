@@ -1,11 +1,21 @@
-const express = require('express');
-const router = express.Router();
-const { check } = require('express-validator');
-const multer = require('multer');
-const options = require('../config/multer');
+import express from 'express';
+import { check } from 'express-validator';
+import multer from 'multer';
+import options from '../config/multer';
+import { Event } from '../db/models';
+import Controller from '../controllers/controller';
+
 const upload = multer(options);
 
-const EventController = require('../controllers/event.controller');
+const router = express.Router();
+
+const eventPrebuild = req => {
+	const {timeStart, timeEnd, date} = req.body;
+	req.body.timeStart = new Date(date + ' ' + timeStart);
+	req.body.timeEnd = new Date(date + ' ' + timeEnd);
+};
+
+const EventController = new Controller(Event, eventPrebuild);
 
 /**
  * @typedef Event
@@ -30,7 +40,7 @@ router.post(
 	'/api/v1/events',
 	upload.none(),
 	[check(['date', 'timeStart', 'timeEnd', 'title', 'place']).notEmpty()],
-	EventController.addEvent,
+	EventController.create,
 );
 
 /**
@@ -41,7 +51,7 @@ router.post(
  */
 router.get(
 	'/api/v1/events',
-	EventController.getEvents,
+	EventController.getAll,
 );
 
 /**
@@ -53,7 +63,7 @@ router.get(
  */
 router.delete(
 	'/api/v1/events/:id',
-	EventController.deleteEvent,
+	EventController.delete,
 );
 
-module.exports = router;
+export default router;

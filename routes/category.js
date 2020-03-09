@@ -1,11 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const { check } = require('express-validator');
-const multer = require('multer');
-const options = require('../config/multer');
+import express from 'express';
+import { check } from 'express-validator';
+import multer from 'multer';
+import options from '../config/multer';
+import { Category } from '../db/models';
+import Controller from '../controllers/controller';
+
 const upload = multer(options);
 
-const CategoryController = require('../controllers/category.controller');
+const router = express.Router();
+
+const CategoryController = new Controller(Category);
 
 /**
  * @typedef Category
@@ -23,7 +27,7 @@ router.post(
 	'/api/v1/categories',
 	upload.none(),
 	[check('title').notEmpty()],
-	CategoryController.addCategory,
+	CategoryController.create,
 );
 
 /**
@@ -34,7 +38,7 @@ router.post(
  */
 router.get(
 	'/api/v1/categories',
-	CategoryController.getCategories,
+	CategoryController.getAll,
 );
 
-module.exports = router;
+export default router;

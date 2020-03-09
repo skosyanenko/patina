@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     shortDescription: DataTypes.TEXT,
     fullDescription: DataTypes.TEXT,
     quote: DataTypes.STRING,
-    ratingCount: DataTypes.INTEGER,
-    ratingTotal: DataTypes.INTEGER,
-    readLink: DataTypes.STRING,
     weight: DataTypes.INTEGER,
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    readLink: DataTypes.STRING,
+    ratingCount: DataTypes.INTEGER,
+    ratingTotal: DataTypes.INTEGER
   }, {});
   Book.associate = ({Author, Film, Review, Category, Comment, Chart}) => {
   	Book.belongsToMany(Author, {through: 'booksAuthor'});

@@ -1,10 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const { check } = require('express-validator');
-const multer = require('multer');
-const options = require('../config/multer');
+import express from 'express';
+import { check } from 'express-validator';
+import multer from 'multer';
+import options from '../config/multer';
+import { Author } from '../db/models';
+import Controller from '../controllers/controller';
+
 const upload = multer(options);
-const AuthorController = require('../controllers/author.controller');
+
+const router = express.Router();
+
+const AuthorController = new Controller(Author);
 
 /**
  * @typedef Author
@@ -26,12 +31,8 @@ const AuthorController = require('../controllers/author.controller');
 router.post(
 	'/api/v1/authors',
 	upload.single('picture'),
-	[
-		check('name').notEmpty(),
-		check('birth').notEmpty(),
-		check('death').notEmpty(),
-	],
-	AuthorController.addAuthor,
+	[check(['name', 'birth']).notEmpty()],
+	AuthorController.create,
 );
 
 /**
@@ -42,7 +43,7 @@ router.post(
  */
 router.get(
 	'/api/v1/authors',
-	AuthorController.getAuthors,
+	AuthorController.getAll,
 );
 
-module.exports = router;
+export default router;

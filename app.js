@@ -1,11 +1,13 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import swaggerOptions from './config/swagger';
+import db from './db/models/index';
+import bodyParser from 'body-parser';
+import { importRoutes } from './config/helpers';
+
 const app = express();
-const path = require('path');
 const expressSwagger = require('express-swagger-generator')(app);
-const swaggerOptions = require('./config/swagger');
-const db = require('./db/models/index');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
+
 const PORT = process.env.PORT || 5000;
 
 db.sequelize.authenticate()
@@ -18,7 +20,9 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-routes.forEach(route => app.use(route));
+importRoutes(__dirname)
+	.then(routes => routes.forEach(route => app.use(route.default)))
+	.catch(err => console.log(err));
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, 'build')));
