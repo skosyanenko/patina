@@ -62,4 +62,16 @@ router.get(
 	BookController.getAll,
 );
 
+
+/**
+ * @route GET /api/v1/books/:id
+ * @group books
+ * @returns {Array.<Books>} Books - массив
+ * @returns {Error}  default - Unexpected error
+ */
+router.get(
+	'/api/v1/books/:id',
+	BookController.getOne,
+);
+
 export default router;

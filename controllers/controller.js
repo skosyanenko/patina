@@ -15,7 +15,7 @@ class Controller {
 
 			await this.model
 				.build({...req.body})
-				.save()
+				.create()
 				.then(() => {
 					res.status(200).send('Item created successfully');
 				})

@@ -46,4 +46,15 @@ router.get(
 	NewsController.getAll,
 );
 
+/**
+ * @route GET /api/v1/news/:id
+ * @group news
+ * @returns {<News>} News - новость
+ * @returns {Error}  default - Unexpected error
+ */
+router.get(
+	'/api/v1/news/:id',
+	NewsController.getOne,
+);
+
 export default router;
