@@ -60,9 +60,9 @@ class Rating extends  Component {
     };
 
     componentDidMount() {
-        this.fetchRating().then(res => {
-            this.setState({rating: res})
-        });
+        // this.fetchRating().then(res => {
+        //     this.setState({rating: res})
+        // });
     }
 
     render() {

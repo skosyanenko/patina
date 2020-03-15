@@ -19,7 +19,7 @@ class BookPage extends Component {
         return await axios.get(`/api/v1/books/${id}`)
             .then(res => {
                 if (res.data) {
-                    return res.data;
+                    this.setState({currentBook: res.data})
                 }
             })
             .catch(err => {
@@ -28,9 +28,7 @@ class BookPage extends Component {
     };
 
     componentDidMount() {
-        this.fetchCurrentBook().then(res => {
-            this.setState({currentBook: res})
-        });
+        this.fetchCurrentBook();
     }
 
     render() {
@@ -41,16 +39,11 @@ class BookPage extends Component {
 
                 <div className="container container--book-detail">
 
-                    <Cover
-                        author={currentBook.author}
-                        image={currentBook.bookImage}
-                        categories={currentBook.categories}
-                    />
+                    <Cover {...currentBook} />
 
-                    <Description toggleModal={this.toggleModal}
-                                 currentBook={currentBook}
-                    />
+                    <Description  {...currentBook} toggleModal={this.toggleModal} />
                 </div>
+
                 <CommentBlock bookId={currentBook.id}/>
 
                 <ModalFilms

@@ -17,6 +17,7 @@ class BooksController extends Controller {
             await Book
                 .create({...req.body })
                 .then(newBook => {
+                    newBook.setBookHasAuthors(authors);
                     newBook.setBookHasCategories(categories);
                     res.status(200).send('Book created successfully');
                 })

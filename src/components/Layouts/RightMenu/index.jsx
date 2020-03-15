@@ -30,7 +30,7 @@ class RightMenu extends Component {
                         содержание
                     </div>
                     {this.state.randomBooks && this.state.randomBooks.map((item, key) => (
-                        <Link to="/book" className="content__item" key={item.id}>
+                        <Link to="/book" className="content__item" key={key}>
                             <span className="content__item-title">{item.title}</span>
                             <span className="content__item-num">{key + 1}</span>
                         </Link>
