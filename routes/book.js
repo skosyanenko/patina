@@ -3,13 +3,13 @@ import { check } from 'express-validator';
 import multer from 'multer';
 import options from '../config/multer';
 import { Book } from '../db/models';
-import Controller from '../controllers/controller';
+import BookController from '../controllers/book.controller';
 
 const upload = multer(options);
 
 const router = express.Router();
 
-const BookController = new Controller(Book);
+const bookController = new BookController(Book);
 
 /**
  * @typedef Books
@@ -35,20 +35,19 @@ const BookController = new Controller(Book);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/books',
-	upload.fields([
-		{name: 'coverImage', maxCount: 1},
-		{name: 'bookImage', maxCount: 1}
-	]),
-	[check([
-		'shortDescription',
-		'fullDescription',
-		'quote',
-		'weight',
-		'title',
-		'readLink',
-	]).notEmpty()],
-	BookController.create,
+    '/api/v1/books',
+    upload.fields([
+        { name: 'coverImage', maxCount: 1 },
+        { name: 'bookImage', maxCount: 1 }
+    ]), [check([
+        'shortDescription',
+        'fullDescription',
+        'quote',
+        'weight',
+        'title',
+        'readLink',
+    ]).notEmpty()],
+    bookController.create,
 );
 
 /**
@@ -58,8 +57,8 @@ router.post(
  * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/books',
-	BookController.getAll,
+    '/api/v1/books',
+    bookController.getAll,
 );
 
 
@@ -70,8 +69,8 @@ router.get(
  * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/books/:id',
-	BookController.getOne,
+    '/api/v1/books/:id',
+    bookController.getOne,
 );
 
 export default router;

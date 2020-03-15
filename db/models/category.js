@@ -1,9 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Category = sequelize.define('Category', {
-    title: DataTypes.STRING
-  }, {});
-  Category.associate = function(models) {
-  };
-  return Category;
+    const Category = sequelize.define('Category', {
+        title: DataTypes.STRING,
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('NOW()')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('NOW()')
+        }
+    }, {});
+    Category.associate = function(models) {
+        Category.belongsToMany(models.Book, { through: 'booksCategory' });
+    };
+    return Category;
 };

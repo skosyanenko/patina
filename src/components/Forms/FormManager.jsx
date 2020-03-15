@@ -18,7 +18,7 @@ class FormManager extends Component {
         classPref: ''
     };
 
-    onSubmit = async (values) => {
+    onSubmit = values => {
 	    const formData = new FormData();
 	    const { fields } = this.props;
 	    console.log(values);
@@ -28,15 +28,15 @@ class FormManager extends Component {
 
 		    switch(currentType) {
 			    case 'file':
-				    return formData.append(key, values[key][0]);
-			    case 'select':
-				    return 'select';
+                    return formData.append(key, values[key][0]);
+                case 'select':
+                    return formData.set(key, JSON.stringify(values[key]));
 			    default:
 				    return formData.set(key, values[key]);
 		    }
 	    });
 
-        await this.postToDB(formData);
+        this.postToDB(formData);
     };
 
     postToDB = data => {
