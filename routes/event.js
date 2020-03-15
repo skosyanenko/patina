@@ -9,10 +9,10 @@ const upload = multer(options);
 
 const router = express.Router();
 
-const eventPrebuild = req => {
-	const {timeStart, timeEnd, date} = req.body;
-	req.body.timeStart = new Date(date + ' ' + timeStart);
-	req.body.timeEnd = new Date(date + ' ' + timeEnd);
+const eventPrebuild = body => {
+    const { timeStart, timeEnd, date } = body;
+    body.timeStart = new Date(date + ' ' + timeStart);
+    body.timeEnd = new Date(date + ' ' + timeEnd);
 };
 
 const EventController = new Controller(Event, eventPrebuild);
@@ -37,10 +37,9 @@ const EventController = new Controller(Event, eventPrebuild);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/events',
-	upload.none(),
-	[check(['date', 'timeStart', 'timeEnd', 'title', 'place']).notEmpty()],
-	EventController.create,
+    '/api/v1/events',
+    upload.none(), [check(['date', 'timeStart', 'timeEnd', 'title', 'place']).notEmpty()],
+    EventController.create,
 );
 
 /**
@@ -50,8 +49,8 @@ router.post(
  * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/events',
-	EventController.getAll,
+    '/api/v1/events',
+    EventController.getAll,
 );
 
 /**
@@ -62,8 +61,8 @@ router.get(
  * @returns {Error}  default - Unexpected error
  */
 router.delete(
-	'/api/v1/events/:id',
-	EventController.delete,
+    '/api/v1/events/:id',
+    EventController.delete,
 );
 
 export default router;
