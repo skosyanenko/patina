@@ -14,8 +14,8 @@ class FormManager extends Component {
 
     static defaultProps = {
         button: 'Добавить',
-        prefix: '',
-        classPref: ''
+        prefix: 'form',
+        classPrefix: ''
     };
 
     onSubmit = async (values) => {

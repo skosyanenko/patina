@@ -19,7 +19,7 @@ class NavLinks extends Component {
 
     componentDidMount() {
         this.activeLink &&
-        this.positionCircle(this.activeLink)
+        this.positionCircle(this.activeLink);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,11 +36,25 @@ class NavLinks extends Component {
     };
 
     positionCircle = (el, loc) => {
+        const {navLinks} = this.state;
         const arrOfPath = [];
-        this.state.navLinks.map(item => {
+        navLinks.map(item => {
             arrOfPath.push(item.path);
+            if (item.path === el.pathname){
+                this.setState(state => ({
+                    navLinks: state.navLinks.map(link => {
+                        link.title === item.title && (link.active = true);
+                        return link;
+                    })
+                }))
+            }
         });
-        if (arrOfPath.includes(loc)){
+
+        let fu = navLinks.map(item =>(
+            Object.values(item).includes(true)
+        ));
+
+        if (fu){
             let target = el && el.target || el;
             if (target.current !== null) {
                 const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
@@ -50,11 +64,22 @@ class NavLinks extends Component {
         } else {
             this.setState({toggleCircle: 0});
         }
+        // if (arrOfPath.includes(loc || loc + '/')){
+        //     let target = el && el.target || el;
+        //     if (target.current !== null) {
+        //         const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
+        //         const topCoord = this.calcTop(topOffset);
+        //         this.setState({topCoord, toggleCircle: 1});
+        //     }
+        // } else {
+        //     this.setState({toggleCircle: 0});
+        // }
     };
 
     render() {
         const { navLinks, topCoord, toggleCircle } = this.state;
         const { location: {pathname} } = this.props;
+
         return (
             <div className="menu__wrapper">
                 {navLinks.map((item, key) => (

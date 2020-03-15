@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const alphabet = [
   'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж',
@@ -36,59 +36,16 @@ export const effectForTitle = {
     }
 };
 
-export const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dotsClass: 'indexNew',
-    customPaging: i => (
-        <div className="indexNew__numb-dot">
-            {(i + 1 <= 9) ? `0${i + 1}` : i + 1}
-        </div>
-    )
-};
-
-export const effectForImage = {
-    movement: {
-        imgWrapper: {
-            translation: {x: 0, y: 0, z: 0},
-            rotation: {x: -15, y: 15, z: 0},
-            reverseAnimation: {
-                duration: 1200,
-                easing: 'easeOutElastic',
-                elasticity: 600
-            }
-        },
-        lines: {
-            translation: {x: 10, y: 10, z: [0, 10]},
-            reverseAnimation: {
-                duration: 1000,
-                easing: 'easeOutExpo',
-                elasticity: 600
-            }
-        },
-        shine: {
-            translation: {x: 50, y: 50, z: 0},
-            reverseAnimation: {
-                duration: 1200,
-                easing: 'easeOutElastic',
-                elasticity: 600
-            }
-        }
-    }
-};
-
 export const formRoutes = {
-    authors: {title: 'Добавить писателя'},
-    categories: {title: 'Добавить категорию'},
-    events: {title: 'Добавить эвент'},
-    books: {title: 'Добавить книгу'},
-    films: {title: 'Добавить экранизацию'},
-    top: {title: 'Создать подборку книг'},
+    authors: {title: 'Добавить писателя', path: '/control/authors', icon: 'fun'},
+    categories: {title: 'Добавить экранизацию', path: '/control/films', icon: 'films'},
+    events: {title: 'Добавить категорию', path: '/control/categories', icon: 'author'},
+    books: {title: 'Добавить книгу', path: '/control/books', icon: 'books'},
+    films: {title: 'Добавить топ', path: '/form/top', icon: 'wishlist'},
+    top: {title: 'Добавить эвент', path: '/control/events', icon: 'author'},
+    news:  {title: 'Добавить новость', path: '/control/news', icon: 'quote'},
     review: {title: 'Добавить рецензию'},
-    news: {title: 'Добавить новость'}
+    registration: {title: 'Регистрация'}
 };
 
 export const letters = [

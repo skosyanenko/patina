@@ -13,9 +13,9 @@ const BookInform = ({bookId, categories}) => {
         <div className="book-inform">
             <div className="tags">
                 <div className="indexBook__about-tags">
-                {categories && categories.map((category, key) => (
-                    <Link to={'/'} className="tags__elem" key={key}>{category}</Link>
-                ))}
+                    {categories && categories.map((category, key) => (
+                        <Link to={'/'} className="tags__elem" key={key}>{category}</Link>
+                    ))}
                 </div>
             </div>
             <div className="book-inform__container">

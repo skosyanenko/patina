@@ -1,21 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {formRoutes} from 'config/config';
 import './index.sass';
 
 class Control extends Component {
     state = {
-        forms: [
-            {title: 'Добавить писателя', path: 'authors', icon: 'fun'},
-            {title: 'Добавить экранизацию', path: 'films', icon: 'films'},
-            {title: 'Добавить категорию', path: 'categories', icon: 'author'},
-            {title: 'Добавить книгу', path: 'books', icon: 'books'},
-            {title: 'Добавить топ', path: 'top', icon: 'wishlist'},
-            {title: 'Добавить эвент', path: 'events', icon: 'author'},
-            {title: 'Добавить новость', path: 'news', icon: 'quote'}
-        ],
-        events: [],
-        categories: []
+        events: []
     };
 
     componentDidMount() {
@@ -34,17 +25,17 @@ class Control extends Component {
     };
 
     render() {
-        const {forms, events} = this.state;
+        const {events} = this.state;
 
         return (
             <div className="control">
                 <span className="control__title">Добавление новых данных:</span>
                 <div className="control__wrapper">
-                    {forms.map((item, key) => (
+                    {Object.values(formRoutes).slice(0,-2).map((item, key) => (
                         <div className="control__wrap" key={key}>
                             <div className={`control__wrap-icon control__add-${item.icon}`}/>
                             <span className="control__wrap-title">{item.title}</span>
-                            <Link to={`/form/${item.path}`} className="button button-green">Перейти</Link>
+                            <Link to={`${item.path}`} className="button button-green">Перейти</Link>
                         </div>
                     ))}
                 </div>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FormManager from 'components/Forms/FormManager';
-import UndefinedPage from "../UndefinedPage";
+import UndefinedPage from '../UndefinedPage';
 import {formRoutes} from 'config/config';
 
 const AddForm = ({match}) => {
@@ -32,7 +32,15 @@ const AddForm = ({match}) => {
         return <UndefinedPage />;
     }
 
-    return <FormManager {...config[type]} prefix={'form'} classPrefix={' '}/>;
+    if (type === 'registration') {
+        return <FormManager {...config[type]}
+                            prefix={'registration'}
+                            classPrefix={"registration__grid"}
+                            button={"Зарегистрироваться"}
+        />;
+    } else {
+        return <FormManager {...config[type]}/>;
+    }
 };
 
 export default AddForm;
