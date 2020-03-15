@@ -3,42 +3,34 @@ import React, {Component} from 'react';
 import './index.sass';
 
 class AlphabetFilter extends Component {
+
+    state = AlphabetFilter.initialState;
+    
     static initialState = {
         isBlur: false,
         activeLetter: '',
         alphabet: []
     };
 
-    state = AlphabetFilter.initialState;
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.books !== this.props.books) {
-            this.makeAlphabet();
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.letters.length > 0) {
+            return {alphabet: nextProps.letters};
         }
     }
-
+    
     showLetter = letter => {
         this.setState(prevState => ({
             isBlur: !prevState.isBlur,
             activeLetter: !prevState.isBlur && letter || ''
         }), () => {
-            this.props.hookLetter(this.state.activeLetter);
+            this.props.hook('letter', this.state.activeLetter);
         });
     };
 
     resetFilter = () => {
         this.state.isBlur &&
-        this.setState(AlphabetFilter.initialState,() => {
-            this.props.hookLetter('')
-        });
-    };
-
-    makeAlphabet = () => {
-        const arrOfLetters = this.props.books.map(book => (
-            book.title && book.title.substr(0, 1).toUpperCase()
-        ));
-        this.setState({
-            alphabet: [...new Set(arrOfLetters)].sort()
+        this.setState(AlphabetFilter.initialState, () => {
+            this.props.hook('letter', '');
         });
     };
 

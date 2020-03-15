@@ -1,43 +1,73 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
+import sortBy from 'lodash.sortby';
+import {sortParams} from 'config/config';
 
 class ListBooks extends Component {
     state = {
-        filteredBooks: []
+        loading: true
     };
 
     componentDidMount() {
-        this.getBooks();
+        this.props.fetchData('/api/v1/books')
+            .then(() => this.setState({loading: false}))
+            .catch(err => console.log(err));
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.activeLetter !== this.props.activeLetter) {
-            const isLetter = this.props.activeLetter.length > 0;
-            const filteredBooks = isLetter ?
-                this.props.books.filter(book => {
-                    if (book.title) {
-                        return book.title[0].toLowerCase() === this.props.activeLetter;
-                    }
-                }) :
-                this.props.books;
+    componentDidUpdate(prevProps) {     
+        const {letter, data, sorting} = this.props;
 
-            this.setState({filteredBooks});
+        if (prevProps.letter !== letter) {
+            this.filterByLetter();
+        }
+
+        if (prevProps.data !== data) {
+            this.getFirstLetters();
+        }
+
+        if (prevProps.sorting !== sorting) {            
+            this.sort();
         }
     }
 
-    getBooks = () => {
-        this.setState({
-            filteredBooks: this.props.books
-        });
+    sort = () => {
+        const {sorting, data, filterData} = this.props;
+        if (sorting) {
+            const {key} = sortParams.find(item => item.title === sorting);
+            const sorted = sortBy(data, [key]);    
+            return filterData(sorted);
+        } 
+
+        filterData(data);
     };
 
+    getFirstLetters = () => {
+        const {data, hook} = this.props;
+        const letters = data.map(book => book.title && book.title[0]).sort();
+        hook('letters', [...new Set(letters)]);
+    }
+
+    filterByLetter = () => {
+        const {letter, data, filterData} = this.props;
+        const filteredBooks = data.filter(book => {
+            return book.title && book.title[0] === letter;
+        });
+        const result = letter.length ? filteredBooks : data;
+
+        filterData(result);
+    }
+    
     render() {
-        const {filteredBooks} = this.state;
+        const {items} = this.props;
+        const {loading} = this.state;
+
+        if (loading) return 'Loading...';
+
         return (
-            <Fragment>
+            <div className='container__container-book'>
                 <div className="list-book">
-                    {filteredBooks && filteredBooks.map((book, key) => (
+                    {items && items.map((book, key) => (
                         <Link to={`/books/${book.id}`}
                               key={key}
                               className="list-book__link"
@@ -47,9 +77,9 @@ class ListBooks extends Component {
                     ))}
                 </div>
 
-                {/*{books.length && this.props.pagination || ''}*/}
+                {this.props.pagination || ''}
 
-            </Fragment>
+            </div>
         );
     }
 }

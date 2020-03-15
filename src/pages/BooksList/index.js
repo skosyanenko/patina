@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import axios from 'axios';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import AlphabetFilter from './AlphabetFilter';
@@ -11,34 +10,16 @@ const BooksWithPagination = paginationWrap(ListBooks);
 
 class BooksPage extends Component {
     state = {
-        activeLetter: '',
-        sortingBooks: [],
-        books: []
+        letter: '',
+        sorting: '',
+        books: [],
+        letters: []
     };
 
-    fetchAllBooks = async () => {
-        return await axios.get('/api/v1/books')
-            .then(res => {
-                if (res.data) {
-                    return res.data;
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    componentDidMount() {
-        this.fetchAllBooks().then(res => {
-            this.setState({books: res})
-        });
-    }
-
-    hookLetter = activeLetter => this.setState({activeLetter});
-
-    hookSortingBooks = sortingBooks => this.setState({sortingBooks});
+    hookState = (name, value) => this.setState({[name]: value});
 
     render() {
+        const {letter, sorting, letters} = this.state;
         return (
             <Fragment>
                 <div className="books-title">
@@ -46,27 +27,27 @@ class BooksPage extends Component {
                         title={"Книги"}
                         subtitle={"книжная полка"}
                     />
-                    <Sorting books={this.state.books}/>
+                    <Sorting hook={this.hookState}/>
                 </div>
 
                 <div className='container'>
                     <div className="container__container-book">
-                        <InputSearch classNamePrefix=" "/>
-                        <Sorting books={this.state.books}
-                                 //hookSortingBooks={this.hookSortingBooks()}
-                        />
-                        <AlphabetFilter hookLetter={this.hookLetter}
-                                        books={this.state.books}
+                        <InputSearch />
+
+                        <Sorting hook={this.hookState}/>
+
+                        <AlphabetFilter 
+                            hook={this.hookState} 
+                            letters={letters}
                         />
                     </div>
-                    <div className='container__container-book'>
-                        <BooksWithPagination
-                            activeLetter={this.state.activeLetter}
-                            sortingBooks={this.state.sortingBooks}
-                            books={this.state.books}
-                        />
-                        {/*<Pagination/>*/}
-                    </div>
+                
+                    <BooksWithPagination
+                        letter={letter}
+                        sorting={sorting}
+                        hook={this.hookState}
+                    />
+                    
                 </div>
             </Fragment>
         );

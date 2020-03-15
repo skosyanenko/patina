@@ -2,16 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
 
-const Description = (currentBook, toggleModal) => (
+const Description = ({title, fullDescription, readLink, reviews, films, toggleModal}) => (
     <div className="description">
-        <h1 className="description__title">{currentBook.title}</h1>
+        <h1 className="description__title">{title}</h1>
         <div className="description__text"
-             dangerouslySetInnerHTML={{__html: `${currentBook.fullDescription}`}}
+             dangerouslySetInnerHTML={{__html: `${fullDescription}`}}
         />
         <div className="description__buttons">
-            {currentBook.readLink && <a href={currentBook.readLink} className="button button-white">Читать</a>}
-            {currentBook.reviews && <Link to={currentBook.reviews} className="button button-green">Рецензии</Link>}
-            {currentBook.films && <div className="button button-green"  onClick={toggleModal}>Экранизации</div>}
+            {readLink && <a href={readLink} className="button button-white">Читать</a>}
+            {reviews && <Link to={reviews} className="button button-green">Рецензии</Link>}
+            {films && <div className="button button-green" onClick={toggleModal}>Экранизации</div>}
         </div>
     </div>
 );

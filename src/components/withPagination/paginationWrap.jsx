@@ -3,9 +3,9 @@ import axios from 'axios';
 import Pagination from '../Pagination';
 
 const paginationWrap = function(WrappedComponent){
-    return class extends Component {
+    return class PaginationWrap extends Component {
         state = {
-            books: [],
+            data: [],
             filteredData: [],
             items: [],
             pageCount: 1,
@@ -14,14 +14,13 @@ const paginationWrap = function(WrappedComponent){
             offset: 0
         };
 
-        fetchData = async (url, head) => {
+        fetchData = async url => {
             await axios.get(url).then(result => {
                 this.setState(state => ({
-                    data: result.data.data,
+                    data: result.data,
+                    filteredData: result.data,
                     filterValues: result.data.filterValues,
-                    filteredData: result.data.data,
-                    pageCount: Math.ceil(result.data.data.length / state.perPage),
-                    tableHead: head || state.tableHead
+                    pageCount: Math.ceil(result.data.length / state.perPage)
                 }), () => {
                     this.setItemsForCurrentPage();
                 });
@@ -33,6 +32,17 @@ const paginationWrap = function(WrappedComponent){
                 filteredData,
                 pageCount: Math.ceil(filteredData.length / this.state.perPage),
                 offset: 0
+            }, () => {
+                this.setItemsForCurrentPage();
+            });
+        };
+
+        handlePageClick = data => {
+            const selectedPage = data.selected;
+            const offset = selectedPage * this.state.perPage;
+            this.setState({
+                currentPage: selectedPage,
+                offset: offset
             }, () => {
                 this.setItemsForCurrentPage();
             });

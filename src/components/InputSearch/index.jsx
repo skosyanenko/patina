@@ -66,24 +66,6 @@ class InputSearch extends Component {
         }
     };
 
-    fetchBooks = async () => {
-        return await axios.get('/api/v1/books')
-            .then(res => {
-                if (res.data) {
-                    return res.data;
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    componentDidMount() {
-        this.fetchBooks().then(res => {
-            this.setState({books: res})
-        });
-    }
-
     render() {
         const {classNamePrefix} = this.props;
 
@@ -116,7 +98,7 @@ class InputSearch extends Component {
             }
         }
         return(
-            <div  className={`quest ${classNamePrefix}`}>
+            <div className={`quest ${classNamePrefix || ''}`}>
                 <input type="text"
                        className={`quest__wrapper ${showOptions && filteredOptions.length > 0 && userInput.length ? 'active' : ''}`}
                        onChange={this.onChange}
