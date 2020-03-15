@@ -1,13 +1,13 @@
 [
   {
-    "name": "book",
+    "name": "title",
     "label": "Название книги",
     "icon": "books",
     "type": "text",
     "req": true
   },
   {
-    "name": "author",
+    "name": "AuthorId",
     "label": "Укажите автора книги",
     "icon": "fun",
     "type": "select",

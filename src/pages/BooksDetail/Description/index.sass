@@ -26,10 +26,12 @@
             text-align: center
 
     &__text
+        min-height: 400px
         margin-bottom: 40px
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-align: justify
         +maxwidth($tablet)
+            min-height: fit-content
             margin-bottom: 30px
         +maxwidth($mobail)
             margin-bottom: 20px

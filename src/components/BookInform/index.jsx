@@ -3,19 +3,18 @@ import {Link} from 'react-router-dom';
 import Typed from 'react-typed';
 import Socials from '../SocialsGroup';
 import Rating from '../Rating';
-import PropTypes from 'prop-types';
 import './index.sass';
 import data from 'startData/booksTest';
 
-const BookInform = ({bookId}) => {
+const BookInform = ({bookId, categories}) => {
     const currentBook = data.books.find(book => book.id === bookId);
 
     return (
         <div className="book-inform">
             <div className="tags">
                 <div className="indexBook__about-tags">
-                {currentBook && currentBook.tags.map((tag, key) => (
-                    <Link to={'/'} className="tags__elem" key={key}>{tag}</Link>
+                {categories && categories.map((category, key) => (
+                    <Link to={'/'} className="tags__elem" key={key}>{category}</Link>
                 ))}
                 </div>
             </div>
@@ -44,10 +43,6 @@ const BookInform = ({bookId}) => {
             </div>
         </div>
     );
-};
-
-BookInform.propTypes = {
-    bookId: PropTypes.string.isRequired
 };
 
 export default BookInform;

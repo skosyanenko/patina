@@ -24,7 +24,7 @@ class View_2 extends Component {
     };
 
     render() {
-        const {title, subtitle, description, textLength, date, likes} = this.props;
+        const {review, textLength} = this.props;
 
         return (
             <>
@@ -32,18 +32,21 @@ class View_2 extends Component {
                     <Writer/>
 
                     <div className="container-review__text">
-                        <h1 className="container-review__text-title">{title}</h1>
-                        <span className="container-review__text-subtitle">{subtitle}</span>
+                        <h1 className="container-review__text-title">{review.title}</h1>
+                        <span className="container-review__text-subtitle">{review.title}</span>
                     </div>
                 </div>
 
                 <div className="review-wrap">
-                    {description && Object.keys(description).map(item => (
-                        this.formatType(item, description[item])
+                    {review.description && Object.keys(review.description).map(item => (
+                        this.formatType(item, review.description[item])
                     ))}
                 </div>
-                <UserInfo textLength={textLength}/>
-                <CommentBlock/>
+                <UserInfo textLength={textLength}
+                          likes={review.likes}
+                          date={review.date}
+                />
+                <CommentBlock reviewId={review.id}/>
             </>
         );
     }

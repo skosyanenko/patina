@@ -1,26 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
 
-class Description extends Component {
-    render() {
-        const {toggleModal} = this.props;
-        return (
-            <div className="description">
-                <h1 className="description__title">повелитель мух</h1>
-                <div className="description__text">
-                    <p>В результате авиакатастрофы на необитаемый остров попадают дети. Выбрав главного, которым становится мальчик по имени Ральф, они начинают думать, как же им отсюда спастись. В результате соперничества появляется второй лидер – мальчик по имени Джек – за которым на другую часть острова уходит всё больше и больше детей, пока Ральф не остаётся один вместе с тремя друзьями: толстым Хрюшей и близнецами Эриком и Сэмом.</p>
-                    <p>Пока группа под предводительством Джека ведёт «дикарский» образ жизни, группа Ральфа по-прежнему пытается найти способ, как спастись. В своих поступках «дикари» в конце концов доходят и до убийства – сперва мальчика по имени Саймон, потом убивают и Хрюшу. Ведя охоту за Ральфом, они поджигают лес, и этот пожар замечают спасатели – они высаживаются на остров и спасают детей.</p>
-                    <p>Роман учит нас тому, что любой человек – взрослый он или ребёнок, – выбравшись из цивилизованного общества, начинает морально деградировать, возвращаясь к своим «дикарским» корням, становясь жестоким; он теряет разум и превращается в настоящего дикаря. Роман так же говорит нам и о том, что абсолютно в любом человеке всегда продолжает жить внутренний зверь, разбудить которого ничего не стоит.</p>
-                </div>
-                <div className="description__buttons">
-                    <div className="button button-white">Читать</div>
-                    <Link to={'/review'} className="button button-green">Рецензии</Link>
-                    <div className="button button-green"  onClick={toggleModal}>Экранизации</div>
-                </div>
-            </div>
-        );
-    }
-}
+const Description = (currentBook, toggleModal) => (
+    <div className="description">
+        <h1 className="description__title">{currentBook.title}</h1>
+        <div className="description__text"
+             dangerouslySetInnerHTML={{__html: `${currentBook.fullDescription}`}}
+        />
+        <div className="description__buttons">
+            {currentBook.readLink && <a href={currentBook.readLink} className="button button-white">Читать</a>}
+            {currentBook.reviews && <Link to={currentBook.reviews} className="button button-green">Рецензии</Link>}
+            {currentBook.films && <div className="button button-green"  onClick={toggleModal}>Экранизации</div>}
+        </div>
+    </div>
+);
 
 export default Description;

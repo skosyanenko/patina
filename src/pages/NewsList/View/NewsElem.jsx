@@ -1,16 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NewsElem = ({title, description, cover}) => (
-
+const NewsElem = ({news}) => (
     <div className="news-elem">
         <div className="news-elem__about">
-            <Link to={'/new'} className="news-elem__title">{title}</Link>
-            <span className="news-elem__text">{description}</span>
+            <Link to={`/news/${news.id}`} className="news-elem__title">{news.title}</Link>
+            <span className="news-elem__text">{news.description}</span>
         </div>
-        <Link to={'/new'}>
+        <Link to={`/news/${news.id}`}>
             <div className="news-elem__img">
-                <img src={cover} alt=""/>
+                <img src={news.cover} alt=""/>
             </div>
         </Link>
     </div>

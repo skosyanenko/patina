@@ -4,19 +4,19 @@ import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 import './index.sass';
 
-const NewsBlock = ({title, description, textLength, cover, likes, views, date}) => (
+const NewsBlock = ({news, textLength}) => (
     <div className="news-block">
-        <Link to={'/new'}>
+        <Link to={`/news/${news.id}`}>
             <div className="news-block__img">
-                <img src={cover} alt=""/>
+                <img src={news.cover} alt=""/>
             </div>
         </Link>
-        <Link to={'/new'} className="news-block__title">{title}</Link>
-        <span className="news-block__text">{description}</span>
+        <Link to={`/news/${news.id}`} className="news-block__title">{news.title}</Link>
+        <span className="news-block__text">{news.description}</span>
         <div className="news-block__nav">
-            <Icons likes={likes} views={views} date={date}/>
+            <Icons likes={news.likes} views={news.views} date={news.date}/>
             <TimeToRead textLength={textLength}/>
-            <Link to={'/new'} className="button button-white">Подробнее</Link>
+            <Link to={`/news/${news.id}`} className="button button-white">Подробнее</Link>
         </div>
     </div>
 );

@@ -8,6 +8,7 @@ class ModalFilms extends Component {
 
     render() {
         const {isOpen, toggleModal} = this.props;
+        const {films} = this.props;
 
         return (
             <Transition in={isOpen} timeout={50}>
@@ -24,33 +25,13 @@ class ModalFilms extends Component {
                             slidesToShow={1}
                             slidesToScroll={1}
                         >
-                            <div className="films__wrapper">
-                                <h1 className="films__title">
-                                    «Повелитель мух» -  кинофильм 1990 г.
-                                </h1>
-                                <img src="images/topImage/1.jpg" alt="" className="films__img"/>
-                                <span className="films__description">
-                                    Группа кадетов военной школы чудом спасается после авиакатастрофы. Вместе с не приходящим в сознание пилотом они оказываются одни на пустынном острове. Помощи ждать неоткуда и приходится осваиваться в необычных условиях, вести себя по-взрослому. Изначально устанавливаются общие правила: говорит тот, в чьих руках морская раковина; устанавливается дежурство по поддержанию сигнального огня…
-                                </span>
-                            </div>
-                            <div className="films__wrapper">
-                                <h1 className="films__title">
-                                    «Повелитель мух» -  кинофильм 1990 г.
-                                </h1>
-                                <img src="images/topImage/1.jpg" alt="" className="films__img"/>
-                                <span className="films__description">
-                                    Группа кадетов военной школы чудом спасается после авиакатастрофы. Вместе с не приходящим в сознание пилотом они оказываются одни на пустынном острове. Помощи ждать неоткуда и приходится осваиваться в необычных условиях, вести себя по-взрослому. Изначально устанавливаются общие правила: говорит тот, в чьих руках морская раковина; устанавливается дежурство по поддержанию сигнального огня…
-                                </span>
-                            </div>
-                            <div className="films__wrapper">
-                                <h1 className="films__title">
-                                    «Повелитель мух» -  кинофильм 1990 г.
-                                </h1>
-                                <img src="images/topImage/1.jpg" alt="" className="films__img"/>
-                                <span className="films__description">
-                                    Группа кадетов военной школы чудом спасается после авиакатастрофы. Вместе с не приходящим в сознание пилотом они оказываются одни на пустынном острове. Помощи ждать неоткуда и приходится осваиваться в необычных условиях, вести себя по-взрослому. Изначально устанавливаются общие правила: говорит тот, в чьих руках морская раковина; устанавливается дежурство по поддержанию сигнального огня…
-                                </span>
-                            </div>
+                            {films && films.map((film, key) => (
+                                <div className="films__wrapper" key={key}>
+                                    <h1 className="films__title">{film.title}</h1>
+                                    <img src={film.image} alt="" className="films__img"/>
+                                    <span className="films__description">{film.description}</span>
+                                </div>
+                            ))}
                         </Slider>
                         <div className="films__close">
                             <div className="films__close-icon"

@@ -18,7 +18,7 @@
     "label": "Дата смерти писателя",
     "icon": "clock",
     "type": "date",
-    "req": true
+    "req": false
   },
   {
     "name": "picture",

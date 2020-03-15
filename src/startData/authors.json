@@ -1,39 +1,34 @@
 {
     "authors": [
         {
-            "id": 1,
             "author": "Пауло Коэльо",
             "authorImage": "/images/author/PauloCoelho.png",
-            "years": "1947—н.в.",
-            "books": ["11 минут"]
+            "years": "1947—н.в."
         },
         {
-            "id": 2,
             "author": "Илья Ильф, Евгений Петров",
             "authorImage": "/images/authors/IlfPetrov.png",
-            "years": "1897—1937, 1903—1942",
-            "books": ["12 стульев", "Золотой теленок", "Одноэтажная Америка"]
+            "years": "1897—1937, 1903—1942"
         },
         {
-            "id": 3,
+            "author": "Евгений Петров",
+            "authorImage": "/images/authors/IlfPetrov.png",
+            "years": "1903—1942"
+        },
+        {
             "author": "Джордж Оруэлл",
             "authorImage": "/images/authors/GeorgeOrwell.png",
-            "years": "1903—1950",
-            "books": ["1984", "Скотный двор"]
+            "years": "1903—1950"
         },
         {
-            "id": 4,
             "author": "Рэй Брэдбери",
             "authorImage": "/images/authors/RayBradbury.png",
-            "years": "1920—2012",
-            "books": ["451 градус по Фаренгейту", "Марсианские хроники", "Надвигается беда"]
+            "years": "1920—2012"
         },
         {
-            "id": 5,
             "author": "Лина Мур",
             "authorImage": "/images/authors/LinaMoore.png",
-            "years": "1990—н.в.",
-            "books": ["50 и одно дыхание глубже"]
+            "years": "1990—н.в."
         },
         {
             "id": 6,

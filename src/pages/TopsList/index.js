@@ -39,7 +39,7 @@ class TopsPage extends Component {
                 <div className="container container--top-detail">
                     <Picture/>
                     <div className="container__container-top">
-                        <Selection allTops={tops}/>
+                        <Selection tops={tops}/>
                         {/*<Pagination/>*/}
                     </div>
                 </div>

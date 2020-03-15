@@ -7,9 +7,9 @@ class Control extends Component {
     state = {
         forms: [
             {title: 'Добавить писателя', path: 'authors', icon: 'fun'},
-            {title: 'Добавить экранизацию', path: 'film', icon: 'films'},
+            {title: 'Добавить экранизацию', path: 'films', icon: 'films'},
             {title: 'Добавить категорию', path: 'categories', icon: 'author'},
-            {title: 'Добавить книгу', path: 'book', icon: 'books'},
+            {title: 'Добавить книгу', path: 'books', icon: 'books'},
             {title: 'Добавить топ', path: 'top', icon: 'wishlist'},
             {title: 'Добавить эвент', path: 'events', icon: 'author'},
             {title: 'Добавить новость', path: 'news', icon: 'quote'}

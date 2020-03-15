@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import {alphabet} from '../../../config/config';
+//import {alphabet} from '../../../config/config';
 import './index.sass';
 
 class AlphabetFilter extends Component {
     static initialState = {
         isBlur: false,
-        activeLetter: ''
+        activeLetter: '',
+        alphabet: []
     };
 
     state = AlphabetFilter.initialState;
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.books !== this.props.books) {
+            this.makeAlphabet();
+        }
+    }
 
     showLetter = letter => {
         this.setState(prevState => ({
@@ -26,8 +33,17 @@ class AlphabetFilter extends Component {
         });
     };
 
+    makeAlphabet = () => {
+        const arrOfLetters = this.props.books.map(book => (
+            book.title && book.title.substr(0, 1).toUpperCase()
+        ));
+        this.setState({
+            alphabet: [...new Set(arrOfLetters)].sort()
+        });
+    };
+
     render() {
-        const {isBlur, activeLetter} = this.state;
+        const {isBlur, activeLetter, alphabet} = this.state;
 
         return (
             <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`} onClick={this.resetFilter}>

@@ -3,9 +3,13 @@ import {Link} from 'react-router-dom';
 import ArrowBackwards from 'components/ArrowBackwards';
 import View_1 from './Views/View_1';
 import View_2 from './Views/View_2';
-import review from './review';
+import axios from 'axios';
 
 class ReviewPage extends Component {
+    state = {
+        currentReview: {}
+    };
+
     viewSwitcher = view => {
         switch (view) {
             case 'view_1':
@@ -15,21 +19,43 @@ class ReviewPage extends Component {
         }
     };
 
+    fetchCurrentReview = async () => {
+        const { id } = this.props.match.params;
+
+        return await axios.get(`/api/v1/reviews/${id}`)
+            .then(res => {
+                if (res.data) {
+                    return res.data;
+                }
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
+    };
+
+    componentDidMount() {
+        this.fetchCurrentReview().then(res => {
+            this.setState({currentReview: res})
+        });
+    }
+
     render () {
+        const {currentReview} = this.state;
+
         return(
             <>
                 <Link to="/reviews">
                     <ArrowBackwards/>
                 </Link>
-                {review && review.map((item, key) => {
-                    const Component = this.viewSwitcher(item.view);
+                {currentReview && currentReview.map((item, key) => {
+                    const Component = this.viewSwitcher(item.viewType);
                     const objValues = Object.keys(item.description).map(x => item.description[x]);
                     const textLength = Array.from(objValues)
                         .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
                     return(
                         <Component
                             key={key}
-                            {...item}
+                            review={currentReview}
                             textLength={textLength}
                         />
                     )

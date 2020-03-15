@@ -7,7 +7,7 @@ import RadioButton from './RadioButton';
 import TextEditor from './TextEditor';
 
 const HookForm = props => {
-    const {handleSubmit, register, setValue, errors, formState, control} = useForm();
+    const {handleSubmit, register, setValue, errors, formState, control, getValues} = useForm();
 
     const typeSwitcher = type => {
         switch(type) {
@@ -55,6 +55,7 @@ const HookForm = props => {
                 <button type="submit" className={`button button-green ${Object.keys(errors).length ? 'disabled' : ''}`}>
                     {props.button}
                 </button>
+                <button onClick={() => console.log(getValues())}>get Values</button>
             </div>
         </form>
     );

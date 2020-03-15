@@ -4,22 +4,22 @@ import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 import './index.sass';
 
-const NewsVertical = ({title, description, textLength, cover, likes, views, date}) => (
+const NewsVertical = ({news, textLength}) => (
     <div className="news-vertical">
-        <Link to={'/new'} className="news-vertical__link">
+        <Link to={`/news/${news.id}`} className="news-vertical__link">
             <div className="news-vertical__link-img">
-                <img src={cover} alt=""/>
+                <img src={news.cover} alt=""/>
             </div>
         </Link>
         <div className="news-vertical__description">
             <div className="news-vertical__description-wrap">
-                <Link to={'/new'} className="news-vertical__title">{title}</Link>
-                <span className="news-vertical__text">{description}</span>
+                <Link to={`/news/${news.id}`} className="news-vertical__title">{news.title}</Link>
+                <span className="news-vertical__text">{news.description}</span>
             </div>
             <div className="news-vertical__description-nav">
-                <Icons likes={likes} views={views} date={date}/>
+                <Icons likes={news.likes} views={news.views} date={news.date}/>
                 <TimeToRead textLength={textLength}/>
-                <Link to={'/new'} className="button button-white">Подробнее</Link>
+                <Link to={`/news/${news.id}`} className="button button-white">Подробнее</Link>
             </div>
         </div>
     </div>

@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
-//import data from 'startData/tops';
 
-const Selection = ({allTops}) => (
-
+const Selection = ({tops}) => (
     <div className="selection">
-        {allTops && allTops.map((item, key) => (
-            <Link to="/top" key={key} className="selection__link">
-                {item.title}
+        {tops && tops.map((top, key) => (
+            <Link to={`/tops/${top.id}`} key={key} className="selection__link">
+                {top.title}
             </Link>
         ))}
     </div>

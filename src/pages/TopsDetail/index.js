@@ -4,7 +4,6 @@ import Socials from 'components/SocialsGroup';
 import Block from './Block';
 import Depiction from './Depiction';
 import CommentBlock from 'components/CommentBlock';
-import data from 'startData/listTop';
 
 class TopPage extends Component {
     state = {
@@ -12,7 +11,8 @@ class TopPage extends Component {
     };
 
     fetchCurrentTop = async () => {
-        return await axios.get(`/api/v1/tops`)
+        const { id } = this.props.match.params;
+        return await axios.get(`/api/v1/tops/${id}`)
             .then(res => {
                 if (res.data) {
                     return res.data;
@@ -34,14 +34,16 @@ class TopPage extends Component {
 
         return(
             <Fragment>
-                <Depiction currentTop={currentTop}/>
+                <Depiction title={currentTop.title}
+                           description={currentTop.description}
+                />
                 <div className="container">
                     <div className="top-grid">
-                        {data && data.items.map(item => (
-                            <Block number={item.id}
-                                title={item.title}
-                                author={item.author}
-                                description={item.text}
+                        {currentTop && currentTop.items.map(top => (
+                            <Block number={top.id}
+                                title={top.title}
+                                author={top.author}
+                                description={top.text}
                             />
                         ))}
                     </div>
@@ -51,7 +53,7 @@ class TopPage extends Component {
                         <Socials/>
                     </div>
                 </div>
-                <CommentBlock/>
+                <CommentBlock topId={currentTop.id}/>
             </Fragment>
         );
     }

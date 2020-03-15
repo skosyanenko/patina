@@ -13,9 +13,11 @@ class Controller {
 		try {
 			this.prebuild(req);
 
+			console.log(req.body);
+
 			await this.model
 				.build({...req.body})
-				.create()
+				.save()
 				.then(() => {
 					res.status(200).send('Item created successfully');
 				})

@@ -25,7 +25,7 @@ const InputText = ({type, name, register, icon, label, value, message, errors, c
     const textArea = () => (
         <Controller
             as={
-                <textarea placeholder=" "/>
+                <textarea placeholder=" " rows="10"/>
             }
             defaultValue={""}
             control={control}

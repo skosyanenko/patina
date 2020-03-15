@@ -15,7 +15,11 @@ class ListBooks extends Component {
         if (prevProps.activeLetter !== this.props.activeLetter) {
             const isLetter = this.props.activeLetter.length > 0;
             const filteredBooks = isLetter ?
-                this.props.books.filter(book => book.title[0].toLowerCase() === this.props.activeLetter) :
+                this.props.books.filter(book => {
+                    if (book.title) {
+                        return book.title[0].toLowerCase() === this.props.activeLetter;
+                    }
+                }) :
                 this.props.books;
 
             this.setState({filteredBooks});
@@ -30,16 +34,15 @@ class ListBooks extends Component {
 
     render() {
         const {filteredBooks} = this.state;
-
         return (
             <Fragment>
                 <div className="list-book">
-                    {filteredBooks && filteredBooks.map((item, key) => (
-                        <Link to={'/book'}
+                    {filteredBooks && filteredBooks.map((book, key) => (
+                        <Link to={`/books/${book.id}`}
                               key={key}
                               className="list-book__link"
                         >
-                            {`«${item.title}» ${item.author}`}
+                            {`«${book.title}» ${book.author}`}
                         </Link>
                     ))}
                 </div>

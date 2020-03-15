@@ -55,7 +55,9 @@ class BooksPage extends Component {
                         <Sorting books={this.state.books}
                                  //hookSortingBooks={this.hookSortingBooks()}
                         />
-                        <AlphabetFilter hookLetter={this.hookLetter}/>
+                        <AlphabetFilter hookLetter={this.hookLetter}
+                                        books={this.state.books}
+                        />
                     </div>
                     <div className='container__container-book'>
                         <BooksWithPagination

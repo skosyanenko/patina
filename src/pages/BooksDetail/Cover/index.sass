@@ -23,38 +23,42 @@
             width: 290px
 
         &-img
-            max-width: 505px
+            height: 510px
+            max-width: 490px
             width: 100%
             position: relative
             +maxwidth(1300px)
                 max-width: 375px
+                height: 395px
             +maxwidth($mobail)
                 max-width: 290px
+                height: 310px
             +maxwidth($sm-mobail)
                 max-width: 250px
+                height: 270px
 
-        img
-            width: 100%
-            height: 100%
+            img
+                width: 100%
+                height: 100%
 
         &-letBig
-            top: -5px
+            top: -73px
             left: 61px
             position: absolute
-            font: 500 38.5vw/79% $vogue
-            color: $white
             z-index: 1
-            +maxwidth(1640px)
-                font-size: 722px
+            width: 800px
+            height: 800px
             +maxwidth(1300px)
-                font-size: 538px
-                left: 45px
+                top: -53px
+                width: 615px
+                height: 615px
             +maxwidth($mobail)
-                font-size: 424px
-                left: 30px
+                top: -41px
+                width: 480px
+                height: 480px
             +maxwidth($sm-mobail)
-                font-size: 365px
-                left: 27px
+                width: 430px
+                height: 430px
 
         &-letSmall
             left: -15px

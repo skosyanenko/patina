@@ -5,7 +5,6 @@ import './index.sass';
 
 
 const Depiction = ({title, description}) => (
-
     <div className="depiction">
         <div className="depiction__wrapper">
             <Link to="/tops">
