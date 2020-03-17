@@ -6,7 +6,9 @@ import axios from 'axios';
 
 class NewPage extends Component {
     state = {
-        currentNews: []
+        currentNews: [],
+        textLength: null,
+        datePublish: null
     };
 
     fetchCurrentNews = async () => {
@@ -15,7 +17,8 @@ class NewPage extends Component {
         return await axios.get(`/api/v1/news/${id}`)
             .then(res => {
                 if (res.data) {
-                    return res.data;
+                    this.setState({currentNews: res.data}, () =>
+                        this.countLetters(this.state.currentNews.description, this.state.currentNews.createdAt))
                 }
             })
             .catch(err => {
@@ -23,20 +26,32 @@ class NewPage extends Component {
             });
     };
 
+    countLetters = (description, date) => {
+        const objValues = Object.keys(description).map(x => description[x]);
+        const textLength = Array.from(objValues)
+          .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+        const datePublish = new Date(date).toLocaleDateString();
+        this.setState(({
+            textLength,
+            datePublish
+        }))
+    };
+
     componentDidMount() {
-        this.fetchCurrentNews().then(res => {
-            this.setState({currentNews: res})
-        });
+        this.fetchCurrentNews();
     }
 
     render() {
-        const {currentNews} = this.state;
+        const {currentNews, textLength, datePublish} = this.state;
 
         return (
             <>
                 <div className="container container--new">
-                    <Image image={currentNews.cover}/>
-                    <Article news={currentNews}/>
+                    <Image {...currentNews}/>
+                    <Article {...currentNews}
+                             textLength={textLength}
+                             date={datePublish}
+                    />
                 </div>
                 <CommentBlock newsId={currentNews.id}/>
             </>

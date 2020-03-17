@@ -10,8 +10,16 @@ const paginationWrap = function(WrappedComponent){
             items: [],
             pageCount: 1,
             currentPage: 1,
-            perPage: 9,
-            offset: 0
+            offset: 0,
+            perPage: null,
+            valuesDropdown: []
+        };
+
+        updateState = (perPage, valuesDropdown) => {
+            this.setState({
+                perPage,
+                valuesDropdown
+            })
         };
 
         fetchData = async url => {
@@ -64,7 +72,7 @@ const paginationWrap = function(WrappedComponent){
         };
 
         render() {
-            const {filteredData, items, data, filterValues, pageCount, perPage} = this.state;
+            const {filteredData, items, data, filterValues, pageCount, perPage, valuesDropdown} = this.state;
             return (
                 <WrappedComponent
                     {...this.props}
@@ -75,12 +83,14 @@ const paginationWrap = function(WrappedComponent){
                     filteredData={filteredData}
                     items={items}
                     data={data}
+                    updateState={this.updateState}
                     pagination={
                         <Pagination
                             pageCount={pageCount}
                             perPage={perPage}
                             handlePageClick={this.handlePageClick}
                             setPerPage={this.setPerPage}
+                            valuesDropdown={valuesDropdown}
                         />
                     }
                 />

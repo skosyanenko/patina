@@ -4,22 +4,26 @@ import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 import './index.sass';
 
-const NewsVertical = ({news, textLength}) => (
+const NewsVertical = ({id, cover, title, description, likes, views, date, textLength}) => (
     <div className="news-vertical">
-        <Link to={`/news/${news.id}`} className="news-vertical__link">
+        <Link to={`/news/${id}`} className="news-vertical__link">
             <div className="news-vertical__link-img">
-                <img src={news.cover} alt=""/>
+                <img src={cover} alt=""/>
             </div>
         </Link>
         <div className="news-vertical__description">
             <div className="news-vertical__description-wrap">
-                <Link to={`/news/${news.id}`} className="news-vertical__title">{news.title}</Link>
-                <span className="news-vertical__text">{news.description}</span>
+                <Link to={`/news/${id}`} className="news-vertical__title">{title}</Link>
+                <span className="news-vertical__text"
+                      dangerouslySetInnerHTML={{__html: `${description}`}}
+                />
             </div>
             <div className="news-vertical__description-nav">
-                <Icons likes={news.likes} views={news.views} date={news.date}/>
-                <TimeToRead textLength={textLength}/>
-                <Link to={`/news/${news.id}`} className="button button-white">Подробнее</Link>
+                <div className="news-vertical__description-wrapper">
+                    <TimeToRead textLength={textLength}/>
+                    <Icons likes={likes} views={views} date={date}/>
+                </div>
+                <Link to={`/news/${id}`} className="button button-white">Подробнее</Link>
             </div>
         </div>
     </div>

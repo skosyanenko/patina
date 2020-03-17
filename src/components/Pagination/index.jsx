@@ -8,27 +8,17 @@ import './index.sass';
 class Pagination extends Component {
     state = {
         pageDropdown: false,
-        valuesDropdown: [9, 18, 27]
+        valuesDropdown: this.props.valuesDropdown
     };
 
     toggleDropdown = () => this.setState(state => ({pageDropdown: !state.pageDropdown}));
 
     render() {
         const {pageDropdown, valuesDropdown} = this.state;
-        const {classNamePrefix, pageCount, handlePageClick, perPage, setPerPage} = this.props;
+        const {pageCount, handlePageClick, perPage, setPerPage} = this.props;
 
         return (
-            <div className={`pagination ${classNamePrefix}`}>
-                <ReactPaginate
-                    pageCount={pageCount}
-                    onPageChange={handlePageClick}
-                    containerClassName={'pagination__wrapper'}
-                    breakLabel={'...'}
-                    breakClassName={'break'}
-                    previousLabel={<ArrowPagination/>}
-                    nextLabel={<ArrowPagination/>}
-                    activeClassName={'active'}
-                />
+            <div className="pagination">
                 <div className="pagination__counter">
                     Выводить по:
                     <span className="count" onClick={this.toggleDropdown}>
@@ -52,6 +42,17 @@ class Pagination extends Component {
                         )}
                     </Transition>
                 </div>
+                <ReactPaginate
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination__wrapper'}
+                    breakLabel={'...'}
+                    breakClassName={'break'}
+                    previousLabel={<ArrowPagination/>}
+                    nextLabel={<ArrowPagination/>}
+                    activeClassName={'active'}
+                    activeLinkClassName={'active'}
+                />
             </div>
         )
     }

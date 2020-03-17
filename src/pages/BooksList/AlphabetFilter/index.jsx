@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import {alphabet} from '../../../config/config';
 import './index.sass';
 
 class AlphabetFilter extends Component {

@@ -5,16 +5,19 @@ import './index.sass';
 class Icons extends Component {
     state = {
         isLiked: false,
-        likes: this.props.likes,
-        views: this.props.views,
-        date: this.props.date
+        likes: null,
+        views: null,
+        date: ''
     };
 
-
-    static defaultProps = {
-        likes: 0,
-        views: 0,
-        date: 0
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.date) {
+            return {
+                likes: nextProps.likes,
+                views: nextProps.views,
+                date: nextProps.date
+            }
+        }
     };
 
     activate = e => {
@@ -25,7 +28,7 @@ class Icons extends Component {
             likes: like + 1
         });
 
-        if (!self.classList.contains(activatedClass) && self.classList.contains('icons__likes')) {
+        if (!self.classList.contains(activatedClass) && self.classList.contains('icons__likes')){
             self.classList.add(activatedClass);
 
             setTimeout(() =>  {
@@ -39,7 +42,7 @@ class Icons extends Component {
         const {isLiked} = this.state;
         return (
             <div className="icons">
-                {Object.keys(this.props).map((item, key) => (
+                {['likes', 'date', 'views'].map((item, key) => (
                     <div className="icons__wrapper" key={key}>
                         <div className="icons__counter">{this.state[item]}</div>
                         <div className={`icons__${item} ${isLiked && 'active'}`}
@@ -55,6 +58,6 @@ class Icons extends Component {
 Icons.propTypes = {
     likes: PropTypes.number.isRequired,
     views: PropTypes.number.isRequired,
-    date:  PropTypes.number.isRequired
+    date:  PropTypes.string.isRequired
 };
 export default Icons;

@@ -85,4 +85,4 @@ export const sortParams = [
     {title: 'названию', key: 'title'},
     {title: 'автору', key: 'author'},
     {title: 'рейтингу', key: 'rating'},
-]
+];

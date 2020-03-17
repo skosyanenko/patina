@@ -1,21 +1,25 @@
 import React from 'react';
 import Icons from 'components/Icons';
 import Socials from 'components/SocialsGroup';
+import TimeToRead from '../../../components/TimeToRead';
 import './index.sass';
 
-const Article = ({news}) => {
+const Article = ({title, description, likes, date, views, textLength}) => {
     return(
         <div className="article">
-            <h1 className="article__title">{news.title}</h1>
+            <h1 className="article__title">{title}</h1>
             <div className="article__wrapper">
                 <div className="article__wrapper-text"
-                     dangerouslySetInnerHTML={{__html: `${news.description}`}}
+                     dangerouslySetInnerHTML={{__html: `${description}`}}
                 />
                 <div className="article__wrapper-nav">
-                    <Icons likes={news.likes}
-                           date={news.date}
-                           views={news.views}
-                    />
+                    <div className="article__wrapper-wrap">
+                        <TimeToRead textLength={textLength}/>
+                        <Icons likes={likes}
+                               date={date}
+                               views={views}
+                        />
+                    </div>
                     <Socials/>
                 </div>
             </div>

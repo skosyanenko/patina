@@ -7,25 +7,20 @@ class NavLinks extends Component {
 
     state = {
         navLinks: [
-            {title: 'книги', path: '/books', active: false},
-            {title: 'топы', path: '/tops', active: false},
-            {title: 'критика', path: '/reviews', active: false},
-            {title: 'эвенты', path: '/events', active: false},
-            {title: 'что нового', path: '/news', active: false}
+            {title: 'книги', path: '/books'},
+            {title: 'топы', path: '/tops'},
+            {title: 'критика', path: '/reviews'},
+            {title: 'эвенты', path: '/events'},
+            {title: 'что нового', path: '/news'}
         ],
         topCoord: null,
         toggleCircle: null
     };
 
-    componentDidMount() {
-        this.activeLink &&
-        this.positionCircle(this.activeLink);
-    }
-
     componentWillReceiveProps(nextProps) {
-        let loc = nextProps.location.pathname;
-        this.activeLink &&
-        this.positionCircle(this.activeLink, loc);
+        let location = nextProps.location.pathname;
+        let currLoc = location.match(/books|tops|reviews|events|news/);
+        this.activeLink && this.positionCircle(this.activeLink, currLoc);
     }
 
     calcTop = offset => {
@@ -36,25 +31,12 @@ class NavLinks extends Component {
     };
 
     positionCircle = (el, loc) => {
+        let arrOfPath = [];
+
         const {navLinks} = this.state;
-        const arrOfPath = [];
-        navLinks.map(item => {
-            arrOfPath.push(item.path);
-            if (item.path === el.pathname){
-                this.setState(state => ({
-                    navLinks: state.navLinks.map(link => {
-                        link.title === item.title && (link.active = true);
-                        return link;
-                    })
-                }))
-            }
-        });
+        navLinks.map(item => (arrOfPath.push(item.path)));
 
-        let fu = navLinks.map(item =>(
-            Object.values(item).includes(true)
-        ));
-
-        if (fu){
+        if (loc !== null){
             let target = el && el.target || el;
             if (target.current !== null) {
                 const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
@@ -64,16 +46,6 @@ class NavLinks extends Component {
         } else {
             this.setState({toggleCircle: 0});
         }
-        // if (arrOfPath.includes(loc || loc + '/')){
-        //     let target = el && el.target || el;
-        //     if (target.current !== null) {
-        //         const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
-        //         const topCoord = this.calcTop(topOffset);
-        //         this.setState({topCoord, toggleCircle: 1});
-        //     }
-        // } else {
-        //     this.setState({toggleCircle: 0});
-        // }
     };
 
     render() {

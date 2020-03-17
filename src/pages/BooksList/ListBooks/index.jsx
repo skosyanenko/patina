@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
 import sortBy from 'lodash.sortby';
@@ -6,10 +6,13 @@ import {sortParams} from 'config/config';
 
 class ListBooks extends Component {
     state = {
-        loading: true
+        loading: true,
+        perPage: 9,
+        valuesDropdown: [9, 18, 27]
     };
 
     componentDidMount() {
+        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
         this.props.fetchData('/api/v1/books')
             .then(() => this.setState({loading: false}))
             .catch(err => console.log(err));
@@ -46,7 +49,7 @@ class ListBooks extends Component {
         const {data, hook} = this.props;
         const letters = data.map(book => book.title && book.title[0]).sort();
         hook('letters', [...new Set(letters)]);
-    }
+    };
 
     filterByLetter = () => {
         const {letter, data, filterData} = this.props;
@@ -56,7 +59,7 @@ class ListBooks extends Component {
         const result = letter.length ? filteredBooks : data;
 
         filterData(result);
-    }
+    };
     
     render() {
         const {items} = this.props;
