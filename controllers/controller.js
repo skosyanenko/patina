@@ -81,12 +81,12 @@ class Controller {
 
         if (isSingle) {
             const { fieldname, path } = req.file;
-            req.body[fieldname] = path;
+            req.body[fieldname] = path.replace('public', '');
         }
 
         if (isMulti) {
             Object.keys(req.files).forEach(fieldname => {
-                req.body[fieldname] = req.files[fieldname][0].path;
+                req.body[fieldname] = req.files[fieldname][0].path.replace('public', '');
             });
         }
     };

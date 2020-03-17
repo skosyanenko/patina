@@ -23,19 +23,22 @@ module.exports = (sequelize, DataTypes) => {
     Book.associate = ({ Author, Film, Review, Category, Comment, Chart }) => {
         Book.belongsToMany(Category, {
             through: 'booksCategory',
-            as: 'bookHasCategories'
+            as: 'categories'
         });
         Book.belongsToMany(Author, {
             through: 'booksAuthor',
-            as: 'bookHasAuthors'
+            as: 'authors'
         });
         Book.belongsToMany(Chart, {
             through: 'booksCharts',
-            as: 'bookHasCharts'
+            as: 'charts'
         });
-
-        Book.hasMany(Film);
-        Book.hasMany(Review);
+        Book.hasMany(Film, {
+            as: 'films'
+        });
+        Book.hasMany(Review, {
+            as: 'reviews'
+        });
         // Book.hasMany(Comment);
     };
     return Book;

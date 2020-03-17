@@ -45,8 +45,6 @@ router.post(
 /**
  * @route GET /api/v1/events
  * @group events
- * @returns {Array.<Event>} Event - массив событий
- * @returns {Error}  default - Unexpected error
  */
 router.get(
     '/api/v1/events',

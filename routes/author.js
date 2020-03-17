@@ -29,21 +29,18 @@ const AuthorController = new Controller(Author);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/authors',
-	upload.single('picture'),
-	[check(['name', 'birth']).notEmpty()],
-	AuthorController.create,
+    '/api/v1/authors',
+    upload.single('picture'), [check(['name', 'birth']).notEmpty()],
+    AuthorController.create,
 );
 
 /**
  * @route GET /api/v1/authors
  * @group Author
- * @returns {Array.<Author>} Author - массив авторов
- * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/authors',
-	AuthorController.getAll,
+    '/api/v1/authors',
+    AuthorController.getAll,
 );
 
 export default router;

@@ -53,8 +53,6 @@ router.post(
 /**
  * @route GET /api/v1/books
  * @group books
- * @returns {Array.<Books>} Books - массив
- * @returns {Error}  default - Unexpected error
  */
 router.get(
     '/api/v1/books',
@@ -65,12 +63,28 @@ router.get(
 /**
  * @route GET /api/v1/books/:id
  * @group books
- * @returns {Array.<Books>} Books - массив
- * @returns {Error}  default - Unexpected error
  */
 router.get(
     '/api/v1/books/:id',
     bookController.getOne,
+);
+
+/**
+ * @route GET /api/v1/booksMainPage
+ * @group books
+ */
+router.get(
+    '/api/v1/booksMainPage',
+    bookController.booksMainPage,
+);
+
+/**
+ * @route GET /api/v1/booksRightMenu
+ * @group books
+ */
+router.get(
+    '/api/v1/booksRightMenu',
+    bookController.booksRightMenu,
 );
 
 export default router;

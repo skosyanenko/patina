@@ -27,21 +27,18 @@ const FilmController = new Controller(Film);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/films',
-	upload.single('image'),
-	[check(['title', 'description']).notEmpty()],
-	FilmController.create,
+    '/api/v1/films',
+    upload.single('image'), [check(['title', 'description']).notEmpty()],
+    FilmController.create,
 );
 
 /**
  * @route GET /api/v1/films
  * @group films
- * @returns {Array.<Film>} Film - массив фильмов
- * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/films',
-	FilmController.getAll,
+    '/api/v1/films',
+    FilmController.getAll,
 );
 
 export default router;

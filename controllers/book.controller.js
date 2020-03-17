@@ -1,5 +1,6 @@
+import { Sequelize } from '../db/models';
 import Controller from './controller';
-import { Book, Category } from '../db/models';
+import { Book, Category, Author, Film } from '../db/models';
 
 class BooksController extends Controller {
 
@@ -17,8 +18,8 @@ class BooksController extends Controller {
             await Book
                 .create({...req.body })
                 .then(newBook => {
-                    newBook.setBookHasAuthors(authors);
-                    newBook.setBookHasCategories(categories);
+                    newBook.setAuthors(authors);
+                    newBook.setCategories(categories);
                     res.status(200).send('Book created successfully');
                 })
                 .catch(err => {
@@ -31,6 +32,72 @@ class BooksController extends Controller {
         }
     };
 
+    getAll = async(req, res) => {
+        try {
+            await Book.findAll({
+                    include: [{
+                        model: Author,
+                        as: 'authors',
+                        attributes: ['name'],
+                        through: { attributes: [] }
+                    }]
+                })
+                .then(items => res.status(200).json(items))
+                .catch(err => console.log('Не удалось получить элементы \n', err));
+        } catch (e) {
+            throw Error(e);
+        }
+    };
+
+    getOne = async(req, res) => {
+        try {
+            await Book.findOne({
+                    where: { id: req.params.id },
+                    include: [{
+                            model: Category,
+                            as: 'categories',
+                            attributes: ['id', 'title'],
+                            through: {
+                                attributes: []
+                            }
+                        },
+                        {
+                            model: Author,
+                            as: 'authors',
+                            attributes: ['id', 'name', 'picture', 'birth', 'death'],
+                            through: {
+                                attributes: []
+                            }
+                        },
+                        {
+                            model: Film,
+                            as: 'films',
+                            attributes: ['id', 'title', 'image', 'description']
+                        }
+                    ]
+                })
+                .then(result => res.status(200).json(result))
+                .catch(err => console.log('Не удалось получить элемент \n', err));
+        } catch (err) {
+            throw Error(err);
+        }
+    }
+
+    booksMainPage = async(req, res) => {
+        return await Book.findAll({ limit: 10 })
+            .then(result => res.status(200).json(result))
+            .catch(err => console.log('Не удалось получить элементы \n', err));
+    }
+
+    booksRightMenu = async(req, res) => {
+        return await Book.findAll({
+                order: Sequelize.fn('RANDOM'),
+                limit: 10,
+                attributes: ['id', 'title']
+            })
+            .then(result => res.status(200).json(result))
+            .catch(err => console.log('Не удалось получить элементы \n', err));
+    }
 }
 
 export default BooksController;

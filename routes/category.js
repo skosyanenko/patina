@@ -24,21 +24,18 @@ const CategoryController = new Controller(Category);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/categories',
-	upload.none(),
-	[check('title').notEmpty()],
-	CategoryController.create,
+    '/api/v1/categories',
+    upload.none(), [check('title').notEmpty()],
+    CategoryController.create,
 );
 
 /**
  * @route GET /api/v1/categories
  * @group categories
- * @returns {Array.<Category>} Category - массив категорий
- * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/categories',
-	CategoryController.getAll,
+    '/api/v1/categories',
+    CategoryController.getAll,
 );
 
 export default router;

@@ -29,32 +29,27 @@ const NewsController = new Controller(News);
  * @returns {Error}  default - Unexpected error
  */
 router.post(
-	'/api/v1/news',
-	upload.single('cover'),
-	[check(['title', 'description', 'viewType']).notEmpty()],
-	NewsController.create,
+    '/api/v1/news',
+    upload.single('cover'), [check(['title', 'description', 'viewType']).notEmpty()],
+    NewsController.create,
 );
 
 /**
  * @route GET /api/v1/news
  * @group news
- * @returns {Array.<News>} News - массив новостей
- * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/news',
-	NewsController.getAll,
+    '/api/v1/news',
+    NewsController.getAll,
 );
 
 /**
  * @route GET /api/v1/news/:id
  * @group news
- * @returns {<News>} News - новость
- * @returns {Error}  default - Unexpected error
  */
 router.get(
-	'/api/v1/news/:id',
-	NewsController.getOne,
+    '/api/v1/news/:id',
+    NewsController.getOne,
 );
 
 export default router;
