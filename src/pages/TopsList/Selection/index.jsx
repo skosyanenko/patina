@@ -21,7 +21,7 @@ class Selection extends Component {
         const {items} = this.props;
         const {loading} = this.state;
 
-        if (loading) return "jjkjkj";
+        if (loading) return <Loader/>;
 
         return(
             <>

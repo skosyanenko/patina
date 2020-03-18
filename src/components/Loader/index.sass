@@ -1,13 +1,14 @@
 @import 'config'
 
-.loader 
+.loader
     --color: #7c7c7c
     --duration: 6.8s
     width: 32px
     height: 12px
+    margin: auto
+    top: 50%
     position: relative
-    margin: 32px 0 0 0
-    zoom: 1.5
+    zoom: 0.5
     &__inner
         width: 32px
         height: 12px
@@ -80,7 +81,7 @@
                     animation-name: page-#{$i}
                     $i: $i + 1
 
-                    $i: 0
+$i: 0
 @while $i < 19
     $delay: $i * 1.86
     $delay-after: $i * 1.74
