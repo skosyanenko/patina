@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Slider from 'react-slick';
+import axios from 'axios';
 import BookInform from 'components/BookInform';
 import './index.sass';
-import data from 'startData/booksTest';
 
 class Books extends Component {
+    state = {
+        books: []
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -15,11 +19,25 @@ class Books extends Component {
     }
 
     componentDidMount() {
+        this.fetchBooksMainPage();
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
         });
     }
+
+    fetchBooksMainPage = () => {
+        axios.get('/api/v1/booksMainPage')
+            .then(res => {
+                res.data &&
+                this.setState({
+                    books: res.data
+            })
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
+    };
 
     next = () => this.slider1.slickNext();
 
@@ -35,6 +53,7 @@ class Books extends Component {
             slidesToScroll: 1,
         };
 
+        const {books} = this.state;
         return (
             <div className="main books-wrap">
                 <Slider
@@ -43,15 +62,15 @@ class Books extends Component {
                     asNavFor={this.state.nav2}
                     className="books-slider"
                 >
-                    {data && data.books.map((item, key) => (
+                    {books && books.map((book, key) => (
                     <div className="books" key={key}>
                         <div className="books__text">
-                            <h1 className="books__text-title">{item.title}</h1>
-                                <BookInform bookId={item.id}/>
+                            <h1 className="books__text-title">{book.title}</h1>
+                                <BookInform bookId={book.id}/>
                             <p className="books__text-description">
-                                {item.shortDescription}
+                                {book.shortDescription}
                             </p>
-                            <Link to={'/book'} className="button button-white">Подробнее</Link>
+                            <Link to={`/books/${book.id}`} className="button button-white">Подробнее</Link>
                         </div>
                         <div className="books__wrapper">
                             <div className="books__arrow">
@@ -60,7 +79,7 @@ class Books extends Component {
                                 </svg>
                             </div>
                             <div className="books__img">
-                                <img src={item.coverImage} alt=""/>
+                                <img src={book.coverImage} alt=""/>
                             </div>
                             <div className="books__arrow">
                                 <svg className="books__arrow-next" onClick={this.next}>
@@ -85,7 +104,7 @@ class Books extends Component {
                         centerMode={true}
                         useTransform={true}
                     >
-                    {data && data.books.map((item, key) => (
+                    {books && books.map((item, key) => (
                         <div className="books__numb-dot" key={key}>
                             {(key + 1 <= 9) ? `0${key + 1}` : key + 1}
                         </div>

@@ -11,7 +11,15 @@ class BookPage extends Component {
         currentBook: {}
     };
 
-    toggleModal = bool => this.setState({modalIsOpen: bool});
+    componentDidMount() {
+        this.fetchCurrentBook();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.fetchCurrentBook();
+        }
+    }
 
     fetchCurrentBook = async () => {
         const { id } = this.props.match.params;
@@ -27,9 +35,7 @@ class BookPage extends Component {
             });
     };
 
-    componentDidMount() {
-        this.fetchCurrentBook();
-    }
+    toggleModal = bool => this.setState({modalIsOpen: bool});
 
     render() {
         const {modalIsOpen, currentBook} = this.state;

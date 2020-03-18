@@ -11,7 +11,7 @@ const Description = ({title, fullDescription, readLink, reviews, films, toggleMo
         <div className="description__buttons">
             {readLink && <a href={readLink} className="button button-white">Читать</a>}
             {reviews && <Link to={reviews} className="button button-green">Рецензии</Link>}
-            {films && <div className="button button-green" onClick={toggleModal}>Экранизации</div>}
+            {films != null && films.length > 0 && <div className="button button-green" onClick={toggleModal}>Экранизации</div>}
         </div>
     </div>
 );

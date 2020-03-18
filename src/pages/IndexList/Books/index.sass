@@ -52,6 +52,7 @@
 
         .button-white
             margin-left: auto
+            z-index: 100000
 
     &__wrapper
         width: 100%
@@ -150,6 +151,9 @@
                 width: 45px !important
                 font-size: 30px !important
 
+        .slick-current
+            z-index: 10000
+
         .slick-slider
             position: relative
             display: block
@@ -203,7 +207,6 @@
 
         .slick-slide
             padding: 50px 0
-            overflow: hidden
             +maxwidth($desktop)
                 padding: 40px 0
             +maxwidth($tablet)

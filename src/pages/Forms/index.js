@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FormManager from 'components/Forms/FormManager';
+import ChangeList from './ChangeList';
 import UndefinedPage from '../UndefinedPage';
 import {formRoutes} from 'config/config';
 
@@ -39,7 +40,14 @@ const AddForm = ({match}) => {
                             button={"Зарегистрироваться"}
         />;
     } else {
-        return <FormManager {...config[type]}/>;
+        if (type !== 'top' && type !== 'review') {
+            return <div className="change-form">
+                <FormManager {...config[type]}/>
+                <ChangeList API={type}/>
+            </div>;
+        } else {
+            return <FormManager {...config[type]}/>;
+        }
     }
 };
 

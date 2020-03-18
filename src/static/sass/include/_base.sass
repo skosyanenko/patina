@@ -207,6 +207,41 @@ p
         +maxwidth($mobail)
             margin-top: 70px
 
+        .pagination
+            width: 100%
+            &__counter
+                color: $darkgray
+                .count
+                    color: $darkgray
+            &__dropdown
+                span
+                    &:hover
+                        color: $lightpink
+            &__wrapper
+                color:  $darkgray
+                .break
+                    a
+                        &:hover
+                            color: $darkgray
+                &-button, &-arrow
+                    &:hover
+                        color: $darkgray
+                        background: $lightpink
+                &-arrow
+                    svg
+                        fill: $darkgray
+                &-button
+                    &.active
+                        color: $darkgray
+                        background: $lightpink
+                li
+                    &:hover
+                        color: $darkgray
+                        background: $lightpink
+                    &.active
+                        color: $darkgray
+                        background: $lightpink
+
     &--book-detail
         +maxwidth(1280px)
             flex-direction: column

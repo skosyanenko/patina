@@ -6,7 +6,6 @@ import axios from 'axios';
 class RightMenu extends Component {
     state = {
         isLoad: true,
-        books: [],
         randomBooks: []
     };
 
@@ -14,25 +13,12 @@ class RightMenu extends Component {
 	    this.fetchBooks();
 	};
 
-	random = () => {
-        const randomBooks = [];
-        for (let i = 0; i <= 9; i++) {
-            let index = Math.floor(Math.random() * this.state.books.length);
-            randomBooks.push(this.state.books[index]);
-        }
-        this.setState({
-            randomBooks: [...new Set(randomBooks)]
-        });
-    };
-
     fetchBooks = () => {
-        axios.get('/api/v1/books')
+        axios.get('/api/v1/booksRightMenu')
             .then(res => {
                 res.data &&
                 this.setState({
-                    books: res.data
-                }, () => {
-                    this.random();
+                    randomBooks: res.data
                 })
             })
             .catch(err => {
@@ -49,7 +35,7 @@ class RightMenu extends Component {
                         содержание
                     </div>
                     {randomBooks && randomBooks.map((item, key) => (
-                        <Link to="/book" className="content__item" key={key}>
+                        <Link to={`/books/${item.id}`} className="content__item" key={key}>
                             <span className="content__item-title">{item.title}</span>
                             <span className="content__item-num">{key + 1}</span>
                         </Link>

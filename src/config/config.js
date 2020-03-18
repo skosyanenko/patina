@@ -39,13 +39,13 @@ export const effectForTitle = {
 };
 
 export const formRoutes = {
-    authors: {title: 'Добавить писателя', path: '/control/authors', icon: 'fun'},
-    categories: {title: 'Добавить экранизацию', path: '/control/films', icon: 'films'},
-    events: {title: 'Добавить категорию', path: '/control/categories', icon: 'author'},
-    books: {title: 'Добавить книгу', path: '/control/books', icon: 'books'},
-    films: {title: 'Добавить топ', path: '/form/top', icon: 'wishlist'},
-    top: {title: 'Добавить эвент', path: '/control/events', icon: 'author'},
-    news:  {title: 'Добавить новость', path: '/control/news', icon: 'quote'},
+    authors: {title: 'Добавить/редактировать писателя', path: '/control/authors', icon: 'fun'},
+    films: {title: 'Добавить/редактировать экранизацию', path: '/control/films', icon: 'films'},
+    categories: {title: 'Добавить/редактировать категорию', path: '/control/categories', icon: 'author'},
+    books: {title: 'Добавить/редактировать книгу', path: '/control/books', icon: 'books'},
+    top: {title: 'Добавить топ', path: '/form/top', icon: 'wishlist'},
+    events: {title: 'Добавить/редактировать эвент', path: '/control/events', icon: 'author'},
+    news:  {title: 'Добавить/редактировать новость', path: '/control/news', icon: 'quote'},
     review: {title: 'Добавить рецензию'},
     registration: {title: 'Регистрация'}
 };

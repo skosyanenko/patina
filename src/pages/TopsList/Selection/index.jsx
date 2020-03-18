@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './index.sass';
+import Loader from '../../../components/Loader';
 
 class Selection extends Component {
     state = {
-        loading: true
+        loading: true,
+        perPage: 10,
+        valuesDropdown: [10, 20, 30]
     };
 
     componentDidMount() {
+        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
         this.props.fetchData('/api/v1/tops')
-          .then(() => this.setState({loading: false}))
-          .catch(err => console.log(err));
+            .then(() => this.setState({loading: false}))
+            .catch(err => console.log(err));
     }
 
     render() {
         const {items} = this.props;
         const {loading} = this.state;
 
-        if (loading) return 'Loading...';
+        if (loading) return "jjkjkj";
 
         return(
             <>

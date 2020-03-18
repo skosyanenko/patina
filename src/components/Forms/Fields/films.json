@@ -3,7 +3,8 @@
         "name": "book",
         "label": "Книга",
         "icon": "books",
-        "type": "select"
+        "type": "select",
+        "isMulti": false
     },
     {
         "name": "title",

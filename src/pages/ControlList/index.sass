@@ -1,0 +1,92 @@
+@import 'config'
+
+.control
+    display: flex
+    flex-direction: column
+
+    &__title
+        @include style-text(34px, 2px, $waverly, $black, 100%, 500, true)
+        margin: 0 auto 30px
+
+    &__buttons
+        width: 70%
+        display: flex
+        flex-direction: column
+        margin: 0 auto
+        +maxwidth($mobail)
+            width: 100%
+
+    &__wrapper
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        grid-template-rows: auto
+        grid-column-gap: 50px
+        +maxwidth($mobail)
+            grid-template-columns: repeat(1, 1fr)
+            max-height: 100%
+
+    &__wrap
+        width: 100%
+        padding: 10px
+        display: flex
+        align-items: center
+        transition: .4s ease-in
+
+        &-title
+            @include style-text(24px, 2px, $waverly, $darkgray, 100%, 300, true)
+
+        &-img
+            display: flex
+            width: 25px
+            height: 25px
+            margin-right: 10px
+            +maxwidth($tablet)
+                width: 20px
+                height: 20px
+
+        &-icons
+            display: flex
+            margin-left: auto
+
+        &-delete,
+        &-change
+            min-width: 15px
+            height: 15px
+            opacity: 0.5
+            transition: .4s ease
+            cursor: pointer
+            &:hover
+                opacity: 1
+
+        &-delete
+            background: url('/images/icons/sprite.svg#close-green') no-repeat center / contain
+
+        &-change
+            margin-right: 20px
+            background: url('/images/icons/sprite.svg#pencil-view') no-repeat center / contain
+
+        .button
+            margin-left: auto
+
+$icons: (author, books, films, fun, clock, wishlist, quote)
+
+@each $icon in $icons
+    .control__add-#{$icon}
+        background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain
+
+.change-form
+    display: flex
+    flex-direction: column
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+
+    .control__wrap
+        &:hover
+            background: rgba(38, 77, 75, 0.1)
+
+    .form-wrapper
+        margin-bottom: 50px
+        +maxwidth($mobail)
+            margin-bottom: 30px
