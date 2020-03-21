@@ -15,20 +15,20 @@ import ControlPage from './pages/ControlList';
 import UndefinedPage from './pages/UndefinedPage';
 
 export const routes = [
-    {path: '/', component: PatinaPage},
-    {path: '/books', component: BooksPage},
-    {path: '/books/:id', component: BookPage},
-    {path: '/tops', component: TopsPage},
-    {path: '/tops/:id', component: TopPage},
-    {path: '/reviews', component: ReviewsPage},
-    {path: '/reviews/:id', component: ReviewPage},
-    {path: '/events', component: EventsPage},
-    {path: '/news', component: NewsPage},
-    {path: '/news/:id', component: NewPage},
-    {path: '/search', component: SearchPage},
-    {path: '/form/:type', component: AddForm},
-    {path: '/profile/:page', component: Profile},
-    {path: '/control', component: ControlPage},
-    {path: '/control/:type', component: AddForm},
-    {path: '*', component: UndefinedPage}
+    { path: '/', component: PatinaPage },
+    { path: '/books', component: BooksPage },
+    { path: '/books/:id', component: BookPage },
+    { path: '/charts', component: TopsPage },
+    { path: '/charts/:id', component: TopPage },
+    { path: '/reviews', component: ReviewsPage },
+    { path: '/reviews/:id', component: ReviewPage },
+    { path: '/events', component: EventsPage },
+    { path: '/news', component: NewsPage },
+    { path: '/news/:id', component: NewPage },
+    { path: '/search', component: SearchPage },
+    { path: '/form/:type', component: AddForm },
+    { path: '/profile/:page', component: Profile },
+    { path: '/control', component: ControlPage },
+    { path: '/control/:type', component: AddForm },
+    { path: '*', component: UndefinedPage }
 ];

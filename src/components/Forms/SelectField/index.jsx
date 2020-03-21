@@ -13,7 +13,9 @@ class SelectField extends Component {
         return await axios.get(`/api/v1/${this.props.api}`)
             .then(res => {
                 if (res.data) {
-                    return res.data;
+                    this.setState({options: res.data.map(item => (
+                        {value: item.id, label: item.name || item.title}
+                    ))});
                 }
             })
             .catch(err => {
@@ -22,13 +24,9 @@ class SelectField extends Component {
     };
 
     componentDidMount() {
-        this.fetchAllOptions().then(res => {
-            let options = res.map(item => (
-                {value: item.id, label: item.name || item.title}
-            ));
-            this.setState({options});
-        });
+        this.fetchAllOptions();
     }
+    
     render() {
         const {type, name, label, icon, isMulti, errors, control} = this.props;
 
@@ -37,12 +35,17 @@ class SelectField extends Component {
         const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
         const required = {value: true, message: 'Обязательное поле!'};
 
+        if (options.length === 0) return 'Loading...';
+
         return (
             <div className="form__group select">
                 <div className={`form__group-img select__img form__group-${icon}`}/>
                     <Controller
                         as={<SelectComponent options={options} />}
                         control={control}
+                        onChange={([selected]) => {
+                            return { value: selected };
+                          }}
                         rules={{required: required.message}}
                         name={name}
                         isMulti={isMulti}

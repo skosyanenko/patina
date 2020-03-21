@@ -8,11 +8,11 @@ class ChangeList extends Component {
         currentItem: {}
     };
 
-    componentDidUpdate(prevState) {
-        if (this.state.currentItem !== prevState.currentItem) {
-            this.changeItem();
-        }
-    }
+    // componentDidUpdate(prevState) {
+    //     if (this.state.currentItem !== prevState.currentItem) {
+    //         this.changeItem();
+    //     }
+    // }
 
     componentDidMount() {
         axios.get(`/api/v1/${this.props.API}`)

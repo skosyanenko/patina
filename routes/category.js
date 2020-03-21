@@ -38,4 +38,16 @@ router.get(
     CategoryController.getAll,
 );
 
+/**
+ * @route DELETE /api/v1/categories/:id
+ * @group categories
+ * @param {integer} id.required - id
+ * @returns {object} 200 - Success
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete(
+    '/api/v1/categories/:id',
+    CategoryController.delete,
+);
+
 export default router;

@@ -29,15 +29,8 @@ module.exports = (sequelize, DataTypes) => {
             through: 'booksAuthor',
             as: 'authors'
         });
-        Book.belongsToMany(Chart, {
-            through: 'booksCharts',
-            as: 'charts'
-        });
         Book.hasMany(Film, {
             as: 'films'
-        });
-        Book.hasMany(Review, {
-            as: 'reviews'
         });
         // Book.hasMany(Comment);
     };

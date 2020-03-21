@@ -21,8 +21,7 @@ class FormManager extends Component {
     onSubmit = values => {
 	    const formData = new FormData();
 	    const { fields } = this.props;
-	    console.log(values);
-
+	    
 	    Object.keys(values).map(key => {
 		    const currentType = fields.find(field => field.name === key).type;
 
@@ -30,11 +29,14 @@ class FormManager extends Component {
 			    case 'file':
                     return formData.append(key, values[key][0]);
                 case 'select':
+                case 'editor':
                     return formData.set(key, JSON.stringify(values[key]));
 			    default:
 				    return formData.set(key, values[key]);
 		    }
-	    });
+        });
+        
+        // console.log(values);
 
         this.postToDB(formData);
     };

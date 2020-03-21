@@ -43,4 +43,16 @@ router.get(
     AuthorController.getAll,
 );
 
+/**
+ * @route DELETE /api/v1/authors/:id
+ * @group authors
+ * @param {integer} id.required - id
+ * @returns {object} 200 - Success
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete(
+    '/api/v1/authors/:id',
+    AuthorController.delete,
+);
+
 export default router;

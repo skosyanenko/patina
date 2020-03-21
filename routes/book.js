@@ -87,4 +87,16 @@ router.get(
     bookController.booksRightMenu,
 );
 
+/**
+ * @route DELETE /api/v1/books/:id
+ * @group books
+ * @param {integer} id.required - id
+ * @returns {object} 200 - Success
+ * @returns {Error}  default - Unexpected error
+ */
+router.delete(
+    '/api/v1/books/:id',
+    bookController.delete,
+);
+
 export default router;
