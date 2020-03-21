@@ -3,13 +3,13 @@ import { check } from 'express-validator';
 import multer from 'multer';
 import options from '../config/multer';
 import { News } from '../db/models';
-import Controller from '../controllers/controller';
+import NewsController from '../controllers/news.controller';
 
 const upload = multer(options);
 
 const router = express.Router();
 
-const NewsController = new Controller(News);
+const newsController = new NewsController(News);
 
 /**
  * @typedef News
@@ -31,7 +31,7 @@ const NewsController = new Controller(News);
 router.post(
     '/api/v1/news',
     upload.single('cover'), [check(['title', 'description', 'viewType']).notEmpty()],
-    NewsController.create,
+    newsController.create,
 );
 
 /**
@@ -40,7 +40,7 @@ router.post(
  */
 router.get(
     '/api/v1/news',
-    NewsController.getAll,
+    newsController.getAll,
 );
 
 /**
@@ -49,7 +49,16 @@ router.get(
  */
 router.get(
     '/api/v1/news/:id',
-    NewsController.getOne,
+    newsController.getOne,
+);
+
+/**
+ * @route GET /api/v1/news/mainPage
+ * @group news
+ */
+router.get(
+    '/api/v1/news-main',
+    newsController.getMainPage,
 );
 
 /**
@@ -61,7 +70,7 @@ router.get(
  */
 router.delete(
     '/api/v1/news/:id',
-    NewsController.delete,
+    newsController.delete,
 );
 
 export default router;
