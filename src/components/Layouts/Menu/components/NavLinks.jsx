@@ -8,7 +8,7 @@ class NavLinks extends Component {
     state = {
         navLinks: [
             {title: 'книги', path: '/books'},
-            {title: 'топы', path: '/tops'},
+            {title: 'топы', path: '/charts'},
             {title: 'критика', path: '/reviews'},
             {title: 'эвенты', path: '/events'},
             {title: 'что нового', path: '/news'}
@@ -19,7 +19,7 @@ class NavLinks extends Component {
 
     componentWillReceiveProps(nextProps) {
         let location = nextProps.location.pathname;
-        let currLoc = location.match(/books|tops|reviews|events|news/);
+        let currLoc = location.match(/books|charts|reviews|events|news/);
         this.activeLink && this.positionCircle(this.activeLink, currLoc);
     }
 

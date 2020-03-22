@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './index.sass';
 import sortBy from 'lodash.sortby';
 import {sortParams} from 'config/config';
+import Loader from '../../../components/Loader';
+import './index.sass';
 
 class ListBooks extends Component {
     state = {
@@ -65,7 +66,7 @@ class ListBooks extends Component {
         const {items} = this.props;
         const {loading} = this.state;
 
-        if (loading) return 'Loading...';
+        if (loading) return <Loader/>;
 
         return (
             <div className='container__container-book'>
@@ -75,7 +76,7 @@ class ListBooks extends Component {
                               key={key}
                               className="list-book__link"
                         >
-                            {`«${book.title}» ${book.author}`}
+                            {`«${book.title}» ${book.authors.map(author => author.name)}`}
                         </Link>
                     ))}
                 </div>

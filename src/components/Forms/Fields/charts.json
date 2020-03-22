@@ -21,7 +21,7 @@
         "name": "books",
         "label": "Выберите книги",
         "icon": "books",
-        "type": "select",
+        "type": "creatable",
         "isMulti": true,
         "api": "books"
     }

@@ -4,22 +4,11 @@ import './index.sass';
 
 const events = [
     {type: 'review', author: 'fgfg', date: '01.11.11', title: 'fgfgf'},
-    {type: 'book', author: 'fgfg', date: '01.11.11', title: 'fgfgf'},
-    {type: 'top', author: 'fgfg', date: '01.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '01.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'news', author: 'fgfg', date: '10.11.11', title: 'fgfgf'}
+    {type: 'book', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
+    {type: 'top', author: 'fgfg', date: '05.11.11', title: 'fgfgf'},
+    {type: 'review', author: 'fgfg', date: '08.11.11', title: 'fgfgf'},
+    {type: 'book', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
+    {type: 'top', author: 'fgfg', date: '12.11.11', title: 'fgfgf'},
 ];
 
 class MainTimeline extends Component {

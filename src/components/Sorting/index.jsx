@@ -25,7 +25,7 @@ class Sorting extends Component {
                     {sortParams.map(({title}, key) => (
                         <span
                             key={key}
-                            className={`sorting__wrapper-type ${title === active && 'active' || ''}`}
+                            className={`sorting__wrapper-type ${title === active ? 'active' : ''}`}
                             onClick={() => this.handleSort(title)}
                         >
                             {title}

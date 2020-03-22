@@ -28,6 +28,8 @@ const HookForm = props => {
                 return RadioButton;
             case 'editor':
                 return TextEditor;
+            default:
+                return '';
         }
     };
     

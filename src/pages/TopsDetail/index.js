@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import Socials from 'components/SocialsGroup';
 import Block from './Block';
@@ -7,15 +7,20 @@ import CommentBlock from 'components/CommentBlock';
 
 class TopPage extends Component {
     state = {
-        currentTop: []
+        currentTop: {}
     };
+
+    componentDidMount() {
+        this.fetchCurrentTop();
+    }
 
     fetchCurrentTop = async () => {
         const { id } = this.props.match.params;
+
         return await axios.get(`/api/v1/tops/${id}`)
             .then(res => {
                 if (res.data) {
-                    return res.data;
+                    this.setState({currentTop: res.data})
                 }
             })
             .catch(err => {
@@ -23,23 +28,17 @@ class TopPage extends Component {
             });
     };
 
-    componentDidMount() {
-        this.fetchCurrentTop().then(res => {
-            this.setState({currentTop: res})
-        });
-    }
-
     render() {
         const {currentTop} = this.state;
 
         return(
-            <Fragment>
+            <>
                 <Depiction title={currentTop.title}
                            description={currentTop.description}
                 />
                 <div className="container">
                     <div className="top-grid">
-                        {currentTop && currentTop.items.map(top => (
+                        {currentTop && currentTop.map(top => (
                             <Block number={top.id}
                                 title={top.title}
                                 author={top.author}
@@ -54,7 +53,7 @@ class TopPage extends Component {
                     </div>
                 </div>
                 <CommentBlock topId={currentTop.id}/>
-            </Fragment>
+            </>
         );
     }
 }

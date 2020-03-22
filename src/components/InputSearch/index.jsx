@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import './index.sass';
 const options = ['Мастер и Маргарита','Мыло', 'Мло', 'Яблоко', 'Стол', 'Солнце', 'Кус'];
 

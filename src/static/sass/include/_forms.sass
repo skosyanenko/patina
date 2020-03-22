@@ -9,6 +9,14 @@
     +maxwidth($mobail)
         margin-bottom: 30px
 
+    &.entered
+        opacity: 1
+        display: none
+
+    &.exited
+        opacity: 0
+        display: flex
+
 .form, .registration
     transition: .4s ease-out
 
@@ -32,7 +40,6 @@
         margin-left: 35px
         display: flex
         flex-direction: column
-        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 84px
         +maxwidth($mobail)
@@ -46,7 +53,7 @@
 
         span,
         label
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
 
         input
             z-index: -1
@@ -82,13 +89,15 @@
 
     &__group
         width: 100%
-        //max-height: 50px
-        //height: 50px
-        margin: 20px 0
+        max-height: 50px
+        height: 50px
+        margin: 25px 0
         position: relative
         @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
         +maxwidth($tablet)
             max-height: 40px
+        +maxwidth($mobail)
+            margin: 20px 0
 
         &-error
             @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, true)
@@ -113,7 +122,7 @@
         input,
         label,
         textarea
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
 
         input,
         textarea
@@ -136,11 +145,11 @@
                 left: 30px
 
         input:focus ~ label, input:not(:placeholder-shown) ~ label
-            top: -20px
+            top: -15px
             font-size: 16px
             color: $green
             +maxwidth($mobail)
-                top: -15px
+                top: -10px
                 font-size: 14px
 
         textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label
@@ -194,12 +203,12 @@
         height: 60px
         display: flex
         align-items: center
-        margin-top: 20px
+        margin-top: 15px
         +maxwidth($tablet)
             height: 50px
         +maxwidth($mobail)
             height: 40px
-            margin-top: 30px
+            margin-top: 25px
 
         label
             width: 50px
@@ -243,7 +252,7 @@
 
         span
             white-space: nowrap
-            @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
 
         &-img
             background: url('/images/icons/sprite.svg#upload-green') no-repeat center / contain
@@ -314,12 +323,12 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
             max-height: 100%
 
         button
-            margin: 12px auto 0 !important
+            margin: 27px auto 0 !important
             height: 50px
             width: 100%
             font-size: 22px
             +maxwidth($tablet)
-                margin: 12px auto 0 !important
+                margin: 34px auto 0 !important
                 height: 40px
                 font-size: 20px
             +maxwidth($mobail)
@@ -328,10 +337,11 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
     &__radio
         max-height: 120px
-        margin-top: -15px
+        margin-top: -10px
         +maxwidth($tablet)
             margin-bottom: 15px
         +maxwidth($mobail)
+            margin-top: -5px
             margin-bottom: 10px
 
 .form
@@ -356,7 +366,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
 .select
     width: 100%
-    margin: 10px 0
+    margin: 25px 0
     display: flex
     flex-direction: column
     position: relative
@@ -368,7 +378,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
     &__placeholder
         top: 60% !important
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
 
     &__control
         border: none !important
@@ -396,17 +406,17 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
             padding: 5px 30px !important
 
     .form__group-img
-        bottom: 5px
+        bottom: -25px
         z-index: 2
         +maxwidth($tablet)
-            bottom: 0px
+            bottom: -30px
         +maxwidth($mobail)
-            bottom: 5px
+            bottom: -20px
 
     label,
     option,
     select
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, false)
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, false)
 
     select,
     option
@@ -422,20 +432,13 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
     &__title
         padding: 0 0 20px 35px
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
         background: url('/images/icons/sprite.svg#author-green') no-repeat left top / contain
         background-size: 25px 25px
         +maxwidth($tablet)
             background-size: 20px 20px
         +maxwidth($mobail)
             padding: 0 0 10px 30px
-
-    .button
-        margin-top: 20px
-        +maxwidth($tablet)
-            margin-top: 15px
-        +maxwidth($mobail)
-            margin-top: 10px
 
 .codex-editor
     margin-bottom: 15px

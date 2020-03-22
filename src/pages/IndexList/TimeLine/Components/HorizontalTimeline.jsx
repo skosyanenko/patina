@@ -46,13 +46,12 @@ class HorizontalTimeline extends Component {
             barPaddingLeft = events[0].distance;
         }
 
-        const {containerWidth, containerHeight, isTouchEnabled, index, styles, indexClick, labelWidth, fillingMotion} = this.props;
+        const {containerWidth, containerHeight, index, styles, indexClick, labelWidth, fillingMotion} = this.props;
         return (
             <EventsBar
                 width={containerWidth}
                 height={containerHeight}
                 events={events}
-                isTouchEnabled={isTouchEnabled}
                 totalWidth={totalWidth}
                 visibleWidth={visibleWidth}
                 index={index}
@@ -81,7 +80,6 @@ HorizontalTimeline.propTypes = {
     slidingMotion:     PropTypes.object,
     isOpenEnding:      PropTypes.bool,
     isOpenBeginning:   PropTypes.bool,
-    isTouchEnabled:    PropTypes.bool,
     isKeyboardEnabled: PropTypes.bool,
 };
 

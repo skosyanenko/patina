@@ -30,6 +30,8 @@
         margin-bottom: 40px
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-align: justify
+        +maxwidth($desktop)
+            min-height: fit-content
         +maxwidth($tablet)
             min-height: fit-content
             margin-bottom: 30px

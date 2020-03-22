@@ -12,10 +12,12 @@ class ReviewPage extends Component {
 
     viewSwitcher = view => {
         switch (view) {
-            case 'view_1':
+            case 0:
                 return View_1;
-            case 'view_2':
+            case 1:
                 return View_2;
+            default:
+                return '';
         }
     };
 

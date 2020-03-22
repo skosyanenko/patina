@@ -4,9 +4,7 @@ import Title from './Title';
 import Books from './Books';
 import Patina from './Patina';
 import MainTimeline from './TimeLine';
-import NewsBlock from '../NewsList/View/NewsBlock';
-import NewsElem from '../NewsList/View/NewsElem';
-import NewsLink from '../NewsList/View/NewsLink';
+import News from './News';
 import 'static/css/slick-theme.css';
 import 'static/css/slick.css';
 
@@ -26,14 +24,7 @@ const PatinaPage = () => (
             subtitle={'новости из мира литературы'}
         />
 
-        {/*<div className="main news">*/}
-        {/*    <NewsBlock/>*/}
-        {/*    <NewsElem/>*/}
-        {/*    <NewsElem/>*/}
-        {/*    <NewsLink/>*/}
-        {/*    <NewsLink/>*/}
-        {/*    <NewsLink/>*/}
-        {/*</div>*/}
+        <News/>
 
         <Title
             title={'Топы'}
@@ -43,6 +34,7 @@ const PatinaPage = () => (
         <Tops />
 
         <MainTimeline/>
+
     </>
 );
 

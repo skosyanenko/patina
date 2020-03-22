@@ -14,10 +14,6 @@
     +maxwidth($mobail)
         padding: 20px
 
-    .news-container
-        +maxwidth(1640px)
-            margin-top: 0
-
     &__wrap
         max-width: 100%
         margin-top: 50px
@@ -64,3 +60,16 @@
                 +maxwidth($mobail)
                     top: -5px
                     height: 2px
+
+.main-news
+    width: 100%
+    max-width: calc(100% - 310px)
+    flex-direction: row
+    justify-content: space-between
+    +maxwidth(1640px)
+        max-width: 100%
+        padding: 0 40px 40px
+    +maxwidth($tablet)
+        padding: 0 30px 30px
+    +maxwidth($mobail)
+        padding: 0 20px 20px

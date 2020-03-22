@@ -53,7 +53,7 @@ router.get(
 );
 
 /**
- * @route GET /api/v1/news/mainPage
+ * @route GET /api/v1/news-main
  * @group news
  */
 router.get(

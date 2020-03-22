@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 class ProfileStatistic extends Component {
     render() {
@@ -10,7 +9,5 @@ class ProfileStatistic extends Component {
         );
     }
 }
-
-ProfileStatistic.propTypes = {};
 
 export default ProfileStatistic;

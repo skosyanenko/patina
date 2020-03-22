@@ -5,8 +5,13 @@
     width: 100%
     display: flex
     flex-direction: column
+    overflow: hidden
     +maxwidth(1300px)
         max-width: 100%
+
+    .book-inform
+        margin-right:  auto
+        margin-left: auto
 
     &__wrapper
         width: 100%
@@ -15,12 +20,12 @@
         position: relative
         +maxwidth(1300px)
             width: 410px
-            margin-top: 30px
+            margin: 30px auto 0
         +maxwidth($mobail)
             width: 344px
             margin-top: 20px
         +maxwidth($sm-mobail)
-            width: 290px
+            width: 100%
 
         &-img
             height: 510px
@@ -50,11 +55,11 @@
             height: 800px
             +maxwidth(1300px)
                 top: -53px
-                width: 615px
-                height: 615px
+                width: 620px
+                height: 610px
             +maxwidth($mobail)
                 top: -41px
-                width: 480px
+                width: 490px
                 height: 480px
             +maxwidth($sm-mobail)
                 width: 430px
@@ -100,5 +105,6 @@
 
         &-date
             @include style-text(26px, 3px, $waverly, $black, 100%, 100, true)
+            width: 115px
 
 

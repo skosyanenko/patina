@@ -31,12 +31,12 @@ class FormManager extends Component {
                 case 'select':
                 case 'editor':
                     return formData.set(key, JSON.stringify(values[key]));
+                case 'time':
+                    return formData.set(key,  Date(values[key]).toString());
 			    default:
 				    return formData.set(key, values[key]);
 		    }
         });
-        
-        // console.log(values);
 
         this.postToDB(formData);
     };

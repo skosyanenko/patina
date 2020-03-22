@@ -1,8 +1,10 @@
 import React from 'react';
-import Pagination from 'components/Pagination';
 import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
+import paginationWrap from '../../components/withPagination/paginationWrap';
 import Reviews from './Reviews';
+
+const ReviewsWithPagination = paginationWrap(Reviews);
 
 const ReviewsPage = () => (
     <>
@@ -15,12 +17,8 @@ const ReviewsPage = () => (
         <div className="container">
             <InputSearch classNamePrefix="quest--position"/>
 
-            <Reviews/>
+            <ReviewsWithPagination/>
         </div>
-
-        {/*<Pagination*/}
-        {/*    classNamePrefix="pagination--view"*/}
-        {/*/>*/}
     </>
 );
 

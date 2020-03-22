@@ -4,12 +4,13 @@ import Socials from 'components/SocialsGroup';
 import TimeToRead from '../../../components/TimeToRead';
 import './index.sass';
 
-const Article = ({title, description, likes, date, views, textLength}) => {
+const Article = ({viewType, title, description, likes, date, views, textLength}) => {
+    const view = viewType === 1 || viewType === 2 || viewType === 3;
     return(
-        <div className="article">
-            <h1 className="article__title">{title}</h1>
+        <div className={`article ${view ? 'article__horizontal' : ''}`}>
+            {viewType === 0 || viewType === 4 ? <h1 className="article__title">{title}</h1> : ''}
             <div className="article__wrapper">
-                <div className="article__wrapper-text"
+                <div className={`${view ? 'article__wrapper-horizontal' : 'article__wrapper-text'}`}
                      dangerouslySetInnerHTML={{__html: `${description}`}}
                 />
                 <div className="article__wrapper-nav">

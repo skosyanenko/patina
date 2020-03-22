@@ -25,7 +25,7 @@ class Container extends Component {
                         </svg>
                     </div>
                 </div>
-                <div className={`interests__wrapper-text ${isActive && 'active' || ''}`}>
+                <div className={`interests__wrapper-text ${isActive ? 'active' : ''}`}>
                     <ol>
                         {text.map((elem, i) => <li key={i}>{elem}</li>)}
                     </ol>

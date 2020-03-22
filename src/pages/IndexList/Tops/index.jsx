@@ -53,7 +53,7 @@ class Tops extends Component {
                                     <div className="tops__text-buttons">
                                         <div className="button-write-top">
                                             <div className="button-write-top__img"/>
-                                            <Link to={'/form/top'} className="button-write-top__text">Создать свою подборку</Link>
+                                            <Link to={'/form/charts'} className="button-write-top__text">Создать свою подборку</Link>
                                         </div>
                                         <Link to={'/top'} className="button button-white">Подробнее</Link>
                                     </div>

@@ -6,6 +6,10 @@
     display: flex
     flex-direction: row
     justify-content: space-between
+    +maxwidth($tablet)
+        margin-top: 50px
+    +maxwidth($mobail)
+        margin-top: 40px
     +maxwidth($sm-mobail)
         flex-direction: column
 
@@ -17,7 +21,7 @@
         position: relative
         +maxwidth($sm-mobail)
             width: fit-content
-            margin-bottom: 30px
+            margin-bottom: 20px
 
         .count
             margin-left: 15px

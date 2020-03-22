@@ -1,15 +1,22 @@
-import React from 'react';
-import Pagination from 'components/Pagination';
-import Search from './Search';
+import React, {Component} from 'react';
+import ResultList from './ResultList';
+import InputSearch from 'components/InputSearch';
+import paginationWrap from '../../components/withPagination/paginationWrap';
+import './index.sass';
 
-const SearchPage = () => (
-    <>
-        <Search/>
+const SearchWithPagination = paginationWrap(ResultList);
 
-        {/*<Pagination*/}
-        {/*    classNamePrefix="pagination--search"*/}
-        {/*/>*/}
-    </>
-);
+class SearchPage  extends Component {
+
+    render () {
+        return (
+            <div className="search">
+                <InputSearch classNamePrefix="quest--searchResults"/>
+                <div className="search__title">результаты поиска:</div>
+                <SearchWithPagination/>
+            </div>
+        )
+    }
+}
 
 export default SearchPage;

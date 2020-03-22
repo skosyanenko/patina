@@ -63,7 +63,7 @@
     "name": "CategoryId",
     "label": "Выберите категории:",
     "icon": "wishlist",
-    "type": "select",
+    "type": "creatable",
     "isMulti": true,
     "api": "categories"
   }

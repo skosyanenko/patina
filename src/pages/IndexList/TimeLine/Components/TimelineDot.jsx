@@ -2,24 +2,24 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 
-const dots = {
-    base: {
-        transition: 'background-color 0.3s, border-color 0.3s',
-        ':hover': {}
-    },
-    future: (styles) => ({
-        backgroundColor: styles.background,
-        border: `1px solid ${styles.outline}`,
-    }),
-    past: (styles) => ({
-        backgroundColor: styles.background,
-        border: `1px solid ${styles.foreground}`,
-    }),
-    present: (styles) => ({
-        backgroundColor: styles.foreground,
-        border: `1px solid ${styles.foreground}`,
-    }),
-};
+// const dots = {
+//     base: {
+//         transition: 'background-color 0.3s, border-color 0.3s',
+//         ':hover': {}
+//     },
+//     future: (styles) => ({
+//         backgroundColor: styles.background,
+//         border: `1px solid ${styles.outline}`,
+//     }),
+//     past: (styles) => ({
+//         backgroundColor: styles.background,
+//         border: `1px solid ${styles.foreground}`,
+//     }),
+//     present: (styles) => ({
+//         backgroundColor: styles.foreground,
+//         border: `1px solid ${styles.foreground}`,
+//     }),
+// };
 
 class TimelineDot extends Component {
     state = {
@@ -58,19 +58,19 @@ class TimelineDot extends Component {
         }))
     };
 
-    __getDotStyles = (dotType, key) => {
-        const hoverStyle = {
-            backgroundColor: this.props.styles.foreground,
-            border: `1px solid ${this.props.styles.foreground}`,
-        };
-
-        return [
-            dots.base,
-            dots[dotType](this.props.styles),
-            Radium.getState(this.state, key, ':hover') ||
-            Radium.getState(this.state, 'dot-dot', ':hover') ? hoverStyle : undefined,
-        ]
-    };
+    // __getDotStyles = (dotType, key) => {
+    //     const hoverStyle = {
+    //         backgroundColor: this.props.styles.foreground,
+    //         border: `1px solid ${this.props.styles.foreground}`,
+    //     };
+    //
+    //     return [
+    //         // dots.base,
+    //         // dots[dotType](this.props.styles),
+    //         Radium.getState(this.state, key, ':hover') ||
+    //         Radium.getState(this.state, 'dot-dot', ':hover') ? hoverStyle : undefined,
+    //     ]
+    // };
 
     render() {
         const {type, author, date, title, onClick, index, selected, distance, labelWidth} = this.props;
@@ -86,12 +86,12 @@ class TimelineDot extends Component {
 
         return (
             <div
-                className={`${dotType} event-dot`}
+                className={` event-dot`}
                 onClick={() => onClick(index)}
                 style={[{
                     left: distance - labelWidth / 2,
                     width: labelWidth,
-                    ':hover': {},
+                    // ':hover': {},
                 }]}
             >
                 <div className="event-dot__wrapper">
@@ -104,7 +104,7 @@ class TimelineDot extends Component {
                         <div className={`${!isActive && 'invisible'} event-dot__item-after`}/>
                         <div key='dot-dot'
                              className={`${isActive && 'anim'} event-dot__item-dot`}
-                             style={this.__getDotStyles(dotType, date)}
+
                         />
                     </div>
                     <span className={`${!isActive && 'invisible'} event-dot__date`}>{date}</span>

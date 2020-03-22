@@ -1,10 +1,27 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Loader from '../../../components/Loader';
 import './index.sass';
 
 class Reviews extends Component {
+    state = {
+        loading: true,
+        perPage: 3,
+        valuesDropdown: [3, 6, 9]
+    };
+
+    componentDidMount() {
+        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
+        this.props.fetchData('/api/v1/reviews')
+          .then(() => this.setState({loading: false}))
+          .catch(err => console.log(err));
+    }
 
     render() {
+        const {loading} = this.state;
+
+        if (loading) return <Loader/>;
+
         return (
             <div className="reviews">
                 <div className="reviews__wrapper">
@@ -50,6 +67,8 @@ class Reviews extends Component {
                     </div>
                     <img className="reviews__wrapper-img order-7" src="images/coverImage/JaneEyre.jpg" alt=""/>
                 </div>
+
+                {this.props.pagination || ''}
             </div>
         );
     }

@@ -1,55 +1,84 @@
 @import 'config'
 
 .article
-    max-width: calc(50% + 70px)
     width: 100%
-    padding-left: 70px
     +maxwidth($desktop)
-        max-width: 100%
         margin-top: 50px
-        padding-left: 0
     +maxwidth($tablet)
         margin-top: 35px
     +maxwidth($mobail)
         margin-top: 20px
 
+    &__horizontal
+        +maxwidth($tablet)
+            margin-top: 0
+
     &__title
         width: 100%
-        margin-bottom: 30px
-        @include style-text(60px, 10px, $vogue, $black, 120%, 500, false)
+        padding-bottom: 30px
+        @include style-text(60px, 14px, $vogue, $black, 100%, 500, false)
         text-align: right
         letter-spacing: 0.2px
+        border-bottom: 3px solid $green
         +maxwidth($tablet)
-            margin-bottom: 25px
+            padding-bottom: 25px
         +maxwidth($mobail)
-            margin-bottom: 20px
+            padding-bottom: 20px
+            border-bottom: 2px solid $green
+
+        &-horizontal
+            padding-right: 40px
+            width: 100%
+            padding-bottom: 30px
+            @include style-text(60px, 14px, $vogue, $black, 100%, 500, false)
+            text-align: right
+            letter-spacing: 0.2px
+            +maxwidth($desktop)
+                order: 2
+                padding: 20px 0 20px 0
+                border-bottom: 2px solid $green
 
     &__wrapper
         display: flex
         flex-direction: column
 
-        &-text
+        &-text,
+        &-horizontal
             width: 100%
-            padding-top: 50px
+            margin-top: 50px
             position: relative
             white-space: pre-line
             @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             text-align: justify
-            border-top: 3px solid $green
+
+        &-text
             +maxwidth($tablet)
-                padding-top: 40px
+                margin-top: 40px
             +maxwidth($mobail)
-                padding-top: 30px
-                border-top: 2px solid $green
+                margin-top: 30px
+
+        &-horizontal
+            +maxwidth($desktop)
+                margin-top: 0
+            +maxwidth($tablet)
+                margin-top: 40px
+            +maxwidth($mobail)
+                margin-top: 30px
 
         &-nav
             margin-top: 50px
             display: flex
             align-items: flex-end
             justify-content: space-between
+            +maxwidth(1330px)
+                width: 50%
+                margin-left:  auto
             +maxwidth($tablet)
+                width: 70%
                 margin-top: 40px
+                margin-right: auto
             +maxwidth($mobail)
+                width: 100%
                 margin-top: 30px
 
         &-wrap

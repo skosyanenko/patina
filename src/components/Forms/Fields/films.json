@@ -4,7 +4,8 @@
         "label": "Книга",
         "icon": "books",
         "type": "select",
-        "isMulti": false
+        "isMulti": false,
+        "api": "books"
     },
     {
         "name": "title",

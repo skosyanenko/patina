@@ -7,6 +7,12 @@
     &__title
         @include style-text(34px, 2px, $waverly, $black, 100%, 500, true)
         margin: 0 auto 30px
+        +maxwidth($tablet)
+            margin:  0 auto 25px
+        +maxwidth($mobail)
+            margin: 0 auto 20px
+        +maxwidth($sm-mobail)
+            margin: 0 auto 15px
 
     &__buttons
         width: 70%

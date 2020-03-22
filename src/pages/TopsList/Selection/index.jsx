@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './index.sass';
 import Loader from '../../../components/Loader';
+import './index.sass';
 
 class Selection extends Component {
     state = {
@@ -24,7 +24,7 @@ class Selection extends Component {
         if (loading) return <Loader/>;
 
         return(
-            <>
+            <div className="container__container-top">
                 <div className="selection">
                     {items && items.map((top, key) => (
                         <Link to={`/tops/${top.id}`} key={key} className="selection__link">
@@ -33,7 +33,7 @@ class Selection extends Component {
                     ))}
                 </div>
                 {this.props.pagination || ''}
-            </>
+            </div>
         );
     }
 }

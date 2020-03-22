@@ -20,7 +20,7 @@ class AlphabetFilter extends Component {
     showLetter = letter => {
         this.setState(prevState => ({
             isBlur: !prevState.isBlur,
-            activeLetter: !prevState.isBlur && letter || ''
+            activeLetter: !prevState.isBlur ? letter : ''
         }), () => {
             this.props.hook('letter', this.state.activeLetter);
         });

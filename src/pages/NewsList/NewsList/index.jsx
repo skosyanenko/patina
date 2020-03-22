@@ -4,6 +4,7 @@ import NewsHorizontal from '../View/NewsHorizontal';
 import NewsBlock from '../View/NewsBlock';
 import NewsElem from '../View/NewsElem';
 import NewsLink from '../View/NewsLink';
+import Loader from '../../../components/Loader';
 
 class NewsList extends Component {
     state = {
@@ -21,18 +22,18 @@ class NewsList extends Component {
 
     viewSwitcher = view => {
         switch (view) {
-            case 1:
+            case 0:
                 return NewsVertical;
-            case 2:
+            case 1:
                 return NewsHorizontal;
-            case 3:
+            case 2:
                 return NewsBlock;
-            case 4:
+            case 3:
                 return NewsElem;
-            case 5:
+            case 4:
                 return NewsLink;
             default:
-                return NewsBlock;
+                return '';
         }
     };
 
@@ -40,7 +41,7 @@ class NewsList extends Component {
         const {loading} = this.state;
         const {items} = this.props;
 
-        if (loading) return 'Loading...';
+        if (loading) return <Loader/>;
 
         return(
             <>

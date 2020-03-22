@@ -38,16 +38,12 @@ class TextEditor extends Component {
                     instanceRef={instance => this.editorInstance = instance}
                     ref={register({name, type: 'custom'}, {required})}
                     placeholder={placeholder}
+                    onChange={this.handleSave}
                     tools={this.configSwitcher()}
                 />
                 <div className="form__group-error">
                     {errors[name] && errors[name].message}
                 </div>
-                <button type="button" className="button button-white"
-                        onClick={this.handleSave}
-                >
-                    Сохранить текст
-                </button>
             </div>
 
         );

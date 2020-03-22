@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Motion, spring} from 'react-motion'
 import PropTypes from 'prop-types';
-import Events from './Events';
-import EventLine from './EventLine';
 import {Constants} from '../helpers';
+import Swiper from 'react-id-swiper';
+import TimelineDot from './TimelineDot';
 
 class EventsBar extends Component {
     constructor(props) {
@@ -18,7 +17,7 @@ class EventsBar extends Component {
                 x: 0,
                 y: 0
             },
-            isSwiping: false,
+            isSwiping: true,
             started: false,
             threshold: 3
         }
@@ -34,7 +33,7 @@ class EventsBar extends Component {
     }
 
     componentWillUnmount() {
-        document.body.removeEventListener('keydown', this.handleKeyDown);
+        document.body.removeEventListener('keydown', this.handleKeydown);
     }
 
     handleKeydown = (event,  props = this.props) => {
@@ -142,43 +141,43 @@ class EventsBar extends Component {
         const filledValue = events[index].distance - barPaddingLeft;
         const eventLineWidth = totalWidth - barPaddingLeft - barPaddingRight;
 
+        const params = {
+            slidesPerView: 'auto',
+            freeMode: true,
+            centeredSlides: true,
+            initialSlide: 'auto',
+            speed: 1000,
+            mousewheel: true,
+            grabCursor: true
+        };
+
         return (
             <div
                 style={{
                     width: `${width}px`,
                     height: `${height}px`,
                 }}
-                {...touchEvents}
             >
+
                 <div className="timeline__wrapper">
-                    <Motion style={{X: spring(position, this.slidingMotion)}}>
-                        {({X}) =>
-                            <div
-                                className="timeline__events"
-                                style={{width: totalWidth, WebkitTransform: `translate3d(${X}, 0, 0)px`, transform: `translate3d(${X}px, 0, 0)`}}
-                            >
-                                <EventLine
-                                    left={barPaddingLeft}
-                                    width={eventLineWidth}
-                                    fillingMotion={fillingMotion}
-                                    backgroundColor={styles.outline}
-                                />
-                                <EventLine
-                                    left={barPaddingLeft}
-                                    width={filledValue}
-                                    fillingMotion={fillingMotion}
-                                    backgroundColor={styles.foreground}
-                                />
-                                <Events
-                                    events={events}
-                                    selectedIndex={index}
-                                    styles={styles}
-                                    handleDateClick={indexClick}
-                                    labelWidth={labelWidth}
-                                />
-                             </div>
-                        }
-                    </Motion>
+
+                                <span className="line"/>
+                                <div className="timeline__eventbar">
+                                    <Swiper {...params} containerClass="swiper">
+                                        {events.map((event, key) => (
+                                            <TimelineDot
+                                                {...event}
+                                                index={key}
+                                                key={key}
+                                                onClick={indexClick}
+                                                selected={index}
+                                                styles={styles}
+                                                labelWidth={labelWidth}
+                                            />
+                                        ))}
+                                    </Swiper>
+                                </div>
+
                 </div>
             </div>
         );

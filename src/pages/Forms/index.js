@@ -40,7 +40,7 @@ const AddForm = ({match}) => {
                             button={"Зарегистрироваться"}
         />;
     } else {
-        if (type !== 'top' && type !== 'review') {
+        if (type !== 'charts' && type !== 'review') {
             return <div className="change-form">
                 <FormManager {...config[type]}/>
                 <ChangeList API={type}/>

@@ -69,7 +69,9 @@ class InputFile extends Component  {
                             />
                         </div>
                     ))}
-	                {errors && errors[name] && errors[name].message}
+                    <div className="form__group-error">
+                        {errors[name] && errors[name].message}
+                    </div>
                 </div>
             </div>
         )
