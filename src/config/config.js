@@ -86,3 +86,5 @@ export const sortParams = [
     { title: 'автору', key: 'author' },
     { title: 'рейтингу', key: 'rating' },
 ];
+
+export const returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');

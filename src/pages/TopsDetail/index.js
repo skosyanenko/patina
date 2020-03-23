@@ -7,7 +7,7 @@ import CommentBlock from 'components/CommentBlock';
 
 class TopPage extends Component {
     state = {
-        currentTop: {}
+        currentTop: []
     };
 
     componentDidMount() {
@@ -17,7 +17,7 @@ class TopPage extends Component {
     fetchCurrentTop = async () => {
         const { id } = this.props.match.params;
 
-        return await axios.get(`/api/v1/tops/${id}`)
+        return await axios.get(`/api/v1/charts/${id}`)
             .then(res => {
                 if (res.data) {
                     this.setState({currentTop: res.data})
@@ -38,12 +38,8 @@ class TopPage extends Component {
                 />
                 <div className="container">
                     <div className="top-grid">
-                        {currentTop && currentTop.map(top => (
-                            <Block number={top.id}
-                                title={top.title}
-                                author={top.author}
-                                description={top.text}
-                            />
+                        {currentTop.books && currentTop.books.map((top, key) => (
+                            <Block {...top} key={key} number={key}/>
                         ))}
                     </div>
                 </div>

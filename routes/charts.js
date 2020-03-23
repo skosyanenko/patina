@@ -59,4 +59,13 @@ router.delete(
     ChartsController.delete,
 );
 
+/**
+ * @route GET /api/v1/chartsMainPage
+ * @group charts
+ */
+router.get(
+  '/api/v1/chartsMainPage',
+  ChartsController.chartsMainPage,
+);
+
 export default router;

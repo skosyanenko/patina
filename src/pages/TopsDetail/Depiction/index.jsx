@@ -12,7 +12,9 @@ const Depiction = ({title, description}) => (
             </Link>
             <h1 className="depiction__wrapper-title">{title}</h1>
         </div>
-        <p className="depiction__description">{description}</p>
+        <div className="depiction__description"
+             dangerouslySetInnerHTML={{__html: `${description}`}}
+        />
     </div>
 );
 

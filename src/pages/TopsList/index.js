@@ -18,6 +18,7 @@ class TopsPage extends Component {
                 <div className="container container--top-detail">
                     <Picture/>
                     <TopsWithPagination/>
+                    {this.props.pagination || ''}
                 </div>
             </>
         );

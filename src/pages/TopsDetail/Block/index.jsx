@@ -1,20 +1,21 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {returnAuthor} from '../../../config/config';
 import './index.sass';
 
-const Block = ({number, title, author, description}) => (
+const Block = ({id, title, authors, shortDescription, number}) => (
     <div className="block">
         <div className="block__wrapper">
             <div className="block__title">
-                <Link to={'/book'}>{title}</Link>
+                <Link to={`/books/${id}`}>{title}</Link>
             </div>
             <div className="block__number">
-                <Link to={'/book'}>{number}</Link>
+                <Link to={`/books/${id}`}>{number + 1}</Link>
             </div>
         </div>
-        <span className="block__author">{author}</span>
-        <span className="block__description">{description}</span>
+        <span className="block__author">{returnAuthor(authors)}</span>
+        <span className="block__description">{shortDescription}</span>
     </div>
 );
 

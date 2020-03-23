@@ -58,13 +58,21 @@ class ChartController extends Controller {
                     }]
                 })
                 .then(result => {
-                    result.description = JSON.parse(result.description);
+                    if (Array.isArray(result.description)) {
+                        result.description = JSON.parse(result.description);
+                    }
                     res.status(200).json(result)
                 })
                 .catch(err => console.log('Не удалось получить элемент \n', err));
         } catch (err) {
             throw Error(err);
         }
+    };
+
+    chartsMainPage = async(req, res) => {
+        return await Chart.findAll({ limit: 10 })
+            .then(result => res.status(200).json(result))
+            .catch(err => console.log('Не удалось получить элементы \n', err));
     }
 }
 

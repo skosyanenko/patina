@@ -5,1463 +5,1459 @@ module.exports = {
       const contentCharts = [
           {
               ChartId: 1,
-              books: 30
+              BookId: 30
           },
           {
               ChartId: 1,
-              books: 29
+              BookId: 29
           },
           {
               ChartId: 1,
-              books: 192
+              BookId: 192
           },
           {
               ChartId: 1,
-              books: 246
+              BookId: 246
           },
           {
               ChartId: 1,
-              books: 181
+              BookId: 181
           },
           {
               ChartId: 1,
-              books: 117
+              BookId: 117
           },
           {
               ChartId: 1,
-              books: 161
+              BookId: 161
           },
           {
               ChartId: 1,
-              books: 153
+              BookId: 153
           },
           {
               ChartId: 1,
-              books: 186
+              BookId: 186
           },
           {
               ChartId: 1,
-              books: 12
+              BookId: 12
           },
           {
               ChartId: 1,
-              books: 225
+              BookId: 225
           },
           {
               ChartId: 1,
-              books: 272
+              BookId: 272
           },
           {
               ChartId: 1,
-              books: 48
+              BookId: 48
           },
           {
               ChartId: 1,
-              books: 98
+              BookId: 98
           },
           {
               ChartId: 1,
-              books: 8
+              BookId: 8
           },
           {
               ChartId: 2,
-              books: 2
+              BookId: 2
           },
           {
               ChartId: 2,
-              books: 277
+              BookId: 277
           },
           {
               ChartId: 2,
-              books: 11
+              BookId: 11
           },
           {
               ChartId: 2,
-              books: 171
+              BookId: 171
           },
           {
               ChartId: 2,
-              books: 144
+              BookId: 144
           },
           {
               ChartId: 2,
-              books: 265
+              BookId: 265
           },
           {
               ChartId: 2,
-              books: 230
+              BookId: 230
           },
           {
               ChartId: 2,
-              books: 107
+              BookId: 107
           },
           {
               ChartId: 2,
-              books: 172
+              BookId: 172
           },
           {
               ChartId: 2,
-              books: 48
+              BookId: 48
           },
           {
               ChartId: 2,
-              books: 288
+              BookId: 288
           },
           {
               ChartId: 2,
-              books: 262
+              BookId: 262
           },
           {
               ChartId: 2,
-              books: 143
+              BookId: 143
           },
           {
               ChartId: 2,
-              books: 268
+              BookId: 268
           },
           {
               ChartId: 2,
-              books: 21
+              BookId: 21
           },
           {
               ChartId: 2,
-              books: 275
+              BookId: 275
           },
           {
               ChartId: 2,
-              books: 142
+              BookId: 142
           },
           {
               ChartId: 2,
-              books: 197
+              BookId: 197
           },
           {
               ChartId: 2,
-              books: 213
+              BookId: 213
           },
           {
               ChartId: 2,
-              books: 201
+              BookId: 201
           },
           {
               ChartId: 2,
-              books: 149
+              BookId: 149
           },
           {
               ChartId: 2,
-              books: 238
+              BookId: 238
           },
           {
               ChartId: 2,
-              books: 127
+              BookId: 127
           },
           {
               ChartId: 2,
-              books: 244
+              BookId: 244
           },
           {
               ChartId: 2,
-              books: 77
+              BookId: 77
           },
           {
               ChartId: 2,
-              books: 19
+              BookId: 19
           },
           {
               ChartId: 2,
-              books: 179
+              BookId: 179
           },
           {
               ChartId: 2,
-              books: 254
+              BookId: 254
           },
           {
               ChartId: 2,
-              books: 198
+              BookId: 198
           },
           {
               ChartId: 2,
-              books: 158
+              BookId: 158
           },
           {
               ChartId: 2,
-              books: 4
+              BookId: 4
           },
           {
               ChartId: 2,
-              books: 264
+              BookId: 264
           },
           {
               ChartId: 2,
-              books: 232
+              BookId: 232
           },
           {
               ChartId: 2,
-              books: 119
+              BookId: 119
           },
           {
               ChartId: 2,
-              books: 218
+              BookId: 218
           },
           {
               ChartId: 2,
-              books: 104
+              BookId: 104
           },
           {
               ChartId: 2,
-              books: 205
+              BookId: 205
           },
           {
               ChartId: 2,
-              books: 221
+              BookId: 221
           },
           {
               ChartId: 2,
-              books: 151
+              BookId: 151
           },
           {
               ChartId: 2,
-              books: 41
+              BookId: 41
           },
           {
               ChartId: 2,
-              books: 167
+              BookId: 167
           },
           {
               ChartId: 2,
-              books: 124
+              BookId: 124
           },
           {
               ChartId: 2,
-              books: 189
+              BookId: 189
           },
           {
               ChartId: 2,
-              books: 191
+              BookId: 191
           },
           {
               ChartId: 2,
-              books: 263
+              BookId: 263
           },
           {
               ChartId: 2,
-              books: 123
+              BookId: 123
           },
           {
               ChartId: 2,
-              books: 287
+              BookId: 287
           },
           {
               ChartId: 2,
-              books: 106
+              BookId: 106
           },
           {
               ChartId: 2,
-              books: 47
+              BookId: 47
           },
           {
               ChartId: 2,
-              books: 150
+              BookId: 150
           },
           {
               ChartId: 2,
-              books: 97
+              BookId: 97
           },
           {
               ChartId: 2,
-              books: 38
+              BookId: 38
           },
           {
               ChartId: 2,
-              books: 292
+              BookId: 292
           },
           {
               ChartId: 2,
-              books: 108
+              BookId: 108
           },
           {
               ChartId: 2,
-              books: 215
+              BookId: 215
           },
           {
               ChartId: 2,
-              books: 248
+              BookId: 248
           },
           {
               ChartId: 2,
-              books: 18
+              BookId: 18
           },
           {
               ChartId: 2,
-              books: 116
+              BookId: 116
           },
           {
               ChartId: 2,
-              books: 125
+              BookId: 125
           },
           {
               ChartId: 2,
-              books: 105
+              BookId: 105
           },
           {
               ChartId: 2,
-              books: 102
+              BookId: 102
           },
           {
               ChartId: 2,
-              books: 258
+              BookId: 258
           },
           {
               ChartId: 2,
-              books: 289
+              BookId: 289
           },
           {
               ChartId: 2,
-              books: 293
+              BookId: 293
           },
           {
               ChartId: 2,
-              books: 239
+              BookId: 239
           },
           {
               ChartId: 2,
-              books: 126
+              BookId: 126
           },
           {
               ChartId: 2,
-              books: 169
+              BookId: 169
           },
           {
               ChartId: 2,
-              books: 135
+              BookId: 135
           },
           {
               ChartId: 2,
-              books: 237
+              BookId: 237
           },
           {
               ChartId: 2,
-              books: 160
+              BookId: 160
           },
           {
               ChartId: 2,
-              books: 180
+              BookId: 180
           },
           {
               ChartId: 2,
-              books: 26
+              BookId: 26
           },
           {
               ChartId: 2,
-              books: 242
+              BookId: 242
           },
           {
               ChartId: 2,
-              books: 259
+              BookId: 259
           },
           {
               ChartId: 2,
-              books: 256
+              BookId: 256
           },
           {
               ChartId: 2,
-              books: 174
+              BookId: 174
           },
           {
               ChartId: 2,
-              books: 157
+              BookId: 157
           },
           {
               ChartId: 2,
-              books: 33
+              BookId: 33
           },
           {
               ChartId: 2,
-              books: 164
+              BookId: 164
           },
           {
               ChartId: 2,
-              books: 24
+              BookId: 24
           },
           {
               ChartId: 3,
-              books: 206
+              BookId: 206
           },
           {
               ChartId: 3,
-              books: 71
+              BookId: 71
           },
           {
               ChartId: 3,
-              books: 260
+              BookId: 260
           },
           {
               ChartId: 3,
-              books: 214
+              BookId: 214
           },
           {
               ChartId: 3,
-              books: 231
+              BookId: 231
           },
           {
               ChartId: 3,
-              books: 58
+              BookId: 58
           },
           {
               ChartId: 3,
-              books: 281
+              BookId: 281
           },
           {
               ChartId: 3,
-              books: 128
+              BookId: 128
           },
           {
               ChartId: 3,
-              books: 34
+              BookId: 34
           },
           {
               ChartId: 3,
-              books: 286
+              BookId: 286
           },
           {
               ChartId: 3,
-              books: 166
+              BookId: 166
           },
           {
               ChartId: 3,
-              books: 217
+              BookId: 217
           },
           {
               ChartId: 3,
-              books: 46
+              BookId: 46
           },
           {
               ChartId: 3,
-              books: 210
+              BookId: 210
           },
           {
               ChartId: 3,
-              books: 115
+              BookId: 115
           },
           {
               ChartId: 3,
-              books: 95
+              BookId: 95
           },
           {
               ChartId: 4,
-              books: 156
+              BookId: 156
           },
           {
               ChartId: 4,
-              books: 145
+              BookId: 145
           },
           {
               ChartId: 4,
-              books: 266
+              BookId: 266
           },
           {
               ChartId: 4,
-              books: 25
+              BookId: 25
           },
           {
               ChartId: 4,
-              books: 285
+              BookId: 285
           },
           {
               ChartId: 4,
-              books: 284
+              BookId: 284
           },
           {
               ChartId: 5,
-              books: 6
+              BookId: 6
           },
           {
               ChartId: 5,
-              books: 42
+              BookId: 42
           },
           {
               ChartId: 5,
-              books: 60
+              BookId: 60
           },
           {
               ChartId: 5,
-              books: 50
+              BookId: 50
           },
           {
               ChartId: 5,
-              books: 101
+              BookId: 101
           },
           {
               ChartId: 5,
-              books: 163
+              BookId: 163
           },
           {
               ChartId: 5,
-              books: 89
+              BookId: 89
           },
           {
               ChartId: 5,
-              books: 195
+              BookId: 195
           },
           {
               ChartId: 5,
-              books: 22
+              BookId: 22
           },
           {
               ChartId: 5,
-              books: 249
+              BookId: 249
           },
           {
               ChartId: 5,
-              books: 28
+              BookId: 28
           },
           {
               ChartId: 5,
-              books: 159
+              BookId: 159
           },
           {
               ChartId: 5,
-              books: 69
+              BookId: 69
           },
           {
               ChartId: 5,
-              books: 152
+              BookId: 152
           },
           {
               ChartId: 5,
-              books: 261
+              BookId: 261
           },
           {
               ChartId: 6,
-              books: 291
+              BookId: 291
           },
           {
               ChartId: 6,
-              books: 63
+              BookId: 63
           },
           {
               ChartId: 6,
-              books: 130
+              BookId: 130
           },
           {
               ChartId: 6,
-              books: 266
+              BookId: 266
           },
           {
               ChartId: 6,
-              books: 88
+              BookId: 88
           },
           {
               ChartId: 6,
-              books: 111
+              BookId: 111
           },
           {
               ChartId: 6,
-              books: 90
+              BookId: 90
           },
           {
               ChartId: 6,
-              books: 226
+              BookId: 226
           },
           {
               ChartId: 6,
-              books: 31
+              BookId: 31
           },
           {
               ChartId: 6,
-              books: 173
+              BookId: 173
           },
           {
               ChartId: 6,
-              books: 190
+              BookId: 190
           },
           {
               ChartId: 6,
-              books: 223
+              BookId: 223
           },
           {
               ChartId: 6,
-              books: 273
+              BookId: 273
           },
           {
               ChartId: 6,
-              books: 3
+              BookId: 3
           },
           {
               ChartId: 6,
-              books: 10
+              BookId: 10
           },
           {
               ChartId: 6,
-              books: 199
+              BookId: 199
           },
           {
               ChartId: 6,
-              books: 35
+              BookId: 35
           },
           {
               ChartId: 6,
-              books: 269
+              BookId: 269
           },
           {
               ChartId: 6,
-              books: 122
+              BookId: 122
           },
           {
               ChartId: 6,
-              books: 100
+              BookId: 100
           },
           {
               ChartId: 6,
-              books: 185
+              BookId: 185
           },
           {
               ChartId: 7,
-              books: 92
+              BookId: 92
           },
           {
               ChartId: 7,
-              books: 243
+              BookId: 243
           },
           {
               ChartId: 7,
-              books: 283
+              BookId: 283
           },
           {
               ChartId: 7,
-              books: 133
+              BookId: 133
           },
           {
               ChartId: 7,
-              books: 139
+              BookId: 139
           },
           {
               ChartId: 7,
-              books: 20
+              BookId: 20
           },
           {
               ChartId: 7,
-              books: 44
+              BookId: 44
           },
           {
               ChartId: 7,
-              books: 165
+              BookId: 165
           },
           {
               ChartId: 7,
-              books: 187
+              BookId: 187
           },
           {
               ChartId: 7,
-              books: 229
+              BookId: 229
           },
           {
               ChartId: 7,
-              books: 233
+              BookId: 233
           },
           {
               ChartId: 7,
-              books: 17
+              BookId: 17
           },
           {
               ChartId: 8,
-              books: 224
+              BookId: 224
           },
           {
               ChartId: 8,
-              books: 138
+              BookId: 138
           },
           {
               ChartId: 8,
-              books: 78
+              BookId: 78
           },
           {
               ChartId: 8,
-              books: 193
+              BookId: 193
           },
           {
               ChartId: 8,
-              books: 96
+              BookId: 96
           },
           {
               ChartId: 8,
-              books: 60
+              BookId: 60
           },
           {
               ChartId: 8,
-              books: 266
+              BookId: 266
           },
           {
               ChartId: 8,
-              books: 52
+              BookId: 52
           },
           {
               ChartId: 8,
-              books: 146
+              BookId: 146
           },
           {
               ChartId: 8,
-              books: 15
+              BookId: 15
           },
           {
               ChartId: 8,
-              books: 112
+              BookId: 112
           },
           {
               ChartId: 8,
-              books: 250
+              BookId: 250
           },
           {
               ChartId: 8,
-              books: 9
+              BookId: 9
           },
           {
               ChartId: 8,
-              books: 270
+              BookId: 270
           },
           {
               ChartId: 8,
-              books: 109
+              BookId: 109
           },
           {
               ChartId: 9,
-              books: 2
+              BookId: 2
           },
           {
               ChartId: 9,
-              books: 60
+              BookId: 60
           },
           {
               ChartId: 9,
-              books: 271
+              BookId: 271
           },
           {
               ChartId: 9,
-              books: 129
+              BookId: 129
           },
           {
               ChartId: 9,
-              books: 267
+              BookId: 267
           },
           {
               ChartId: 9,
-              books: 67
+              BookId: 67
           },
           {
               ChartId: 9,
-              books: 170
+              BookId: 170
           },
           {
               ChartId: 9,
-              books: 274
+              BookId: 274
           },
           {
               ChartId: 9,
-              books: 57
+              BookId: 57
           },
           {
               ChartId: 10,
-              books: 77
+              BookId: 77
           },
           {
               ChartId: 10,
-              books: 29
+              BookId: 29
           },
           {
               ChartId: 10,
-              books: 39
+              BookId: 39
           },
           {
               ChartId: 10,
-              books: 80
+              BookId: 80
           },
           {
               ChartId: 10,
-              books: 81
+              BookId: 81
           },
           {
               ChartId: 10,
-              books: 60
+              BookId: 60
           },
           {
               ChartId: 10,
-              books: 58
+              BookId: 58
           },
           {
               ChartId: 10,
-              books: 67
+              BookId: 67
           },
           {
               ChartId: 10,
-              books: 69
+              BookId: 69
           },
           {
               ChartId: 10,
-              books: 64
+              BookId: 64
           },
           {
               ChartId: 11,
-              books: 216
+              BookId: 216
           },
           {
               ChartId: 11,
-              books: 147
+              BookId: 147
           },
           {
               ChartId: 11,
-              books: 196
+              BookId: 196
           },
           {
               ChartId: 11,
-              books: 234
+              BookId: 234
           },
           {
               ChartId: 11,
-              books: 140
+              BookId: 140
           },
           {
               ChartId: 11,
-              books: 36
+              BookId: 36
           },
           {
               ChartId: 11,
-              books: 235
+              BookId: 235
           },
           {
               ChartId: 11,
-              books: 208
+              BookId: 208
           },
           {
               ChartId: 11,
-              books: 212
+              BookId: 212
           },
           {
               ChartId: 11,
-              books: 245
+              BookId: 245
           },
           {
               ChartId: 12,
-              books: 60
+              BookId: 60
           },
           {
               ChartId: 12,
-              books: 70
+              BookId: 70
           },
           {
               ChartId: 12,
-              books: 58
+              BookId: 58
           },
           {
               ChartId: 12,
-              books: 81
+              BookId: 61
           },
           {
               ChartId: 12,
-              books: 61
+              BookId: 23
           },
           {
               ChartId: 12,
-              books: 23
+              BookId: 72
           },
           {
               ChartId: 12,
-              books: 72
+              BookId: 67
           },
           {
               ChartId: 12,
-              books: 67
+              BookId: 43
           },
           {
               ChartId: 12,
-              books: 43
+              BookId: 155
           },
           {
               ChartId: 12,
-              books: 155
+              BookId: 267
           },
           {
               ChartId: 12,
-              books: 267
+              BookId: 175
           },
           {
               ChartId: 12,
-              books: 175
+              BookId: 69
           },
           {
               ChartId: 12,
-              books: 69
+              BookId: 28
           },
           {
               ChartId: 12,
-              books: 28
+              BookId: 182
           },
           {
               ChartId: 12,
-              books: 182
+              BookId: 99
           },
           {
               ChartId: 12,
-              books: 99
+              BookId: 53
           },
           {
               ChartId: 12,
-              books: 53
+              BookId: 77
           },
           {
               ChartId: 12,
-              books: 77
+              BookId: 249
           },
           {
               ChartId: 12,
-              books: 249
+              BookId: 115
           },
           {
               ChartId: 12,
-              books: 115
+              BookId: 1
           },
           {
               ChartId: 12,
-              books: 1
+              BookId: 34
           },
           {
               ChartId: 12,
-              books: 34
+              BookId: 93
           },
           {
               ChartId: 12,
-              books: 93
+              BookId: 91
           },
           {
               ChartId: 12,
-              books: 91
+              BookId: 219
           },
           {
               ChartId: 12,
-              books: 219
+              BookId: 181
           },
           {
               ChartId: 12,
-              books: 181
+              BookId: 227
           },
           {
               ChartId: 12,
-              books: 227
+              BookId: 103
           },
           {
               ChartId: 12,
-              books: 103
+              BookId: 141
           },
           {
               ChartId: 12,
-              books: 141
+              BookId: 274
           },
           {
               ChartId: 12,
-              books: 274
+              BookId: 39
           },
           {
               ChartId: 12,
-              books: 39
+              BookId: 117
           },
           {
               ChartId: 12,
-              books: 117
+              BookId: 280
           },
           {
               ChartId: 12,
-              books: 280
+              BookId: 66
           },
           {
               ChartId: 12,
-              books: 66
+              BookId: 287
           },
           {
               ChartId: 12,
-              books: 287
+              BookId: 241
           },
           {
               ChartId: 12,
-              books: 241
+              BookId: 59
           },
           {
               ChartId: 12,
-              books: 59
+              BookId: 251
           },
           {
               ChartId: 12,
-              books: 251
+              BookId: 255
           },
           {
               ChartId: 12,
-              books: 255
+              BookId: 188
           },
           {
               ChartId: 12,
-              books: 188
+              BookId: 209
           },
           {
               ChartId: 12,
-              books: 209
+              BookId: 200
           },
           {
               ChartId: 12,
-              books: 200
+              BookId: 176
           },
           {
               ChartId: 12,
-              books: 176
+              BookId: 5
           },
           {
               ChartId: 12,
-              books: 5
+              BookId: 273
           },
           {
               ChartId: 12,
-              books: 273
+              BookId: 30
           },
           {
               ChartId: 12,
-              books: 30
+              BookId: 207
           },
           {
               ChartId: 12,
-              books: 207
+              BookId: 29
           },
           {
               ChartId: 12,
-              books: 29
+              BookId: 37
           },
           {
               ChartId: 12,
-              books: 37
+              BookId: 50
           },
           {
               ChartId: 12,
-              books: 50
+              BookId: 2
           },
           {
               ChartId: 12,
-              books: 2
+              BookId: 132
           },
           {
               ChartId: 12,
-              books: 132
+              BookId: 101
           },
           {
               ChartId: 12,
-              books: 101
+              BookId: 253
           },
           {
               ChartId: 12,
-              books: 253
+              BookId: 42
           },
           {
               ChartId: 12,
-              books: 42
+              BookId: 81
           },
           {
               ChartId: 12,
-              books: 81
+              BookId: 184
           },
           {
               ChartId: 12,
-              books: 184
+              BookId: 84
           },
           {
               ChartId: 12,
-              books: 84
+              BookId: 202
           },
           {
               ChartId: 12,
-              books: 202
+              BookId: 282
           },
           {
               ChartId: 12,
-              books: 282
+              BookId: 163
           },
           {
               ChartId: 12,
-              books: 163
+              BookId: 64
           },
           {
               ChartId: 12,
-              books: 64
+              BookId: 279
           },
           {
               ChartId: 12,
-              books: 279
+              BookId: 134
           },
           {
               ChartId: 12,
-              books: 134
+              BookId: 194
           },
           {
               ChartId: 12,
-              books: 194
+              BookId: 148
           },
           {
               ChartId: 12,
-              books: 148
+              BookId: 32
           },
           {
               ChartId: 12,
-              books: 32
+              BookId: 285
           },
           {
               ChartId: 12,
-              books: 285
+              BookId: 7
           },
           {
               ChartId: 12,
-              books: 7
+              BookId: 120
           },
           {
               ChartId: 12,
-              books: 120
+              BookId: 261
           },
           {
               ChartId: 12,
-              books: 261
+              BookId: 136
           },
           {
               ChartId: 12,
-              books: 136
+              BookId: 162
           },
           {
               ChartId: 12,
-              books: 162
+              BookId: 222
           },
           {
               ChartId: 12,
-              books: 222
+              BookId: 13
           },
           {
               ChartId: 12,
-              books: 13
+              BookId: 183
           },
           {
               ChartId: 12,
-              books: 183
+              BookId: 177
           },
           {
               ChartId: 12,
-              books: 177
+              BookId: 220
           },
           {
               ChartId: 12,
-              books: 220
+              BookId: 290
           },
           {
               ChartId: 12,
-              books: 290
+              BookId: 271
           },
           {
               ChartId: 12,
-              books: 271
+              BookId: 49
           },
           {
               ChartId: 12,
-              books: 49
+              BookId: 85
           },
           {
               ChartId: 12,
-              books: 85
+              BookId: 240
           },
           {
               ChartId: 12,
-              books: 240
+              BookId: 203
           },
           {
               ChartId: 12,
-              books: 203
+              BookId: 113
           },
           {
               ChartId: 12,
-              books: 113
+              BookId: 118
           },
           {
               ChartId: 12,
-              books: 118
+              BookId: 154
           },
           {
               ChartId: 12,
-              books: 154
+              BookId: 45
           },
           {
               ChartId: 12,
-              books: 45
+              BookId: 40
           },
           {
               ChartId: 12,
-              books: 40
+              BookId: 145
           },
           {
               ChartId: 12,
-              books: 145
+              BookId: 110
           },
           {
               ChartId: 12,
-              books: 110
+              BookId: 211
           },
           {
               ChartId: 12,
-              books: 211
+              BookId: 193
           },
           {
               ChartId: 12,
-              books: 193
+              BookId: 83
           },
           {
               ChartId: 12,
-              books: 83
+              BookId: 62
           },
           {
               ChartId: 12,
-              books: 62
+              BookId: 168
           },
           {
               ChartId: 12,
-              books: 168
+              BookId: 204
           },
           {
               ChartId: 12,
-              books: 204
+              BookId: 14
           },
           {
               ChartId: 12,
-              books: 14
+              BookId: 9
           },
           {
               ChartId: 12,
-              books: 9
-          },
-          {
-              ChartId: 12,
-              books: 27
+              BookId: 27
           },
           {
               ChartId: 13,
-              books: 56
+              BookId: 56
           },
           {
               ChartId: 13,
-              books: 55
+              BookId: 55
           },
           {
               ChartId: 13,
-              books: 75
+              BookId: 75
           },
           {
               ChartId: 13,
-              books: 62
+              BookId: 62
           },
           {
               ChartId: 13,
-              books: 68
+              BookId: 68
           },
           {
               ChartId: 13,
-              books: 78
+              BookId: 78
           },
           {
               ChartId: 13,
-              books: 79
+              BookId: 79
           },
           {
               ChartId: 14,
-              books: 27
+              BookId: 27
           },
           {
               ChartId: 14,
-              books: 273
+              BookId: 273
           },
           {
               ChartId: 14,
-              books: 43
+              BookId: 43
           },
           {
               ChartId: 14,
-              books: 84
+              BookId: 84
           },
           {
               ChartId: 14,
-              books: 81
+              BookId: 81
           },
           {
               ChartId: 14,
-              books: 182
+              BookId: 182
           },
           {
               ChartId: 14,
-              books: 94
+              BookId: 94
           },
           {
               ChartId: 14,
-              books: 91
+              BookId: 91
           },
           {
               ChartId: 14,
-              books: 137
+              BookId: 137
           },
           {
               ChartId: 14,
-              books: 58
+              BookId: 58
           },
           {
               ChartId: 14,
-              books: 50
+              BookId: 50
           },
           {
               ChartId: 14,
-              books: 257
+              BookId: 257
           },
           {
               ChartId: 14,
-              books: 267
+              BookId: 267
           },
           {
               ChartId: 14,
-              books: 166
+              BookId: 166
           },
           {
               ChartId: 14,
-              books: 121
+              BookId: 121
           },
           {
               ChartId: 14,
-              books: 13
+              BookId: 13
           },
           {
               ChartId: 14,
-              books: 101
+              BookId: 101
           },
           {
               ChartId: 14,
-              books: 152
+              BookId: 152
           },
           {
               ChartId: 14,
-              books: 29
+              BookId: 29
           },
           {
               ChartId: 14,
-              books: 16
+              BookId: 16
           },
           {
               ChartId: 14,
-              books: 278
+              BookId: 278
           },
           {
               ChartId: 14,
-              books: 71
+              BookId: 71
           },
           {
               ChartId: 14,
-              books: 87
+              BookId: 87
           },
           {
               ChartId: 14,
-              books: 34
+              BookId: 34
           },
           {
               ChartId: 14,
-              books: 67
+              BookId: 67
           },
           {
               ChartId: 15,
-              books: 54
+              BookId: 54
           },
           {
               ChartId: 15,
-              books: 86
+              BookId: 86
           },
           {
               ChartId: 15,
-              books: 73
+              BookId: 73
           },
           {
               ChartId: 15,
-              books: 82
+              BookId: 82
           },
           {
               ChartId: 15,
-              books: 51
+              BookId: 51
           },
           {
               ChartId: 16,
-              books: 131
+              BookId: 131
           },
           {
               ChartId: 16,
-              books: 155
+              BookId: 155
           },
           {
               ChartId: 16,
-              books: 53
+              BookId: 53
           },
           {
               ChartId: 16,
-              books: 40
+              BookId: 40
           },
           {
               ChartId: 16,
-              books: 65
+              BookId: 65
           },
           {
               ChartId: 16,
-              books: 276
+              BookId: 276
           },
           {
               ChartId: 16,
-              books: 273
+              BookId: 273
           },
           {
               ChartId: 16,
-              books: 74
+              BookId: 74
           },
           {
               ChartId: 16,
-              books: 178
+              BookId: 178
           },
           {
               ChartId: 16,
-              books: 252
+              BookId: 252
           },
           {
               ChartId: 16,
-              books: 142
+              BookId: 142
           },
           {
               ChartId: 16,
-              books: 2
+              BookId: 2
           },
           {
               ChartId: 16,
-              books: 5
+              BookId: 5
           },
           {
               ChartId: 16,
-              books: 117
+              BookId: 117
           },
           {
               ChartId: 16,
-              books: 236
+              BookId: 236
           },
           {
               ChartId: 16,
-              books: 76
+              BookId: 76
           },
           {
               ChartId: 16,
-              books: 228
+              BookId: 228
           },
           {
               ChartId: 16,
-              books: 72
+              BookId: 72
           },
           {
               ChartId: 16,
-              books: 114
+              BookId: 114
           }
       ];
 

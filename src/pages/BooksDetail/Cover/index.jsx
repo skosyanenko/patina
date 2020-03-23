@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import ArrowBackwards from 'components/ArrowBackwards';
 import BookInform from 'components/BookInform';
-import {letters} from '../../../config/config';
+import {letters, returnAuthor} from '../../../config/config';
 import './index.sass';
 
 class Cover extends Component {
@@ -16,8 +16,6 @@ class Cover extends Component {
         const letter = this.letterSubstr(name, 1);
         return letters.find(item => item.letter === letter).id;
     };
-
-    returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');
 
     returnDate = (authors = []) => {
         return authors.reduce((acc, {birth, death}) => {
@@ -51,7 +49,7 @@ class Cover extends Component {
                             </Fragment>
                         ))}
                         <div className="cover__wrapper-author">
-                            <h3 className="cover__wrapper-name">{this.returnAuthor(authors)}</h3>
+                            <h3 className="cover__wrapper-name">{returnAuthor(authors)}</h3>
                             <div className="cover__wrapper-date">{this.returnDate(authors)}</div>
                         </div>
                     </>

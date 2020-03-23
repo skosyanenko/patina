@@ -12,7 +12,7 @@ class Selection extends Component {
 
     componentDidMount() {
         this.props.updateState(this.state.perPage, this.state.valuesDropdown);
-        this.props.fetchData('/api/v1/tops')
+        this.props.fetchData('/api/v1/charts')
             .then(() => this.setState({loading: false}))
             .catch(err => console.log(err));
     }
@@ -26,12 +26,13 @@ class Selection extends Component {
         return(
             <div className="container__container-top">
                 <div className="selection">
-                    {items && items.map((top, key) => (
-                        <Link to={`/tops/${top.id}`} key={key} className="selection__link">
-                            {top.title}
+                    {items && items.map((chart, key) => (
+                        <Link to={`/charts/${chart.id}`} key={key} className="selection__link">
+                            {chart.title}
                         </Link>
                     ))}
                 </div>
+
                 {this.props.pagination || ''}
             </div>
         );
