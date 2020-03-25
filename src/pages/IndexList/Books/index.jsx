@@ -66,7 +66,7 @@ class Books extends Component {
                     <div className="books" key={key}>
                         <div className="books__text">
                             <h1 className="books__text-title">{book.title}</h1>
-                                <BookInform bookId={book.id}/>
+                                <BookInform categories={book.categories}/>
                             <p className="books__text-description">
                                 {book.shortDescription}
                             </p>

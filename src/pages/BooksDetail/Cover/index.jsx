@@ -54,7 +54,7 @@ class Cover extends Component {
                         </div>
                     </>
                 </div>
-                <BookInform categoories={categories}/>
+                <BookInform categories={categories}/>
             </div>
         );
     }

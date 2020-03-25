@@ -7,27 +7,21 @@ import './index.sass';
 
 class BookInform extends Component {
 
-    fetchBooks = () => {
-
-    };
-
     render(){
         const {categories} = this.props;
         return (
             <div className="book-inform">
                 <div className="tags">
-                    <div className="indexBook__about-tags">
-                        {categories && categories.map((category, key) => (
-                            <Link
-                                to={'/search'}
-                                className="tags__elem"
-                                key={key}
-                                onClick={this.fetchBooks}
-                            >
-                                {category}
-                            </Link>
-                        ))}
-                    </div>
+                    {categories && categories.map((category, key) => (
+                        <Link
+                            to={'/search'}
+                            className="tags__elem"
+                            key={key}
+                            onClick={this.fetchBooks}
+                        >
+                            {category.title}
+                        </Link>
+                    ))}
                 </div>
                 <div className="book-inform__container">
                     <Rating/>

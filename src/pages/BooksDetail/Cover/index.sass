@@ -9,10 +9,6 @@
     +maxwidth(1300px)
         max-width: 100%
 
-    .book-inform
-        margin-right:  auto
-        margin-left: auto
-
     &__wrapper
         width: 100%
         margin-top: 40px
@@ -93,18 +89,16 @@
 
         &-name
             @include style-text(26px, 3px, $waverlyExtra, $black, 100%, bold, true)
-            max-width: 120px
+            max-width: fit-content
             margin-bottom: 40px
             text-transform: uppercase
             +maxwidth($mobail)
-                max-width: 100px
                 margin-bottom: 30px
             +maxwidth($sm-mobail)
-                max-width: 90px
                 margin-bottom: 20px
 
         &-date
             @include style-text(26px, 3px, $waverly, $black, 100%, 100, true)
-            width: 115px
+            width: 120px
 
 
