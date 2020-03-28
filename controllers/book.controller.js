@@ -84,7 +84,17 @@ class BooksController extends Controller {
     }
 
     booksMainPage = async(req, res) => {
-        return await Book.findAll({ limit: 10 })
+        return await Book.findAll({
+                limit: 10,
+                include: [{
+                    model: Category,
+                    as: 'categories',
+                    attributes: ['id', 'title'],
+                    through: {
+                        attributes: []
+                    }
+                }]
+            })
             .then(result => res.status(200).json(result))
             .catch(err => console.log('Не удалось получить элементы \n', err));
     }
