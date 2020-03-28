@@ -4,34 +4,37 @@ import Writer from '../Writer';
 import CommentBlock from 'components/CommentBlock';
 import './index.sass';
 
-const View_1 = ({review, textLength}) => {
+const ViewHorizontal = ({book, title, likes, date, description, id, textLength}) => {
     return (
         <>
             <div className="review-wrapper">
                 <div className="review-wrapper__wrap">
-                    <Writer/>
+                    <Writer quote={book.quote}
+                            authors={book.authors}
+                            image={book.image}
+                    />
                     <div className="review-wrapper__text">
-                        <h1 className="review-wrapper__text-title">{review.title}</h1>
-                        <span className="review-wrapper__text-subtitle">{review.title}</span>
+                        <h1 className="review-wrapper__text-title">{book.title}</h1>
+                        <span className="review-wrapper__text-subtitle">{title}</span>
                     </div>
                 </div>
                 <div className="review-wrapper__page">
                     <div className="review-wrapper__page-triangle"/>
-                    <h1 className="review-wrapper__page-title">{review.title}</h1>
+                    <h1 className="review-wrapper__page-title">{book.title}</h1>
                     <div className="review-wrapper__page-subtitle">
-                        <span>{review.title}</span>
+                        <span>{title}</span>
                     </div>
                     <div className="review-wrapper__page-text">
                         <div className="review-wrapper__user">
                             <UserInfo textLength={textLength}
-                                      likes={review.likes}
-                                      date={review.date}
+                                      likes={likes}
+                                      date={date}
                             />
                         </div>
                         <div className="review-wrapper__description">
-                            {review.description && Object.keys(review.description).map(item => (
-                                <p className={`review-wrap__${item}`} key={item}>
-                                    {review.description[item]}
+                            {description && description.map(item => (
+                                <p className={`review-wrap__${item.type}`} key={item}>
+                                    {item.data.text}
                                 </p>
                             ))}
                         </div>
@@ -39,9 +42,9 @@ const View_1 = ({review, textLength}) => {
                     </div>
                 </div>
             </div>
-            <CommentBlock reviewId={review.id}/>
+            <CommentBlock reviewId={id}/>
         </>
     )
 };
 
-export default View_1;
+export default ViewHorizontal;

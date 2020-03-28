@@ -83,8 +83,49 @@ export const letters = [
 
 export const sortParams = [
     { title: 'названию', key: 'title' },
-    { title: 'автору', key: 'author' },
+    { title: 'автору', key: 'authors' },
     { title: 'рейтингу', key: 'rating' },
 ];
 
 export const returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');
+
+export const countLetters = (description, date) => {
+    const objValues = Object.keys(description).map(x => description[x]);
+    const textLength = Array.from(objValues)
+        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+    const datePublish = new Date(date).toLocaleDateString();
+    this.setState(({
+        textLength,
+        datePublish
+    }))
+};
+
+export const returnDate = (authors = []) => {
+    return authors.reduce((acc, {birth, death}) => {
+        const birthDate = birth.slice(0, -6);
+        const deathDate = death ? death.slice(0, -6) : 'н.в.';
+        acc.push(`${birthDate} - ${deathDate}`);
+
+        return acc;
+    }, []).join(', ');
+};
+
+export const returnImage = (authors = []) => authors.map(({picture}) => picture).slice(0, -1);
+
+export const formatType = (type, value) => {
+    switch (type) {
+        case 'Paragraph':
+        case 'List':
+            return <div className="review-wrap__paragraph">{value}</div>;
+        case 'Marker':
+            return <mark>{value}</mark>;
+        case 'Quote':
+            return <p className="review-wrap__quote">{value}</p>;
+        case 'Image':
+            return <img src="images/topImage/1.jpg" alt="" className="review-wrap__image"/>;
+        case 'Header':
+            return <h3 className="review-wrap__heading">{value}</h3>;
+        case 'Delimiter':
+            return <p className="review-wrap__delimiter">* * *</p>;
+    }
+};

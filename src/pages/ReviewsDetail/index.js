@@ -1,67 +1,60 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import ArrowBackwards from 'components/ArrowBackwards';
-import View_1 from './Views/View_1';
-import View_2 from './Views/View_2';
+import ViewHorizontal from './Views/ViewHorizontal';
+import ViewVertical from './Views/ViewVertical';
 import axios from 'axios';
 
 class ReviewPage extends Component {
     state = {
-        currentReview: {}
+        currentReview: [],
+        textLength: null,
+        datePublish: null
     };
 
-    viewSwitcher = view => {
-        switch (view) {
-            case 0:
-                return View_1;
-            case 1:
-                return View_2;
-            default:
-                return '';
-        }
-    };
+    componentDidMount() {
+        this.fetchCurrentReview();
+    }
 
     fetchCurrentReview = async () => {
         const { id } = this.props.match.params;
 
-        return await axios.get(`/api/v1/reviews/${id}`)
+        return await axios.get(`/api/v1/review/${id}`)
             .then(res => {
                 if (res.data) {
-                    return res.data;
-                }
+                    this.setState({currentReview: res.data})}
             })
             .catch(err => {
                 console.log('Ошибка получения элементов из бд' + err)
             });
     };
 
-    componentDidMount() {
-        this.fetchCurrentReview().then(res => {
-            this.setState({currentReview: res})
-        });
-    }
+    // countLetters = (description, date) => {
+    //     const objValues = Object.keys(description).map(x => x.data.text[x]);
+    //     console.log(objValues)
+    //     const textLength = Array.from(objValues)
+    //       .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+    //     const datePublish = new Date(date).toLocaleDateString();
+    //     this.setState(({
+    //         textLength,
+    //         datePublish
+    //     }))
+    // };
 
     render () {
-        const {currentReview} = this.state;
+        const {currentReview, textLength, datePublish} = this.state;
 
         return(
             <>
                 <Link to="/reviews">
                     <ArrowBackwards/>
                 </Link>
-                {currentReview && currentReview.map((item, key) => {
-                    const Component = this.viewSwitcher(item.viewType);
-                    const objValues = Object.keys(item.description).map(x => item.description[x]);
-                    const textLength = Array.from(objValues)
-                        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
-                    return(
-                        <Component
-                            key={key}
-                            review={currentReview}
-                            textLength={textLength}
-                        />
-                    )
-                })}
+                {currentReview.viewType === 0
+                    ?
+                    <ViewHorizontal {...currentReview} date={datePublish} textLength={textLength}/>
+                    :
+                    <ViewVertical {...currentReview} date={datePublish} textLength={textLength}/>
+                }
             </>
         )
     }

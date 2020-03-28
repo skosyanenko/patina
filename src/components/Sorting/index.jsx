@@ -11,7 +11,7 @@ class Sorting extends Component {
         }), () => {
             this.props.hook('sorting', this.state.active);
         });
-    }
+    };
 
     render() {
         const {active} = this.state;

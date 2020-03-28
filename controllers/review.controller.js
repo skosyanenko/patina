@@ -1,4 +1,4 @@
-import { Sequelize } from '../db/models';
+import {Chart, Sequelize} from '../db/models';
 import Controller from './controller';
 import { Book, Review, Author } from '../db/models';
 

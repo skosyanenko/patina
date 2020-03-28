@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import ArrowBackwards from 'components/ArrowBackwards';
 import BookInform from 'components/BookInform';
-import {letters, returnAuthor} from '../../../config/config';
+import {letters, returnAuthor, returnDate} from '../../../config/config';
 import './index.sass';
 
 class Cover extends Component {
@@ -15,16 +15,6 @@ class Cover extends Component {
     letterSwitcher = (name) => {
         const letter = this.letterSubstr(name, 1);
         return letters.find(item => item.letter === letter).id;
-    };
-
-    returnDate = (authors = []) => {
-        return authors.reduce((acc, {birth, death}) => {
-            const birthDate = birth.slice(0, -6);
-            const deathDate = death ? death.slice(0, -6) : 'н.в.';
-            acc.push(`${birthDate} - ${deathDate}`);
-
-            return acc;
-        }, []).join(', ');
     };
 
     render() {
@@ -50,7 +40,7 @@ class Cover extends Component {
                         ))}
                         <div className="cover__wrapper-author">
                             <h3 className="cover__wrapper-name">{returnAuthor(authors)}</h3>
-                            <div className="cover__wrapper-date">{this.returnDate(authors)}</div>
+                            <div className="cover__wrapper-date">{returnDate(authors)}</div>
                         </div>
                     </>
                 </div>

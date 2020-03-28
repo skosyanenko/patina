@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import sortBy from 'lodash.sortby';
-import {sortParams} from 'config/config';
+import {sortParams} from '../../../config/config';
 import Loader from '../../../components/Loader';
 import './index.sass';
 
@@ -41,7 +41,7 @@ class ListBooks extends Component {
             const {key} = sortParams.find(item => item.title === sorting);
             const sorted = sortBy(data, [key]);    
             return filterData(sorted);
-        } 
+        }
 
         filterData(data);
     };
