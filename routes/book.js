@@ -88,6 +88,24 @@ router.get(
 );
 
 /**
+ * @route GET /api/v1/searchBook
+ * @group books
+ */
+router.get(
+    '/api/v1/search-title',
+    bookController.searchByTitle,
+);
+
+/**
+ * @route GET /api/v1/searchBook
+ * @group books
+ */
+router.get(
+    '/api/v1/search-category',
+    bookController.searchByCategory,
+);
+
+/**
  * @route DELETE /api/v1/books/:id
  * @group books
  * @param {integer} id.required - id

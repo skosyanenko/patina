@@ -1,4 +1,5 @@
-import { Sequelize } from '../db/models';
+import { Sequelize, sequelize } from '../db/models';
+
 import Controller from './controller';
 import { Book, Category, Author, Film } from '../db/models';
 
@@ -106,6 +107,39 @@ class BooksController extends Controller {
                 attributes: ['id', 'title']
             })
             .then(result => res.status(200).json(result))
+            .catch(err => console.log('Не удалось получить элементы \n', err));
+    }
+
+    searchByTitle = async(req, res) => {
+        return await sequelize.query(`
+                    SELECT "id", "title" FROM "Books" WHERE _search @@ plainto_tsquery('russian', :query);
+                `, {
+                model: Book,
+                replacements: { query: req.query.q }
+            })
+            .then(result => res.status(200).json(result))
+            .catch(err => console.log('Не удалось получить элементы \n', err));
+    }
+
+    searchByCategory = async(req, res) => {
+        return await Category.findOne({
+                where: { id: req.params.id }
+            })
+            .then(category => {
+                category.getBooks({
+                        attributes: ['id', 'title', 'coverImage', 'weight', 'ratingTotal'],
+                        include: [{
+                            model: Author,
+                            as: 'authors',
+                            attributes: ['id', 'name'],
+                            through: {
+                                attributes: []
+                            }
+                        }]
+                    })
+                    .then(result => res.status(200).json(result))
+
+            })
             .catch(err => console.log('Не удалось получить элементы \n', err));
     }
 }
