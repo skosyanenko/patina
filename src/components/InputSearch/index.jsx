@@ -1,35 +1,56 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import './index.sass';
-const options = ['Мастер и Маргарита','Мыло', 'Мло', 'Яблоко', 'Стол', 'Солнце', 'Кус'];
+//const options = ['Мастер и Маргарита','Мыло', 'Мло', 'Яблоко', 'Стол', 'Солнце', 'Кус'];
 
 class InputSearch extends Component {
     state = {
         activeOption: 0,
         filteredOptions: [],
         showOptions: false,
-        userInput: '',
-        books: []
+        value: '',
+        options: null,
+        loading: false
     };
 
-    onChange = e => {
-        const userInput = e.currentTarget.value;
+    search = async (val) => {
+        console.log(val)
+        // this.setState({ loading: true });
+        // const res = await axios(`/api/v1/search-title?q=${val}`);
+        // const options = await res.data;
 
-        const filteredOptions = options.filter(
-            (optionName) =>
-                optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-        );
+        //this.setState({ options, loading: false });
+        return await axios.get(`/api/v1/search-title?q=${val}`)
+            .then(res => {
+                if (res.data) {
+                    this.setState({options: res.data, loading: false})
+                }
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
+    };
 
-        if (this.state.filteredOptions) {
-            this.setState(prevState =>({
-                showOptions: !prevState.showOptions
-            }))
-        }
+    onChange = async e => {
+        const value = e.currentTarget.value;
+        this.search(e.target.value);
+
+        // const filteredOptions = this.state.options.filter(
+        //     (optionName) =>
+        //         optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+        // );
+        //
+        // if (this.state.filteredOptions) {
+        //     this.setState(prevState =>({
+        //         showOptions: !prevState.showOptions
+        //     }))
+        // }
 
         this.setState({
             activeOption: 0,
-            filteredOptions,
+            //filteredOptions,
             showOptions: true,
-            userInput: e.currentTarget.value
+            value: e.currentTarget.value
         });
     };
 
@@ -68,11 +89,11 @@ class InputSearch extends Component {
     render() {
         const {classNamePrefix} = this.props;
 
-        const {activeOption, filteredOptions, showOptions, userInput} = this.state;
+        const {activeOption, filteredOptions, showOptions, value} = this.state;
 
         let optionList;
 
-        if (showOptions && userInput) {
+        if (showOptions && value) {
             if (filteredOptions.length) {
                 optionList = (
                     <ul className="quest__options">
@@ -99,10 +120,10 @@ class InputSearch extends Component {
         return(
             <div className={`quest ${classNamePrefix || ''}`}>
                 <input type="text"
-                       className={`quest__wrapper ${showOptions && filteredOptions.length > 0 && userInput.length ? 'active' : ''}`}
-                       onChange={this.onChange}
+                       className={`quest__wrapper ${showOptions && filteredOptions.length > 0 && value.length ? 'active' : ''}`}
+                       onChange={e => this.onChange(e)}
                        onKeyDown={this.onKeyDown}
-                       value={userInput}
+                       value={value}
                 />
                 <div className="quest__image"/>
                 <div className="quest__autocomplete">

@@ -36,13 +36,12 @@
         flex-direction: column
         position: relative
 
-    &__description
+    &__wrap
         max-width: 40%
         width: 100%
         padding: 15px
         background: $white
         opacity: 0.78
-        @include style-text(16px, 1px, $openSans, $black, 120%, 300, false)
         margin-left: auto
         position: absolute
         right: 0
@@ -52,8 +51,17 @@
             max-width: 100%
             padding: 10px
 
+        &-description
+            @include style-text(16px, 1px, $openSans, $black, 120%, 300, false)
+            +maxwidth($mobail)
+                overflow: hidden
+                text-overflow: ellipsis
+                display: -webkit-box
+                -webkit-line-clamp: 10
+                -webkit-box-orient: vertical
+
     &__title
-        max-width: 440px
+        max-width: 450px
         padding: 10px 15px
         background: $white
         @include style-text(40px, 8px, $vogue, $black, 100%, 500, false)

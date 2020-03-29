@@ -5,18 +5,24 @@ import './index.sass';
 
 class Author extends Component {
 
+    letterSubstr = (name, surname) => (name.substr(0, 1) + surname.substr(0, 1));
+
     render() {
-        const {isTimeToRead, textLength} = this.props;
+        const {isTimeToRead, textLength, date, avatar, firstName, lastName} = this.props;
 
         return (
             <div className="author">
                 <div className="author__avatar">
-                    <img src="" alt="" className="author__avatar-img"/>
-                    <div className="author__avatar-name">ТМ</div>
+                    {avatar
+                        ?
+                        <img src={avatar} alt="" className="author__avatar-img"/>
+                        :
+                        <div className="author__avatar-name">{this.letterSubstr('Mark', 'Jacobs')}</div>
+                    }
                 </div>
                 <div className="author__inform">
                     <span className="author__inform-name">Тетя Мотя</span>
-                    <span className="author__inform-date">01.11.19</span>
+                    <span className="author__inform-date">{date}</span>
                     {isTimeToRead &&
                         <TimeToRead textLength={textLength}/>
                     }
@@ -27,7 +33,8 @@ class Author extends Component {
 }
 
 Author.propTypes = {
-    isTimeToRead: PropTypes.bool.isRequired
+    isTimeToRead: PropTypes.bool.isRequired,
+    date:         PropTypes.string.isRequired
 };
 
 export default Author;

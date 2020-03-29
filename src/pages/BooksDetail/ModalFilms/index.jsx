@@ -29,7 +29,9 @@ class ModalFilms extends Component {
                                 <div className="films__wrapper" key={key}>
                                     <h1 className="films__title">{film.title}</h1>
                                     <img src={film.image} alt="" className="films__img"/>
-                                    <span className="films__description">{film.description}</span>
+                                    <div className="films__wrap">
+                                        <div className="films__wrap-description">{film.description}</div>
+                                    </div>
                                 </div>
                             ))}
                         </Slider>

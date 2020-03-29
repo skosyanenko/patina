@@ -26,6 +26,7 @@ export const routes = [
     { path: '/news', component: NewsPage },
     { path: '/news/:id', component: NewPage },
     { path: '/search', component: SearchPage },
+    { path: '/search/:id', component: SearchPage },
     { path: '/form/:type', component: AddForm },
     { path: '/profile/:page', component: Profile },
     { path: '/control', component: ControlPage },

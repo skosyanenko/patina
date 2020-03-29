@@ -3,7 +3,6 @@ import Article from './Article';
 import Image from './Image';
 import CommentBlock from '../../components/CommentBlock';
 import axios from 'axios';
-import {countLetters} from '../../config/config';
 
 class NewPage extends Component {
     state = {
@@ -19,12 +18,23 @@ class NewPage extends Component {
             .then(res => {
                 if (res.data) {
                     this.setState({currentNews: res.data}, () =>
-                        countLetters(this.state.currentNews.description, this.state.currentNews.createdAt))
+                        this.countLetters(this.state.currentNews.description, this.state.currentNews.createdAt))
                 }
             })
             .catch(err => {
                 console.log('Ошибка получения элементов из бд' + err)
             });
+    };
+
+    countLetters = (description, date) => {
+        const objValues = Object.keys(description).map(x => description[x]);
+        const textLength = Array.from(objValues)
+          .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+        const datePublish = new Date(date).toLocaleDateString();
+        this.setState(({
+            textLength,
+            datePublish
+        }))
     };
 
     componentDidMount() {

@@ -89,17 +89,6 @@ export const sortParams = [
 
 export const returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');
 
-export const countLetters = (description, date) => {
-    const objValues = Object.keys(description).map(x => description[x]);
-    const textLength = Array.from(objValues)
-        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
-    const datePublish = new Date(date).toLocaleDateString();
-    this.setState(({
-        textLength,
-        datePublish
-    }))
-};
-
 export const returnDate = (authors = []) => {
     return authors.reduce((acc, {birth, death}) => {
         const birthDate = birth.slice(0, -6);

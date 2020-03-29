@@ -88,7 +88,7 @@ router.get(
 );
 
 /**
- * @route GET /api/v1/searchBook
+ * @route GET /api/v1/search-title
  * @group books
  */
 router.get(
@@ -97,11 +97,11 @@ router.get(
 );
 
 /**
- * @route GET /api/v1/searchBook
+ * @route GET /api/v1/search-category
  * @group books
  */
 router.get(
-    '/api/v1/search-category',
+    '/api/v1/search-category/:id',
     bookController.searchByCategory,
 );
 

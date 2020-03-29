@@ -98,7 +98,7 @@ class BooksController extends Controller {
             })
             .then(result => res.status(200).json(result))
             .catch(err => console.log('Не удалось получить элементы \n', err));
-    }
+    };
 
     booksRightMenu = async(req, res) => {
         return await Book.findAll({
@@ -108,18 +108,25 @@ class BooksController extends Controller {
             })
             .then(result => res.status(200).json(result))
             .catch(err => console.log('Не удалось получить элементы \n', err));
-    }
+    };
 
     searchByTitle = async(req, res) => {
-        return await sequelize.query(`
-                    SELECT "id", "title" FROM "Books" WHERE _search @@ plainto_tsquery('russian', :query);
-                `, {
-                model: Book,
-                replacements: { query: req.query.q }
+        const query = `SELECT "id", "coverImage", "title", "weight", "ratingTotal" 
+                    FROM "Books" WHERE _search @@ plainto_tsquery('russian', :query);`;
+        const bookIds = await sequelize.query(query, {replacements: { query: req.query.q }});
+        const result = await Promise.all(bookIds.map(id => {
+            return Book.findOne({
+                where: {id},
+                include: [{
+                    model: Author,
+                    as: 'authors',
+                    attributes: ['id', 'name'],
+                    through: { attributes: [] }
+                }]
             })
-            .then(result => res.status(200).json(result))
-            .catch(err => console.log('Не удалось получить элементы \n', err));
-    }
+        }));
+        return res.status(200).json(result);
+    };
 
     searchByCategory = async(req, res) => {
         return await Category.findOne({
