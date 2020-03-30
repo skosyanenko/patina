@@ -11,6 +11,13 @@
     &__result
         display: flex
         flex-wrap: wrap
+        min-height: 500px
+        +maxwidth(1030px)
+            min-height: 930px
+        +maxwidth($tablet)
+            min-height: 650px
+        +maxwidth($sm-mobail)
+            min-height: 220px
 
 .results
     max-height: 165px
@@ -30,11 +37,13 @@
 
     &__img
         height: 165px
-        width: 105px
+        min-width: 105px
+        max-width: 105px
         margin-right: 20px
         +maxwidth($tablet)
             height: 150px
-            width: 90px
+            min-width: 90px
+            max-width: 90px
             margin-right: 15px
         +maxwidth($mobail)
             margin-right: 10px

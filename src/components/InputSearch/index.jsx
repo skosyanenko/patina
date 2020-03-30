@@ -1,84 +1,84 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import './index.sass';
-//const options = ['Мастер и Маргарита','Мыло', 'Мло', 'Яблоко', 'Стол', 'Солнце', 'Кус'];
 
 class InputSearch extends Component {
     state = {
         activeOption: 0,
-        filteredOptions: [],
         showOptions: false,
         value: '',
-        options: null,
-        loading: false
+        options: [],
+        loading: false,
+        result: ''
     };
 
     search = async (val) => {
-        console.log(val)
-        // this.setState({ loading: true });
-        // const res = await axios(`/api/v1/search-title?q=${val}`);
-        // const options = await res.data;
 
-        //this.setState({ options, loading: false });
-        return await axios.get(`/api/v1/search-title?q=${val}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({options: res.data, loading: false})
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
+        const { fetchData } = this.props;
+
+        return await fetchData(`/api/v1/search-title?q=${val}`)
+            .then(() => this.setState({ options: this.props.items}))
+            .catch(err => console.log(err));
     };
 
     onChange = async e => {
-        const value = e.currentTarget.value;
         this.search(e.target.value);
-
-        // const filteredOptions = this.state.options.filter(
-        //     (optionName) =>
-        //         optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-        // );
-        //
-        // if (this.state.filteredOptions) {
-        //     this.setState(prevState =>({
-        //         showOptions: !prevState.showOptions
-        //     }))
-        // }
 
         this.setState({
             activeOption: 0,
-            //filteredOptions,
             showOptions: true,
-            value: e.currentTarget.value
-        });
+            value: e.currentTarget.value,
+            loading: true
+        }, () => {
+            this.props.hook('loading', this.state.loading);
+        })
     };
 
     onClick = e => {
         this.setState({
             activeOption: 0,
-            filteredOptions: [],
             showOptions: false,
-            userInput: e.currentTarget.innerText
+            value: e.currentTarget.innerText,
+            loading: false
+        }, () => {
+            this.search(this.state.value);
+            this.props.hook('loading', this.state.loading);
         });
     };
 
     onKeyDown = e => {
-        const {activeOption, filteredOptions} = this.state;
+        const {activeOption, options} = this.state;
         switch(e.keyCode) {
             case 13:
-                this.setState({
-                    activeOption: 0,
-                    showOptions: false,
-                    userInput: filteredOptions[activeOption]
-                });
+                if(options.length > 0) {
+                    this.setState({
+                        activeOption: 0,
+                        showOptions: false,
+                        value: options[activeOption].title,
+                        loading: false,
+                        result: 'результаты поиска:'
+                    }, () => {
+                        this.search(this.state.value);
+                        this.props.hook('loading', this.state.loading);
+                        this.props.hook('result', this.state.result);
+                    });
+
+                } else {
+                    this.setState({
+                        loading: false,
+                        result: 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.'
+                    }, () => {
+                        this.props.hook('loading', this.state.loading);
+                        this.props.hook('result', this.state.result);
+                    });;
+                }
+
             case 38:
                 if (activeOption === 0) {
                     return;
                 }
                 this.setState({ activeOption: activeOption - 1 });
             case 40:
-                if (activeOption === filteredOptions.length - 1) {
+                if (activeOption === options.length - 1) {
                     return;
                 }
                 this.setState({ activeOption: activeOption + 1 });
@@ -89,17 +89,17 @@ class InputSearch extends Component {
     render() {
         const {classNamePrefix} = this.props;
 
-        const {activeOption, filteredOptions, showOptions, value} = this.state;
+        const {activeOption, options, showOptions, value} = this.state;
 
         let optionList;
 
         if (showOptions && value) {
-            if (filteredOptions.length) {
+            if (options && options.length) {
                 optionList = (
                     <ul className="quest__options">
-                        {filteredOptions.map((optionName, index) => {
+                        {options.map((optionName, key) => {
                             let className;
-                            if (index === activeOption) {
+                            if (key === activeOption) {
                                 className = 'active';
                             }
                             return (
@@ -107,7 +107,7 @@ class InputSearch extends Component {
                                     key={optionName}
                                     onClick={this.onClick}
                                 >
-                                    {optionName}
+                                    {optionName.title}
                                 </li>
                             );
                         })}
@@ -120,10 +120,11 @@ class InputSearch extends Component {
         return(
             <div className={`quest ${classNamePrefix || ''}`}>
                 <input type="text"
-                       className={`quest__wrapper ${showOptions && filteredOptions.length > 0 && value.length ? 'active' : ''}`}
+                       className={`quest__wrapper ${showOptions && options && options.length > 0 && value.length ? 'active' : ''}`}
                        onChange={e => this.onChange(e)}
                        onKeyDown={this.onKeyDown}
                        value={value}
+                       placeholder={'Напишите название книги'}
                 />
                 <div className="quest__image"/>
                 <div className="quest__autocomplete">

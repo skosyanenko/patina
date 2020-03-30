@@ -113,19 +113,22 @@ class BooksController extends Controller {
     searchByTitle = async(req, res) => {
         const query = `SELECT "id", "coverImage", "title", "weight", "ratingTotal" 
                     FROM "Books" WHERE _search @@ plainto_tsquery('russian', :query);`;
-        const bookIds = await sequelize.query(query, {replacements: { query: req.query.q }});
-        const result = await Promise.all(bookIds.map(id => {
-            return Book.findOne({
-                where: {id},
-                include: [{
-                    model: Author,
-                    as: 'authors',
-                    attributes: ['id', 'name'],
-                    through: { attributes: [] }
-                }]
-            })
-        }));
-        return res.status(200).json(result);
+        const books = await sequelize.query(query, {
+            model: Book,
+            replacements: { query: req.query.q }
+        });
+        // const result = await Promise.all(bookIds.map(id => {
+        //     return Book.findOne({
+        //         where: {id},
+        //         include: [{
+        //             model: Author,
+        //             as: 'authors',
+        //             attributes: ['id', 'name'],
+        //             through: { attributes: [] }
+        //         }]
+        //     })
+        // }));
+        return res.status(200).json(books);
     };
 
     searchByCategory = async(req, res) => {

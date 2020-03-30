@@ -39,6 +39,15 @@ router.get(
 );
 
 /**
+ * @route GET /api/v1/categories/:id
+ * @group categories
+ */
+router.get(
+    '/api/v1/categories/:id',
+    CategoryController.getOne,
+);
+
+/**
  * @route DELETE /api/v1/categories/:id
  * @group categories
  * @param {integer} id.required - id

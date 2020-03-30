@@ -7,14 +7,17 @@ import './index.sass';
 
 class ListBooks extends Component {
     state = {
-        loading: true,
+        loading: false,
         perPage: 9,
         valuesDropdown: [9, 18, 27]
     };
 
     componentDidMount() {
-        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
-        this.props.fetchData('/api/v1/books')
+        const {perPage, valuesDropdown, loading} = this.state;
+        const {updateState, fetchData} = this.props;
+
+        updateState(perPage, valuesDropdown);
+        fetchData('/api/v1/books')
             .then(() => this.setState({loading: false}))
             .catch(err => console.log(err));
     }

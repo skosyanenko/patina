@@ -32,7 +32,8 @@ class BooksPage extends Component {
 
                 <div className='container'>
                     <div className="container__container-book">
-                        <InputSearch />
+                        <InputSearch
+                        />
 
                         <Sorting hook={this.hookState}/>
 

@@ -15,7 +15,8 @@ const ReviewsPage = () => (
         />
 
         <div className="container">
-            <InputSearch classNamePrefix="quest--position"/>
+            <InputSearch classNamePrefix="quest--position"
+            />
 
             <ReviewsWithPagination/>
         </div>

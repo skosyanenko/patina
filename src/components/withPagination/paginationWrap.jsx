@@ -81,9 +81,9 @@ const paginationWrap = function(WrappedComponent){
                     filterData={this.filterData}
                     filterValues={filterValues}
                     filteredData={filteredData}
+                    updateState={this.updateState}
                     items={items}
                     data={data}
-                    updateState={this.updateState}
                     pagination={
                         <Pagination
                             pageCount={pageCount}
