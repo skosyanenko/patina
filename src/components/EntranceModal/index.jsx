@@ -1,13 +1,13 @@
 import React from 'react';
 import Modal from 'react-modal';
-import {Transition} from 'react-transition-group';
-import {useForm} from 'react-hook-form';
+import { Transition } from 'react-transition-group';
+import { useForm } from 'react-hook-form';
 import InputText from '../Forms/Input';
 import entry from '../Forms/Fields/entry';
 import './index.sass';
 
-const EntranceModal = ({isOpen, toggleModal}) => {
-    const {handleSubmit, register, errors} = useForm();
+const EntranceModal = ({ isOpen, toggleModal }) => {
+    const { handleSubmit, register, errors } = useForm();
 
     const onSubmit = values => {
         console.log(values);
@@ -15,7 +15,7 @@ const EntranceModal = ({isOpen, toggleModal}) => {
 
     return (
         <Transition in={isOpen} timeout={50}>
-            {state =>
+            { state =>
                 <Modal className={`modal `  + state}
                     isOpen={isOpen}
                     ariaHideApp={false}
@@ -28,7 +28,7 @@ const EntranceModal = ({isOpen, toggleModal}) => {
                         <div className="modal__wrapper-close"
                             onClick={() => toggleModal(false)}
                         />
-                        {entry.map((field, key) => (
+                        { entry.map((field, key) => (
                             <InputText
                                 key={key}
                                 {...field}

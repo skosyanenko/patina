@@ -87,6 +87,19 @@ export const sortParams = [
     { title: 'рейтингу', key: 'rating' },
 ];
 
+export const profileLinks = [
+    { title: 'Профиль', path: '/profile/home', img: 'home' },
+    { title: 'Подписки', path: '/profile/following', img: 'group' },
+    { title: 'Статистика', path: '/profile/statistic', img: 'statistic' }
+];
+
+export const counterLetters = (description) => {
+    const objValues = Object.keys(description).map(x => description[x]);
+    const textLength = Array.from(objValues)
+      .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+    return textLength;
+};
+
 export const returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');
 
 export const returnDate = (authors = []) => {
@@ -99,7 +112,17 @@ export const returnDate = (authors = []) => {
     }, []).join(', ');
 };
 
+export const getDocHeight = () => {
+    return Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+};
+
 export const returnImage = (authors = []) => authors.map(({picture}) => picture).slice(0, -1);
+
+export const returnNameLetters = (name, surname) => (name.substr(0, 1) + surname.substr(0, 1));
 
 export const formatType = (type, value) => {
     switch (type) {
@@ -116,5 +139,7 @@ export const formatType = (type, value) => {
             return <h3 className="review-wrap__heading">{value}</h3>;
         case 'Delimiter':
             return <p className="review-wrap__delimiter">* * *</p>;
+        default:
+            return '';
     }
 };

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Loader from '../../../components/Loader';
-import './index.sass';
+import Loader from 'components/Loader';
 
 class Reviews extends Component {
     state = {

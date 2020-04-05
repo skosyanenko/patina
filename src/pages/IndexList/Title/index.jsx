@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.sass';
 
-const Title = ({title, subtitle}) => {
+const Title = ({ title, subtitle }) => {
   return (
       <div className="main__wrap">
           <h1 className="main__wrap-title">{title}</h1>

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import axios from 'axios';
 import BookInform from 'components/BookInform';
@@ -16,7 +16,7 @@ class Books extends Component {
             nav1: null,
             nav2: null
         };
-    }
+    };
 
     componentDidMount() {
         this.fetchBooksMainPage();
@@ -24,7 +24,7 @@ class Books extends Component {
             nav1: this.slider1,
             nav2: this.slider2
         });
-    }
+    };
 
     fetchBooksMainPage = () => {
         axios.get('/api/v1/booksMainPage')
@@ -53,7 +53,8 @@ class Books extends Component {
             slidesToScroll: 1,
         };
 
-        const {books} = this.state;
+        const { books } = this.state;
+
         return (
             <div className="main books-wrap">
                 <Slider
@@ -62,12 +63,17 @@ class Books extends Component {
                     asNavFor={this.state.nav2}
                     className="books-slider"
                 >
-                    {books && books.map((book, key) => (
-                    <div className="books" key={key}>
+                    { books && books.map((book, key) => (
+                    <div className="books"
+                         key={key}
+                         itemType="https://schema.org/Book"
+                         itemProp="book itemReviewed"
+                         itemScope
+                    >
                         <div className="books__text">
-                            <h1 className="books__text-title">{book.title}</h1>
+                            <h1 className="books__text-title" itemProp="name">{book.title}</h1>
                                 <BookInform categories={book.categories}/>
-                            <p className="books__text-description">
+                            <p className="books__text-description" itemProp="description">
                                 {book.shortDescription}
                             </p>
                             <Link to={`/books/${book.id}`} className="button button-white">Подробнее</Link>
@@ -79,7 +85,7 @@ class Books extends Component {
                                 </svg>
                             </div>
                             <div className="books__img">
-                                <img src={book.coverImage} alt=""/>
+                                <img src={book.coverImage} alt="" itemProp="image"/>
                             </div>
                             <div className="books__arrow">
                                 <svg className="books__arrow-next" onClick={this.next}>
@@ -90,7 +96,6 @@ class Books extends Component {
                     </div>
                     ))}
                 </Slider>
-
                 <div className="books__numb">
                     <Slider
                         asNavFor={this.state.nav1}
@@ -104,11 +109,11 @@ class Books extends Component {
                         centerMode={true}
                         useTransform={true}
                     >
-                    {books && books.map((item, key) => (
-                        <div className="books__numb-dot" key={key}>
-                            {(key + 1 <= 9) ? `0${key + 1}` : key + 1}
-                        </div>
-                    ))}
+                        { books && books.map((item, key) => (
+                            <div className="books__numb-dot" key={key}>
+                                {(key + 1 <= 9) ? `0${key + 1}` : key + 1}
+                            </div>
+                        ))}
                     </Slider>
                 </div>
             </div>

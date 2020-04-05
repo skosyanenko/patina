@@ -1,12 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import TextFx from 'services/TextFx';
+import { effectForTitle, MONTHS } from 'config/config';
 import axios from 'axios';
-import Title from './Title';
-import Event from './Event';
-import WeatherCard from './WeatherCard';
-import EventPicture from './EventPicture';
+import Event from './Components/Event';
+import WeatherCard from './Components/WeatherCard';
+import EventPicture from './Components/EventPicture';
+import './index.sass';
 
-class EventsPage extends Component {
+class EventsList extends Component {
     state = {
+        month: '',
     	events: [],
         pictures: [
             [
@@ -38,6 +41,13 @@ class EventsPage extends Component {
         }
     };
 
+    componentDidMount() {
+        this.getCurrentMonth();
+        this.fetchAllEvents().then(res => {
+            this.setState({events: res})
+        });
+    };
+
     showPictures = () => {
         const {quarters, pictures} = this.state;
         const month = new Date().getMonth() + 1;
@@ -63,12 +73,6 @@ class EventsPage extends Component {
 			});
     };
 
-	componentDidMount() {
-		this.fetchAllEvents().then(res => {
-			this.setState({events: res})
-		});
-	}
-
 	switchTypes = (type) => {
 	    switch(type) {
             case 'card':
@@ -80,12 +84,34 @@ class EventsPage extends Component {
         }
     };
 
+    getCurrentMonth = () => {
+        let currentMonth = new Date().getMonth();
+        this.setState({
+            month: MONTHS[currentMonth]
+        }, () => {
+            this.animateTitle();
+        });
+    };
+
+    animateTitle = () => {
+        const animatedTitle = new TextFx(this.title, effectForTitle);
+        animatedTitle.hide();
+        setTimeout(() => {
+            animatedTitle.show(effectForTitle, () => this.subtitle && this.subtitle.classList.add('active'));
+        }, 300);
+    };
+
 	render() {
-        const { events } = this.state;
+        const { events, month } = this.state;
 
         return (
             <>
-                <Title/>
+                <div className="events-wrap">
+                    <span className="events-wrap__title" ref={node => this.title = node}>
+                        { month }
+                    </span>
+                    <span className="events-wrap__subtitle" ref={node => this.subtitle = node}>в Ростове-на-Дону</span>
+                </div>
                 <div className="container">
                     <div className="events-wrapper">
                         {events && events.map((field, key) => {
@@ -100,6 +126,6 @@ class EventsPage extends Component {
     }
 }
 
-export default EventsPage;
+export default EventsList;
 
 

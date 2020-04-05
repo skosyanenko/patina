@@ -1,0 +1,41 @@
+@import 'config'
+
+.author
+    display: flex
+    align-items: center
+
+    &__avatar
+        display: flex
+        justify-content: center
+        align-items: center
+
+        &-name
+            width: 50px
+            height: 50px
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 50%
+            background: #d0d0d0
+            font: 300 32px/100% $openSans
+            color: $darkgray
+
+    &__inform
+        margin-left: 10px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        +maxwidth($mobail)
+            margin-left: 5px
+
+        &-date,
+        &-time
+            margin-top: 3px
+            font: 300 12px/100% $openSans
+            color: $darkgray
+
+        &-name
+            color: $black
+            font: 300 18px/100% $openSans
+            +maxwidth($mobail)
+                font-size: 14px

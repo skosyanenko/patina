@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { formRoutes } from 'config/config';
 import FormManager from 'components/Forms/FormManager';
 import ChangeList from './ChangeList';
 import UndefinedPage from '../UndefinedPage';
-import {formRoutes} from 'config/config';
 
-const AddForm = ({match}) => {
+const AddForm = ({ match }) => {
 
     const type = match.params.type;
 
@@ -31,22 +31,20 @@ const AddForm = ({match}) => {
 
     if (!Object.keys(formRoutes).includes(type)) {
         return <UndefinedPage />;
-    }
-
-    if (type === 'registration') {
-        return <FormManager {...config[type]}
-                            prefix={'registration'}
-                            classPrefix={"registration__grid"}
-                            button={"Зарегистрироваться"}
-        />;
     } else {
-        if (type !== 'charts' && type !== 'review') {
-            return <div className="change-form">
+        switch (type) {
+            case 'charts':
+            case 'review':
+                return <FormManager {...config[type]}/>;
+            case 'registration':
+                return <FormManager {...config[type]}
+                                    prefix={'registration'}
+                                    classPrefix={"registration__grid"}
+                                    button={"Зарегистрироваться"}/>;
+            default: return <div className="change-form">
                 <FormManager {...config[type]}/>
                 <ChangeList API={type}/>
             </div>;
-        } else {
-            return <FormManager {...config[type]}/>;
         }
     }
 };

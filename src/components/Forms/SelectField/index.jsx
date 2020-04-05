@@ -1,12 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import {Controller} from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import axios from 'axios';
 
 class SelectField extends Component {
     state = {
         options: []
+    };
+
+    componentDidMount() {
+        this.fetchAllOptions();
     };
 
     fetchAllOptions = async () => {
@@ -19,23 +23,19 @@ class SelectField extends Component {
                 }
             })
             .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
+                console.log('Ошибка получения элементов из базы данных' + err)
             });
     };
-
-    componentDidMount() {
-        this.fetchAllOptions();
-    }
     
     render() {
-        const {type, name, label, icon, isMulti, errors, control} = this.props;
+        const { type, name, label, icon, isMulti, errors, control } = this.props;
 
-        const {options} = this.state;
+        const { options } = this.state;
 
         const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
-        const required = {value: true, message: 'Обязательное поле!'};
+        const required = { value: true, message: 'Обязательное поле!' };
 
-        if (options.length === 0) return 'Loading...';
+        if ( options.length === 0 ) return 'Loading...';
 
         return (
             <div className="form__group select">
@@ -54,7 +54,7 @@ class SelectField extends Component {
                         maxMenuHeight={150}
                     />
                 <div className="form__group-error">
-                    {errors[name] && errors[name].message}
+                    { errors[name] && errors[name].message }
                 </div>
             </div>
         );

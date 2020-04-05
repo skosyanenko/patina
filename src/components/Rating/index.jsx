@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './index.sass';
-import axios from "axios";
 
 class Rating extends  Component {
     state = {
@@ -32,8 +31,17 @@ class Rating extends  Component {
         maskWidth: 0
     };
 
-    clickVote = ({target}) => {
-        const {stars, counters, mediumRate} = this.state;
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.ratingCount || nextProps.ratingTotal) {
+            return {
+                mediumRate: nextProps.ratingTotal,
+                counters: nextProps.ratingCount
+            }
+        }
+    };
+
+    clickVote = ({ target }) => {
+        const { stars, counters, mediumRate } = this.state;
         const count = stars[target.id].count;
         const medium = (counters * mediumRate + count) / (counters + 1);
 
@@ -47,26 +55,9 @@ class Rating extends  Component {
         target.classList.add('active');
     };
 
-    fetchRating = async () => {
-        return await axios.get('/api/v1/books')
-            .then(res => {
-                if (res.data) {
-                    return res.data;
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    componentDidMount() {
-        // this.fetchRating().then(res => {
-        //     this.setState({rating: res})
-        // });
-    }
-
     render() {
-        const {inactive, stars, mediumRate, counters, maskWidth} = this.state;
+        const { inactive, stars, mediumRate, counters, maskWidth } = this.state;
+        const { book } = this.props;
 
         return(
             <div className={`rating ${inactive ? 'voted' : ''}`}>
@@ -88,7 +79,15 @@ class Rating extends  Component {
                     <div className="rating__passive-mask" style={{width: maskWidth}}/>
                 </div>
                 <div className="rating__text">Ваш голос учтен!</div>
-                <div className="rating__rate">{mediumRate} по {counters} оценке</div>
+                <div className="rating__rate"
+                     itemType="http://schema.org/AggregateRating"
+                     itemProp="aggregateRating"
+                     itemScope
+                >
+                    <span itemProp="ratingValue" content={mediumRate}>{mediumRate} </span>
+                     /
+                     <span itemProp="ratingCount" content={counters}> {counters}</span>
+                </div>
             </div>
         )
     }

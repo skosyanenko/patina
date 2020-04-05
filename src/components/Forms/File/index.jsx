@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class InputFile extends Component  {
     state = {};
 
-    handleFile = (selectorFiles) => {
-        const {name} = this.props;
+    handleFile = ( selectorFiles ) => {
+        const { name } = this.props;
         let files = this.state[name] || [];
         let fileNames = this.state[name + '_LABEL'] || [];
 
@@ -24,13 +24,13 @@ class InputFile extends Component  {
         }
     };
 
-    deleteFile = (name, item) => {
+    deleteFile = ( name, item ) => {
         let newArr = this.deleteValue(this.state[name], item);
         let newNames = newArr.map(x => x.label);
         this.setState({[name]: newArr, [name + '_LABEL']: newNames});
     };
 
-    deleteValue = (arr, value) => {
+    deleteValue = ( arr, value ) => {
         let newArr = arr;
         let index = newArr.findIndex(item => Object.values(item).includes(value));
         if (index >= 0) newArr.splice( index, 1 );
@@ -40,7 +40,7 @@ class InputFile extends Component  {
     setFieldValue = value => this.props.onChange(this.props.name, value);
 
     render() {
-        const {name, label, register, errors} = this.props;
+        const { name, label, register, errors } = this.props;
         const labels = this.state[name + '_LABEL'];
 
         return (
@@ -52,7 +52,7 @@ class InputFile extends Component  {
                         name={name}
                         onChange={e => this.handleFile(e.target.files)}
                         ref={register({
-                            required: 'Обязательное поле',
+                            required: 'Обязательное поле!',
                             validate: value => value[0].size < 3 * 1024 * 1024 || 'Превышен лимит 3мб'
                         })}
                         accept="image/*"
@@ -70,7 +70,7 @@ class InputFile extends Component  {
                         </div>
                     ))}
                     <div className="form__group-error">
-                        {errors[name] && errors[name].message}
+                        { errors[name] && errors[name].message }
                     </div>
                 </div>
             </div>

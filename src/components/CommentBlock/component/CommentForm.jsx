@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import Author from '../../../pages/Profile/Author';
-import '../index.sass';
+import React, { Component } from 'react';
+import Author from 'components/Author';
 
 class CommentForm extends Component {
     state = {
@@ -16,31 +15,27 @@ class CommentForm extends Component {
     handleSubmit = (e) => {
 
     };
+
     render(){
-        const {isActive} = this.state;
+        const { isActive } = this.state;
+
         return (
-            <div className="comments">
-                <div className="comments__title">
-                    <div className="comments__title-icon"/>
-                    <span className="comments__title-counter">1</span>
+            <form onSubmit={this.handleSubmit} className="comments-form">
+                <div className="comments-form__wrap">
+                    <Author isTimeToRead={false}/>
+                    <input
+                        type="text"
+                        placeholder="Напишите комментарий..."
+                        name="comment"
+                        onClick={this.showActive}
+                        className="comments-form__wrap-text"
+                    />
                 </div>
-                <form onSubmit={this.handleSubmit} className="comments-form">
-                    <div className="comments-form__wrap">
-                        <Author isTimeToRead={false}/>
-                        <input
-                            type="text"
-                            placeholder="Напишите комментарий..."
-                            name="comment"
-                            onClick={this.showActive}
-                            className="comments-form__wrap-text"
-                        />
-                    </div>
-                    <button type="submit" className={`button button-white ${isActive ? 'show' : ''}`}>
-                        Опубликовать
-                    </button>
-                </form>
-            </div>
-        )
+                <button type="submit" className={`button button-white ${isActive ? 'show' : ''}`}>
+                    Опубликовать
+                </button>
+            </form>
+        );
     }
 }
 

@@ -1,11 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import CommentForm from './component/CommentForm';
 import CommentList from './component/CommentList';
-import axios from "axios";
+import axios from 'axios';
+import './index.sass';
 
 class CommentBlock extends Component {
     state = {
         comments: []
+    };
+
+    componentDidMount() {
+        this.fetchCommentsFromServer().then(res => {
+            this.setState({comments: res})
+        });
     };
 
     fetchCommentsFromServer = async () => {
@@ -20,11 +27,6 @@ class CommentBlock extends Component {
             });
     };
 
-    componentDidMount() {
-        this.fetchCommentsFromServer().then(res => {
-            this.setState({comments: res})
-        });
-    }
     handleCommentSubmit = async (comment) =>{
         return await axios.post('/api/v1/comments')
             .then(res => {
@@ -35,23 +37,6 @@ class CommentBlock extends Component {
             .catch(err => {
                 console.log('Ошибка получения элементов из бд' + err)
             });
-        // let newComments = comments.concat([comment]);
-        //
-        // this.setState({
-        //     data: newComments
-        // });
-        // $.ajax({
-        //     url: this.props.url,
-        //     dataType: 'json',
-        //     type: 'POST',
-        //     data: comment,
-        //     success: (data) => {
-        //         this.setState({data: data});
-        //     },
-        //     error: (xhr, status, err) => {
-        //         console.error(this.proprs.url, status, err.toString());
-        //     }
-        // });
     };
 
     handleDelete = (index) => {
@@ -67,6 +52,10 @@ class CommentBlock extends Component {
     render() {
         return(
             <div className="comments-wrapper">
+                <div className="comments__title">
+                    <div className="comments__title-icon"/>
+                    <span className="comments__title-counter">1</span>
+                </div>
                 <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
                 <CommentList  handleDelete={this.handleDelete}/>
             </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-import {Controller} from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
-const InputText = ({type, name, register, icon, label, value, message, errors, control, req}) => {
-    const inputProps = {name, placeholder: ' ', type};
-    const required = {value: req, message: `${req ? 'Обязательное поле!' : ''}`};
+const InputText = ({ type, name, register, icon, label, value, message, errors, control, req }) => {
+    const inputProps = { name, placeholder: ' ', type };
+    const required = { value: req, message: `${req ? 'Обязательное поле!' : ''}` };
 
     const phoneInput = () => (
         <Controller
@@ -59,7 +59,7 @@ const InputText = ({type, name, register, icon, label, value, message, errors, c
             <span className="form__group-bar"/>
             <label>{label}</label>
             <div className="form__group-error">
-                {errors[name] && errors[name].message}
+                { errors[name] && errors[name].message }
             </div>
         </div>
     )

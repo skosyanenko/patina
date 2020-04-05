@@ -1,14 +1,15 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
-import AlphabetFilter from './AlphabetFilter';
-import ListBooks from './ListBooks';
 import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
+import AlphabetFilter from './Components/AlphabetFilter';
+import ListBooks from './Components/ListBooks';
+import './index.sass';
 
 const BooksWithPagination = paginationWrap(ListBooks);
 
-class BooksPage extends Component {
+class BooksList extends Component {
     state = {
         letter: '',
         sorting: '',
@@ -19,9 +20,10 @@ class BooksPage extends Component {
     hookState = (name, value) => this.setState({[name]: value});
 
     render() {
-        const {letter, sorting, letters} = this.state;
+        const { letter, sorting, letters } = this.state;
+
         return (
-            <Fragment>
+            <>
                 <div className="books-title">
                     <TitleOfPage
                         title={"Книги"}
@@ -50,9 +52,9 @@ class BooksPage extends Component {
                     />
                     
                 </div>
-            </Fragment>
+            </>
         );
     }
 }
 
-export default BooksPage;
+export default BooksList;

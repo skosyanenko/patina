@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './index.sass';
 
 class BtnScrollToTop extends Component {
@@ -8,7 +8,7 @@ class BtnScrollToTop extends Component {
 
     componentDidMount() {
         const scrollComponent = this;
-        document.addEventListener('scroll', (e) => {
+        document.addEventListener('scroll', () => {
             scrollComponent.showButton();
         });
     };
@@ -21,7 +21,7 @@ class BtnScrollToTop extends Component {
     };
 
     showButton = () => {
-        if(window.pageYOffset > 500) {
+        if (window.pageYOffset > 500) {
             this.setState(prevState => ({
                 inactive: !prevState.inactive
             }))
@@ -29,7 +29,7 @@ class BtnScrollToTop extends Component {
     };
 
     render() {
-        const {inactive} = this.state;
+        const { inactive } = this.state;
 
         return (
             <div className={`scroll-top ${inactive ? 'show' : ''}`}

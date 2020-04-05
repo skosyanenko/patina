@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
-import './index.sass';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
+import './index.sass';
 
 class RightMenu extends Component {
     state = {
@@ -27,14 +27,14 @@ class RightMenu extends Component {
     };
 
     render() {
-        const {randomBooks} = this.state;
+        const { randomBooks } = this.state;
         return (
             <div className="content">
                 <div className="content__wrapper">
                     <div className="content__title">
                         содержание
                     </div>
-                    {randomBooks && randomBooks.map((item, key) => (
+                    { randomBooks && randomBooks.map((item, key) => (
                         <Link to={`/books/${item.id}`} className="content__item" key={key}>
                             <span className="content__item-title">{item.title}</span>
                             <span className="content__item-num">{key + 1}</span>

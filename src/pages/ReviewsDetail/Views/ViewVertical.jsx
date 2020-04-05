@@ -1,23 +1,29 @@
 import React from 'react';
-import UserInfo from '../UserInfo';
-import Writer from '../Writer';
+import { formatType } from 'config/config';
 import CommentBlock from 'components/CommentBlock';
-import {formatType} from '../../../config/config';
-import './index.sass';
+import UserInfo from '../Components/UserInfo';
+import Writer from '../Components/Writer';
 
-const ViewVertical = ({book, title, description, likes, date, id, textLength}) => {
+const ViewVertical = ({ book, title, description, likes, date, id, textLength }) => {
     return (
         <>
-            <div className="container-review">
-                <Writer
-                />
+            <div className="container-review"
+                 itemType="http://schema.org/Review"
+                 itemProp="review"
+                 itemScope
+            >
+                <Writer/>
                 <div className="container-review__text">
-                    <h1 className="container-review__text-title">{title}</h1>
-                    <span className="container-review__text-subtitle">{title}</span>
+                    <h1 className="container-review__text-title" itemProp="itemReviewed">
+                        {title}
+                    </h1>
+                    <span className="container-review__text-subtitle" itemProp="headline name">
+                        {title}
+                    </span>
                 </div>
             </div>
 
-            <div className="review-wrap">
+            <div className="review-wrap" itemProp="reviewBody">
                 {/*{description && Object.keys(description).map(item => (*/}
                 {/*    formatType(item, description[item])*/}
                 {/*))}*/}

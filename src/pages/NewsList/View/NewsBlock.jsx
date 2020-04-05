@@ -1,10 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
-import './index.sass';
 
-const NewsBlock = ({id, cover, title, description, likes, views, date, textLength}) => (
+const NewsBlock = ({ id, cover, title, description, likes, views, date, textLength }) => (
     <div className="news-block">
         <Link to={`/news/${id}`}>
             <div className="news-block__img">

@@ -1,12 +1,13 @@
 import React from 'react';
 import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
-import paginationWrap from '../../components/withPagination/paginationWrap';
+import paginationWrap from 'components/withPagination/paginationWrap';
 import Reviews from './Reviews';
+import './index.sass';
 
 const ReviewsWithPagination = paginationWrap(Reviews);
 
-const ReviewsPage = () => (
+const ReviewsList = () => (
     <>
         <TitleOfPage
             title={"Критика"}
@@ -23,4 +24,4 @@ const ReviewsPage = () => (
     </>
 );
 
-export default ReviewsPage;
+export default ReviewsList;

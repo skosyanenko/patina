@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {routes} from 'routes';
-import {CSSTransition} from 'react-transition-group';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { routes } from 'routes';
+import { CSSTransition } from 'react-transition-group';
 import Header from './components/Layouts/Header';
 import Menu from './components/Layouts/Menu';
 import RightMenu from './components/Layouts/RightMenu';
@@ -10,13 +10,22 @@ import Footer from './components/Layouts/Footer';
 import BtnScrollToTop from './components/BtnScrollToTop';
 import 'static/sass/project.sass';
 
-class App extends Component {
-    state = {
+const App = ({ location }) => {
+    const isIndex = location.pathname === '/';
+
+    const initialState = {
         modalIsOpen: false,
-        isAnimate: false
+        isAnimate: false,
+        menu: '',
+        burger: '',
+        toggle: !isIndex
     };
 
-    switchClasses = (path) => {
+    const [state, setState] = useState(initialState);
+
+    const { modalIsOpen, isAnimate, toggle, menu, burger } = state;
+
+    const switchClasses = (path) => {
         switch(path) {
             case '/events':
                 return 'page--events';
@@ -27,59 +36,74 @@ class App extends Component {
         }
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if(this.props.location.pathname !== prevProps.location.pathname) {
-            this.setState({isAnimate: !prevState.isAnimate})
-        }
-    }
+    useEffect(()=> {
+        const burgerPost = toggle ? 'open' : 'close';
+        const menuPost = toggle ? 'open' : 'close';
 
-    toggleModal = bool => this.setState({modalIsOpen: bool});
+        const isResponsive = window.width <= 1140;
 
-    render() {
-        const {modalIsOpen, isAnimate} = this.state;
-        const {location} = this.props;
+        const burgerIndex = 'burger--index ' + burgerPost;
+        const menuIndex = 'menu--index ' + menuPost;
 
-        return(
-            <div className={`${modalIsOpen && 'blur' || 'wrapper'}`}>
-                <Header location={location} toggleModal={this.toggleModal}/>
+        setState({
+            ...state,
+            toggle: (!isIndex && isResponsive) ? true : toggle,
+            burger: isIndex ? burgerIndex : burgerPost,
+            menu: isIndex ? menuIndex : menuPost,
+            isAnimate: !isAnimate
+        });
+    }, [location, toggle]);
 
-                <div className="wrapper__layout">
+    const toggleModal = () => setState({...state, modalIsOpen: !modalIsOpen});
 
-                    <Menu location={location}/>
+    const toggleMenu = () => setState({...state, toggle: !toggle});
 
-                    <CSSTransition
-                        in={isAnimate}
-                        appear={true}
-                        timeout={600}
-                        classNames="fade"
-                    >
-                        <main className={location && this.switchClasses(location.pathname)}>
-                            <Switch>
-                                {routes.map(route => (
-                                    <Route
-                                        key={route.path}
-                                        exact={route.path !== '*'}
-                                        path={route.path}
-                                        component={route.component}
-                                    />
-                                ))}
-                            </Switch>
-                        </main>
-                    </CSSTransition>
+    return(
+        <div className={`${modalIsOpen ? 'blur' : 'wrapper'}`}>
+            <Header location={location}
+                toggleModal={toggleModal}
+                toggleMenu={toggleMenu}
+                burger={burger}
+                toggle={toggle}
+            />
 
-                    {location.pathname !== '/' && location.pathname !== '/events' && <RightMenu/>}
+            <div className="wrapper__layout">
 
-                    <BtnScrollToTop/>
+                <Menu location={location} menu={menu} toggle={toggle}/>
 
-                    <EntranceModal
-                        isOpen={modalIsOpen}
-                        toggleModal={this.toggleModal}
-                    />
-                </div>
-                <Footer/>
+                <CSSTransition
+                    in={isAnimate}
+                    appear={true}
+                    timeout={600}
+                    classNames="fade"
+                >
+                    <main className={location && switchClasses(location.pathname)}>
+                        <Switch>
+                            { routes.map(route => (
+                                <Route
+                                    key={route.path}
+                                    exact={route.path !== '*'}
+                                    path={route.path}
+                                    component={route.component}
+                                />
+                            ))}
+                        </Switch>
+                    </main>
+                </CSSTransition>
+
+                { location.pathname !== '/' && location.pathname !== '/events' && <RightMenu/>}
+
+                <BtnScrollToTop/>
+
+                <EntranceModal
+                    isOpen={modalIsOpen}
+                    toggleModal={toggleModal}
+                />
             </div>
-        )
-    }
+            <Footer/>
+        </div>
+    )
 };
 
 export default App;
+

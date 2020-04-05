@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
-import {Transition} from 'react-transition-group';
+import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import ArrowPagination from './ArrowPagination/index';
 import './index.sass';
@@ -11,18 +11,18 @@ class Pagination extends Component {
         valuesDropdown: this.props.valuesDropdown
     };
 
-    toggleDropdown = () => this.setState(state => ({pageDropdown: !state.pageDropdown}));
+    toggleDropdown = () => this.setState(state => ({ pageDropdown: !state.pageDropdown }));
 
     render() {
-        const {pageDropdown, valuesDropdown} = this.state;
-        const {pageCount, handlePageClick, perPage, setPerPage} = this.props;
+        const { pageDropdown, valuesDropdown } = this.state;
+        const { pageCount, handlePageClick, perPage, setPerPage } = this.props;
 
         return (
             <div className="pagination">
                 <div className="pagination__counter">
                     Выводить по:
                     <span className="count" onClick={this.toggleDropdown}>
-                        {perPage}
+                        { perPage }
                     </span>
                     <Transition in={pageDropdown} timeout={50}>
                         {state => (
@@ -59,10 +59,10 @@ class Pagination extends Component {
 }
 
 Pagination.propTypes = {
-    pageCount:       PropTypes.number.isRequired,
-    perPage:         PropTypes.number.isRequired,
-    handlePageClick: PropTypes.func.isRequired,
-    setPerPage:      PropTypes.func.isRequired
+    pageCount:       PropTypes.number,
+    perPage:         PropTypes.number,
+    handlePageClick: PropTypes.func,
+    setPerPage:      PropTypes.func
 };
 
 export default Pagination;
