@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import Author from '../../../pages/Profile/Author';
+import React, { Component } from 'react';
+import Author from 'components/Author';
 
 class Comment extends Component {
 
@@ -8,14 +8,21 @@ class Comment extends Component {
     };
 
     render() {
+        const { createdAt, firstName, lastName } = this.props;
 
         return(
-            <div className="comments-block">
+            <div className="comments-block" itemScope itemType="http://schema.org/UserComments">
                 <div className="comments-block__wrap">
-                    <Author isTimeToRead={false}/>
-                    <div className="comments-block__wrap-delete" onClick={this.handleDelete}/>
+                    <Author isTimeToRead={false}
+                            date={createdAt}
+                            name={firstName}
+                            surname={lastName}
+                    />
+                    <div className="comments-block__wrap-delete"
+                         onClick={this.handleDelete}
+                    />
                 </div>
-               <div className="comments-block__text">Бесплатный онлайн перевод с английского на русский и обратно, англо-русский словарь с транскрипцией, произношением слов и примерами ...</div>
+               <div className="comments-block__text" itemProp="commentText">Бесплатный онлайн перевод с английского на русский и обратно, англо-русский словарь с транскрипцией, произношением слов и примерами ...</div>
             </div>
         );
     }

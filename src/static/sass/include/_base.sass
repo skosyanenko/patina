@@ -12,6 +12,8 @@ p
     &:last-child
         margin-bottom: 0
 
+/* Стили для обертки */
+
 .wrapper
     height: 100%
 
@@ -21,7 +23,9 @@ p
         +maxwidth($tablet)
             min-height: calc(100% - 45px - 70px)
         +maxwidth($mobail)
-            min-height: calc(100% - 40px - 60px)
+            min-height: calc(100% - 40px)
+
+/* Стили для контейнера с контентом */
 
 .page
     width: 100%
@@ -42,6 +46,7 @@ p
     +maxwidth($mobail)
         padding: 20px 20px 40px 20px
         min-height: calc(100% - 40px)
+        margin-top: 60px
 
     &.page-enter
         opacity: 0
@@ -151,11 +156,15 @@ p
 
     &--index
         max-width: calc(100% - 310px)
-        margin: 0 0 0 auto
+        margin: 80px 0 0 auto
         +maxwidth(1640px)
             max-width: calc(100% - 250px)
         +maxwidth($desktop)
             max-width: 100%
+        +maxwidth($tablet)
+            margin-top: 70px
+        +maxwidth($mobail)
+            margin-top: 60px
 
         .news
             margin-top: 5px
@@ -182,6 +191,8 @@ p
         margin-left: auto
         +maxwidth($tablet)
             width: 100%
+
+/* Стили для контейнера с контентом без заголовка */
 
 .container
     height: 100%
@@ -264,20 +275,7 @@ p
         +maxwidth($tablet)
             display: flex
 
-.events-wrapper
-    width: 100%
-    display: grid
-    grid-template-rows: repeat(5, 1fr)
-    grid-template-columns: repeat(5, 1fr)
-    +maxwidth(1780px)
-        grid-template-rows: repeat(7, 1fr)
-        grid-template-columns: repeat(4, 1fr)
-    +maxwidth($tablet)
-        grid-template-rows: repeat(9, 1fr)
-        grid-template-columns: repeat(3, 1fr)
-    +maxwidth($sm-mobail)
-        grid-template-rows: repeat(13, 1fr)
-        grid-template-columns: repeat(2, 1fr)
+/* Стили для контейнера с иконками */
 
 .icons-wrap
     display: flex
@@ -286,6 +284,8 @@ p
 
     &__socials
         margin-right: 80px
+
+/* Стили для анимации перехода между страничками */
 
 .fade
     &-appear, &-enter
@@ -296,5 +296,21 @@ p
             opacity: 1
             transition: .6s ease-in
 
+/* Стили для неактивного контента */
+
 .blur
     filter: blur(2px)
+
+/* Стили для стрелки назад */
+
+.backwards
+    background: url('/images/icons/sprite.svg#backwards-view') no-repeat center / cover
+    width: 36px
+    height: 36px
+    transform: rotate(180deg)
+    animation: fadeInRight 2s infinite ease-in-out
+    +maxwidth($mobail)
+        height: 30px
+
+    &--news
+        z-index: 4

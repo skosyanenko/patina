@@ -1,18 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import EditorJs from 'react-editor-js';
-import {EditorConfig_1, EditorConfig_2, EditorConfig_3} from './config';
+import { EditorConfigDefault, EditorConfigCharts, EditorConfigReview } from './config';
 
 class TextEditor extends Component {
-
-    configSwitcher = () => {
-        switch (this.props.typeView) {
-            case 'view_1':
-                return EditorConfig_2;
-            case 'view_2':
-                return EditorConfig_3;
-            default:
-                return EditorConfig_1;
-        }
+    config = {
+        '0': EditorConfigCharts,
+        '1': EditorConfigReview,
+        '2': EditorConfigDefault
     };
 
     handleSave = async() => {
@@ -26,8 +20,11 @@ class TextEditor extends Component {
     };
 
     render() {
-        const required = {value: true, message: 'Вы не сохранили текст!'};
-        const {label, name, placeholder, register, errors} = this.props;
+        const required = { value: true, message: 'Обязательное поле!' };
+        const { label, name, placeholder, register, errors, getValues } = this.props;
+        const formValues = getValues();
+        const viewType = formValues.viewType || '2';
+
         return (
             <div className="editor">
                 <span className="editor__title">
@@ -35,17 +32,16 @@ class TextEditor extends Component {
                 </span>
                 <EditorJs
                     enableReInitialize={true}
-                    instanceRef={instance => this.editorInstance = instance}
+                    instanceRef={ instance => this.editorInstance = instance }
                     ref={register({name, type: 'custom'}, {required})}
                     placeholder={placeholder}
                     onChange={this.handleSave}
-                    tools={this.configSwitcher()}
+                    tools={this.config[viewType]}
                 />
                 <div className="form__group-error">
-                    {errors[name] && errors[name].message}
+                    { errors[name] && errors[name].message }
                 </div>
             </div>
-
         );
     }
 }

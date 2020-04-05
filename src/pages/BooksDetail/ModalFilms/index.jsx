@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Transition } from 'react-transition-group';
 import Modal from 'react-modal';
 import Slider from 'react-slick';
-import {Transition} from 'react-transition-group';
 import './index.sass';
 
 class ModalFilms extends Component {
-
     render() {
-        const {isOpen, toggleModal} = this.props;
-        const {films} = this.props;
+        const { isOpen, toggleModal } = this.props;
+        const { films } = this.props;
 
         return (
             <Transition in={isOpen} timeout={50}>
@@ -18,19 +17,30 @@ class ModalFilms extends Component {
                            closeTimeoutMS={1000}
                     >
                         <Slider
-                            ref={c => (this.slider = c)}
                             dots={true}
                             speed={500}
                             infinite={true}
                             slidesToShow={1}
                             slidesToScroll={1}
                         >
-                            {films && films.map((film, key) => (
-                                <div className="films__wrapper" key={key}>
-                                    <h1 className="films__title">{film.title}</h1>
-                                    <img src={film.image} alt="" className="films__img"/>
+                            { films && films.map((film, key) => (
+                                <div className="films__wrapper"
+                                     key={key}
+                                     itemType="http://schema.org/Movie"
+                                     itemScope
+                                >
+                                    <h1 className="films__title"
+                                        itemProp="name"
+                                    >
+                                        {film.title}
+                                    </h1>
+                                    <img src={film.image} alt="" className="films__img" itemProp="image"/>
                                     <div className="films__wrap">
-                                        <div className="films__wrap-description">{film.description}</div>
+                                        <div className="films__wrap-description"
+                                             itemProp="description"
+                                        >
+                                            {film.description}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

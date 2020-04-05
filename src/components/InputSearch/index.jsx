@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import './index.sass';
 
 class InputSearch extends Component {
@@ -11,29 +12,30 @@ class InputSearch extends Component {
         result: ''
     };
 
-    search = async (val) => {
-
-        const { fetchData } = this.props;
+    search = async val => {
+        const { fetchData, items } = this.props;
 
         return await fetchData(`/api/v1/search-title?q=${val}`)
-            .then(() => this.setState({ options: this.props.items}))
+            .then(() => this.setState({ options: items}))
             .catch(err => console.log(err));
     };
 
     onChange = async e => {
         this.search(e.target.value);
+        const { hook } = this.props;
+        const { loading } = this.state;
 
         this.setState({
             activeOption: 0,
             showOptions: true,
             value: e.currentTarget.value,
             loading: true
-        }, () => {
-            this.props.hook('loading', this.state.loading);
-        })
+        }, () => { hook('loading', loading) })
     };
 
     onClick = e => {
+        const { hook, history } = this.props;
+
         this.setState({
             activeOption: 0,
             showOptions: false,
@@ -41,15 +43,18 @@ class InputSearch extends Component {
             loading: false
         }, () => {
             this.search(this.state.value);
-            this.props.hook('loading', this.state.loading);
+            hook('loading', this.state.loading);
+            history.push('/search');
         });
     };
 
     onKeyDown = e => {
-        const {activeOption, options} = this.state;
+        const { activeOption, options} = this.state;
+        const { hook } = this.props;
+
         switch(e.keyCode) {
             case 13:
-                if(options.length > 0) {
+                if ( options.length > 0 ){
                     this.setState({
                         activeOption: 0,
                         showOptions: false,
@@ -58,53 +63,50 @@ class InputSearch extends Component {
                         result: 'результаты поиска:'
                     }, () => {
                         this.search(this.state.value);
-                        this.props.hook('loading', this.state.loading);
-                        this.props.hook('result', this.state.result);
+                        hook('loading', this.state.loading);
+                        hook('result', this.state.result);
                     });
-
                 } else {
                     this.setState({
                         loading: false,
                         result: 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.'
                     }, () => {
-                        this.props.hook('loading', this.state.loading);
-                        this.props.hook('result', this.state.result);
-                    });;
+                        hook('loading', this.state.loading);
+                        hook('result', this.state.result);
+                    });
                 }
-
             case 38:
-                if (activeOption === 0) {
+                if ( activeOption === 0 ){
                     return;
                 }
                 this.setState({ activeOption: activeOption - 1 });
             case 40:
-                if (activeOption === options.length - 1) {
+                if ( activeOption === options.length - 1 ){
                     return;
                 }
                 this.setState({ activeOption: activeOption + 1 });
-            default: return '';
+            default:
+                return '';
         }
     };
 
     render() {
-        const {classNamePrefix} = this.props;
+        const { classNamePrefix } = this.props;
 
-        const {activeOption, options, showOptions, value} = this.state;
+        const { activeOption, options, showOptions, value } = this.state;
 
         let optionList;
 
-        if (showOptions && value) {
-            if (options && options.length) {
+        if ( showOptions && value ){
+            if ( options && options.length ) {
                 optionList = (
                     <ul className="quest__options">
                         {options.map((optionName, key) => {
                             let className;
-                            if (key === activeOption) {
-                                className = 'active';
-                            }
+                            if ( key === activeOption ){ className = 'active' }
                             return (
                                 <li className={`quest__options-item ${className}`}
-                                    key={optionName}
+                                    key={key}
                                     onClick={this.onClick}
                                 >
                                     {optionName.title}
@@ -113,14 +115,12 @@ class InputSearch extends Component {
                         })}
                     </ul>
                 );
-            } else {
-                 optionList =  '';
-            }
+            } else { optionList =  '' }
         }
         return(
             <div className={`quest ${classNamePrefix || ''}`}>
                 <input type="text"
-                       className={`quest__wrapper ${showOptions && options && options.length > 0 && value.length ? 'active' : ''}`}
+                       className={`quest__wrapper ${showOptions && options && options.length && value.length ? 'active' : ''}`}
                        onChange={e => this.onChange(e)}
                        onKeyDown={this.onKeyDown}
                        value={value}
@@ -128,11 +128,11 @@ class InputSearch extends Component {
                 />
                 <div className="quest__image"/>
                 <div className="quest__autocomplete">
-                    {optionList}
+                    { optionList }
                 </div>
             </div>
         )
     }
 }
 
-export default InputSearch;
+export default withRouter(InputSearch);

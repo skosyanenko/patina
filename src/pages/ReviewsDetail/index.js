@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import ArrowBackwards from 'components/ArrowBackwards';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import ViewHorizontal from './Views/ViewHorizontal';
 import ViewVertical from './Views/ViewVertical';
-import axios from 'axios';
+import './index.sass';
 
-class ReviewPage extends Component {
+class ReviewsDetail extends Component {
     state = {
         dataItem: [],
         textLength: null,
@@ -14,7 +14,7 @@ class ReviewPage extends Component {
 
     componentDidMount() {
         this.fetchCurrentReview();
-    }
+    };
 
     fetchCurrentReview = async () => {
         const { id } = this.props.match.params;
@@ -32,7 +32,7 @@ class ReviewPage extends Component {
     };
 
     countLetters = () => {
-        const {dataItem: {description, createdAt}} = this.state;
+        const { dataItem: {description, createdAt} } = this.state;
         const datePublish = new Date(createdAt).toLocaleDateString();
         const objValues = description.map(x => x.data.text).join();
         const textLength = Array.from(objValues)
@@ -42,22 +42,26 @@ class ReviewPage extends Component {
     };
 
     render () {
-        const {dataItem, textLength, datePublish} = this.state;
+        const { dataItem, textLength, datePublish } = this.state;
 
         return(
             <>
-                <Link to="/reviews">
-                    <ArrowBackwards/>
-                </Link>
-                {dataItem.viewType === 0
+                <Link to="/reviews" className="backwards"/>
+                { dataItem.viewType === 0
                     ?
-                    <ViewHorizontal {...dataItem} date={datePublish} textLength={textLength}/>
+                    <ViewHorizontal {...dataItem}
+                                    date={datePublish}
+                                    textLength={textLength}
+                    />
                     :
-                    <ViewVertical {...dataItem} date={datePublish} textLength={textLength}/>
+                    <ViewVertical {...dataItem}
+                                  date={datePublish}
+                                  textLength={textLength}
+                    />
                 }
             </>
         )
     }
 }
 
-export default ReviewPage;
+export default ReviewsDetail;

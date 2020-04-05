@@ -50,10 +50,6 @@
         width: 28px
         height: 27px
         margin-top: 8px
-        position: relative
-        cursor: pointer
-        transition: .5s
-        background: url('/images/icons/sprite.svg#like-view') no-repeat center / contain
         +maxwidth($tablet)
             width: 23px
             height: 22px
@@ -63,10 +59,8 @@
             height: 17px
 
         &.active
-            fill: $darkgray
             width: 28px
             height: 27px
-            background: url('/images/icons/sprite.svg#filledlike-view') no-repeat center / contain
             +maxwidth($tablet)
                 width: 23px
                 height: 22px
@@ -75,25 +69,81 @@
                 width: 18px
                 height: 17px
 
+            &:after
+                width: 28px
+                height: 27px
+                +maxwidth($tablet)
+                    width: 23px
+                    height: 22px
+                +maxwidth($mobail)
+                    width: 18px
+                    height: 17px
+
+.like-review
+    margin-top: 25px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    +maxwidth($mobail)
+        position: absolute
+        top: 0
+        right: 0
+
+    &__counter
+        margin-bottom: 5px
+        font: 300 13px/100% $openSans
+        color: $darkgray
+        +maxwidth($mobail)
+            font-size: 11px
+
+    &__icon
+        width: 42px
+        height: 41px
+        +maxwidth($tablet)
+            width: 37px
+            height: 36px
+        +maxwidth($mobail)
+            width: 32px
+            height: 31px
+
+        &.active
+            width: 42px
+            height: 41px
+            +maxwidth($tablet)
+                width: 37px
+                height: 36px
+            +maxwidth($mobail)
+                width: 32px
+                height: 31px
+
+            &:after
+                width: 42px
+                height: 41px
+                +maxwidth($tablet)
+                    width: 37px
+                    height: 36px
+                +maxwidth($mobail)
+                    width: 32px
+                    height: 31px
+
+.icons__likes,
+.like-review__icon
+    cursor: pointer
+    transition: .5s
+    background: url('/images/icons/sprite.svg#like-view') no-repeat center / contain
+
+    &.active
+        position: relative
+        background: url('/images/icons/sprite.svg#filledlike-view') no-repeat center / contain
         &:after
             content: ('')
             background: url('/images/icons/sprite.svg#filledlike-view') no-repeat center / contain
             position: absolute
-            width: 28px
-            height: 27px
+            animation: scaleFade 0.5s forwards
             left: 0
             top: 0
             z-index: 1
             transform: scale(0)
             opacity: 0
             transition: none
-            +maxwidth($tablet)
-                width: 23px
-                height: 22px
-            +maxwidth($mobail)
-                width: 18px
-                height: 17px
-
-
-
-

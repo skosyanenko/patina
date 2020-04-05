@@ -1,56 +1,41 @@
-import React, {useEffect, useState} from 'react';
-import {Transition} from 'react-transition-group';
+import React, { Component } from 'react';
+import { Transition } from 'react-transition-group';
 import NavLinks from './components/NavLinks';
 import './index.sass';
 
-const Menu = ({location}) => {
-	const isIndex = location.pathname === '/';
-
-	const initialState = {
-		burger: '',
+class Menu extends Component {
+	state = {
 		menu: '',
-		toggle: !isIndex,
+		toggle: '',
 	};
 
-	const [state, setState] = useState(initialState);
+	static getDerivedStateFromProps(nextProps) {
+		if(nextProps.menu || nextProps.location) {
+			return {
+				menu: nextProps.menu,
+				toggle: nextProps.toggle
+			}
+		}
+	};
 
-	const {toggle, menu, burger} = state;
+	render () {
+		const { menu, toggle } = this.props;
+		const { location } = this.props;
 
-	useEffect(() => {
-		const burgerPost = toggle ? 'open' : 'close';
-		const menuPost = toggle ? 'open' : 'close';
-
-		const isResponsive = window.width <= 1140;
-
-		const burgerIndex = 'burger--index ' + burgerPost;
-		const menuIndex = 'menu--index ' + menuPost;
-
-		setState({
-			toggle: (!isIndex && isResponsive) ? true : toggle,
-			burger: isIndex ? burgerIndex : burgerPost,
-			menu: isIndex ? menuIndex : menuPost,
-		});
-
-	}, [location, toggle]);
-
-	const toggleMenu = () => setState({...state, toggle: !toggle});
-
-	return (
-		<>
-			<div className={`burger ${burger}`} onClick={toggleMenu}>
-				<span className="burger__center"/>
-			</div>
-			<nav className={`menu ${menu}`}>
-				<div className="menu__wrap">
-					<NavLinks location={location} />
-				</div>
-			</nav>
-			<Transition in={toggle} timeout={50}>
-				{state => <div className={'menu__overlay ' + state}/>}
-			</Transition>
-		</>
-	);
-};
+		return (
+			<>
+				<nav className={`menu ${menu}`}>
+					<div className="menu__wrap">
+						<NavLinks location={location}/>
+					</div>
+				</nav>
+				<Transition in={toggle} timeout={50}>
+					{state => <div className={'menu__overlay ' + state}/>}
+				</Transition>
+			</>
+		);
+	}
+}
 
 export default Menu;
 

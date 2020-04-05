@@ -1,7 +1,6 @@
 @charset "UTF-8"
 
-// Permissions
-// ===================
+/* Основные разрешения экрана */
 
 $desktop: 1330px
 $tablet: 991px
@@ -13,8 +12,7 @@ $min-width: 320px
     @media only screen and (max-width: $w)
         @content
 
-// Colors
-// ===================
+/* Используемые цвета */
 
 $black: #000000
 $carbonic: #1f1f1f
@@ -27,8 +25,7 @@ $browngray: #8a8a6e
 $sand: #cdb7aa
 $lightpink: #f7ede3
 
-// Fonts
-// ===================
+/* Используемые шрифты */
 
 $waverly: 'Waverly CF'
 $waverlyExtra: 'Waverly CF Extra'
@@ -38,8 +35,7 @@ $openSans: 'Open Sans Condensed'
 $izvestia: 'Izvestija'
 $cheque: 'Cheque'
 
-// Text style
-// ===================
+/* Стили для текста */
 
 @mixin style-text($size, $step, $font, $color, $line-height, $weight, $true)
     font: $weight $size $font

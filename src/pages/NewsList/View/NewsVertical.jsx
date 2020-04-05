@@ -1,10 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
-import './index.sass';
 
-const NewsVertical = ({id, cover, title, description, likes, views, date, textLength}) => (
+const NewsVertical = ({ id, cover, title, description, likes, views, date, textLength }) => (
     <div className="news-vertical">
         <Link to={`/news/${id}`} className="news-vertical__link">
             <div className="news-vertical__link-img">

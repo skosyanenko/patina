@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './index.sass';
 
 class EntranceProfile extends Component {
@@ -14,12 +14,12 @@ class EntranceProfile extends Component {
     };
 
     render() {
-        const {toggleModal} = this.props;
-        const {isEntered} = this.state;
+        const { toggleModal } = this.props;
+        const { isEntered } = this.state;
 
         return (
             <div className="entrance">
-                {isEntered
+                { isEntered
                     ?
                     <div className="entrance__true">
                         <Link to={'/profile/home'}>

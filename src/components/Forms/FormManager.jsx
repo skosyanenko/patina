@@ -1,16 +1,13 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Transition} from 'react-transition-group';
+import { Transition } from 'react-transition-group';
+import axios from 'axios';
 import HookForm from './HookForm';
 
 class FormManager extends Component {
     state = {
-        success: false,
-        typeView: ''
+        success: false
     };
-
-    hookView = typeView => this.setState({typeView});
 
     static defaultProps = {
         button: 'Добавить',
@@ -25,7 +22,7 @@ class FormManager extends Component {
 	    Object.keys(values).map(key => {
 		    const currentType = fields.find(field => field.name === key).type;
 
-		    switch(currentType) {
+		    switch( currentType ) {
 			    case 'file':
                     return formData.append(key, values[key][0]);
                 case 'select':
@@ -37,7 +34,6 @@ class FormManager extends Component {
 				    return formData.set(key, values[key]);
 		    }
         });
-
         this.postToDB(formData);
     };
 
@@ -55,12 +51,12 @@ class FormManager extends Component {
     };
 
     render() {
-        const {success, typeView} = this.state;
+        const { success } = this.state;
 
         return (
             <div className="page--form">
                 <div className="form__title">
-                    {this.props.title}
+                    { this.props.title }
                 </div>
 
                 <Transition in={success} timeout={50}>
@@ -68,15 +64,13 @@ class FormManager extends Component {
                         <HookForm
                             {...this.props}
                             onSubmit={this.onSubmit}
-                            hookView={this.hookView}
-                            typeView={typeView}
                             classAnimate={state}
                         />
                     }
                 </Transition>
 
                 <Transition in={success} timeout={50}>
-                    {state =>
+                    { state =>
                         <div className={`form__success ` + state}>
                             Форма успешно отправлена!
                         </div>

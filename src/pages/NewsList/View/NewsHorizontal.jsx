@@ -1,10 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
-import './index.sass';
 
-const NewsHorizontal = ({id, cover, title, description, likes, views, date, textLength}) => (
+const NewsHorizontal = ({ id, cover, title, description, likes, views, date, textLength }) => (
     <div className="news-horizontal">
         <div className="news-horizontal__wrapper">
             <Link to={`/news/${id}`} className="news-horizontal__link">

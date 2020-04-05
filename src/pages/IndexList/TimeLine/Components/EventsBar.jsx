@@ -191,7 +191,6 @@ EventsBar.propTypes = {
         distance:    PropTypes.number.isRequired,
         date:        PropTypes.string.isRequired,
     })).isRequired,
-    isTouchEnabled:  PropTypes.bool.isRequired,
     totalWidth:      PropTypes.number.isRequired,
     visibleWidth:    PropTypes.number.isRequired,
     index:           PropTypes.number,

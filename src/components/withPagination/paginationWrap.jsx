@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Pagination from '../Pagination';
 
-const paginationWrap = function(WrappedComponent){
+const paginationWrap = function( WrappedComponent ){
     return class PaginationWrap extends Component {
         state = {
             data: [],
@@ -15,7 +15,7 @@ const paginationWrap = function(WrappedComponent){
             valuesDropdown: []
         };
 
-        updateState = (perPage, valuesDropdown) => {
+        updateState = ( perPage, valuesDropdown ) => {
             this.setState({
                 perPage,
                 valuesDropdown
@@ -72,7 +72,7 @@ const paginationWrap = function(WrappedComponent){
         };
 
         render() {
-            const {filteredData, items, data, filterValues, pageCount, perPage, valuesDropdown} = this.state;
+            const { filteredData, items, data, filterValues, pageCount, perPage, valuesDropdown } = this.state;
             return (
                 <WrappedComponent
                     {...this.props}

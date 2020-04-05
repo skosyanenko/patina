@@ -6,7 +6,7 @@ import Quote from "@editorjs/quote";
 import Marker from "@editorjs/marker";
 import Delimiter from "@editorjs/delimiter";
 
-export const EditorConfig_1 = {
+export const EditorConfigDefault = {
     paragraph: {
         toolbox: {
             title: 'Текст'
@@ -21,7 +21,7 @@ export const EditorConfig_1 = {
     }
 };
 
-export const EditorConfig_2 = {
+export const EditorConfigCharts = {
     paragraph: {
         toolbox: {
             title: 'Текст'
@@ -47,7 +47,7 @@ export const EditorConfig_2 = {
     }
 };
 
-export const EditorConfig_3 = {
+export const EditorConfigReview = {
     paragraph: {
         toolbox: {
             title: 'Текст'
@@ -70,7 +70,7 @@ export const EditorConfig_3 = {
         },
         inlineToolbar: ['link'],
     },
-    // simpleImage: SimpleImage,
+    simpleImage: SimpleImage,
 
     list: {
         class: List,

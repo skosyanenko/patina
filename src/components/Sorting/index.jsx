@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import {sortParams} from 'config/config';
+import React, { Component } from 'react';
+import { sortParams } from 'config/config';
 import './index.sass';
 
 class Sorting extends Component {
-    state = {active: ''};
+    state = {
+        active: ''
+    };
 
     handleSort = active => {
         this.setState(state => ({
@@ -14,7 +16,7 @@ class Sorting extends Component {
     };
 
     render() {
-        const {active} = this.state;
+        const { active } = this.state;
 
         return (
             <div className="sorting">
@@ -22,7 +24,7 @@ class Sorting extends Component {
                     Cортировать по:
                 </span>
                 <div className="sorting__wrapper">
-                    {sortParams.map(({title}, key) => (
+                    { sortParams.map(({title}, key) => (
                         <span
                             key={key}
                             className={`sorting__wrapper-type ${title === active ? 'active' : ''}`}

@@ -35,7 +35,9 @@ class TimelineDot extends Component {
             case 'top':
                 return 'Новая подборка';
             case 'news':
-                return 'Новость'
+                return 'Новость';
+            default:
+                return '';
         }
     };
 

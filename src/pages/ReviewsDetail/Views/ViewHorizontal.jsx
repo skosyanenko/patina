@@ -1,10 +1,9 @@
 import React from 'react';
-import UserInfo from '../UserInfo';
-import Writer from '../Writer';
+import UserInfo from '../Components/UserInfo';
+import Writer from '../Components/Writer';
 import CommentBlock from 'components/CommentBlock';
-import './index.sass';
 
-const ViewHorizontal = ({book, title, likes, date, description, id, textLength}) => {
+const ViewHorizontal = ({ book, title, likes, date, description, id, textLength }) => {
     return (
         <>
             <div className="review-wrapper">
@@ -18,11 +17,15 @@ const ViewHorizontal = ({book, title, likes, date, description, id, textLength})
                         <span className="review-wrapper__text-subtitle">{title}</span>
                     </div>
                 </div>
-                <div className="review-wrapper__page">
+                <div className="review-wrapper__page"
+                     itemType="http://schema.org/Review"
+                     itemProp="review"
+                     itemScope
+                >
                     <div className="review-wrapper__page-triangle"/>
-                    <h1 className="review-wrapper__page-title">{book.title}</h1>
+                    <h1 className="review-wrapper__page-title" itemProp="itemReviewed">{book.title}</h1>
                     <div className="review-wrapper__page-subtitle">
-                        <span>{title}</span>
+                        <span itemProp="headline name">{title}</span>
                     </div>
                     <div className="review-wrapper__page-text">
                         <div className="review-wrapper__user">
@@ -31,7 +34,7 @@ const ViewHorizontal = ({book, title, likes, date, description, id, textLength})
                                       date={date}
                             />
                         </div>
-                        <div className="review-wrapper__description">
+                        <div className="review-wrapper__description" itemProp="reviewBody">
                             {description && description.map(item => (
                                 <p className={`review-wrap__${item.type}`} key={item}>
                                     {item.data.text}

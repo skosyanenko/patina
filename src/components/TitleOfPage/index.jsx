@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextFx from 'services/TextFx';
-import {effectForTitle} from 'config/config';
+import { effectForTitle } from 'config/config';
 
 class TitleOfPage extends Component {
 
@@ -18,15 +18,15 @@ class TitleOfPage extends Component {
     };
 
     render() {
-        const {title, subtitle, classNamePrefix} = this.props;
+        const { title, subtitle, classNamePrefix } = this.props;
         return (
             <div className="page__wrapper">
                 <div className="page__wrap">
                     <div className="page__wrap-title" ref={node => this.title = node}>
-                        {title}
+                        { title }
                     </div>
                     <div className={`page__wrap-subtitle ${classNamePrefix}`}  ref={node => this.subtitle = node}>
-                        {subtitle}
+                        { subtitle }
                     </div>
                 </div>
             </div>

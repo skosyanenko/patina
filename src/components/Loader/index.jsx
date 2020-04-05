@@ -8,7 +8,7 @@ const Loader = () => (
           <span className="loader__inner-right"/>
       </div>
       <ul className="loader__list">
-          {Array.from(Array(18).keys()).map((item, key) => (
+          { Array.from(Array(18).keys()).map((item, key) => (
                 <li key={key}/>
           ))}
       </ul>
