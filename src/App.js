@@ -60,7 +60,8 @@ const App = ({ location }) => {
 
     return(
         <div className={`${modalIsOpen ? 'blur' : 'wrapper'}`}>
-            <Header location={location}
+            <Header
+                location={location}
                 toggleModal={toggleModal}
                 toggleMenu={toggleMenu}
                 burger={burger}

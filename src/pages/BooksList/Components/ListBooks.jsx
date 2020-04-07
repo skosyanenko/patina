@@ -17,7 +17,7 @@ class ListBooks extends Component {
 
         updateState(perPage, valuesDropdown);
         fetchData('/api/v1/books')
-            .then(() => this.setState({loading: false}))
+            .then(() => this.setState({loading: false}), () => this.props.hook('letter', this.state.activeLetter))
             .catch(err => console.log(err));
     };
 
@@ -41,8 +41,17 @@ class ListBooks extends Component {
         const { sorting, data, filterData } = this.props;
         if (sorting) {
             const {key} = sortParams.find(item => item.title === sorting);
-            const sorted = sortBy(data, [key]);    
-            return filterData(sorted);
+            if( key === 'title') {
+                const sorted = sortBy(data, [key]);
+                return filterData(sorted);
+            }
+            if (key === 'authors') {
+                const authors = data.map(item => item.authors[0].name);
+                console.log(authors)
+                const sorted = sortBy(data, authors);
+                return filterData(sorted);
+            }
+
         }
 
         filterData(data);

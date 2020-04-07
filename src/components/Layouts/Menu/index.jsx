@@ -10,7 +10,7 @@ class Menu extends Component {
 	};
 
 	static getDerivedStateFromProps(nextProps) {
-		if(nextProps.menu || nextProps.location) {
+		if (nextProps.menu || nextProps.location) {
 			return {
 				menu: nextProps.menu,
 				toggle: nextProps.toggle
@@ -20,13 +20,12 @@ class Menu extends Component {
 
 	render () {
 		const { menu, toggle } = this.props;
-		const { location } = this.props;
 
 		return (
 			<>
 				<nav className={`menu ${menu}`}>
 					<div className="menu__wrap">
-						<NavLinks location={location}/>
+						<NavLinks />
 					</div>
 				</nav>
 				<Transition in={toggle} timeout={50}>
