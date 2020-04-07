@@ -37,21 +37,25 @@ class ListBooks extends Component {
         }
     };
 
+    sortInterceptor = key => {
+        const {data} = this.props;
+
+        switch (key) {
+            case 'title':
+                return sortBy(data, [key]);
+            case 'authors':
+                return sortBy(data, o => o.authors[0].name);
+            default:
+                return data;
+        }
+    };
+
     sort = () => {
         const { sorting, data, filterData } = this.props;
         if (sorting) {
             const {key} = sortParams.find(item => item.title === sorting);
-            if( key === 'title') {
-                const sorted = sortBy(data, [key]);
-                return filterData(sorted);
-            }
-            if (key === 'authors') {
-                const authors = data.map(item => item.authors[0].name);
-                console.log(authors)
-                const sorted = sortBy(data, authors);
-                return filterData(sorted);
-            }
-
+            const sorted = this.sortInterceptor(key);
+            return filterData(sorted);
         }
 
         filterData(data);
@@ -90,7 +94,7 @@ class ListBooks extends Component {
                         <Link to={`/books/${book.id}`}
                               key={key}
                               className="list-book__link"
-                              itemprop="url"
+                              itemProp="url"
                               content={`patina.ru/books/${book.id}`}
                         >
                             <span itemProp="position" content={key}>

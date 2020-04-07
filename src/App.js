@@ -8,6 +8,7 @@ import RightMenu from './components/Layouts/RightMenu';
 import EntranceModal from './components/EntranceModal';
 import Footer from './components/Layouts/Footer';
 import BtnScrollToTop from './components/BtnScrollToTop';
+import UndefinedPage from './pages/UndefinedPage';
 import 'static/sass/project.sass';
 
 const App = ({ location }) => {
@@ -80,14 +81,15 @@ const App = ({ location }) => {
                 >
                     <main className={location && switchClasses(location.pathname)}>
                         <Switch>
-                            { routes.map(route => (
+                            {routes.map(({exact, path, component}) => (
                                 <Route
-                                    key={route.path}
-                                    exact={route.path !== '*'}
-                                    path={route.path}
-                                    component={route.component}
+                                    key={path}
+                                    exact={exact}
+                                    path={path}
+                                    component={component}
                                 />
                             ))}
+                            <Route path="*" component={UndefinedPage}/>
                         </Switch>
                     </main>
                 </CSSTransition>

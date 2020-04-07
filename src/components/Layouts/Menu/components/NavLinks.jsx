@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { matchPath, withRouter} from 'react-router';
 import { routes } from 'routes';
 
 class NavLinks extends Component {
-    activeLink = React.createRef();
+    activeLink = createRef();
 
     state = {
         navLinks: [
@@ -18,34 +18,54 @@ class NavLinks extends Component {
         toggleCircle: null
     };
 
-    static getDerivedStateFromProps(nextProps) {
-        return {
-            nextLocation: nextProps.location.pathname
+    componentDidMount() {
+        this.handleNavChange();
+    };
+
+    componentDidUpdate(prevProps) {
+        const {location} = this.props;
+        if (prevProps.location !== location) {
+            if (!this.isNavRoute(location.pathname)) {
+                this.activeLink = null;
+            }
+            this.handleNavChange();
         }
     }
 
-    componentDidMount() {
-        this.positionCircle();
+    isActive = path => {
+        const {location: {pathname}} = this.props;
+        const isCurrent = pathname === path;
+        return isCurrent && this.isNavRoute(path);
     };
 
-    positionCircle = () => {
-        const topOffset = +this.activeLink.getBoundingClientRect().top.toFixed() || 0;
+    isNavRoute = path => {
+        const matchedRoute = routes.find(route => matchPath(path, route));
+        return matchedRoute && matchedRoute.group === 'nav';
+    };
+
+    handleNavChange = e => {
+        const element = e ? e.target : this.activeLink;
+        if (!element || element.current === null) {
+            return this.setState({toggleCircle: 0});
+        }
+        this.positionCircle(element);
+    };
+
+    setRef = (node, path) => {
+        return this.isActive(path) && (this.activeLink = node);
+    };
+
+    positionCircle = element => {
+        const topOffset = +element.getBoundingClientRect().top.toFixed() || 0;
         const topCoord = this.calcTop(topOffset);
         this.setState({topCoord, toggleCircle: 1});
-    };
-
-    isActiveRoute = path => {
-        const {nextLocation} = this.state;
-        const currentRoute = routes.find(route => matchPath(path, route));
-        const isNav = currentRoute.group === 'nav';
-        return currentRoute && isNav && nextLocation === path;
     };
 
     calcTop = offset => {
         const width = window.innerWidth;
         if (width < 575) return offset + 70;
         if (width <= 767) return offset + 75;
-        return width <= 1140 ? offset + 75 : offset - 80;
+        return width <= 1140 ? offset + 75 : offset - 78;
     };
 
     render() {
@@ -59,8 +79,9 @@ class NavLinks extends Component {
                             to={item.path}
                             key={key}
                             className="menu__link"
-                            onClick={this.positionCircle}
-                            ref={node => this.isActiveRoute(item.path) && (this.activeLink = node)}
+                            onClick={this.handleNavChange}
+                            exact={true}
+                            ref={node => this.setRef(node, item.path)}
                         >
                             <i className="menu__link-line"/>
                             <span>{item.title}</span>

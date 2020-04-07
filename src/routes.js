@@ -12,25 +12,23 @@ import SearchList from './pages/SearchList'
 import Profile from './pages/Profile'
 import AddForm from './pages/Forms';
 import ControlList from './pages/ControlList';
-import UndefinedPage from './pages/UndefinedPage';
 
 export const routes = [
     { path: '/', exact: true, component: PatinaPage },
     { path: '/books', exact: true, component: BooksList, group: 'nav' },
-    { path: '/books/:id', exact: true, component: BooksDetail, group: 'nav' },
+    { path: '/books/:id', exact: true, component: BooksDetail },
     { path: '/charts', exact: true, component: ChartsList, group: 'nav' },
-    { path: '/charts/:id', exact: true, component: ChartsDetail, group: 'nav' },
+    { path: '/charts/:id', exact: true, component: ChartsDetail },
     { path: '/reviews', exact: true, component: ReviewsList, group: 'nav' },
-    { path: '/reviews/:id', exact: true, component: ReviewsDetail, group: 'nav' },
+    { path: '/reviews/:id', exact: true, component: ReviewsDetail },
     { path: '/events', exact: true, component: EventsList, group: 'nav' },
     { path: '/news', exact: true, component: NewsList, group: 'nav' },
-    { path: '/news/:id', exact: true, component: NewsDetail, group: 'nav' },
-    { path: '/search', component: SearchList },
-    { path: '/search/:id', component: SearchList },
-    { path: '/search?q=val', component: SearchList },
-    { path: '/form/:type', component: AddForm },
-    { path: '/profile/:page', component: Profile },
-    { path: '/control', component: ControlList },
-    { path: '/control/:type', component: AddForm },
-    { path: '*', component: UndefinedPage }
+    { path: '/news/:id', exact: true, component: NewsDetail },
+    { path: '/search', exact: true, component: SearchList },
+    { path: '/search/:id', exact: true, component: SearchList },
+    { path: '/search?q=val', exact: true, component: SearchList },
+    { path: '/form/:type', exact: true, component: AddForm },
+    { path: '/profile/:page', exact: true, component: Profile },
+    { path: '/control', exact: true, component: ControlList },
+    { path: '/control/:type', exact: true, component: AddForm }
 ];

@@ -76,7 +76,7 @@ class ChartsList extends Component {
                                 <Link to={`/charts/${chart.id}`}
                                       key={key}
                                       className="selection__link"
-                                      itemprop="url"
+                                      itemProp="url"
                                       content={`patina.ru/charts/${chart.id}`}
                                 >
                                     <span itemProp="position" content={key}>
