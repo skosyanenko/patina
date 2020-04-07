@@ -13,7 +13,7 @@ class Header extends Component {
     };
 
     static getDerivedStateFromProps(nextProps) {
-        if(nextProps.burger || nextProps.location) {
+        if (nextProps.burger || nextProps.location) {
             return {
                 burger: nextProps.burger
             }

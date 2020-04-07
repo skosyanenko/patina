@@ -11,7 +11,7 @@ class Socials extends Component {
         image: 'http://patina.ru'
     };
 
-    static getDerivedStateFromProps(nextProps, prevState) {
+    static getDerivedStateFromProps(nextProps) {
         if (nextProps.match.url) {
             return {url: nextProps.match.url};
         }

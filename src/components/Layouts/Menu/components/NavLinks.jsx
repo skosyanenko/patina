@@ -1,27 +1,45 @@
-import React, {Component} from 'react';
-import {Link, NavLink} from 'react-router-dom';
-import { matchPath } from 'react-router';
+import React, { Component } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { matchPath, withRouter} from 'react-router';
+import { routes } from 'routes';
 
 class NavLinks extends Component {
     activeLink = React.createRef();
 
     state = {
         navLinks: [
-            {title: 'книги', path: '/books'},
-            {title: 'топы', path: '/charts'},
-            {title: 'критика', path: '/reviews'},
-            {title: 'эвенты', path: '/events'},
-            {title: 'что нового', path: '/news'}
+            { title: 'книги', path: '/books' },
+            { title: 'топы', path: '/charts' },
+            { title: 'критика', path: '/reviews' },
+            { title: 'эвенты', path: '/events' },
+            { title: 'что нового', path: '/news' }
         ],
         topCoord: null,
         toggleCircle: null
     };
 
-    componentWillReceiveProps(nextProps) {
-        let location = nextProps.location.pathname;
-        let currLoc = location.match(/books|charts|reviews|events|news/);
-        this.activeLink && this.positionCircle(this.activeLink, currLoc);
+    static getDerivedStateFromProps(nextProps) {
+        return {
+            nextLocation: nextProps.location.pathname
+        }
     }
+
+    componentDidMount() {
+        this.positionCircle();
+    };
+
+    positionCircle = () => {
+        const topOffset = +this.activeLink.getBoundingClientRect().top.toFixed() || 0;
+        const topCoord = this.calcTop(topOffset);
+        this.setState({topCoord, toggleCircle: 1});
+    };
+
+    isActiveRoute = path => {
+        const {nextLocation} = this.state;
+        const currentRoute = routes.find(route => matchPath(path, route));
+        const isNav = currentRoute.group === 'nav';
+        return currentRoute && isNav && nextLocation === path;
+    };
 
     calcTop = offset => {
         const width = window.innerWidth;
@@ -30,43 +48,25 @@ class NavLinks extends Component {
         return width <= 1140 ? offset + 75 : offset - 80;
     };
 
-    positionCircle = (el, loc) => {
-        let arrOfPath = [];
-
-        const {navLinks} = this.state;
-        navLinks.map(item => (arrOfPath.push(item.path)));
-
-        if (loc !== null){
-            let target = el && el.target || el;
-            if (target.current !== null) {
-                const topOffset = +target.getBoundingClientRect().top.toFixed() || 0;
-                const topCoord = this.calcTop(topOffset);
-                this.setState({topCoord, toggleCircle: 1});
-            }
-        } else {
-            this.setState({toggleCircle: 0});
-        }
-    };
-
     render() {
         const { navLinks, topCoord, toggleCircle } = this.state;
-        const { location: {pathname} } = this.props;
 
         return (
             <div className="menu__wrapper">
-                {navLinks.map((item, key) => (
-                    <div className="menu__links" key={key}>
+                <div className="menu__links">
+                    {navLinks.map((item, key) => (
                         <NavLink
                             to={item.path}
+                            key={key}
                             className="menu__link"
                             onClick={this.positionCircle}
-                            ref={node => matchPath(item.path, pathname) && (this.activeLink = node)}
+                            ref={node => this.isActiveRoute(item.path) && (this.activeLink = node)}
                         >
                             <i className="menu__link-line"/>
                             <span>{item.title}</span>
                         </NavLink>
-                    </div>
-                ))}
+                    ))}
+                </div>
                 <span className={`menu__link-circle `} style={{top: topCoord, opacity: toggleCircle}}/>
                 <Link to={'/search'} className="menu__search">
                     <div className="menu__search-loupe"/>
@@ -76,7 +76,7 @@ class NavLinks extends Component {
     }
 }
 
-export default NavLinks;
+export default withRouter(NavLinks);
 
 
 

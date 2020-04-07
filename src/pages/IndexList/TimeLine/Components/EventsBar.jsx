@@ -23,12 +23,9 @@ class EventsBar extends Component {
         }
     }
 
-    componentWillMount() {
-        document.body.addEventListener('keydown', this.handleKeydown);
-    }
-
     componentDidMount() {
         const selectedEvent = this.props.events[this.props.index];
+        document.body.addEventListener('keydown', this.handleKeydown);
         this.slideToPosition(-(selectedEvent.distance - (this.props.visibleWidth / 2)), this.props);
     }
 
