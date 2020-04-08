@@ -6,7 +6,7 @@ import './index.sass';
 class Menu extends Component {
 	state = {
 		menu: '',
-		toggle: '',
+		toggle: ''
 	};
 
 	static getDerivedStateFromProps(nextProps) {
@@ -15,15 +15,22 @@ class Menu extends Component {
 				menu: nextProps.menu,
 				toggle: nextProps.toggle
 			}
+		} else {
+			return {
+				header: ''
+			}
 		}
 	};
 
 	render () {
-		const { menu, toggle } = this.props;
+		const { menu, toggle, toggleMenu } = this.props;
 
 		return (
 			<>
 				<nav className={`menu ${menu}`}>
+					<div className="burger open" onClick={toggleMenu}>
+						<span className="burger__center"/>
+					</div>
 					<div className="menu__wrap">
 						<NavLinks />
 					</div>

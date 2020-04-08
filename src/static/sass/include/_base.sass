@@ -155,14 +155,15 @@ p
                 margin-bottom: 10px
 
     &--index
-        max-width: calc(100% - 310px)
-        margin: 80px 0 0 auto
+        width: 100%
+        margin-left: 310px
         +maxwidth(1640px)
-            max-width: calc(100% - 250px)
+            margin-left: 250px
         +maxwidth($desktop)
             max-width: 100%
+            margin-left: 0
         +maxwidth($tablet)
-            margin-top: 70px
+            margin-top: 0
         +maxwidth($mobail)
             margin-top: 60px
 
@@ -179,6 +180,7 @@ p
         +maxwidth($tablet)
             padding: 30px
         +maxwidth($mobail)
+            margin-top: 60px
             padding: 20px
 
     &--form

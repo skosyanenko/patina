@@ -4,13 +4,15 @@
 
 .main
     width: 100%
-    max-width: calc(100% - 310px)
+    max-width: calc(100% - 620px)
     display: flex !important
     flex-direction: row
     justify-content: space-between
     +maxwidth(1640px)
-        max-width: 100%
+        max-width: calc(100% - 500px)
         padding: 40px
+    +maxwidth($desktop)
+        max-width: 100%
     +maxwidth($tablet)
         padding: 30px
     +maxwidth($mobail)
@@ -65,12 +67,14 @@
 
 .main-news
     width: 100%
-    max-width: calc(100% - 310px)
+    max-width: calc(100% - 620px)
     flex-direction: row
     justify-content: space-between
     +maxwidth(1640px)
-        max-width: 100%
+        max-width: calc(100% - 500px)
         padding: 0 40px 40px
+    +maxwidth($desktop)
+        max-width: 100%
     +maxwidth($tablet)
         padding: 0 30px 30px
     +maxwidth($mobail)

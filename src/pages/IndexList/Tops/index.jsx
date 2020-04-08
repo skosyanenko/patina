@@ -74,7 +74,7 @@ class Tops extends Component {
                                    dangerouslySetInnerHTML={{__html: `${item.description}`}}
                                      itemProp="description"
                                 />
-                                <div>
+                                <>
                                     <Socials/>
                                     <div className="tops__text-buttons">
                                         <div className="button-write-top">
@@ -83,7 +83,7 @@ class Tops extends Component {
                                         </div>
                                         <Link to={`/charts/${item.id}`} className="button button-white">Подробнее</Link>
                                     </div>
-                                </div>
+                                </>
                             </div>
                         </div>
                     ))}

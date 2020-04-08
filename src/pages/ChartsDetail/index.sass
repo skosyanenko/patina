@@ -11,9 +11,13 @@
         margin-bottom: 20px
         display: flex
         justify-content: space-between
+        +maxwidth($mobail)
+            flex-direction: column
 
         &-title
             @include style-text(50px, 4px, $vogue, $black, 100%, 500, true)
+            +maxwidth($mobail)
+                text-align: right
 
     &__description
         width: 100%

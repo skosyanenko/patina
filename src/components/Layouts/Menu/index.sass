@@ -4,8 +4,9 @@
     max-width: 310px
     width: 100%
     position: relative
-    padding: 0
     display: flex
+    flex-direction: column
+    padding: 0
     background-image: linear-gradient($black 50%, rgba(255,255,255,0) 0%)
     background-position: right
     background-size: 1px 10px
@@ -29,6 +30,7 @@
         max-width: 190px
 
     &.open
+        z-index: 1001
         +maxwidth(1140px)
             left: 0
             transition: 0.4s
@@ -42,8 +44,6 @@
     &--index
         background-image: none
         position: fixed
-        top: -80px
-        z-index: 1001
 
         .menu__wrap
             height: 100vh
@@ -56,9 +56,11 @@
         .menu__wrapper
             margin-top: 80px
             +maxwidth(1140px)
-                margin-top: 30px
+                margin-top: 35px
             +maxwidth($tablet)
-                margin-top: 50px
+                margin-top: 40px
+            +maxwidth($mobail)
+                margin-top: 40px
 
         .menu__link-circle
             display: none
@@ -181,4 +183,9 @@
 
         &.exited
             opacity: 0
+
+    .burger
+        position: absolute
+        margin: 0
+        top: 88px
 

@@ -1,8 +1,9 @@
 @import 'config'
 
 .book-inform
-    max-width: 100%
-    margin-top: 70px
+    max-width: fit-content
+    width: 100%
+    margin: 70px auto 0
     display: flex
     z-index: 10
     +maxwidth($tablet)
@@ -11,6 +12,7 @@
         margin: 20px auto 0
 
     &__container
+        width: fit-content
         margin-left: 20px
         display: flex
         flex-direction: column

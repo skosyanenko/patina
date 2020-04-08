@@ -12,10 +12,9 @@ class ListBooks extends Component {
     };
 
     componentDidMount() {
-        const { perPage, valuesDropdown } = this.state;
-        const { updateState, fetchData } = this.props;
+        const { fetchData } = this.props;
 
-        updateState(perPage, valuesDropdown);
+        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
         fetchData('/api/v1/books')
             .then(() => this.setState({loading: false}), () => this.props.hook('letter', this.state.activeLetter))
             .catch(err => console.log(err));

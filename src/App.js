@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from 'routes';
 import { CSSTransition } from 'react-transition-group';
@@ -18,13 +18,13 @@ const App = ({ location }) => {
         modalIsOpen: false,
         isAnimate: false,
         menu: '',
-        burger: '',
-        toggle: !isIndex
+        header: '',
+        toggle: true
     };
 
     const [state, setState] = useState(initialState);
 
-    const { modalIsOpen, isAnimate, toggle, menu, burger } = state;
+    const { modalIsOpen, isAnimate, toggle, menu, header } = state;
 
     const switchClasses = (path) => {
         switch(path) {
@@ -38,19 +38,16 @@ const App = ({ location }) => {
     };
 
     useEffect(()=> {
-        const burgerPost = toggle ? 'open' : 'close';
         const menuPost = toggle ? 'open' : 'close';
 
-        const isResponsive = window.width <= 1140;
-
-        const burgerIndex = 'burger--index ' + burgerPost;
         const menuIndex = 'menu--index ' + menuPost;
+
+        const headerInvisible = window.scrollY ? 'is-hidden' : 'is-invisible';
 
         setState({
             ...state,
-            toggle: (!isIndex && isResponsive) ? true : toggle,
-            burger: isIndex ? burgerIndex : burgerPost,
             menu: isIndex ? menuIndex : menuPost,
+            header: toggle  ? headerInvisible : '',
             isAnimate: !isAnimate
         });
     }, [location, toggle]);
@@ -65,13 +62,17 @@ const App = ({ location }) => {
                 location={location}
                 toggleModal={toggleModal}
                 toggleMenu={toggleMenu}
-                burger={burger}
                 toggle={toggle}
+                header={header}
             />
 
             <div className="wrapper__layout">
 
-                <Menu location={location} menu={menu} toggle={toggle}/>
+                <Menu location={location}
+                      menu={menu}
+                      toggle={toggle}
+                      toggleMenu={toggleMenu}
+                />
 
                 <CSSTransition
                     in={isAnimate}

@@ -13,6 +13,7 @@
         display: flex !important
         justify-content: space-between
         +maxwidth($desktop)
+            padding: 0 5px
             margin-top: 0
             flex-direction: column
         +maxwidth($mobail)
@@ -44,7 +45,9 @@
         +maxwidth($desktop)
             max-width: 795px
             width: 100%
-            margin: 0 auto
+            min-height: 250px
+            max-height: fit-content
+            margin: 20px auto 0
 
         &-title
             @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
@@ -59,6 +62,12 @@
             @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
             width: 100%
             text-align: justify
+            +maxwidth($desktop)
+                margin-bottom: 30px
+            +maxwidth($tablet)
+                margin-bottom: 25px
+            +maxwidth($mobail)
+                margin-bottom: 20px
 
         &-buttons
             margin-top: 15px

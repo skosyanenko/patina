@@ -9,13 +9,20 @@ class Header extends Component {
         didScroll: true,
         lastScrollTop: 0,
         headerClass: '',
-        burger: ''
+        header: '',
+        toggle: false
     };
 
     static getDerivedStateFromProps(nextProps) {
-        if (nextProps.burger || nextProps.location) {
+        if (nextProps.header) {
             return {
-                burger: nextProps.burger
+                header: nextProps.header,
+                toggle: nextProps.toggle
+            }
+        } else {
+            return {
+                header: '',
+                toggle: false
             }
         }
     };
@@ -28,13 +35,6 @@ class Header extends Component {
         window.removeEventListener('scroll', this.handleScroll);
     };
 
-    getHeaderHeight = () => {
-        const width = window.innerWidth;
-        if (width > 991) return 80;
-        if (width <= 991 && width >767) return 70;
-        if (width <= 767) return 60;
-    };
-
     hasScrolled = () => {
         const delta = 5;
         const windowScroll = window.scrollY;
@@ -42,7 +42,7 @@ class Header extends Component {
         if (Math.abs(this.state.lastScrollTop - windowScroll) <= delta)
             return;
 
-        if (windowScroll > this.state.lastScrollTop && windowScroll > this.getHeaderHeight()){
+        if (windowScroll > this.state.lastScrollTop && windowScroll > 60){
             this.setState({
                 headerClass: 'is-hidden',
                 lastScrollTop: windowScroll
@@ -54,7 +54,7 @@ class Header extends Component {
                     lastScrollTop: windowScroll
                 });
             }
-            if (this.state.lastScrollTop < this.getHeaderHeight()) {
+            if (this.state.lastScrollTop < 60) {
                 this.setState({
                     headerClass: '',
                     lastScrollTop: windowScroll
@@ -72,17 +72,16 @@ class Header extends Component {
 
     classNames = () => {
         const classes = this.props.location.pathname === '/' ? 'header header--index' : 'header';
-        return classes + ' ' + this.state.headerClass;
+        return classes + ' ' + this.state.headerClass + ' ' + this.state.header;
     };
 
     render() {
         const { location, toggleModal, toggleMenu } = this.props;
-        const { burger } = this.state;
 
         return (
             <header className={this.classNames()}>
                 <div className="header__menu">
-                    <div className={`burger ${burger}`} onClick={toggleMenu}>
+                    <div className="burger close" onClick={toggleMenu}>
                         <span className="burger__center"/>
                     </div>
                 </div>

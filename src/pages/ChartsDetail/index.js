@@ -53,7 +53,7 @@ class ChartsDetail extends Component {
                             >
                                 <div className="block__wrapper" key={key}>
                                     <div className="block__title" itemProp="name">
-                                        <Link to={`/books/${id}`} itemProp="url" content={`patina.ru/books/${id}`}>{item.title}</Link>
+                                        <Link to={`/books/${item.id}`} itemProp="url" content={`patina.ru/books/${item.id}`}>{item.title}</Link>
                                     </div>
                                     <div className="block__number">
                                         <Link to={`/books/${item.id}`} itemProp="position" content={key + 1}>

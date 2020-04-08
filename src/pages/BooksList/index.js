@@ -14,7 +14,7 @@ class BooksList extends Component {
         letter: '',
         sorting: '',
         books: [],
-        letters: []
+        letters: [],
     };
 
     hookState = (name, value) => this.setState({[name]: value});

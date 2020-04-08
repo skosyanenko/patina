@@ -126,6 +126,8 @@
         -webkit-hyphens: auto
         -ms-hyphens: auto
         text-align: left
+        +maxwidth($desktop)
+            text-align: center
         +maxwidth($tablet)
             margin-bottom: 50px
         +maxwidth($mobail)
@@ -152,7 +154,7 @@
         display: flex
         justify-content: space-between
         +maxwidth(1280px)
-            justify-content: left
+            margin: 0 auto
         +maxwidth($tablet)
             margin-bottom: 20px
         +maxwidth($mobail)
