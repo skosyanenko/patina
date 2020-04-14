@@ -36,7 +36,7 @@ class ChartsDetail extends Component {
             <div itemType="http://schema.org/ItemList http://schema.org/CreativeWork" itemScope>
                 <div className="depiction" >
                     <div className="depiction__wrapper">
-                        <Link to="/tops" className="backwards"/>
+                        <Link to="/charts" className="backwards"/>
                         <h1 className="depiction__wrapper-title" itemProp="name">{title}</h1>
                     </div>
                     <div className="depiction__description"

@@ -53,14 +53,15 @@
 
     &__paragraph
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        text-indent: 35px
+        margin-bottom: 25px
+        &:last-child
+            margin-bottom: 0
         &:first-child
             &:first-letter
                 @include style-text(50px, 4px, $izvestia, $green, 100%, normal, true)
 
-    &__heading
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
-
-    mark
+    &__marked
         @include style-text(25px, 2px, $openSans, $carbonic, 120%, 300, true)
         padding-left: 30px
         border-left: 6px solid $carbonic
@@ -74,12 +75,25 @@
         +maxwidth($mobail)
             padding-left: 10px
 
+        &-title
+            @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
+            margin-bottom: 25px
+            text-align: right
+
+    &__header
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+
+    &__list
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        padding-bottom: 15px
+        margin-left: 30px
+
     &__quote
         width: 100%
         padding: 0 20px
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         position: relative
-        margin: 25px 0
+        margin: 25px 0 15px
         &:after, &:before
             width: 17px
             height: 17px
@@ -94,6 +108,11 @@
             bottom: 0
             right: 0
             transform: rotate(180deg)
+
+        &-caption
+            @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
+            margin-bottom: 25px
+            text-align: right
 
     &__image
         max-width: 525px
@@ -410,9 +429,15 @@
                 height: 225px
 
         &-img
-            width: 100%
+            width: 140%
             position: absolute
             z-index: 1
+            left: -26%
+            top: -13%
+            +maxwidth($tablet)
+                top: -17%
+            +maxwidth($mobail)
+                top: -20%
 
 /* Стили для компонента UserInfo */
 

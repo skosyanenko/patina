@@ -1348,6 +1348,51 @@ module.exports = {
                 death: '01.01.2015',
                 picture: '/uploads/authorImage/BorisNosik.png'
             },
+            {
+                name: 'Кларенс Деннис',
+                birth: '01.01.1876',
+                death: '01.01.1938',
+                picture: '/uploads/authorImage/CDennis.png'
+            },
+            {
+                name: 'Кларк Маркес',
+                birth: '01.01.1846',
+                death: '01.01.1881',
+                picture: '/uploads/authorImage/MarcusClarke.png'
+            },
+            {
+                name: 'Томас Кенилли',
+                birth: '01.01.1935',
+                picture: '/uploads/authorImage/ThomasKeneally.png'
+            },
+            {
+                name: 'Майлз Франклин',
+                birth: '01.01.1879',
+                death: '01.01.1954',
+                picture: '/uploads/authorImage/MilesFranklin.png'
+            },
+            {
+                name: 'Генрик Ибсен',
+                birth: '01.01.1928',
+                death: '01.01.1906',
+                picture: '/uploads/authorImage/HenrikIbsen.png'
+            },
+            {
+                name: 'Мелина Марчетта',
+                birth: '01.01.1965',
+                picture: '/uploads/authorImage/MelinaMarchetta.png'
+            },
+            {
+                name: 'Дорис Пилкингтон',
+                birth: '01.01.1937',
+                death: '01.01.2014',
+                picture: '/uploads/authorImage/DorisPilkington.png'
+            },
+            {
+                name: 'Тим Уинтон',
+                birth: '01.01.1960',
+                picture: '/uploads/authorImage/TimWinton.png'
+            }
         ], {});
 
     },

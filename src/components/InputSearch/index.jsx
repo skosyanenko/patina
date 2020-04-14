@@ -9,20 +9,51 @@ class InputSearch extends Component {
         value: '',
         options: [],
         loading: false,
-        result: ''
+        result: '',
+        isBlur: false,
+        activeLetter:  '',
+        isValue: false
+    };
+
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.isActiveLetter || nextProps.isSorting) {
+            return {
+                value: ''
+            }
+        }
     };
 
     search = async val => {
-        const { fetchData, items } = this.props;
+        const { fetchData, items, data, filterData, location, match, hook } = this.props;
+        const { options, activeLetter, isBlur, result } = this.state;
 
-        return await fetchData(`/api/v1/search-title?q=${val}`)
-            .then(() => this.setState({ options: items}))
-            .catch(err => console.log(err));
+        if (location.pathname !== '/search' && match.path !== '/search/:id') {
+            const regExp = new RegExp('(' + val + ')', 'iy');
+            regExp.lastIndex = 0;
+
+            const searchData = data.filter(item => regExp.exec(item.title));
+
+            this.setState({
+                options: searchData,
+                result: 'результаты поиска:'
+            });
+
+            hook('activeLetter', activeLetter);
+            hook('isBlur', isBlur);
+            hook('result', result);
+
+            return filterData(options.length ? searchData : data);
+        } else {
+            await fetchData(`/api/v1/search-title?q=${val}`)
+                .then(() => this.setState({ options: items}))
+                .catch(err => console.log(err));
+        }
     };
 
     onChange = async e => {
         this.search(e.target.value);
-        const { hook } = this.props;
+
+        const { hook, match, history } = this.props;
         const { loading } = this.state;
 
         this.setState({
@@ -30,11 +61,16 @@ class InputSearch extends Component {
             showOptions: true,
             value: e.currentTarget.value,
             loading: true
-        }, () => { hook('loading', loading) })
+        }, () => {
+            hook('loading', loading);
+            if (match.path === '/search/:id') {
+                history.push('/search');
+            }
+        })
     };
 
     onClick = e => {
-        const { hook, history } = this.props;
+        const { hook, history, match } = this.props;
 
         this.setState({
             activeOption: 0,
@@ -44,7 +80,10 @@ class InputSearch extends Component {
         }, () => {
             this.search(this.state.value);
             hook('loading', this.state.loading);
-            history.push('/search');
+
+            if (match.path === '/search/:id') {
+                history.push('/search');
+            }
         });
     };
 
@@ -52,7 +91,7 @@ class InputSearch extends Component {
         const { activeOption, options} = this.state;
         const { hook } = this.props;
 
-        switch(e.keyCode) {
+        switch (e.keyCode) {
             case 13:
                 if ( options.length > 0 ){
                     this.setState({
@@ -75,18 +114,19 @@ class InputSearch extends Component {
                         hook('result', this.state.result);
                     });
                 }
+            break;
             case 38:
-                if ( activeOption === 0 ){
+                if (activeOption === 0) {
                     return;
                 }
                 this.setState({ activeOption: activeOption - 1 });
+            break;
             case 40:
-                if ( activeOption === options.length - 1 ){
+                if (activeOption === options.length - 1) {
                     return;
                 }
                 this.setState({ activeOption: activeOption + 1 });
-            default:
-                return '';
+            break;
         }
     };
 

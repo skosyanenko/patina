@@ -13,13 +13,9 @@ class ReviewsDetail extends Component {
     };
 
     componentDidMount() {
-        this.fetchCurrentReview();
-    };
-
-    fetchCurrentReview = async () => {
         const { id } = this.props.match.params;
 
-        return await axios.get(`/api/v1/review/${id}`)
+        return axios.get(`/api/v1/review/${id}`)
             .then(res => {
                 if (res.data) {
                     this.setState({dataItem: res.data}, () =>

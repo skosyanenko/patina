@@ -1,9 +1,8 @@
 import Header from "@editorjs/header";
-import Image from "@editorjs/image";
 import SimpleImage from "@editorjs/simple-image";
 import List from "@editorjs/list";
 import Quote from "@editorjs/quote";
-import Marker from "@editorjs/marker";
+import Warning from "@editorjs/warning";
 import Delimiter from "@editorjs/delimiter";
 
 export const EditorConfigDefault = {
@@ -63,15 +62,10 @@ export const EditorConfigReview = {
             placeholder: 'Заголовок',
         }
     },
-    image: {
-        class: Image,
-        toolbox: {
-            title: 'Изображение'
-        },
-        inlineToolbar: ['link'],
+    SimpleImage: {
+        class: SimpleImage,
+        inline: true
     },
-    simpleImage: SimpleImage,
-
     list: {
         class: List,
         toolbox: {
@@ -87,14 +81,19 @@ export const EditorConfigReview = {
         },
         config: {
             quotePlaceholder: 'Напишите цитату',
-            captionPlaceholder: 'Укажите автора цитаты',
+            captionPlaceholder: 'Укажите автора цитаты (не обязательно)',
         }
     },
-    marker: {
-        class:  Marker,
+    warning: {
+        class:  Warning,
+        inlineToolbar: true,
         toolbox: {
-            title: 'Маркер'
-        }
+            title: 'Основная мысль'
+        },
+        config: {
+            titlePlaceholder: 'Название (не обязательно)',
+            messagePlaceholder: 'Основная мысль',
+        },
     },
     delimiter: {
         class:  Delimiter,

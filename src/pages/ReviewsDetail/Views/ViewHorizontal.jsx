@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import { formatType } from 'config/config';
+import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
-import CommentBlock from 'components/CommentBlock';
 
 const ViewHorizontal = ({ book, title, likes, date, description, id, textLength }) => {
     return (
         <>
             <div className="review-wrapper">
                 <div className="review-wrapper__wrap">
-                    <Writer quote={book.quote}
-                            authors={book.authors}
-                            image={book.image}
+                    <Writer quote={book && book.quote}
+                            authors={book && book.authors}
+                            image={book && book.authors}
                     />
                     <div className="review-wrapper__text">
-                        <h1 className="review-wrapper__text-title">{book.title}</h1>
+                        <h1 className="review-wrapper__text-title">{book && book.title}</h1>
                         <span className="review-wrapper__text-subtitle">{title}</span>
                     </div>
                 </div>
@@ -35,10 +36,10 @@ const ViewHorizontal = ({ book, title, likes, date, description, id, textLength 
                             />
                         </div>
                         <div className="review-wrapper__description" itemProp="reviewBody">
-                            {description && description.map(item => (
-                                <p className={`review-wrap__${item.type}`} key={item}>
-                                    {item.data.text}
-                                </p>
+                            {description && description.map((item, key) => (
+                                <Fragment key={key}>
+                                    {formatType(item, key)}
+                                </Fragment>
                             ))}
                         </div>
                     <span className="review-wrapper__number">1</span>

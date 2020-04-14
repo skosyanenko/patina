@@ -2930,6 +2930,102 @@ module.exports = {
             {
                 BookId: 1,
                 CategoryId: 35
+            },
+            {
+                BookId: 300,
+                CategoryId: 31
+            },
+            {
+                BookId: 300,
+                CategoryId: 44
+            },
+            {
+                BookId: 300,
+                CategoryId: 138
+            },
+            {
+                BookId: 301,
+                CategoryId: 138
+            },
+            {
+                BookId: 301,
+                CategoryId: 35
+            },
+            {
+                BookId: 301,
+                CategoryId: 16
+            },
+            {
+                BookId: 302,
+                CategoryId: 138
+            },
+            {
+                BookId: 302,
+                CategoryId: 58
+            },
+            {
+                BookId: 302,
+                CategoryId: 35
+            },
+            {
+                BookId: 303,
+                CategoryId: 138
+            },
+            {
+                BookId: 303,
+                CategoryId: 99
+            },
+            {
+                BookId: 303,
+                CategoryId: 116
+            },
+            {
+                BookId: 304,
+                CategoryId: 138
+            },
+            {
+                BookId: 304,
+                CategoryId: 110
+            },
+            {
+                BookId: 304,
+                CategoryId: 133
+            },
+            {
+                BookId: 305,
+                CategoryId: 138
+            },
+            {
+                BookId: 305,
+                CategoryId: 64
+            },
+            {
+                BookId: 305,
+                CategoryId: 35
+            },
+            {
+                BookId: 306,
+                CategoryId: 138
+            },
+            {
+                BookId: 306,
+                CategoryId: 35
+            },
+            {
+                BookId: 306,
+                CategoryId: 82
+            },
+            {
+                BookId: 307,
+                CategoryId: 138
+            },
+            {
+                BookId: 307,
+                CategoryId: 31
+            },
+            {
+                BookId: 307,
+                CategoryId: 35
             }
         ];
 

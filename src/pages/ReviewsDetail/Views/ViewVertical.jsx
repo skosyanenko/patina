@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { formatType } from 'config/config';
 import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
@@ -12,10 +12,13 @@ const ViewVertical = ({ book, title, description, likes, date, id, textLength })
                  itemProp="review"
                  itemScope
             >
-                <Writer/>
+                <Writer quote={book && book.quote}
+                        authors={book && book.authors}
+                        image={book && book.authors}
+                />
                 <div className="container-review__text">
                     <h1 className="container-review__text-title" itemProp="itemReviewed">
-                        {title}
+                        {book && book.title}
                     </h1>
                     <span className="container-review__text-subtitle" itemProp="headline name">
                         {title}
@@ -24,9 +27,11 @@ const ViewVertical = ({ book, title, description, likes, date, id, textLength })
             </div>
 
             <div className="review-wrap" itemProp="reviewBody">
-                {/*{description && Object.keys(description).map(item => (*/}
-                {/*    formatType(item, description[item])*/}
-                {/*))}*/}
+                {description && description.map((item, key) => (
+                    <Fragment key={key}>
+                        {formatType(item, key)}
+                    </Fragment>
+                ))}
             </div>
             <UserInfo textLength={textLength}
                       likes={likes}

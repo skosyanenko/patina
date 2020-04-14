@@ -4,14 +4,21 @@ import './index.sass';
 
 class Sorting extends Component {
     state = {
-        active: ''
+        active: '',
+        result: '',
+        value: ''
     };
 
     handleSort = active => {
+        const { hook } = this.props;
+        const { result, value } = this.state;
+
         this.setState(state => ({
             active: state.active !== active ? active : ''
         }), () => {
-            this.props.hook('sorting', this.state.active);
+            hook('sorting', active);
+            hook('result', result);
+            hook('value', value);
         });
     };
 

@@ -1458,6 +1458,38 @@ module.exports = {
           {
               ChartId: 16,
               BookId: 114
+          },
+          {
+              ChartId: 17,
+              BookId: 300
+          },
+          {
+              ChartId: 17,
+              BookId: 301
+          },
+          {
+              ChartId: 17,
+              BookId: 302
+          },
+          {
+              ChartId: 17,
+              BookId: 303
+          },
+          {
+              ChartId: 17,
+              BookId: 304
+          },
+          {
+              ChartId: 17,
+              BookId: 305
+          },
+          {
+              ChartId: 17,
+              BookId: 306
+          },
+          {
+              ChartId: 17,
+              BookId: 307
           }
       ];
 

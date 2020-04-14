@@ -5,7 +5,14 @@ module.exports = (sequelize, DataTypes) => {
         viewType: DataTypes.INTEGER,
         description: DataTypes.TEXT,
         likes: DataTypes.INTEGER,
-        pictures: DataTypes.ARRAY(DataTypes.STRING)
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('NOW()')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('NOW()')
+        }
     }, {});
     Review.associate = function({ User, Comment, Book }) {
         Review.belongsTo(Book, { as: 'book' });

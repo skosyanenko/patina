@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 export const MONTHS = [
     'Январь',
@@ -120,24 +120,58 @@ export const getDocHeight = () => {
     );
 };
 
-export const returnImage = (authors = []) => authors.map(({picture}) => picture).slice(0, -1);
+export const returnImage = (authors = []) => authors.map(({picture}) => picture);
 
 export const returnNameLetters = (name, surname) => (name.substr(0, 1) + surname.substr(0, 1));
 
-export const formatType = (type, value) => {
-    switch (type) {
-        case 'Paragraph':
-        case 'List':
-            return <div className="review-wrap__paragraph">{value}</div>;
-        case 'Marker':
-            return <mark>{value}</mark>;
-        case 'Quote':
-            return <p className="review-wrap__quote">{value}</p>;
-        case 'Image':
-            return <img src="images/topImage/1.jpg" alt="" className="review-wrap__image"/>;
-        case 'Header':
-            return <h3 className="review-wrap__heading">{value}</h3>;
-        case 'Delimiter':
+export const formatType = item => {
+
+    switch (item.type) {
+        case 'paragraph':
+            return <p className={`review-wrap__paragraph`} dangerouslySetInnerHTML={{__html: `${item.data.text}`}}/>;
+        case 'list':
+            if (item.data.style === 'ordered'){
+                return (
+                    <ol>
+                        {item.data.items.map((li, index) =>(
+                            <li className={`review-wrap__${item.type}`}
+                                key={index}
+                                dangerouslySetInnerHTML={{__html: `${li}`}}
+                            />
+                        ))}
+                    </ol>
+                );
+            } else {
+                return (
+                    <ul>
+                        {item.data.items.map((li, index) =>(
+                            <li className={`review-wrap__${item.type}`}
+                                key={index}
+                                dangerouslySetInnerHTML={{__html: `${li}`}}
+                            />
+                        ))}
+                    </ul>
+                );
+            }
+        case 'header':
+            return <h2 className={`review-wrap__header`}>{item.data.text}</h2>;
+        case 'warning':
+            return (
+                <>
+                    {item.data.title && <div className="review-wrap__marked-title">{item.data.title}</div>}
+                    <div className="review-wrap__marked">{item.data.message}</div>
+                </>
+            );
+        case 'quote':
+            return (
+                <>
+                    <p className="review-wrap__quote">{item.data.text}</p>
+                    {item.data.caption && <span className="review-wrap__quote-caption">{item.data.caption}</span>}
+                </>
+            );
+        case 'image':
+            return <img src={item.data.url} alt="" className="review-wrap__image"/>;
+        case 'delimiter':
             return <p className="review-wrap__delimiter">* * *</p>;
         default:
             return '';

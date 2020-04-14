@@ -48,7 +48,7 @@ class Books extends Component {
             fade: true,
             infinite: true,
             autoplay: true,
-            speed: 2000,
+            speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
         };

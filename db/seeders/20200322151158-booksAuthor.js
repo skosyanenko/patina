@@ -1223,6 +1223,38 @@ module.exports = {
           {
               BookId: 299,
               AuthorId: 26
+          },
+          {
+              BookId: 300,
+              AuthorId: 242
+          },
+          {
+              BookId: 301,
+              AuthorId: 243
+          },
+          {
+              BookId: 302,
+              AuthorId: 244
+          },
+          {
+              BookId: 303,
+              AuthorId: 245
+          },
+          {
+              BookId: 304,
+              AuthorId: 246
+          },
+          {
+              BookId: 305,
+              AuthorId: 247
+          },
+          {
+              BookId: 306,
+              AuthorId: 248
+          },
+          {
+              BookId: 307,
+              AuthorId: 249
           }
       ];
 
