@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 export const MONTHS = [
     'Январь',
@@ -93,11 +93,22 @@ export const profileLinks = [
     { title: 'Статистика', path: '/profile/statistic', img: 'statistic' }
 ];
 
-export const counterLetters = (description) => {
+export const counterLetters = description => {
     const objValues = Object.keys(description).map(x => description[x]);
     const textLength = Array.from(objValues)
-      .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
     return textLength;
+};
+
+export const counterReview = description => {
+    const objValues = JSON.parse(description).map(x => x.data.text).join();
+    const textLength = Array.from(objValues)
+        .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
+    return textLength;
+};
+
+export const returnDatePublish = date => {
+    return new Date(date).toLocaleDateString();
 };
 
 export const returnAuthor = (authors = []) => authors.map(({name}) => name).join(', ');

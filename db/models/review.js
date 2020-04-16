@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     Review.associate = function({ User, Comment, Book }) {
         Review.belongsTo(Book, { as: 'book' });
-        Review.belongsTo(User);
+        // Review.belongsTo(User);
         // Review.hasMany(Comment);
     };
     return Review;

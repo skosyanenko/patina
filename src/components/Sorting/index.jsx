@@ -4,26 +4,24 @@ import './index.sass';
 
 class Sorting extends Component {
     state = {
-        active: '',
+        sorting: '',
         result: '',
         value: ''
     };
 
-    handleSort = active => {
-        const { hook } = this.props;
+    handleSort = sorting => {
+        const { updateState } = this.props;
         const { result, value } = this.state;
 
         this.setState(state => ({
-            active: state.active !== active ? active : ''
+            sorting: state.sorting !== sorting ? sorting : ''
         }), () => {
-            hook('sorting', active);
-            hook('result', result);
-            hook('value', value);
+            updateState({ sorting, result, value });
         });
     };
 
     render() {
-        const { active } = this.state;
+        const { sorting } = this.state;
 
         return (
             <div className="sorting">
@@ -34,7 +32,7 @@ class Sorting extends Component {
                     { sortParams.map(({title}, key) => (
                         <span
                             key={key}
-                            className={`sorting__wrapper-type ${title === active ? 'active' : ''}`}
+                            className={`sorting__wrapper-type ${title === sorting ? 'active' : ''}`}
                             onClick={() => this.handleSort(title)}
                         >
                             {title}

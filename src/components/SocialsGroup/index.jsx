@@ -30,14 +30,14 @@ class Socials extends Component {
         return (
             <div className="socials" itemProp="sharedContent" itemScope itemType="http://schema.org/WebPage">
                 <a target="_blank"
-                   rel="nofollow"
+                   rel="noopener noreferrer"
                    href={`https://vk.com/share.php?url=${url}&title=${title}&description=${description}&image=${image}&noparse=true`}
                    itemProp="url"
                 >
                     <div className="socials__vk" itemProp="headline" content="vk.com"/>
                 </a>
                 <a target="_blank"
-                   rel="nofollow"
+                   rel="noopener noreferrer"
                    href={`https://t.me/share/url?url=${url}&title=${title}&description=${description}&image=${image}&noparse=true`}
                    itemProp="url"
                 >

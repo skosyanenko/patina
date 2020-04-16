@@ -88,15 +88,6 @@ router.get(
 );
 
 /**
- * @route GET /api/v1/search-title
- * @group books
- */
-router.get(
-    '/api/v1/search-title',
-    bookController.searchByTitle,
-);
-
-/**
  * @route GET /api/v1/search-category
  * @group books
  */

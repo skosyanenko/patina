@@ -47,7 +47,7 @@ class Books extends Component {
         const settings = {
             fade: true,
             infinite: true,
-            autoplay: true,
+            autoplay: false,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,

@@ -22,7 +22,7 @@ class SearchList  extends Component {
         const { updateState } = this.props;
         const { perPage, valuesDropdown } = this.state;
 
-        updateState( perPage, valuesDropdown );
+        updateState({ perPage, valuesDropdown });
 
         id && this.fetchBooksByCategories( id );
     };

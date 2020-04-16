@@ -23,7 +23,10 @@ class ChartsList extends Component {
             'max-glare': 0.5
         });
 
-        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
+        const { updateState } = this.props;
+        const { perPage, valuesDropdown } = this.state;
+        updateState({perPage, valuesDropdown});
+
         this.props.fetchData('/api/v1/charts')
           .then(() => this.setState({loading: false}))
           .catch(err => console.log(err));

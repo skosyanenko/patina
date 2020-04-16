@@ -8,6 +8,7 @@ import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
 import Loader from 'components/Loader';
 import './index.sass';
+import Store from "../../services/Store";
 
 class BooksList extends Component {
     state = {
@@ -22,13 +23,23 @@ class BooksList extends Component {
     };
 
     componentDidMount() {
-        const { fetchData, updateState } = this.props;
+        const { updateState } = this.props;
         const { perPage, valuesDropdown } = this.state;
+        updateState({perPage, valuesDropdown});
+        this.getItems();
+    };
 
-        updateState(perPage, valuesDropdown);
-        fetchData('/api/v1/books')
-            .then(() => this.setState({loading: false}))
-            .catch(err => console.log(err));
+    getItems = () => {
+        const {books} = Store;
+        const { fetchData } = this.props;
+        if (!books.length) {
+            fetchData('/api/v1/books')
+              .then(() => this.setState({loading: false}))
+              .then(() => console.log('request'))
+              // .then(() => Store.setData('books', this.props.data))
+              .catch(err => console.log(err));
+        }
+        console.log(books)
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -106,6 +117,9 @@ class BooksList extends Component {
     };
 
     hookState = (name, value) => this.setState({[name]: value});
+    updateState = (newState = {}) => {
+        this.setState({...newState})
+    };
 
     render() {
         const { isBlur, activeLetter, alphabet, loading, result, sorting } = this.state;
@@ -115,7 +129,7 @@ class BooksList extends Component {
             <>
                 <div className="books-title">
                     <TitleOfPage title={"Книги"} subtitle={"книжная полка"}/>
-                    <Sorting hook={this.hookState}/>
+                    <Sorting updateState={this.updateState}/>
                 </div>
                 <div className='container'>
                     <div className="container__container-book">
@@ -128,7 +142,7 @@ class BooksList extends Component {
                             isActiveLetter={activeLetter.length > 0}
                             isSorting={sorting.length > 0}
                         />
-                        <Sorting hook={this.hookState}/>
+                        <Sorting updateState={this.updateState}/>
                         <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`}>
                             { alphabet && alphabet.map((item, key) => (
                                 <div className="alphabet__letter"
@@ -162,8 +176,7 @@ class BooksList extends Component {
                                         content={`patina.ru/books/${book.id}`}
                                     >
                                         <span itemProp="position" content={key}>
-                                            {/*${book.authors.map(author => author.name)}*/}
-                                            {`«${book.title}» `}
+                                            {`«${book.title}» `}{book.authors.map(author => author.name)}
                                         </span>
                                     </Link>
                                 ))}

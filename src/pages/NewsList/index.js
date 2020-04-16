@@ -18,7 +18,10 @@ class NewsList extends Component {
     };
 
     componentDidMount() {
-        this.props.updateState(this.state.perPage, this.state.valuesDropdown);
+        const { updateState } = this.props;
+        const { perPage, valuesDropdown } = this.state;
+        updateState({perPage, valuesDropdown});
+
         this.props.fetchData('/api/v1/news')
             .then(() => this.setState({loading: false}))
             .catch(err => console.log(err));

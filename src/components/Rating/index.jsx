@@ -5,26 +5,11 @@ class Rating extends  Component {
     state = {
         inactive: false,
         stars: [
-            {
-                postfix: 'one',
-                count: 5
-            },
-            {
-                postfix: 'two',
-                count: 4
-            },
-            {
-                postfix: 'three',
-                count: 3
-            },
-            {
-                postfix: 'four',
-                count: 2
-            },
-            {
-                postfix: 'five',
-                count: 1
-            },
+            { postfix: 'one', count: 5 },
+            { postfix: 'two', count: 4 },
+            { postfix: 'three', count: 3 },
+            { postfix: 'four', count: 2 },
+            { postfix: 'five', count: 1 },
         ],
         mediumRate: 0,
         counters: 0,
@@ -57,7 +42,6 @@ class Rating extends  Component {
 
     render() {
         const { inactive, stars, mediumRate, counters, maskWidth } = this.state;
-        const { book } = this.props;
 
         return(
             <div className={`rating ${inactive ? 'voted' : ''}`}>

@@ -3,9 +3,9 @@ import Author from 'components/Author';
 
 class Comment extends Component {
 
-    handleDelete = () => {
-        this.props.handleDelete(this.props.keyValue);
-    };
+    // handleDelete = () => {
+    //     this.props.handleDelete(this.props.keyValue);
+    // };
 
     render() {
         const { createdAt, firstName, lastName } = this.props;
@@ -19,7 +19,7 @@ class Comment extends Component {
                             surname={lastName}
                     />
                     <div className="comments-block__wrap-delete"
-                         onClick={this.handleDelete}
+                         //onClick={this.handleDelete}
                     />
                 </div>
                <div className="comments-block__text" itemProp="commentText">Бесплатный онлайн перевод с английского на русский и обратно, англо-русский словарь с транскрипцией, произношением слов и примерами ...</div>

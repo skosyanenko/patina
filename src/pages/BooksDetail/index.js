@@ -64,7 +64,7 @@ class BooksDetail extends Component {
                         <Link to="/books" className="backwards"/>
                         <div className="cover__wrapper">
                             <div className="cover__wrapper-img">
-                                <img src={`${bookImage}`} alt="" itemProp="image"/>
+                                <img src={bookImage} alt="" itemProp="image"/>
                             </div>
                                 { authors && authors.length === 1 && authors.map((item, key) => (
                                     <Fragment key={key}>

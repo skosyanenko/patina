@@ -27,26 +27,25 @@ class InputSearch extends Component {
         const { fetchData, items, data, filterData, location, match, hook } = this.props;
         const { options, activeLetter, isBlur, result } = this.state;
 
-        if (location.pathname !== '/search' && match.path !== '/search/:id') {
+        if (match.path !== '/search/:id') {
             const regExp = new RegExp('(' + val + ')', 'iy');
             regExp.lastIndex = 0;
-
-            const searchData = data.filter(item => regExp.exec(item.title));
+            let searchData = [];
+            if (location !== '/reviews') {
+                searchData = data.filter(item => regExp.exec(item.title));
+            } else {
+                searchData = data.filter(item => regExp.exec(item.book.title));
+            }
 
             this.setState({
                 options: searchData,
                 result: 'результаты поиска:'
             });
-
             hook('activeLetter', activeLetter);
             hook('isBlur', isBlur);
             hook('result', result);
 
             return filterData(options.length ? searchData : data);
-        } else {
-            await fetchData(`/api/v1/search-title?q=${val}`)
-                .then(() => this.setState({ options: items}))
-                .catch(err => console.log(err));
         }
     };
 
@@ -89,7 +88,7 @@ class InputSearch extends Component {
 
     onKeyDown = e => {
         const { activeOption, options} = this.state;
-        const { hook } = this.props;
+        const { hook, filterData } = this.props;
 
         switch (e.keyCode) {
             case 13:
@@ -112,6 +111,7 @@ class InputSearch extends Component {
                     }, () => {
                         hook('loading', this.state.loading);
                         hook('result', this.state.result);
+                        filterData([]);
                     });
                 }
             break;
@@ -127,6 +127,7 @@ class InputSearch extends Component {
                 }
                 this.setState({ activeOption: activeOption + 1 });
             break;
+            default: return;
         }
     };
 

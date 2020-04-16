@@ -4,7 +4,7 @@ import Comment from './Comment';
 class CommentList extends Component {
 
     render() {
-        let handleDelete = this.props.handleDelete;
+        //let handleDelete = this.props.handleDelete;
 
         return(
           <Comment/>

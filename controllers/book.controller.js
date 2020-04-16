@@ -1,5 +1,4 @@
-import { Sequelize, sequelize } from '../db/models';
-
+import { Sequelize } from '../db/models';
 import Controller from './controller';
 import { Book, Category, Author, Film } from '../db/models';
 
@@ -108,27 +107,6 @@ class BooksController extends Controller {
             })
             .then(result => res.status(200).json(result))
             .catch(err => console.log('Не удалось получить элементы \n', err));
-    };
-
-    searchByTitle = async(req, res) => {
-        const query = `SELECT "id", "coverImage", "title", "weight", "ratingTotal" 
-                    FROM "Books" WHERE _search @@ plainto_tsquery('russian', :query);`;
-        const books = await sequelize.query(query, {
-            model: Book,
-            replacements: { query: req.query.q }
-        });
-        // const result = await Promise.all(bookIds.map(id => {
-        //     return Book.findOne({
-        //         where: {id},
-        //         include: [{
-        //             model: Author,
-        //             as: 'authors',
-        //             attributes: ['id', 'name'],
-        //             through: { attributes: [] }
-        //         }]
-        //     })
-        // }));
-        return res.status(200).json(books);
     };
 
     searchByCategory = async(req, res) => {

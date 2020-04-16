@@ -9,7 +9,7 @@ import TextEditor from './TextEditor';
 const HookForm = props => {
     const { handleSubmit, register, setValue, watch, getValues, errors, formState, control } = useForm();
 
-    const watchAllFields = watch('viewType');
+    watch('viewType');
 
     const typeSwitcher = type => {
         switch(type) {

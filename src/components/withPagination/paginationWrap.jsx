@@ -15,11 +15,8 @@ const paginationWrap = function( WrappedComponent ){
             valuesDropdown: []
         };
 
-        updateState = ( perPage, valuesDropdown ) => {
-            this.setState({
-                perPage,
-                valuesDropdown
-            })
+        updateState = (newState = {}) => {
+            this.setState({...newState})
         };
 
         fetchData = async url => {

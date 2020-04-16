@@ -95,10 +95,10 @@ class Tops extends Component {
                         dots={false}
                         arrows={false}
                         infinite={true}
-                        slidesToShow={2}
+                        slidesToShow={3}
                         slidesToScroll={1}
                         centerMode={true}
-                        centerPadding={'50px'}
+                        variableWidth={true}
                     >
                         { charts && charts.map((item, key) => (
                             <div className="tops__numb-dot" key={key}>

@@ -2,7 +2,7 @@ import React from 'react';
 import Tops from './Tops';
 import Title from './Title';
 import Books from './Books';
-import MainTimeline from './TimeLine';
+// import MainTimeline from './TimeLine';
 import News from './News';
 import './index.sass';
 
@@ -50,7 +50,7 @@ const PatinaPage = () => (
         <News/>
         <Title title={'Топы'} subtitle={'подборки книг на различные темы'}/>
         <Tops />
-        <MainTimeline/>
+        {/*<MainTimeline/>*/}
     </>
 );
 

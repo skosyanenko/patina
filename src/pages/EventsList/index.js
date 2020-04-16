@@ -6,6 +6,7 @@ import Event from './Components/Event';
 import WeatherCard from './Components/WeatherCard';
 import EventPicture from './Components/EventPicture';
 import './index.sass';
+import Store from "../../services/Store";
 
 class EventsList extends Component {
     state = {
@@ -46,6 +47,7 @@ class EventsList extends Component {
         this.fetchAllEvents().then(res => {
             this.setState({events: res})
         });
+        console.log(Store.getData('books'))
     };
 
     showPictures = () => {

@@ -94,10 +94,23 @@
             height: 50px
             display: flex!important
             align-items: center
+            justify-content: center
             @include style-text(30px, 4px, $vogue, rgba(31, 31, 31, 0.6), 90%, normal, false)
-            transition: .3s ease
             +maxwidth($mobail)
                 height: 40px
+
+        .slick-slider
+            .slick-track
+                display: flex
+            .slick-list
+                width: 100%
+            .slick-slide
+                width: 60px !important
+                opacity: 0
+            .slick-current, .slick-active
+                opacity: 1
+            .slick-current
+                margin: 0 40px
 
     .slick-center
         width: 115px

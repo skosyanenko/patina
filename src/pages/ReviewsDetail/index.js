@@ -9,7 +9,8 @@ class ReviewsDetail extends Component {
     state = {
         dataItem: [],
         textLength: null,
-        datePublish: null
+        datePublish: null,
+        error: ''
     };
 
     componentDidMount() {
@@ -23,7 +24,10 @@ class ReviewsDetail extends Component {
                 }
             })
             .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
+                console.log('Ошибка получения элементов из бд: ' + err);
+                this.setState({
+                    error: 'Такой рецензии не существует'
+                })
             });
     };
 
@@ -38,7 +42,9 @@ class ReviewsDetail extends Component {
     };
 
     render () {
-        const { dataItem, textLength, datePublish } = this.state;
+        const { dataItem, textLength, datePublish, error } = this.state;
+
+        if (error.length > 0) return error;
 
         return(
             <>
