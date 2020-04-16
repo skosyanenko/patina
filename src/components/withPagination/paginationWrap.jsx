@@ -19,16 +19,20 @@ const paginationWrap = function( WrappedComponent ){
             this.setState({...newState})
         };
 
+        setData = result => {
+            this.setState(state => ({
+                data: result.data,
+                filteredData: result.data,
+                pageCount: Math.ceil(result.data.length / state.perPage)
+            }), () => {
+                this.setItemsForCurrentPage();
+            });
+        }
+
         fetchData = async url => {
-            await axios.get(url).then(result => {
-                this.setState(state => ({
-                    data: result.data,
-                    filteredData: result.data,
-                    filterValues: result.data.filterValues,
-                    pageCount: Math.ceil(result.data.length / state.perPage)
-                }), () => {
-                    this.setItemsForCurrentPage();
-                });
+            return await axios.get(url).then(result => {
+                this.setData(result);
+                return result.data;
             });
         };
 
@@ -74,6 +78,7 @@ const paginationWrap = function( WrappedComponent ){
                 <WrappedComponent
                     {...this.props}
                     refreshItems={this.setItemsForCurrentPage}
+                    setData={this.setData}
                     fetchData={this.fetchData}
                     filterData={this.filterData}
                     filterValues={filterValues}

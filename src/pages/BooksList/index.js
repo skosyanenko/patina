@@ -8,13 +8,13 @@ import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
 import Loader from 'components/Loader';
 import './index.sass';
-import Store from "../../services/Store";
+import Store from 'services/Store';
 
 class BooksList extends Component {
     state = {
         activeLetter: '',
         sorting: '',
-        result: '',
+        resultTitle: '',
         loading: false,
         isBlur: false,
         alphabet: [],
@@ -31,15 +31,17 @@ class BooksList extends Component {
 
     getItems = () => {
         const {books} = Store;
-        const { fetchData } = this.props;
-        if (!books.length) {
-            fetchData('/api/v1/books')
-              .then(() => this.setState({loading: false}))
-              .then(() => console.log('request'))
-              // .then(() => Store.setData('books', this.props.data))
+        const { fetchData, setData } = this.props;
+        if (!books.data.length) {
+            return fetchData('/api/v1/books')
+              .then(data => {
+                  this.setState({loading: false});
+                  Store.setData('books', {data});
+              })
               .catch(err => console.log(err));
         }
-        console.log(books)
+
+        setData(books);
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -71,6 +73,25 @@ class BooksList extends Component {
                 return sortBy(data, o => o.authors[0].name);
             default:
                 return data;
+        }
+    };
+
+    search = value => {
+        const { data, filterData, match } = this.props;
+
+        if (match.path !== '/search/:id') {
+            const regExp = new RegExp(`(${value})`, 'iy');
+            regExp.lastIndex = 0;
+            const undefinedTitle = 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.';
+            const searchData = data.filter(item => regExp.exec(item.title /*location === '/reviews' && item.book.title*/));
+
+            this.setState({
+                activeLetter: '',
+                isBlur: false,
+                resultTitle: !searchData.length && undefinedTitle
+            }, () => {
+                filterData(searchData);
+            });
         }
     };
 
@@ -112,18 +133,17 @@ class BooksList extends Component {
         const { data } = this.props;
         const letters = data.map(book => book.title && book.title[0]).sort();
         this.setState({
-            alphabet: ('letters', [...new Set(letters)])
+            alphabet: [...new Set(letters)]
         });
     };
 
-    hookState = (name, value) => this.setState({[name]: value});
     updateState = (newState = {}) => {
         this.setState({...newState})
     };
 
     render() {
-        const { isBlur, activeLetter, alphabet, loading, result, sorting } = this.state;
-        const { items, fetchData, data, filterData } = this.props;
+        const { isBlur, activeLetter, alphabet, loading, resultTitle, sorting } = this.state;
+        const { items } = this.props;
 
         return (
             <>
@@ -131,18 +151,17 @@ class BooksList extends Component {
                     <TitleOfPage title={"Книги"} subtitle={"книжная полка"}/>
                     <Sorting updateState={this.updateState}/>
                 </div>
+
                 <div className='container'>
                     <div className="container__container-book">
                         <InputSearch
-                            hook={this.hookState}
-                            fetchData={fetchData}
-                            filterData={filterData}
-                            data={data}
-                            items={items}
-                            isActiveLetter={activeLetter.length > 0}
-                            isSorting={sorting.length > 0}
+                            search={this.search}
+                            activeLetter={activeLetter}
+                            sorting={sorting}
                         />
+
                         <Sorting updateState={this.updateState}/>
+
                         <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`}>
                             { alphabet && alphabet.map((item, key) => (
                                 <div className="alphabet__letter"
@@ -156,10 +175,12 @@ class BooksList extends Component {
                             { activeLetter && activeLetter.length > 0 && isBlur ? activeLetter : '' }
                             </div>
                         </div>
+
                     </div>
-                    <div className='container__container-book'
-                         itemScope
-                         itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
+                    <div
+                        itemScope
+                        className='container__container-book'
+                        itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
                     >
                         {!loading
                             ?
@@ -167,8 +188,8 @@ class BooksList extends Component {
                                  itemProp="itemListElement"
                                  itemScope itemType="http://schema.org/ListItem"
                             >
-                                <div className="search__title">{result}</div>
-                                { items && items.map((book, key) => (
+                                <div className="search__title">{resultTitle}</div>
+                                {items && items.map((book, key) => (
                                     <Link to={`/books/${book.id}`}
                                         key={key}
                                         className="list-book__link"

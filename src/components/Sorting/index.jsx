@@ -16,7 +16,7 @@ class Sorting extends Component {
         this.setState(state => ({
             sorting: state.sorting !== sorting ? sorting : ''
         }), () => {
-            updateState({ sorting, result, value });
+            updateState({ sorting: this.state.sorting, result, value });
         });
     };
 

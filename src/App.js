@@ -37,7 +37,7 @@ const App = ({ location }) => {
         }
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         const menuPost = toggle ? 'open' : 'close';
 
         const menuIndex = 'menu--index ' + menuPost;

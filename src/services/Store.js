@@ -1,6 +1,6 @@
 class Store {
 
-    books = [];
+    books = {data: []};
 
     charts = [];
 
