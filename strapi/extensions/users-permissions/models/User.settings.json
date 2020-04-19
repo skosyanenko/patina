@@ -52,6 +52,35 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "city": {
+      "type": "string"
+    },
+    "followers": {
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "follow": {
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }
