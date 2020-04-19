@@ -7,8 +7,8 @@ import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
 import Loader from 'components/Loader';
-import './index.sass';
 import Store from 'services/Store';
+import './index.sass';
 
 class BooksList extends Component {
     state = {
@@ -17,30 +17,28 @@ class BooksList extends Component {
         resultTitle: '',
         loading: false,
         isBlur: false,
-        alphabet: [],
-        perPage: 9,
-        valuesDropdown: [9, 18, 27]
+        alphabet: []
     };
 
     componentDidMount() {
-        const { updateState } = this.props;
-        const { perPage, valuesDropdown } = this.state;
-        updateState({perPage, valuesDropdown});
+        const { books } = Store;
+        const { updateState, setData } = this.props;
+        updateState({ perPage: 9, valuesDropdown: [9, 18, 27] });
+        setData(books);
         this.getItems();
     };
 
     getItems = () => {
-        const {books} = Store;
+        const { books } = Store;
         const { fetchData, setData } = this.props;
         if (!books.data.length) {
             return fetchData('/api/v1/books')
-              .then(data => {
-                  this.setState({loading: false});
-                  Store.setData('books', {data});
-              })
-              .catch(err => console.log(err));
+                .then(data => {
+                    this.setState({loading: false});
+                    Store.setData('books', {data});
+                })
+                .catch(err => console.log(err));
         }
-
         setData(books);
     };
 
@@ -77,22 +75,20 @@ class BooksList extends Component {
     };
 
     search = value => {
-        const { data, filterData, match } = this.props;
+        const { data, filterData } = this.props;
 
-        if (match.path !== '/search/:id') {
-            const regExp = new RegExp(`(${value})`, 'iy');
-            regExp.lastIndex = 0;
-            const undefinedTitle = 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.';
-            const searchData = data.filter(item => regExp.exec(item.title /*location === '/reviews' && item.book.title*/));
+        const regExp = new RegExp(`(${value})`, 'iy');
+        regExp.lastIndex = 0;
+        const undefinedTitle = 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.';
+        const searchData = data.filter(item => regExp.exec(item.title));
 
-            this.setState({
-                activeLetter: '',
-                isBlur: false,
-                resultTitle: !searchData.length && undefinedTitle
-            }, () => {
-                filterData(searchData);
-            });
-        }
+        this.setState({
+            activeLetter: '',
+            isBlur: false,
+            resultTitle: !searchData.length && undefinedTitle
+        }, () => {
+            filterData(searchData);
+        });
     };
 
     sort = (data) => {
@@ -137,7 +133,7 @@ class BooksList extends Component {
         });
     };
 
-    updateState = (newState = {}) => {
+    updateParentState = (newState = {}) => {
         this.setState({...newState})
     };
 
@@ -149,7 +145,7 @@ class BooksList extends Component {
             <>
                 <div className="books-title">
                     <TitleOfPage title={"Книги"} subtitle={"книжная полка"}/>
-                    <Sorting updateState={this.updateState}/>
+                    <Sorting updateParentState={this.updateParentState}/>
                 </div>
 
                 <div className='container'>
@@ -160,7 +156,7 @@ class BooksList extends Component {
                             sorting={sorting}
                         />
 
-                        <Sorting updateState={this.updateState}/>
+                        <Sorting updateParentState={this.updateParentState}/>
 
                         <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`}>
                             { alphabet && alphabet.map((item, key) => (
@@ -177,18 +173,18 @@ class BooksList extends Component {
                         </div>
 
                     </div>
-                    <div
-                        itemScope
-                        className='container__container-book'
-                        itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
-                    >
-                        {!loading
-                            ?
+                    {!loading
+                        ?
+                        <div
+                            itemScope
+                            className='container__container-book'
+                            itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
+                        >
                             <div className="list-book"
                                  itemProp="itemListElement"
                                  itemScope itemType="http://schema.org/ListItem"
                             >
-                                <div className="search__title">{resultTitle}</div>
+                                {resultTitle.length > 0 && <div className="list-book__title">{resultTitle}</div>}
                                 {items && items.map((book, key) => (
                                     <Link to={`/books/${book.id}`}
                                         key={key}
@@ -202,11 +198,11 @@ class BooksList extends Component {
                                     </Link>
                                 ))}
                             </div>
-                            :
-                            <Loader/>
-                        }
-                        {this.props.pagination || ''}
-                    </div>
+                            {this.props.pagination || ''}
+                        </div>
+                        :
+                        <Loader/>
+                    }
                 </div>
             </>
         );

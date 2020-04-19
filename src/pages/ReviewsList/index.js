@@ -7,32 +7,55 @@ import InputSearch from 'components/InputSearch';
 import Icons from 'components/Icons';
 import Loader from 'components/Loader';
 import TimeToRead from 'components/TimeToRead';
+import Store from 'services/Store';
 import './index.sass';
 
 class ReviewsList extends Component {
     state = {
         loading: false,
-        result: '',
-        perPage: 3,
-        valuesDropdown: [3, 6, 9]
+        resultTitle: ''
     };
 
     componentDidMount() {
         const { updateState } = this.props;
-        const { perPage, valuesDropdown } = this.state;
-        updateState({ perPage, valuesDropdown });
+        updateState({ perPage: 3, valuesDropdown: [3, 6, 9] });
 
-        this.props.fetchData('/api/v1/review')
-            .then(() => this.setState({loading: false}))
-            .catch(err => console.log(err));
+        this.getItems();
     };
 
-    hookState = (name, value) => this.setState({[name]: value});
+    getItems = () => {
+        const { reviews } = Store;
+        const { fetchData, setData } = this.props;
+        if (!reviews.data.length) {
+            return fetchData('/api/v1/review')
+                .then(data => {
+                    this.setState({loading: false});
+                    Store.setData('reviews', {data});
+                })
+                .catch(err => console.log(err));
+        }
+        setData(reviews);
+    };
+
+    search = value => {
+        const { data, filterData } = this.props;
+
+        const regExp = new RegExp(`(${value})`, 'iy');
+        regExp.lastIndex = 0;
+        const undefinedTitle = 'К сожалению, по вашему запросу ничего не найдено. Попробуйте еще.';
+        const searchData = data.filter(item => regExp.exec(item.book.title));
+
+        this.setState({
+            resultTitle: !searchData.length && undefinedTitle
+        }, () => {
+            filterData(searchData);
+        });
+    };
 
     render (){
-        const { loading, result } = this.state;
+        const { loading, resultTitle } = this.state;
 
-        const { items, fetchData, data, filterData } = this.props;
+        const { items } = this.props;
 
         return (
             <>
@@ -44,16 +67,12 @@ class ReviewsList extends Component {
                 <div className="container__reviews">
                     <InputSearch
                         classNamePrefix="quest--position"
-                        hook={this.hookState}
-                        fetchData={fetchData}
-                        filterData={filterData}
-                        data={data}
-                        items={items}
+                        search={this.search}
                     />
                     {!loading
                         ?
                         <>
-                            <div className="search__title">{result}</div>
+                            {resultTitle.length > 0 && <div className="reviews__title">{resultTitle}</div>}
                             <div className="reviews">
                                 { items && items.map((item, key) => (
                                     <div className="reviews__result" key={key}>

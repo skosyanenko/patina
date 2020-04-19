@@ -10,6 +10,8 @@ import Footer from './components/Layouts/Footer';
 import BtnScrollToTop from './components/BtnScrollToTop';
 import UndefinedPage from './pages/UndefinedPage';
 import 'static/sass/project.sass';
+import Store from './services/Store';
+import axios from 'axios';
 
 const App = ({ location }) => {
     const isIndex = location.pathname === '/';
@@ -26,18 +28,29 @@ const App = ({ location }) => {
 
     const { modalIsOpen, isAnimate, toggle, menu, header } = state;
 
-    const switchClasses = (path) => {
-        switch(path) {
-            case '/events':
-                return 'page--events';
-            case '/':
-                return 'page--index';
-            default:
-                return 'page';
-        }
-    };
+    // const getItems = async () => {
+    //
+    //     const books = axios.get('/api/v1/books');
+    //     const charts = axios.get('/api/v1/charts');
+    //     const events = axios.get('/api/v1/events');
+    //     const review = axios.get('/api/v1/review');
+    //     const news = axios.get('/api/v1/news');
+    //
+    //     await Promise.all([books, charts, events, review, news])
+    //         .then(result => {
+    //             const keys = ['books', 'charts', 'events', 'reviews', 'news'];
+    //             if (result.length) {
+    //                 result.forEach((array, index) => {
+    //                     Store.setData(keys[index], {data: array.data});
+    //                 });
+    //                 console.log(Store);
+    //             }
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     useEffect(() => {
+        //getItems();
         const menuPost = toggle ? 'open' : 'close';
 
         const menuIndex = 'menu--index ' + menuPost;
@@ -51,6 +64,17 @@ const App = ({ location }) => {
             isAnimate: !isAnimate
         });
     }, [location, toggle]);
+
+    const switchClasses = (path) => {
+        switch(path) {
+            case '/events':
+                return 'page--events';
+            case '/':
+                return 'page--index';
+            default:
+                return 'page';
+        }
+    };
 
     const toggleModal = () => setState({...state, modalIsOpen: !modalIsOpen});
 

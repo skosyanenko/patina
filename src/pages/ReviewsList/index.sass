@@ -9,6 +9,16 @@
     +maxwidth($sm-mobail)
         grid-template-columns: repeat(1, 1fr)
 
+    &__title
+        margin-top: 30px
+        @include style-text(34px, 4px, $openSans, $black, 100%, 300, false)
+        +maxwidth($tablet)
+            margin-top: 25px
+        +maxwidth($mobail)
+            margin-top: 20px
+        +maxwidth($sm-mobail)
+            margin-top: 15px
+
     &__result
         width: 280px
         margin-top: 50px

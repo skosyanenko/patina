@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { counterLetters } from 'config/config';
+import Loader from 'components/Loader';
 import TitleOfPage from 'components/TitleOfPage';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import NewsVertical from './View/NewsVertical';
@@ -7,24 +8,33 @@ import NewsHorizontal from './View/NewsHorizontal';
 import NewsBlock from './View/NewsBlock';
 import NewsElem from './View/NewsElem';
 import NewsLink from './View/NewsLink';
-import Loader from '../../components/Loader';
+import Store from 'services/Store';
 import './index.sass';
 
 class NewsList extends Component {
     state = {
-        loading: true,
-        perPage: 8,
-        valuesDropdown: [8, 16, 24]
+        loading: false
     };
 
     componentDidMount() {
         const { updateState } = this.props;
-        const { perPage, valuesDropdown } = this.state;
-        updateState({perPage, valuesDropdown});
+        updateState({ perPage: 8, valuesDropdown: [8, 16, 24] });
 
-        this.props.fetchData('/api/v1/news')
-            .then(() => this.setState({loading: false}))
-            .catch(err => console.log(err));
+        this.getItems();
+    };
+
+    getItems = () => {
+        const { news } = Store;
+        const { fetchData, setData } = this.props;
+        if (!news.data.length) {
+            return fetchData('/api/v1/news')
+                .then(data => {
+                    this.setState({loading: false});
+                    Store.setData('news', {data});
+                })
+                .catch(err => console.log(err));
+        }
+        setData(news);
     };
 
     viewSwitcher = view => {
@@ -48,28 +58,33 @@ class NewsList extends Component {
         const { loading } = this.state;
         const { items } = this.props;
 
-        if (loading) return <Loader/>;
-
         return(
             <>
                 <TitleOfPage title={"Новости"}
                     subtitle={"новости из мира литературы"}
                 />
-                <div className="news" >
-                    { items && items.map((item, key) => {
-                        const Component = this.viewSwitcher(item.viewType);
-                        const datePublish = new Date(item.createdAt).toLocaleDateString();
-                        return(
-                            <Component
-                                key={key}
-                                {...item}
-                                textLength={counterLetters(item.description)}
-                                date={datePublish}
-                            />
-                        )
-                    })}
-                </div>
-                {this.props.pagination || ''}
+                {!loading
+                    ?
+                    <>
+                        <div className="news" >
+                            { items && items.map((item, key) => {
+                                const Component = this.viewSwitcher(item.viewType);
+                                const datePublish = new Date(item.createdAt).toLocaleDateString();
+                                return(
+                                    <Component
+                                        key={key}
+                                        {...item}
+                                        textLength={counterLetters(item.description)}
+                                        date={datePublish}
+                                    />
+                                )
+                            })}
+                        </div>
+                        {this.props.pagination || ''}
+                    </>
+                    :
+                    <Loader/>
+                }
             </>
         )
     }

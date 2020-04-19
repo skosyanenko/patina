@@ -10,13 +10,13 @@ class Sorting extends Component {
     };
 
     handleSort = sorting => {
-        const { updateState } = this.props;
+        const { updateParentState } = this.props;
         const { result, value } = this.state;
 
         this.setState(state => ({
             sorting: state.sorting !== sorting ? sorting : ''
         }), () => {
-            updateState({ sorting: this.state.sorting, result, value });
+            updateParentState({ sorting: this.state.sorting, result, value });
         });
     };
 

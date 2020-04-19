@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import TextFx from 'services/TextFx';
 import { effectForTitle, MONTHS } from 'config/config';
 import axios from 'axios';
+import Loader from 'components/Loader';
 import Event from './Components/Event';
 import WeatherCard from './Components/WeatherCard';
 import EventPicture from './Components/EventPicture';
+import Store from 'services/Store';
 import './index.sass';
-import Store from "../../services/Store";
 
 class EventsList extends Component {
     state = {
+        loading: false,
         month: '',
     	events: [],
         pictures: [
@@ -47,15 +49,35 @@ class EventsList extends Component {
         this.fetchAllEvents().then(res => {
             this.setState({events: res})
         });
-        console.log(Store.getData('books'))
-    };
 
-    showPictures = () => {
-        const {quarters, pictures} = this.state;
-        const month = new Date().getMonth() + 1;
-        const index = Object.keys(quarters).find(item => quarters[item].includes(month));
-        return pictures[index];
+        // this.getItems().then(data => {
+        //     this.setState({events: data})
+        // });
     };
+    // getItems = async () => {
+    //     const { events } = Store;
+    //     const { setData } = this.props;
+    //     if (!events.data.length) {
+    //         return await axios.get('/api/v1/events')
+    //           .then(data => {
+    //               this.setState({loading: false});
+    //               if (data) {
+    //                   const additionalItems = [
+    //                       {type: 'picture'},
+    //                       {type: 'picture'},
+    //                       {type: 'card'}
+    //                   ];
+    //                   additionalItems.forEach(item => data.unshift(item));
+    //                   Store.setData('events', {data});
+    //                   return data;
+    //               }
+    //           })
+    //           .catch(err => {
+    //               console.log('Ошибка получения Эвентов из базы данных ' + err)
+    //           });
+    //     }
+    //     setData(events);
+    // };
 
     fetchAllEvents = async () => {
 		return await axios.get('/api/v1/events')
@@ -73,6 +95,13 @@ class EventsList extends Component {
 			.catch(err => {
 				console.log('Ошибка получения элементов из бд' + err)
 			});
+    };
+
+    showPictures = () => {
+        const {quarters, pictures} = this.state;
+        const month = new Date().getMonth() + 1;
+        const index = Object.keys(quarters).find(item => quarters[item].includes(month));
+        return pictures[index];
     };
 
 	switchTypes = (type) => {
@@ -104,7 +133,7 @@ class EventsList extends Component {
     };
 
 	render() {
-        const { events, month } = this.state;
+        const { events, month, loading } = this.state;
 
         return (
             <>
@@ -115,13 +144,18 @@ class EventsList extends Component {
                     <span className="events-wrap__subtitle" ref={node => this.subtitle = node}>в Ростове-на-Дону</span>
                 </div>
                 <div className="container">
-                    <div className="events-wrapper">
-                        {events && events.map((field, key) => {
-                            const picture = this.showPictures().find(item => item.key === key);
-                            const Component = this.switchTypes(field.type);
-                            return <Component key={key} picture={picture && picture.name} {...field}/>;
-                        })}
-                    </div>
+                    {!loading
+                        ?
+                        <div className="events-wrapper">
+                            {events && events.map((field, key) => {
+                                const picture = this.showPictures().find(item => item.key === key);
+                                const Component = this.switchTypes(field.type);
+                                return <Component key={key} picture={picture && picture.name} {...field}/>;
+                            })}
+                        </div>
+                        :
+                        <Loader/>
+                    }
                 </div>
             </>
         );

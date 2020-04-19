@@ -5,13 +5,12 @@ import Typed from 'react-typed';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import Loader from 'components/Loader';
+import Store from 'services/Store';
 import './index.sass';
 
 class ChartsList extends Component {
     state = {
-        loading: true,
-        perPage: 10,
-        valuesDropdown: [10, 20, 30]
+        loading: false
     };
 
     componentDidMount(){
@@ -24,19 +23,28 @@ class ChartsList extends Component {
         });
 
         const { updateState } = this.props;
-        const { perPage, valuesDropdown } = this.state;
-        updateState({perPage, valuesDropdown});
+        updateState({ perPage: 10, valuesDropdown: [10, 20, 30] });
 
-        this.props.fetchData('/api/v1/charts')
-          .then(() => this.setState({loading: false}))
-          .catch(err => console.log(err));
+        this.getItems();
+    };
+
+    getItems = () => {
+        const { charts } = Store;
+        const { fetchData, setData } = this.props;
+        if (!charts.data.length) {
+            return fetchData('/api/v1/charts')
+                .then(data => {
+                    this.setState({loading: false});
+                    Store.setData('charts', {data});
+                })
+                .catch(err => console.log(err));
+        }
+        setData(charts);
     };
 
     render() {
         const { items } = this.props;
         const { loading } = this.state;
-
-        if (loading) return <Loader/>;
 
         return(
             <>
@@ -69,27 +77,32 @@ class ChartsList extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="container__container-top" itemScope itemType="http://schema.org/ItemList http://schema.org/CreativeWork">
-                        <div className="selection"
-                             itemProp="itemListElement"
-                             itemScope
-                             itemType="http://schema.org/ListItem"
-                        >
-                            { items && items.map((chart, key) => (
-                                <Link to={`/charts/${chart.id}`}
-                                      key={key}
-                                      className="selection__link"
-                                      itemProp="url"
-                                      content={`patina.ru/charts/${chart.id}`}
-                                >
-                                    <span itemProp="position" content={key}>
-                                        { chart.title }
-                                    </span>
-                                </Link>
-                            ))}
+                    {!loading
+                        ?
+                        <div className="container__container-top" itemScope itemType="http://schema.org/ItemList http://schema.org/CreativeWork">
+                            <div className="selection"
+                                 itemProp="itemListElement"
+                                 itemScope
+                                 itemType="http://schema.org/ListItem"
+                            >
+                                { items && items.map((chart, key) => (
+                                    <Link to={`/charts/${chart.id}`}
+                                          key={key}
+                                          className="selection__link"
+                                          itemProp="url"
+                                          content={`patina.ru/charts/${chart.id}`}
+                                    >
+                                        <span itemProp="position" content={key}>
+                                            { chart.title }
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                            {this.props.pagination || ''}
                         </div>
-                        {this.props.pagination || ''}
-                    </div>
+                        :
+                        <Loader/>
+                    }
                 </div>
             </>
         );
