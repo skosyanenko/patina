@@ -1,9 +1,0 @@
-[
-  {
-    "name": "title",
-    "label": "Укажите название тега/ жанра",
-    "icon": "author",
-    "type": "text",
-    "req": true
-  }
-]
