@@ -7,7 +7,7 @@ import RightMenu from 'components/Layouts/RightMenu';
 import EntranceModal from 'components/EntranceModal';
 import Footer from 'components/Layouts/Footer';
 import BtnScrollToTop from 'components/BtnScrollToTop';
-import 'public/static/sass/project.sass';
+import '../public/static/sass/project.sass';
 
 const MyApp = ({ Component, pageProps, router }) => {
     const isIndex = router.pathname === '/';

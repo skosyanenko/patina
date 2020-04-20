@@ -11,7 +11,7 @@ class MyDocument extends Document {
             <Html lang="ru">
                 <Head >
                     {/*<title>Patina</title>*/}
-                    <link rel="icon" href="public/favicon.ico"/>
+                    <link rel="icon" href="/favicon.ico"/>
                 </Head>
                 <body>
                     <Main />
