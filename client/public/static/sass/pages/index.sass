@@ -1,0 +1,63 @@
+//@import 'config'
+
+/* Стили для компонента Patina */
+
+.patina
+    max-width: calc(100% - 310px)
+    width: 100%
+    height: 325px
+    margin-left: 455px
+    position: relative
+    display: flex
+    +maxwidth(1140px)
+        margin-left: 0
+        max-width: 100%
+    +maxwidth($tablet)
+        height: 295px
+    +maxwidth($mobail)
+        height: 265px
+    +maxwidth($sm-mobail)
+        height: 235px
+
+    &__logo
+        width: 370px
+        height: 370px
+        position: absolute
+        top: -68px
+        left: -19.5px
+        +maxwidth(1140px)
+            left: 0
+            right: 0
+            top: -50px
+            margin: 0 auto
+        +maxwidth($tablet)
+            width: 340px
+            height: 340px
+        +maxwidth($mobail)
+            width: 310px
+            height: 310px
+        +maxwidth($sm-mobail)
+            width: 281px
+            height: 281px
+
+.logo-lines
+    fill: none
+    stroke: $black
+    stroke-dasharray: 2000
+    stroke-dashoffset: 2000
+    animation: showLines 4s linear forwards
+    animation-delay: 1s
+
+.logo-lines
+    &:nth-child(10)
+        animation-delay: 10s
+
+.letters
+    fill: transparent
+    animation: showTitle 2s linear forwards
+    transition: all ease-in
+    animation-delay: 1s
+
+.lines
+    z-index: 101
+

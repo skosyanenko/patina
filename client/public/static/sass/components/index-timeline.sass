@@ -1,0 +1,156 @@
+//@import 'config'
+
+.timeline
+    width: 100%
+    height: 200px
+    position: relative
+    margin-bottom: 30px
+    +maxwidth($tablet)
+        margin-bottom: 0
+
+    &__wrapper
+        position: relative
+        height: 100%
+        //margin: 0 40px
+        overflow: hidden
+
+    &__events
+        position: absolute
+        left: 0
+        top: 0
+        bottom: 0
+        margin: auto
+        height: 1px
+
+    &__eventbar
+        display: flex
+        height: 200px
+        top: 0
+        bottom: 0
+        margin: auto
+        position: absolute
+
+    &__eventline
+        height: 100%
+        position: absolute
+        top: 0
+        transform-origin: left center
+
+.line
+    width: 100%
+    top: 0
+    bottom: 0
+    margin: auto 0
+    padding: 0
+    position: absolute
+    height: 1px
+    background: $green
+    z-index: -3
+    &-before
+        content: ''
+        right: 0
+        background-image: linear-gradient(to left, #f8f8f8, rgba(248, 248, 248, 0))
+
+    &__wrapper
+        display: flex
+        position: absolute
+
+.event-dot
+    position: absolute
+    text-align: center
+    padding-bottom: 15px
+    cursor: pointer
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__icon
+        width: 36px
+        height: 36px
+        margin-bottom: 57px
+        border: 1px solid $green
+        background: $white
+        border-radius: 50%
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        z-index: -3
+        transition: all .4s ease
+        cursor: pointer
+        &:before
+            width: 1px
+            height: 66px
+            top: 34px
+            right: 16px
+            content: ''
+            position: absolute
+            background: $green
+            z-index: -3
+
+        svg
+            width: 20px
+            height: 20px
+            fill: $green
+
+    &__item
+        width: 16px
+        height: 16px
+        cursor: pointer
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+
+        &-dot
+            width: 15px
+            height: 15px
+            background: $green
+            border-radius: 50%
+            box-shadow: 0 0 0 rgba($green, 0.8)
+            display: block
+            z-index: 2
+            &:hover
+                animation: pulse 2s infinite
+
+        &-after
+            width: 36px
+            height: 36px
+            position: absolute
+            top: -10px
+            right: -10px
+            border: 1px solid $green
+            background: $white
+            border-radius: 50%
+            z-index: 1
+            transition: all .4s ease
+            animation: pulse 2s infinite
+
+    &__date
+        margin-top: 25px
+        @include style-text(16px, 1px, $openSans, $green, 100%, 300, false)
+        transition: all .4s ease
+
+    &__description
+        margin-left: 10px
+        top: 0
+        position: absolute
+        left: 65%
+        width: inherit
+        display: flex
+        flex-direction: column
+        text-align: start
+        transition: all .4s ease
+
+        &-text
+            margin-bottom: 5px
+            @include style-text(16px, 1px, $openSans, $green, 100%, 300, false)
+
+.invisible
+    opacity: 0
+    animation: none
+
+.anim
+    animation: pulse 2s infinite

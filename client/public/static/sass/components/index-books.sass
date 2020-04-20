@@ -1,0 +1,223 @@
+//@import 'config'
+
+/* Стили для компонента Books */
+
+.books-wrap
+    display: flex
+    +maxwidth($tablet)
+        position: relative
+
+.books-slider
+    width: 94% !important
+    +maxwidth($tablet)
+        width: 100% !important
+
+.books
+    width: 100%
+    margin-top: 50px
+    display: flex!important
+    justify-content: space-between
+    position: relative
+    +maxwidth($tablet)
+        margin-top: 40px
+        flex-direction: column
+    +maxwidth($mobail)
+        margin-top: 30px
+    +maxwidth($sm-mobail)
+        margin-top: 20px
+
+    &__text
+        width: 45%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        min-height: 500px
+        max-height: fit-content
+        +maxwidth($tablet)
+            min-height: 400px
+            width: 100%
+            margin-top: 30px
+            order: 2
+        +maxwidth($mobail)
+            margin-top: 20px
+        +maxwidth($sm-mobail)
+            margin-top: 10px
+
+        &-title
+            @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
+            +maxwidth($desktop)
+                text-align: center
+
+        &-description
+            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+            text-align: justify
+            +maxwidth($desktop)
+                margin-top: 20px
+            +maxwidth($mobail)
+                margin-top: 20px
+            +maxwidth($sm-mobail)
+                margin-top: 10px
+
+        .button-white
+            margin-left: auto
+            z-index: 100000
+
+    &__wrapper
+        width: 100%
+        display: flex
+        +maxwidth($tablet)
+            width: fit-content
+            order: 1
+
+    &__img
+        width: 50%
+        margin: auto 0
+        +maxwidth($tablet)
+            width: 320px
+            margin: 0
+        +maxwidth($mobail)
+            width: 280px
+        +maxwidth($sm-mobail)
+            width: 55%
+
+        img
+            width: 100%
+
+    &__arrow
+        width: 25%
+        display: flex
+        justify-content: center
+        +maxwidth($tablet)
+            width: 100px
+            justify-content: flex-start
+            &:last-child
+                justify-content: flex-end
+        +maxwidth($mobail)
+            width: 50px
+        +maxwidth($sm-mobail)
+            width: 40px
+            z-index: 10
+
+        &-next,
+        &-prev
+            z-index: 3
+            fill: $green
+            width: 30px
+            height: 40px
+            display: flex
+            cursor: pointer
+            transition: .4s ease
+            +maxwidth($tablet)
+                width: 30px
+                height: 30px
+            +maxwidth($mobail)
+                width: 20px
+                height: 20px
+
+            &:hover
+                transform: scale(1.2)
+
+        &-next
+            margin-top: auto
+
+        &-prev
+            transform: rotate(180deg)
+            &:hover
+                transform: rotate(180deg) scale(1.2)
+
+    &__numb
+        width: 10%
+        height: 435px
+        margin: auto 0
+        display: flex !important
+        align-items: center
+        flex-direction: column
+        +maxwidth($tablet)
+            position: absolute
+            top: 10%
+            right: 10%
+        +maxwidth($mobail)
+            width: 14%
+            right: 5%
+        +maxwidth($sm-mobail)
+            width: 22%
+            height: 265px
+            top: 10%
+        +maxwidth(450px)
+            width: 15%
+            top: 3%
+
+        &-dot
+            font: normal 60px/100% $vogue !important
+            color: rgba(31, 31, 31, 0.6)
+            text-align: center
+            transition: .3s ease
+            +maxwidth($tablet)
+                font-size: 50px !important
+            +maxwidth(450px)
+                width: 45px !important
+                font-size: 30px !important
+
+        .slick-current
+            z-index: 10000
+
+        .slick-slider
+            position: relative
+            display: block
+            box-sizing: border-box
+            touch-callout: none
+            user-select: none
+            touch-action: pan-y
+            tap-highlight-color: transparent
+            margin: auto 0
+
+        .slick-list
+            margin: 0
+            padding: 0 !important
+            position: relative
+            overflow: hidden
+            display: block
+
+            &:focus
+                outline: none
+
+            &.dragging
+                cursor: pointer
+
+        .slick-slider .slick-track,
+        .slick-slider .slick-list
+            transform: translate3d(0, 0, 0)
+
+        .slick-track
+            top: 0
+            left: 0
+            position: relative
+            display: block
+
+            &:before,
+            &:after
+                content: ''
+                display: table
+            &:after
+                clear: both
+
+        .slick-slide
+            width: 90px !important
+            height: 100%
+            min-height: 1px
+            float: left
+
+        .slick-center
+            .books__numb-dot
+                transform: scale(1.2)
+                color: $carbonic
+
+        .slick-slide
+            padding: 50px 0
+            +maxwidth($desktop)
+                padding: 40px 0
+            +maxwidth($tablet)
+                padding: 30px 0
+
+.slick-slider
+    width: 100%

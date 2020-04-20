@@ -1,0 +1,68 @@
+@charset "UTF-8"
+
+/* Основные разрешения экрана */
+
+$desktop: 1330px
+$tablet: 991px
+$mobail: 767px
+$sm-mobail: 575px
+$min-width: 320px
+
+=maxwidth($w)
+    @media only screen and (max-width: $w)
+        @content
+
+/* Используемые цвета */
+
+$black: #000000
+$carbonic: #1f1f1f
+$darkgray: #444444
+$lightgray: #7c7c7c
+$white: #ffffff
+$darkgreen: #003835
+$green: #264d4b
+$browngray: #8a8a6e
+$sand: #cdb7aa
+$lightpink: #f7ede3
+
+/* Используемые шрифты */
+
+$waverly: 'Waverly CF'
+$waverlyExtra: 'Waverly CF Extra'
+$vogue: 'Vogue Highline Serif'
+$lumen: 'Lumen'
+$openSans: 'Open Sans Condensed'
+$izvestia: 'Izvestija'
+$cheque: 'Cheque'
+
+/* Стили для текста */
+
+@mixin style-text($size, $step, $font, $color, $line-height, $weight, $true)
+    font: $weight $size $font
+    line-height: $line-height
+    color: $color
+    +maxwidth($tablet)
+        font-size: $size - $step
+    +maxwidth($mobail)
+        font-size: $size - $step * 2
+        @if ($true == true)
+            +maxwidth($sm-mobail)
+                font-size: $size - $step * 3
+
+@mixin style-text-events($size, $step, $font, $color, $line-height, $weight, $mob, $sm-mob)
+    font: $weight $size $font
+    line-height: $line-height
+    color: $color
+    +maxwidth($desktop)
+        font-size: $size - $step
+    +maxwidth($tablet)
+        font-size: $size - $step * 2
+        @if ($mob == true)
+            +maxwidth($mobail)
+                font-size: $size - $step * 3
+        @if ($sm-mob == true)
+            +maxwidth($mobail)
+                font-size: $size - $step * 3
+
+
+

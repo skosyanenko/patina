@@ -1,0 +1,47 @@
+@charset "UTF-8"
+// 100 Extra Light or Ultra Light;
+// 200 Light or Thin; 300 Book or Demi;
+// 400 Regular or Normal;
+// 500 Medium;
+// 600 Semibold or Demibold;
+// 700 Bold;
+// 800 Black or Extra Bold or Heavy;
+// 900 Extra Black or Fat or Ultra Black
+
+@mixin font($f-name, $f-style, $f-weight, $f-url)
+    @font-face
+        font-family: $f-name
+        font-style: $f-style
+        font-weight: $f-weight
+        src: url($f-url)
+
+// Open Sans Condensed (основной шрифт)
+@include font('Open Sans Condensed', normal, 300, '/public/static/fonts/OpenSansCondensed-Light.ttf')
+@include font('Open Sans Condensed', normal, bold, '/public/static/fonts/OpenSansCondensed-Bold.ttf')
+
+// WaverlyCF (основной шрифт)
+@include font('Waverly CF', normal, 100, '/public/static/fonts/WaverlyCF-Thin.woff2')
+@include font('Waverly CF', normal, 300, '/public/static/fonts/WaverlyCF-Light.woff2')
+@include font('Waverly CF', normal, 500, '/public/static/fonts/WaverlyCF-Medium.woff2')
+@include font('Waverly CF', normal, bold, '/public/static/fonts/WaverlyCF-Bold.woff2')
+@include font('Waverly CF Extra', normal, 800, '/public/static/fonts/WaverlyCF-ExtraBold.woff2')
+
+// Vogue (шрифт заголовков и подзаголовков)
+@include font('Vogue Highline Serif', normal, 500, '/public/static/fonts/Vogue.otf')
+
+// IZVESTIA (шрифт заголовков страниц с рецензиями)
+@include font('Izvestija', normal, normal, '/public/static/fonts/IZVESTIA.ttf')
+
+// Cheque (основной шрифт страницы Эвенты)
+@include font('Cheque', normal, normal, '/public/static/fonts/Cheque-Regular.woff2')
+@include font('Cheque', normal, 900, '/public/static/fonts/Cheque-Black.woff2')
+
+
+
+
+
+
+
+
+
+

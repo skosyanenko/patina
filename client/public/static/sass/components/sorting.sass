@@ -1,0 +1,38 @@
+//@import 'config'
+
+.sorting
+    max-width: calc(50% - 50px)
+    width: 100%
+    margin-left: auto
+    display: flex
+    flex-direction: column
+    @include style-text(17px, 2px, $waverly, $darkgray, 100%, 300, false)
+    +maxwidth($tablet)
+        max-width: 100%
+        margin-right: auto
+
+    &__title
+        text-align: right
+        +maxwidth($tablet)
+            text-align: left
+
+    &__wrapper
+        margin-top: 30px
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        +maxwidth($tablet)
+            margin-top: 20px
+            justify-content: initial
+        +maxwidth($mobail)
+            margin-top: 10px
+
+        &-type
+            cursor: pointer
+            +maxwidth($tablet)
+                margin: 0 70px 10px 0
+            &:hover
+                color: $green
+            &.active
+                @include style-text(17px, 2px, $waverly, $green, 100%, bold, false)
+

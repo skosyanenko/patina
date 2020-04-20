@@ -1,0 +1,112 @@
+//@import 'config'
+
+/* Стили для компонента Alphabet */
+
+.books-title
+    display: flex
+    align-items: flex-end
+    .sorting
+        +maxwidth($tablet)
+            display: none
+
+.alphabet
+    width: 100%
+    margin-top: -20px
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    position: relative
+    +maxwidth($mobail)
+        margin-top: 0
+        margin-bottom: 10px
+
+    &--blur
+        cursor: pointer
+
+        .alphabet__letter
+            opacity: 0.3
+            filter: blur(3px)
+
+    &__letter
+        margin-top: 60px
+        width: calc(100% / 8)
+        @include style-text(48px, 10px, $waverly, $black, 100%, 500, false)
+        text-transform: uppercase
+        cursor: pointer
+        transition: .5s ease
+        +maxwidth($tablet)
+            margin-top: 40px
+        +maxwidth($mobail)
+            margin-top: 20px
+        &:hover
+            font-weight: 800
+            transform: scale(1.1)
+            color: $green
+
+    &__letter:last-child
+        margin-right: auto
+
+    &__invisible
+        opacity: 0
+
+    &__active
+        width: 100%
+        margin: auto
+        bottom: 0
+        display: flex
+        justify-content: center
+        position: absolute
+        opacity: 1
+        @include style-text(30rem, 8rem, $vogue, $darkgreen, 95%, 500, false)
+        text-transform: uppercase
+        pointer-events: none
+        transition: .6s ease
+
+/* Стили для компонента ListBooks */
+
+.list-book
+    width: 100%
+    min-height: 550px
+    margin-top: 30px
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    +maxwidth($tablet)
+        min-height: fit-content
+        margin-top: 20px
+        align-items: flex-start
+    +maxwidth($mobail)
+        margin-top: 10px
+
+    &__title
+        margin-top: 30px
+        @include style-text(34px, 4px, $openSans, $black, 100%, 300, false)
+        text-align: right
+        +maxwidth($tablet)
+            margin-top: 25px
+        +maxwidth($mobail)
+            margin-top: 20px
+        +maxwidth($sm-mobail)
+            margin-top: 15px
+
+    &__link
+        margin-top: 30px
+        @include style-text(24px, 3px, $waverly, $darkgray, 100%, 300, false)
+        text-align: right
+        transition: .4s ease
+        +maxwidth($tablet)
+            margin-top: 20px
+            text-align: left
+        +maxwidth($mobail)
+            margin-top: 15px
+
+        &:hover
+            font-weight: 500
+            transform: scale(1.1)
+            color: $green
+
+    &__link:first-letter
+        @include style-text(24px, 3px, $waverly, $green, 100%, 800, false)
+
+
+

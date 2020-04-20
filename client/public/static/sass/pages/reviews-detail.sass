@@ -1,0 +1,470 @@
+//@import 'config'
+
+/* Стили для компонентов ViewHorizontal, ViewVertical */
+
+.container-review,
+.review-wrapper
+    display: flex
+    justify-content: space-between
+    +maxwidth($mobail)
+        flex-direction: column
+
+    &__text
+        width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        padding: 0 0 60px 60px
+        +maxwidth($mobail)
+            width: 100%
+            padding: 0 0 0 0
+            height: fit-content
+
+        &-title
+            @include style-text(102px, 20px, $izvestia, $black, 100%, normal, true)
+            margin-bottom: 80px
+            text-align: center
+            +maxwidth($desktop)
+                margin-bottom: 60px
+            +maxwidth($tablet)
+                margin: 50px 0
+            +maxwidth($mobail)
+                margin: 30px 0
+            +maxwidth($sm-mobail)
+                margin: 20px 0
+
+        &-subtitle
+            @include style-text(42px, 6px, $openSans, $darkgray, 120%, 300, true)
+            text-align: justify
+
+.review-wrap
+    width: 100%
+    margin: 50px 0
+    display: flex
+    flex-direction: column
+    text-align: justify
+    +maxwidth($tablet)
+        margin: 40px 0
+    +maxwidth($mobail)
+        margin: 30px 0
+    +maxwidth($sm-mobail)
+        margin: 20px 0
+
+    &__paragraph
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        text-indent: 35px
+        margin-bottom: 25px
+        &:last-child
+            margin-bottom: 0
+        &:first-child
+            &:first-letter
+                @include style-text(50px, 4px, $izvestia, $green, 100%, normal, true)
+
+    &__marked
+        @include style-text(25px, 2px, $openSans, $carbonic, 120%, 300, true)
+        padding-left: 30px
+        border-left: 6px solid $carbonic
+        font-style: italic
+        background-color: transparent
+        margin: 30px 0
+        +maxwidth($tablet)
+            margin: 20px 0
+            padding-left: 20px
+            border-left: 4px solid $carbonic
+        +maxwidth($mobail)
+            padding-left: 10px
+
+        &-title
+            @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
+            margin-bottom: 25px
+            text-align: right
+
+    &__header
+        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
+
+    &__list
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        padding-bottom: 15px
+        margin-left: 30px
+
+    &__quote
+        width: 100%
+        padding: 0 20px
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        position: relative
+        margin: 25px 0 15px
+        &:after, &:before
+            width: 17px
+            height: 17px
+            position: absolute
+            content: ' '
+            background: url('/images/icons/sprite.svg#quote-view') no-repeat center / contain
+            opacity: 0.5
+        &:after
+            top: 0
+            left: 0
+        &:before
+            bottom: 0
+            right: 0
+            transform: rotate(180deg)
+
+        &-caption
+            @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
+            margin-bottom: 25px
+            text-align: right
+
+    &__image
+        max-width: 525px
+        width: 100%
+        margin: 30px auto
+        +maxwidth($tablet)
+            margin: 25px auto
+        +maxwidth($mobail)
+            margin: 20px auto
+        +maxwidth($sm-mobail)
+            margin: 15px auto
+
+    &__delimiter
+        @include style-text(40px, 5px, $openSans, $carbonic, 100%, 300, false)
+        margin: 15px auto
+        text-align: center
+        +maxwidth($tablet)
+            margin: 10px auto
+
+
+.review-wrapper
+    display: flex
+    +maxwidth($tablet)
+        flex-direction: column
+    &__wrap
+        display: flex
+        +maxwidth($mobail)
+            flex-direction: column
+
+    &__text
+        display: none
+        +maxwidth($tablet)
+            display: flex
+
+    &__page
+        max-width: calc(50% + 250px)
+        width: 100%
+        margin-right: -40px
+        background: $lightpink
+        position: relative
+        display: flex
+        flex-direction: column
+        +maxwidth($tablet)
+            max-width: 100%
+            background: none
+
+        &-triangle
+            height: 40px
+            width: 3vw
+            margin: 0 auto
+            right: 0
+            left: 0
+            position: absolute
+            border-top: 1px solid $white
+            overflow: hidden
+            background: $white
+            +maxwidth($tablet)
+                display: none
+
+            &:before,
+            &:after
+                width: 3vw
+                height: 250%
+                top: -1px
+                left: 47%
+                position: absolute
+                content: ''
+                border: 1px solid $white
+                border-radius: 100%
+                background: $lightpink
+
+            &:after
+                left: auto
+                right: 47%
+
+        &-title
+            margin: 70px 0 0
+            @include style-text(58px, 8px, $izvestia, $black, 100%, 500, true)
+            text-transform: uppercase
+            text-align: center
+            +maxwidth($tablet)
+                display: none
+
+        &-subtitle
+            margin: 60px 0 0
+            padding: 30px 40px
+            position: relative
+            @include style-text(24px, 2px, $openSans, $darkgray, 120%, 300, false)
+            text-align: right
+            +maxwidth($tablet)
+                display: none
+
+            span
+                width: 100%
+                display: flex
+
+            &:before,
+            &:after
+                width: 100%
+                height: 2px
+                left: 0
+                position: absolute
+                content: ''
+                background: $black
+
+            &:before
+                top: 0
+
+            &:after
+                bottom: 0
+        &-text
+            margin-top: 35px
+            display: flex
+            +maxwidth($tablet)
+                flex-direction: column
+
+    &__user
+        width: 30%
+        display: flex
+        flex-direction: column
+        align-items: center
+        +maxwidth($tablet)
+            width: fit-content
+            order: 2
+
+    &__description
+        padding: 10px 30px
+        max-width: 70%
+        margin-bottom: 40px
+        z-index: 2
+        white-space: pre-line
+        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        text-align: justify
+        border-left: 1px solid $black
+        +maxwidth($tablet)
+            max-width: 100%
+            padding: 0
+            border-left: none
+            order: 1
+        +maxwidth($mobail)
+            margin-bottom: 30px
+        +maxwidth($sm-mobail)
+            margin-bottom: 20px
+
+        .review-wrap__paragraph
+            &:first-child
+                &:first-letter
+                    color: $darkgray
+
+    &__number
+        max-height: 412px
+        bottom: -9px
+        right: -60px
+        position: absolute
+        z-index: 1
+        @include style-text(600px, 50px, $vogue, rgba(139, 136, 116, 0.24), 69.5%, 500, true)
+        pointer-events: none
+        +maxwidth($tablet)
+            display: none
+
+/* Стили для компонента Writer */
+
+.writer
+    max-width: 380px
+    width: 100%
+    display: flex
+    flex-direction: column
+
+    &__wrapper
+        width: 315px
+        height: 450px
+        position: relative
+        display: flex
+        +maxwidth($tablet)
+            width: 330px
+        +maxwidth($mobail)
+            width: 305px
+            height: fit-content
+        +maxwidth($sm-mobail)
+            width: 280px
+
+        &-author
+            margin-top: 70px
+            +maxwidth($tablet)
+                margin-top: 40px
+            +maxwidth($mobail)
+                margin-top: 30px
+            +maxwidth($sm-mobail)
+                margin-top: 20px
+
+        &-name
+            max-width: 120px
+            margin-bottom: 40px
+            @include style-text(26px, 0, $waverlyExtra, $black, 100%, bold, false)
+            text-transform: uppercase
+            +maxwidth($mobail)
+                max-width: 100px
+                margin-bottom: 30px
+            +maxwidth($sm-mobail)
+                max-width: 90px
+                margin-bottom: 20px
+
+        &-date
+            @include style-text(26px, 0, $waverly, $black, 100%, 100, false)
+
+        &-citation
+            width: 370px
+            height: 50px
+            padding-left: 20px
+            right: -100%
+            bottom: 0
+            position: absolute
+            @include style-text(14px, 0, $waverly, $darkgray, 115%, 300, false)
+            transform: rotate(-90deg)
+            transform-origin: 0 0
+            border-left: 5px solid $sand
+            overflow-wrap: break-word
+            +maxwidth($tablet)
+                right: -85%
+            +maxwidth($mobail)
+                display: none
+    &__picture
+        width: 355px
+        height: 381px
+        margin-top: auto
+        position: relative
+        +maxwidth($tablet)
+            width: 330px
+            height: 345px
+        +maxwidth($mobail)
+            width: 305px
+            height: 315px
+        +maxwidth($sm-mobail)
+            width: 280px
+            height: 290px
+
+        &-quote
+            width: 50px
+            height: 50px
+            top: 0
+            right: 12%
+            position: absolute
+            z-index: 1
+            +maxwidth($sm-mobail)
+                width: 40px
+                height: 40px
+                right: 0
+
+            &:last-child
+                top: 85%
+                left: 10%
+                transform: rotate(0deg) scale(-1, -1)
+
+        &-quoteImg
+            width: 100%
+            height: 100%
+            background: url('/images/icons/sprite.svg#quote-view')
+            transform: rotate(0deg) scale(-1, -1)
+
+        &-pinkCircle
+            width: 100px
+            height: 100px
+            top: 7.5%
+            left: 0
+            position: absolute
+            z-index: 1
+            border-radius: 50%
+            background: #cc9999
+            opacity: 0.7
+            +maxwidth($tablet)
+                width: 90px
+                height: 90px
+            +maxwidth($mobail)
+                width: 80px
+                height: 80px
+            +maxwidth($sm-mobail)
+                width: 70px
+                height: 70px
+
+        &-bigCircle
+            width: 355px
+            height: 355px
+            bottom: 0
+            right: 0
+            position: absolute
+            border-radius: 50%
+            border: 1px solid $browngray
+            +maxwidth($tablet)
+                width: 330px
+                height: 330px
+            +maxwidth($mobail)
+                width: 305px
+                height: 305px
+            +maxwidth($sm-mobail)
+                width: 280px
+                height: 280px
+
+        &-smallCircle
+            width: 300px
+            height: 300px
+            bottom: 27.5px
+            right: 27.5px
+            position: absolute
+            border-radius: 50%
+            background: linear-gradient(210deg, rgba(34, 38, 13, 0.6), rgba(255, 255, 255, 1))
+            +maxwidth($tablet)
+                width: 275px
+                height: 275px
+            +maxwidth($mobail)
+                width: 250px
+                height: 250px
+            +maxwidth($sm-mobail)
+                width: 225px
+                height: 225px
+
+        &-img
+            width: 140%
+            position: absolute
+            z-index: 1
+            left: -26%
+            top: -13%
+            +maxwidth($tablet)
+                top: -17%
+            +maxwidth($mobail)
+                top: -20%
+
+/* Стили для компонента UserInfo */
+
+.user-info
+    width: fit-content
+    display: flex
+    flex-direction: column
+    +maxwidth($mobail)
+        position: relative
+
+    &__wrapper
+        margin-bottom: 30px
+        display: flex
+        flex-direction: column
+
+    .socials__tg
+        background: url('/images/icons/sprite.svg#telegram-gray') no-repeat center / contain
+    .socials__vk
+        background: url('/images/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
+
+    .socials__bookmark
+        &:hover
+            &:before
+                background: $darkgray
+            &:after
+                border-top-color: $darkgray
+        svg
+            stroke: $darkgray
+            &.active
+                fill: $darkgray

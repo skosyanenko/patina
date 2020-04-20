@@ -1,0 +1,50 @@
+
+.book-inform
+    max-width: fit-content
+    width: 100%
+    margin-top: 70px
+    display: flex
+    z-index: 10
+    +maxwidth($tablet)
+        margin: 40px auto 0
+    +maxwidth($mobail)
+        margin: 20px auto 0
+
+    &__container
+        width: fit-content
+        margin-left: 20px
+        display: flex
+        flex-direction: column
+        +maxwidth($tablet)
+            margin-left: 15px
+
+.tags
+    height: fit-content
+    width: 240px
+    display: flex
+    flex-wrap: wrap
+
+    &__elem
+        height: 36px
+        width: fit-content
+        margin: 5px 5px 0 0
+        padding: 10px
+        display: flex
+        justify-content: center
+        align-items: center
+        background-color: $white
+        color: $green
+        border: 1px solid $green
+        border-radius: 10px
+        font:  normal 13px/100% $openSans
+        transition: all .3s ease
+        +maxwidth($mobail)
+            height: 26px
+            padding: 5px
+        +maxwidth($sm-mobail)
+            height: fit-content
+            text-align: center
+
+        &:hover
+            color: $white
+            background: $green

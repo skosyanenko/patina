@@ -1,0 +1,79 @@
+@import 'config'
+
+.fadeInRight
+    animation-name: fadeInRight
+
+@keyframes fadeInRight
+    0%
+        transform: translateX(0)
+        animation-duration: 1s
+    50%
+        transform: translateX(30px)
+        animation-duration: 1s
+    100%
+        transform: translateX(0)
+        animation-duration: 1s
+
+@keyframes scaleFade
+    0%
+        opacity: 1
+        transform: scale(1)
+    100%
+        opacity: 0
+        transform: scale(2.5)
+
+.inputHighlighter
+    animation-name: inputHighlighter
+
+@keyframes inputHighlighter
+    from
+        background: #5264AE
+    to
+        width: 0
+        background: transparent
+
+.pulse
+    animation-name: pulse
+
+@-webkit-keyframes pulse
+    0%
+        -webkit-box-shadow: 0 0 0 0 rgba($green, 0.8)
+    70%
+        -webkit-box-shadow: 0 0 0 40px rgba($green, 0)
+    100%
+        -webkit-box-shadow: 0 0 0 0 rgba($green, 0)
+
+@keyframes pulse
+    0%
+        -moz-box-shadow: 0 0 0 0 rgba($green, 0.8)
+        box-shadow: 0 0 0 0 rgba($green, 0.8)
+    70%
+        -moz-box-shadow: 0 0 0 40px rgba($green, 0)
+        box-shadow: 0 0 0 40px rgba($green, 0)
+    100%
+        -moz-box-shadow: 0 0 0 0 rgba($green, 0)
+        box-shadow: 0 0 0 0 rgba($green, 0)
+
+.showLines
+    animation-name: showLines
+
+@keyframes showLines
+    to
+        stroke-dashoffset: 0
+
+.showTitle
+    animation-name: showTitle
+
+@keyframes showTitle
+    to
+        fill: $black
+
+.showItem
+    animation-name: showItem
+
+@keyframes showItem
+    from
+        opacity: 0
+    to
+        opacity: 1
+

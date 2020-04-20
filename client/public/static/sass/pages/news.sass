@@ -1,0 +1,381 @@
+//@import 'config'
+
+/* Стили для компонента NewsList */
+
+.news
+    column-gap: 40px
+    column-count: 2
+    width: 100%
+    margin-top: 30px
+    +maxwidth($tablet)
+        column-count: 1
+        margin-top: 25px
+    +maxwidth($mobail)
+        margin-top: 20px
+    &:first-child
+        margin-top: 0
+    .news-link:first-child
+        padding-top: 0
+
+/* Стили для компонентов NewsBlock, NewsElem, NewsHorizontal, NewsLink, NewsVertical */
+
+.news-horizontal,
+.news-vertical,
+.news-block,
+.news-elem,
+.news-link
+    break-inside: avoid
+    width: 100%
+    display: flex
+    margin-bottom: 20px
+    padding-top: 20px
+    +maxwidth($tablet)
+        width: 100%
+        margin-bottom: 15px
+        padding-top: 15px
+    +maxwidth($sm-mobail)
+        margin-bottom: 10px
+        padding-top: 10px
+
+    &__title
+        @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
+        overflow: hidden
+        text-overflow: ellipsis
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+
+    &__text
+        @include style-text(16px, 2px, $openSans, $lightgray, 120%, 300, false)
+        text-align: justify
+        text-indent: 35px
+
+        p
+            &:first-child
+                overflow: hidden
+                text-overflow: ellipsis
+                display: -webkit-box
+                -webkit-line-clamp: 5
+                -webkit-box-orient: vertical
+
+    &__img
+        width: 100%
+        transition: .5s ease
+        &:hover
+            opacity: 0.7
+
+        img
+            width: 100%
+            height: 100%
+
+/* Стили для компонентов NewsHorizontal, NewsVertical */
+
+.news-horizontal,
+.news-vertical
+    display: flex
+    +maxwidth($sm-mobail)
+        flex-direction: column
+
+    &__wrapper
+        display: flex
+        justify-content: space-between
+
+    &__link
+        transition: .5s ease
+        &:hover
+            opacity: 0.7
+
+/* Стили для компонента NewsHorizontal */
+
+.news-horizontal
+    flex-direction: column
+
+    &__wrapper
+        +maxwidth($sm-mobail)
+            flex-direction: column
+
+        &-nav
+            display: flex
+            justify-content: space-between
+            align-items: center
+            flex-direction: column
+            +maxwidth($tablet)
+                height: 115px
+                margin: auto 0
+            +maxwidth($sm-mobail)
+                height: fit-content
+                flex-direction: row
+                align-items: flex-end
+                margin: 15px 0 10px
+
+        &-wrap
+            display: flex
+            flex-direction: column
+            align-items: center
+            +maxwidth($sm-mobail)
+                flex-direction: column
+                align-items: center
+
+                .time-to-read
+                    order: 1
+                    margin-bottom: 15px
+                .icons
+                    order: 2
+
+    &__link
+        width: 52%
+        +maxwidth($sm-mobail)
+            width: 100%
+
+        &-img
+            width: 100%
+            position: relative
+
+            &:after
+                width: 1px
+                height: 100%
+                left: 122%
+                position: absolute
+                content: ''
+                background: $green
+                +maxwidth($desktop)
+                    left: 115%
+                +maxwidth($sm-mobail)
+                    display: none
+
+            img
+                width: 100%
+
+    &__description
+        max-width: 100%
+        margin-left: 0
+        margin-top: 10px
+
+        &-wrap
+            margin-top: 10px
+            border-top: none
+            +maxwidth($tablet)
+                margin-top: 15px
+                padding-top: 15px
+            +maxwidth($mobail)
+                margin-top: 10px
+                padding-top: 10px
+            p
+                &:first-child
+                    -webkit-line-clamp: 7
+                    +maxwidth($tablet)
+                        -webkit-line-clamp: 5
+
+    &__text
+        margin-top: 15px
+        +maxwidth($mobail)
+            margin-top: 10px
+
+/* Стили для компонента NewsVertical */
+
+.news-vertical
+    &__link
+        width: 39%
+        +maxwidth($tablet)
+            width: 280px
+        +maxwidth($sm-mobail)
+            margin: 0 auto 15px
+
+        &-img
+            width: 100%
+
+            img
+                width: 100%
+
+    &__description
+        width: 61%
+        margin-left: 15px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        +maxwidth($tablet)
+            width: 100%
+        +maxwidth($sm-mobail)
+            margin-left: 0
+
+        &-wrap
+            +maxwidth($sm-mobail)
+                margin-bottom: 15px
+
+        &-wrapper
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            .time-to-read
+                margin-bottom: 15px
+
+        &-nav
+            display: flex
+            justify-content: space-between
+            align-items: flex-end
+
+    &__title
+        position: relative
+        margin-bottom: 20px
+        +maxwidth($tablet)
+            margin-bottom: 15px
+        +maxwidth($sm-mobail)
+            margin-bottom: 10px
+
+    &__text
+        P
+            &:first-child
+                padding-top: 20px
+                border-top: 1px solid $green
+                +maxwidth($tablet)
+                    padding-top: 15px
+                +maxwidth($sm-mobail)
+                    padding-top: 10px
+                    border-top: none
+
+/* Стили для компонента NewsBlock */
+
+.news-block
+    flex-direction: column
+    &:first-child
+        margin-top: 0
+
+    &__img
+        min-width: 100%
+        max-width: 100%
+        height: 100%
+
+    &__title
+        margin: 25px 0
+        @include style-text(32px, 2px, $waverlyExtra, $black, 100%, bold, false)
+        +maxwidth($tablet)
+            margin: 20px 0
+        +maxwidth($mobail)
+            margin: 15px 0
+
+    &__text
+        margin-bottom: 35px
+        +maxwidth($tablet)
+            margin-bottom: 25px
+        +maxwidth($mobail)
+            margin-bottom: 20px
+
+    &__nav
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        +maxwidth($sm-mobail)
+            align-items: flex-end
+
+        &-wrap
+            display: flex
+            align-items: center
+            +maxwidth($sm-mobail)
+                flex-direction: column
+                align-items: center
+
+            .time-to-read
+                margin-left: 15px
+                +maxwidth($sm-mobail)
+                    margin-left: 0
+                    margin-bottom: 15px
+                    order: 1
+
+            .icons
+                +maxwidth($sm-mobail)
+                    order: 2
+
+/* Стили для компонента NewsElem */
+
+.news-elem
+    margin-bottom: 0
+    padding-bottom: 25px
+    +maxwidth($tablet)
+        margin-top: 20px
+        padding-bottom: 20px
+    +maxwidth($mobail)
+        margin-top: 15px
+        padding-bottom: 15px
+
+    &__about
+        margin-right: 25px
+        display: flex
+        flex-direction: column
+        +maxwidth($sm-mobail)
+            margin-right: 0
+
+    &__text
+        margin-top: 20px
+        +maxwidth($tablet)
+            margin-top: 15px
+        +maxwidth($mobail)
+            margin-top: 10px
+
+    &__img
+        width: 250px
+        height: 165px
+        +maxwidth($sm-mobail)
+            display: none
+
+/* Стили для компонента NewsLink */
+
+.news-link
+    margin: 0
+    padding: 25px 0
+    align-items: center
+    border-bottom-style: double
+    border-color: $lightgray
+    +maxwidth($tablet)
+        padding: 20px 0
+    +maxwidth($mobail)
+        padding: 15px 0
+
+    &:first-child
+        padding-top: 0
+
+    &__title
+        @include style-text(21px, 2px, $waverlyExtra, $black, 100%, 800, false)
+        max-width: 400px
+        +maxwidth($sm-mobail)
+            max-width: 150px
+
+.news-elem,
+.news-link
+    display: flex
+    justify-content: space-between
+    border-bottom-style: double
+    border-color: $lightgray
+
+
+.news-horizontal__text,
+.news-vertical__text,
+.news-block__text,
+.news-elem__text,
+.news-link__text,
+.news-horizontal__description
+    p
+        &:first-child
+            margin-bottom: 0
+        &:nth-child(2)
+            display: none
+        &:nth-child(3)
+            display: none
+        &:nth-child(4)
+            display: none
+        &:nth-child(5)
+            display: none
+        &:nth-child(6)
+            display: none
+        &:nth-child(7)
+            display: none
+        &:nth-child(8)
+            display: none
+        &:nth-child(9)
+            display: none
+        &:nth-child(10)
+            display: none
+
+
+

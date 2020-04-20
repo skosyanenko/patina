@@ -1,0 +1,483 @@
+@import 'config'
+
+/* Стили для компонента AddForm */
+
+.form-wrapper
+    max-width: 70%
+    width: 100%
+    margin-bottom: 100px
+    +maxwidth(1640px)
+        max-width: 100%
+    +maxwidth($mobail)
+        margin-bottom: 30px
+
+    &.entered
+        opacity: 1
+        display: none
+
+    &.exited
+        opacity: 0
+        display: flex
+
+.form, .registration
+    transition: .4s ease-out
+
+    &.entered
+        opacity: 0
+
+    &.exited
+        opacity: 1
+
+    &__title
+        margin-bottom: 20px
+        text-align: center
+        @include style-text(50px, 5px, $waverly, $black, 100%, 500, false)
+        +maxwidth($tablet)
+            margin-bottom: 15px
+        +maxwidth($mobail)
+            margin-bottom: 10px
+
+    &__radio
+        height: 100%
+        margin-left: 35px
+        display: flex
+        flex-direction: column
+        +maxwidth($tablet)
+            max-height: 84px
+        +maxwidth($mobail)
+            max-height: 64px
+
+        .form__group-error
+            margin-left: -35px
+
+        &-radio
+            margin-top: 7px
+
+        span,
+        label
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
+
+        input
+            z-index: -1
+            opacity: 0
+            width: 0
+            height: 0
+            visibility: hidden
+            &:checked + label:after
+                opacity: 1
+
+        label
+            position: relative
+            &:before, &:after
+                content: ''
+                border-radius: 50%
+                position: absolute
+                top: 0
+                bottom: 0
+                margin: auto 0
+            &:before
+                width: 20px
+                height: 20px
+                border: 1px solid $green
+                background: $white
+                left: -30px
+            &:after
+                width: 10px
+                height: 10px
+                background: $green
+                left: -25px
+                transition: .5s ease
+                opacity: .3
+
+    &__group
+        width: 100%
+        max-height: 50px
+        height: 50px
+        margin: 25px 0
+        position: relative
+        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
+        +maxwidth($tablet)
+            max-height: 40px
+        +maxwidth($mobail)
+            margin: 20px 0
+
+        &-error
+            @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, true)
+            margin-top: 10px
+
+        &-img
+            width: 25px
+            height: 25px
+            top: 0
+            bottom: 0
+            margin: auto
+            position: absolute
+            +maxwidth($tablet)
+                width: 20px
+                height: 20px
+
+        textarea
+            width: 100%
+            height: 100%
+            resize: none
+
+        input,
+        label,
+        textarea
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
+
+        input,
+        textarea
+            padding: 10px 10px 5px 35px
+            margin-bottom: 10px
+            display: block
+            width: 100%
+            border: none
+            border-bottom: 1px solid $green
+            &:focus
+                outline: none
+
+        label
+            position: absolute
+            pointer-events: none
+            left: 35px
+            top: 12px
+            transition: 0.2s ease all
+            +maxwidth($tablet)
+                left: 30px
+
+        input:focus ~ label, input:not(:placeholder-shown) ~ label
+            top: -15px
+            font-size: 16px
+            color: $green
+            +maxwidth($mobail)
+                top: -10px
+                font-size: 14px
+
+        textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label
+            top: -20px
+            font-size: 16px
+            color: $green
+            +maxwidth($mobail)
+                top: -15px
+                font-size: 14px
+
+            &-bar
+                position: relative
+                display: block
+                &:before,
+                &:after
+                    content: ''
+                    height: 2px
+                    width: 0
+                    bottom: 1px
+                    position: absolute
+                    background: #5264AE
+                    transition: 0.2s ease all
+                &:before
+                    left: 50%
+                &:after
+                    right: 50%
+
+            input:focus ~ .form__group-bar:before, input:focus ~ .form__group-bar:after
+                width: 50%
+
+            textarea:focus ~ .form__group-bar:before, textarea:focus ~ .form__group-bar:after
+                width: 50%
+
+            &-highlight
+                position: absolute
+                height: 60%
+                width: 100px
+                top: 25%
+                left: 0
+                pointer-events: none
+                opacity: 0.5
+
+            input:focus ~ .form__group-highlight
+                animation: inputHighlighter 0.3s ease
+
+            textarea:focus ~ .form__group-highlight
+                animation: inputHighlighter 0.3s ease
+
+    &__upload
+        width: 100%
+        height: 60px
+        display: flex
+        align-items: center
+        margin-top: 15px
+        +maxwidth($tablet)
+            height: 50px
+        +maxwidth($mobail)
+            height: 40px
+            margin-top: 25px
+
+        label
+            width: 50px
+            display: flex
+            margin-right: 20px
+            +maxwidth($tablet)
+                margin-right: 15px
+            +maxwidth($mobail)
+                margin-right: 10px
+
+        &-text
+            width: 100%
+            height: 100%
+            display: flex
+            flex-direction: column
+            justify-content: center
+
+        &-fileName
+            width: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+            margin-top: 10px
+            +maxwidth($sm-mobail)
+                margin-top: 0
+            span
+                color: $green !important
+
+        &-close
+            width: 15px
+            height: 15px
+            cursor: pointer
+            background: url('/images/icons/sprite.svg#close-green') no-repeat center / contain
+            +maxwidth($mobail)
+                width: 12px
+                height: 12px
+
+        input
+            width: 0
+            visibility: hidden
+
+        span
+            white-space: nowrap
+            @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
+
+        &-img
+            background: url('/images/icons/sprite.svg#upload-green') no-repeat center / contain
+            background-size: 30px 30px
+            min-width: 50px
+            width: 100%
+            height: 50px
+            margin-right: 20px
+            border: 1px solid $green
+            border-radius: 20px
+            display: flex
+            cursor: pointer
+            +maxwidth($mobail)
+                min-width: 40px
+                height: 40px
+                background-size: 25px 25px
+                border-radius: 10px
+
+    &__success
+        position: absolute
+        top: 50%
+        text-align: center
+        transition: 0.4s ease-in
+        @include style-text(40px, 8px, $openSans, $green, 100%, bold, false)
+        &.entered
+            opacity: 1
+
+        &.exited
+            opacity: 0
+
+        &.success-error
+            margin: 20px
+            @include style-text(30px, 5px, $openSans, red, 100%, bold, false)
+
+$icons: (user,vkontakte,telegram,author, author, books, email, films, fun, password, placeholder, telephone, quote, clock, wishlist)
+
+@each $icon in $icons
+    .form__group-#{$icon}
+        background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain
+
+.form__group-email
+    +maxwidth($sm-mobail)
+        bottom: 6px
+
+.form__group-fun
+    bottom: 5px
+
+.form__group-wishlist
+    +maxwidth($mobail)
+        margin-top: 7px !important
+
+/* Стили для компонента AddForm на старнице регистрации */
+
+.registration
+    max-width: 100% !important
+    padding: 0 120px
+    +maxwidth(1640px)
+        padding: 0
+
+    &__grid
+        display: grid !important
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(7, 1fr)
+        grid-auto-flow: column
+        grid-column-gap: 60px
+        +maxwidth($mobail)
+            grid-template-columns: repeat(1, 1fr)
+            grid-template-rows: repeat(14, 1fr)
+            max-height: 100%
+
+        button
+            margin: 27px auto 0 !important
+            height: 50px
+            width: 100%
+            font-size: 22px
+            +maxwidth($tablet)
+                margin: 34px auto 0 !important
+                height: 40px
+                font-size: 20px
+            +maxwidth($mobail)
+                margin: 0 auto !important
+                font-size: 18px
+
+    &__radio
+        max-height: 120px
+        margin-top: -10px
+        +maxwidth($tablet)
+            margin-bottom: 15px
+        +maxwidth($mobail)
+            margin-top: -5px
+            margin-bottom: 10px
+
+/* Стили для компонента AddForm на всех старницах */
+
+.form
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+    button
+        height: 50px
+        margin: 50px auto 0
+        font-size: 22px
+        +maxwidth($tablet)
+            margin: 30px auto 0
+            height: 40px
+            font-size: 20px
+        +maxwidth($mobail)
+            font-size: 18px
+
+    &__radio
+        max-height: fit-content
+
+/* Стили для компонента Select */
+
+.select
+    width: 100%
+    margin: 25px 0
+    display: flex
+    flex-direction: column
+    position: relative
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, true)
+    &:focus
+        border: none
+        outline: none !important
+        box-shadow: none !important
+
+    &__placeholder
+        top: 60% !important
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
+
+    &__control
+        border: none !important
+        border-radius: 0 !important
+        border-bottom: 1px solid $green !important
+        &--is-focused
+            outline: none
+            box-shadow: none !important
+
+    &__menu
+        z-index: 3 !important
+
+    &__option
+        @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
+        padding: 12px !important
+        &:hover
+            background: rgba(38, 77, 75, 0.3)
+
+    &__option--is-focused
+        background-color: rgba(38, 77, 75, 0.3) !important
+
+    &__value-container
+        padding: 5px 35px !important
+        +maxwidth($mobail)
+            padding: 5px 30px !important
+
+    .form__group-img
+        bottom: -25px
+        z-index: 2
+        +maxwidth($tablet)
+            bottom: -30px
+        +maxwidth($mobail)
+            bottom: -20px
+
+    label,
+    option,
+    select
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, false)
+
+    select,
+    option
+        width: 100%
+        height: 40px
+
+/* Стили для компонента Editor */
+
+.editor
+    margin-top: 30px
+    display: flex
+    flex-direction: column
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
+
+    &__title
+        padding: 0 0 20px 35px
+        @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
+        background: url('/images/icons/sprite.svg#author-green') no-repeat left top / contain
+        background-size: 25px 25px
+        +maxwidth($tablet)
+            background-size: 20px 20px
+        +maxwidth($mobail)
+            padding: 0 0 10px 30px
+
+.codex-editor
+    margin-bottom: 15px
+    border: 1px solid #ddd
+    +maxwidth($tablet)
+        margin-bottom: 10px
+    +maxwidth($mobail)
+        margin-bottom: 5px
+
+.codex-editor__redactor
+    min-height: 200px
+    padding-bottom: 0 !important
+
+.ce-block__content
+    max-width: 90% !important
+    width: 100%
+    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
+
+
+.ce-toolbar__plus
+    left: -60px
+
+.ce-toolbox__button
+    &:hover
+        fill: $green
+
+.ce-toolbar__plus--active,
+.ce-toolbar__plus:hover
+    color: $green
+
+.ce-toolbox__button--active,
+.ce-toolbox__button:hover
+    color: $green
+
