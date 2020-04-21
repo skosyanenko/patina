@@ -1,0 +1,28 @@
+
+.user-info
+    width: fit-content
+    display: flex
+    flex-direction: column
+    +maxwidth($mobail)
+        position: relative
+
+    &__wrapper
+        margin-bottom: 30px
+        display: flex
+        flex-direction: column
+
+    .socials__tg
+        background: url('/icons/sprite.svg#telegram-gray') no-repeat center / contain
+    .socials__vk
+        background: url('/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
+
+    .socials__bookmark
+        &:hover
+            &:before
+                background: $darkgray
+            &:after
+                border-top-color: $darkgray
+        svg
+            stroke: $darkgray
+            &.active
+                fill: $darkgray

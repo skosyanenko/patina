@@ -10,6 +10,17 @@ npm run dev
 yarn dev
 ```
 
+```bash
+# запуск сидеров
+npx knex seed:run
+
+# создание сидера
+npx knex seed:make seed_name
+
+# создание одного сидера
+npx knex seed: run --specific=filename.js
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.

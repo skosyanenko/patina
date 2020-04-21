@@ -1,6 +1,6 @@
 @import 'config'
 
-/* Стили для компонента AddForm */
+/* Стили для компонента HookForm */
 
 .form-wrapper
     max-width: 70%
@@ -243,7 +243,7 @@
             width: 15px
             height: 15px
             cursor: pointer
-            background: url('/images/icons/sprite.svg#close-green') no-repeat center / contain
+            background: url('/icons/sprite.svg#close-green') no-repeat center / contain
             +maxwidth($mobail)
                 width: 12px
                 height: 12px
@@ -257,7 +257,7 @@
             @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
 
         &-img
-            background: url('/images/icons/sprite.svg#upload-green') no-repeat center / contain
+            background: url('/icons/sprite.svg#upload-green') no-repeat center / contain
             background-size: 30px 30px
             min-width: 50px
             width: 100%
@@ -293,7 +293,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 
 @each $icon in $icons
     .form__group-#{$icon}
-        background: url('/images/icons/sprite.svg##{$icon}-green') no-repeat center / contain
+        background: url('/icons/sprite.svg##{$icon}-green') no-repeat center / contain
 
 .form__group-email
     +maxwidth($sm-mobail)
@@ -441,7 +441,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
     &__title
         padding: 0 0 20px 35px
         @include style-text(25px, 3px, $openSans, $lightgray, 120%, 300, true)
-        background: url('/images/icons/sprite.svg#author-green') no-repeat left top / contain
+        background: url('/icons/sprite.svg#author-green') no-repeat left top / contain
         background-size: 25px 25px
         +maxwidth($tablet)
             background-size: 20px 20px

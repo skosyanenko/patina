@@ -1,0 +1,71 @@
+
+.content
+    width: 310px
+    padding: 0 40px
+    position: relative
+    display: flex
+    justify-content: center
+    border-left: 1px solid $black
+    border-top: 2px solid $white
+    +maxwidth(1640px)
+        display: none
+
+    &:before
+        width: 100%
+        height: 3px
+        top: -3px
+        position: absolute
+        content: ''
+        background: $white
+
+    &__wrapper
+        width: 100%
+        display: flex
+        flex-direction: column
+
+    &__title
+        margin-top: 75px
+        margin-bottom: 28px
+        @include style-text(25px, 0, $waverly, $darkgray, 100%, 300, false)
+        text-transform: uppercase
+
+    &__item
+        margin-bottom: 10px
+        @include style-text(20px, 0, $waverly, $darkgray, 100%, 100, false)
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+        transition: .4s ease
+
+
+        &:hover
+            font-weight: 500
+            transform: scale(1.01)
+            color: $green
+
+        &-title
+            padding-right: 2px
+            overflow: hidden
+            position: relative
+            display: table-cell
+            width: 100%
+            &:after
+                content: ''
+                position: absolute
+                bottom: 0.21em
+                margin-left: 0.15em
+                width: 100%
+                height: 0
+                border-bottom: 1px dotted $green
+
+        &-num
+            padding-left: 5px
+
+        &-title,
+        &-num
+            bottom: -5px
+            background-color: #fff
+
+
+
+

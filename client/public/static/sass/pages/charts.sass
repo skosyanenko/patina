@@ -1,6 +1,3 @@
-//@import 'config'
-
-/* Стили для компонента Picture */
 
 .picture
     max-width: calc(50% - 90px)
@@ -21,7 +18,7 @@
         width: 80px
         height: 80px
         margin-left: -10px
-        background: url('/images/icons/sprite.svg#quote-sand') no-repeat center / contain
+        background: url('/icons/sprite.svg#quote-sand') no-repeat center / contain
         opacity: 0.5
         +maxwidth($tablet)
             width: 60px
@@ -60,7 +57,7 @@
             transform-style: preserve-3d
             will-change: transform
             transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)
-            background: url('/images/shapes/3.png') no-repeat center / contain
+            background: url('/shapes/3.png') no-repeat center / contain
             +maxwidth($tablet)
                 max-width: 300px
             +maxwidth($mobail)
@@ -142,8 +139,6 @@
             +maxwidth($tablet)
                 top: 45%
                 right: calc(100% + 5px)
-
-/* Стили для компонента Selection */
 
 .selection
     width: 100%

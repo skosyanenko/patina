@@ -3,6 +3,6 @@ module.exports = {
   connection: process.env.DATABASE_URL || {
     user: 'postgres',
     database: 'patina-strapi',
-    password: "13307878"
+    password: "151237"
   }
 };

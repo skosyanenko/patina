@@ -1,0 +1,164 @@
+
+.writer
+    max-width: 380px
+    width: 100%
+    display: flex
+    flex-direction: column
+
+    &__wrapper
+        width: 315px
+        height: 450px
+        position: relative
+        display: flex
+        +maxwidth($tablet)
+            width: 330px
+        +maxwidth($mobail)
+            width: 305px
+            height: fit-content
+        +maxwidth($sm-mobail)
+            width: 280px
+
+        &-author
+            margin-top: 70px
+            +maxwidth($tablet)
+                margin-top: 40px
+            +maxwidth($mobail)
+                margin-top: 30px
+            +maxwidth($sm-mobail)
+                margin-top: 20px
+
+        &-name
+            max-width: 120px
+            margin-bottom: 40px
+            @include style-text(26px, 0, $waverlyExtra, $black, 100%, bold, false)
+            text-transform: uppercase
+            +maxwidth($mobail)
+                max-width: 100px
+                margin-bottom: 30px
+            +maxwidth($sm-mobail)
+                max-width: 90px
+                margin-bottom: 20px
+
+        &-date
+            @include style-text(26px, 0, $waverly, $black, 100%, 100, false)
+
+        &-citation
+            width: 370px
+            height: 50px
+            padding-left: 20px
+            right: -100%
+            bottom: 0
+            position: absolute
+            @include style-text(14px, 0, $waverly, $darkgray, 115%, 300, false)
+            transform: rotate(-90deg)
+            transform-origin: 0 0
+            border-left: 5px solid $sand
+            overflow-wrap: break-word
+            +maxwidth($tablet)
+                right: -85%
+            +maxwidth($mobail)
+                display: none
+    &__picture
+        width: 355px
+        height: 381px
+        margin-top: auto
+        position: relative
+        +maxwidth($tablet)
+            width: 330px
+            height: 345px
+        +maxwidth($mobail)
+            width: 305px
+            height: 315px
+        +maxwidth($sm-mobail)
+            width: 280px
+            height: 290px
+
+        &-quote
+            width: 50px
+            height: 50px
+            top: 0
+            right: 12%
+            position: absolute
+            z-index: 1
+            +maxwidth($sm-mobail)
+                width: 40px
+                height: 40px
+                right: 0
+
+            &:last-child
+                top: 85%
+                left: 10%
+                transform: rotate(0deg) scale(-1, -1)
+
+        &-quoteImg
+            width: 100%
+            height: 100%
+            background: url('/icons/sprite.svg#quote-view')
+            transform: rotate(0deg) scale(-1, -1)
+
+        &-pinkCircle
+            width: 100px
+            height: 100px
+            top: 7.5%
+            left: 0
+            position: absolute
+            z-index: 1
+            border-radius: 50%
+            background: #cc9999
+            opacity: 0.7
+            +maxwidth($tablet)
+                width: 90px
+                height: 90px
+            +maxwidth($mobail)
+                width: 80px
+                height: 80px
+            +maxwidth($sm-mobail)
+                width: 70px
+                height: 70px
+
+        &-bigCircle
+            width: 355px
+            height: 355px
+            bottom: 0
+            right: 0
+            position: absolute
+            border-radius: 50%
+            border: 1px solid $browngray
+            +maxwidth($tablet)
+                width: 330px
+                height: 330px
+            +maxwidth($mobail)
+                width: 305px
+                height: 305px
+            +maxwidth($sm-mobail)
+                width: 280px
+                height: 280px
+
+        &-smallCircle
+            width: 300px
+            height: 300px
+            bottom: 27.5px
+            right: 27.5px
+            position: absolute
+            border-radius: 50%
+            background: linear-gradient(210deg, rgba(34, 38, 13, 0.6), rgba(255, 255, 255, 1))
+            +maxwidth($tablet)
+                width: 275px
+                height: 275px
+            +maxwidth($mobail)
+                width: 250px
+                height: 250px
+            +maxwidth($sm-mobail)
+                width: 225px
+                height: 225px
+
+        &-img
+            width: 140%
+            position: absolute
+            z-index: 1
+            left: -26%
+            top: -13%
+            +maxwidth($tablet)
+                top: -17%
+            +maxwidth($mobail)
+                top: -20%

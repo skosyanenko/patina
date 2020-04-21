@@ -1,0 +1,174 @@
+
+.event
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+    +maxwidth($desktop)
+        margin-top: 40px
+
+    &__date
+        height: 100%
+        display: flex
+        position: relative
+
+        &-skates,
+        &-ball,
+        &-bullfinch,
+        &-flower,
+        &-dandelion,
+        &-butterfly,
+        &-dragonfly,
+        &-raspberries,
+        &-shell,
+        &-umbrella,
+        &-acorn,
+        &-leaf
+            position: absolute
+
+        &-skates, &-butterfly, &-dragonfly, &-umbrella
+            width: 110px
+            top: -55px
+            left: 155px
+            +maxwidth($desktop)
+                left: 140px
+            +maxwidth($tablet)
+                width: 100px
+                left: 110px
+                top: -75px
+            +maxwidth($sm-mobail)
+                width: 70px
+                left: 80px
+
+        &-skates
+            left: 150px
+            +maxwidth($tablet)
+                left: 100px
+            +maxwidth($sm-mobail)
+                left: 90px
+
+        &-butterfly
+            width: 80px
+            +maxwidth($sm-mobail)
+                width: 60px
+
+        &-dragonfly
+            +maxwidth($tablet)
+                width: 65px
+                top: -75px
+
+        &-umbrella
+            width: 35px
+            transform: scale(-1, 1)
+            +maxwidth($tablet)
+                width: 30px
+            +maxwidth($mobail)
+                width: 25px
+
+        &-ball, &-flower, &-raspberries, &-acorn
+            top: -25px
+            left: 10px
+            width: 165px
+            transform: scale(1.4)
+            +maxwidth($desktop)
+                transform: scale(1)
+                width: 165px
+                top: -40px
+                left: -25px
+            +maxwidth($mobail)
+                top: -35px
+                left: -15px
+            +maxwidth($sm-mobail)
+                left: -20px
+                width: 155px
+
+        &-flower
+            transform: rotate(90deg)
+            +maxwidth($sm-mobail)
+                width: 130px
+
+        &-raspberries, &-flower
+            left: 0
+
+        &-raspberries
+            +maxwidth($sm-mobail)
+                width: 125px
+
+        &-acorn
+            height: 310%
+            top: -85px
+            left: 0
+            +maxwidth($sm-mobail)
+                height: 260%
+                left: -30px
+                top: -55px
+
+        &-bullfinch, &-dandelion, &-shell, &-leaf
+            width: 200px
+            transform: scale(-1, 1)
+            top: -30px
+            left: -10px
+            +maxwidth($sm-mobail)
+                width: 150px
+
+        &-dandelion
+            +maxwidth($sm-mobail)
+                height: 140%
+
+        &-shell
+            height: 170%
+            top: -20px
+            +maxwidth($mobail)
+                height: 140%
+                left: 20px
+            +maxwidth($sm-mobail)
+                height: 110%
+                left: 0
+
+        &-leaf
+            transform: rotate(45deg)
+            left: 0
+            +maxwidth($tablet)
+                top: -50px
+            +maxwidth($sm-mobail)
+                width: 90px
+                left: 35px
+
+        &-digit
+            @include style-text-events(72px, 10px, $cheque, $darkgray, 75%, 300, false, false)
+
+    &__text
+        margin-left: 50px
+        display: flex
+        flex-direction: column
+        color: $carbonic
+        +maxwidth($desktop)
+            margin-left: 40px
+        +maxwidth($tablet)
+            margin-left: 30px
+
+        &-day
+            @include style-text-events(18px, 2px, $waverlyExtra, $darkgray, 80%, 50, false, false)
+
+        &-time
+            margin-top: 10px
+            @include style-text-events(14px, 0, $waverly, $darkgray, 80%, 100, false, false)
+            +maxwidth($tablet)
+                margin-top: 7px
+
+    &__description
+        margin-top: 20px
+        display: flex
+        flex-direction: column
+        +maxwidth($desktop)
+            margin-top: 15px
+        +maxwidth($tablet)
+            margin-top: 10px
+
+        &-title
+            @include style-text-events(18px, 2px, $waverlyExtra, $black, 80%, 500, false, false)
+
+        &-text
+            margin-top: 7px
+            @include style-text-events(14px, 0, $waverly, $lightgray, 80%, 100, false, false)
+            +maxwidth($tablet)
+                margin-top: 5px

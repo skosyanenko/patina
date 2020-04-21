@@ -1,11 +1,16 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
-    webpack: config => {
-        config.resolve.alias['components'] = path.join(__dirname, 'components');
-        config.resolve.alias['config'] = path.join(__dirname, 'config');
-        config.resolve.alias['services'] = path.join(__dirname, 'services');
+    env: {
+        API_URL: process.env.API_URL
+    },
 
+    webpack: config => {
+        config.resolve.modules = [
+            'node_modules',
+            path.join(__dirname, 'src')
+        ]
         return config
     }
 };
