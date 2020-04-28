@@ -6,7 +6,7 @@ const EventPicture = ({ picture }) => {
             <div className="event__date">
                 { picture &&
                     <svg className={'event__date-' + picture}>
-                        <use href={`/public/icons/sprite.svg#${picture}`}/>
+                        <use href={`/icons/sprite.svg#${picture}`}/>
                     </svg>
                 }
             </div>

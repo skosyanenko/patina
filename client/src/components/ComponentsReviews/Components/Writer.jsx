@@ -20,7 +20,7 @@ const Writer = ({ authors, quote }) => (
             />
         </div>
         <div className="writer__picture">
-              <img src={returnImage(authors)} alt="" className="writer__picture-img" itemProp="image"/>
+            <img src={`${process.env.API_URL}${returnImage(authors)}`} alt="" className="writer__picture-img" itemProp="image"/>
             <div className="writer__picture-quote">
                 <div className="writer__picture-quoteImg"/>
             </div>

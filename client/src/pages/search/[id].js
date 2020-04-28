@@ -16,37 +16,21 @@ class SearchList  extends Component {
     };
 
     componentDidMount() {
-        const { id } = this.props.match.params;
+        //const { id } = this.props.match.params;
         const { updateState } = this.props;
 
         updateState({ perPage: 9, valuesDropdown: [9, 18, 27],});
 
-        id && this.fetchBooksByCategories( id );
-
+         //this.getItems();
+console.log(this.props.serverData)
         Store.getAll();
     };
 
-    fetchBooksByCategories = id => {
-        const { fetchData } = this.props;
-        fetchData(`/api/v1/search-category/${id}`)
-            .then(() => this.fetchCurrentCategory(id))
-            .then(() => this.setState({
-                loading: false,
-                resultTitle: `результаты поиска по категории «${this.state.category}»`
-            }))
-            .catch(err => console.log(err));
-    };
-
-    fetchCurrentCategory = async id => {
-        return await axios.get(`/api/v1/categories/${id}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({category: res.data.title})}
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из базы данных' + err)
-            });
-    };
+    // getItems = () => {
+    //     const { serverData, serverDataCategory, setData } = this.props;
+    //     setData(serverData);
+    //     //this.setState({ resultTitle: `результаты поиска по категории «${serverDataCategory}»` })
+    // };
 
     render (){
         const { loading, resultTitle } = this.state;
@@ -95,6 +79,20 @@ class SearchList  extends Component {
             </div>
         )
     };
+}
+
+export async function getServerSideProps({ params }) {
+    const { API_URL } = process.env;
+
+    // const serverDataCategory = await axios.get(`${API_URL}/category/${params.id}`)
+    //     .then(res => res.data)
+    //     .catch(err => console.log(err));
+
+    const serverData = await axios.get(`${API_URL}/books?categories.id=${params.id}`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default paginationWrap(SearchList);

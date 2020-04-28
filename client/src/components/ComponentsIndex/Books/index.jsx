@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
-import axios from 'axios';
 import BookInform from 'components/BookInform';
 
 class Books extends Component {
-    state = {
-        books: []
-    };
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,24 +13,10 @@ class Books extends Component {
     };
 
     componentDidMount() {
-        this.fetchBooksMainPage();
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
         });
-    };
-
-    fetchBooksMainPage = () => {
-        axios.get('/api/v1/booksMainPage')
-            .then(res => {
-                res.data &&
-                this.setState({
-                    books: res.data
-            })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
     };
 
     next = () => this.slider1.slickNext();
@@ -46,13 +27,13 @@ class Books extends Component {
         const settings = {
             fade: true,
             infinite: true,
-            autoplay: false,
+            autoplay: true,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
         };
 
-        const { books } = this.state;
+        const { books } = this.props;
 
         return (
             <div className="main books-wrap">
@@ -62,7 +43,7 @@ class Books extends Component {
                     asNavFor={this.state.nav2}
                     className="books-slider"
                 >
-                    { books && books.map((book, key) => (
+                    { books && books.map(({ title, categories, shortDescription, id, coverImage }, key) => (
                     <div className="books"
                          key={key}
                          itemType="https://schema.org/Book"
@@ -70,27 +51,27 @@ class Books extends Component {
                          itemScope
                     >
                         <div className="books__text">
-                            <h1 className="books__text-title" itemProp="name">{book.title}</h1>
-                                <BookInform categories={book.categories}/>
+                            <h1 className="books__text-title" itemProp="name">{title}</h1>
+                                <BookInform categories={categories}/>
                             <p className="books__text-description" itemProp="description">
-                                {book.shortDescription}
+                                {shortDescription}
                             </p>
-                            <Link href={'/books/[id]'} as={`/books/${book.id}`}>
+                            <Link href={'/books/[id]'} as={`/books/${id}`}>
                                 <a className="button button-white">Подробнее</a>
                             </Link>
                         </div>
                         <div className="books__wrapper">
                             <div className="books__arrow">
                                 <svg className="books__arrow-prev"  onClick={this.previous}>
-                                    <use href="/public/icons/sprite.svg#arrow"/>
+                                    <use href="/icons/sprite.svg#arrow"/>
                                 </svg>
                             </div>
                             <div className="books__img">
-                                <img src={book.coverImage} alt="" itemProp="image"/>
+                                {coverImage && <img src={`${process.env.API_URL}${coverImage.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="books__arrow">
                                 <svg className="books__arrow-next" onClick={this.next}>
-                                    <use href="/public/icons/sprite.svg#arrow"/>
+                                    <use href="/icons/sprite.svg#arrow"/>
                                 </svg>
                             </div>
                         </div>
@@ -108,7 +89,6 @@ class Books extends Component {
                         slidesToScroll={1}
                         vertical={true}
                         centerMode={true}
-                        useTransform={true}
                     >
                         { books && books.map((item, key) => (
                             <div className="books__numb-dot" key={key}>

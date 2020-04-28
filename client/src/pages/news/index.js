@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import sortBy from 'lodash.sortby';
 import { counterLetters } from 'config/config';
 import Loader from 'components/Loader';
 import TitleOfPage from 'components/TitleOfPage';
@@ -23,17 +25,12 @@ class NewsList extends Component {
     };
 
     getItems = () => {
-        const { news } = Store;
-        const { fetchData, setData } = this.props;
-        if (!news.data.length) {
-            return fetchData('/api/v1/news')
-                .then(data => {
-                    this.setState({loading: false});
-                    Store.setData('news', {data});
-                })
-                .catch(err => console.log(err));
+        const { setData, serverData } = this.props;
+        if (!Store.articles.data.length) {
+            this.setState({loading: false});
+            Store.setData('articles', { data: serverData });
         }
-        setData(news);
+        setData({data: sortBy(Store.articles.data, 'id')});
     };
 
     viewSwitcher = view => {
@@ -68,7 +65,7 @@ class NewsList extends Component {
                         <div className="news" >
                             { items && items.map((item, key) => {
                                 const Component = this.viewSwitcher(item.viewType);
-                                const datePublish = new Date(item.createdAt).toLocaleDateString();
+                                const datePublish = new Date(item.created_at).toLocaleDateString();
                                 return(
                                     <Component
                                         key={key}
@@ -87,6 +84,17 @@ class NewsList extends Component {
             </>
         )
     }
+}
+
+export async function getServerSideProps() {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/articles`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+
+    return { props: { serverData } };
+
 }
 
 export default paginationWrap(NewsList);

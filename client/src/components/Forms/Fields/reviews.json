@@ -15,7 +15,7 @@
         "req": true
     },
     {
-        "name": "bookId",
+        "name": "book",
         "label": "Название литературного произведения",
         "icon": "books",
         "type": "select",
@@ -24,7 +24,6 @@
     {
         "name": "description",
         "label": "Напишите Вашу рецензию:",
-        "type": "editor",
-        "placeholder": "Текст рецензии . . ."
+        "type": "editor"
     }
 ]

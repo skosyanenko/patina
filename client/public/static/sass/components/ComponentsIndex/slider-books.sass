@@ -134,39 +134,35 @@
             top: 10%
             right: 10%
         +maxwidth($mobail)
-            width: 14%
+            width: 15%
             right: 5%
         +maxwidth($sm-mobail)
-            width: 22%
-            height: 265px
-            top: 10%
-        +maxwidth(450px)
-            width: 15%
+            height: 265px !important
+            top: 6%
+        +maxwidth(320px)
             top: 3%
 
         &-dot
-            font: normal 60px/100% $vogue !important
+            font: normal 60px/100% $vogue
             color: rgba(31, 31, 31, 0.6)
             text-align: center
             transition: .3s ease
             +maxwidth($tablet)
-                font-size: 50px !important
-            +maxwidth(450px)
-                width: 45px !important
-                font-size: 30px !important
+                font-size: 50px
+            +maxwidth(650px)
+                width: 45px
+                font-size: 30px
 
-        .slick-current
-            z-index: 10000
-
-        .slick-slider
-            position: relative
-            display: block
-            box-sizing: border-box
-            touch-callout: none
-            user-select: none
-            touch-action: pan-y
-            tap-highlight-color: transparent
-            margin: auto 0
+.books__numb
+    .slick-slider
+        position: relative
+        display: block
+        box-sizing: border-box
+        touch-callout: none
+        user-select: none
+        touch-action: pan-y
+        tap-highlight-color: transparent
+        margin: auto 0
 
         .slick-list
             margin: 0
@@ -174,6 +170,8 @@
             position: relative
             overflow: hidden
             display: block
+            +maxwidth($sm-mobail)
+                height: 200px !important
 
             &:focus
                 outline: none
@@ -181,40 +179,29 @@
             &.dragging
                 cursor: pointer
 
-        .slick-slider .slick-track,
-        .slick-slider .slick-list
-            transform: translate3d(0, 0, 0)
+            .slick-track
+                top: 0
+                left: 0
+                position: relative
+                display: block
 
-        .slick-track
-            top: 0
-            left: 0
-            position: relative
-            display: block
+                &:before,
+                &:after
+                    content: ''
+                    display: table
+                &:after
+                    clear: both
 
-            &:before,
-            &:after
-                content: ''
-                display: table
-            &:after
-                clear: both
+                .slick-slide
+                    width: 90px !important
+                    padding: 40px 0 !important
+                    transition: .4s ease-in
+                    +maxwidth($sm-mobail)
+                        width: 50px !important
+                        padding: 20px 0 !important
 
-        .slick-slide
-            width: 90px !important
-            height: 100%
-            min-height: 1px
-            float: left
-
-        .slick-center
-            .books__numb-dot
-                transform: scale(1.2)
-                color: $carbonic
-
-        .slick-slide
-            padding: 50px 0
-            +maxwidth($desktop)
-                padding: 40px 0
-            +maxwidth($tablet)
-                padding: 30px 0
-
-.slick-slider
-    width: 100%
+                .slick-center
+                    transform: scale(1.2) !important
+                    div
+                        .books__numb-dot
+                            color: $carbonic !important

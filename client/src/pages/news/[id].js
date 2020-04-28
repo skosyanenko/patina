@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { counterLetters, returnDatePublish} from 'config/config';
+import ReactMarkdown from 'react-markdown';
 import Icons from 'components/Icons';
 import Socials from 'components/SocialsGroup';
 import TimeToRead from 'components/TimeToRead';
@@ -8,44 +10,16 @@ import axios from 'axios';
 
 class NewsDetail extends Component {
     state = {
-        currentNews: [],
-        textLength: null,
-        datePublish: null
+        currentArticle: []
     };
 
     componentDidMount() {
-        this.fetchCurrentNews();
-    };
-
-    fetchCurrentNews = async () => {
-        const { id } = this.props.match.params;
-
-        return await axios.get(`/api/v1/articles/${id}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({currentNews: res.data}, () =>
-                        this.countLetters(this.state.currentNews.description, this.state.currentNews.createdAt))
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    countLetters = ( description, date ) => {
-        const objValues = Object.keys(description).map(x => description[x]);
-        const textLength = Array.from(objValues)
-          .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
-        const datePublish = new Date(date).toLocaleDateString();
-        this.setState(({
-            textLength,
-            datePublish
-        }))
+        const { serverData } = this.props;
+        this.setState({ currentArticle: serverData })
     };
 
     render() {
-        const { textLength, datePublish } = this.state;
-        const { currentNews: {title, description, cover, viewType, likes, views, id} } = this.state;
+        const { currentArticle: {title, description, cover, viewType, likes, views, id, created_at } } = this.state;
         const view = viewType === 1 || viewType === 2 || viewType === 3;
 
         return (
@@ -58,7 +32,7 @@ class NewsDetail extends Component {
                         { view ? <h1 className="article__title-horizontal" itemProp="headline name">{title}</h1> : ''}
                         <div className="image__wrapper">
                             <div className={`${view ? 'image__wrapper-horizontal' : 'image__wrapper-img'}`}>
-                                <img src={cover} alt="" itemProp="image"/>
+                                {cover && <img src={`${process.env.API_URL}${cover.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="image__wrapper-figure"/>
                             <div className="image__wrapper-figure"/>
@@ -67,15 +41,17 @@ class NewsDetail extends Component {
                     <div className={`article ${view ? 'article__horizontal' : ''}`}>
                         { viewType === 0 || viewType === 4 ? <h1 className="article__title" itemProp="headline name">{title}</h1> : ''}
                         <div className="article__wrapper">
-                            <div className={`${view ? 'article__wrapper-horizontal' : 'article__wrapper-text'}`}
-                                 dangerouslySetInnerHTML={{__html: `${description}`}}
-                                 itemProp="description"
+                            <ReactMarkdown
+                                source={description}
+                                className={`${view ? 'article__wrapper-horizontal' : 'article__wrapper-text'}`}
+                                itemProp="description"
                             />
+
                             <div className="article__wrapper-nav">
                                 <div className="article__wrapper-wrap">
-                                    <TimeToRead textLength={textLength}/>
+                                    {description && <TimeToRead textLength={counterLetters(description)}/>}
                                     <Icons likes={likes}
-                                           date={datePublish}
+                                           date={returnDatePublish(created_at)}
                                            views={views}
                                     />
                                 </div>
@@ -88,6 +64,16 @@ class NewsDetail extends Component {
             </>
         )
     }
+}
+
+export async function getServerSideProps({ params }) {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/articles/${params.id}`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default NewsDetail;

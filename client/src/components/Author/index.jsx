@@ -19,7 +19,7 @@ class Author extends Component {
                 </div>
                 <div className="author__inform">
                     <span className="author__inform-name" itemProp="author creator">Тетя Мотя</span>
-                    <span className="author__inform-date" itemProp="datePublished commentTime">{date}</span>
+                    {date && <span className="author__inform-date" itemProp="datePublished commentTime">{date}</span>}
                     {isTimeToRead &&
                         <TimeToRead textLength={textLength}/>
                     }

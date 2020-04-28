@@ -1,32 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { counterLetters } from 'config/config';
 import NewsBlock from 'components/ComponentsNews/NewsBlock';
 import NewsElem from 'components/ComponentsNews/NewsElem';
 import NewsLink from 'components/ComponentsNews/NewsLink';
 
 class News extends Component {
-    state = {
-        news: []
-    };
-
-    componentDidMount() {
-        this.fetchNewsMainPage();
-    };
-
-    fetchNewsMainPage = () => {
-        axios.get('/api/v1/news-main')
-            .then(res => {
-                res.data &&
-                this.setState({
-                    news: res.data
-                })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
     viewSwitcher = view => {
         switch (view) {
             case 2:
@@ -41,11 +19,11 @@ class News extends Component {
     };
 
     render() {
-        const { news } = this.state;
+        const { articles } = this.props;
 
         return (
             <div className="main-news news">
-                { news && news.map((item, key) => {
+                { articles && articles.map((item, key) => {
                     const Component = this.viewSwitcher(item.viewType);
                     const datePublish = new Date(item.createdAt).toLocaleDateString();
                     return(

@@ -7,7 +7,10 @@ import RightMenu from 'components/Layouts/RightMenu';
 import EntranceModal from 'components/EntranceModal';
 import Footer from 'components/Layouts/Footer';
 import BtnScrollToTop from 'components/BtnScrollToTop';
+import Auth from 'services/Authorization';
+import {isBrowser} from "../config/config";
 import '../../public/static/sass/project.sass';
+import 'react-markdown-editor-lite/lib/index.css';
 
 const MyApp = ({ Component, pageProps, router }) => {
     const initialState = {
@@ -30,7 +33,7 @@ const MyApp = ({ Component, pageProps, router }) => {
             header: toggle  ? headerInvisible : '',
             isAnimate: !isAnimate
         });
-    }, [router, toggle]);
+    }, [router.pathname, toggle]);
 
     const switchClasses = (path) => {
         switch(path) {
@@ -42,6 +45,8 @@ const MyApp = ({ Component, pageProps, router }) => {
                 return 'page';
         }
     };
+
+    process.browser && Auth.checkAuth();
 
     const toggleModal = () => setState({...state, modalIsOpen: !modalIsOpen});
 

@@ -17,13 +17,13 @@ class RadioButton extends Component {
 
     render() {
         const required = { value: true, message: 'Обязательное поле!' };
-        const { label, name, options, prefix, register, errors } = this.props;
+        const { label, name, options, register, errors } = this.props;
 
         return (
-            <div className={`${prefix}__radio `} ref={register({name}, {required})}>
+            <div className="form__radio" ref={register({name}, {required})}>
                 <span>{ label }</span>
                 { options && Object.keys(options).map((item, key) => (
-                    <div className={`${prefix}__radio-radio`} key={key}>
+                    <div className="form__radio-radio" key={key}>
                         <input
                             id={item}
                             type="radio"

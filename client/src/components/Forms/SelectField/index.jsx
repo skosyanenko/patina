@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { Controller } from 'react-hook-form';
-import axios from 'axios';
 
 class SelectField extends Component {
     state = {
@@ -10,23 +9,23 @@ class SelectField extends Component {
     };
 
     componentDidMount() {
-        this.fetchAllOptions();
+        this.getOptions();
     };
 
-    fetchAllOptions = async () => {
-        return await axios.get(`/api/v1/${this.props.api}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({options: res.data.map(item => (
-                        {value: item.id, label: item.name || item.title}
-                    ))});
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из базы данных' + err)
-            });
+    getOptions = () => {
+        const { api, optionBooks, optionCategories, optionAuthors } = this.props;
+
+        const routs = {
+            books: optionBooks ? optionBooks : '',
+            categories: optionCategories ? optionCategories : '',
+            authors: optionAuthors ? optionAuthors : ''
+        };
+
+        this.setState({options: routs[api].map(item => (
+              {value: item.id, label: item.name || item.title}
+        ))});
     };
-    
+
     render() {
         const { type, name, label, icon, isMulti, errors, control } = this.props;
 
@@ -44,8 +43,8 @@ class SelectField extends Component {
                         as={<SelectComponent options={options} />}
                         control={control}
                         onChange={([selected]) => {
-                            return { value: selected };
-                          }}
+                            return selected;
+                        }}
                         rules={{required: required.message}}
                         name={name}
                         isMulti={isMulti}

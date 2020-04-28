@@ -19,7 +19,11 @@
         opacity: 0
         display: flex
 
-.form, .registration
+.form
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
     transition: .4s ease-out
 
     &.entered
@@ -37,7 +41,19 @@
         +maxwidth($mobail)
             margin-bottom: 10px
 
+    button
+        height: 50px
+        margin: 50px auto 0
+        font-size: 22px
+        +maxwidth($tablet)
+            margin: 30px auto 0
+            height: 40px
+            font-size: 20px
+        +maxwidth($mobail)
+            font-size: 18px
+
     &__radio
+        max-height: fit-content
         height: 100%
         margin-left: 35px
         display: flex
@@ -202,14 +218,14 @@
 
     &__upload
         width: 100%
-        height: 60px
+        min-height: 60px
         display: flex
         align-items: center
         margin-top: 15px
         +maxwidth($tablet)
-            height: 50px
+            min-height: 50px
         +maxwidth($mobail)
-            height: 40px
+            min-height: 40px
             margin-top: 25px
 
         label
@@ -281,13 +297,11 @@
         @include style-text(40px, 8px, $openSans, $green, 100%, bold, false)
         &.entered
             opacity: 1
+            display: flex
 
         &.exited
             opacity: 0
-
-        &.success-error
-            margin: 20px
-            @include style-text(30px, 5px, $openSans, red, 100%, bold, false)
+            display: none
 
 $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, password, placeholder, telephone, quote, clock, wishlist)
 
@@ -306,68 +320,19 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
     +maxwidth($mobail)
         margin-top: 7px !important
 
-/* Стили для компонента AddForm на старнице регистрации */
+/* Стили для кнопки на странице регистрации */
 
-.registration
-    max-width: 100% !important
-    padding: 0 120px
-    +maxwidth(1640px)
-        padding: 0
-
-    &__grid
-        display: grid !important
-        grid-template-columns: repeat(2, 1fr)
-        grid-template-rows: repeat(7, 1fr)
-        grid-auto-flow: column
-        grid-column-gap: 60px
-        +maxwidth($mobail)
-            grid-template-columns: repeat(1, 1fr)
-            grid-template-rows: repeat(14, 1fr)
-            max-height: 100%
-
-        button
-            margin: 27px auto 0 !important
-            height: 50px
-            width: 100%
-            font-size: 22px
-            +maxwidth($tablet)
-                margin: 34px auto 0 !important
-                height: 40px
-                font-size: 20px
-            +maxwidth($mobail)
-                margin: 0 auto !important
-                font-size: 18px
-
-    &__radio
-        max-height: 120px
-        margin-top: -10px
-        +maxwidth($tablet)
-            margin-bottom: 15px
-        +maxwidth($mobail)
-            margin-top: -5px
-            margin-bottom: 10px
-
-/* Стили для компонента AddForm на всех старницах */
-
-.form
-    width: 100%
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-
-    button
-        height: 50px
-        margin: 50px auto 0
-        font-size: 22px
-        +maxwidth($tablet)
-            margin: 30px auto 0
-            height: 40px
-            font-size: 20px
-        +maxwidth($mobail)
-            font-size: 18px
-
-    &__radio
-        max-height: fit-content
+.btn-registration
+    margin: 27px auto 0 !important
+    height: 50px
+    width: 300px
+    font-size: 22px
+    +maxwidth($tablet)
+        height: 40px
+        font-size: 20px
+    +maxwidth($mobail)
+        width: 100%
+        font-size: 18px
 
 /* Стили для компонента Select */
 
@@ -433,6 +398,7 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
 /* Стили для компонента Editor */
 
 .editor
+    min-height: 500px
     margin-top: 30px
     display: flex
     flex-direction: column
@@ -448,36 +414,35 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
         +maxwidth($mobail)
             padding: 0 0 10px 30px
 
-.codex-editor
-    margin-bottom: 15px
-    border: 1px solid #ddd
-    +maxwidth($tablet)
-        margin-bottom: 10px
-    +maxwidth($mobail)
-        margin-bottom: 5px
+    .rc-md-editor
+        .editor-container
+            .tool-bar
+                display: none !important
+            .sec-html
+                max-width: 48% !important
+        .rc-md-navigation
+            .navigation-nav
+                .button-wrap
+                    justify-content: center
+                    .button
+                        width: 80px !important
+                        .rmel-iconfont
+                            font-size: 20px !important
+                            color: $green !important
+                            opacity: 0.7 !important
+                            transition: .4s ease-in !important
+                            &:hover
+                                opacity: 1 !important
+                        .drop-wrap
+                            padding: 0 !important
+                            transition: .4s ease-in !important
+                            .header-list
+                                .list-item
+                                    font-family: $openSans
+                                    color: $lightgray
+                                    &:nth-child(4),
+                                    &:nth-child(5),
+                                    &:nth-child(6)
+                                        display: none
 
-.codex-editor__redactor
-    min-height: 200px
-    padding-bottom: 0 !important
-
-.ce-block__content
-    max-width: 90% !important
-    width: 100%
-    @include style-text(20px, 2px, $openSans, $lightgray, 100%, 300, false)
-
-
-.ce-toolbar__plus
-    left: -60px
-
-.ce-toolbox__button
-    &:hover
-        fill: $green
-
-.ce-toolbar__plus--active,
-.ce-toolbar__plus:hover
-    color: $green
-
-.ce-toolbox__button--active,
-.ce-toolbox__button:hover
-    color: $green
 

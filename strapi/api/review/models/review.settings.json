@@ -17,6 +17,9 @@
     },
     "viewType": {
       "type": "integer"
+    },
+    "book": {
+      "model": "books"
     }
   }
 }

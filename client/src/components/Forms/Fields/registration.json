@@ -1,7 +1,7 @@
 [
   {
-    "name": "firstName",
-    "label": "Имя",
+    "name": "username",
+    "label": "Логин",
     "icon": "user",
     "type": "text",
     "req": true
@@ -27,46 +27,9 @@
     "label": "Пол",
     "type": "radio",
     "options": {
-      "man": "Мужской",
-      "woman": "Женский"
+      "male": "Мужской",
+      "female": "Женский"
     }
-  },
-  {
-    "name": "telegram",
-    "label": "Привяжите ваш телеграмм аккаунт",
-    "icon": "telegram",
-    "type": "text",
-    "req": false
-  },
-  {
-    "name": "books",
-    "label": "Укажите любимые книги",
-    "icon": "books",
-    "type": "creatable",
-    "isMulti": true,
-    "api": "books"
-  },
-  {
-    "name": "authors",
-    "label": "Укажите любимых писателей",
-    "icon": "author",
-    "type": "creatable",
-    "isMulti": true,
-    "api": "authors"
-  },
-  {
-    "name": "lastName",
-    "label": "Фамилия",
-    "icon": "user",
-    "type": "text",
-    "req": true
-  },
-  {
-    "name": "phone",
-    "label": "Мобильный телефон",
-    "icon": "telephone",
-    "type": "tel",
-    "req": false
   },
   {
     "name": "password",
@@ -81,20 +44,5 @@
     "name": "avatar",
     "label": "Загрузите ваше фото",
     "type": "file"
-  },
-  {
-    "name": "vk",
-    "label": "Привяжите вашу страничку в вк",
-    "icon": "vkontakte",
-    "type": "text",
-    "req": false
-  },
-  {
-    "name": "genres",
-    "label": "Укажите любимые жанры",
-    "icon": "wishlist",
-    "type": "creatable",
-    "isMulti": true,
-    "api": "categories"
   }
 ]

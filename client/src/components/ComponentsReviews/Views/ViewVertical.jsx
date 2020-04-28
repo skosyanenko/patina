@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
-import { formatType } from 'config/config';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import { counterLetters, returnDatePublish } from 'config/config';
 import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
 
-const ViewVertical = ({ book, title, description, likes, date, id, textLength }) => {
+const ViewVertical = ({ book, title, description, likes, created_at, id, authors }) => {
     return (
         <>
             <div className="container-review"
@@ -13,8 +14,8 @@ const ViewVertical = ({ book, title, description, likes, date, id, textLength })
                  itemScope
             >
                 <Writer quote={book && book.quote}
-                        authors={book && book.authors}
-                        image={book && book.authors}
+                        authors={authors}
+                        image={authors}
                 />
                 <div className="container-review__text">
                     <h1 className="container-review__text-title" itemProp="itemReviewed">
@@ -27,16 +28,15 @@ const ViewVertical = ({ book, title, description, likes, date, id, textLength })
             </div>
 
             <div className="review-wrap" itemProp="reviewBody">
-                {description && description.map((item, key) => (
-                    <Fragment key={key}>
-                        {formatType(item, key)}
-                    </Fragment>
-                ))}
+                <ReactMarkdown children={description}/>
             </div>
-            <UserInfo textLength={textLength}
-                      likes={likes}
-                      date={date}
-            />
+            {description &&
+                <UserInfo
+                    textLength={counterLetters(description)}
+                    likes={likes}
+                    date={returnDatePublish(created_at)}
+                />
+            }
             <CommentBlock reviewId={id}/>
         </>
     )

@@ -12,7 +12,6 @@ class EventsList extends Component {
     state = {
         loading: false,
         month: '',
-    	events: [],
         pictures: [
             [
                 {name: 'skates', key: 6},
@@ -45,55 +44,21 @@ class EventsList extends Component {
 
     componentDidMount() {
         this.getCurrentMonth();
-        this.fetchAllEvents().then(res => {
-            this.setState({events: res})
-        });
-
-        // this.getItems().then(data => {
-        //     this.setState({events: data})
-        // });
+        this.getItems();
     };
-    // getItems = async () => {
-    //     const { events } = Store;
-    //     const { setData } = this.props;
-    //     if (!events.data.length) {
-    //         return await axios.get('/api/v1/events')
-    //           .then(data => {
-    //               this.setState({loading: false});
-    //               if (data) {
-    //                   const additionalItems = [
-    //                       {type: 'picture'},
-    //                       {type: 'picture'},
-    //                       {type: 'card'}
-    //                   ];
-    //                   additionalItems.forEach(item => data.unshift(item));
-    //                   Store.setData('events', {data});
-    //                   return data;
-    //               }
-    //           })
-    //           .catch(err => {
-    //               console.log('Ошибка получения Эвентов из базы данных ' + err)
-    //           });
-    //     }
-    //     setData(events);
-    // };
 
-    fetchAllEvents = async () => {
-		return await axios.get('/api/v1/events')
-			.then(res => {
-				if (res.data) {
-				    const additionalItems = [
-                        {type: 'picture'},
-                        {type: 'picture'},
-                        {type: 'card'}
-                    ];
-                    additionalItems.forEach(item => res.data.unshift(item));
-					return res.data;
-				}
-			})
-			.catch(err => {
-				console.log('Ошибка получения элементов из бд' + err)
-			});
+    getItems = () => {
+        const { serverData } = this.props;
+        if (!Store.events.data.length) {
+            this.setState({loading: false});
+            const additionalItems = [
+                {type: 'picture'},
+                {type: 'picture'},
+                {type: 'card'}
+            ];
+            additionalItems.forEach(item => serverData.unshift(item));
+            Store.setData('events', { data: serverData });
+        }
     };
 
     showPictures = () => {
@@ -132,7 +97,8 @@ class EventsList extends Component {
     };
 
 	render() {
-        const { events, month, loading } = this.state;
+        const { month, loading } = this.state;
+        const { events } = Store;
 
         return (
             <>
@@ -146,7 +112,7 @@ class EventsList extends Component {
                     {!loading
                         ?
                         <div className="events-wrapper">
-                            {events && events.map((field, key) => {
+                            {events && events.data.map((field, key) => {
                                 const picture = this.showPictures().find(item => item.key === key);
                                 const Component = this.switchTypes(field.type);
                                 return <Component key={key} picture={picture && picture.name} {...field}/>;
@@ -159,6 +125,16 @@ class EventsList extends Component {
             </>
         );
     }
+}
+
+export async function getServerSideProps() {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/events`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default EventsList;

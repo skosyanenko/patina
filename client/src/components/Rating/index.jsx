@@ -15,11 +15,16 @@ class Rating extends  Component {
         maskWidth: 0
     };
 
-    static getDerivedStateFromProps(nextProps) {
+    static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.ratingCount || nextProps.ratingTotal) {
             return {
                 mediumRate: nextProps.ratingTotal,
                 counters: nextProps.ratingCount
+            }
+        } else {
+            return {
+                mediumRate: prevState.mediumRate,
+                counters: prevState. counters
             }
         }
     };

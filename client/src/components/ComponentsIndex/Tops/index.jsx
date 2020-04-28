@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
-import axios from 'axios';
 import Socials from 'components/SocialsGroup';
 
 class Tops extends Component {
-    state = {
-        charts: []
-    };
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,24 +13,10 @@ class Tops extends Component {
     };
 
     componentDidMount() {
-        this.fetchChartsMainPage();
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
         });
-    };
-
-    fetchChartsMainPage = () => {
-        axios.get('/api/v1/chartsMainPage')
-            .then(res => {
-                res.data &&
-                this.setState({
-                    charts: res.data
-                })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
     };
 
     render() {
@@ -47,7 +28,7 @@ class Tops extends Component {
             slidesToScroll: 1,
         };
 
-        const { charts } = this.state;
+        const { charts } = this.props;
 
         return (
             <div className="tops main">
@@ -56,23 +37,23 @@ class Tops extends Component {
                     asNavFor={this.state.nav2}
                     ref={slider => (this.slider1 = slider)}
                 >
-                    { charts && charts.map((item, key) => (
+                    { charts && charts.map(({ image, id, title, description }, key) => (
                         <div className="tops__wrapper"
                              key={key}
                              itemScope
                              itemType="http://schema.org/CreativeWork"
                         >
                             <div className="tops__wrapper-img">
-                                <img src={item.image} alt="" itemProp="image"/>
+                                {image && <img src={`${process.env.API_URL}${image.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="tops__text">
-                                <Link href={'/charts/[id]'} as={`/charts/${item.id}`}>
+                                <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                     <a className="tops__text-title" itemProp="name">
-                                        {item.title}
+                                        {title}
                                     </a>
                                 </Link>
                                 <div className="tops__text-description"
-                                     dangerouslySetInnerHTML={{__html: `${item.description}`}}
+                                     dangerouslySetInnerHTML={{__html: `${description}`}}
                                      itemProp="description"
                                 />
                                 <>
@@ -80,11 +61,11 @@ class Tops extends Component {
                                     <div className="tops__text-buttons">
                                         <div className="button-write-top">
                                             <div className="button-write-top__img"/>
-                                            <Link href={'/form/charts'}>
+                                            <Link href={'/forms/charts'}>
                                                 <a className="button-write-top__text">Создать свою подборку</a>
                                             </Link>
                                         </div>
-                                        <Link href={'/charts/[id]'} as={`/charts/${item.id}`}>
+                                        <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                             <a className="button button-white">Подробнее</a>
                                         </Link>
                                     </div>

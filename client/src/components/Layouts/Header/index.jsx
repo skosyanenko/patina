@@ -60,7 +60,7 @@ class Header extends Component {
     };
 
     render() {
-        const { router, toggleModal, toggleMenu } = this.props;
+        const { toggleModal, toggleMenu } = this.props;
 
         return (
             <header className={this.classNames()}>
@@ -70,7 +70,7 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__container">
-                    <Link href={{pathname: '/', state: {from: router.pathname}}}>
+                    <Link href={'/'}>
                         <a className="header__container-logo"/>
                     </Link>
                 </div>

@@ -21,15 +21,19 @@ class BooksList extends Component {
     };
 
     componentDidMount() {
-        const { books } = Store;
-        const { updateState, setData, serverData } = this.props;
-        //console.log(serverData);
+        const { updateState } = this.props;
         updateState({ perPage: 9, valuesDropdown: [9, 18, 27] });
-        //if (!books.data.length) {
+
+        this.getItems();
+    };
+
+    getItems = () => {
+        const { setData, serverData } = this.props;
+        if (!Store.books.data.length) {
             this.setState({loading: false});
-            Store.setData('books', {serverData});
-        //}
-        setData(books);
+            Store.setData('books', { data: serverData });
+        }
+        setData(Store.books);
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -204,11 +208,11 @@ class BooksList extends Component {
 export async function getServerSideProps() {
     const { API_URL } = process.env;
 
-    const data = await axios.get(`${API_URL}/books`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
+    const serverData = await axios.get(`${API_URL}/books?_limit=400`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
 
-    return { props: { serverData: data } };
+    return { props: { serverData } };
 }
 
 export default paginationWrap(BooksList);

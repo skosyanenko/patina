@@ -1,48 +1,45 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import Auth from 'services/Authorization';
 
 class EntranceProfile extends Component {
-    state = {
-        isEntered: true,
-    };
-
     exitProfile = () => {
-        this.setState(prevState => ({
-            isEntered: !prevState.isEntered
-        }))
+        let currToken = Auth.token;
+        let currInfo = Auth.userInfo;
+        Auth.setAuth(false, {token: currToken, userInfo: currInfo});
     };
 
     render() {
         const { toggleModal } = this.props;
-        const { isEntered } = this.state;
 
         return (
             <div className="entrance">
-                { isEntered
-                    ?
-                    <div className="entrance__true">
-                        <Link href={'/profile/home'}>
-                            <a className="entrance__true-profile"/>
+                {Auth.isAuth === true ?
+                    <div className="entrance__wrapper">
+                        <Link href={`/profile/${Auth.userInfo.id}`}>
+                            <a className="entrance__wrapper-profile"/>
                         </Link>
                         <Link href={'/profile/statistic'}>
-                            <a className="entrance__true-wrap">
-                                <div className="entrance__true-bell"/>
-                                <span className="entrance__true-counter">1</span>
+                            <a className="entrance__wrapper-wrap">
+                                <div className="entrance__wrapper-bell"/>
+                                <span className="entrance__wrapper-counter">1</span>
                             </a>
                         </Link>
-                        <div className="entrance__true-exit"
+                        <div className="entrance__wrapper-exit"
                              onClick={this.exitProfile}
                         />
                     </div>
                     :
-                    <div className="entrance__false">
-                        <Link href={'/registration'}>
-                            <div className="button follow-button button-white">Создать профиль</div>
-                        </Link>
-                        <div className="button follow-button button-white"
-                            onClick={() => toggleModal(true)}
-                        >
-                            Войти в профиль
+                    <div className="entrance__wrapper">
+                        <div className="entrance__exit-column">
+                            <Link href={'/registration'}>
+                                <div className="button follow-button button-white">Создать профиль</div>
+                            </Link>
+                            <div className="button follow-button button-white"
+                                 onClick={() => toggleModal(true)}
+                            >
+                                Войти в профиль
+                            </div>
                         </div>
                     </div>
                 }

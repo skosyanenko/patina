@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import { counterReview, returnDatePublish } from 'config/config';
+import { counterLetters, returnDatePublish } from 'config/config';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
@@ -8,6 +8,7 @@ import Icons from 'components/Icons';
 import Loader from 'components/Loader';
 import TimeToRead from 'components/TimeToRead';
 import Store from 'services/Store';
+import axios from "axios";
 
 class ReviewsList extends Component {
     state = {
@@ -23,17 +24,12 @@ class ReviewsList extends Component {
     };
 
     getItems = () => {
-        const { reviews } = Store;
-        const { fetchData, setData } = this.props;
-        if (!reviews.data.length) {
-            return fetchData('/api/v1/reviews')
-                .then(data => {
-                    this.setState({loading: false});
-                    Store.setData('reviews', {data});
-                })
-                .catch(err => console.log(err));
+        const { setData, serverData } = this.props;
+        if (!Store.reviews.data.length) {
+            this.setState({loading: false});
+            Store.setData('reviews', { data: serverData });
         }
-        setData(reviews);
+        setData(Store.reviews);
     };
 
     search = value => {
@@ -73,26 +69,26 @@ class ReviewsList extends Component {
                         <>
                             {resultTitle.length > 0 && <div className="reviews__title">{resultTitle}</div>}
                             <div className="reviews">
-                                { items && items.map((item, key) => (
+                                { items && items.map(({ id, book, description, created_at, title, userId, like }, key) => (
                                     <div className="reviews__result" key={key}>
-                                        <Link href={'/reviews/[id]'} as={`/reviews/${item.id}`}>
+                                        <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
                                             <a className="reviews__result-image">
-                                                <img src={item.book.bookImage} alt=""/>
+                                                {book.bookImage && <img src={`${process.env.API_URL}${book.bookImage.url}`} alt=""/>}
                                             </a>
                                         </Link>
                                         <div className="reviews__result-wrap">
-                                            <Icons likes={item.like}/>
-                                            <Link href={'/reviews/[id]'} as={`/reviews/${item.id}`}>
-                                                <a className="reviews__result-title">{item.book.title}</a>
+                                            <Icons likes={like}/>
+                                            <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
+                                                <a className="reviews__result-title">{book.title}</a>
                                             </Link>
                                         </div>
                                         <div className="reviews__result-wrap">
-                                            <TimeToRead textLength={counterReview(item.description)}/>
-                                            <span className="reviews__result-date">{returnDatePublish(item.createdAt)}</span>
+                                            <TimeToRead textLength={counterLetters(description)}/>
+                                            <span className="reviews__result-date">{returnDatePublish(created_at)}</span>
                                         </div>
-                                        <Link href={'/reviews/[id]'} as={`/reviews/${item.id}`}>
+                                        <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
                                             <a className="reviews__result-subtitle">
-                                                {item.title}
+                                                {title}
                                             </a>
                                         </Link>
                                         <Link href={'/profile/[id]'} as={`/profile/${userId}`}>
@@ -101,7 +97,7 @@ class ReviewsList extends Component {
                                     </div>
                                 ))}
                             </div>
-                            {this.props.pagination || ''}
+                            {items.length > 0 ? this.props.pagination : ''}
                         </>
                         :
                         <Loader/>
@@ -110,6 +106,16 @@ class ReviewsList extends Component {
             </>
         )
     }
+}
+
+export async function getServerSideProps() {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/reviews`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default paginationWrap(ReviewsList);

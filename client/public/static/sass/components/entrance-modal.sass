@@ -35,7 +35,7 @@
         border-radius: 50%
         background: $white
 
-        &-user
+        &-user, &-errors
             width: 66px
             height: 71px
             top: 0
@@ -44,12 +44,19 @@
             right: 0
             margin: auto
             position: absolute
-            background: url('/icons/sprite.svg#user-green') no-repeat center / contain
             +maxwidth(400px)
                 width: 60px
                 height: 65px
 
+        &-user
+            background: url('/icons/sprite.svg#user-green') no-repeat center / contain
+
+        &-errors
+            background: url('/icons/sprite.svg#errors-green') no-repeat center / contain
+
     &__wrapper
+        max-width: 450px
+        width: 100%
         padding: 40px
         position: relative
         background: $white
@@ -61,12 +68,24 @@
         +maxwidth(400px)
             max-width: 80%
 
-        &-close
-            background: url('/icons/sprite.svg#close-green') no-repeat center / contain
-            width: 21px
-            height: 21px
-            margin-left: auto
-            cursor: pointer
+    &__close
+        background: url('/icons/sprite.svg#close-green') no-repeat center / contain
+        width: 21px
+        height: 21px
+        margin-left: auto
+        cursor: pointer
+
+    &__error
+        display: flex
+        flex-direction: column
+
+        &-title
+            text-align: center
+            margin-bottom: 30px
+            @include style-text(26px, 2px, $openSans, $green, 100%, 600, false)
+
+        &-text
+            @include style-text(22px, 3px, $openSans, $darkgray, 120%, 300, false)
 
     .button
         margin-top: 30px

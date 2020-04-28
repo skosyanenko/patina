@@ -60,17 +60,6 @@
         "female"
       ]
     },
-    "avatar": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "city": {
       "type": "string"
     },
@@ -81,6 +70,9 @@
     "follow": {
       "plugin": "users-permissions",
       "collection": "user"
+    },
+    "avatar": {
+      "type": "richtext"
     }
   }
 }

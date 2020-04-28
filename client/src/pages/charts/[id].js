@@ -1,35 +1,23 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 import { returnAuthor } from 'config/config';
 import Socials from 'components/SocialsGroup';
 import CommentBlock from 'components/CommentBlock';
 
 class ChartsDetail extends Component {
     state = {
-        currentTop: []
+        currentChart: []
     };
 
     componentDidMount() {
-        this.fetchCurrentTop();
-    };
-
-    fetchCurrentTop = async () => {
-        const { id } = this.props.match.params;
-
-        return await axios.get(`/api/v1/charts/${id}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({currentTop: res.data})
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
+        const { serverData } = this.props;
+        this.setState({ currentChart: serverData })
     };
 
     render() {
-        const { currentTop: {title, description, books, id} } = this.state;
+        const { currentChart: {title, description, books, id} } = this.state;
 
         return(
             <div itemType="http://schema.org/ItemList http://schema.org/CreativeWork" itemScope>
@@ -40,8 +28,9 @@ class ChartsDetail extends Component {
                         </Link>
                         <h1 className="depiction__wrapper-title" itemProp="name">{title}</h1>
                     </div>
-                    <div className="depiction__description"
-                         dangerouslySetInnerHTML={{__html: `${description}`}}
+                    <ReactMarkdown
+                        source={description}
+                        className="depiction__description"
                     />
                 </div>
                 <div className="container">
@@ -85,6 +74,16 @@ class ChartsDetail extends Component {
             </div>
         );
     }
+}
+
+export async function getServerSideProps({ params }) {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/charts/${params.id}`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default ChartsDetail;

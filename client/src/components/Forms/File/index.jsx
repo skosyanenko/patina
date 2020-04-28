@@ -4,24 +4,38 @@ import PropTypes from 'prop-types';
 class InputFile extends Component  {
     state = {};
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState !== this.state) {
+            const { updateFile } = this.props;
+            updateFile({ avatar: this.state.avatar });
+        }
+    };
+
     handleFile = ( selectorFiles ) => {
         const { name } = this.props;
         let files = this.state[name] || [];
         let fileNames = this.state[name + '_LABEL'] || [];
 
         for (let file of selectorFiles) {
-	        files.push({value: file, label: file.name});
-	        fileNames.push(file.name);
+            this.makeBase64(file).then(data => {
+                files.push({value: data, label: file.name});
+            });
+            fileNames.push(file.name);
         }
 
-        if (files.length > 0) {
-	        this.setState({
-		        [name]: files,
-		        [name + '_LABEL']: fileNames
-	        }, () => {
-		        this.setFieldValue(this.state[name][0].value);
-	        });
-        }
+        this.setState({
+            [name]: files,
+            [name + '_LABEL']: fileNames
+        });
+    };
+
+    makeBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
     };
 
     deleteFile = ( name, item ) => {
@@ -36,8 +50,6 @@ class InputFile extends Component  {
         if (index >= 0) newArr.splice( index, 1 );
         return newArr;
     };
-
-    setFieldValue = value => this.props.onChange(this.props.name, value);
 
     render() {
         const { name, label, register, errors } = this.props;

@@ -9,7 +9,7 @@ const NewsHorizontal = ({ id, cover, title, description, likes, views, date, tex
             <Link href={'/news/[id]'} as={`/news/${id}`}>
                 <a className="news-horizontal__link">
                     <div className="news-horizontal__link-img">
-                        <img src={cover} alt=""/>
+                        <img src={`${process.env.API_URL}${cover.url}`} alt=""/>
                     </div>
                 </a>
             </Link>

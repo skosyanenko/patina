@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 import { letters, returnAuthor, returnDate } from 'config/config';
 import BookInform from 'components/BookInform';
 import CommentBlock from 'components/CommentBlock';
@@ -13,27 +15,22 @@ class BooksDetail extends Component {
     };
 
     componentDidMount() {
-        this.fetchCurrentBook();
+        this.getItems();
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.router.pathname !== prevProps.router.pathname) {
-            this.fetchCurrentBook();
+        if (this.props.router.query.id !== prevProps.router.query.id) {
+            axios.get(`${process.env.API_URL}/books/${this.props.router.query.id}`)
+              .then(res => {
+                  this.setState({ currentBook: res.data })
+              })
+              .catch(err => console.log(err));
         }
     };
 
-    fetchCurrentBook = async () => {
-        const { id } = this.props.match.params;
-
-        return await axios.get(`/api/v1/books/${id}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({currentBook: res.data})
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
+    getItems = () => {
+        const { serverData } = this.props;
+        this.setState({ currentBook: serverData })
     };
 
     letterSubstr = (name, index) => {
@@ -46,7 +43,7 @@ class BooksDetail extends Component {
         return letters.find(item => item.letter === letter).id;
     };
 
-    toggleModal = bool => this.setState({modalIsOpen: bool});
+    toggleModal = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
 
     render() {
         const { modalIsOpen, currentBook } = this.state;
@@ -65,12 +62,12 @@ class BooksDetail extends Component {
                         </Link>
                         <div className="cover__wrapper">
                             <div className="cover__wrapper-img">
-                                <img src={bookImage} alt="" itemProp="image"/>
+                                {bookImage && <img src={`${process.env.API_URL}${bookImage.url}`} alt="" itemProp="image"/>}
                             </div>
                                 { authors && authors.length === 1 && authors.map((item, key) => (
                                     <Fragment key={key}>
                                         <svg className="cover__wrapper-letBig" >
-                                            <use href={`/images/icons/sprite-alphabet.svg#${this.letterSwitcher(item.name)}`}/>
+                                            <use href={`/icons/sprite-alphabet.svg#${this.letterSwitcher(item.name)}`}/>
                                         </svg>
                                         <div className="cover__wrapper-letSmall">{this.letterSubstr(item.name, 0)}</div>
                                     </Fragment>
@@ -84,9 +81,10 @@ class BooksDetail extends Component {
                     </div>
                     <div className="description">
                         <h1 className="description__title" itemProp="name">{title}</h1>
-                        <div className="description__text"
-                             itemProp="description"
-                             dangerouslySetInnerHTML={{__html: `${fullDescription}`}}
+                        <ReactMarkdown
+                            source={fullDescription}
+                            className="description__text"
+                            itemProp="description"
                         />
                         <div className="description__buttons">
                             { readLink && <a href={readLink} className="button button-white">Читать</a>}
@@ -105,12 +103,25 @@ class BooksDetail extends Component {
                 <ModalFilms
                     isOpen={modalIsOpen}
                     toggleModal={this.toggleModal}
-                    films={currentBook.films}
+                    films={films}
                 />
             </div>
         );
     }
 }
 
-export default BooksDetail;
+export async function getServerSideProps({ params }) {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/books/${params.id}`)
+        .then(res => {
+            console.log(res.data)
+            return res.data
+        })
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
+}
+
+export default withRouter(BooksDetail);
 

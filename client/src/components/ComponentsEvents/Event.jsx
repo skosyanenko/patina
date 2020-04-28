@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Event = ({ date, picture, timeStart, timeEnd, title, place }) => {
+const Event = ({ date, picture, start, end, title, place }) => {
     const weekdaysMin = 'вс_пн_вт_ср_чт_пт_сб'.split('_');
 
     const formatedTimes = {
         date: new Date(date).getDate(),
         day: weekdaysMin[new Date(date).getDay()],
-        timeStart: new Date(timeStart).toLocaleTimeString().slice(0, 5),
-        timeEnd: new Date(timeEnd).toLocaleTimeString().slice(0, 5),
+        start: start.toString().slice(0, 5),
+        end: end.toString().slice(0, 5)
     };
 
     return (
@@ -21,7 +21,7 @@ const Event = ({ date, picture, timeStart, timeEnd, title, place }) => {
                 <div className="event__text">
                     <span className="event__text-day">{formatedTimes.day}</span>
                     <span className="event__text-time">
-                        {formatedTimes.timeStart + '-' + formatedTimes.timeEnd}
+                        {formatedTimes.start + '-' + formatedTimes.end}
                     </span>
                  </div>
                 { picture &&
@@ -47,8 +47,8 @@ const Event = ({ date, picture, timeStart, timeEnd, title, place }) => {
 Event.propTypes = {
   date:          PropTypes.string,
   title:         PropTypes.string,
-  timeStart:     PropTypes.string,
-  timeEnd:       PropTypes.string,
+  start:         PropTypes.string,
+  end:           PropTypes.string,
   place:         PropTypes.string
 };
 

@@ -1,28 +1,30 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
+import Store from 'services/Store';
 
 class RightMenu extends Component {
     state = {
-        isLoad: true,
         randomBooks: []
     };
 
 	componentDidMount() {
-	    this.fetchBooks();
+        this.getItems();
 	};
 
-    fetchBooks = () => {
-        axios.get('/api/v1/booksRightMenu')
-            .then(res => {
-                res.data &&
-                this.setState({
-                    randomBooks: res.data
-                })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
+	getItems = () => {
+	    const { books } = Store;
+
+	    const randomBooks = books.data.reduce(acc => {
+	        if (acc.length <= 9) {
+                const randomIndex = Math.floor(Math.random() * books.data.length);
+                if (!acc.includes(books.data[randomIndex])) {
+                    acc.push(books.data[randomIndex]);
+                }
+            }
+	        return acc;
+        }, [])
+
+        this.setState({ randomBooks });
     };
 
     render() {

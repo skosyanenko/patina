@@ -19,7 +19,7 @@ const Menu = ({ router, toggle, toggleMenu }) => {
 		setState({
 			menu: router.pathname === '/' ? menuIndex : menuPost
 		});
-	}, [router, toggle]);
+	}, [router.pathname, toggle]);
 
 	return (
 		<>

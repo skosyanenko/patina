@@ -105,88 +105,101 @@
         +maxwidth($tablet)
             max-height: 450px
 
-    .slick-next,
-    .slick-prev
-        &:before
-            content: '' !important
-            background: url('/icons/sprite.svg#arrow-view') no-repeat center / contain !important
-            opacity: 0.3
-            height: 40px
-            width: 40px
-            display: flex
-            cursor: pointer
-            transition: .4s ease
-            +maxwidth($tablet)
-                width: 30px
-                height: 30px
-            +maxwidth($mobail)
-                width: 20px
-                height: 20px
+.films
+    .slick-slider
+        width: 100%
 
-        &:hover
+        .slick-next,
+        .slick-prev
             &:before
-                transform: scale(1.6)
-            svg
-                fill: $white
+                content: '' !important
+                background: url('/icons/sprite.svg#arrow-view') no-repeat center / contain !important
                 opacity: 0.3
+                height: 40px
+                width: 40px
+                display: flex
+                cursor: pointer
+                transition: .4s ease
+                +maxwidth($tablet)
+                    width: 30px
+                    height: 30px
+                +maxwidth($mobail)
+                    width: 20px
+                    height: 20px
 
-    .slick-list
-        padding-top: 40px
-        overflow-x: hidden
-        min-height: 700px
-        height: 100%
-        +maxwidth($tablet)
-            min-height: 650px
-        +maxwidth($mobail)
-            min-height: 500px
+            &:hover
+                &:before
+                    transform: scale(1.6)
+                svg
+                    fill: $white
+                    opacity: 0.3
 
-    .slick-prev
-        &:before
-            transform: rotate(180deg)
-
-        &:hover
+        .slick-prev
             &:before
-                transform: rotate(180deg) scale(1.6)
+                transform: rotate(180deg)
 
-    .slick-dots
-        height: 24px
-        display: flex !important
-        justify-content: center
-        align-items: center
-        +maxwidth($tablet)
-            height: 20px
-        +maxwidth($mobail)
-            height: 16px
+            &:hover
+                &:before
+                    transform: rotate(180deg) scale(1.6)
 
-
-    .slick-dots li
-        margin: 0 10px !important
-        width: 14px
-        height: 14px
-        border-radius: 50%
-        background: $white
-        opacity: 0.2
-        transition: .3s
-        +maxwidth($tablet)
-            width: 12px
-            height: 12px
-        +maxwidth($mobail)
-            width: 10px
-            height: 10px
-
-        button:before
-            content: ''
-
-        &.slick-active
-            width: 23px
-            height: 23px
-            background-color: #fff
-            opacity: .5 !important
+        .slick-dots
+            height: 24px
+            display: flex !important
+            justify-content: center
+            align-items: center
             +maxwidth($tablet)
-                width: 19px
-                height: 19px
+                height: 20px
             +maxwidth($mobail)
-                width: 15px
-                height: 15px
+                height: 16px
+
+        .slick-dots li
+            margin: 0 10px !important
+            width: 14px
+            height: 14px
+            border-radius: 50%
+            background: $white
+            opacity: 0.2
+            transition: .3s
+            +maxwidth($tablet)
+                width: 12px
+                height: 12px
+            +maxwidth($mobail)
+                width: 10px
+                height: 10px
+
+            button:before
+                content: ''
+
+            &.slick-active
+                width: 23px
+                height: 23px
+                background-color: #fff
+                opacity: .5 !important
+                +maxwidth($tablet)
+                    width: 19px
+                    height: 19px
+                +maxwidth($mobail)
+                    width: 15px
+                    height: 15px
+
+        .slick-list
+            padding-top: 40px
+            overflow-x: hidden
+            min-height: 700px
+            height: 100%
+            +maxwidth($tablet)
+                min-height: 650px
+            +maxwidth($mobail)
+                min-height: 500px
+
+
+
+
+
+
+
+
+
+
 
 

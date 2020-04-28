@@ -7,7 +7,7 @@ const NewsBlock = ({ id, cover, title, description, likes, views, date, textLeng
     <div className="news-block">
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <div className="news-block__img">
-                <img src={cover} alt=""/>
+                <img src={`${process.env.API_URL}${cover.url}`} alt=""/>
             </div>
         </Link>
         <Link href={'/news/[id]'} as={`/news/${id}`}>

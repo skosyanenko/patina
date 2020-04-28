@@ -6,65 +6,52 @@ import ViewVertical from 'components/ComponentsReviews/Views/ViewVertical';
 
 class ReviewsDetail extends Component {
     state = {
-        dataItem: [],
-        textLength: null,
-        datePublish: null,
+        currentReview: [],
         error: ''
     };
 
     componentDidMount() {
-        const { id } = this.props.match.params;
-
-        return axios.get(`/api/v1/reviews/${id}`)
-            .then(res => {
-                if (res.data) {
-                    this.setState({dataItem: res.data}, () =>
-                    this.countLetters())
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд: ' + err);
-                this.setState({
-                    error: 'Такой рецензии не существует'
-                })
-            });
-    };
-
-    countLetters = () => {
-        const { dataItem: {description, createdAt} } = this.state;
-        const datePublish = new Date(createdAt).toLocaleDateString();
-        const objValues = description.map(x => x.data.text).join();
-        const textLength = Array.from(objValues)
-            .reduce((acc, item) => (acc + item.replace(/\s+/g, '').length), 0);
-
-        this.setState({textLength,  datePublish});
+        const { serverData, err } = this.props;
+        this.setState({
+            currentReview: serverData,
+            error: err
+        })
     };
 
     render () {
-        const { dataItem, textLength, datePublish, error } = this.state;
+        const { currentReview, error } = this.state;
+        const { serverDataAuthors } = this.props;
 
-        if (error.length > 0) return error;
+        if (error && error.length > 0) return error;
 
         return(
             <>
                 <Link href={'/reviews'}>
                     <a className="backwards"/>
                 </Link>
-                { dataItem.viewType === 0
+                { currentReview.viewType === 0
                     ?
-                    <ViewHorizontal {...dataItem}
-                                    date={datePublish}
-                                    textLength={textLength}
-                    />
+                    <ViewHorizontal {...currentReview} authors={serverDataAuthors}/>
                     :
-                    <ViewVertical {...dataItem}
-                                  date={datePublish}
-                                  textLength={textLength}
-                    />
+                    <ViewVertical {...currentReview} authors={serverDataAuthors}/>
                 }
             </>
         )
     }
+}
+
+export async function getServerSideProps({ params }) {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/reviews/${params.id}`)
+        .then(res => res.data)
+        .catch(err => 'Такой рецензии не существует');
+
+    const serverDataAuthors = await axios.get(`${API_URL}/books/${serverData.book.id}`)
+        .then(res => res.data.authors)
+        .catch(err => 'Такой рецензии не существует');
+
+    return { props: { serverData, serverDataAuthors } };
 }
 
 export default ReviewsDetail;

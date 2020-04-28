@@ -6,6 +6,7 @@ import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import Loader from 'components/Loader';
 import Store from 'services/Store';
+import axios from "axios";
 
 class ChartsList extends Component {
     state = {
@@ -28,17 +29,12 @@ class ChartsList extends Component {
     };
 
     getItems = () => {
-        const { charts } = Store;
-        const { fetchData, setData } = this.props;
-        if (!charts.data.length) {
-            return fetchData('/api/v1/charts')
-                .then(data => {
-                    this.setState({loading: false});
-                    Store.setData('charts', {data});
-                })
-                .catch(err => console.log(err));
+        const { setData, serverData } = this.props;
+        if (!Store.charts.data.length) {
+            this.setState({loading: false});
+            Store.setData('charts', { data: serverData });
         }
-        setData(charts);
+        setData(Store.charts);
     };
 
     render() {
@@ -108,6 +104,16 @@ class ChartsList extends Component {
             </>
         );
     }
+}
+
+export async function getServerSideProps() {
+    const { API_URL } = process.env;
+
+    const serverData = await axios.get(`${API_URL}/charts`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    return { props: { serverData } };
 }
 
 export default paginationWrap(ChartsList);

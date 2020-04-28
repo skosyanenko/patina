@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Link from 'next/link';
 import Typed from 'react-typed';
 import Socials from 'components/SocialsGroup';
@@ -8,19 +8,21 @@ const BookInform = ({ categories, ratingCount, ratingTotal }) => (
     <div className="book-inform">
         <div className="tags">
             { categories && categories.map((category, key) => (
-                <Link href={'/search/[id]'} as={`/search/${category.id}`}>
-                    <a className="tags__elem"
-                       key={key}
-                       itemProp="genre"
-                    >
-                        {category.title}
-                    </a>
-                </Link>
+                <Fragment key={key}>
+                    <Link href={'/search/[id]'} as={`/search/${category.id}`}>
+                        <a className="tags__elem"
+                            key={key}
+                            itemProp="genre"
+                        >
+                            {category.title}
+                        </a>
+                    </Link>
+                </Fragment>
             ))}
         </div>
         <div className="book-inform__container">
             <Rating ratingCount={ratingCount}
-                    ratingTotal={ratingTotal}
+                ratingTotal={ratingTotal}
             />
             <Socials/>
             <div className="button-write-review">
@@ -34,7 +36,7 @@ const BookInform = ({ categories, ratingCount, ratingTotal }) => (
                     backDelay={1}
                     loop={true}
                 />
-                <Link href={'/form/review'}>
+                <Link href={'/add_review'}>
                     <a className="button-write-review__text">Написать рецензию</a>
                 </Link>
             </div>

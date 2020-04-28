@@ -3,55 +3,58 @@ import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import axios from 'axios';
 import HookForm from './HookForm';
+import ModalError from './ModalError';
 
 class FormManager extends Component {
     state = {
-        success: false
-    };
-
-    static defaultProps = {
-        button: 'Добавить',
-        prefix: 'form',
-        classPrefix: ''
+        success: false,
+        modalIsOpen: false,
+        error: ''
     };
 
     onSubmit = values => {
-	    const formData = new FormData();
 	    const { fields } = this.props;
-	    
+	    const { avatar } = this.state;
+
 	    Object.keys(values).map(key => {
 		    const currentType = fields.find(field => field.name === key).type;
 
 		    switch( currentType ) {
-			    case 'file':
-                    return formData.append(key, values[key][0]);
                 case 'select':
+                    return values.book = (values[key].value);
                 case 'editor':
-                    return formData.set(key, JSON.stringify(values[key]));
-                case 'time':
-                    return formData.set(key,  Date(values[key]).toString());
-			    default:
-				    return formData.set(key, values[key]);
+                    return values.description = (values[key]);
+                case 'file':
+                    return values.avatar = avatar[0].value;
 		    }
         });
-        this.postToDB(formData);
+        this.postToDB(values);
+    };
+
+    updateFile = (newState = {}) => {
+        this.setState({...newState})
     };
 
     postToDB = data => {
-	    axios.post(`/api/v1/${this.props.API}`, data, {
-	    	headers: { 'Content-Type': 'multipart/form-data' }
-	    })
+        const { API_URL } = process.env;
+
+	    axios.post(`${API_URL}/${this.props.api}`, data)
 		    .then(res => {
 			    res.status === 200 &&
 			    this.setState({success: true});
 		    })
 		    .catch(err => {
-			    console.log('Ошибка при отправке формы, попробуйте позже!' + err)
+                this.setState({
+                    error: 'Ошибка при отправке формы, попробуйте позже!' + err,
+                    modalIsOpen: true
+                });
 		    });
     };
 
+    toggleModal = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
+
     render() {
-        const { success } = this.state;
+        const { success, modalIsOpen } = this.state;
 
         return (
             <div className="page--form">
@@ -65,6 +68,7 @@ class FormManager extends Component {
                             {...this.props}
                             onSubmit={this.onSubmit}
                             classAnimate={state}
+                            updateFile={this.updateFile}
                         />
                     }
                 </Transition>
@@ -76,6 +80,11 @@ class FormManager extends Component {
                         </div>
                     }
                 </Transition>
+
+                <ModalError
+                    isOpen={modalIsOpen}
+                    toggleModal={this.toggleModal}
+                />
             </div>
         );
     }
@@ -83,13 +92,9 @@ class FormManager extends Component {
 
 FormManager.propTypes = {
     fields:          PropTypes.array,
-    API:             PropTypes.string,
     title:           PropTypes.string,
     button:          PropTypes.string,
-    prefix:          PropTypes.string,
-    classPrefix:     PropTypes.string,
-    updateState:     PropTypes.bool,
-    isSave:          PropTypes.bool
+    classPrefix:     PropTypes.string
 };
 
 export default FormManager;

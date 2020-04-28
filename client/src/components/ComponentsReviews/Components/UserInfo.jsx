@@ -5,19 +5,19 @@ import Author from 'components/Author';
 
 class UserInfo extends Component {
     render() {
-        const { date } = this.props;
+        const { date, textLength, like } = this.props;
 
         return (
             <div className="user-info">
                 <div className="user-info__wrapper">
                     <Author date={date}
                             isTimeToRead={true}
-                            textLength={this.props.textLength}
+                            textLength={textLength}
                     />
                     <div className="follow-button">Подписаться</div>
                 </div>
                 <Socials/>
-                <Icons/>
+                <Icons like={like}/>
             </div>
         );
     }

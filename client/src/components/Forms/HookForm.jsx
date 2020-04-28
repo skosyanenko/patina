@@ -14,12 +14,8 @@ const HookForm = props => {
     const typeSwitcher = type => {
         switch(type) {
             case 'text':
-            case 'time':
-            case 'date':
-            case 'tel':
             case 'password':
             case 'email':
-            case 'textarea':
                 return InputText;
             case 'file':
                 return InputFile;
@@ -34,12 +30,12 @@ const HookForm = props => {
                 return '';
         }
     };
-    
+
     return (
-        <form className={`form-wrapper ${props.prefix} ${props.classAnimate}`}
+        <form className={`form-wrapper form ${props.classAnimate}`}
               onSubmit={ handleSubmit(props.onSubmit) }
         >
-            <div className={`form ${props.classPrefix}`}>
+            <div className="form">
                 { props.fields && props.fields.map((field, key) => {
                     const Component = typeSwitcher(field.type);
                         return (
@@ -57,7 +53,7 @@ const HookForm = props => {
                         )
                     }
                 )}
-                <button type="submit" className={`button button-green ${Object.keys(errors).length ? 'disabled' : ''}`}>
+                <button type="submit" className={`button button-green ${props.classPrefix} ${Object.keys(errors).length ? 'disabled' : ''}`}>
                     { props.button }
                 </button>
             </div>

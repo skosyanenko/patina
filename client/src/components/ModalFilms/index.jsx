@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
 import Modal from 'react-modal';
 import Slider from 'react-slick';
+import ReactMarkdown from 'react-markdown';
 
 class ModalFilms extends Component {
     render() {
@@ -22,24 +23,22 @@ class ModalFilms extends Component {
                             slidesToShow={1}
                             slidesToScroll={1}
                         >
-                            { films && films.map((film, key) => (
+                            { films && films.map(({ title, image, description }, key) => (
                                 <div className="films__wrapper"
                                      key={key}
                                      itemType="http://schema.org/Movie"
                                      itemScope
                                 >
-                                    <h1 className="films__title"
-                                        itemProp="name"
-                                    >
-                                        {film.title}
+                                    <h1 className="films__title" itemProp="name">
+                                        {title}
                                     </h1>
-                                    <img src={film.image} alt="" className="films__img" itemProp="image"/>
+                                    {image && <img src={`${process.env.API_URL}${image.url}`} alt="" className="films__img" itemProp="image"/>}
                                     <div className="films__wrap">
-                                        <div className="films__wrap-description"
-                                             itemProp="description"
-                                        >
-                                            {film.description}
-                                        </div>
+                                        <ReactMarkdown
+                                            source={description}
+                                            className="films__wrap-description"
+                                            itemProp="description"
+                                        />
                                     </div>
                                 </div>
                             ))}

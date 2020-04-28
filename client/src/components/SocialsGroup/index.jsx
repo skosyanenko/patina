@@ -10,11 +10,11 @@ class Socials extends Component {
         image: 'http://patina.ru'
     };
 
-    static getDerivedStateFromProps(nextProps) {
-        if (nextProps.match.url) {
-            return {url: nextProps.match.url};
-        }
-    };
+    // static getDerivedStateFromProps(nextProps) {
+    //     if (nextProps.match.url) {
+    //         return {url: nextProps.match.url};
+    //     }
+    // };
 
     saveBookmark = () => {
         this.setState(state => ({
@@ -44,7 +44,7 @@ class Socials extends Component {
                 </a>
                 <div className="socials__bookmark" onClick={this.saveBookmark}>
                     <svg className={`${isActive && 'active'}`}>
-                        <use href="/images/icons/sprite.svg#bookmark"/>
+                        <use href="/icons/sprite.svg#bookmark"/>
                     </svg>
                 </div>
             </div>

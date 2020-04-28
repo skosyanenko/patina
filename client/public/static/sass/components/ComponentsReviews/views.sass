@@ -50,17 +50,31 @@
     +maxwidth($sm-mobail)
         margin: 20px 0
 
-    &__paragraph
+.review-wrap, .review-wrapper__description
+    p
+        width: fit-content
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         text-indent: 35px
-        margin-bottom: 25px
+        margin: 0 auto 25px
         &:last-child
             margin-bottom: 0
         &:first-child
             &:first-letter
                 @include style-text(50px, 4px, $izvestia, $green, 100%, normal, true)
 
-    &__marked
+    p > img
+        max-width: 525px
+        width: 100%
+        margin: 30px auto
+        text-align: justify
+        +maxwidth($tablet)
+            margin: 25px auto
+        +maxwidth($mobail)
+            margin: 20px auto
+        +maxwidth($sm-mobail)
+            margin: 15px auto
+
+    p > strong
         @include style-text(25px, 2px, $openSans, $carbonic, 120%, 300, true)
         padding-left: 30px
         border-left: 6px solid $carbonic
@@ -74,20 +88,17 @@
         +maxwidth($mobail)
             padding-left: 10px
 
-        &-title
-            @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
-            margin-bottom: 25px
-            text-align: right
+    h1, h2, h3, h4, h5, h6
+        @include style-text(25px, 2px, $openSans, $darkgray, 120%, 300, true)
+        text-align: center
+        margin-bottom: 15px
 
-    &__header
-        @include style-text(25px, 2px, $openSans, $lightgray, 120%, 300, true)
-
-    &__list
+    ul, ol
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
         padding-bottom: 15px
         margin-left: 30px
 
-    &__quote
+    blockquote
         width: 100%
         padding: 0 20px
         @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
@@ -107,30 +118,15 @@
             bottom: 0
             right: 0
             transform: rotate(180deg)
+    blockquote > p
+        &:first-child
+            &:first-letter
+                @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
 
         &-caption
             @include style-text(18px, 2px, $openSans, $lightgray, 120%, 300, false)
             margin-bottom: 25px
             text-align: right
-
-    &__image
-        max-width: 525px
-        width: 100%
-        margin: 30px auto
-        +maxwidth($tablet)
-            margin: 25px auto
-        +maxwidth($mobail)
-            margin: 20px auto
-        +maxwidth($sm-mobail)
-            margin: 15px auto
-
-    &__delimiter
-        @include style-text(40px, 5px, $openSans, $carbonic, 100%, 300, false)
-        margin: 15px auto
-        text-align: center
-        +maxwidth($tablet)
-            margin: 10px auto
-
 
 .review-wrapper
     display: flex
@@ -256,11 +252,6 @@
         +maxwidth($sm-mobail)
             margin-bottom: 20px
 
-        .review-wrap__paragraph
-            &:first-child
-                &:first-letter
-                    color: $darkgray
-
     &__number
         max-height: 412px
         bottom: -9px
@@ -271,3 +262,9 @@
         pointer-events: none
         +maxwidth($tablet)
             display: none
+
+.review-wrapper__description
+    p
+        &:first-child
+            &:first-letter
+                color: $darkgray !important
