@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsVertical = ({ id, cover, title, description, likes, views, date, textLength }) => (
+const NewsVertical = ({ item: {id, cover, title, description, likes, views}, textLength, date }) => (
     <div className="news-vertical">
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <a className="news-vertical__link">

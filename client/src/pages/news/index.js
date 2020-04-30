@@ -10,7 +10,6 @@ import NewsHorizontal from 'components/ComponentsNews/NewsHorizontal';
 import NewsBlock from 'components/ComponentsNews/NewsBlock';
 import NewsElem from 'components/ComponentsNews/NewsElem';
 import NewsLink from 'components/ComponentsNews/NewsLink';
-import Store from 'services/Store';
 
 class NewsList extends Component {
     state = {
@@ -26,11 +25,8 @@ class NewsList extends Component {
 
     getItems = () => {
         const { setData, serverData } = this.props;
-        if (!Store.articles.data.length) {
-            this.setState({loading: false});
-            Store.setData('articles', { data: serverData });
-        }
-        setData({data: sortBy(Store.articles.data, 'id')});
+        this.setState({loading: false});
+        setData({data: sortBy(serverData, 'id')});
     };
 
     viewSwitcher = view => {
@@ -69,7 +65,7 @@ class NewsList extends Component {
                                 return(
                                     <Component
                                         key={key}
-                                        {...item}
+                                        item={item}
                                         textLength={counterLetters(item.description)}
                                         date={datePublish}
                                     />

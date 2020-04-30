@@ -22,12 +22,14 @@ class Auth {
         }
     }
 
-    setAuth = (auth, {token, userInfo: {id, username, email}}) => {
-        if (!auth) {
-            this.isAuth = false;
-            return CacheData.deleteCookie('token');
-        }
+    exitProfile = () => {
+        this.isAuth = false;
+        this.userInfo = {};
+        this.token = '';
+        return CacheData.deleteCookie('auth');
+    }
 
+    setAuth = ({token, userInfo: {id, username, email}}) => {
         this.userInfo = {id, username, email};
         this.token = token;
 
@@ -36,7 +38,7 @@ class Auth {
             userInfo: this.userInfo
         }));
 
-        this.isAuth = auth;
+        this.isAuth = true;
     }
 }
 

@@ -1,0 +1,49 @@
+
+.result-chart
+    width: 48%
+    margin-top: 50px
+    display: flex
+    +maxwidth($tablet)
+        width: 100%
+        margin-top: 40px
+    +maxwidth($mobail)
+        margin-top: 30px
+    +maxwidth($sm-mobail)
+        height: auto
+        margin-top: 20px
+        flex-direction: column
+
+    &__img
+        max-width: 270px
+        min-width: 270px
+        margin-right: 20px
+        +maxwidth($tablet)
+            max-width: 255px
+            min-width: 255px
+            margin-right: 15px
+        +maxwidth($mobail)
+            margin-right: 10px
+        +maxwidth($sm-mobail)
+            max-width: 100%
+            min-width: 100%
+            margin-right: 0
+
+        img
+            width: 100%
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+
+        &-title
+            margin-bottom: 15px
+            @include style-text(22px, 2px, $openSans, $black, 100%, bold, false)
+
+        &-description
+            text-align: justify
+            @include style-text(18px, 2px, $openSans, $darkgray, 100%, 300, false)
+            overflow: hidden
+            text-overflow: ellipsis
+            display: -webkit-box
+            -webkit-line-clamp: 6
+            -webkit-box-orient: vertical

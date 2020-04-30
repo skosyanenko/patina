@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsBlock = ({ id, cover, title, description, likes, views, date, textLength }) => (
+const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textLength, date }) => (
     <div className="news-block">
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <div className="news-block__img">

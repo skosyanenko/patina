@@ -1,23 +1,24 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Typed from 'react-typed';
 import Socials from 'components/SocialsGroup';
 import Rating from 'components/Rating';
+import Router from "next/router";
 
 const BookInform = ({ categories, ratingCount, ratingTotal }) => (
     <div className="book-inform">
         <div className="tags">
             { categories && categories.map((category, key) => (
-                <Fragment key={key}>
-                    <Link href={'/search/[id]'} as={`/search/${category.id}`}>
-                        <a className="tags__elem"
-                            key={key}
-                            itemProp="genre"
-                        >
-                            {category.title}
-                        </a>
-                    </Link>
-                </Fragment>
+                <div
+                    className="tags__elem"
+                    itemProp="genre"
+                    key={key}
+                    onClick={() => Router.push({
+                        pathname: '/search',
+                        query: { category: category.id }
+                })}>
+                    {category.title}
+                </div>
             ))}
         </div>
         <div className="book-inform__container">

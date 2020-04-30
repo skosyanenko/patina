@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
 import Auth from 'services/Authorization';
 
 class EntranceProfile extends Component {
+    state = {
+        isEntered: false
+    };
+
+    componentDidMount() {
+        if ( Auth.token && Auth.token.length > 0) {
+           this.setState({
+               isEntered: true
+           })
+        } else {
+            this.setState({
+                isEntered: false
+            })
+        }
+    };
+
     exitProfile = () => {
-        let currToken = Auth.token;
-        let currInfo = Auth.userInfo;
-        Auth.setAuth(false, {token: currToken, userInfo: currInfo});
+        this.setState({
+            isEntered: false
+        }, () => Auth.exitProfile());
+        Router.push(`/`);
     };
 
     render() {
         const { toggleModal } = this.props;
+        const { isEntered } = this.state;
 
         return (
             <div className="entrance">
-                {Auth.isAuth === true ?
+                {isEntered ?
                     <div className="entrance__wrapper">
                         <Link href={`/profile/${Auth.userInfo.id}`}>
                             <a className="entrance__wrapper-profile"/>
@@ -30,8 +49,8 @@ class EntranceProfile extends Component {
                         />
                     </div>
                     :
-                    <div className="entrance__wrapper">
-                        <div className="entrance__exit-column">
+                    <div className="entrance__column">
+                        <div className="entrance__column-wrap">
                             <Link href={'/registration'}>
                                 <div className="button follow-button button-white">Создать профиль</div>
                             </Link>

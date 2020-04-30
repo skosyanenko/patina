@@ -75,6 +75,15 @@ export const sortParams = [
     { title: 'рейтингу', key: 'rating' },
 ];
 
+export const filtersParams = [
+    { title: 'книгам', keys: 'books' },
+    { title: 'авторам', keys: 'authors' },
+    { title: 'категориям', keys: 'category' },
+    { title: 'топам', keys: 'charts' },
+    { title: 'критике', keys: 'reviews' },
+    { title: 'новостям', keys: 'articles' }
+];
+
 export const profileLinks = [
     { title: 'Профиль', path: 'home', img: 'home' },
     { title: 'Подписки', path: 'following', img: 'group' },

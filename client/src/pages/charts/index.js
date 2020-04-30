@@ -5,8 +5,7 @@ import Typed from 'react-typed';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import Loader from 'components/Loader';
-import Store from 'services/Store';
-import axios from "axios";
+import axios from 'axios';
 
 class ChartsList extends Component {
     state = {
@@ -30,11 +29,8 @@ class ChartsList extends Component {
 
     getItems = () => {
         const { setData, serverData } = this.props;
-        if (!Store.charts.data.length) {
-            this.setState({loading: false});
-            Store.setData('charts', { data: serverData });
-        }
-        setData(Store.charts);
+        this.setState({loading: false});
+        setData({ data: serverData });
     };
 
     render() {

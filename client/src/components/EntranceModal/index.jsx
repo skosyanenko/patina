@@ -35,7 +35,7 @@ const EntranceModal = ({ isOpen, toggleModal }) => {
             if (res.status === 200) {
                 setState({error: '', success: true});
 
-                Auth.setAuth(true, {token: res.data.jwt, userInfo: res.data.user});
+                Auth.setAuth({token: res.data.jwt, userInfo: res.data.user});
                 Router.push(`/profile/${res.data.user.id}`);
             }
 

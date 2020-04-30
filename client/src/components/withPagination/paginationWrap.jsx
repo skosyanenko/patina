@@ -31,6 +31,7 @@ const paginationWrap = function( WrappedComponent ){
 
         fetchData = async url => {
             return await axios.get(url).then(result => {
+                console.log('fetch', result)
                 this.setData(result);
                 return result.data;
             });

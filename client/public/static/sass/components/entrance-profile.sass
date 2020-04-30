@@ -7,20 +7,24 @@
     +maxwidth($mobail)
         width: 135px
 
-    &__wrapper
-        margin: 0 auto
+    &__column
+        margin:  auto
         display: flex
 
-        &-column
+        &-wrap
             display: flex
             flex-direction: column
 
-        .follow-button
-            margin-top: 10px
-            +maxwidth($mobail)
-                margin-top: 5px
-            &:first-child
-                margin-top: 0
+            .follow-button
+                margin-top: 10px
+                +maxwidth($mobail)
+                    margin-top: 5px
+                &:first-child
+                    margin-top: 0
+
+    &__wrapper
+        margin: 0 auto
+        display: flex
 
         &-wrap,
         &-profile

@@ -5,8 +5,6 @@
     justify-content: space-between
     +maxwidth($tablet)
         width: 120px
-    +maxwidth($mobail)
-        width: 100px
 
     &__wrapper
         display: flex
@@ -16,67 +14,31 @@
     &__counter
         font: 600 11px/0.4 $openSans
         color: $lightgray
-        +maxwidth($mobail)
-            font-size: 10px
 
     &__views
         width: 38px
         height: 38px
         margin-top: 5px
         background: url('/icons/sprite.svg#views-view') no-repeat center / contain
-        +maxwidth($tablet)
-            width: 30px
-            height: 30px
-        +maxwidth($mobail)
-            margin-top: 3px
-            width: 22px
-            height: 22px
 
     &__date
         width: 27px
         height: 27px
         margin-top: 7px
         background: url('/icons/sprite.svg#clock-view') no-repeat center / contain
-        +maxwidth($tablet)
-            width: 22px
-            height: 22px
-        +maxwidth($mobail)
-            margin-top: 5px
-            width: 17px
-            height: 17px
 
     &__likes
         width: 28px
         height: 27px
         margin-top: 8px
-        +maxwidth($tablet)
-            width: 23px
-            height: 22px
-        +maxwidth($mobail)
-            margin-top: 6px
-            width: 18px
-            height: 17px
 
         &.active
             width: 28px
             height: 27px
-            +maxwidth($tablet)
-                width: 23px
-                height: 22px
-            +maxwidth($mobail)
-                margin-top: 6px
-                width: 18px
-                height: 17px
 
             &:after
                 width: 28px
                 height: 27px
-                +maxwidth($tablet)
-                    width: 23px
-                    height: 22px
-                +maxwidth($mobail)
-                    width: 18px
-                    height: 17px
 
 .like-review
     margin-top: 25px

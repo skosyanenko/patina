@@ -1,0 +1,38 @@
+
+.filters
+    display: flex
+    flex-direction: column
+
+    &__title
+        margin-bottom: 30px
+        @include style-text(34px, 4px, $openSans, $black, 100%, 300, false)
+
+    &__wrapper
+        margin-bottom: 30px
+        display: flex
+        flex-wrap: wrap
+        +maxwidth($mobail)
+            justify-content: center
+
+        &-type
+            height: 36px
+            width: fit-content
+            margin: 5px 5px 0 0
+            padding: 10px
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: $white
+            border: 1px solid $green
+            border-radius: 10px
+            @include style-text(20px, 2px, $openSans, $green, 100%, 300, false)
+            transition: all .3s ease
+            cursor: pointer
+
+            &:hover
+                color: $white
+                background: $green
+
+            &.active
+                color: $white
+                background: $green

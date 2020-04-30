@@ -57,14 +57,8 @@ class Tops extends Component {
                                      itemProp="description"
                                 />
                                 <>
-                                    <Socials/>
                                     <div className="tops__text-buttons">
-                                        <div className="button-write-top">
-                                            <div className="button-write-top__img"/>
-                                            <Link href={'/forms/charts'}>
-                                                <a className="button-write-top__text">Создать свою подборку</a>
-                                            </Link>
-                                        </div>
+                                        <Socials/>
                                         <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                             <a className="button button-white">Подробнее</a>
                                         </Link>

@@ -7,7 +7,6 @@ import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
 import Loader from 'components/Loader';
-import Store from 'services/Store';
 import axios from 'axios';
 
 class BooksList extends Component {
@@ -29,11 +28,8 @@ class BooksList extends Component {
 
     getItems = () => {
         const { setData, serverData } = this.props;
-        if (!Store.books.data.length) {
-            this.setState({loading: false});
-            Store.setData('books', { data: serverData });
-        }
-        setData(Store.books);
+        this.setState({loading: false});
+        setData({ data: serverData });
     };
 
     componentDidUpdate(prevProps, prevState) {

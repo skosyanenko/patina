@@ -6,7 +6,7 @@ import News from 'components/ComponentsIndex/News';
 import axios from 'axios';
 // import MainTimeline from 'components/ComponentsIndex/TimeLine';
 
-const PatinaPage =({ serverBooks, serverCharts, serverArticles }) => (
+const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4 }) => (
     <>
         <div className="patina">
             <svg className="patina__logo" viewBox="0 0 921.26 907.09">
@@ -47,7 +47,11 @@ const PatinaPage =({ serverBooks, serverCharts, serverArticles }) => (
         <Title title={'Книги'} subtitle={'книжная полка'}/>
         <Books books={serverBooks}/>
         <Title title={'Что нового'} subtitle={'новости из мира литературы'}/>
-        <News articles={serverArticles}/>
+        <News
+            articles_2={articlesView_2}
+            articles_3={articlesView_3}
+            articles_4={articlesView_4}
+        />
         <Title title={'Топы'} subtitle={'подборки книг на различные темы'}/>
         <Tops charts={serverCharts}/>
         {/*<MainTimeline/>*/}
@@ -65,12 +69,18 @@ export async function getServerSideProps() {
       .then(res => res.data)
       .catch(err => console.log(err));
 
-    const serverArticles = await axios.get(`${API_URL}/articles?viewType_in=2&viewType_in=3&viewType_in=4&_limit=6`)
+    const articlesView_2 = await axios.get(`${API_URL}/articles?viewType_in=2&_limit=1`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+    const articlesView_3 = await axios.get(`${API_URL}/articles?viewType_in=3&_limit=2`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+    const articlesView_4 = await axios.get(`${API_URL}/articles?viewType_in=4&_limit=3`)
       .then(res => res.data)
       .catch(err => console.log(err));
 
     return {
-        props: { serverBooks, serverCharts, serverArticles }};
+        props: { serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4 }};
 }
 
 export default PatinaPage;

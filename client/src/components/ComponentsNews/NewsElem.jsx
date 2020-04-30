@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const NewsElem = ({ id, cover, title, description }) => (
+const NewsElem = ({ item: {id, cover, title, description} }) => (
     <div className="news-elem">
         <div className="news-elem__about">
             <Link href={'/news/[id]'} as={`/news/${id}`}>

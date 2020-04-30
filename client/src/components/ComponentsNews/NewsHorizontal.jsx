@@ -3,13 +3,13 @@ import Link from 'next/link';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsHorizontal = ({ id, cover, title, description, likes, views, date, textLength }) => (
+const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, textLength, date }) => (
     <div className="news-horizontal">
         <div className="news-horizontal__wrapper">
             <Link href={'/news/[id]'} as={`/news/${id}`}>
                 <a className="news-horizontal__link">
                     <div className="news-horizontal__link-img">
-                        <img src={`${process.env.API_URL}${cover.url}`} alt=""/>
+                        {cover && <img src={`${process.env.API_URL}${cover.url}`} alt=""/>}
                     </div>
                 </a>
             </Link>

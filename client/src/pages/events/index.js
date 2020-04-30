@@ -6,7 +6,6 @@ import Loader from 'components/Loader';
 import Event from 'components/ComponentsEvents/Event';
 import WeatherCard from 'components/ComponentsEvents/WeatherCard';
 import EventPicture from 'components/ComponentsEvents/EventPicture';
-import Store from 'services/Store';
 
 class EventsList extends Component {
     state = {
@@ -49,16 +48,13 @@ class EventsList extends Component {
 
     getItems = () => {
         const { serverData } = this.props;
-        if (!Store.events.data.length) {
-            this.setState({loading: false});
-            const additionalItems = [
-                {type: 'picture'},
-                {type: 'picture'},
-                {type: 'card'}
-            ];
-            additionalItems.forEach(item => serverData.unshift(item));
-            Store.setData('events', { data: serverData });
-        }
+        this.setState({loading: false});
+        const additionalItems = [
+            {type: 'picture'},
+            {type: 'picture'},
+            {type: 'card'}
+        ];
+        additionalItems.forEach(item => serverData.unshift(item));
     };
 
     showPictures = () => {
@@ -98,7 +94,7 @@ class EventsList extends Component {
 
 	render() {
         const { month, loading } = this.state;
-        const { events } = Store;
+        const { serverData } = this.props;
 
         return (
             <>
@@ -112,7 +108,7 @@ class EventsList extends Component {
                     {!loading
                         ?
                         <div className="events-wrapper">
-                            {events && events.data.map((field, key) => {
+                            {serverData && serverData.map((field, key) => {
                                 const picture = this.showPictures().find(item => item.key === key);
                                 const Component = this.switchTypes(field.type);
                                 return <Component key={key} picture={picture && picture.name} {...field}/>;

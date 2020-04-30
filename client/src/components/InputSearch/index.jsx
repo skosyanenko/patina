@@ -7,12 +7,18 @@ class InputSearch extends Component {
         showOptions: false
     };
 
+    componentDidMount() {
+        if (this.props.showOptions) {
+            this.setState({showOptions: this.props.showOptions})
+        }
+    };
+
     componentDidUpdate(prevProps) {
         if (prevProps.activeLetter !== this.props.activeLetter ||
             prevProps.sorting !== this.props.sorting) {
             this.setState({value: ''})
         }
-    }
+    };
 
     toggleOptionsList = (value, showOptions) => {
         this.setState({
@@ -62,7 +68,7 @@ class InputSearch extends Component {
                        onChange={e => this.onChange(e)}
                        onKeyDown={this.onKeyDown}
                        value={value}
-                       placeholder={'Напишите название книги'}
+                       placeholder={'Напишите название ...'}
                 />
                 <div className="quest__image"/>
                 {showOptions && value && isOptions &&
