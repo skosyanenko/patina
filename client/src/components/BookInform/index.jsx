@@ -3,22 +3,24 @@ import Link from 'next/link';
 import Typed from 'react-typed';
 import Socials from 'components/SocialsGroup';
 import Rating from 'components/Rating';
-import Router from "next/router";
 
 const BookInform = ({ categories, ratingCount, ratingTotal }) => (
     <div className="book-inform">
         <div className="tags">
             { categories && categories.map((category, key) => (
-                <div
-                    className="tags__elem"
-                    itemProp="genre"
+                <Link
                     key={key}
-                    onClick={() => Router.push({
-                        pathname: '/search',
-                        query: { category: category.id }
-                })}>
-                    {category.title}
-                </div>
+                    as={`/search?filter=category&title=${category.title}`}
+                    href={`/search?filter=category&title=${category.title}`}
+                >
+                    <a
+                        className="tags__elem"
+                        itemProp="genre"
+                        key={key}
+                    >
+                        {category.title}
+                    </a>
+                </Link>
             ))}
         </div>
         <div className="book-inform__container">

@@ -91,7 +91,7 @@ class NavLinks extends Component {
                     ))}
                 </div>
                 <span className={`menu__link-circle `} style={{top: topCoord, opacity: toggleCircle}}/>
-                <Link href={'/search'}>
+                <Link href="/search">
                     <a className="menu__search">
                         <div className="menu__search-loupe"/>
                     </a>

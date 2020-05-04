@@ -49,7 +49,7 @@ class News extends Component {
                     return(
                         <Component
                             key={key}
-                            {...item}
+                            item={item}
                             textLength={counterLetters(item.description)}
                             date={datePublish}
                         />
