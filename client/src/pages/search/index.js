@@ -13,12 +13,12 @@ import { counterLetters } from 'config/config';
 const {API_URL} = process.env;
 
 const config = [
-    { id: 'authors', route: '/books', param: 'authors.name_contains', class: ViewBook },
-    { id: 'category', route: '/books', param: 'categories.title_contains', class: ViewBook },
-    { id: 'books', route: '/books', param: 'title_contains', class: ViewBook },
-    { id: 'reviews', route: '/reviews', param: 'title_contains', class: ViewReview },
-    { id: 'charts', route: '/charts', param: 'title_contains', class: ViewChart },
-    { id: 'articles', route: '/articles', param: 'title_contains', class: NewsHorizontal }
+    { id: 'authors', route: '/books', param: 'authors.name_contains', class: ViewBook, title: 'Авторы' },
+    { id: 'category', route: '/books', param: 'categories.title_contains', class: ViewBook, title: 'Категории' },
+    { id: 'books', route: '/books', param: 'title_contains', class: ViewBook, title: 'Книги' },
+    { id: 'reviews', route: '/reviews', param: 'title_contains', class: ViewReview, title: 'Рецензии' },
+    { id: 'charts', route: '/charts', param: 'title_contains', class: ViewChart, title: 'Топы' },
+    { id: 'articles', route: '/articles', param: 'title_contains', class: NewsHorizontal, title: 'Новости' }
 ];
 
 const SearchList = ({router, items, fetchData, pagination, updateState}) => {
@@ -44,8 +44,8 @@ const SearchList = ({router, items, fetchData, pagination, updateState}) => {
                     setQuery({ filter, title });
                     setState({
                         label: !result.length
-                            ? 'по вашему запросу ничего не найдено'
-                            : `результаты поиска по параметру «${title || filter}»`,
+                            ? 'К сожалению, по вашему запросу ничего не найдено.'
+                            : `результаты поиска по параметру «${title || current.title}»`,
                         loading: false
                     });
                 })
@@ -63,7 +63,6 @@ const SearchList = ({router, items, fetchData, pagination, updateState}) => {
 
     useEffect(() => {
         updateState({ perPage: 6, valuesDropdown: [6, 12, 18]});
-        console.log('component did mount');
     }, []);
 
     return (
@@ -85,17 +84,17 @@ const SearchList = ({router, items, fetchData, pagination, updateState}) => {
                         {state.label}
                     </div>
 
-                    <div className={`search__result ${query.filter === 'reviews' && 'reviews' || ''}`}>
+                    <div className={(query.filter === 'charts' || query.filter === 'articles') && 'search__grid' || 'search__result'}>
                         {items && items.map((item, key) => {
                             const Component = config.find(item => item.id === query.filter).class;
                             const datePublish = new Date(item.created_at).toLocaleDateString();
-                            //const text = filters ==='articles' ? counterLetters(item.description) : ''
+                            const text = (query.filter ==='articles' || query.filter ==='reviews') ? counterLetters(item.description) : ''
 
                             return (
                                 <Component
                                     key={key}
                                     item={item}
-                                    //textLength={text}
+                                    textLength={text}
                                     date={datePublish}
                                 />
                             )

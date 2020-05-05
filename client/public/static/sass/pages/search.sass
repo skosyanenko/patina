@@ -11,18 +11,23 @@
     &__result
         width: 100%
         min-height: 500px
-        display: flex
-        flex-wrap: wrap
-        justify-content: space-between
-        +maxwidth(1030px)
-            min-height: 930px
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
         +maxwidth($tablet)
-            min-height: 650px
+            grid-template-columns: repeat(2, 1fr)
         +maxwidth($sm-mobail)
-            min-height: 220px
+            grid-template-columns: repeat(1, 1fr)
+
+    &__grid
+        width: 100%
+        min-height: 500px
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        +maxwidth($sm-mobail)
+            grid-template-columns: repeat(1, 1fr)
 
         .news-horizontal
-            width: 48%
+            width: 95%
             +maxwidth($mobail)
                 width: 100%
             .news-horizontal__wrapper

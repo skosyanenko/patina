@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
-import Store from 'services/Store';
+import axios from 'axios';
 
 class RightMenu extends Component {
     state = {
@@ -12,23 +12,23 @@ class RightMenu extends Component {
 	};
 
 	getItems = () => {
-	    const { books } = Store;
+        const { API_URL } = process.env;
 
-	    const randomBooks = books.data.reduce(acc => {
-	        if (acc.length <= 9) {
-                const randomIndex = Math.floor(Math.random() * books.data.length);
-                if (!acc.includes(books.data[randomIndex])) {
-                    acc.push(books.data[randomIndex]);
-                }
-            }
-	        return acc;
-        }, [])
-
-        this.setState({ randomBooks });
+	    axios.get(`${API_URL}/books?_limit=10`)
+            .then(res => {
+                res.data &&
+                this.setState({
+                    randomBooks: res.data
+                })
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
     };
 
     render() {
         const { randomBooks } = this.state;
+
         return (
             <div className="content">
                 <div className="content__wrapper">

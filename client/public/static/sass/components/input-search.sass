@@ -9,7 +9,7 @@
         margin: 10px 0
 
     &__wrapper
-        width: 260px
+        width: calc(50% - 113px)
         height: 40px
         padding: 8px 11px 8px 40px
         border: 1px solid $green
@@ -81,6 +81,7 @@
                     border-bottom-right-radius: 10px
 
     &--position
+        width: 260px
         position: absolute
         top: 9.5%
         right: 40px
@@ -88,6 +89,9 @@
             top: 0
             right: 0
             position: relative
+
+        .quest__wrapper
+            width: 100%
 
     &--searchResults
         margin-top: 0
