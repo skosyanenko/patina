@@ -10,12 +10,12 @@
     z-index: 1100
     +maxwidth($tablet)
         height: 70px
-    +maxwidth($mobail)
-        height: 60px
         top: 0
         position: fixed
         transition: transform 300ms ease-in-out
         transform: translateY(0)
+    +maxwidth($mobail)
+        height: 60px
 
     &--index
         border-bottom: none
@@ -47,23 +47,23 @@
         align-items: center
         +maxwidth(1640px)
             width: 250px
-        +maxwidth($mobail)
+        +maxwidth($tablet)
             width: 135px
 
 .is-hidden
-    +maxwidth($mobail)
+    +maxwidth($tablet)
         transform: translateY(-100%)
         transition: all 0.3s ease-in-out
 
 .is-visible
     z-index: 1100
-    +maxwidth($mobail)
+    +maxwidth($tablet)
         background: rgba(255, 255, 255, 0.9)
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 rgba(0, 0, 0, 0.1)
         transition: all 0.3s ease-in-out
         .header__container-logo
             display: flex
-            +maxwidth($mobail)
+            +maxwidth($tablet)
                 margin-left: 0
 
 .is-invisible

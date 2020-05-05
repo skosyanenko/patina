@@ -33,7 +33,7 @@ class Books extends Component {
             slidesToScroll: 1,
         };
 
-        const { books } = this.props;
+        const { books, toggleModal } = this.props;
 
         return (
             <div className="main books-wrap">
@@ -52,7 +52,10 @@ class Books extends Component {
                     >
                         <div className="books__text">
                             <h1 className="books__text-title" itemProp="name">{title}</h1>
-                                <BookInform categories={categories}/>
+                                <BookInform
+                                    categories={categories}
+                                    toggleModal={toggleModal}
+                                />
                             <p className="books__text-description" itemProp="description">
                                 {shortDescription}
                             </p>

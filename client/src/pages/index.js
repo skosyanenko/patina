@@ -6,7 +6,7 @@ import News from 'components/ComponentsIndex/News';
 import axios from 'axios';
 // import MainTimeline from 'components/ComponentsIndex/TimeLine';
 
-const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4 }) => (
+const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4, toggleModal }) => (
     <>
         <div className="patina">
             <svg className="patina__logo" viewBox="0 0 921.26 907.09">
@@ -45,15 +45,22 @@ const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, 
             </svg>
         </div>
         <Title title={'Книги'} subtitle={'книжная полка'}/>
-        <Books books={serverBooks}/>
+        <Books
+            books={serverBooks}
+            toggleModal={toggleModal}
+        />
         <Title title={'Что нового'} subtitle={'новости из мира литературы'}/>
         <News
             articles_2={articlesView_2}
             articles_3={articlesView_3}
             articles_4={articlesView_4}
+            toggleModal={toggleModal}
         />
         <Title title={'Топы'} subtitle={'подборки книг на различные темы'}/>
-        <Tops charts={serverCharts}/>
+        <Tops
+            charts={serverCharts}
+            toggleModal={toggleModal}
+        />
         {/*<MainTimeline/>*/}
     </>
 );

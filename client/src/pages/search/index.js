@@ -21,7 +21,7 @@ const config = [
     { id: 'articles', route: '/articles', param: 'title_contains', class: NewsHorizontal, title: 'Новости' }
 ];
 
-const SearchList = ({router, items, fetchData, pagination, updateState}) => {
+const SearchList = ({router, items, fetchData, pagination, updateState, toggleModal}) => {
 
     const [query, setQuery] = useState({
         filter: '',
@@ -96,6 +96,7 @@ const SearchList = ({router, items, fetchData, pagination, updateState}) => {
                                     item={item}
                                     textLength={text}
                                     date={datePublish}
+                                    toggleModal={toggleModal}
                                 />
                             )
                         })}

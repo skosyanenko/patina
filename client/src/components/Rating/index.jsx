@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Auth from 'services/Authorization';
 
 class Rating extends  Component {
     state = {
@@ -30,18 +31,22 @@ class Rating extends  Component {
     };
 
     clickVote = ({ target }) => {
-        const { stars, counters, mediumRate } = this.state;
-        const count = stars[target.id].count;
-        const medium = (counters * mediumRate + count) / (counters + 1);
+        if ( Auth.token && Auth.token.length > 0) {
+            const { stars, counters, mediumRate } = this.state;
+            const count = stars[target.id].count;
+            const medium = (counters * mediumRate + count) / (counters + 1);
 
-        this.setState(state => ({
-            inactive: !state.inactive,
-            counters: state.counters + 1,
-            mediumRate: medium.toFixed(2),
-            maskWidth: medium * 20
-        }));
+            this.setState(state => ({
+                inactive: !state.inactive,
+                counters: state.counters + 1,
+                mediumRate: medium.toFixed(2),
+                maskWidth: medium * 20
+            }));
 
-        target.classList.add('active');
+            target.classList.add('active');
+        } else {
+            this.props.toggleModal();
+        }
     };
 
     render() {

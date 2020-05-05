@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CommentForm from './component/CommentForm';
 import CommentList from './component/CommentList';
 import axios from 'axios';
+import Auth from 'services/Authorization';
 
 class CommentBlock extends Component {
     state = {
@@ -55,7 +56,10 @@ class CommentBlock extends Component {
                     <div className="comments__title-icon"/>
                     <span className="comments__title-counter">1</span>
                 </div>
-                <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+                {Auth.token && Auth.token.length > 0 &&
+                    <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+                    || ''
+                }
                 <CommentList  handleDelete={this.handleDelete}/>
             </div>
         )

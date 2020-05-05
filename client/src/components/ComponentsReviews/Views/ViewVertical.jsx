@@ -5,7 +5,7 @@ import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
 
-const ViewVertical = ({ book, title, description, likes, created_at, id, authors }) => {
+const ViewVertical = ({ book, title, description, likes, created_at, id, authors, toggleModal }) => {
     return (
         <>
             <div className="container-review"
@@ -35,6 +35,7 @@ const ViewVertical = ({ book, title, description, likes, created_at, id, authors
                     textLength={counterLetters(description)}
                     likes={likes}
                     date={returnDatePublish(created_at)}
+                    toggleModal={toggleModal}
                 />
             }
             <CommentBlock reviewId={id}/>

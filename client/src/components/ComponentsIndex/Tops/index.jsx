@@ -28,7 +28,7 @@ class Tops extends Component {
             slidesToScroll: 1,
         };
 
-        const { charts } = this.props;
+        const { charts, toggleModal } = this.props;
 
         return (
             <div className="tops main">
@@ -58,7 +58,7 @@ class Tops extends Component {
                                 />
                                 <>
                                     <div className="tops__text-buttons">
-                                        <Socials/>
+                                        <Socials toggleModal={toggleModal}/>
                                         <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                             <a className="button button-white">Подробнее</a>
                                         </Link>

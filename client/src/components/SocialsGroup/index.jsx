@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
+import Auth from 'services/Authorization';
 
 class Socials extends Component {
     state = {
@@ -10,16 +11,14 @@ class Socials extends Component {
         image: 'http://patina.ru'
     };
 
-    // static getDerivedStateFromProps(nextProps) {
-    //     if (nextProps.match.url) {
-    //         return {url: nextProps.match.url};
-    //     }
-    // };
-
     saveBookmark = () => {
-        this.setState(state => ({
-            isActive: !state.isActive
-        }))
+        if ( Auth.token && Auth.token.length > 0) {
+            this.setState(state => ({
+                isActive: !state.isActive
+            }))
+        } else {
+            this.props.toggleModal();
+        }
     };
 
     render() {

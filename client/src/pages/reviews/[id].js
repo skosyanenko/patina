@@ -20,7 +20,7 @@ class ReviewsDetail extends Component {
 
     render () {
         const { currentReview, error } = this.state;
-        const { serverDataAuthors } = this.props;
+        const { serverDataAuthors, toggleModal } = this.props;
 
         if (error && error.length > 0) return error;
 
@@ -31,9 +31,9 @@ class ReviewsDetail extends Component {
                 </Link>
                 { currentReview.viewType === 0
                     ?
-                    <ViewHorizontal {...currentReview} authors={serverDataAuthors}/>
+                    <ViewHorizontal {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
                     :
-                    <ViewVertical {...currentReview} authors={serverDataAuthors}/>
+                    <ViewVertical {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
                 }
             </>
         )

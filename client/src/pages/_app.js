@@ -8,13 +8,14 @@ import EntranceModal from 'components/EntranceModal';
 import Footer from 'components/Layouts/Footer';
 import BtnScrollToTop from 'components/BtnScrollToTop';
 import Auth from 'services/Authorization';
-import {isBrowser} from "../config/config";
 import '../../public/static/sass/project.sass';
 import 'react-markdown-editor-lite/lib/index.css';
+import UnknownModal from "../components/UnknownModal";
 
 const MyApp = ({ Component, pageProps, router }) => {
     const initialState = {
         modalIsOpen: false,
+        modalUnknownIsOpen: false,
         isAnimate: false,
         header: '',
         toggle: true
@@ -22,7 +23,7 @@ const MyApp = ({ Component, pageProps, router }) => {
 
     const [state, setState] = useState(initialState);
 
-    const { modalIsOpen, isAnimate, toggle, header } = state;
+    const { modalIsOpen, modalUnknownIsOpen, isAnimate, toggle, header } = state;
 
     useEffect(() => {
 
@@ -50,6 +51,8 @@ const MyApp = ({ Component, pageProps, router }) => {
 
     const toggleModal = () => setState({...state, modalIsOpen: !modalIsOpen});
 
+    const toggleUnknownModal = () => setState({...state, modalUnknownIsOpen: !modalUnknownIsOpen});
+
     const toggleMenu = () => setState({...state, toggle: !toggle});
 
     return(
@@ -76,7 +79,10 @@ const MyApp = ({ Component, pageProps, router }) => {
                     classNames="fade"
                 >
                     <main className={router && switchClasses(router.pathname)}>
-                        <Component {...pageProps} />
+                        <Component
+                          {...pageProps}
+                          toggleModal={toggleUnknownModal}
+                        />
                     </main>
                 </CSSTransition>
 
@@ -87,6 +93,11 @@ const MyApp = ({ Component, pageProps, router }) => {
                 <EntranceModal
                     isOpen={modalIsOpen}
                     toggleModal={toggleModal}
+                />
+
+                <UnknownModal
+                    isOpen={modalUnknownIsOpen}
+                    toggleModal={toggleUnknownModal}
                 />
             </div>
             <Footer/>

@@ -45,7 +45,7 @@
         position: fixed
 
         .menu__wrap
-            height: 100vh
+            height: calc(100vh - 80px)
             background: $white
             z-index: 1000
             margin-top: -80px
@@ -83,13 +83,11 @@
         flex-direction: column
 
     &__link
-        margin-top: 105px
+        margin-top: 95px
         position: relative
         @include style-text(26px, 2px, $waverly, $black, 100%, 300, true)
         text-transform: uppercase
         z-index: 120
-        +maxwidth(1140px)
-            margin-top: 95px
         +maxwidth($sm-mobail)
             margin-top: 60px
 
@@ -186,5 +184,6 @@
     .burger
         position: absolute
         margin: 0
-        top: 88px
+        top: 105px
+        left: 40px
 

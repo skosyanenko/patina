@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textLength, date }) => (
+const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textLength, date, toggleModal }) => (
     <div className="news-block">
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <div className="news-block__img">
@@ -18,7 +18,7 @@ const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textL
         />
         <div className="news-block__nav">
             <div className="news-block__nav-wrap">
-                <Icons likes={likes} views={views} date={date}/>
+                <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
                 <TimeToRead textLength={textLength}/>
             </div>
             <Link href={'/news/[id]'} as={`/news/${id}`}>

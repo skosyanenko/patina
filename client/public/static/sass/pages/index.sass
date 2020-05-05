@@ -1,14 +1,15 @@
 
 .main
     width: 100%
-    max-width: calc(100% - 620px)
+    max-width: calc(100% - 310px)
+    padding:  50px 50px 50px 0
     display: flex !important
     flex-direction: row
     justify-content: space-between
     +maxwidth(1640px)
-        max-width: calc(100% - 500px)
-        padding: 40px
-    +maxwidth($desktop)
+        max-width: calc(100% - 250px)
+        padding: 40px 30px
+    +maxwidth(1140px)
         max-width: 100%
     +maxwidth($tablet)
         padding: 30px
@@ -64,56 +65,45 @@
 
 .main-news
     width: 100%
-    max-width: calc(100% - 620px)
+    max-width: calc(100% - 310px)
     flex-direction: row
     justify-content: space-between
+    padding: 50px 50px 50px 0
     +maxwidth(1640px)
-        max-width: calc(100% - 500px)
-        padding: 0 40px 40px
-    +maxwidth($desktop)
+        max-width: calc(100% - 250px)
+        padding: 20px 40px 40px
+    +maxwidth(1140px)
         max-width: 100%
     +maxwidth($tablet)
-        padding: 0 30px 30px
+        padding: 15px 30px 30px
     +maxwidth($mobail)
         padding: 0 20px 20px
 
 .patina
-    max-width: calc(100% - 310px)
-    width: 100%
+    width: 370px
     height: 325px
-    margin-left: 455px
     position: relative
     display: flex
+    top: -68px
+    left: -19.5%
+    margin: auto
     +maxwidth(1140px)
-        margin-left: 0
-        max-width: 100%
+        left: 0
+        right: 0
+        top: -50px
+        margin: 0 auto
     +maxwidth($tablet)
+        width: 340px
         height: 295px
     +maxwidth($mobail)
+        width: 281px
         height: 265px
     +maxwidth($sm-mobail)
+        width: 281px
         height: 235px
 
     &__logo
-        width: 370px
-        height: 370px
-        position: absolute
-        top: -68px
-        left: -19.5px
-        +maxwidth(1140px)
-            left: 0
-            right: 0
-            top: -50px
-            margin: 0 auto
-        +maxwidth($tablet)
-            width: 340px
-            height: 340px
-        +maxwidth($mobail)
-            width: 310px
-            height: 310px
-        +maxwidth($sm-mobail)
-            width: 281px
-            height: 281px
+        width: 100%
 
 .logo-lines
     fill: none

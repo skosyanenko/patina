@@ -4,7 +4,7 @@ import { counterLetters, returnDatePublish } from 'config/config';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const ViewReview = ({ item: {id, book, like, description, created_at, title, userId} }) => (
+const ViewReview = ({ item: {id, book, like, description, created_at, title, userId}, toggleModal }) => (
   <div className="reviews__result">
       <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
           <a className="reviews__result-image">
@@ -12,7 +12,7 @@ const ViewReview = ({ item: {id, book, like, description, created_at, title, use
           </a>
       </Link>
       <div className="reviews__result-wrap">
-          <Icons likes={like}/>
+          <Icons likes={like} toggleModal={toggleModal}/>
           <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
               <>{book && <a className="reviews__result-title">{book.title}</a>}</>
           </Link>

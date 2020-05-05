@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Author from 'components/Author';
+import Auth from 'services/Authorization';
 
 class Comment extends Component {
 
@@ -18,9 +19,12 @@ class Comment extends Component {
                             name={firstName}
                             surname={lastName}
                     />
-                    <div className="comments-block__wrap-delete"
-                         //onClick={this.handleDelete}
-                    />
+                    {Auth.token && Auth.token.length > 0 &&
+                        <div className="comments-block__wrap-delete"
+                            //onClick={this.handleDelete}
+                        />
+                    || ''
+                    }
                 </div>
                <div className="comments-block__text" itemProp="commentText">Бесплатный онлайн перевод с английского на русский и обратно, англо-русский словарь с транскрипцией, произношением слов и примерами ...</div>
             </div>

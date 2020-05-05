@@ -43,7 +43,7 @@ class ReviewsList extends Component {
     render (){
         const { loading, resultTitle } = this.state;
 
-        const { items } = this.props;
+        const { items, toggleModal } = this.props;
 
         return (
             <>
@@ -63,7 +63,7 @@ class ReviewsList extends Component {
                             {resultTitle.length > 0 && <div className="reviews__title">{resultTitle}</div>}
                             <div className="reviews">
                                 { items && items.map((item, key) => (
-                                    <ViewReview item={item} key={key}/>
+                                    <ViewReview item={item} key={key} toggleModal={toggleModal}/>
                                 ))}
                             </div>
                             {items.length > 0 ? this.props.pagination : ''}

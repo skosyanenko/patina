@@ -18,6 +18,7 @@ class ChartsDetail extends Component {
 
     render() {
         const { currentChart: {title, description, books, id} } = this.state;
+        const { toggleModal } = this.props;
 
         return(
             <div itemType="http://schema.org/ItemList http://schema.org/CreativeWork" itemScope>
@@ -67,7 +68,7 @@ class ChartsDetail extends Component {
                 </div>
                 <div className="icons-wrap">
                     <div className="icons-wrap__socials">
-                        <Socials/>
+                        <Socials toggleModal={toggleModal}/>
                     </div>
                 </div>
                 <CommentBlock topId={id}/>

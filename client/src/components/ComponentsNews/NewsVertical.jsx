@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsVertical = ({ item: {id, cover, title, description, likes, views}, textLength, date }) => (
+const NewsVertical = ({ item: {id, cover, title, description, likes, views}, textLength, date, toggleModal }) => (
     <div className="news-vertical">
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <a className="news-vertical__link">
@@ -24,7 +24,7 @@ const NewsVertical = ({ item: {id, cover, title, description, likes, views}, tex
             <div className="news-vertical__description-nav">
                 <div className="news-vertical__description-wrapper">
                     <TimeToRead textLength={textLength}/>
-                    <Icons likes={likes} views={views} date={date}/>
+                    <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
                 </div>
                 <Link href={'/news/[id]'} as={`/news/${id}`}>
                     <a className="button button-white">Подробнее</a>

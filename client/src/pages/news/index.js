@@ -48,7 +48,7 @@ class NewsList extends Component {
 
     render() {
         const { loading } = this.state;
-        const { items } = this.props;
+        const { items, toggleModal } = this.props;
 
         return(
             <>
@@ -68,6 +68,7 @@ class NewsList extends Component {
                                         item={item}
                                         textLength={counterLetters(item.description)}
                                         date={datePublish}
+                                        toggleModal={toggleModal}
                                     />
                                 )
                             })}

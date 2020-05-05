@@ -7,7 +7,7 @@ import Writer from '../Components/Writer';
 
 class ViewHorizontal extends Component {
     render () {
-        const { book, title, likes, created_at, description, id, authors } = this.props;
+        const { book, title, likes, created_at, description, id, authors, toggleModal } = this.props;
 
         return (
             <>
@@ -39,6 +39,7 @@ class ViewHorizontal extends Component {
                                         textLength={counterLetters(description)}
                                         likes={likes}
                                         date={returnDatePublish(created_at)}
+                                        toggleModal={toggleModal}
                                     />
                                 }
                             </div>

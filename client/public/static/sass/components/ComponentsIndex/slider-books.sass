@@ -1,27 +1,23 @@
 
 .books-wrap
     display: flex
-    +maxwidth($tablet)
+    +maxwidth($desktop)
         position: relative
 
 .books-slider
     width: 94% !important
-    +maxwidth($tablet)
+    +maxwidth(1640px)
+        width: 92% !important
+    +maxwidth($desktop)
         width: 100% !important
 
 .books
     width: 100%
-    margin-top: 50px
     display: flex!important
     justify-content: space-between
     position: relative
-    +maxwidth($tablet)
-        margin-top: 40px
+    +maxwidth($desktop)
         flex-direction: column
-    +maxwidth($mobail)
-        margin-top: 30px
-    +maxwidth($sm-mobail)
-        margin-top: 20px
 
     &__text
         width: 45%
@@ -30,11 +26,13 @@
         justify-content: space-between
         min-height: 500px
         max-height: fit-content
-        +maxwidth($tablet)
+        +maxwidth($desktop)
             min-height: 400px
-            width: 100%
+            width: calc(100% - 250px)
             margin-top: 30px
             order: 2
+        +maxwidth(1140px)
+            width: 100%
         +maxwidth($mobail)
             margin-top: 20px
         +maxwidth($sm-mobail)
@@ -62,14 +60,14 @@
     &__wrapper
         width: 100%
         display: flex
-        +maxwidth($tablet)
+        +maxwidth($desktop)
             width: fit-content
             order: 1
 
     &__img
         width: 50%
         margin: auto 0
-        +maxwidth($tablet)
+        +maxwidth($desktop)
             width: 320px
             margin: 0
         +maxwidth($mobail)
@@ -84,7 +82,7 @@
         width: 25%
         display: flex
         justify-content: center
-        +maxwidth($tablet)
+        +maxwidth($desktop)
             width: 100px
             justify-content: flex-start
             &:last-child
@@ -104,7 +102,7 @@
             display: flex
             cursor: pointer
             transition: .4s ease
-            +maxwidth($tablet)
+            +maxwidth($desktop)
                 width: 30px
                 height: 30px
             +maxwidth($mobail)
@@ -129,10 +127,12 @@
         display: flex !important
         align-items: center
         flex-direction: column
-        +maxwidth($tablet)
+        +maxwidth($desktop)
             position: absolute
             top: 10%
-            right: 10%
+            right: 20%
+        +maxwidth(1140px)
+            right: 0
         +maxwidth($mobail)
             width: 15%
             right: 5%
@@ -147,7 +147,7 @@
             color: rgba(31, 31, 31, 0.6)
             text-align: center
             transition: .3s ease
-            +maxwidth($tablet)
+            +maxwidth($desktop)
                 font-size: 50px
             +maxwidth(650px)
                 width: 45px

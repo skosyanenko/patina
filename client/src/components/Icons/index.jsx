@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
+import Auth from 'services/Authorization';
 
 class Icons extends Component {
     state = {
@@ -20,11 +21,15 @@ class Icons extends Component {
     };
 
     addLike = () => {
-        const like = this.state.likes;
+        if ( Auth.token && Auth.token.length > 0) {
+            const like = this.state.likes;
             this.setState(prevState => ({
                 isLiked: !prevState.isLiked,
                 likes: like + 1
             }))
+        } else {
+            this.props.toggleModal();
+        }
     };
 
     render() {

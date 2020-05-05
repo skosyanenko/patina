@@ -40,6 +40,7 @@ class News extends Component {
 
     render() {
         const { articles } = this.state;
+        const { toggleModal } = this.props;
 
         return (
             <div className="main-news news">
@@ -52,6 +53,7 @@ class News extends Component {
                             item={item}
                             textLength={counterLetters(item.description)}
                             date={datePublish}
+                            toggleModal={toggleModal}
                         />
                     )
                 })}

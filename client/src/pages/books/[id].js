@@ -43,11 +43,12 @@ class BooksDetail extends Component {
         return letters.find(item => item.letter === letter).id;
     };
 
-    toggleModal = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
+    toggleFilms = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
 
     render() {
         const { modalIsOpen, currentBook } = this.state;
         const { currentBook: {authors, bookImage, categories, title, fullDescription, readLink, reviews, films} } = this.state;
+        const { toggleModal } = this.props;
 
         return (
             <div className={`${modalIsOpen && 'blur'}`}
@@ -77,7 +78,10 @@ class BooksDetail extends Component {
                                     <div className="cover__wrapper-date">{returnDate(authors)}</div>
                                 </div>
                         </div>
-                        <BookInform categories={categories}/>
+                        <BookInform
+                            categories={categories}
+                            toggleModal={toggleModal}
+                        />
                     </div>
                     <div className="description">
                         <h1 className="description__title" itemProp="name">{title}</h1>
@@ -102,7 +106,7 @@ class BooksDetail extends Component {
                 <CommentBlock bookId={currentBook.id}/>
                 <ModalFilms
                     isOpen={modalIsOpen}
-                    toggleModal={this.toggleModal}
+                    toggleModal={this.toggleFilms}
                     films={films}
                 />
             </div>
