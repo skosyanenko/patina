@@ -14,11 +14,17 @@ yarn dev
 # запуск сидеров
 npx knex seed:run
 
+# push heroku
+git subtree push --prefix strapi/ heroku master
+
+# ssh
+heroku ps:exec -a patina-96305
+
 # создание сидера
 npx knex seed:make seed_name
 
 # создание одного сидера
-npx knex seed: run --specific=filename.js
+npx knex seed:run --specific=filename.js
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
