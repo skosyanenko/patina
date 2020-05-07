@@ -98,7 +98,7 @@ class BooksDetail extends Component {
                                 </Link>
                             }
                             { films != null && films.length > 0 &&
-                                <div className="button button-green" onClick={this.toggleModal}>Экранизации</div>
+                                <div className="button button-green" onClick={this.toggleFilms}>Экранизации</div>
                             }
                         </div>
                     </div>
