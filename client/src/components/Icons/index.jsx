@@ -10,13 +10,21 @@ class Icons extends Component {
         date: ''
     };
 
-    static getDerivedStateFromProps(nextProps) {
-        if (nextProps.date || nextProps.likes || nextProps.views) {
-            return {
-                likes: nextProps.likes,
-                views: nextProps.views,
-                date: nextProps.date
-            }
+    componentDidMount() {
+        this.setState({
+            likes: this.props.likes || 0,
+            views: this.props.views || 0,
+            date: this.props.date || ''
+        })
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps !== this.props) {
+            this.setState({
+                likes: this.props.likes || 0,
+                views: this.props.views || 0,
+                date: this.props.date || ''
+            })
         }
     };
 

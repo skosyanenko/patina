@@ -25,21 +25,17 @@
         flex-direction: column
         +maxwidth($tablet)
             margin-top: 35px
+            justify-self: center
         +maxwidth($mobail)
             margin-top: 20px
-            justify-self: center
 
         &:nth-child(3n-1)
             justify-self: center
             +maxwidth($tablet)
-                justify-self: right
-            +maxwidth($mobail)
                 justify-self: center
         &:nth-child(3n)
             justify-self: right
             +maxwidth($tablet)
-                justify-self: left
-            +maxwidth($mobail)
                 justify-self: center
 
         &-image
@@ -60,9 +56,6 @@
             display: flex
             align-items: center
             justify-content: space-between
-            +maxwidth($mobail)
-                margin-top: 10px
-                padding-top: 10px
 
             .like-review
                 margin-top: 0
@@ -81,7 +74,7 @@
             margin-top: 15px
             padding-top: 15px
             border-top: 1px solid $darkgray
-            @include style-text(16px, 2px, $openSans, $lightgray, 120%, 300, false)
+            @include style-text(16px, 1px, $openSans, $lightgray, 120%, 300, false)
             +maxwidth($mobail)
                 margin-top: 10px
                 padding-top: 10px

@@ -5,12 +5,12 @@ import Header from 'components/Layouts/Header';
 import Menu from 'components/Layouts/Menu';
 import RightMenu from 'components/Layouts/RightMenu';
 import EntranceModal from 'components/EntranceModal';
+import UnknownModal from 'components/UnknownModal';
 import Footer from 'components/Layouts/Footer';
 import BtnScrollToTop from 'components/BtnScrollToTop';
 import Auth from 'services/Authorization';
 import '../../public/static/sass/project.sass';
 import 'react-markdown-editor-lite/lib/index.css';
-import UnknownModal from "../components/UnknownModal";
 
 const MyApp = ({ Component, pageProps, router }) => {
     const initialState = {

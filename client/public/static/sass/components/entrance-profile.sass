@@ -7,23 +7,24 @@
     +maxwidth($tablet)
         width: 135px
 
+    &__column, &__wrapper
+        margin-left: auto
+        margin-right: auto
+        +maxwidth(1640px)
+            margin-right: 30px
+        +maxwidth($mobail)
+            margin-right: 20px
+
     &__column
-        margin:  auto
         display: flex
 
-        &-wrap
-            display: flex
-            flex-direction: column
-
-            .follow-button
-                margin-top: 10px
-                +maxwidth($mobail)
-                    margin-top: 5px
-                &:first-child
-                    margin-top: 0
+        &-add
+            width: 25px
+            height: 24px
+            background: url('/icons/sprite.svg#adduser-green') no-repeat center / contain
+            cursor: pointer
 
     &__wrapper
-        margin: 0 auto
         display: flex
 
         &-wrap,
@@ -37,9 +38,7 @@
         &-profile
             width: 25px
             height: 24px
-            +maxwidth($mobail)
-                width: 20px
-                height: 19px
+            cursor: pointer
 
         &-bell
             margin-right: 5px
@@ -57,8 +56,5 @@
             background: url('/icons/sprite.svg#exit-green') no-repeat center / contain
             transform: scale(-1, 1)
             cursor: pointer
-            +maxwidth($mobail)
-                width: 15px
-                height: 19px
 
 

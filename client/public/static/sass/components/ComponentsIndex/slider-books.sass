@@ -39,12 +39,12 @@
             margin-top: 10px
 
         &-title
-            @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
+            @include style-text(46px, 6px, $vogue, $black, 100%, 500, true)
             +maxwidth($desktop)
                 text-align: center
 
         &-description
-            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+            @include style-text(20px, 2px, $openSans, $darkgray, 125%, 300, false)
             text-align: justify
             +maxwidth($desktop)
                 margin-top: 20px
@@ -65,7 +65,7 @@
             order: 1
 
     &__img
-        width: 50%
+        width: 40%
         margin: auto 0
         +maxwidth($desktop)
             width: 320px
@@ -130,17 +130,14 @@
         +maxwidth($desktop)
             position: absolute
             top: 10%
-            right: 20%
-        +maxwidth(1140px)
-            right: 0
+            right: 10%
         +maxwidth($mobail)
             width: 15%
-            right: 5%
+            top: 6%
         +maxwidth($sm-mobail)
             height: 265px !important
-            top: 6%
         +maxwidth(320px)
-            top: 3%
+            top: 0
 
         &-dot
             font: normal 60px/100% $vogue

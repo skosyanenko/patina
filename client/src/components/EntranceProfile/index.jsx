@@ -50,16 +50,12 @@ class EntranceProfile extends Component {
                     </div>
                     :
                     <div className="entrance__column">
-                        <div className="entrance__column-wrap">
-                            <Link href={'/registration'}>
-                                <div className="button follow-button button-white">Создать профиль</div>
-                            </Link>
-                            <div className="button follow-button button-white"
-                                 onClick={() => toggleModal(true)}
-                            >
-                                Войти в профиль
-                            </div>
-                        </div>
+                        <div className="entrance__wrapper-profile"
+                             onClick={() => toggleModal(true)}
+                        />
+                        <Link href={'/registration'}>
+                            <div className="entrance__column-add"/>
+                        </Link>
                     </div>
                 }
             </div>

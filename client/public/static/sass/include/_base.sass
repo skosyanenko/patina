@@ -182,6 +182,7 @@ p
         flex-direction: column
         +maxwidth($tablet)
             padding: 30px
+            margin-top: 70px
         +maxwidth($mobail)
             margin-top: 60px
             padding: 20px
@@ -223,6 +224,10 @@ p
 
         .quest__wrapper
             width: 260px
+            +maxwidth($tablet)
+                width: 50%
+            +maxwidth($mobail)
+                width: 100%
 
         .pagination
             width: 100%
@@ -291,16 +296,6 @@ p
         display: none
         +maxwidth($tablet)
             display: flex
-
-/* Стили для контейнера с иконками */
-
-.icons-wrap
-    display: flex
-    justify-content: flex-end
-    align-items: center
-
-    &__socials
-        margin-right: 80px
 
 /* Стили для анимации перехода между страничками */
 

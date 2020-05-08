@@ -10,28 +10,16 @@
 
     &__vk
         width: 30px
-        height: 30px
-        margin-top: -5px
+        height: 25px
         background: url('/icons/sprite.svg#vkontakte-green') no-repeat center / contain
+        background-size: 30px 35px
         cursor: pointer
-        +maxwidth($tablet)
-            width: 26px
-            height: 26px
-        +maxwidth($mobail)
-            width: 22px
-            height: 22px
 
     &__tg
         width: 25px
         height: 25px
         background: url('/icons/sprite.svg#telegram-green') no-repeat center / contain
         cursor: pointer
-        +maxwidth($tablet)
-            width: 22px
-            height: 22px
-        +maxwidth($mobail)
-            width: 19px
-            height: 19px
 
     &__bookmark
         width: 24px
@@ -40,12 +28,7 @@
         cursor: pointer
         position: relative
         transition: all 1s ease
-        +maxwidth($tablet)
-            width: 19px
-            height: 19px
-        +maxwidth($mobail)
-            width: 16px
-            height: 16px
+
         &:hover
             &:before
                 width: 101px

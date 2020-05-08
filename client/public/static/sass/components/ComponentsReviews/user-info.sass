@@ -3,7 +3,10 @@
     width: fit-content
     display: flex
     flex-direction: column
-    +maxwidth($mobail)
+    margin-left: auto
+    +maxwidth($desktop)
+        margin: 0 auto
+    +maxwidth($tablet)
         position: relative
 
     &__wrapper
@@ -15,6 +18,7 @@
         background: url('/icons/sprite.svg#telegram-gray') no-repeat center / contain
     .socials__vk
         background: url('/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
+        background-size: 30px 35px
 
     .socials__bookmark
         &:hover

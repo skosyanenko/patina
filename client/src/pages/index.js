@@ -82,7 +82,7 @@ export async function getServerSideProps() {
     const articlesView_3 = await axios.get(`${API_URL}/articles?viewType_in=3&_limit=2`)
       .then(res => res.data)
       .catch(err => console.log(err));
-    const articlesView_4 = await axios.get(`${API_URL}/articles?viewType_in=4&_limit=3`)
+    const articlesView_4 = await axios.get(`${API_URL}/articles?viewType_in=4&_limit=4`)
       .then(res => res.data)
       .catch(err => console.log(err));
 

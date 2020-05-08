@@ -10,11 +10,7 @@
         display: flex
         position: relative
         +maxwidth($desktop)
-            margin: 40px auto 0
-        +maxwidth($tablet)
-            margin: 30px auto 0
-        +maxwidth($mobail)
-            margin: 20px auto 0
+            margin: auto
 
         &-img
             max-width: 530px
@@ -113,38 +109,38 @@
             margin-top: 50px
             position: relative
             white-space: pre-line
-            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+            @include style-text(20px, 2px, $openSans, $darkgray, 125%, 300, false)
             text-align: justify
 
         &-text
+            +maxwidth($desktop)
+                margin-bottom: 40px
             +maxwidth($tablet)
                 margin-top: 40px
             +maxwidth($mobail)
-                margin-top: 30px
+                margin: 30px 0
 
         &-horizontal
             +maxwidth($desktop)
                 margin-top: 0
+                margin-bottom: 40px
             +maxwidth($tablet)
                 margin-top: 40px
             +maxwidth($mobail)
-                margin-top: 30px
+                margin: 30px 0
 
         &-nav
             margin-top: 50px
             display: flex
             align-items: flex-end
             justify-content: space-between
-            +maxwidth(1330px)
+            +maxwidth($desktop)
                 width: 50%
-                margin-left:  auto
+                margin:  0 auto
             +maxwidth($tablet)
                 width: 70%
-                margin-top: 40px
-                margin-right: auto
             +maxwidth($mobail)
                 width: 100%
-                margin-top: 30px
 
         &-wrap
             display: flex
@@ -152,6 +148,8 @@
             align-items: center
 
             .time-to-read
-                margin-bottom: 15px
+                margin-bottom: 20px
+
+
 
 

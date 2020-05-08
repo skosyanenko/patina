@@ -17,9 +17,9 @@ const Menu = ({ router, toggle, toggleMenu }) => {
 		const menuIndex = 'menu--index ' + menuPost;
 
 		setState({
-			menu: router.pathname === '/' ? menuIndex : menuPost
+			menu: router.pathname === '/' ? menuIndex : menuPost,
 		});
-	}, [router.pathname, toggle]);
+	}, [router.pathname, toggle ]);
 
 	return (
 		<>
@@ -32,7 +32,7 @@ const Menu = ({ router, toggle, toggleMenu }) => {
 				</div>
 			</nav>
 			<Transition in={toggle} timeout={50}>
-				{state => <div className={'menu__overlay ' + state}/>}
+				{state => <div className={'menu__overlay ' + state} onClick={toggleMenu}/>}
 			</Transition>
 		</>
 	);

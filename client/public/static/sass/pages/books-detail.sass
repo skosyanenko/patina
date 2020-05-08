@@ -91,6 +91,7 @@
             max-width: fit-content
             margin-bottom: 40px
             text-transform: uppercase
+            text-shadow: 1px 1px 2px $white
             +maxwidth($mobail)
                 margin-bottom: 30px
             +maxwidth($sm-mobail)
@@ -99,6 +100,7 @@
         &-date
             @include style-text(26px, 3px, $waverly, $black, 100%, 100, true)
             width: 120px
+            text-shadow: 1px 1px 2px $white
 
 .description
     width: 50%
@@ -134,7 +136,7 @@
     &__text
         min-height: 420px
         margin-bottom: 40px
-        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        @include style-text(20px, 2px, $openSans, $darkgray, 125%, 300, false)
         text-align: justify
         +maxwidth($desktop)
             min-height: fit-content
@@ -163,7 +165,7 @@
         .button
             +maxwidth(1280px)
                 margin-right: 50px
-            +maxwidth($mobail)
+            +maxwidth($sm-mobail)
                 margin-right: 0
             &:last-child
                 +maxwidth($sm-mobail)

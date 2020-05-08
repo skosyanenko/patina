@@ -30,14 +30,11 @@
     padding-top: 20px
     +maxwidth($tablet)
         width: 100%
-        margin-bottom: 15px
-        padding-top: 15px
-    +maxwidth($sm-mobail)
-        margin-bottom: 10px
-        padding-top: 10px
+        margin-bottom: 25px
+        padding-top: 25px
 
     &__title
-        @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
+        @include style-text(25px, 2px, $waverlyExtra, $black, 115%, 800, false)
         overflow: hidden
         text-overflow: ellipsis
         display: -webkit-box
@@ -45,17 +42,14 @@
         -webkit-box-orient: vertical
 
     &__text
-        @include style-text(16px, 2px, $openSans, $lightgray, 120%, 300, false)
+        @include style-text(16px, 0, $openSans, $lightgray, 125%, 300, false)
         text-align: justify
         text-indent: 35px
-
-        p
-            &:first-child
-                overflow: hidden
-                text-overflow: ellipsis
-                display: -webkit-box
-                -webkit-line-clamp: 5
-                -webkit-box-orient: vertical
+        overflow: hidden
+        text-overflow: ellipsis
+        display: -webkit-box
+        -webkit-line-clamp: 5
+        -webkit-box-orient: vertical
 
     &__img
         width: 100%
@@ -89,6 +83,10 @@
 .news-horizontal
     flex-direction: column
 
+    &__title
+        +maxwidth($sm-mobail)
+            margin-bottom: 5px
+
     &__wrapper
         +maxwidth($sm-mobail)
             flex-direction: column
@@ -113,18 +111,20 @@
             display: flex
             flex-direction: column
             align-items: center
-            margin-bottom: 15px
+            margin-top: 15px
             +maxwidth($mobail)
-                margin-bottom: 0
+                margin-top: 0
             +maxwidth($sm-mobail)
                 flex-direction: column
                 align-items: center
 
-                .time-to-read
-                    order: 1
-                    margin-bottom: 15px
-                .icons
-                    order: 2
+            .time-to-read
+                margin-bottom: 15px
+
+            .button
+                +maxwidth($sm-mobail)
+                    max-width: 115px
+
 
     &__link
         width: 52%
@@ -133,7 +133,10 @@
 
         &-img
             width: 100%
+            height: 100%
             position: relative
+            +maxwidth($desktop)
+                min-height: 135px
 
             &:after
                 width: 1px
@@ -144,11 +147,14 @@
                 background: $green
                 +maxwidth($desktop)
                     left: 115%
+                +maxwidth($tablet)
+                    left: 125%
                 +maxwidth($sm-mobail)
                     display: none
 
             img
                 width: 100%
+                height: 100%
 
     &__description
         max-width: 100%
@@ -158,22 +164,20 @@
         &-wrap
             margin-top: 10px
             border-top: none
+            -webkit-line-clamp: 7
             +maxwidth($tablet)
                 margin-top: 15px
                 padding-top: 15px
+                -webkit-line-clamp: 5
             +maxwidth($mobail)
                 margin-top: 10px
                 padding-top: 10px
-            p
-                &:first-child
-                    -webkit-line-clamp: 7
-                    +maxwidth($tablet)
-                        -webkit-line-clamp: 5
 
     &__text
         margin-top: 15px
         +maxwidth($mobail)
             margin-top: 10px
+            font-size: 14px
 
 /* Стили для компонента NewsVertical */
 
@@ -204,7 +208,7 @@
 
         &-wrap
             +maxwidth($sm-mobail)
-                margin-bottom: 15px
+                margin-bottom: 30px
 
         &-wrapper
             display: flex
@@ -212,7 +216,13 @@
             align-items: center
 
             .time-to-read
-                margin-bottom: 15px
+                margin-bottom: 10px
+                +maxwidth($sm-mobail)
+                    margin-bottom: 15px
+
+            .button
+                +maxwidth($sm-mobail)
+                    max-width: 115px
 
         &-nav
             display: flex
@@ -225,18 +235,18 @@
         +maxwidth($tablet)
             margin-bottom: 15px
         +maxwidth($sm-mobail)
-            margin-bottom: 10px
+            margin-bottom: 5px
 
     &__text
-        P
-            &:first-child
-                padding-top: 20px
-                border-top: 1px solid $green
-                +maxwidth($tablet)
-                    padding-top: 15px
-                +maxwidth($sm-mobail)
-                    padding-top: 10px
-                    border-top: none
+        padding-top: 20px
+        border-top: 1px solid $green
+        +maxwidth($tablet)
+            padding-top: 15px
+        +maxwidth($mobail)
+            font-size: 14px
+        +maxwidth($sm-mobail)
+            padding-top: 10px
+            border-top: none
 
 /* Стили для компонента NewsBlock */
 
@@ -261,9 +271,7 @@
     &__text
         margin-bottom: 35px
         +maxwidth($tablet)
-            margin-bottom: 25px
-        +maxwidth($mobail)
-            margin-bottom: 20px
+            margin-bottom: 30px
 
     &__nav
         width: 100%
@@ -275,21 +283,15 @@
 
         &-wrap
             display: flex
+            flex-direction: column
             align-items: center
-            +maxwidth($sm-mobail)
-                flex-direction: column
-                align-items: center
 
             .time-to-read
-                margin-left: 15px
-                +maxwidth($sm-mobail)
-                    margin-left: 0
-                    margin-bottom: 15px
-                    order: 1
+                margin-bottom: 15px
 
-            .icons
+            .button
                 +maxwidth($sm-mobail)
-                    order: 2
+                    max-width: 115px
 
 /* Стили для компонента NewsElem */
 
@@ -297,11 +299,7 @@
     margin-bottom: 0
     padding-bottom: 25px
     +maxwidth($tablet)
-        margin-top: 20px
-        padding-bottom: 20px
-    +maxwidth($mobail)
-        margin-top: 15px
-        padding-bottom: 15px
+        padding-bottom: 25px
 
     &__about
         margin-right: 25px
@@ -315,7 +313,7 @@
         +maxwidth($tablet)
             margin-top: 15px
         +maxwidth($mobail)
-            margin-top: 10px
+            margin-top: 15px
 
     &__img
         min-width: 250px
@@ -333,9 +331,7 @@
     border-bottom-style: double
     border-color: $lightgray
     +maxwidth($tablet)
-        padding: 20px 0
-    +maxwidth($mobail)
-        padding: 15px 0
+        padding: 25px 0
 
     &:first-child
         padding-top: 0
@@ -344,7 +340,12 @@
         @include style-text(21px, 2px, $waverlyExtra, $black, 100%, 800, false)
         max-width: 400px
         +maxwidth($sm-mobail)
-            max-width: 150px
+            max-width: fit-content
+
+    .button
+        +maxwidth($sm-mobail)
+            max-width: 115px
+            min-width: 115px
 
 .news-elem,
 .news-link
@@ -352,35 +353,6 @@
     justify-content: space-between
     border-bottom-style: double
     border-color: $lightgray
-
-
-.news-horizontal__text,
-.news-vertical__text,
-.news-block__text,
-.news-elem__text,
-.news-link__text,
-.news-horizontal__description
-    p
-        &:first-child
-            margin-bottom: 0
-        &:nth-child(2)
-            display: none
-        &:nth-child(3)
-            display: none
-        &:nth-child(4)
-            display: none
-        &:nth-child(5)
-            display: none
-        &:nth-child(6)
-            display: none
-        &:nth-child(7)
-            display: none
-        &:nth-child(8)
-            display: none
-        &:nth-child(9)
-            display: none
-        &:nth-child(10)
-            display: none
 
 
 

@@ -5,7 +5,7 @@
     margin-left: auto
     display: flex
     flex-direction: column
-    @include style-text(17px, 2px, $waverly, $darkgray, 100%, 300, false)
+    @include style-text(18px, 2px, $waverly, $darkgray, 100%, 300, false)
     +maxwidth($tablet)
         max-width: 100%
         margin-right: auto
@@ -22,16 +22,18 @@
         justify-content: space-between
         +maxwidth($tablet)
             margin-top: 20px
-            justify-content: initial
         +maxwidth($mobail)
             margin-top: 10px
 
         &-type
             cursor: pointer
+            font-size: 16px
             +maxwidth($tablet)
-                margin: 0 70px 10px 0
+                margin: 0 70px 20px 0
+            +maxwidth($sm-mobail)
+                margin-right: 0
             &:hover
                 color: $green
             &.active
-                @include style-text(17px, 2px, $waverly, $green, 100%, bold, false)
+                @include style-text(16px, 0, $waverly, $green, 100%, bold, false)
 

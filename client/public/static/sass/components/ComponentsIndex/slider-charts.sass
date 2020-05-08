@@ -42,16 +42,12 @@
             margin: 20px auto 0
 
         &-title
-            @include style-text(46px, 6px, $vogue, $darkgray, 100%, 500, true)
+            @include style-text(46px, 6px, $vogue, $black, 100%, 500, true)
             +maxwidth($desktop)
                 margin-bottom: 20px
-            +maxwidth($tablet)
-                margin-bottom: 15px
-            +maxwidth($mobail)
-                margin-bottom: 10px
 
         &-description
-            @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+            @include style-text(20px, 2px, $openSans, $darkgray, 125%, 300, false)
             width: 100%
             text-align: justify
             +maxwidth($desktop)

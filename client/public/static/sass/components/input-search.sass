@@ -4,9 +4,7 @@
     display: flex
     position: relative
     +maxwidth($tablet)
-        margin: 15px 0
-    +maxwidth($mobail)
-        margin: 10px 0
+        margin: 45px 0 30px 0
 
     &__wrapper
         width: calc(50% - 113px)
@@ -89,6 +87,8 @@
             top: 0
             right: 0
             position: relative
+        +maxwidth($mobail)
+            width: 100%
 
         .quest__wrapper
             width: 100%

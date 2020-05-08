@@ -11,6 +11,10 @@
         +maxwidth($mobail)
             flex-direction: column
 
+        .backwards
+            +maxwidth($mobail)
+                margin-bottom: 20px
+
         &-title
             @include style-text(50px, 4px, $vogue, $black, 100%, 500, true)
             +maxwidth($mobail)
@@ -45,11 +49,9 @@
         margin-top: 30px
         justify-self: center
     +maxwidth($mobail)
-        max-width: 300px
+        max-width: 100%
         margin-top: 50px
         justify-self: center
-    +maxwidth($sm-mobail)
-        max-width: 255px
 
     &:nth-child(3n-1)
         grid-column-start: 3
@@ -75,13 +77,13 @@
 
     &__wrapper
         width: 100%
+        position: relative
         display: flex
         flex-direction: column
 
     &__number
         width: 95px
         height: 95px
-        position: relative
         display: flex
         align-items: center
         justify-content: center
@@ -112,6 +114,7 @@
         padding: 20px 69px
         position: absolute
         background-color: $lightpink
+        z-index: -1
         +maxwidth(1700px)
             max-width: 300px
             min-height: 85px
@@ -127,10 +130,10 @@
             margin: -20px 0 0 35px
             padding: 10px 45px
         +maxwidth($sm-mobail)
-            max-width: 220px
+            max-width: calc(100% - 35px)
 
         a
-            @include style-text(25px, 2px, $waverlyExtra, $black, 100%, 800, false)
+            @include style-text(25px, 2px, $waverlyExtra, $black, 125%, 800, false)
             overflow: hidden
             text-overflow: ellipsis
             display: -webkit-box
@@ -139,7 +142,7 @@
 
     &__author
         margin: 20px 0 15px 0
-        @include style-text(25px, 3px, $waverly, $black, 100%, 500, false)
+        @include style-text(25px, 3px, $waverly, $black, 125%, 500, false)
         +maxwidth($tablet)
             padding: 15px 0 10px 0
         +maxwidth($mobail)
@@ -148,7 +151,7 @@
     &__description
         max-width: calc(100% - 30px)
         text-align: justify
-        @include style-text(20px, 2px, $openSans, $darkgray, 120%, 300, false)
+        @include style-text(20px, 2px, $openSans, $darkgray, 125%, 300, false)
         +maxwidth($tablet)
             max-width: calc(100% - 50px)
         +maxwidth($mobail)
@@ -157,3 +160,11 @@
 
 .icons-wrap
     margin-top: 25px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+    &__socials
+        margin-right: 50px
+        +maxwidth($sm-mobail)
+            margin-right: 0

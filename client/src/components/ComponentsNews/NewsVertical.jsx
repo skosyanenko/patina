@@ -22,13 +22,13 @@ const NewsVertical = ({ item: {id, cover, title, description, likes, views}, tex
                 />
             </div>
             <div className="news-vertical__description-nav">
+                <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
                 <div className="news-vertical__description-wrapper">
                     <TimeToRead textLength={textLength}/>
-                    <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
+                    <Link href={'/news/[id]'} as={`/news/${id}`}>
+                        <a className="button button-white">Подробнее</a>
+                    </Link>
                 </div>
-                <Link href={'/news/[id]'} as={`/news/${id}`}>
-                    <a className="button button-white">Подробнее</a>
-                </Link>
             </div>
         </div>
     </div>

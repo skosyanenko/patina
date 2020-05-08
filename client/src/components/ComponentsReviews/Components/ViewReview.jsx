@@ -4,11 +4,11 @@ import { counterLetters, returnDatePublish } from 'config/config';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const ViewReview = ({ item: {id, book, like, description, created_at, title, userId}, toggleModal }) => (
+const ViewReview = ({ item: {id, book, like, description, created_at, title, userId, book:{bookImage}}, toggleModal }) => (
   <div className="reviews__result">
       <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
           <a className="reviews__result-image">
-              {book && <img src={`${process.env.API_URL}${book.bookImage.url}`} alt=""/>}
+              {bookImage && <img src={`${process.env.API_URL}${bookImage.url}`} alt=""/>}
           </a>
       </Link>
       <div className="reviews__result-wrap">
@@ -18,7 +18,7 @@ const ViewReview = ({ item: {id, book, like, description, created_at, title, use
           </Link>
       </div>
       <div className="reviews__result-wrap">
-          {/*<TimeToRead textLength={counterLetters(description)}/>*/}
+          <TimeToRead textLength={counterLetters(description)}/>
           <span className="reviews__result-date">{returnDatePublish(created_at)}</span>
       </div>
       <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>

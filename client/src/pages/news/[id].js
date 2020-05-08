@@ -48,14 +48,14 @@ class NewsDetail extends Component {
                             />
 
                             <div className="article__wrapper-nav">
+                                <Icons likes={likes}
+                                       date={returnDatePublish(created_at)}
+                                       views={views}
+                                />
                                 <div className="article__wrapper-wrap">
                                     {description && <TimeToRead textLength={counterLetters(description)}/>}
-                                    <Icons likes={likes}
-                                           date={returnDatePublish(created_at)}
-                                           views={views}
-                                    />
+                                    <Socials/>
                                 </div>
-                                <Socials/>
                             </div>
                         </div>
                     </div>

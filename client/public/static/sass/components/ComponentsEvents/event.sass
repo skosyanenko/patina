@@ -7,7 +7,6 @@
         margin-top: 40px
 
     &__date
-        height: 100%
         display: flex
         position: relative
 
@@ -147,11 +146,11 @@
             margin-left: 30px
 
         &-day
-            @include style-text-events(18px, 2px, $waverlyExtra, $darkgray, 80%, 50, false, false)
+            @include style-text-events(18px, 2px, $waverlyExtra, $darkgray, 100%, 50, false, false)
 
         &-time
             margin-top: 10px
-            @include style-text-events(14px, 0, $waverly, $darkgray, 80%, 100, false, false)
+            @include style-text-events(14px, 0, $waverly, $darkgray, 100%, 100, false, false)
             +maxwidth($tablet)
                 margin-top: 7px
 
@@ -165,10 +164,10 @@
             margin-top: 10px
 
         &-title
-            @include style-text-events(18px, 2px, $waverlyExtra, $black, 80%, 500, false, false)
+            @include style-text-events(18px, 2px, $waverlyExtra, $black, 100%, 500, false, false)
 
         &-text
             margin-top: 7px
-            @include style-text-events(14px, 0, $waverly, $lightgray, 80%, 100, false, false)
+            @include style-text-events(14px, 0, $waverly, $lightgray, 100%, 100, false, false)
             +maxwidth($tablet)
                 margin-top: 5px
