@@ -5,6 +5,7 @@ import Typed from 'react-typed';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import Loader from 'components/Loader';
+import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 class ChartsList extends Component {
@@ -39,6 +40,13 @@ class ChartsList extends Component {
 
         return(
             <>
+                <MyHead
+                    title={'Топы - Patina'}
+                    description={'На Patina вы найдете рейтинги лучших книг, отзывы, рецензии, рекомендации, популярные авторы и многое другое – заходи!'}
+                    link={'/charts'}
+                    robots={'all'}
+                />
+                <>
                 <TitleOfPage
                     title={"Топы"}
                     subtitle={"подборки книг на различные темы"}
@@ -97,6 +105,7 @@ class ChartsList extends Component {
                         <Loader/>
                     }
                 </div>
+            </>
             </>
         );
     }

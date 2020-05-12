@@ -4,6 +4,7 @@ import paginationWrap from 'components/withPagination/paginationWrap';
 import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
 import Loader from 'components/Loader';
+import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 class ReviewsList extends Component {
@@ -47,31 +48,39 @@ class ReviewsList extends Component {
 
         return (
             <>
-                <TitleOfPage
-                    title={"Критика"}
-                    subtitle={"рецензи на книги различных авторов и жанров"}
-                    classNamePrefix="page__wrap-subtitle--reviews"
+                <MyHead
+                    title={'Критика - Patina'}
+                    description={'Рецензи на книги различных авторов и жанров'}
+                    link={'/reviews'}
+                    robots={'all'}
                 />
-                <div className="container__reviews">
-                    <InputSearch
-                        classNamePrefix="quest--position"
-                        search={this.search}
+                <>
+                    <TitleOfPage
+                        title={"Критика"}
+                        subtitle={"рецензи на книги различных авторов и жанров"}
+                        classNamePrefix="page__wrap-subtitle--reviews"
                     />
-                    {!loading
-                        ?
-                        <>
-                            {resultTitle.length > 0 && <div className="reviews__title">{resultTitle}</div>}
-                            <div className="reviews">
-                                { items && items.map((item, key) => (
-                                    <ViewReview item={item} key={key} toggleModal={toggleModal}/>
-                                ))}
-                            </div>
-                            {items.length > 0 ? this.props.pagination : ''}
-                        </>
-                        :
-                        <Loader/>
-                    }
-                </div>
+                    <div className="container__reviews">
+                        <InputSearch
+                            classNamePrefix="quest--position"
+                            search={this.search}
+                        />
+                        {!loading
+                            ?
+                            <>
+                                {resultTitle.length > 0 && <div className="reviews__title">{resultTitle}</div>}
+                                <div className="reviews">
+                                    { items && items.map((item, key) => (
+                                        <ViewReview item={item} key={key} toggleModal={toggleModal}/>
+                                    ))}
+                                </div>
+                                {items.length > 0 ? this.props.pagination : ''}
+                            </>
+                            :
+                            <Loader/>
+                        }
+                    </div>
+                </>
             </>
         )
     }

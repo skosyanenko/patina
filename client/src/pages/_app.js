@@ -17,24 +17,35 @@ const MyApp = ({ Component, pageProps, router }) => {
         modalIsOpen: false,
         modalUnknownIsOpen: false,
         isAnimate: false,
+        toggle: true,
         header: '',
-        toggle: true
+        menu: ''
     };
 
     const [state, setState] = useState(initialState);
 
-    const { modalIsOpen, modalUnknownIsOpen, isAnimate, toggle, header } = state;
+    const { modalIsOpen, modalUnknownIsOpen, isAnimate, toggle, header, menu } = state;
 
     useEffect(() => {
 
         const headerInvisible = window.scrollY ? 'is-hidden' : 'is-invisible';
+        const menuPost = toggle ? 'menu--open' : 'menu--close';
 
         setState({
             ...state,
             header: toggle  ? headerInvisible : '',
-            isAnimate: !isAnimate
+            isAnimate: !isAnimate,
+            menu: menuPost,
         });
     }, [router.pathname, toggle]);
+
+    useEffect(() => {
+        setState({
+            ...state,
+            menu:  'menu--close',
+            toggle: false
+        });
+    }, [router.pathname])
 
     const switchClasses = (path) => {
         switch(path) {
@@ -70,6 +81,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                 <Menu router={router}
                       toggle={toggle}
                       toggleMenu={toggleMenu}
+                      menu={menu}
                 />
 
                 <CSSTransition

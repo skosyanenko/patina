@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { returnAuthor } from 'config/config';
 import Rating from 'components/Rating';
 
-const ViewBook = ({ item }) => (
+const ViewBook = ({ item, toggleModal }) => (
     <div className="results"
         itemType="https://schema.org/Book"
         itemProp="book"
@@ -21,7 +21,10 @@ const ViewBook = ({ item }) => (
                 </a>
             </Link>
             <h3 className="results__wrapper-author" itemProp="author">{returnAuthor(item.authors)}</h3>
-            <Rating ratingTotal={item.ratingTotal}/>
+            <Rating
+                ratingTotal={item.ratingTotal}
+                toggleModal={toggleModal}
+            />
             <span className="results__wrapper-weight" itemProp="numberOfPages">
                 {item.weight} стр.
             </span>

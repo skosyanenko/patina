@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import TextFx from 'services/TextFx';
 import { effectForTitle, MONTHS } from 'config/config';
-import axios from 'axios';
 import Loader from 'components/Loader';
 import Event from 'components/ComponentsEvents/Event';
 import WeatherCard from 'components/ComponentsEvents/WeatherCard';
 import EventPicture from 'components/ComponentsEvents/EventPicture';
+import MyHead from 'components/MyHead';
+import axios from 'axios';
 
 class EventsList extends Component {
     state = {
@@ -98,26 +99,34 @@ class EventsList extends Component {
 
         return (
             <>
-                <div className="events-wrap">
-                    <span className="events-wrap__title" ref={node => this.title = node}>
-                        { month }
-                    </span>
-                    <span className="events-wrap__subtitle" ref={node => this.subtitle = node}>в Ростове-на-Дону</span>
-                </div>
-                <div className="container">
-                    {!loading
-                        ?
-                        <div className="events-wrapper">
-                            {serverData && serverData.map((field, key) => {
-                                const picture = this.showPictures().find(item => item.key === key);
-                                const Component = this.switchTypes(field.type);
-                                return <Component key={key} picture={picture && picture.name} {...field}/>;
-                            })}
-                        </div>
-                        :
-                        <Loader/>
-                    }
-                </div>
+                <MyHead
+                    title={'Эвенты - Patina'}
+                    description={'Мероприятия в Ростове-на-Дону, связанные с литературной тематикой'}
+                    link={'/events'}
+                    robots={'all'}
+                />
+                <>
+                    <div className="events-wrap">
+                        <span className="events-wrap__title" ref={node => this.title = node}>
+                            { month }
+                        </span>
+                        <span className="events-wrap__subtitle" ref={node => this.subtitle = node}>в Ростове-на-Дону</span>
+                    </div>
+                    <div className="container">
+                        {!loading
+                            ?
+                            <div className="events-wrapper">
+                                {serverData && serverData.map((field, key) => {
+                                    const picture = this.showPictures().find(item => item.key === key);
+                                    const Component = this.switchTypes(field.type);
+                                    return <Component key={key} picture={picture && picture.name} {...field}/>;
+                                })}
+                            </div>
+                            :
+                            <Loader/>
+                        }
+                    </div>
+                </>
             </>
         );
     }

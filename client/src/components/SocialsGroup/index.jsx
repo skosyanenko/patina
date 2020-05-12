@@ -4,11 +4,7 @@ import Auth from 'services/Authorization';
 
 class Socials extends Component {
     state = {
-        isActive: false,
-        url: '',
-        title: 'Patina',
-        description: 'Литературный журнал',
-        image: 'http://patina.ru'
+        isActive: false
     };
 
     saveBookmark = () => {
@@ -22,21 +18,22 @@ class Socials extends Component {
     };
 
     render() {
-        const { isActive, url, title, description, image } = this.state;
-
+        const { isActive } = this.state;
+        const { router } = this.props;
+        const { API } = process.env;
 
         return (
             <div className="socials" itemProp="sharedContent" itemScope itemType="http://schema.org/WebPage">
                 <a target="_blank"
                    rel="noopener noreferrer"
-                   href={`https://vk.com/share.php?url=${url}&title=${title}&description=${description}&image=${image}&noparse=true`}
+                   href={`https://vk.com/share.php?url=${API}${router.asPath}`}
                    itemProp="url"
                 >
                     <div className="socials__vk" itemProp="headline" content="vk.com"/>
                 </a>
                 <a target="_blank"
                    rel="noopener noreferrer"
-                   href={`https://t.me/share/url?url=${url}&title=${title}&description=${description}&image=${image}&noparse=true`}
+                   href={`https://t.me/share/url?url=${API}${router.asPath}`}
                    itemProp="url"
                 >
                     <div className="socials__tg" itemProp="headline" content="t.me"/>

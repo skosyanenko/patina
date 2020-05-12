@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { returnAuthor } from 'config/config';
 import Socials from 'components/SocialsGroup';
 import CommentBlock from 'components/CommentBlock';
+import MyHead from 'components/MyHead';
 
 class ChartsDetail extends Component {
     state = {
@@ -21,7 +22,14 @@ class ChartsDetail extends Component {
         const { toggleModal } = this.props;
 
         return(
-            <div itemType="http://schema.org/ItemList http://schema.org/CreativeWork" itemScope>
+            <>
+                <MyHead
+                    title={title}
+                    description={description}
+                    link={`/charts/${id}`}
+                    robots={'all'}
+                />
+                <div itemType="http://schema.org/ItemList http://schema.org/CreativeWork" itemScope>
                 <div className="depiction" >
                     <div className="depiction__wrapper">
                         <Link href={'/charts'} >
@@ -73,6 +81,7 @@ class ChartsDetail extends Component {
                 </div>
                 <CommentBlock topId={id}/>
             </div>
+            </>
         );
     }
 }

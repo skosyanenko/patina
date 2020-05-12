@@ -10,6 +10,7 @@ import NewsHorizontal from 'components/ComponentsNews/NewsHorizontal';
 import NewsBlock from 'components/ComponentsNews/NewsBlock';
 import NewsElem from 'components/ComponentsNews/NewsElem';
 import NewsLink from 'components/ComponentsNews/NewsLink';
+import MyHead from 'components/MyHead';
 
 class NewsList extends Component {
     state = {
@@ -52,32 +53,40 @@ class NewsList extends Component {
 
         return(
             <>
-                <TitleOfPage title={"Новости"}
-                    subtitle={"новости из мира литературы"}
+                <MyHead
+                    title={'Новости - Patina'}
+                    description={'Новости и статьи из мира литературы'}
+                    link={'/articles'}
+                    robots={'all'}
                 />
-                {!loading
-                    ?
-                    <>
-                        <div className="news" >
-                            { items && items.map((item, key) => {
-                                const Component = this.viewSwitcher(item.viewType);
-                                const datePublish = new Date(item.created_at).toLocaleDateString();
-                                return(
-                                    <Component
-                                        key={key}
-                                        item={item}
-                                        textLength={counterLetters(item.description)}
-                                        date={datePublish}
-                                        toggleModal={toggleModal}
-                                    />
-                                )
-                            })}
-                        </div>
-                        {this.props.pagination || ''}
-                    </>
-                    :
-                    <Loader/>
-                }
+                <>
+                    <TitleOfPage title={"Новости"}
+                        subtitle={"новости из мира литературы"}
+                    />
+                    {!loading
+                        ?
+                        <>
+                            <div className="news" >
+                                { items && items.map((item, key) => {
+                                    const Component = this.viewSwitcher(item.viewType);
+                                    const datePublish = new Date(item.created_at).toLocaleDateString();
+                                    return(
+                                        <Component
+                                            key={key}
+                                            item={item}
+                                            textLength={counterLetters(item.description)}
+                                            date={datePublish}
+                                            toggleModal={toggleModal}
+                                        />
+                                    )
+                                })}
+                            </div>
+                            {this.props.pagination || ''}
+                        </>
+                        :
+                        <Loader/>
+                    }
+                </>
             </>
         )
     }

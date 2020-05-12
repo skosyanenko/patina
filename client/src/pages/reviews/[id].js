@@ -3,6 +3,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import ViewHorizontal from 'components/ComponentsReviews/Views/ViewHorizontal';
 import ViewVertical from 'components/ComponentsReviews/Views/ViewVertical';
+import MyHead from 'components/MyHead';
 
 class ReviewsDetail extends Component {
     state = {
@@ -26,15 +27,23 @@ class ReviewsDetail extends Component {
 
         return(
             <>
-                <Link href={'/reviews'}>
-                    <a className="backwards"/>
-                </Link>
-                { currentReview.viewType === 0
-                    ?
-                    <ViewHorizontal {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
-                    :
-                    <ViewVertical {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
-                }
+                <MyHead
+                    title={currentReview.title}
+                    description={currentReview.description}
+                    link={`/reviews/${currentReview.id}`}
+                    robots={'all'}
+                />
+                <>
+                    <Link href={'/reviews'}>
+                        <a className="backwards"/>
+                    </Link>
+                    { currentReview.viewType === 0
+                        ?
+                        <ViewHorizontal {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
+                        :
+                        <ViewVertical {...currentReview} authors={serverDataAuthors} toggleModal={toggleModal}/>
+                    }
+                </>
             </>
         )
     }

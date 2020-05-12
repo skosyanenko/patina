@@ -1,17 +1,26 @@
 import React from 'react';
 import FormManager from 'components/Forms/FormManager';
 import fields from 'components/Forms/Fields/reviews.json'
+import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 const AddReviewForm = ({ serverBooks }) => (
-    <FormManager
-        fields={fields}
-        title={'Добавить рецензию'}
-        button={'Добавить'}
-        classPrefix={''}
-        api={'reviews'}
-        optionBooks={serverBooks}
-    />
+    <>
+        <MyHead
+            title={'Добавить рецензию - Patina'}
+            description={'Добавить рецензию или отзыв на любое литературное произведение - Patina'}
+            link={'/add_review'}
+            robots={'all'}
+        />
+        <FormManager
+            fields={fields}
+            title={'Добавить рецензию'}
+            button={'Добавить'}
+            classPrefix={''}
+            api={'reviews'}
+            optionBooks={serverBooks}
+        />
+    </>
 );
 
 export async function getServerSideProps() {

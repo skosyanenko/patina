@@ -7,6 +7,7 @@ import TitleOfPage from 'components/TitleOfPage';
 import InputSearch from 'components/InputSearch';
 import Sorting from 'components/Sorting';
 import Loader from 'components/Loader';
+import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 class BooksList extends Component {
@@ -133,69 +134,77 @@ class BooksList extends Component {
 
         return (
             <>
-                <div className="books-title">
-                    <TitleOfPage title={"Книги"} subtitle={"книжная полка"}/>
-                    <Sorting updateParentState={this.updateParentState}/>
-                </div>
-
-                <div className='container'>
-                    <div className="container__container-book">
-                        <InputSearch
-                            search={this.search}
-                            activeLetter={activeLetter}
-                            sorting={sorting}
-                        />
-
+                <MyHead
+                    title={'Книги - Patina'}
+                    description={'На Patina вы найдете рейтинги лучших книг, отзывы, рецензии, рекомендации, популярные авторы и многое другое – заходи!'}
+                    link={'/books'}
+                    robots={'all'}
+                />
+                <>
+                    <div className="books-title">
+                        <TitleOfPage title={"Книги"} subtitle={"книжная полка"}/>
                         <Sorting updateParentState={this.updateParentState}/>
-
-                        <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`}>
-                            { alphabet && alphabet.map((item, key) => (
-                                <div className="alphabet__letter"
-                                     key={key}
-                                     onClick={() => this.showLetter(item)}
-                                >
-                                    {item}
-                                </div>
-                            ))}
-                            <div className={`alphabet__invisible ${isBlur ? 'alphabet__active' : ''}`}>
-                            { activeLetter && activeLetter.length > 0 && isBlur ? activeLetter : '' }
-                            </div>
-                        </div>
-
                     </div>
-                    {!loading
-                        ?
-                        <div
-                            itemScope
-                            className='container__container-book'
-                            itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
-                        >
-                            <div className="list-book"
-                                 itemProp="itemListElement"
-                                 itemScope itemType="http://schema.org/ListItem"
-                            >
-                                {resultTitle.length > 0 && <div className="list-book__title">{resultTitle}</div>}
-                                {items && items.map((book, key) => (
-                                    <Fragment key={key}>
-                                        <Link href={'/books/[id]'} as={`/books/${book.id}`}>
-                                            <a className="list-book__link"
-                                               itemProp="url"
-                                               content={`patina.ru/books/${book.id}`}
-                                            >
-                                             <span itemProp="position" content={key}>
-                                            {`«${book.title}» `}{book.authors.map(author => author.name)}
-                                        </span>
-                                            </a>
-                                        </Link>
-                                    </Fragment>
+
+                    <div className='container'>
+                        <div className="container__container-book">
+                            <InputSearch
+                                search={this.search}
+                                activeLetter={activeLetter}
+                                sorting={sorting}
+                            />
+
+                            <Sorting updateParentState={this.updateParentState}/>
+
+                            <div className={`alphabet ${isBlur ? 'alphabet--blur' : ''}`}>
+                                { alphabet && alphabet.map((item, key) => (
+                                    <div className="alphabet__letter"
+                                         key={key}
+                                         onClick={() => this.showLetter(item)}
+                                    >
+                                        {item}
+                                    </div>
                                 ))}
+                                <div className={`alphabet__invisible ${isBlur ? 'alphabet__active' : ''}`}>
+                                { activeLetter && activeLetter.length > 0 && isBlur ? activeLetter : '' }
+                                </div>
                             </div>
-                            {this.props.pagination || ''}
+
                         </div>
-                        :
-                        <Loader/>
-                    }
-                </div>
+                        {!loading
+                            ?
+                            <div
+                                itemScope
+                                className='container__container-book'
+                                itemType="http://schema.org/ItemList http://schema.org/CreativeWork"
+                            >
+                                <div className="list-book"
+                                     itemProp="itemListElement"
+                                     itemScope itemType="http://schema.org/ListItem"
+                                >
+                                    {resultTitle.length > 0 && <div className="list-book__title">{resultTitle}</div>}
+                                    {items && items.map((book, key) => (
+                                        <Fragment key={key}>
+                                            <Link href={'/books/[id]'} as={`/books/${book.id}`}>
+                                                <a className="list-book__link"
+                                                   itemProp="url"
+                                                   content={`patina.ru/books/${book.id}`}
+                                                >
+                                                 <span itemProp="position" content={key}>
+                                                {`«${book.title}» `}{book.authors.map(author => author.name)}
+                                            </span>
+                                                </a>
+                                            </Link>
+                                        </Fragment>
+                                    ))}
+                                </div>
+                                {this.props.pagination || ''}
+                            </div>
+                            :
+                            <Loader/>
+                        }
+                    </div>
+                </>
             </>
         );
     }

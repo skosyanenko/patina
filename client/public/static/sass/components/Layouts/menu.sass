@@ -16,29 +16,27 @@
         border-top: none
         max-width: 250px
     +maxwidth(1140px)
-        height: calc(100vh + 80px)
+        height: calc(100vh + 90px)
         position: fixed
-        top: -80px
+        top: -70px
         left: -100%
         background-color: white
         transition: 0.8s
-    +maxwidth($tablet)
-        height: calc(100vh + 90px)
-        top: -70px
     +maxwidth($sm-mobail)
         max-width: 190px
 
-    &.open
-        z-index: 1001
+    &--open
         +maxwidth(1140px)
-            left: 0
+            z-index: 1001
+            left: 0 !important
             transition: 0.4s
 
-    &.close
-        width: 0
-        transform: translateX(-100%)
-        opacity: 0
-        visibility: hidden
+    &--close
+        +maxwidth(1140px)
+            width: 0
+            transform: translateX(-100%)
+            opacity: 0
+            visibility: hidden
 
     &--index
         background-image: none
@@ -49,14 +47,12 @@
             background: $white
             z-index: 1000
             margin-top: -80px
-            +maxwidth($tablet)
+            +maxwidth(1140px)
                 margin-top: 70px
 
         .menu__wrapper
             margin-top: 80px
             +maxwidth(1140px)
-                margin-top: 35px
-            +maxwidth($tablet)
                 margin-top: 40px
             +maxwidth($mobail)
                 margin-top: 40px
@@ -103,7 +99,7 @@
                 width: 225px
                 +maxwidth(1640px)
                     width: 195px
-                +maxwidth($tablet)
+                +maxwidth(1140px)
                     width: 190px
                 +maxwidth($sm-mobail)
                     width: 145px
@@ -134,7 +130,7 @@
             background: linear-gradient(90deg, #264d4b, #264d4b 55%, transparent 10%, transparent 100%) repeat-x 0 95%/10px 1px
             transition: .5s ease
             cursor: initial
-            +maxwidth($tablet)
+            +maxwidth(1140px)
                 bottom: 0
 
     &__search
@@ -144,13 +140,13 @@
         +maxwidth($desktop)
             width: 40px
             height: 40px
-        +maxwidth($tablet)
-            width: 38px
-            height: 38px
-            margin-top: 45px
-        +maxwidth($mobail)
+        +maxwidth(1140px)
             width: 36px
             height: 36px
+            margin-top: 45px
+        +maxwidth($mobail)
+            width: 32px
+            height: 32px
 
         &-loupe
             background: url('/icons/sprite.svg#magnifier-view') no-repeat center / contain
@@ -186,4 +182,7 @@
         margin: 0
         top: 90px
         left: 40px
-
+        +maxwidth($mobail)
+            left: 55px
+        +maxwidth($sm-mobail)
+            left: 30px

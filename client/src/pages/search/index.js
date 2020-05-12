@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { withRouter } from 'next/router';
+import { counterLetters } from 'config/config';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import FiltersSearch from 'components/ComponentsSearch/FiltersSearch';
 import ViewBook from 'components/ComponentsSearch/Views/ViewBook';
@@ -8,7 +9,7 @@ import NewsHorizontal from 'components/ComponentsNews/NewsHorizontal';
 import ViewChart from 'components/ComponentsSearch/Views/ViewChart';
 import InputSearch from 'components/InputSearch';
 import Loader from 'components/Loader';
-import { counterLetters } from 'config/config';
+import MyHead from 'components/MyHead';
 
 const {API_URL} = process.env;
 
@@ -66,47 +67,55 @@ const SearchList = ({router, items, fetchData, pagination, updateState, toggleMo
     }, []);
 
     return (
-        <div className="search">
-            <FiltersSearch
-                updateFilter={updateFilter}
-                filter={query.filter}
+        <>
+            <MyHead
+                title={'Поиск - Patina'}
+                description={'Найдите интересующую Вас книгу, рецензию, новость или подборку'}
+                link={'/search'}
+                robots={'all'}
             />
+            <div className="search">
+                <FiltersSearch
+                    updateFilter={updateFilter}
+                    filter={query.filter}
+                />
 
-            <InputSearch
-                search={search}
-                classNamePrefix="quest--searchResults"
-            />
+                <InputSearch
+                    search={search}
+                    classNamePrefix="quest--searchResults"
+                />
 
-            {state.loading && <Loader/> ||
-                <>
+                {state.loading && <Loader/> ||
+                    <>
 
-                    <div className="search__title">
-                        {state.label}
-                    </div>
+                        <div className="search__title">
+                            {state.label}
+                        </div>
 
-                    <div className={(query.filter === 'charts' || query.filter === 'articles') && 'search__grid' || 'search__result'}>
-                        {items && items.map((item, key) => {
-                            const Component = config.find(item => item.id === query.filter).class;
-                            const datePublish = new Date(item.created_at).toLocaleDateString();
-                            const text = (query.filter ==='articles' || query.filter ==='reviews') ? counterLetters(item.description) : ''
+                        <div className={(query.filter === 'charts' || query.filter === 'articles') && 'search__grid' || 'search__result'}>
+                            {items && items.map((item, key) => {
+                                const Component = config.find(item => item.id === query.filter).class;
+                                const datePublish = new Date(item.created_at).toLocaleDateString();
+                                const text = (query.filter ==='articles' || query.filter ==='reviews') ? counterLetters(item.description) : ''
 
-                            return (
-                                <Component
-                                    key={key}
-                                    item={item}
-                                    textLength={text}
-                                    date={datePublish}
-                                    toggleModal={toggleModal}
-                                />
-                            )
-                        })}
-                    </div>
+                                return (
+                                    <Component
+                                        key={key}
+                                        item={item}
+                                        textLength={text}
+                                        date={datePublish}
+                                        toggleModal={toggleModal}
+                                    />
+                                )
+                            })}
+                        </div>
 
-                    {items.length ? pagination : ''}
+                        {items.length ? pagination : ''}
 
-                </>
-            }
-        </div>
+                    </>
+                }
+            </div>
+        </>
     )
 }
 
