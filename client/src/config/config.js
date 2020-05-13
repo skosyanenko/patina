@@ -85,9 +85,9 @@ export const filtersParams = [
 ];
 
 export const profileLinks = [
-    { title: 'Профиль', path: 'home', img: 'home' },
-    { title: 'Подписки', path: 'following', img: 'group' },
-    { title: 'Статистика', path: 'statistic', img: 'statistic' }
+    { title: 'Профиль', path: 'profile', pathname: '/profile/[id]', img: 'home' },
+    { title: 'Подписки', path: 'profile-following', pathname: '/profile-following/[id]', img: 'group' },
+    { title: 'Редактировать', path: 'profile-edit', pathname: '/profile-edit/[id]', img: 'statistic' }
 ];
 
 export const counterLetters = description => {
@@ -130,7 +130,7 @@ export const getDocHeight = () => {
 
 export const returnImage = (authors = []) => authors.map(({picture}) => picture);
 
-export const returnNameLetters = (name, surname) => (name.substr(0, 1) + surname.substr(0, 1));
+export const returnNameLetters = (name) => (name.substr(0, 1));
 
 export const routes = [
     { path: '/', exact: true },

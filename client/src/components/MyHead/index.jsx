@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
 
 const { API } = process.env;
 
@@ -25,12 +24,5 @@ const MyHead = ({ title, description, link, robots }) => {
           </Head>
     )
 }
-
-MyHead.PropTypes = {
-    title:       PropTypes.string,
-    description: PropTypes.string,
-    link:        PropTypes.string,
-    robots:      PropTypes.string
-};
 
 export default MyHead

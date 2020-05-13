@@ -53,6 +53,7 @@ const HookForm = props => {
                         )
                     }
                 )}
+
                 <button type="submit" className={`button button-green ${props.classPrefix} ${Object.keys(errors).length ? 'disabled' : ''}`}>
                     { props.button }
                 </button>

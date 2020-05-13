@@ -20,6 +20,11 @@
     },
     "book": {
       "model": "books"
+    },
+    "user": {
+      "via": "reviews",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }

@@ -16,7 +16,8 @@ class CommentBlock extends Component {
     };
 
     fetchCommentsFromServer = async () => {
-        return await axios.get('/api/v1/comments')
+        const { API_URL } = process.env;
+        return await axios.get(`${API_URL}/comments`)
             .then(res => {
                 if (res.data) {
                     return res.data;

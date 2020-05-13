@@ -5,7 +5,7 @@ import Author from 'components/Author';
 
 class UserInfo extends Component {
     render() {
-        const { date, textLength, like, toggleModal } = this.props;
+        const { user, date, textLength, like, toggleModal } = this.props;
 
         return (
             <div className="user-info">
@@ -13,6 +13,7 @@ class UserInfo extends Component {
                     <Author date={date}
                             isTimeToRead={true}
                             textLength={textLength}
+                            user={user}
                     />
                     <div className="follow-button">Подписаться</div>
                 </div>

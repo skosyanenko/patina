@@ -1,15 +1,19 @@
 
 .published
-    max-width: 100%
+    max-width: calc(50% - 20px)
+    width: 100%
     min-height: 310px
     padding: 15px
-    margin-bottom: 20px
+    margin: 20px 0
     border: 1px solid $darkgray
     border-radius: 5px
     display: flex
     align-items: center
     flex-direction: column
+    +maxwidth($desktop)
+        max-width: 80%
     +maxwidth($mobail)
+        max-width: 100%
         min-height: 210px
         padding: 10px
 
@@ -20,11 +24,13 @@
         @include style-text(26px, 2px, $openSans, $black, 100%, 300, true)
         display: flex
         justify-content: center!important
+        margin-top: 15px
 
     &__img
         max-width: 100%
         max-height: 160px
         margin: 25px 0 5px 0
+        transition: .4s ease-in
         +maxwidth($tablet)
             max-height: 130px
             margin: 20px 0 5px 0
@@ -32,13 +38,21 @@
             max-height: 100px
             margin: 15px 0 5px 0
 
+        &:hover
+            opacity: 0.7
+
     &__wrapper
         width: 100%
         display: flex
         justify-content: space-between
+        align-items: flex-end
+
+        .like-review
+            position: initial
+            margin-top: 0
 
     &__text
-        width: 50%
+        width: 80%
 
         &-type
             @include style-text(16px, 2px, $openSans, $darkgray, 120%, 300, false)

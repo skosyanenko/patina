@@ -73,6 +73,19 @@
     },
     "avatar": {
       "type": "richtext"
+    },
+    "reviews": {
+      "collection": "review",
+      "via": "user"
+    },
+    "likeBooks": {
+      "type": "json"
+    },
+    "likeAuthors": {
+      "type": "json"
+    },
+    "likeGenres": {
+      "type": "json"
     }
   }
 }

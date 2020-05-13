@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { Controller } from 'react-hook-form';
+import axios from 'axios';
 
 class SelectField extends Component {
     state = {
@@ -13,17 +14,21 @@ class SelectField extends Component {
     };
 
     getOptions = () => {
-        const { api, optionBooks, optionCategories, optionAuthors } = this.props;
+        const { API_URL } = process.env;
+        const { api } = this.props;
 
-        const routs = {
-            books: optionBooks ? optionBooks : '',
-            categories: optionCategories ? optionCategories : '',
-            authors: optionAuthors ? optionAuthors : ''
-        };
-
-        this.setState({options: routs[api].map(item => (
-              {value: item.id, label: item.name || item.title}
-        ))});
+        axios.get(`${API_URL}/${api}?_limit=100`)
+            .then(res => {
+                res.data &&
+                this.setState({
+                    options: res.data.map(item => (
+                        {value: item.id, label: item.name || item.title}
+                    ))
+                })
+            })
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            });
     };
 
     render() {

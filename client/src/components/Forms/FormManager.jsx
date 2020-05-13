@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import axios from 'axios';
 import HookForm from './HookForm';
 import ModalError from './ModalError';
+import Auth from 'services/Authorization';
 
 class FormManager extends Component {
     state = {
@@ -13,7 +15,7 @@ class FormManager extends Component {
     };
 
     onSubmit = values => {
-	    const { fields } = this.props;
+	    const { fields, api } = this.props;
 	    const { avatar } = this.state;
 
 	    Object.keys(values).map(key => {
@@ -28,6 +30,8 @@ class FormManager extends Component {
                     return values.avatar = avatar[0].value;
 		    }
         });
+
+        api === 'reviews' ? values.user = Auth.userInfo.id : '';
         this.postToDB(values);
     };
 
@@ -54,7 +58,7 @@ class FormManager extends Component {
     toggleModal = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
 
     render() {
-        const { success, modalIsOpen } = this.state;
+        const { success, modalIsOpen, isButton } = this.state;
 
         return (
             <div className="page--form">
@@ -69,6 +73,7 @@ class FormManager extends Component {
                             onSubmit={this.onSubmit}
                             classAnimate={state}
                             updateFile={this.updateFile}
+                            isButton={isButton}
                         />
                     }
                 </Transition>
@@ -97,4 +102,4 @@ FormManager.propTypes = {
     classPrefix:     PropTypes.string
 };
 
-export default FormManager;
+export default withRouter(FormManager);

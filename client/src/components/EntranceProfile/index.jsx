@@ -10,13 +10,9 @@ class EntranceProfile extends Component {
 
     componentDidMount() {
         if ( Auth.token && Auth.token.length > 0) {
-           this.setState({
-               isEntered: true
-           })
+           this.setState({isEntered: true})
         } else {
-            this.setState({
-                isEntered: false
-            })
+            this.setState({isEntered: false})
         }
     };
 

@@ -44,7 +44,7 @@ class Icons extends Component {
         const { isLiked, likes } = this.state;
         const { router } = this.props;
 
-        if (router.pathname.includes('reviews')) {
+        if (router.asPath.includes('reviews') || router.asPath.includes('profile')) {
             return (
                 <div className="like-review" itemScope itemType="http://schema.org/Rating">
                     <span className="like-review__counter" itemProp="reviewRating">{ likes }</span>

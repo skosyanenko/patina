@@ -4,7 +4,7 @@ import { counterLetters, returnDatePublish } from 'config/config';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const ViewReview = ({ item: {id, book, like, description, created_at, title, userId, book:{bookImage}}, toggleModal }) => (
+const ViewReview = ({ item: {id, book, like, description, created_at, title, user, book:{bookImage}}, toggleModal }) => (
   <div className="reviews__result">
       <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
           <a className="reviews__result-image">
@@ -14,7 +14,7 @@ const ViewReview = ({ item: {id, book, like, description, created_at, title, use
       <div className="reviews__result-wrap">
           <Icons likes={like} toggleModal={toggleModal}/>
           <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
-              <>{book && <a className="reviews__result-title">{book.title}</a>}</>
+              {book && <a className="reviews__result-title">{book.title}</a>}
           </Link>
       </div>
       <div className="reviews__result-wrap">
@@ -26,9 +26,11 @@ const ViewReview = ({ item: {id, book, like, description, created_at, title, use
               {title}
           </a>
       </Link>
-      <Link href={'/profile/[id]'} as={`/profile/${userId}`}>
-          <a className="reviews__result-user">Тетя Мотя</a>
-      </Link>
+      {user &&
+          <Link href={'/profile/[id]'} as={`/profile/${user.id}`}>
+              <a className="reviews__result-user">{user.username}</a>
+          </Link>
+      }
   </div>
 );
 

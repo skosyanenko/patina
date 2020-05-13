@@ -1,7 +1,7 @@
 import React from 'react';
 import FormManager from 'components/Forms/FormManager';
-import fields from 'components/Forms/Fields/registration.json'
 import MyHead from 'components/MyHead';
+import fields from 'components/Forms/Fields/registration.json'
 
 const RegistrationForm = () => (
     <>

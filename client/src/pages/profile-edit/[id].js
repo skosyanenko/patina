@@ -3,9 +3,8 @@ import ProfileLayout from 'components/ComponentsProfile/wrapComponents/ProfileLa
 
 class Profile extends Component {
     render() {
-        const { toggleModal } = this.props;
         return (
-            <ProfileLayout toggleModal={toggleModal}/>
+          <ProfileLayout/>
         );
     }
 }
