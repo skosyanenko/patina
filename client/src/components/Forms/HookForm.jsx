@@ -6,8 +6,10 @@ import SelectField from './SelectField';
 import RadioButton from './RadioButton';
 import TextEditor from './TextEditor';
 
-const HookForm = props => {
-    const { handleSubmit, register, setValue, watch, getValues, errors, formState, control } = useForm();
+const HookForm = (props) => {
+    const { handleSubmit, register, setValue, watch, getValues, errors, formState, control } = useForm({
+        defaultValues: props.defaultValues
+    });
 
     watch('viewType');
 
@@ -53,7 +55,6 @@ const HookForm = props => {
                         )
                     }
                 )}
-
                 <button type="submit" className={`button button-green ${props.classPrefix} ${Object.keys(errors).length ? 'disabled' : ''}`}>
                     { props.button }
                 </button>

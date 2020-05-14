@@ -1,43 +1,69 @@
-import React, {Component} from 'react';
-import HorizontalTimeline from './Components/HorizontalTimeline';
-
-const events = [
-    {type: 'review', author: 'fgfg', date: '01.11.11', title: 'fgfgf'},
-    {type: 'book', author: 'fgfg', date: '02.11.11', title: 'fgfgf'},
-    {type: 'top', author: 'fgfg', date: '05.11.11', title: 'fgfgf'},
-    {type: 'review', author: 'fgfg', date: '08.11.11', title: 'fgfgf'},
-    {type: 'book', author: 'fgfg', date: '10.11.11', title: 'fgfgf'},
-    {type: 'top', author: 'fgfg', date: '12.11.11', title: 'fgfgf'},
-];
+import React, { Component } from 'react';
+import { returnDatePublish } from 'config/config';
+import Swiper from 'react-id-swiper';
+import TimelineDot from './Components/TimelineDot';
 
 class MainTimeline extends Component {
     state = {
-        value: 0,
-        previous: 0,
-        minEventPadding: 20,
-        maxEventPadding: 120,
-        linePadding: 100,
-        fillingMotionStiffness: 150,
+        events: [],
+        isActive: 0
     };
 
-    handleClick = index => {
-        this.setState({ value: index, previous: this.state.value });
+    componentDidMount() {
+        this.setState({
+            events: this.getItems()
+        })
+    };
+
+    getItems = () => {
+        const  { books, charts, reviews, articles } = this.props;
+        const array = {'books': books, 'charts': charts, 'reviews': reviews, 'articles': articles};
+
+        return Object.keys(array).flatMap(item =>
+            array[item].slice(0, 3).map(({title, id, created_at}) => {
+                return {
+                    title,
+                    id,
+                    date: returnDatePublish(created_at),
+                    type: item
+                }
+            })
+        )
+    };
+
+    handleClick = key => {
+        this.setState({ isActive: key });
     };
 
     render() {
-        const {value, minEventPadding, maxEventPadding, linePadding} = this.state;
+        const { events, isActive } = this.state;
+        const params = {
+            slidesPerView: 'auto',
+            freeMode: true,
+            centeredSlides: true,
+            initialSlide: 'auto',
+            speed: 1000,
+            mousewheel: true,
+            grabCursor: true
+        };
 
         return (
             <div className="timeline">
-                <HorizontalTimeline
-                    index={value}
-                    indexClick={index => this.handleClick(index)}
-                    labelWidth={100}
-                    linePadding={linePadding}
-                    maxEventPadding={maxEventPadding}
-                    minEventPadding={minEventPadding}
-                    values={events}
-                />
+                <span className="line"/>
+                <div className="timeline__wrap">
+                    <Swiper {...params} containerClass="swiper">
+                        {events.map((item, key) => (
+                            <TimelineDot
+                                item={item}
+                                key={key}
+                                index={key}
+                                handleClick={() => this.handleClick(key)}
+                                isActive={isActive}
+                            />
+                        ))}
+                    </Swiper>
+                </div>
+
             </div>
         );
     }

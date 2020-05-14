@@ -1,61 +1,39 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "next/router";
 import Link from 'next/link';
-import { profileLinks, returnNameLetters } from 'config/config';
+import { profileLinks, returnNameLetters} from 'config/config';
 import Interests from 'components/ComponentsProfile/Interests';
 import ProfileHome from 'components/ComponentsProfile/wrapComponents/ProfileHome';
 import ProfileFollowing from 'components/ComponentsProfile/wrapComponents/ProfileFollowing';
 import ProfileEdit from 'components/ComponentsProfile/wrapComponents/ProfileEdit';
 import MyHead from 'components/MyHead';
-import axios from 'axios';
 import Auth from 'services/Authorization';
 
 class ProfileLayout extends Component {
     state = {
-        user: [],
         isEntered: false,
-        userLikes: [
-            {title: 'Любимые книги', icon: 'books', text: ['Мастер и Маргарита', 'Три товарища', 'Повелитель мух']},
-            {title: 'Любимые жанры', icon: 'wishlist', text: ['Мастер и Маргарита', 'Три товарища', 'Повелитель мух']},
-            {title: 'Любимые авторы', icon: 'author', text: ['Мастер и Маргарита', 'Три товарища', 'Повелитель мух']}
-        ]
+        userLikes: [],
     };
 
     componentDidMount() {
-        this.getItems();
-
         if ( Auth.token && Auth.token.length > 0) {
-            this.setState({isEntered: true})
+            this.setState({isEntered: true, userLikes: this.getItems()})
         } else {
             this.setState({isEntered: false})
         }
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.router !== this.props.router) {
-            this.getItems();
-        }
-    };
-
     getItems = () => {
-        const { API_URL } = process.env;
-        const { router } = this.props;
-
-        axios.get(`${API_URL}/users/${router.query.id}`)
-            .then(res => {
-                res.data &&
-                this.setState({
-                    user: res.data
-                })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
+        const  { user: {likeBooks, likeGenres, likeAuthors} } = this.props;
+        return  [
+            { title: 'Любимые книги', icon: 'books', text: likeBooks },
+            { title: 'Любимые жанры', icon: 'wishlist', text: likeGenres },
+            { title: 'Любимые авторы', icon: 'author', text: likeAuthors }
+        ];
     };
 
     switchViews = () => {
-        const { router, toggleModal } = this.props;
-        const { user } = this.state;
+        const { router, toggleModal, user } = this.props;
 
         switch(router.pathname) {
             case '/profile-edit/[id]':
@@ -68,8 +46,8 @@ class ProfileLayout extends Component {
     };
 
     render () {
-        const { user, isEntered, userLikes } = this.state;
-        const { router } = this.props;
+        const { isEntered, userLikes } = this.state;
+        const { router, user } = this.props;
 
         return (
             <>
@@ -134,7 +112,7 @@ class ProfileLayout extends Component {
                         </div>
                     </div>
                     <div className="interests">
-                        { userLikes.map((item, key) => (
+                        { userLikes && userLikes.map((item, key) => (
                             <Interests item={item} key={key}/>
                         ))}
                     </div>

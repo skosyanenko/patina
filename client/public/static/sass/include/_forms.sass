@@ -4,6 +4,12 @@
 
 .add-review
     margin: auto
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .button
+        margin-top: 20px
 
     &__title
         display: flex
@@ -15,11 +21,11 @@
 .form-wrapper
     max-width: 70%
     width: 100%
-    margin-bottom: 100px
+    margin: 0 auto 100px
     +maxwidth(1640px)
         max-width: 100%
     +maxwidth($mobail)
-        margin-bottom: 30px
+        margin: 0 auto 30px
 
     &.entered
         opacity: 1

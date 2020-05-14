@@ -1,50 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FormManager from 'components/Forms/FormManager';
 import fields from 'components/Forms/Fields/reviews.json'
 import MyHead from 'components/MyHead';
-import Auth from 'services/Authorization';
+import Authorization from 'services/Authorization';
 
-class AddReviewForm extends Component {
-    state = {
-        isEntered: false
-    };
+const AddReviewForm = () => {
+    const isAuth = Authorization.isAuth;
 
-    componentDidMount() {
-        if ( Auth.token && Auth.token.length > 0) {
-            this.setState({isEntered: true})
-        } else {
-            this.setState({isEntered: false})
-        }
-    };
-
-    render () {
-        const { isEntered } = this.state;
-        return (
-            <>
-                <MyHead
-                    title={'Добавить рецензию - Patina'}
-                    description={'Добавить рецензию или отзыв на любое литературное произведение - Patina'}
-                    link={'/add_review'}
-                    robots={'all'}
+    return (
+        <>
+            <MyHead
+                title={'Добавить рецензию - Patina'}
+                description={'Добавить рецензию или отзыв на любое литературное произведение - Patina'}
+                link={'/add_review'}
+                robots={'all'}
+            />
+            { isAuth ?
+                <FormManager
+                    fields={fields}
+                    title={'Добавить рецензию'}
+                    button={'Добавить'}
+                    classPrefix={''}
+                    api={'reviews'}
                 />
-                { isEntered ?
-                    <FormManager
-                        fields={fields}
-                        title={'Добавить рецензию'}
-                        button={'Добавить'}
-                        classPrefix={''}
-                        api={'reviews'}
-                    />
-                    :
-                    <div className="add-review">
-                        <span className="add-review__title">
-                            К сожалению, эта страница доступна только для зарегистрированных пользователей. Войдите или зарегистрируйтесь, чтобы опубликовать рецензию.
-                        </span>
-                    </div>
-                }
-            </>
-        )
-    }
+                :
+                <div className="add-review">
+                    <span className="add-review__title">
+                        К сожалению, эта страница доступна только для зарегистрированных пользователей. Войдите или зарегистрируйтесь, чтобы опубликовать рецензию.
+                    </span>
+                </div>
+            }
+        </>
+    )
 }
 
 export default AddReviewForm;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import axios from 'axios';
@@ -32,17 +31,19 @@ class FormManager extends Component {
         });
 
         api === 'reviews' ? values.user = Auth.userInfo.id : '';
-        this.postToDB(values);
-    };
 
-    updateFile = (newState = {}) => {
-        this.setState({...newState})
+        return this.postToDB(values);
     };
 
     postToDB = data => {
         const { API_URL } = process.env;
+        const {method, api} = this.props;
+        const apiMethod = method || 'post';
+        const options = Auth.token && {
+            headers: { Authorization: `Bearer ${Auth.token}` }
+        } || null;
 
-	    axios.post(`${API_URL}/${this.props.api}`, data)
+	    axios[apiMethod](`${API_URL}/${api}`, data, options)
 		    .then(res => {
 			    res.status === 200 &&
 			    this.setState({success: true});
@@ -55,10 +56,16 @@ class FormManager extends Component {
 		    });
     };
 
-    toggleModal = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
+    toggleModal = () => {
+        this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
+    };
+
+    updateFile = (newState = {}) => {
+        this.setState({...newState})
+    };
 
     render() {
-        const { success, modalIsOpen, isButton } = this.state;
+        const { success, modalIsOpen } = this.state;
 
         return (
             <div className="page--form">
@@ -73,7 +80,6 @@ class FormManager extends Component {
                             onSubmit={this.onSubmit}
                             classAnimate={state}
                             updateFile={this.updateFile}
-                            isButton={isButton}
                         />
                     }
                 </Transition>
@@ -102,4 +108,4 @@ FormManager.propTypes = {
     classPrefix:     PropTypes.string
 };
 
-export default withRouter(FormManager);
+export default FormManager;

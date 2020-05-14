@@ -3,11 +3,11 @@ import Tops from 'components/ComponentsIndex/Tops';
 import Title from 'components/ComponentsIndex/Title';
 import Books from 'components/ComponentsIndex/Books';
 import News from 'components/ComponentsIndex/News';
+import MainTimeline from 'components/ComponentsIndex/TimeLine';
 import MyHead from 'components/MyHead';
 import axios from 'axios';
-// import MainTimeline from 'components/ComponentsIndex/TimeLine';
 
-const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4, toggleModal }) => (
+const PatinaPage =({ serverBooks, serverCharts, serverReviews, serverNews, articlesView_2, articlesView_3, articlesView_4, toggleModal }) => (
     <>
         <MyHead
             title={'Patina — литературный журнал. Новинки книг, подборки, рецензии'}
@@ -69,7 +69,12 @@ const PatinaPage =({ serverBooks, serverCharts, articlesView_2, articlesView_3, 
                 charts={serverCharts}
                 toggleModal={toggleModal}
             />
-            {/*<MainTimeline/>*/}
+            <MainTimeline
+                books={serverBooks}
+                reviews={serverReviews}
+                charts={serverCharts}
+                articles={serverNews}
+            />
         </>
     </>
 );
@@ -85,6 +90,14 @@ export async function getServerSideProps() {
       .then(res => res.data)
       .catch(err => console.log(err));
 
+    const serverReviews = await axios.get(`${API_URL}/reviews?_limit=3`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
+    const serverNews = await axios.get(`${API_URL}/articles?_limit=3`)
+        .then(res => res.data)
+        .catch(err => console.log(err));
+
     const articlesView_2 = await axios.get(`${API_URL}/articles?viewType_in=2&_limit=1`)
       .then(res => res.data)
       .catch(err => console.log(err));
@@ -96,7 +109,7 @@ export async function getServerSideProps() {
       .catch(err => console.log(err));
 
     return {
-        props: { serverBooks, serverCharts, articlesView_2, articlesView_3, articlesView_4 }};
+        props: { serverBooks, serverCharts, serverReviews, serverNews, articlesView_2, articlesView_3, articlesView_4 }};
 }
 
 export default PatinaPage;

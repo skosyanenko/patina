@@ -26,7 +26,12 @@ class Interests extends Component {
                 </div>
                 <div className={`interests__wrapper-text ${isActive ? 'active' : ''}`}>
                     <ol>
-                        { item.text.map((elem, i) => <li key={i}>{elem}</li>)}
+                        { item.text && item.text.length > 0
+                            ?
+                            item.text.map((elem, i) => <li key={i}>{elem.label}</li>)
+                            :
+                            'Не указано'
+                        }
                     </ol>
                 </div>
             </div>

@@ -1,138 +1,46 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
-
-// const dots = {
-//     base: {
-//         transition: 'background-color 0.3s, border-color 0.3s',
-//         ':hover': {}
-//     },
-//     future: (styles) => ({
-//         backgroundColor: styles.background,
-//         border: `1px solid ${styles.outline}`,
-//     }),
-//     past: (styles) => ({
-//         backgroundColor: styles.background,
-//         border: `1px solid ${styles.foreground}`,
-//     }),
-//     present: (styles) => ({
-//         backgroundColor: styles.foreground,
-//         border: `1px solid ${styles.foreground}`,
-//     }),
-// };
+import React, { Component } from 'react';
 
 class TimelineDot extends Component {
-    state = {
-        isActive: false
-    };
-
     typeSwitcher = type => {
         switch (type) {
-            case 'review':
-                return 'Новая рецензия';
-            case 'book':
-                return 'Новая книга';
-            case 'top':
-                return 'Новая подборка';
-            case 'news':
-                return 'Новость';
+            case 'reviews':
+                return ['Новая рецензия', 'pencil'];
+            case 'books':
+                return ['Новая книга', 'books'];
+            case 'charts':
+                return ['Новая подборка', 'wishlist'];
+            case 'articles':
+                return ['Новость', 'author'];
             default:
                 return '';
         }
     };
 
-    iconsSwitcher = type => {
-        switch (type) {
-            case 'review':
-                return 'pencil';
-            case 'book':
-                return 'books';
-            case 'top':
-                return 'wishlist';
-            case 'news':
-                return 'author'
-        }
-    };
-
-    showDescription = () => {
-        this.setState(prevState => ({
-            isActive: !prevState.isActive
-        }))
-    };
-
-    // __getDotStyles = (dotType, key) => {
-    //     const hoverStyle = {
-    //         backgroundColor: this.props.styles.foreground,
-    //         border: `1px solid ${this.props.styles.foreground}`,
-    //     };
-    //
-    //     return [
-    //         // dots.base,
-    //         // dots[dotType](this.props.styles),
-    //         Radium.getState(this.state, key, ':hover') ||
-    //         Radium.getState(this.state, 'dot-dot', ':hover') ? hoverStyle : undefined,
-    //     ]
-    // };
-
     render() {
-        const {type, author, date, title, onClick, index, selected, distance, labelWidth} = this.props;
-        const {isActive} = this.state;
-
-        let dotType = 'future';
-
-        if (index < selected) {
-            dotType = 'past';
-        } else if (index === selected) {
-            dotType = 'present';
-        }
+        const { item, index, isActive, handleClick } = this.props;
+        const classNames = isActive === index;
 
         return (
-            <div
-                className={` event-dot`}
-                onClick={() => onClick(index)}
-                style={[{
-                    left: distance - labelWidth / 2,
-                    width: labelWidth,
-                    // ':hover': {},
-                }]}
-            >
+            <div className="event-dot">
                 <div className="event-dot__wrapper">
-                    <div className={`${!isActive && 'invisible'} event-dot__icon`}>
+                    <div className={`${!classNames && 'invisible'} event-dot__icon`}>
                         <svg>
-                            <use href={`/images/icons/sprite.svg#${this.iconsSwitcher(type)}`}/>
+                            <use href={`/icons/sprite.svg#${this.typeSwitcher(item.type)[1]}`}/>
                         </svg>
                     </div>
-                    <div className="event-dot__item" onClick={this.showDescription}>
-                        <div className={`${!isActive && 'invisible'} event-dot__item-after`}/>
-                        <div key='dot-dot'
-                             className={`${isActive && 'anim'} event-dot__item-dot`}
-
-                        />
+                    <div className="event-dot__item">
+                        <div className={`${!classNames && 'invisible'} event-dot__item-after`}/>
+                        <div className={`${classNames && 'anim'} event-dot__item-dot`} onClick={handleClick}/>
                     </div>
-                    <span className={`${!isActive && 'invisible'} event-dot__date`}>{date}</span>
+                    <span className={`${!classNames && 'invisible'} event-dot__date`}>{item.date}</span>
                 </div>
-                <div className={`${!isActive && 'invisible'} event-dot__description`}>
-                    <span className="event-dot__description-text">{this.typeSwitcher(type)}</span>
-                    <span className="event-dot__description-text">Название: «{title}»</span>
-                    <span className="event-dot__description-text">Автор: {author}</span>
+                <div className={`${!classNames && 'invisible'} event-dot__description`}>
+                    <span className="event-dot__description-text">{this.typeSwitcher(item.type)[0]}</span>
+                    <span className="event-dot__description-text">Название: «{item.title}»</span>
                 </div>
             </div>
         );
     }
 }
 
-TimelineDot.propTypes = {
-    type:               PropTypes.string.isRequired,
-    date:               PropTypes.string.isRequired,
-    title:              PropTypes.string.isRequired,
-    author:             PropTypes.string.isRequired,
-    selected:           PropTypes.number.isRequired,
-    index:              PropTypes.number.isRequired,
-    onClick:            PropTypes.func.isRequired,
-    label:              PropTypes.string.isRequired,
-    labelWidth:         PropTypes.number.isRequired,
-    distanceFromOrigin: PropTypes.number.isRequired,
-    styles:             PropTypes.object.isRequired
-};
-
-export default Radium(TimelineDot);
+export default TimelineDot;

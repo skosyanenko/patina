@@ -122,8 +122,13 @@ p
     &--profile
         display: flex
         justify-content: space-between
+        margin-top: 60px
         +maxwidth($desktop)
             flex-direction: column
+        +maxwidth($tablet)
+            margin-top: 40px
+        +maxwidth($mobail)
+            margin-top: 20px
 
         &-wrap
             display: flex
@@ -197,9 +202,11 @@ p
             padding: 20px
 
     &--form
+        width: 100%
         display: flex
         flex-direction: column
         align-items: center
+        margin: auto
 
     .pagination
         width: calc(50% - 20px)

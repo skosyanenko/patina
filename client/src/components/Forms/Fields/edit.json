@@ -1,12 +1,5 @@
 [
   {
-    "name": "username",
-    "label": "Логин",
-    "icon": "user",
-    "type": "text",
-    "req": true
-  },
-  {
     "name": "city",
     "label": "Город",
     "icon": "placeholder",
@@ -14,21 +7,7 @@
     "req": true
   },
   {
-    "name": "sex",
-    "label": "Пол",
-    "type": "radio",
-    "options": {
-      "male": "Мужской",
-      "female": "Женский"
-    }
-  },
-  {
-    "name": "avatar",
-    "label": "Загрузите ваше фото",
-    "type": "file"
-  },
-  {
-    "name": "book",
+    "name": "likeBooks",
     "label": "Укажите любимые произведения",
     "icon": "books",
     "type": "creatable",
@@ -36,7 +15,7 @@
     "isMulti": true
   },
   {
-    "name": "category",
+    "name": "likeGenres",
     "label": "Укажите любимые жанры",
     "icon": "wishlist",
     "type": "creatable",
@@ -44,7 +23,7 @@
     "isMulti": true
   },
   {
-    "name": "authors",
+    "name": "likeAuthors",
     "label": "Укажите любимых авторов",
     "icon": "fun",
     "type": "creatable",
