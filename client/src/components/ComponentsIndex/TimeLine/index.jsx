@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { returnDatePublish } from 'config/config';
-import Swiper from 'react-id-swiper';
+import Slider from 'react-slick';
 import TimelineDot from './Components/TimelineDot';
 
 class MainTimeline extends Component {
@@ -20,7 +20,7 @@ class MainTimeline extends Component {
         const array = {'books': books, 'charts': charts, 'reviews': reviews, 'articles': articles};
 
         return Object.keys(array).flatMap(item =>
-            array[item].slice(0, 3).map(({title, id, created_at}) => {
+            array[item].slice(0, 5).map(({title, id, created_at}) => {
                 return {
                     title,
                     id,
@@ -37,33 +37,48 @@ class MainTimeline extends Component {
 
     render() {
         const { events, isActive } = this.state;
-        const params = {
-            slidesPerView: 'auto',
-            freeMode: true,
-            centeredSlides: true,
-            initialSlide: 'auto',
-            speed: 1000,
-            mousewheel: true,
-            grabCursor: true
+
+        const settings = {
+            infinite: false,
+            swipeToSlide: true,
+            slidesToShow: 9,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1920,
+                    settings: {
+                        slidesToShow: 9,
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 6,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                }
+            ]
         };
 
         return (
             <div className="timeline">
                 <span className="line"/>
-                <div className="timeline__wrap">
-                    <Swiper {...params} containerClass="swiper">
-                        {events.map((item, key) => (
-                            <TimelineDot
-                                item={item}
-                                key={key}
-                                index={key}
-                                handleClick={() => this.handleClick(key)}
-                                isActive={isActive}
-                            />
-                        ))}
-                    </Swiper>
-                </div>
-
+                <Slider {...settings}>
+                    {events.map((item, key) => (
+                        <TimelineDot
+                            item={item}
+                            key={key}
+                            index={key}
+                            handleClick={() => this.handleClick(key)}
+                            isActive={isActive}
+                        />
+                    ))}
+                </Slider>
             </div>
         );
     }

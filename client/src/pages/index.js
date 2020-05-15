@@ -90,11 +90,11 @@ export async function getServerSideProps() {
       .then(res => res.data)
       .catch(err => console.log(err));
 
-    const serverReviews = await axios.get(`${API_URL}/reviews?_limit=3`)
+    const serverReviews = await axios.get(`${API_URL}/reviews?_limit=5`)
         .then(res => res.data)
         .catch(err => console.log(err));
 
-    const serverNews = await axios.get(`${API_URL}/articles?_limit=3`)
+    const serverNews = await axios.get(`${API_URL}/articles?_limit=5`)
         .then(res => res.data)
         .catch(err => console.log(err));
 
