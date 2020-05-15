@@ -16,11 +16,28 @@ class NewsDetail extends Component {
 
     componentDidMount() {
         const { serverData } = this.props;
-        this.setState({ currentArticle: serverData })
+        this.updateViews(serverData.id, serverData.views);
+        this.setState({ currentArticle: serverData });
     };
 
+    updateViews = (id, views) => {
+        const { API_URL } = process.env;
+        const data = {views: views + 1};
+
+        axios.put(`${API_URL}/articles/${id}`, data)
+            .then(res => {
+                res.status === 200 &&
+                this.setState({viewsUpdate: data.views});
+            })
+            .catch(err => {
+                this.setState({
+                    error: 'Ошибка при отправке формы, попробуйте позже!' + err
+                });
+            });
+    }
+
     render() {
-        const { currentArticle: {title, description, cover, viewType, likes, views, id, created_at } } = this.state;
+        const { viewsUpdate, currentArticle: {title, description, cover, viewType, likes, views, id, created_at } } = this.state;
         const view = viewType === 1 || viewType === 2 || viewType === 3;
 
         return (
@@ -58,7 +75,7 @@ class NewsDetail extends Component {
                                 <div className="article__wrapper-nav">
                                     <Icons likes={likes}
                                            date={returnDatePublish(created_at)}
-                                           views={views}
+                                           views={viewsUpdate}
                                     />
                                     <div className="article__wrapper-wrap">
                                         {description && <TimeToRead textLength={counterLetters(description)}/>}

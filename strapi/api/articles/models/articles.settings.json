@@ -28,6 +28,9 @@
     },
     "viewType": {
       "type": "integer"
+    },
+    "views": {
+      "type": "integer"
     }
   }
 }
