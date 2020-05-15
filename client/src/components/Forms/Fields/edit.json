@@ -12,7 +12,8 @@
     "icon": "books",
     "type": "creatable",
     "api": "books",
-    "isMulti": true
+    "isMulti": true,
+    "req": false
   },
   {
     "name": "likeGenres",
@@ -20,7 +21,8 @@
     "icon": "wishlist",
     "type": "creatable",
     "api": "categories",
-    "isMulti": true
+    "isMulti": true,
+    "req": false
   },
   {
     "name": "likeAuthors",
@@ -28,6 +30,7 @@
     "icon": "fun",
     "type": "creatable",
     "api": "authors",
-    "isMulti": true
+    "isMulti": true,
+    "req": false
   }
 ]

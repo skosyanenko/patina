@@ -1,21 +1,5 @@
 @import 'config'
 
-/* Стили для компонента AddReview */
-
-.add-review
-    margin: auto
-    display: flex
-    flex-direction: column
-    align-items: center
-
-    .button
-        margin-top: 20px
-
-    &__title
-        display: flex
-        @include style-text(30px, 2px, $waverly, $green, 100%, 500, false)
-        text-align: center
-
 /* Стили для компонента HookForm */
 
 .form-wrapper
@@ -319,7 +303,7 @@
             opacity: 0
             display: none
 
-$icons: (user,vkontakte,telegram,author, author, books, email, films, fun, password, placeholder, telephone, quote, clock, wishlist)
+$icons: (user,vkontakte,telegram,author, author, books, email, films, fun, password, placeholder, telephone, quote, clock, wishlist, pencil)
 
 @each $icon in $icons
     .form__group-#{$icon}
@@ -460,5 +444,76 @@ $icons: (user,vkontakte,telegram,author, author, books, email, films, fun, passw
                                     &:nth-child(5),
                                     &:nth-child(6)
                                         display: none
+
+/* Стили для компонента AddReview */
+
+.add-review
+    margin: auto
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .button
+        margin-top: 20px
+
+    &__title
+        display: flex
+        @include style-text(30px, 2px, $waverly, $green, 100%, 500, false)
+        text-align: center
+
+/* Стили для компонента UpdateStatus */
+
+.update-status
+    width: 100%
+    padding: 0 15px
+    position: absolute
+    top: 0
+    left: -3px
+    background-color: rgb(233, 237, 237)
+    border-radius: 10px
+    transition: .4s ease-in
+    display: none
+
+    &__form
+        width: 100%
+        margin: 0
+        display: flex
+        flex-direction: row
+        align-items: center
+        .form__group
+            max-height: 30px
+            height: 30px
+            margin: 15px 0
+            display: flex
+            align-items: flex-end
+            label
+                @include style-text(20px, 2px, $openSans, $darkgray, 100%, 300, false)
+            input
+                padding: 0 0 0 35px
+                background-color: rgb(233, 237, 237)
+                border-bottom: none
+                margin-bottom: 0
+            input:focus ~ label, input:not(:placeholder-shown) ~ label
+                display: none
+            .form__group-img
+                margin:  0
+                +maxwidth($mobail)
+                    width: 25px
+                    height: 25px
+
+    &__button
+        width: 40px
+        height: 35px
+        margin: 0 0 0 15px
+        background: url('/icons/sprite.svg#statusdone-green') no-repeat left top / contain
+        opacity: 0.5
+        border: none
+        transition: .2s ease-in
+        &:hover
+            opacity: 0.8
+
+    &.active
+        display: flex
+
 
 

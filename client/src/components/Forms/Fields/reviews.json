@@ -19,11 +19,13 @@
         "label": "Название литературного произведения",
         "icon": "books",
         "type": "select",
-        "api": "books"
+        "api": "books",
+        "req": true
     },
     {
         "name": "description",
         "label": "Напишите Вашу рецензию:",
-        "type": "editor"
+        "type": "editor",
+        "req": true
     }
 ]

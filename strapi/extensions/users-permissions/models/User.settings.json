@@ -86,6 +86,9 @@
     },
     "likeGenres": {
       "type": "json"
+    },
+    "status": {
+      "type": "string"
     }
   }
 }

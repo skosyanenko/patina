@@ -137,12 +137,19 @@
                 align-items: center
 
     &__status
+        width: 100%
         margin-top: 20px
-        @include style-text(20px, 2px, $openSans, $darkgray, 100%, 300, false)
-        +maxwidth($tablet)
-            margin-top: 15px
-        +maxwidth($mobail)
-            margin-top: 10px
+        position: relative
+
+        &-text, &-public
+            @include style-text(20px, 2px, $openSans, $darkgray, 100%, 300, false)
+            +maxwidth($tablet)
+                margin-top: 15px
+            +maxwidth($mobail)
+                margin-top: 10px
+
+        &-text
+            cursor: pointer
 
     &__follow
         margin-left: auto

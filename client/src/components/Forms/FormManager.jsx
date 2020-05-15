@@ -72,7 +72,6 @@ class FormManager extends Component {
                 <div className="form__title">
                     { this.props.title }
                 </div>
-
                 <Transition in={success} timeout={50}>
                     {state =>
                         <HookForm

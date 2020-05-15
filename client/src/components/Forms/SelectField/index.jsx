@@ -32,12 +32,12 @@ class SelectField extends Component {
     };
 
     render() {
-        const { type, name, label, icon, isMulti, errors, control } = this.props;
+        const { type, name, label, icon, isMulti, errors, control, req } = this.props;
 
         const { options } = this.state;
 
         const SelectComponent = type === 'creatable' ? CreatableSelect : Select;
-        const required = { value: true, message: 'Обязательное поле!' };
+        const required = { value: req, message: 'Обязательное поле!' };
 
         if ( options.length === 0 ) return 'Loading...';
 
@@ -50,7 +50,7 @@ class SelectField extends Component {
                         onChange={([selected]) => {
                             return selected;
                         }}
-                        rules={{required: required.message}}
+                        rules={{required: required}}
                         name={name}
                         isMulti={isMulti}
                         placeholder={label}

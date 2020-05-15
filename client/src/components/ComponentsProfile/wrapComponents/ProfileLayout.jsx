@@ -6,21 +6,27 @@ import Interests from 'components/ComponentsProfile/Interests';
 import ProfileHome from 'components/ComponentsProfile/wrapComponents/ProfileHome';
 import ProfileFollowing from 'components/ComponentsProfile/wrapComponents/ProfileFollowing';
 import ProfileEdit from 'components/ComponentsProfile/wrapComponents/ProfileEdit';
+import UpdateStatus from 'components/ComponentsProfile/UpdateStatus';
 import MyHead from 'components/MyHead';
 import Auth from 'services/Authorization';
 
 class ProfileLayout extends Component {
     state = {
-        isEntered: false,
         userLikes: [],
+        userStatus: false,
+        authorization: false
     };
 
     componentDidMount() {
-        if ( Auth.token && Auth.token.length > 0) {
-            this.setState({isEntered: true, userLikes: this.getItems()})
-        } else {
-            this.setState({isEntered: false})
+        const { router } = this.props;
+
+        if (Auth.userInfo.id === +router.query.id) {
+            this.setState({authorization: true})
         }
+
+        this.setState({
+            userLikes: this.getItems()
+        })
     };
 
     getItems = () => {
@@ -45,8 +51,16 @@ class ProfileLayout extends Component {
         }
     };
 
+    updateUserStatus = () => {
+        this.setState(prevState => ({userStatus: !prevState.userStatus}))
+    };
+
+    updateStatusState = (newState = {}) => {
+        this.setState({...newState})
+    };
+
     render () {
-        const { isEntered, userLikes } = this.state;
+        const { userLikes, userStatus, authorization, statusText } = this.state;
         const { router, user } = this.props;
 
         return (
@@ -58,8 +72,8 @@ class ProfileLayout extends Component {
                     robots={'none'}
                 />
                 <>
-                    <div className={isEntered ? 'page--public' : 'page--container'}>
-                        { isEntered
+                    <div className={authorization ? 'page--public' : 'page--container'}>
+                        { authorization
                             ?
                             <div className="profile-menu">
                                 { profileLinks.map((item, key) => (
@@ -108,7 +122,29 @@ class ProfileLayout extends Component {
                                     </div>
                                 </div>
                             }
-                            <span className="personal__status">Субъективные заметки профессионального любителя</span>
+                            { authorization
+                                ?
+                                <div className="personal__status">
+                                    <span
+                                        className="personal__status-text"
+                                        onClick={this.updateUserStatus}
+                                    >
+                                        {statusText && statusText.length > 0 ? statusText : user.status && user.status.length ? user.status : 'Изменить статус'}
+                                    </span>
+                                    <UpdateStatus
+                                        status={user.status}
+                                        id={user.id}
+                                        userStatus={userStatus}
+                                        updateStatusState={this.updateStatusState}
+                                    />
+                                </div>
+                                :
+                                <div className="personal__status">
+                                    <span className="personal__status-public">
+                                        {user.status && user.status.length ? user.status : 'Статус не указан'}
+                                    </span>
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className="interests">
