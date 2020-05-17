@@ -69,20 +69,21 @@ class FormManager extends Component {
 
         return (
             <div className="page--form">
-                <div className="form__title">
-                    { this.props.title }
-                </div>
                 <Transition in={success} timeout={50}>
                     {state =>
-                        <HookForm
-                            {...this.props}
-                            onSubmit={this.onSubmit}
-                            classAnimate={state}
-                            updateFile={this.updateFile}
-                        />
+                        <>
+                            <div className={`form__title ` + state}>
+                                { this.props.title }
+                            </div>
+                            <HookForm
+                                {...this.props}
+                                onSubmit={this.onSubmit}
+                                classAnimate={state}
+                                updateFile={this.updateFile}
+                            />
+                        </>
                     }
                 </Transition>
-
                 <Transition in={success} timeout={50}>
                     { state =>
                         <div className={`form__success ` + state}>

@@ -5,7 +5,7 @@ import Socials from 'components/SocialsGroup';
 import Rating from 'components/Rating';
 import Auth from 'services/Authorization';
 
-const BookInform = ({ categories, ratingCount, ratingTotal, toggleModal }) => {
+const BookInform = ({ type, idElem, categories, ratingCount, ratingTotal, toggleModal }) => {
     const initialState = {
         isEntered: false
     };
@@ -49,7 +49,11 @@ const BookInform = ({ categories, ratingCount, ratingTotal, toggleModal }) => {
                         ratingTotal={ratingTotal}
                         toggleModal={toggleModal}
                 />
-                <Socials toggleModal={toggleModal}/>
+                <Socials
+                    idElem={idElem}
+                    type={type}
+                    toggleModal={toggleModal}
+                />
                 <div className="button-write-review">
                     <div className="button-write-review__img"/>
                     <Typed className="button-write-review__animate"

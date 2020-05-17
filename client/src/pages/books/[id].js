@@ -22,10 +22,10 @@ class BooksDetail extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.router.query.id !== prevProps.router.query.id) {
             axios.get(`${process.env.API_URL}/books/${this.props.router.query.id}`)
-              .then(res => {
-                  this.setState({ currentBook: res.data })
-              })
-              .catch(err => console.log(err));
+            .then(res => {
+                this.setState({ currentBook: res.data })
+            })
+            .catch(err => console.log(err));
         }
     };
 
@@ -87,6 +87,8 @@ class BooksDetail extends Component {
                                     </div>
                             </div>
                             <BookInform
+                                idElem={id}
+                                type={'books'}
                                 categories={categories}
                                 toggleModal={toggleModal}
                             />

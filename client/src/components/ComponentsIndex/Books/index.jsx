@@ -53,6 +53,8 @@ class Books extends Component {
                         <div className="books__text">
                             <h1 className="books__text-title" itemProp="name">{title}</h1>
                                 <BookInform
+                                    idElem={id}
+                                    type={'books'}
                                     categories={categories}
                                     toggleModal={toggleModal}
                                 />

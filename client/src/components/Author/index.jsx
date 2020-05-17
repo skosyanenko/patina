@@ -11,7 +11,7 @@ class Author extends Component {
             <div className="author">
                 {user &&
                     <div className="author__avatar">
-                        {user.avatar.length
+                        {user && user.avatar
                             ?
                             <img src={user.avatar} alt="" className="author__avatar-img"/>
                             :

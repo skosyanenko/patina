@@ -1,56 +1,27 @@
 import React, { Component } from 'react';
 import CommentForm from './component/CommentForm';
-import CommentList from './component/CommentList';
-import axios from 'axios';
 import Auth from 'services/Authorization';
+import Comment from "./component/Comment";
 
 class CommentBlock extends Component {
     state = {
-        comments: []
+        comments: [],
+        authorization: false
     };
 
-    componentDidMount() {
-        this.fetchCommentsFromServer().then(res => {
-            this.setState({comments: res})
-        });
-    };
-
-    fetchCommentsFromServer = async () => {
-        const { API_URL } = process.env;
-        return await axios.get(`${API_URL}/comments`)
-            .then(res => {
-                if (res.data) {
-                    return res.data;
-                }
+    componentDidUpdate(prevProps, prevState) {
+        const { comments } = this.props;
+        if (prevProps.comments !== comments) {
+            this.setState({
+                comments: comments
             })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    handleCommentSubmit = async (comment) =>{
-        return await axios.post('/api/v1/comments')
-            .then(res => {
-                    if (res.data) {
-                    return res.data;
-                }
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
-
-    handleDelete = (index) => {
-        let comments = this.state.data;
-
-        comments.splice(index, 1);
-
-        this.setState({
-            data: comments
-        })
+        }
     };
 
     render() {
+        const { comments } = this.state;
+        const { idContent, typeContent } = this.props;
+
         return(
             <div className="comments-wrapper">
                 <div className="comments__title">
@@ -58,10 +29,19 @@ class CommentBlock extends Component {
                     <span className="comments__title-counter">1</span>
                 </div>
                 {Auth.token && Auth.token.length > 0 &&
-                    <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+                    <CommentForm
+                        idContent={idContent}
+                        typeContent={typeContent}
+                    />
                     || ''
                 }
-                <CommentList  handleDelete={this.handleDelete}/>
+                {comments && comments.map((item, key) => (
+                    <Comment
+                        typeContent={typeContent}
+                        item={item}
+                        key={key}
+                    />
+                ))}
             </div>
         )
     }

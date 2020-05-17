@@ -89,6 +89,14 @@
     },
     "status": {
       "type": "string"
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "author"
+    },
+    "likes": {
+      "via": "user",
+      "collection": "like"
     }
   }
 }

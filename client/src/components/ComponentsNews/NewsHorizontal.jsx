@@ -14,7 +14,14 @@ const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, t
                 </a>
             </Link>
         <div className="news-horizontal__wrapper-nav">
-            <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
+            <Icons
+                likes={likes}
+                idContent={id}
+                typeContent={'articles'}
+                views={views}
+                date={date}
+                toggleModal={toggleModal}
+            />
             <div className="news-horizontal__wrapper-wrap">
                 <TimeToRead textLength={textLength}/>
                 <Link href={'/news/[id]'} as={`/news/${id}`}>

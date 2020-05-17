@@ -37,7 +37,7 @@ class NewsDetail extends Component {
     }
 
     render() {
-        const { viewsUpdate, currentArticle: {title, description, cover, viewType, likes, views, id, created_at } } = this.state;
+        const { toggleModal, viewsUpdate, currentArticle: {title, description, cover, viewType, likes, views, id, created_at, comments } } = this.state;
         const view = viewType === 1 || viewType === 2 || viewType === 3;
 
         return (
@@ -73,9 +73,13 @@ class NewsDetail extends Component {
                                 />
 
                                 <div className="article__wrapper-nav">
-                                    <Icons likes={likes}
-                                           date={returnDatePublish(created_at)}
-                                           views={viewsUpdate}
+                                    <Icons
+                                        likes={likes}
+                                        idContent={id}
+                                        typeContent={'articles'}
+                                        views={viewsUpdate}
+                                        date={returnDatePublish(created_at)}
+                                        toggleModal={toggleModal}
                                     />
                                     <div className="article__wrapper-wrap">
                                         {description && <TimeToRead textLength={counterLetters(description)}/>}
@@ -85,7 +89,11 @@ class NewsDetail extends Component {
                             </div>
                         </div>
                     </div>
-                    <CommentBlock newsId={id}/>
+                    <CommentBlock
+                        idContent={id}
+                        typeContent={'articles'}
+                        comments={comments}
+                    />
                 </>
             </>
         )

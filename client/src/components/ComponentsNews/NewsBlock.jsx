@@ -17,7 +17,14 @@ const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textL
               dangerouslySetInnerHTML={{__html: `${description}`}}
         />
         <div className="news-block__nav">
-            <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
+            <Icons
+                likes={likes}
+                idContent={id}
+                typeContent={'articles'}
+                views={views}
+                date={date}
+                toggleModal={toggleModal}
+            />
             <div className="news-block__nav-wrap">
                 <TimeToRead textLength={textLength}/>
                 <Link href={'/news/[id]'} as={`/news/${id}`}>

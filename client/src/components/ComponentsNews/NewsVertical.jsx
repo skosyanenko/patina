@@ -22,7 +22,14 @@ const NewsVertical = ({ item: {id, cover, title, description, likes, views}, tex
                 />
             </div>
             <div className="news-vertical__description-nav">
-                <Icons likes={likes} views={views} date={date} toggleModal={toggleModal}/>
+                <Icons
+                    likes={likes}
+                    idContent={id}
+                    typeContent={'articles'}
+                    views={views}
+                    date={date}
+                    toggleModal={toggleModal}
+                />
                 <div className="news-vertical__description-wrapper">
                     <TimeToRead textLength={textLength}/>
                     <Link href={'/news/[id]'} as={`/news/${id}`}>

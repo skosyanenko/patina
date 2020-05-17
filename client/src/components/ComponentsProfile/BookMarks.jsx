@@ -8,13 +8,6 @@ class BookMarks extends Component {
         return (
             <div className="bookmarks">
                 <div className="bookmarks__wrapper">
-                    <Author
-                        isTimeToRead={true}
-                        textLength={textLength}
-                        date={createdAt}
-                        name={firstName}
-                        surname={lastName}
-                    />
                     <button className="button-white user-button">Удалить</button>
                 </div>
                 <div className="bookmarks__text">

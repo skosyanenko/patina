@@ -76,7 +76,11 @@ class ChartsDetail extends Component {
                 </div>
                 <div className="icons-wrap">
                     <div className="icons-wrap__socials">
-                        <Socials toggleModal={toggleModal}/>
+                        <Socials
+                            idElem={id}
+                            type={'charts'}
+                            toggleModal={toggleModal}
+                        />
                     </div>
                 </div>
                 <CommentBlock topId={id}/>

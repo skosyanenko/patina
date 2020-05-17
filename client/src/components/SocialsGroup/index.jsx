@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import Auth from 'services/Authorization';
+import axios from "axios";
 
 class Socials extends Component {
     state = {
-        isActive: false
+        authorization: false
     };
 
-    saveBookmark = () => {
+    saveBookmark = (type, idElem) => {
+        const { API_URL } = process.env;
+
         if ( Auth.token && Auth.token.length > 0) {
-            this.setState(state => ({
-                isActive: !state.isActive
-            }))
+            this.setState({authorization: true});
+
+            const id = Auth.userInfo.id;
+            const options = Auth.token && {
+                headers: { Authorization: `Bearer ${Auth.token}` }
+            } ;
+            const data = {[type]: [idElem]};
+
+            axios.put(`${API_URL}/users/${id}`, data, options)
+                .then(res => {
+                    res.status === 200 &&
+                    this.setState({success: true});
+                })
+                .catch(err => {
+                    this.setState({
+                        error: 'Ошибка при отправке формы, попробуйте позже!' + err
+                    });
+                });
         } else {
             this.props.toggleModal();
         }
     };
 
     render() {
-        const { isActive } = this.state;
-        const { router } = this.props;
+        const { authorization } = this.state;
+        const { router, idElem, type } = this.props;
         const { API } = process.env;
 
         return (
@@ -38,8 +56,8 @@ class Socials extends Component {
                 >
                     <div className="socials__tg" itemProp="headline" content="t.me"/>
                 </a>
-                <div className="socials__bookmark" onClick={this.saveBookmark}>
-                    <svg className={`${isActive && 'active'}`}>
+                <div className="socials__bookmark" onClick={() => {this.saveBookmark(type, idElem)}}>
+                    <svg className={`${authorization && 'active'}`}>
                         <use href="/icons/sprite.svg#bookmark"/>
                     </svg>
                 </div>

@@ -1,25 +1,25 @@
 {
   "kind": "collectionType",
-  "collectionName": "comments",
+  "collectionName": "likes",
   "info": {
-    "name": "Comment"
+    "name": "Like"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "comment": {
-      "type": "richtext"
-    },
     "article": {
       "model": "articles",
-      "via": "comments"
+      "via": "likes"
     },
-    "author": {
-      "via": "comments",
+    "user": {
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "likes"
+    },
+    "counter": {
+      "type": "boolean"
     }
   }
 }
