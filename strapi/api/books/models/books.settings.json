@@ -59,6 +59,14 @@
     },
     "films": {
       "collection": "film"
+    },
+    "comments": {
+      "via": "book",
+      "collection": "comment"
+    },
+    "bookmarked": {
+      "via": "book",
+      "collection": "bookmark"
     }
   }
 }

@@ -2,56 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/charts",
-      "handler": "chart.find",
+      "path": "/bookmarks",
+      "handler": "bookmark.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/charts/count",
-      "handler": "chart.count",
+      "path": "/bookmarks/count",
+      "handler": "bookmark.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/charts/:id",
-      "handler": "chart.findOne",
+      "path": "/bookmarks/:id",
+      "handler": "bookmark.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/charts",
-      "handler": "chart.create",
+      "path": "/bookmarks",
+      "handler": "bookmark.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/charts/:id",
-      "handler": "chart.update",
+      "path": "/bookmarks/:id",
+      "handler": "bookmark.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/charts/:id",
-      "handler": "chart.delete",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/charts/:id/comment",
-      "handler": "chart.comment",
+      "path": "/bookmarks/:id",
+      "handler": "bookmark.delete",
       "config": {
         "policies": []
       }

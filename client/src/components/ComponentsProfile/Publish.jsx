@@ -57,7 +57,12 @@ class Publish extends Component {
                         <div className="published__text-type">Рецензия</div>
                         <div className="published__text-name">{`«${title}» `}</div>
                     </div>
-                    <Icons likes={item.likes} toggleModal={toggleModal}/>
+                    <Icons
+                        idContent={item.id}
+                        typeContent={'reviews'}
+                        likes={item.likes}
+                        toggleModal={toggleModal}
+                    />
                 </div>
             </div>
         )

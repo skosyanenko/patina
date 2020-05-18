@@ -11,7 +11,7 @@ class WeatherCard extends Component {
 
     API_KEY = 'd22e48b187f2bbb68b0f1e9a09cd2022';
     LOCATION = 'Rostov,RU';
-    URL = 'http://api.openweathermap.org/data/2.5/weather';
+    URL = 'https://api.openweathermap.org/data/2.5/weather';
 
     componentDidMount() {
         this.getTime();

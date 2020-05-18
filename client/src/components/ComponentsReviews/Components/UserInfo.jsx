@@ -5,7 +5,7 @@ import Author from 'components/Author';
 
 class UserInfo extends Component {
     render() {
-        const { user, date, textLength, like, toggleModal } = this.props;
+        const { user, date, textLength, likes, idContent, typeContent, toggleModal } = this.props;
 
         return (
             <div className="user-info">
@@ -18,7 +18,12 @@ class UserInfo extends Component {
                     <div className="follow-button">Подписаться</div>
                 </div>
                 <Socials toggleModal={toggleModal}/>
-                <Icons like={like} toggleModal={toggleModal}/>
+                <Icons
+                    likes={likes}
+                    idContent={idContent}
+                    typeContent={typeContent}
+                    toggleModal={toggleModal}
+                />
             </div>
         );
     }

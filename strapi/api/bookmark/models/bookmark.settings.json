@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookmarks",
+  "info": {
+    "name": "Bookmark"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "bookmarks": {
+      "type": "json"
+    },
+    "book": {
+      "model": "books",
+      "via": "bookmarked"
+    },
+    "user": {
+      "unique": true,
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "bookmarked"
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import sortBy from 'lodash.sortby';
 import { counterLetters } from 'config/config';
 import Loader from 'components/Loader';
 import TitleOfPage from 'components/TitleOfPage';
@@ -13,21 +12,9 @@ import NewsLink from 'components/ComponentsNews/NewsLink';
 import MyHead from 'components/MyHead';
 
 class NewsList extends Component {
-    state = {
-        loading: false
-    };
-
     componentDidMount() {
-        const { updateState } = this.props;
-        updateState({ perPage: 8, valuesDropdown: [8, 16, 24] });
-
-        this.getItems();
-    };
-
-    getItems = () => {
         const { setData, serverData } = this.props;
-        this.setState({loading: false});
-        setData({data: sortBy(serverData, 'id')});
+        setData({data: serverData});
     };
 
     viewSwitcher = view => {
@@ -48,8 +35,7 @@ class NewsList extends Component {
     };
 
     render() {
-        const { loading } = this.state;
-        const { items, toggleModal } = this.props;
+        const { items, loading, toggleModal } = this.props;
 
         return(
             <>
@@ -60,7 +46,8 @@ class NewsList extends Component {
                     robots={'all'}
                 />
                 <>
-                    <TitleOfPage title={"Новости"}
+                    <TitleOfPage
+                        title={"Новости"}
                         subtitle={"новости из мира литературы"}
                     />
                     {!loading
@@ -95,7 +82,7 @@ class NewsList extends Component {
 export async function getServerSideProps() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/articles`)
+    const serverData = await axios.get(`${API_URL}/articles?_sort=created_at:DESC`)
       .then(res => res.data)
       .catch(err => console.log(err));
 
@@ -103,4 +90,4 @@ export async function getServerSideProps() {
 
 }
 
-export default paginationWrap(NewsList);
+export default paginationWrap(NewsList, 8, [8, 16, 24]);

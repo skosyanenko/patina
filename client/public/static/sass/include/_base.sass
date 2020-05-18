@@ -145,6 +145,8 @@ p
             .page--profile-wrap
                 .published
                     max-width: calc(100% - 20px)
+                    +maxwidth($desktop)
+                        max-width: 100%
 
         &-follow
             display: flex
@@ -162,12 +164,7 @@ p
                     max-width: 100%
 
         &-title
-            margin-bottom: 20px
             @include style-text(18px, 2px, $openSans, $darkgray, 100%, 300, false)
-            +maxwidth($tablet)
-                margin-bottom: 15px
-            +maxwidth($mobail)
-                margin-bottom: 10px
 
     &--index
         width: 100%

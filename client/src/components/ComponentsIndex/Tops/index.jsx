@@ -58,11 +58,7 @@ class Tops extends Component {
                                 />
                                 <>
                                     <div className="tops__text-buttons">
-                                        <Socials
-                                            idElem={id}
-                                            type={'charts'}
-                                            toggleModal={toggleModal}
-                                        />
+                                        <Socials toggleModal={toggleModal}/>
                                         <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                             <a className="button button-white">Подробнее</a>
                                         </Link>

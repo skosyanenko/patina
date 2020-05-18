@@ -10,7 +10,7 @@ import axios from 'axios';
 
 class EventsList extends Component {
     state = {
-        loading: false,
+        loading: true,
         month: '',
         pictures: [
             [
@@ -59,7 +59,7 @@ class EventsList extends Component {
     };
 
     showPictures = () => {
-        const {quarters, pictures} = this.state;
+        const { quarters, pictures } = this.state;
         const month = new Date().getMonth() + 1;
         const index = Object.keys(quarters).find(item => quarters[item].includes(month));
         return pictures[index];

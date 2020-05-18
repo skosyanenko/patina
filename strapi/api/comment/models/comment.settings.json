@@ -16,10 +16,20 @@
       "model": "articles",
       "via": "comments"
     },
-    "author": {
-      "via": "comments",
-      "plugin": "users-permissions",
-      "model": "user"
+    "authorInfo": {
+      "type": "json"
+    },
+    "book": {
+      "model": "books",
+      "via": "comments"
+    },
+    "chart": {
+      "model": "chart",
+      "via": "comments"
+    },
+    "review": {
+      "model": "review",
+      "via": "comments"
     }
   }
 }

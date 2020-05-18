@@ -4,20 +4,21 @@ import Author from 'components/Author';
 import Auth from 'services/Authorization';
 import axios from 'axios';
 
-const CommentForm = ({ idContent, typeContent }) => {
-    const { handleSubmit, register, setValue } = useForm();
+const { API_URL } = process.env;
+
+const CommentForm = ({ idContent, typeContent, updateCommentsArray }) => {
+    const { handleSubmit, register, reset } = useForm();
 
     const ref = useRef();
 
     const initialState = {
         isActive: false,
-        success: false,
         user: []
     };
 
     const [state, setState] = useState(initialState);
 
-    const { isActive, success, user } = state;
+    const { isActive, user } = state;
 
     useEffect(() => {
         getUserInfo();
@@ -30,14 +31,6 @@ const CommentForm = ({ idContent, typeContent }) => {
             document.removeEventListener('click', handleOutsideClick);
         };
     });
-
-    useEffect(() => {
-        setState({
-            ...state,
-            isActive: false
-        });
-        setValue([{ comment: "" }]);
-    }, [success]);
 
     const handleClick = () => {
         setState({
@@ -56,8 +49,6 @@ const CommentForm = ({ idContent, typeContent }) => {
     };
 
     const handleCommentSubmit = content => {
-        const { API_URL } = process.env;
-
         const options = Auth.token && {
             headers: { Authorization: `Bearer ${Auth.token}` }
         };
@@ -65,7 +56,9 @@ const CommentForm = ({ idContent, typeContent }) => {
         axios.post(`${API_URL}/${typeContent}/${idContent}/comment`, content, options)
             .then(res => {
                 res.status === 200 &&
-                setState({...state, success: true});
+                setState({...state, isActive: false,});
+                updateCommentsArray({ addComment: res.data });
+                reset({ comment: '' });
             })
             .catch(err => {
                 console.log('Ошибка при отправке формы, попробуйте позже!' + err);
@@ -73,7 +66,6 @@ const CommentForm = ({ idContent, typeContent }) => {
     };
 
     const getUserInfo = () => {
-        const { API_URL } = process.env;
         const id = Auth.userInfo.id;
 
         axios.get(`${API_URL}/users/${id}`)
@@ -82,7 +74,7 @@ const CommentForm = ({ idContent, typeContent }) => {
                 setState({
                     ...state,
                     user: res.data
-            })
+                })
             })
             .catch(err => {
                 console.log('Ошибка получения элементов из бд' + err)

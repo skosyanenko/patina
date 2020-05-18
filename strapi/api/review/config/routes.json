@@ -47,6 +47,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/reviews/:id/comment",
+      "handler": "review.comment",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reviews/:id/like",
+      "handler": "review.like",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

@@ -25,6 +25,14 @@
       "via": "reviews",
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "comments": {
+      "via": "review",
+      "collection": "comment"
+    },
+    "likes": {
+      "via": "review",
+      "collection": "like"
     }
   }
 }

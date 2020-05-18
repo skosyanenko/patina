@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'next/router';
 import { counterLetters } from 'config/config';
 import paginationWrap from 'components/withPagination/paginationWrap';
@@ -22,7 +22,7 @@ const config = [
     { id: 'articles', route: '/articles', param: 'title_contains', class: NewsHorizontal, title: 'Новости' }
 ];
 
-const SearchList = ({router, items, fetchData, pagination, updateState, toggleModal}) => {
+const SearchList = ({router, items, fetchData, pagination, toggleModal}) => {
 
     const [query, setQuery] = useState({
         filter: '',
@@ -61,10 +61,6 @@ const SearchList = ({router, items, fetchData, pagination, updateState, toggleMo
     useEffect(() => {
         getItems(router.query);
     }, [router.query.filter, router.query.title]);
-
-    useEffect(() => {
-        updateState({ perPage: 6, valuesDropdown: [6, 12, 18]});
-    }, []);
 
     return (
         <>
@@ -119,4 +115,4 @@ const SearchList = ({router, items, fetchData, pagination, updateState, toggleMo
     )
 }
 
-export default withRouter(paginationWrap(SearchList));
+export default withRouter(paginationWrap(SearchList, 6, [6, 12, 18]));

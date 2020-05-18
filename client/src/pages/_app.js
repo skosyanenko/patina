@@ -93,7 +93,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                     <main className={router && switchClasses(router.pathname)}>
                         <Component
                           {...pageProps}
-                          toggleModal={toggleUnknownModal}
+                          toggleModal={() => toggleUnknownModal()}
                         />
                     </main>
                 </CSSTransition>
@@ -109,7 +109,7 @@ const MyApp = ({ Component, pageProps, router }) => {
 
                 <UnknownModal
                     isOpen={modalUnknownIsOpen}
-                    toggleModal={toggleUnknownModal}
+                    toggleModal={() => toggleUnknownModal()}
                 />
             </div>
             <Footer/>

@@ -47,6 +47,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/books/:id/comment",
+      "handler": "books.comment",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/books/:id/bookmark",
+      "handler": "books.bookmark",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

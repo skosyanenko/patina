@@ -90,13 +90,13 @@
     "status": {
       "type": "string"
     },
-    "comments": {
-      "collection": "comment",
-      "via": "author"
-    },
     "likes": {
+      "collection": "like",
+      "via": "user"
+    },
+    "bookmarked": {
       "via": "user",
-      "collection": "like"
+      "collection": "bookmark"
     }
   }
 }

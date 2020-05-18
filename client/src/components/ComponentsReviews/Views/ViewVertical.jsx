@@ -5,7 +5,7 @@ import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
 
-const ViewVertical = ({ user, book, title, description, likes, created_at, id, authors, toggleModal }) => {
+const ViewVertical = ({ user, book, title, description, likes, created_at, id, authors, comments, toggleModal }) => {
     return (
         <>
             <div className="container-review"
@@ -32,14 +32,20 @@ const ViewVertical = ({ user, book, title, description, likes, created_at, id, a
             </div>
             {description &&
                 <UserInfo
-                    textLength={counterLetters(description)}
-                    likes={likes}
-                    date={returnDatePublish(created_at)}
-                    toggleModal={toggleModal}
                     user={user}
+                    likes={likes}
+                    idContent={id}
+                    typeContent={'reviews'}
+                    date={returnDatePublish(created_at)}
+                    textLength={counterLetters(description)}
+                    toggleModal={toggleModal}
                 />
             }
-            <CommentBlock reviewId={id}/>
+            <CommentBlock
+                idContent={id}
+                typeContent={'reviews'}
+                comments={comments}
+            />
         </>
     )
 };

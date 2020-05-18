@@ -9,10 +9,6 @@ import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 class ChartsList extends Component {
-    state = {
-        loading: false
-    };
-
     componentDidMount(){
         VanillaTilt.init(this.rootNode, {
             max: 25,
@@ -22,21 +18,12 @@ class ChartsList extends Component {
             'max-glare': 0.5
         });
 
-        const { updateState } = this.props;
-        updateState({ perPage: 10, valuesDropdown: [10, 20, 30] });
-
-        this.getItems();
-    };
-
-    getItems = () => {
         const { setData, serverData } = this.props;
-        this.setState({loading: false});
         setData({ data: serverData });
     };
 
     render() {
-        const { items } = this.props;
-        const { loading } = this.state;
+        const { items, loading } = this.props;
 
         return(
             <>
@@ -121,4 +108,4 @@ export async function getServerSideProps() {
     return { props: { serverData } };
 }
 
-export default paginationWrap(ChartsList);
+export default paginationWrap(ChartsList, 10, [10, 20, 30]);

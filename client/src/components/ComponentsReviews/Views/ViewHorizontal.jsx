@@ -7,7 +7,7 @@ import Writer from '../Components/Writer';
 
 class ViewHorizontal extends Component {
     render () {
-        const { book, title, likes, created_at, description, id, authors, toggleModal, user } = this.props;
+        const { book, title, likes, created_at, description, id, authors, toggleModal, user, comments } = this.props;
 
         return (
             <>
@@ -36,11 +36,13 @@ class ViewHorizontal extends Component {
                             <div className="review-wrapper__user">
                                 {description &&
                                     <UserInfo
-                                        textLength={counterLetters(description)}
-                                        likes={likes}
-                                        date={returnDatePublish(created_at)}
-                                        toggleModal={toggleModal}
                                         user={user}
+                                        likes={likes}
+                                        idContent={id}
+                                        typeContent={'reviews'}
+                                        date={returnDatePublish(created_at)}
+                                        textLength={counterLetters(description)}
+                                        toggleModal={toggleModal}
                                     />
                                 }
                             </div>
@@ -51,10 +53,14 @@ class ViewHorizontal extends Component {
                         </div>
                     </div>
                 </div>
-                <CommentBlock reviewId={id}/>
+                <CommentBlock
+                    idContent={id}
+                    typeContent={'reviews'}
+                    comments={comments}
+                />
             </>
-        )
+        );
     }
-};
+}
 
 export default ViewHorizontal;

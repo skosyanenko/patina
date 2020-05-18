@@ -5,15 +5,42 @@ import Auth from 'services/Authorization';
 
 class ProfileHome extends Component {
     state = {
-        isEntered: false
+        isEntered: false,
+        deleteMark: {},
+        bookmarks: []
     };
 
     componentDidMount() {
+        const { user } = this.props;
+
         if ( Auth.token && Auth.token.length > 0) {
-            this.setState({isEntered: true})
+            this.setState({
+                isEntered: true,
+                bookmarks: user.bookmarked
+            })
         } else {
             this.setState({isEntered: false})
         }
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        const { deleteMark, bookmarks } = this.state;
+
+        if (prevState.deleteMark !== deleteMark) {
+            this.state.bookmarks.map(item => {
+                if (item.id === deleteMark.id) {
+                    bookmarks.splice(bookmarks.indexOf(item), 1);
+                    this.setState({
+                        bookmarks: bookmarks,
+                        deleteMark: []
+                    })
+                }
+            })
+        }
+    };
+
+    updateBookmarks = (newState = {}) => {
+        this.setState({...newState})
     };
 
     render() {
@@ -22,30 +49,43 @@ class ProfileHome extends Component {
 
         return (
             <div className="page--profile">
-                <div className={isEntered ? 'page--profile-block' : 'page--profile-public'}>
-                    <div className="page--profile-title">Последние публикации:</div>
-                    <div className="page--profile-wrap">
-                        { user.reviews && user.reviews.map((item, key) => (
-                            <Publish
-                                item={item}
-                                user={user}
-                                key={key}
-                                toggleModal={toggleModal}
-                            />
-                        ))}
+                {user.reviews && user.reviews.length > 0 &&
+                    <div className={isEntered ? 'page--profile-block' : 'page--profile-public'}>
+                        <div className="page--profile-title">Последние публикации:</div>
+                        <div className="page--profile-wrap">
+                            { user.reviews && user.reviews.map((item, key) => (
+                                <Publish
+                                    item={item}
+                                    user={user}
+                                    key={key}
+                                    toggleModal={toggleModal}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-                { isEntered
-                    ?
+                    ||
+                    <div className="page--profile-title">Публикаций нет.</div>
+                }
+                { isEntered ?
                     <div className="page--profile-block">
-                        <div className="page--profile-title">Закладки:</div>
-                        <BookMarks />
-                        <BookMarks />
-                        <BookMarks />
-                        <BookMarks />
+                        {user.bookmarked && user.bookmarked.length > 0 &&
+                            <>
+                                <div className="page--profile-title">Закладки:</div>
+                                { user.bookmarked && user.bookmarked.map((item, key) => (
+                                    <BookMarks
+                                        item={item}
+                                        key={key}
+                                        updateBookmarks={this.updateBookmarks}
+                                    />
+                                ))}
+                            </>
+                        ||
+                        <div className="page--profile-block">
+                            <div className="page--profile-title">Сохраненных в закладки книг нет.</div>
+                        </div>
+                        }
                     </div>
-                    :
-                    ''
+                    : ''
                 }
             </div>
         );

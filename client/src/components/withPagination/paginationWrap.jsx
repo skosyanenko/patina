@@ -2,25 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Pagination from 'components/Pagination';
 
-const paginationWrap = function( WrappedComponent ){
+const paginationWrap = function( WrappedComponent, perPage, valuesDropdown ){
     return class PaginationWrap extends Component {
         state = {
+            loading: true,
             data: [],
             filteredData: [],
             items: [],
             pageCount: 1,
             currentPage: 1,
             offset: 0,
-            perPage: null,
-            valuesDropdown: []
-        };
-
-        updateState = (newState = {}) => {
-            this.setState({...newState})
+            perPage: perPage,
+            valuesDropdown: valuesDropdown
         };
 
         setData = result => {
             this.setState(state => ({
+                loading: false,
                 data: result.data,
                 filteredData: result.data,
                 pageCount: Math.ceil(result.data.length / state.perPage)
@@ -38,6 +36,7 @@ const paginationWrap = function( WrappedComponent ){
 
         filterData = filteredData => {
             this.setState({
+                loading: false,
                 filteredData,
                 pageCount: Math.ceil(filteredData.length / this.state.perPage),
                 offset: 0
@@ -73,7 +72,8 @@ const paginationWrap = function( WrappedComponent ){
         };
 
         render() {
-            const { filteredData, items, data, filterValues, pageCount, perPage, valuesDropdown } = this.state;
+            const { loading, filteredData, items, data, filterValues, pageCount, perPage, valuesDropdown } = this.state;
+
             return (
                 <WrappedComponent
                     {...this.props}
@@ -83,18 +83,18 @@ const paginationWrap = function( WrappedComponent ){
                     filterData={this.filterData}
                     filterValues={filterValues}
                     filteredData={filteredData}
-                    updateState={this.updateState}
                     items={items}
                     data={data}
+                    loading={loading}
                     pagination={
-                        <Pagination
-                            pageCount={pageCount}
-                            perPage={perPage}
-                            handlePageClick={this.handlePageClick}
-                            setPerPage={this.setPerPage}
-                            valuesDropdown={valuesDropdown}
-                        />
-                    }
+                    <Pagination
+                        pageCount={pageCount}
+                        perPage={perPage}
+                        handlePageClick={this.handlePageClick}
+                        setPerPage={this.setPerPage}
+                        valuesDropdown={valuesDropdown}
+                    />
+                }
                 />
             );
         }

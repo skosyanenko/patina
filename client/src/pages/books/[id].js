@@ -47,8 +47,8 @@ class BooksDetail extends Component {
     toggleFilms = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
 
     render() {
-        const { modalIsOpen, currentBook } = this.state;
-        const { currentBook: {authors, bookImage, categories, title, fullDescription, shortDescription, readLink, reviews, films, id} } = this.state;
+        const { modalIsOpen } = this.state;
+        const { currentBook: {authors, bookImage, categories, title, fullDescription, shortDescription, readLink, reviews, films, id, weight, comments, bookmarked} } = this.state;
         const { toggleModal } = this.props;
 
         return (
@@ -87,8 +87,12 @@ class BooksDetail extends Component {
                                     </div>
                             </div>
                             <BookInform
-                                idElem={id}
-                                type={'books'}
+                                idContent={id}
+                                titleContent={title}
+                                description={shortDescription}
+                                weight={weight}
+                                bookmarked={bookmarked}
+                                image={bookImage}
                                 categories={categories}
                                 toggleModal={toggleModal}
                             />
@@ -113,7 +117,11 @@ class BooksDetail extends Component {
                             </div>
                         </div>
                     </div>
-                    <CommentBlock bookId={currentBook.id}/>
+                    <CommentBlock
+                        idContent={id}
+                        typeContent={'books'}
+                        comments={comments}
+                    />
                     <ModalFilms
                         isOpen={modalIsOpen}
                         toggleModal={this.toggleFilms}

@@ -15,21 +15,12 @@ class BooksList extends Component {
         activeLetter: '',
         sorting: '',
         resultTitle: '',
-        loading: false,
         isBlur: false,
         alphabet: []
     };
 
     componentDidMount() {
-        const { updateState } = this.props;
-        updateState({ perPage: 9, valuesDropdown: [9, 18, 27] });
-
-        this.getItems();
-    };
-
-    getItems = () => {
         const { setData, serverData } = this.props;
-        this.setState({loading: false});
         setData({ data: serverData });
     };
 
@@ -129,8 +120,8 @@ class BooksList extends Component {
     };
 
     render() {
-        const { isBlur, activeLetter, alphabet, loading, resultTitle, sorting } = this.state;
-        const { items } = this.props;
+        const { isBlur, activeLetter, alphabet,  resultTitle, sorting } = this.state;
+        const { items, loading } = this.props;
 
         return (
             <>
@@ -220,4 +211,4 @@ export async function getServerSideProps() {
     return { props: { serverData } };
 }
 
-export default paginationWrap(BooksList);
+export default paginationWrap(BooksList, 9, [9, 18, 27]);

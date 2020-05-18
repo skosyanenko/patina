@@ -9,20 +9,11 @@ import axios from 'axios';
 
 class ReviewsList extends Component {
     state = {
-        loading: false,
         resultTitle: ''
     };
 
     componentDidMount() {
-        const { updateState } = this.props;
-        updateState({ perPage: 3, valuesDropdown: [3, 6, 9] });
-
-        this.getItems();
-    };
-
-    getItems = () => {
         const { setData, serverData } = this.props;
-        this.setState({loading: false});
         setData({ data: serverData });
     };
 
@@ -41,10 +32,10 @@ class ReviewsList extends Component {
         });
     };
 
-    render (){
-        const { loading, resultTitle } = this.state;
+    render () {
+        const { resultTitle } = this.state;
 
-        const { items, toggleModal } = this.props;
+        const { items, loading, toggleModal } = this.props;
 
         return (
             <>
@@ -96,4 +87,4 @@ export async function getServerSideProps() {
     return { props: { serverData } };
 }
 
-export default paginationWrap(ReviewsList);
+export default paginationWrap(ReviewsList, 3, [3, 6, 9]);

@@ -18,7 +18,7 @@ class ChartsDetail extends Component {
     };
 
     render() {
-        const { currentChart: {title, description, books, id} } = this.state;
+        const { currentChart: {title, description, books, id, comments} } = this.state;
         const { toggleModal } = this.props;
 
         return(
@@ -76,14 +76,14 @@ class ChartsDetail extends Component {
                 </div>
                 <div className="icons-wrap">
                     <div className="icons-wrap__socials">
-                        <Socials
-                            idElem={id}
-                            type={'charts'}
-                            toggleModal={toggleModal}
-                        />
+                        <Socials toggleModal={toggleModal}/>
                     </div>
                 </div>
-                <CommentBlock topId={id}/>
+                <CommentBlock
+                    idContent={id}
+                    typeContent={'charts'}
+                    comments={comments}
+                />
             </div>
             </>
         );

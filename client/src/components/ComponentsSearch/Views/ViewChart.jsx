@@ -2,24 +2,24 @@ import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
-const ViewChart = ({ item }) => (
+const ViewChart = ({ item: {id, image, title, description} }) => (
     <div className="result-chart"
         itemScope
         itemType="http://schema.org/CreativeWork"
     >
-        <Link href={'/books/[id]'} as={`/books/${item.id}`}>
+        <Link href={'/books/[id]'} as={`/books/${id}`}>
             <a className="result-chart__img">
-                {item.image && <img src={`${process.env.API_URL}${item.image.url}`} alt="" itemProp="image"/>}
+                {image && <img src={`${process.env.API_URL}${image.url}`} alt="" itemProp="image"/>}
             </a>
         </Link>
         <div className="result-chart__wrapper">
-            <Link href={'/charts/[id]'} as={`/charts/${item.id}`}>
+            <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                 <a className="result-chart__wrapper-title" itemProp="name">
-                    {item.title}
+                    {title}
                 </a>
             </Link>
             <ReactMarkdown
-                source={item.description}
+                source={description}
                 className="result-chart__wrapper-description"
                 itemProp="description"
             />
