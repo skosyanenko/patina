@@ -71,7 +71,7 @@ class BooksDetail extends Component {
                             </Link>
                             <div className="cover__wrapper">
                                 <div className="cover__wrapper-img">
-                                    {bookImage && <img src={`${process.env.API_URL}${bookImage.url}`} alt="" itemProp="image"/>}
+                                    {bookImage && <img src={`${bookImage.url}`} alt="" itemProp="image"/>}
                                 </div>
                                     { authors && authors.length === 1 && authors.map((item, key) => (
                                         <Fragment key={key}>
