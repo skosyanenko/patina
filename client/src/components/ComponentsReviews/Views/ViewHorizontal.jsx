@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { counterLetters, returnDatePublish } from 'config/config';
-import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
 
 class ViewHorizontal extends Component {
     render () {
-        const { book, title, likes, created_at, description, id, authors, toggleModal, user, comments } = this.props;
+        const { book, title, likes, created_at, description, id, authors, toggleModal, user } = this.props;
 
         return (
             <>
@@ -53,11 +52,6 @@ class ViewHorizontal extends Component {
                         </div>
                     </div>
                 </div>
-                <CommentBlock
-                    idContent={id}
-                    typeContent={'reviews'}
-                    comments={comments}
-                />
             </>
         );
     }

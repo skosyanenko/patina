@@ -17,4 +17,10 @@ module.exports = {
     const entity = await strapi.services.bookmark.create(ctx.request.body);
     return sanitizeEntity(entity, { model: strapi.models.bookmark });
   },
+  async vote(ctx) {
+    ctx.request.body.user = ctx.state.user.id;
+    ctx.request.body.book = ctx.params.id;
+    const entity = await strapi.services.vote.create(ctx.request.body);
+    return sanitizeEntity(entity, { model: strapi.models.vote });
+  },
 };

@@ -97,6 +97,10 @@
     "bookmarked": {
       "via": "user",
       "collection": "bookmark"
+    },
+    "votes": {
+      "via": "user",
+      "collection": "vote"
     }
   }
 }

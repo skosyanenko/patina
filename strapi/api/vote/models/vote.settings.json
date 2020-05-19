@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "votes",
+  "info": {
+    "name": "Vote"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "vote": {
+      "type": "decimal"
+    },
+    "book": {
+      "model": "books",
+      "via": "votes"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "votes"
+    }
+  }
+}

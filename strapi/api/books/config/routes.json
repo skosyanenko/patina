@@ -63,6 +63,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/books/:id/vote",
+      "handler": "books.vote",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

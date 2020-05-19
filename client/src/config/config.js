@@ -85,9 +85,8 @@ export const filtersParams = [
 ];
 
 export const profileLinks = [
-    { title: 'Профиль', path: 'profile', pathname: '/profile/[id]', img: 'home' },
-    { title: 'Подписки', path: 'profile-following', pathname: '/profile-following/[id]', img: 'group' },
-    { title: 'Редактировать', path: 'profile-edit', pathname: '/profile-edit/[id]', img: 'statistic' }
+    { title: 'Подписки', type: 'follows', img: 'group' },
+    { title: 'Редактировать', type: 'edit', img: 'statistic' }
 ];
 
 export const counterLetters = description => {

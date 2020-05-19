@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Typed from 'react-typed';
 import Socials from 'components/SocialsGroup';
-import Rating from 'components/Rating';
+import MyRating from 'components/MyRating';
 import Auth from 'services/Authorization';
 
-const BookInform = ({ idContent, titleContent, description, image, bookmarked, weight, categories, ratingCount, ratingTotal, toggleModal }) => {
+const BookInform = ({ idContent, titleContent, description, image, bookmarked, weight, categories, votes, toggleModal }) => {
     const initialState = {
         isEntered: false
     };
@@ -45,9 +45,10 @@ const BookInform = ({ idContent, titleContent, description, image, bookmarked, w
                 ))}
             </div>
             <div className="book-inform__container">
-                <Rating ratingCount={ratingCount}
-                        ratingTotal={ratingTotal}
-                        toggleModal={toggleModal}
+                <MyRating
+                    votes={votes}
+                    bookId={idContent}
+                    toggleModal={toggleModal}
                 />
                 <Socials
                     idContent={idContent}

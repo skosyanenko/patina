@@ -6,16 +6,9 @@ import axios from 'axios';
 
 class CommentBlock extends Component {
     state = {
-        authorization: false,
         comments: [],
         addComment: {},
         deleteComment: {}
-    };
-
-    componentDidMount() {
-        if ( Auth.token && Auth.token.length > 0) {
-            this.setState({authorization: true});
-        }
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -68,7 +61,7 @@ class CommentBlock extends Component {
     };
 
     render() {
-        const { comments, authorization } = this.state;
+        const { comments } = this.state;
         const { idContent, typeContent } = this.props;
 
         return(
@@ -77,15 +70,13 @@ class CommentBlock extends Component {
                     <div className="comments__title-icon"/>
                     <span className="comments__title-counter">{comments.length}</span>
                 </div>
-                {Auth.token && Auth.token.length > 0
-                    ?
+                {Auth.isAuth &&
                     <CommentForm
                         idContent={idContent}
                         typeContent={typeContent}
                         updateCommentsArray={this.updateCommentsArray}
                     />
-                    :
-                    ''
+                    || ''
                 }
                 { comments && comments.map(({ authorInfo, created_at, comment, id }, key) => (
                     <div className="comments-block" itemScope itemType="http://schema.org/UserComments" key={key}>
@@ -99,7 +90,7 @@ class CommentBlock extends Component {
                                     <span className="author__inform-date" itemProp="datePublished commentTime">{returnDatePublish(created_at)}</span>
                                 </div>
                             </div>
-                            { authorization && Auth.userInfo.id === authorInfo.userId &&
+                            { Auth.isAuth && Auth.userInfo.id === authorInfo.userId &&
                                 <div
                                     className="comments-block__wrap-delete"
                                     onClick={() => this.handleCommentDelete(id)}

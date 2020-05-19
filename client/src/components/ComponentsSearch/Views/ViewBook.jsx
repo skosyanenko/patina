@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { returnAuthor } from 'config/config';
-import Rating from 'components/Rating';
+import Rating from 'components/MyRating';
 
 const ViewBook = ({ item, toggleModal }) => (
     <div className="results"

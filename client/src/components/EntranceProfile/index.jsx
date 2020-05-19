@@ -34,12 +34,6 @@ class EntranceProfile extends Component {
                         <Link href={`/profile/${Auth.userInfo.id}`}>
                             <a className="entrance__wrapper-profile"/>
                         </Link>
-                        <Link href={'/profile/statistic'}>
-                            <a className="entrance__wrapper-wrap">
-                                <div className="entrance__wrapper-bell"/>
-                                <span className="entrance__wrapper-counter">1</span>
-                            </a>
-                        </Link>
                         <div className="entrance__wrapper-exit"
                              onClick={this.exitProfile}
                         />

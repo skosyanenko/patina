@@ -43,7 +43,7 @@ class Books extends Component {
                     asNavFor={this.state.nav2}
                     className="books-slider"
                 >
-                    { books && books.map(({ title, categories, shortDescription, id, coverImage, bookmarked, bookImage, weight }, key) => (
+                    { books && books.map(({ title, categories, shortDescription, id, coverImage, bookmarked, bookImage, weight, votes }, key) => (
                     <div className="books"
                          key={key}
                          itemType="https://schema.org/Book"
@@ -60,6 +60,7 @@ class Books extends Component {
                                     image={bookImage}
                                     weight={weight}
                                     categories={categories}
+                                    votes={votes}
                                     toggleModal={toggleModal}
                                 />
                             <p className="books__text-description" itemProp="description">

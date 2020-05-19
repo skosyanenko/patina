@@ -10,7 +10,6 @@ import MyHead from 'components/MyHead';
 import axios from 'axios';
 
 class NewsDetail extends Component {
-
     state = {
         error: '',
         viewsUpdate: 0

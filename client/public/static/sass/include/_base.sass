@@ -19,11 +19,7 @@ p
 
     &__layout
         display: flex
-        min-height: calc(100vh - 50px - 80px)
-        +maxwidth($tablet)
-            min-height: calc(100vh - 45px)
-        +maxwidth($mobail)
-            min-height: calc(100vh - 40px)
+        min-height: 100vh
 
 /* Стили для контейнера с контентом */
 
@@ -119,6 +115,13 @@ p
         align-items: center
         justify-content: center
 
+    &--follow
+        margin-top: 60px
+        +maxwidth($tablet)
+            margin-top: 40px
+        +maxwidth($mobail)
+            margin-top: 20px
+
     &--profile
         display: flex
         justify-content: space-between
@@ -165,6 +168,10 @@ p
 
         &-title
             @include style-text(18px, 2px, $openSans, $darkgray, 100%, 300, false)
+            max-width: calc(50% - 20px)
+            width: 100%
+            +maxwidth($mobail)
+                max-width: 100%
 
     &--index
         width: 100%

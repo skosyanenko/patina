@@ -21,12 +21,11 @@ class ProfileLayout extends Component {
         const { router } = this.props;
 
         if (Auth.userInfo.id === +router.query.id) {
-            this.setState({authorization: true})
+            this.setState({
+                authorization: true,
+                userLikes: this.getItems()
+            })
         }
-
-        this.setState({
-            userLikes: this.getItems()
-        })
     };
 
     getItems = () => {
@@ -39,15 +38,16 @@ class ProfileLayout extends Component {
     };
 
     switchViews = () => {
+        const { authorization } = this.state;
         const { router, toggleModal, user } = this.props;
 
-        switch(router.pathname) {
-            case '/profile-edit/[id]':
-                return <ProfileEdit user={user}/>;
-            case '/profile-following/[id]':
-                return <ProfileFollowing user={user} toggleModal={toggleModal}/>;
-            case '/profile/[id]':
-                return <ProfileHome user={user} toggleModal={toggleModal}/>;
+        if (router.pathname === '/profile/[id]') return <ProfileHome user={user} toggleModal={toggleModal} authorization={authorization}/>;
+
+        switch(router.query.type) {
+            case 'edit':
+                return <ProfileEdit user={user} authorization={authorization}/>;
+            case 'follows':
+                return <ProfileFollowing user={user} toggleModal={toggleModal} authorization={authorization}/>;
         }
     };
 
@@ -76,10 +76,20 @@ class ProfileLayout extends Component {
                         { authorization
                             ?
                             <div className="profile-menu">
+                                <Link href={`/profile/[id]`} as={`/profile/${user.id}`}>
+                                    <a className={`profile-menu__link ${router.pathname === '/profile/[id]' ? 'active' : ''}`}>
+                                        <div className="profile-menu__link-image">
+                                            <svg>
+                                                <use href={`/icons/sprite.svg#home`}/>
+                                            </svg>
+                                        </div>
+                                        <span className="profile-menu__link-text">Профиль</span>
+                                    </a>
+                                </Link>
                                 { profileLinks.map((item, key) => (
                                     <Fragment key={key}>
-                                        <Link href={`/${item.path}/[id]`} as={`/${item.path}/${user.id}`}>
-                                            <a className={`profile-menu__link ${router.pathname === item.pathname ? 'active' : ''}`}>
+                                        <Link href={`/profile/[id]/${item.type}`} as={`/profile/${user.id}/${item.type}`}>
+                                            <a className={`profile-menu__link ${router.query.type === item.type ? 'active' : ''}`}>
                                                 <div className="profile-menu__link-image">
                                                     <svg>
                                                         <use href={`/icons/sprite.svg#${item.img}`}/>
@@ -117,8 +127,8 @@ class ProfileLayout extends Component {
                                         </div>
                                     </div>
                                     <div className="personal__follow">
-                                        <span className="personal__follow-following">Подписки • 100</span>
-                                        <span className="personal__follow-followers">Подписки • 100</span>
+                                        <span className="personal__follow-following">Подписки • {user.follow.length || 0}</span>
+                                        <span className="personal__follow-followers">Подписки • {user.followers.length || 0}</span>
                                     </div>
                                 </div>
                             }

@@ -169,3 +169,24 @@
             +maxwidth($mobail)
                 margin-right: 10px
 
+/* Стили для ProfileFollowing */
+
+.follows
+    max-width: calc(50% - 20px)
+    width: 100%
+    margin: 20px 0
+    padding-bottom: 20px
+    border-bottom: 1px solid $lightgray
+    display: flex
+    +maxwidth($desktop)
+        max-width: 100%
+        margin: 20px 0
+
+    &__wrap
+        margin-left: 20px
+        display: flex
+        flex-direction: column
+
+        &-title
+            @include style-text(22px, 2px, $openSans, $darkgray, 120%, 300, false)
+

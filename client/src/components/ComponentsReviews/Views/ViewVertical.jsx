@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { counterLetters, returnDatePublish } from 'config/config';
-import CommentBlock from 'components/CommentBlock';
 import UserInfo from '../Components/UserInfo';
 import Writer from '../Components/Writer';
 
-const ViewVertical = ({ user, book, title, description, likes, created_at, id, authors, comments, toggleModal }) => {
+const ViewVertical = ({ user, book, title, description, likes, created_at, id, authors, toggleModal }) => {
     return (
         <>
             <div className="container-review"
@@ -41,11 +40,6 @@ const ViewVertical = ({ user, book, title, description, likes, created_at, id, a
                     toggleModal={toggleModal}
                 />
             }
-            <CommentBlock
-                idContent={id}
-                typeContent={'reviews'}
-                comments={comments}
-            />
         </>
     )
 };

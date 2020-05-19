@@ -48,7 +48,7 @@ class BooksDetail extends Component {
 
     render() {
         const { modalIsOpen } = this.state;
-        const { currentBook: {authors, bookImage, categories, title, fullDescription, shortDescription, readLink, reviews, films, id, weight, comments, bookmarked} } = this.state;
+        const { currentBook: {authors, bookImage, categories, title, fullDescription, shortDescription, readLink, reviews, films, id, weight, comments, bookmarked, votes} } = this.state;
         const { toggleModal } = this.props;
 
         return (
@@ -95,6 +95,7 @@ class BooksDetail extends Component {
                                 image={bookImage}
                                 categories={categories}
                                 toggleModal={toggleModal}
+                                votes={votes}
                             />
                         </div>
                         <div className="description">
@@ -115,13 +116,13 @@ class BooksDetail extends Component {
                                     <div className="button button-green" onClick={this.toggleFilms}>Экранизации</div>
                                 }
                             </div>
+                            <CommentBlock
+                                idContent={id}
+                                typeContent={'books'}
+                                comments={comments}
+                            />
                         </div>
                     </div>
-                    <CommentBlock
-                        idContent={id}
-                        typeContent={'books'}
-                        comments={comments}
-                    />
                     <ModalFilms
                         isOpen={modalIsOpen}
                         toggleModal={this.toggleFilms}
