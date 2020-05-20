@@ -77,7 +77,7 @@ class Books extends Component {
                                 </svg>
                             </div>
                             <div className="books__img">
-                                {coverImage && <img src={`${process.env.API_URL}${coverImage.url}`} alt="" itemProp="image"/>}
+                                {coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="books__arrow">
                                 <svg className="books__arrow-next" onClick={this.next}>

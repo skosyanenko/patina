@@ -58,7 +58,7 @@ class NewsDetail extends Component {
                         { view ? <h1 className="article__title-horizontal" itemProp="headline name">{title}</h1> : ''}
                         <div className="image__wrapper">
                             <div className={`${view ? 'image__wrapper-horizontal' : 'image__wrapper-img'}`}>
-                                {cover && <img src={`${process.env.API_URL}${cover.url}`} alt="" itemProp="image"/>}
+                                {cover && <img src={`${cover.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="image__wrapper-figure"/>
                             <div className="image__wrapper-figure"/>

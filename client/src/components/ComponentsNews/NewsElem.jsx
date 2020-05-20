@@ -13,7 +13,7 @@ const NewsElem = ({ item: {id, cover, title, description} }) => (
         </div>
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <div className="news-elem__img">
-                {cover && <img src={`${process.env.API_URL}${cover.url}`} alt=""/>}
+                {cover && <img src={`${cover.url}`} alt=""/>}
             </div>
         </Link>
     </div>

@@ -9,7 +9,7 @@ const ViewChart = ({ item: {id, image, title, description} }) => (
     >
         <Link href={'/books/[id]'} as={`/books/${id}`}>
             <a className="result-chart__img">
-                {image && <img src={`${process.env.API_URL}${image.url}`} alt="" itemProp="image"/>}
+                {image && <img src={`${image.url}`} alt="" itemProp="image"/>}
             </a>
         </Link>
         <div className="result-chart__wrapper">

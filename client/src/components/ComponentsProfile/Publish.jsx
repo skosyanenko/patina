@@ -49,7 +49,7 @@ class Publish extends Component {
                 </Link>
                 <Link as={`/reviews/${item.id}`} href={`/reviews/${item.id}`}>
                     <a>
-                        {bookImage && <img src={`${process.env.API_URL}${bookImage.url}`} alt="" className="published__img"/>}
+                        {bookImage && <img src={`${bookImage.url}`} alt="" className="published__img"/>}
                     </a>
                 </Link>
                 <div className="published__wrapper">

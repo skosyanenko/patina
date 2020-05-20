@@ -11,7 +11,7 @@ const ViewBook = ({ item, toggleModal }) => (
     >
         <Link href={'/books/[id]'} as={`/books/${item.id}`}>
             <a className="results__img">
-                {item.coverImage && <img src={`${process.env.API_URL}${item.coverImage.url}`} alt="" itemProp="image"/>}
+                {item.coverImage && <img src={`${item.coverImage.url}`} alt="" itemProp="image"/>}
             </a>
         </Link>
         <div className="results__wrapper">

@@ -25,7 +25,7 @@ class BookMarks extends Component {
         const { item: {id, book, bookmarks} } = this.props;
         return (
             <div className="bookmarks">
-                {bookmarks.bookImage && <img src={`${API_URL}${bookmarks.bookImage.url}`} alt="" className="bookmarks__img"/>}
+                {bookmarks.bookImage && <img src={`${bookmarks.bookImage.url}`} alt="" className="bookmarks__img"/>}
                 <div className="bookmarks__wrapper">
                     <div className="bookmarks__wrapper-row">
                         <div className="bookmarks__wrapper-column">

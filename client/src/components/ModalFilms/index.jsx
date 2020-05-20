@@ -32,7 +32,7 @@ class ModalFilms extends Component {
                                     <h1 className="films__title" itemProp="name">
                                         {title}
                                     </h1>
-                                    {image && <img src={`${process.env.API_URL}${image.url}`} alt="" className="films__img" itemProp="image"/>}
+                                    {image && <img src={`${image.url}`} alt="" className="films__img" itemProp="image"/>}
                                     <div className="films__wrap">
                                         <ReactMarkdown
                                             source={description}

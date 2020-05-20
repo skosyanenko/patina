@@ -85,7 +85,7 @@ export const filtersParams = [
 ];
 
 export const profileLinks = [
-    { title: 'Подписки', type: 'follows', img: 'group' },
+    // { title: 'Подписки', type: 'follows', img: 'group' },
     { title: 'Редактировать', type: 'edit', img: 'statistic' }
 ];
 

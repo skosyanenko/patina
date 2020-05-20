@@ -8,7 +8,7 @@ const ViewReview = ({ item: {id, book, likes, description, created_at, title, us
    <div className="reviews__result">
        <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
            <a className="reviews__result-image">
-               {book && book.bookImage ? <img src={`${process.env.API_URL}${book.bookImage.url}`} alt=""/> : ''}
+               {book && book.bookImage ? <img src={`${book.bookImage.url}`} alt=""/> : ''}
            </a>
        </Link>
        <div className="reviews__result-wrap">

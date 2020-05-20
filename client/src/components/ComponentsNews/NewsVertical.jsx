@@ -8,7 +8,7 @@ const NewsVertical = ({ item: {id, cover, title, description, likes, views}, tex
         <Link href={'/news/[id]'} as={`/news/${id}`}>
             <a className="news-vertical__link">
                 <div className="news-vertical__link-img">
-                    {cover && <img src={`${process.env.API_URL}${cover.url}`} alt=""/>}
+                    {cover && <img src={`${cover.url}`} alt=""/>}
                 </div>
             </a>
         </Link>

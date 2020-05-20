@@ -9,7 +9,7 @@ const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, t
             <Link href={'/news/[id]'} as={`/news/${id}`}>
                 <a className="news-horizontal__link">
                     <div className="news-horizontal__link-img">
-                        {cover && <img src={`${process.env.API_URL}${cover.url}`} alt=""/>}
+                        {cover && <img src={`${cover.url}`} alt=""/>}
                     </div>
                 </a>
             </Link>

@@ -44,7 +44,7 @@ class Tops extends Component {
                              itemType="http://schema.org/CreativeWork"
                         >
                             <div className="tops__wrapper-img">
-                                {image && <img src={`${process.env.API_URL}${image.url}`} alt="" itemProp="image"/>}
+                                {image && <img src={`${image.url}`} alt="" itemProp="image"/>}
                             </div>
                             <div className="tops__text">
                                 <Link href={'/charts/[id]'} as={`/charts/${id}`}>
