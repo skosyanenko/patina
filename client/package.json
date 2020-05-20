@@ -22,6 +22,7 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-google-recaptcha": "^2.0.1",
     "react-hook-form": "^4.4.8",
     "react-markdown": "^4.3.1",
     "react-markdown-editor-lite": "^1.0.2",

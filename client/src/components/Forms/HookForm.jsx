@@ -1,10 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import ReCAPTCHA from 'react-google-recaptcha';
 import InputText from './Input';
 import InputFile from './File';
 import SelectField from './SelectField';
 import RadioButton from './RadioButton';
 import TextEditor from './TextEditor';
+
+const KEY = '6Ld2NPoUAAAAAHo_4KgDtXfQpEZ5KmT_v05EX5-n';
 
 const HookForm = (props) => {
     const { handleSubmit, register, setValue, watch, getValues, errors, formState, control } = useForm({
@@ -33,6 +36,10 @@ const HookForm = (props) => {
         }
     };
 
+    const onChange = (value) => {
+        console.log("Captcha value:", value);
+    };
+
     return (
         <form className={`form-wrapper form ${props.classAnimate}`}
               onSubmit={ handleSubmit(props.onSubmit) }
@@ -55,6 +62,12 @@ const HookForm = (props) => {
                         )
                     }
                 )}
+                <div className="recaptcha">
+                    <ReCAPTCHA
+                        sitekey={KEY}
+                        onChange={onChange}
+                    />
+                </div>
                 <button type="submit" className={`button button-green ${props.classPrefix} ${Object.keys(errors).length ? 'disabled' : ''}`}>
                     { props.button }
                 </button>
