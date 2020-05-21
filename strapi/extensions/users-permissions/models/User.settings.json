@@ -58,7 +58,8 @@
       "enum": [
         "male",
         "female"
-      ]
+      ],
+      "required": false
     },
     "city": {
       "type": "string"
@@ -95,12 +96,12 @@
       "via": "user"
     },
     "bookmarked": {
-      "via": "user",
-      "collection": "bookmark"
+      "collection": "bookmark",
+      "via": "user"
     },
     "votes": {
-      "via": "user",
-      "collection": "vote"
+      "collection": "vote",
+      "via": "user"
     }
   }
 }

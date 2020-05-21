@@ -64,7 +64,7 @@ class InputFile extends Component  {
                         name={name}
                         onChange={e => this.handleFile(e.target.files)}
                         ref={register({
-                            required: 'Обязательное поле!',
+                            value: false,
                             validate: value => value[0].size < 3 * 1024 * 1024 || 'Превышен лимит 3мб'
                         })}
                         accept="image/*"

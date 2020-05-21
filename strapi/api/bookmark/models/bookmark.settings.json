@@ -17,10 +17,9 @@
       "via": "bookmarked"
     },
     "user": {
-      "unique": true,
+      "via": "bookmarked",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "bookmarked"
+      "model": "user"
     }
   }
 }

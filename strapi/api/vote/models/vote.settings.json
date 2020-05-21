@@ -17,9 +17,9 @@
       "via": "votes"
     },
     "user": {
+      "via": "votes",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "votes"
+      "model": "user"
     }
   }
 }
