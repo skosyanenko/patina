@@ -173,7 +173,7 @@
 
         &-text
             margin-top: 7px
-            @include style-text-events(14px, 0, $waverly, $lightgray, 100%, 100, false, false)
+            @include style-text-events(14px, 0, $waverly, $gray, 100%, 100, false, false)
             text-overflow: ellipsis
             max-width: 270px
             overflow: hidden
@@ -183,3 +183,6 @@
                 margin-top: 5px
             +maxwidth($mobail)
                 max-width: 120px
+
+            a
+                color: $gray

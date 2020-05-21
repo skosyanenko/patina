@@ -135,7 +135,7 @@ class EventsList extends Component {
 export async function getServerSideProps() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/events`)
+    const serverData = await axios.get(`${API_URL}/events?_sort=id:ASC`)
       .then(res => res.data)
       .catch(err => console.log(err));
 
