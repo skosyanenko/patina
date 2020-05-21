@@ -128,7 +128,7 @@ class ProfileLayout extends Component {
                                     </div>
                                     <div className="personal__follow">
                                         <span className="personal__follow-following">Подписки • {user.follow.length || 0}</span>
-                                        <span className="personal__follow-followers">Подписки • {user.followers.length || 0}</span>
+                                        <span className="personal__follow-followers">Подписчики • {user.followers.length || 0}</span>
                                     </div>
                                 </div>
                             }

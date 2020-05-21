@@ -127,7 +127,7 @@ export const getDocHeight = () => {
     );
 };
 
-export const returnImage = (authors = []) => authors.map(({picture}) => picture);
+export const returnImage = (authors = []) => authors.map(({picture}) => picture.url);
 
 export const returnNameLetters = (name) => (name.substr(0, 1));
 
