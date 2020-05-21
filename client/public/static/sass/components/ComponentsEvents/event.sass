@@ -165,9 +165,21 @@
 
         &-title
             @include style-text-events(18px, 2px, $waverlyExtra, $black, 100%, 500, false, false)
+            max-width: 270px
+            +maxwidth($tablet)
+                max-width: 180px
+            +maxwidth($mobail)
+                max-width: 120px
 
         &-text
             margin-top: 7px
             @include style-text-events(14px, 0, $waverly, $lightgray, 100%, 100, false, false)
+            text-overflow: ellipsis
+            max-width: 270px
+            overflow: hidden
+            white-space: nowrap
             +maxwidth($tablet)
+                max-width: 180px
                 margin-top: 5px
+            +maxwidth($mobail)
+                max-width: 120px
