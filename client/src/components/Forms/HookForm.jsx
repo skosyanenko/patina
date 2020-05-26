@@ -26,7 +26,7 @@ const HookForm = (props) => {
     useEffect(() => {
         setState({
             ...state,
-            isActive: Object.keys(errors).length > 0 && !state.captcha && !state.captcha.length
+            isActive: Object.keys(errors).length > 0 && state.captcha.length > 0
         })
     }, [errors, state])
 
