@@ -24,18 +24,11 @@ const HookForm = (props) => {
     const [state, setState] = useState(initialState);
 
     useEffect(() => {
-        if (Object.keys(errors).length !== 0 && state.captcha.length === 0) {
-            setState({
-                ...state,
-                isActive: true
-            })
-        } else {
-            setState({
-                ...state,
-                isActive: false
-            })
-        }
-    }, [Object.keys(errors).length, state.captcha.length])
+        setState({
+            ...state,
+            isActive: Object.keys(errors).length > 0 && !state.captcha && !state.captcha.length
+        })
+    }, [errors, state])
 
     const typeSwitcher = type => {
         switch(type) {
