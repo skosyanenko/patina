@@ -60,6 +60,7 @@ const paginationWrap = function( WrappedComponent, perPage, valuesDropdown ){
             const {filteredData, offset, perPage} = this.state;
             let elements = filteredData.slice(offset, offset + perPage);
             this.setState({items: elements});
+            window.scrollTo(0, 0);
         };
 
         setPerPage = value => {

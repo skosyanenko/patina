@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import InputText from './Input';
@@ -15,6 +15,27 @@ const HookForm = (props) => {
     });
 
     watch('viewType');
+
+    const initialState = {
+        captcha: '',
+        isActive: false
+    };
+
+    const [state, setState] = useState(initialState);
+
+    useEffect(() => {
+        if (Object.keys(errors).length !== 0 && state.captcha.length === 0) {
+            setState({
+                ...state,
+                isActive: true
+            })
+        } else {
+            setState({
+                ...state,
+                isActive: false
+            })
+        }
+    }, [Object.keys(errors).length, state.captcha.length])
 
     const typeSwitcher = type => {
         switch(type) {
@@ -37,7 +58,10 @@ const HookForm = (props) => {
     };
 
     const onChange = (value) => {
-        console.log("Captcha value:", value);
+        setState({
+            ...state,
+            captcha: value
+        });
     };
 
     return (
@@ -62,13 +86,16 @@ const HookForm = (props) => {
                         )
                     }
                 )}
-                <div className="recaptcha">
-                    <ReCAPTCHA
-                        sitekey={KEY}
-                        onChange={onChange}
-                    />
-                </div>
-                <button type="submit" className={`button button-green ${props.classPrefix} ${Object.keys(errors).length ? 'disabled' : ''}`}>
+                {props.api === 'auth/local/register' &&
+                    <div className="recaptcha">
+                        <ReCAPTCHA
+                            sitekey={KEY}
+                            onChange={onChange}
+                        />
+                    </div>
+                    || ''
+                }
+                <button type="submit" disabled={state.isActive} className={`button button-green ${props.classPrefix} ${state.isActive && 'disabled'}`}>
                     { props.button }
                 </button>
             </div>

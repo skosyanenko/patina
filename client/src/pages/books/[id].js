@@ -44,7 +44,7 @@ class BooksDetail extends Component {
         return letters.find(item => item.letter === letter).id;
     };
 
-    toggleFilms = () => this.setState(prevState => ({modalIsOpen: !prevState.modalIsOpen}));
+    toggleFilms = (bool) => this.setState({modalIsOpen: bool});
 
     render() {
         const { modalIsOpen } = this.state;
@@ -107,13 +107,13 @@ class BooksDetail extends Component {
                             />
                             <div className="description__buttons">
                                 { readLink && <a href={readLink} className="button button-white">Читать</a>}
-                                { reviews &&
-                                    <Link href={'/reviews/[id]'} as={`/reviews/${reviews}`}>
+                                { reviews && reviews.length > 0 &&
+                                    <Link href={'/reviews/[id]'} as={`/reviews/${reviews[0].id}`}>
                                         <a className="button button-green">Рецензии</a>
                                     </Link>
                                 }
                                 { films != null && films.length > 0 &&
-                                    <div className="button button-green" onClick={this.toggleFilms}>Экранизации</div>
+                                    <div className="button button-green" onClick={() => this.toggleFilms(true)}>Экранизации</div>
                                 }
                             </div>
                             <CommentBlock

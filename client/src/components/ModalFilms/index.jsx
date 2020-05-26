@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 import Slider from 'react-slick';
 import ReactMarkdown from 'react-markdown';
 
+Modal.setAppElement('#app');
+
 class ModalFilms extends Component {
     render() {
         const { isOpen, toggleModal } = this.props;
@@ -15,6 +17,7 @@ class ModalFilms extends Component {
                     <Modal className={`films ` + state}
                            isOpen={isOpen}
                            closeTimeoutMS={1000}
+                           ariaHideApp={false}
                     >
                         <Slider
                             dots={true}

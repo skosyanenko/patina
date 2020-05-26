@@ -58,6 +58,7 @@ const BookInform = ({ idContent, titleContent, description, image, bookmarked, w
                     image={image}
                     weight={weight}
                     toggleModal={toggleModal}
+                    isBookmarks={true}
                 />
                 <div className="button-write-review">
                     <div className="button-write-review__img"/>
@@ -76,7 +77,7 @@ const BookInform = ({ idContent, titleContent, description, image, bookmarked, w
                             <a className="button-write-review__text">Написать рецензию</a>
                         </Link>
                         :
-                        <div className="button-write-review__text" onClick={toggleModal}>
+                        <div className="button-write-review__text" onClick={() => toggleModal(true)}>
                             Написать рецензию
                         </div>
                     }

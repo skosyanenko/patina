@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Transition } from 'react-transition-group';
 
+Modal.setAppElement('#app');
+
 const ModalError = ({ isOpen, toggleModal }) => (
     <Transition in={isOpen} timeout={50}>
         { state =>

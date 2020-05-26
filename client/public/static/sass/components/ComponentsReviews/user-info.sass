@@ -14,19 +14,12 @@
         display: flex
         flex-direction: column
 
-    .socials__tg
-        background: url('/icons/sprite.svg#telegram-gray') no-repeat center / contain
-    .socials__vk
-        background: url('/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
-        background-size: 30px 35px
+    .socials
+        width: 85px
+        margin: 0 auto
 
-    .socials__bookmark
-        &:hover
-            &:before
-                background: $darkgray
-            &:after
-                border-top-color: $darkgray
-        svg
-            stroke: $darkgray
-            &.active
-                fill: $darkgray
+        .socials__tg
+            background: url('/icons/sprite.svg#telegram-gray') no-repeat center / contain
+        .socials__vk
+            background: url('/icons/sprite.svg#vkontakte-gray') no-repeat center / contain
+            background-size: 30px 35px

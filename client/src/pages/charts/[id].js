@@ -7,7 +7,7 @@ import Socials from 'components/SocialsGroup';
 import CommentBlock from 'components/CommentBlock';
 import MyHead from 'components/MyHead';
 
-const ChartsDetail = ({ toggleModal, currentChart: {title, description, books, id, comments} }) => {
+const ChartsDetail = ({ currentChart: {title, description, books, id, comments} }) => {
     return(
         <>
             <MyHead
@@ -41,7 +41,7 @@ const ChartsDetail = ({ toggleModal, currentChart: {title, description, books, i
                             <div className="block__wrapper">
                                 <div className="block__title" itemProp="name">
                                     <Link href={'/books/[id]'} as={`/books/${item.id}`}>
-                                        <a itemProp="url" content={`patina.ru/books/${item.id}`}>
+                                        <a itemProp="url" content={`patina.now.sh/books/${item.id}`}>
                                             {item.title}
                                         </a>
                                     </Link>
@@ -64,7 +64,7 @@ const ChartsDetail = ({ toggleModal, currentChart: {title, description, books, i
             </div>
             <div className="icons-wrap">
                 <div className="icons-wrap__socials">
-                    <Socials toggleModal={toggleModal}/>
+                    <Socials isBookmarks={false}/>
                 </div>
             </div>
             <CommentBlock

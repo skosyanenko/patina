@@ -15,15 +15,26 @@ class MyRating extends  Component {
         activeVote: 0
     };
 
+    componentDidMount() {
+        const { votes } = this.props;
+        this.setState({
+            isVote: votes && votes.some(item => item.user === Auth.userInfo.id) || false,
+            votes: votes,
+            counters: votes && votes.length || 0,
+            mediumVote: votes && this.getMediumVote() ,
+            activeVote: votes && votes.map(item => item.user === Auth.userInfo.id && item.vote) || 0
+        })
+    };
+
     componentDidUpdate(prevProps, prevState) {
         const { votes } = this.props;
         if (prevProps.votes !== votes) {
             this.setState({
                 isVote: votes && votes.some(item => item.user === Auth.userInfo.id) || false,
                 votes: votes,
-                counters: this.props.votes.length || 0,
-                mediumVote: this.getMediumVote() ,
-                activeVote: votes.map(item => item.user === Auth.userInfo.id && item.vote) || 0
+                counters: votes && this.props.votes.length || 0,
+                mediumVote: votes && this.getMediumVote() ,
+                activeVote: votes && votes.map(item => item.user === Auth.userInfo.id && item.vote) || 0
             })
         }
     };
@@ -45,7 +56,7 @@ class MyRating extends  Component {
 
         const userId = Auth.userInfo.id;
 
-        if (!Auth.isAuth) return toggleModal();
+        if (!Auth.isAuth) return toggleModal(true);
 
         if (isVote) {
             votes && votes.forEach(item => {
@@ -61,8 +72,7 @@ class MyRating extends  Component {
     addVote = (value) => {
         const { bookId } = this.props;
         const options = Auth.token && {
-            headers: { Authorization: `Bearer ${Auth.token}` }
-        };
+            headers: { Authorization: `Bearer ${Auth.token}` }};
 
         axios.post(`${API_URL}/books/${bookId}/vote`, {vote: value}, options)
             .then(res => {
@@ -86,9 +96,6 @@ class MyRating extends  Component {
         const { activeVote, isVote, mediumVote, counters } = this.state;
 
         const StyledRating = withStyles({
-            iconEmpty: {
-                color: ' rgba(38, 77, 75, 0.3)',
-            },
             iconFilled: {
                 color: ' rgba(38, 77, 75, 1)',
             },
@@ -101,12 +108,12 @@ class MyRating extends  Component {
             <div className="rating">
                 <div className="rating__wrap">
                     <StyledRating
-                      name="hover-feedback"
-                      value={activeVote[0] > 0 ? activeVote[0] : mediumVote}
-                      precision={0.5}
-                      size="large"
-                      onChange={(event, newValue) => {this.handleClick(newValue)}}
-                      disabled={isVote}
+                        name="hover-feedback"
+                        value={activeVote[0] > 0 ? +activeVote[0] : +mediumVote}
+                        precision={0.5}
+                        size="large"
+                        onChange={(event, newValue) => {this.handleClick(newValue)}}
+                        disabled={isVote}
                     />
                 </div>
                 <div className={`rating__text ${isVote && ' active'}`}>Ваш голос учтен!</div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { returnDatePublish } from 'config/config';
+import sortBy from 'lodash.sortby';
 import Slider from 'react-slick';
+import { returnDatePublish } from 'config/config';
 import TimelineDot from './Components/TimelineDot';
 
 class MainTimeline extends Component {
@@ -11,7 +12,7 @@ class MainTimeline extends Component {
 
     componentDidMount() {
         this.setState({
-            events: this.getItems()
+            events: sortBy(this.getItems(), item => item.date)
         })
     };
 

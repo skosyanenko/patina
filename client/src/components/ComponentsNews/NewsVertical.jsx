@@ -29,6 +29,7 @@ const NewsVertical = ({ item: {id, cover, title, description, likes, views}, tex
                     views={views}
                     date={date}
                     toggleModal={toggleModal}
+                    isAllIcons={true}
                 />
                 <div className="news-vertical__description-wrapper">
                     <TimeToRead textLength={textLength}/>

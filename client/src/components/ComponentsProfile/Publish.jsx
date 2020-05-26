@@ -62,6 +62,7 @@ class Publish extends Component {
                         typeContent={'reviews'}
                         likes={item.likes}
                         toggleModal={toggleModal}
+                        isAllIcons={false}
                     />
                 </div>
             </div>

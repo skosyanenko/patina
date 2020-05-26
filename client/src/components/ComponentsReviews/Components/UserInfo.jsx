@@ -33,12 +33,13 @@ class UserInfo extends Component {
                     />
                     {/*<div className="follow-button" onClick={this.handleClick}>Подписаться</div>*/}
                 </div>
-                <Socials toggleModal={toggleModal}/>
+                <Socials isBookmarks={false}/>
                 <Icons
                     likes={likes}
                     idContent={idContent}
                     typeContent={typeContent}
                     toggleModal={toggleModal}
+                    isAllIcons={false}
                 />
             </div>
         );

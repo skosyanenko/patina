@@ -60,7 +60,6 @@
 
         img
             width: 100%
-            height: 100%
 
 /* Стили для компонентов NewsHorizontal, NewsVertical */
 
@@ -156,7 +155,6 @@
 
             img
                 width: 100%
-                height: 100%
 
     &__description
         max-width: 100%
@@ -304,12 +302,15 @@
     padding-bottom: 25px
     +maxwidth($tablet)
         padding-bottom: 25px
+    +maxwidth($mobail)
+        flex-direction: column
 
     &__about
         margin-right: 25px
         display: flex
         flex-direction: column
-        +maxwidth($sm-mobail)
+        +maxwidth($mobail)
+            order: 2
             margin-right: 0
 
     &__text
@@ -324,8 +325,12 @@
         max-width: 250px
         height: 165px
         cursor: pointer
-        +maxwidth($sm-mobail)
-            display: none
+        +maxwidth($mobail)
+            min-width: 100%
+            max-width: 100%
+            height: fit-content
+            margin-bottom: 20px
+            order: 1
 
 /* Стили для компонента NewsLink */
 
@@ -344,8 +349,9 @@
     &__title
         @include style-text(21px, 2px, $waverlyExtra, $black, 100%, 800, false)
         max-width: 400px
-        +maxwidth($sm-mobail)
+        +maxwidth($mobail)
             max-width: fit-content
+            margin-right: 20px
 
     .button
         +maxwidth($sm-mobail)

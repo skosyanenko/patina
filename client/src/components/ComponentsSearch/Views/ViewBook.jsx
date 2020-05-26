@@ -22,7 +22,8 @@ const ViewBook = ({ item, toggleModal }) => (
             </Link>
             <h3 className="results__wrapper-author" itemProp="author">{returnAuthor(item.authors)}</h3>
             <Rating
-                ratingTotal={item.ratingTotal}
+                bookId={item.id}
+                votes={item.votes}
                 toggleModal={toggleModal}
             />
             <span className="results__wrapper-weight" itemProp="numberOfPages">

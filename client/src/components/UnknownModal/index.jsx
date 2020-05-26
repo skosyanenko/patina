@@ -3,10 +3,13 @@ import Link from 'next/link';
 import Modal from 'react-modal';
 import { Transition } from 'react-transition-group';
 
+Modal.setAppElement('#app');
+
 const UnknownModal = ({ isOpen, toggleModal }) => (
     <Transition in={isOpen} timeout={50}>
         { state =>
-            <Modal className={`modal `  + state}
+            <Modal
+                className={`modal `  + state}
                 isOpen={isOpen}
                 ariaHideApp={false}
                 closeTimeoutMS={1000}
@@ -25,7 +28,12 @@ const UnknownModal = ({ isOpen, toggleModal }) => (
                         </span>
                     </div>
                     <Link href={'/registration'}>
-                        <div className="button button-green">Зарегистрироваться</div>
+                        <div
+                            className="button button-green"
+                            onClick={() => toggleModal(false)}
+                        >
+                            Зарегистрироваться
+                        </div>
                     </Link>
                 </div>
             </Modal>

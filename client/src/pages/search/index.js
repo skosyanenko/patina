@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'next/router';
-import { counterLetters } from 'config/config';
 import paginationWrap from 'components/withPagination/paginationWrap';
 import FiltersSearch from 'components/ComponentsSearch/FiltersSearch';
 import ViewBook from 'components/ComponentsSearch/Views/ViewBook';
@@ -8,7 +7,6 @@ import ViewReview from 'components/ComponentsReviews/Components/ViewReview';
 import NewsHorizontal from 'components/ComponentsNews/NewsHorizontal';
 import ViewChart from 'components/ComponentsSearch/Views/ViewChart';
 import InputSearch from 'components/InputSearch';
-import Loader from 'components/Loader';
 import MyHead from 'components/MyHead';
 
 const {API_URL} = process.env;
@@ -59,6 +57,15 @@ const SearchList = ({router, items, fetchData, pagination, toggleModal}) => {
     const updateFilter = filter => router.push(`/search?filter=${filter}${query.title && `&title=${query.title}` || ''}`);
 
     useEffect(() => {
+        if (query.filter.length === 0) {
+            setState({
+                label: 'Укажите параметры поиска.',
+                loading: true
+            })
+        }
+    }, [query.filter]);
+
+    useEffect(() => {
         getItems(router.query);
     }, [router.query.filter, router.query.title]);
 
@@ -81,24 +88,21 @@ const SearchList = ({router, items, fetchData, pagination, toggleModal}) => {
                     classNamePrefix="quest--searchResults"
                 />
 
-                {state.loading && <Loader/> ||
+                <div className="search__title">
+                    {state.label}
+                </div>
+
+                {state.loading ? '' :
                     <>
-
-                        <div className="search__title">
-                            {state.label}
-                        </div>
-
                         <div className={(query.filter === 'charts' || query.filter === 'articles') && 'search__grid' || 'search__result'}>
                             {items && items.map((item, key) => {
                                 const Component = config.find(item => item.id === query.filter).class;
                                 const datePublish = new Date(item.created_at).toLocaleDateString();
-                                const text = (query.filter ==='articles' || query.filter ==='reviews') ? counterLetters(item.description) : ''
 
                                 return (
                                     <Component
                                         key={key}
                                         item={item}
-                                        textLength={text}
                                         date={datePublish}
                                         toggleModal={toggleModal}
                                     />

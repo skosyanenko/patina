@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import Auth from 'services/Authorization';
 import axios from 'axios';
 
@@ -23,7 +23,7 @@ class Icons extends Component {
 
         const userId = Auth.userInfo.id;
 
-        if (!Auth.isAuth) return toggleModal();
+        if (!Auth.isAuth) return toggleModal(true);
 
         if (isLiked) {
             likes && likes.forEach(item => {
@@ -75,9 +75,9 @@ class Icons extends Component {
 
     render() {
         const { isLiked, likes, views, date } = this.state;
-        const { router } = this.props;
+        const { isAllIcons } = this.props;
 
-        if (router.asPath.includes('reviews') || router.asPath.includes('profile')) {
+        if (!isAllIcons) {
             return (
                 <div className="like-review" itemScope itemType="http://schema.org/Rating">
                     <span className="like-review__counter" itemProp="reviewRating">{likes.length || 0 }</span>
@@ -111,4 +111,8 @@ class Icons extends Component {
     }
 }
 
-export default withRouter(Icons);
+Icons.propTypes = {
+    isAllIcons: PropTypes.bool.isRequired
+};
+
+export default Icons;

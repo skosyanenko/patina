@@ -24,6 +24,7 @@ const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textL
                 views={views}
                 date={date}
                 toggleModal={toggleModal}
+                isAllIcons={true}
             />
             <div className="news-block__nav-wrap">
                 <TimeToRead textLength={textLength}/>

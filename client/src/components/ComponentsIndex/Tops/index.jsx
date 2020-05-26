@@ -28,7 +28,7 @@ class Tops extends Component {
             slidesToScroll: 1,
         };
 
-        const { charts, toggleModal } = this.props;
+        const { charts } = this.props;
 
         return (
             <div className="tops main">
@@ -43,9 +43,11 @@ class Tops extends Component {
                              itemScope
                              itemType="http://schema.org/CreativeWork"
                         >
-                            <div className="tops__wrapper-img">
-                                {image && <img src={`${image.url}`} alt="" itemProp="image"/>}
-                            </div>
+                            <Link href={'/charts/[id]'} as={`/charts/${id}`}>
+                                <a className="tops__wrapper-img">
+                                    {image && <img src={`${image.url}`} alt="" itemProp="image"/>}
+                                </a>
+                            </Link>
                             <div className="tops__text">
                                 <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                     <a className="tops__text-title" itemProp="name">
@@ -58,7 +60,7 @@ class Tops extends Component {
                                 />
                                 <>
                                     <div className="tops__text-buttons">
-                                        <Socials toggleModal={toggleModal}/>
+                                        <Socials isBookmarks={false}/>
                                         <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                             <a className="button button-white">Подробнее</a>
                                         </Link>

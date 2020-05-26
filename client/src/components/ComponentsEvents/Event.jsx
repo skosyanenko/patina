@@ -37,7 +37,7 @@ const Event = ({ date, picture, start, end, title, place }) => {
                       itemScope
                       itemProp="location"
                 >
-                    <a href={place} itemProp="name address">{place}</a>
+                    <a href={place} itemProp="name address">Подробнее...</a>
                     {/*<span itemProp="name address">{place}</span>*/}
                 </div>
             </div>

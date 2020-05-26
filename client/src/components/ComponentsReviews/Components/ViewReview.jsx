@@ -17,13 +17,14 @@ const ViewReview = ({ item: {id, book, likes, description, created_at, title, us
                idContent={id}
                typeContent={'reviews'}
                toggleModal={toggleModal}
+               isAllIcons={false}
            />
            <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>
                <>{book && <a className="reviews__result-title">{book.title}</a>}</>
            </Link>
        </div>
        <div className="reviews__result-wrap">
-           <TimeToRead textLength={counterLetters(description)}/>
+           {description && <TimeToRead textLength={counterLetters(description)}/>}
            <span className="reviews__result-date">{returnDatePublish(created_at)}</span>
        </div>
        <Link href={'/reviews/[id]'} as={`/reviews/${id}`}>

@@ -65,10 +65,7 @@ const PatinaPage =({ serverBooks, serverCharts, serverReviews, serverNews, artic
                 toggleModal={toggleModal}
             />
             <Title title={'Топы'} subtitle={'подборки книг на различные темы'}/>
-            <Tops
-                charts={serverCharts}
-                toggleModal={toggleModal}
-            />
+            <Tops charts={serverCharts}/>
             <MainTimeline
                 books={serverBooks}
                 reviews={serverReviews}

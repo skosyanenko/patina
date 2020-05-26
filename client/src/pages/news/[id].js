@@ -81,10 +81,11 @@ class NewsDetail extends Component {
                                     views={viewsUpdate}
                                     date={returnDatePublish(created_at)}
                                     toggleModal={toggleModal}
+                                    isAllIcons={true}
                                 />
                                 <div className="article__wrapper-wrap">
                                     {description && <TimeToRead textLength={counterLetters(description)}/>}
-                                    <Socials/>
+                                    <Socials isBookmarks={false}/>
                                 </div>
                             </div>
                         </div>

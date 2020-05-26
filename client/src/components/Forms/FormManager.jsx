@@ -31,7 +31,6 @@ class FormManager extends Component {
         });
 
         api === 'reviews' ? values.user = Auth.userInfo.id : '';
-
         return this.postToDB(values);
     };
 

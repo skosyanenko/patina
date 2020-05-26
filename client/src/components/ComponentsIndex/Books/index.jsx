@@ -51,7 +51,9 @@ class Books extends Component {
                          itemScope
                     >
                         <div className="books__text">
-                            <h1 className="books__text-title" itemProp="name">{title}</h1>
+                            <Link href={'/books/[id]'} as={`/books/${id}`}>
+                                <a className="books__text-title" itemProp="name">{title}</a>
+                            </Link>
                                 <BookInform
                                     idContent={id}
                                     titleContent={title}
@@ -76,9 +78,9 @@ class Books extends Component {
                                     <use href="/icons/sprite.svg#arrow"/>
                                 </svg>
                             </div>
-                            <div className="books__img">
-                                {coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}
-                            </div>
+                            <Link href={'/books/[id]'} as={`/books/${id}`}>
+                                <a className="books__img">{coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}</a>
+                            </Link>
                             <div className="books__arrow">
                                 <svg className="books__arrow-next" onClick={this.next}>
                                     <use href="/icons/sprite.svg#arrow"/>

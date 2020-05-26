@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form';
 import InputText from 'components/Forms/Input';
 import entry from 'components/Forms/Fields/entry.json';
 
+Modal.setAppElement('#app');
+
 const EntranceModal = ({ isOpen, toggleModal }) => {
     const { handleSubmit, register, errors } = useForm();
 

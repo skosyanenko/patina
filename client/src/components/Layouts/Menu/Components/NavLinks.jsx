@@ -12,7 +12,7 @@ class NavLinks extends Component {
             { title: 'книги', path: '/books' },
             { title: 'топы', path: '/charts' },
             { title: 'критика', path: '/reviews' },
-            { title: 'эвенты', path: '/events' },
+            { title: 'ивенты', path: '/events' },
             { title: 'что нового', path: '/news' }
         ],
         topCoord: null,

@@ -37,7 +37,6 @@
         height: 36px
         margin-bottom: 57px
         border: 1px solid $green
-        background: $white
         border-radius: 50%
         position: relative
         display: flex
@@ -56,10 +55,20 @@
             background: $green
             z-index: -3
 
-        svg
-            width: 20px
-            height: 20px
-            fill: $green
+        &-pencil, &-books, &-wishlist, &-author
+            background-size: 20px 20px !important
+
+        &-pencil
+            background: url('/icons/sprite.svg#pencil-green') no-repeat center / contain
+
+        &-books
+            background: url('/icons/sprite.svg#books-green') no-repeat center / contain
+
+        &-wishlist
+            background: url('/icons/sprite.svg#wishlist-green') no-repeat center / contain
+
+        &-author
+            background: url('/icons/sprite.svg#author-green') no-repeat center / contain
 
     &__item
         width: 16px
@@ -76,7 +85,7 @@
             background: $green
             border-radius: 50%
             box-shadow: 0 0 0 rgba($green, 0.8)
-            display: block
+            display: flex
             z-index: 2
             &:hover
                 animation: pulse 2s infinite
@@ -113,6 +122,11 @@
         &-text
             margin-bottom: 5px
             @include style-text(16px, 1px, $openSans, $green, 100%, 300, false)
+            overflow: hidden
+            text-overflow: ellipsis
+            display: -webkit-box
+            -webkit-line-clamp: 4
+            -webkit-box-orient: vertical
 
 .invisible
     opacity: 0

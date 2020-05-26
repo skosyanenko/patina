@@ -16,6 +16,7 @@ p
 
 .wrapper
     height: 100%
+    transition: opacity .4s ease-in
 
     &__layout
         display: flex
@@ -26,6 +27,7 @@ p
 .page
     width: 100%
     max-width: calc(100% - 620px)
+    min-height: 90vh
     margin: 0 auto
     padding: 40px 40px 80px 40px
     position: relative
@@ -207,6 +209,7 @@ p
 
     &--form
         width: 100%
+        min-height: 50vh
         display: flex
         flex-direction: column
         align-items: center
@@ -233,6 +236,12 @@ p
         flex-direction: column
         .loader
             top: 50%
+
+        .pagination
+            .pagination__counter
+                .pagination__dropdown
+                    +maxwidth($mobail)
+                        right: -35px
 
     &__container-book
         max-width: calc(50% - 50px)
@@ -271,6 +280,8 @@ p
                 .count
                     color: $darkgray
             &__dropdown
+                +maxwidth($mobail)
+                    right: -55px
                 span
                     &:hover
                         color: $lightpink
@@ -282,22 +293,22 @@ p
                             color: $darkgray
                 &-button, &-arrow
                     &:hover
-                        color: $darkgray
-                        background: $lightpink
+                        color: $white
+                        background: $darkgray
                 &-arrow
                     svg
                         fill: $darkgray
                 &-button
                     &.active
-                        color: $darkgray
-                        background: $lightpink
+                        color: $lightpink
+                        background: $darkgray
                 li
                     &:hover
-                        color: $darkgray
-                        background: $lightpink
+                        color: $lightpink
+                        background: $darkgray
                     &.active
-                        color: $darkgray
-                        background: $lightpink
+                        color: $lightpink
+                        background: $darkgray
 
     &--book-detail
         +maxwidth(1280px)
@@ -358,3 +369,45 @@ p
 
 .recaptcha
     margin: 30px auto 0
+
+/* Стили для Loader во время загрузки страниц */
+
+.nprogress-custom-parent
+    overflow: hidden
+    position: relative
+
+.nprogress-busy
+    div
+        .wrapper
+            z-index: 100000
+            filter: blur(2px) grayscale(0.5) opacity(60%)
+            pointer-events: none
+
+#nprogress 
+    pointer-events: none
+
+    .bar
+        display: none
+
+    .spinner
+        display: block
+        position: fixed
+        z-index: 1031
+        top: calc(50% - 25px)
+        right: calc(50% - 25px)
+        +maxwidth($mobail)
+            top: calc(50% - 15px)
+            right: calc(50% - 15px)
+
+        .spinner-icon
+            width: 50px
+            height: 50px
+            border-top: 3px solid rgba(38, 77, 75, 1)
+            border-right: 3px solid transparent
+            border-radius: 50%
+            animation: spinner 1s linear 0s infinite
+            +maxwidth($mobail)
+                width: 30px
+                height: 30px
+
+

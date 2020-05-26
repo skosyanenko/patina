@@ -39,7 +39,10 @@
         top: 5px
         transition: .4s ease
         +maxwidth($sm-mobail)
-            top: -5px
+            flex-direction: row
+            padding: 0
+            top: 0
+            right: -45px
         &.exited
             opacity: 0
             z-index: -1
@@ -51,15 +54,24 @@
             transition: .3s ease
             background: $white
             +maxwidth($sm-mobail)
-                margin-bottom: -40px
+                margin-bottom: 0
             &:hover
                 opacity: 0.7
                 color: $green
             &:first-child
                 +maxwidth($sm-mobail)
-                    width: 15px
+                    order: 1
+
+            &:nth-child(2)
+                +maxwidth($sm-mobail)
+                    order: 2
+                    margin-left: 10px !important
+
             &:last-child
                 margin-bottom: 0
+                +maxwidth($sm-mobail)
+                    order: 3
+                    margin-left: 10px !important
 
     &__wrapper
         margin-left: auto

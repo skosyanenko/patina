@@ -90,16 +90,20 @@
         justify-content: center
         align-items: center
         margin-right: 30px
+        width: 90px
+        height: 90px
+        border-radius: 50%
+        overflow: hidden
+        +maxwidth($tablet)
+            width: 70px
+            height: 70px
         +maxwidth($mobail)
             margin-right: 15px
 
         &-img, &-name
             width: 90px
-            height: 90px
-            border-radius: 50%
             +maxwidth($tablet)
                 width: 70px
-                height: 70px
 
         &-name
             display: flex

@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import { counterLetters } from 'config/config';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
-const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, textLength, date, toggleModal }) => (
+const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, date, toggleModal }) => (
     <div className="news-horizontal">
         <div className="news-horizontal__wrapper">
             <Link href={'/news/[id]'} as={`/news/${id}`}>
@@ -21,9 +22,10 @@ const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, t
                 views={views}
                 date={date}
                 toggleModal={toggleModal}
+                isAllIcons={true}
             />
             <div className="news-horizontal__wrapper-wrap">
-                <TimeToRead textLength={textLength}/>
+                {description && <TimeToRead textLength={counterLetters(description)}/>}
                 <Link href={'/news/[id]'} as={`/news/${id}`}>
                     <a className="button button-white">Подробнее</a>
                 </Link>

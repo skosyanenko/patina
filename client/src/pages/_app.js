@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'next/router';
+import Router from 'next/router'
 import { CSSTransition } from 'react-transition-group';
+import NProgress from 'nprogress'
 import Header from 'components/Layouts/Header';
 import Menu from 'components/Layouts/Menu';
 import RightMenu from 'components/Layouts/RightMenu';
@@ -12,19 +14,29 @@ import Auth from 'services/Authorization';
 import '../../public/static/sass/project.sass';
 import 'react-markdown-editor-lite/lib/index.css';
 
+
+Router.events.on('routeChangeStart', (url) => {
+    NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
+
 const MyApp = ({ Component, pageProps, router }) => {
     const initialState = {
-        modalIsOpen: false,
-        modalUnknownIsOpen: false,
         isAnimate: false,
         toggle: true,
         header: '',
-        menu: ''
+        menu: '',
+        load: false
     };
 
     const [state, setState] = useState(initialState);
 
-    const { modalIsOpen, modalUnknownIsOpen, isAnimate, toggle, header, menu } = state;
+    const [modal, setModal] = useState(false);
+
+    const [unknownModal, setUnknownModal] = useState(false);
+
+    const { isAnimate, toggle, header, menu } = state;
 
     useEffect(() => {
 
@@ -60,17 +72,13 @@ const MyApp = ({ Component, pageProps, router }) => {
 
     process.browser && Auth.checkAuth();
 
-    const toggleModal = () => setState({...state, modalIsOpen: !modalIsOpen});
-
-    const toggleUnknownModal = () => setState({...state, modalUnknownIsOpen: !modalUnknownIsOpen});
-
     const toggleMenu = () => setState({...state, toggle: !toggle});
 
     return(
-        <div className={`${modalIsOpen ? 'blur' : 'wrapper'}`}>
+        <div className={`${modal || unknownModal ? 'blur' : 'wrapper'}`} id="app">
             <Header
                 router={router}
-                toggleModal={toggleModal}
+                toggleModal={setModal}
                 toggleMenu={toggleMenu}
                 toggle={toggle}
                 header={header}
@@ -92,8 +100,8 @@ const MyApp = ({ Component, pageProps, router }) => {
                 >
                     <main className={router && switchClasses(router.pathname)}>
                         <Component
-                          {...pageProps}
-                          toggleModal={() => toggleUnknownModal()}
+                            {...pageProps}
+                            toggleModal={setUnknownModal}
                         />
                     </main>
                 </CSSTransition>
@@ -103,13 +111,13 @@ const MyApp = ({ Component, pageProps, router }) => {
                 <BtnScrollToTop/>
 
                 <EntranceModal
-                    isOpen={modalIsOpen}
-                    toggleModal={toggleModal}
+                    isOpen={modal}
+                    toggleModal={setModal}
                 />
 
                 <UnknownModal
-                    isOpen={modalUnknownIsOpen}
-                    toggleModal={() => toggleUnknownModal()}
+                    isOpen={unknownModal}
+                    toggleModal={setUnknownModal}
                 />
             </div>
             <Footer/>
