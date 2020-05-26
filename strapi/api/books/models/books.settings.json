@@ -71,6 +71,10 @@
     "votes": {
       "via": "book",
       "collection": "vote"
+    },
+    "reviews": {
+      "via": "book",
+      "collection": "review"
     }
   }
 }

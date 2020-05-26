@@ -28,8 +28,8 @@
       "via": "comments"
     },
     "review": {
-      "model": "review",
-      "via": "comments"
+      "via": "comments",
+      "model": "review"
     }
   }
 }

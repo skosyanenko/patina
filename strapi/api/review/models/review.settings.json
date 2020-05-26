@@ -19,20 +19,21 @@
       "type": "integer"
     },
     "book": {
-      "model": "books"
+      "model": "books",
+      "via": "reviews"
     },
     "user": {
-      "via": "reviews",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "reviews"
     },
     "comments": {
-      "via": "review",
-      "collection": "comment"
+      "collection": "comment",
+      "via": "review"
     },
     "likes": {
-      "via": "review",
-      "collection": "like"
+      "collection": "like",
+      "via": "review"
     }
   }
 }

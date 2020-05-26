@@ -19,8 +19,8 @@
       "model": "user"
     },
     "review": {
-      "model": "review",
-      "via": "likes"
+      "via": "likes",
+      "model": "review"
     }
   }
 }

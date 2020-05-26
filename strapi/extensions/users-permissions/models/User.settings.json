@@ -76,8 +76,8 @@
       "type": "richtext"
     },
     "reviews": {
-      "collection": "review",
-      "via": "user"
+      "via": "user",
+      "collection": "review"
     },
     "likeBooks": {
       "type": "json"
