@@ -13,6 +13,7 @@ const ProfileEdit = ({ user, authorization }) => {
                     classPrefix={'btn-registration'}
                     api={`users/${user.id}`}
                     method="put"
+                    successTitle={'Данные успешно обновлены, после перезагрузки страницы информация обновится!'}
                     defaultValues={{
                     city: user.city,
                         likeAuthors: user.likeAuthors,

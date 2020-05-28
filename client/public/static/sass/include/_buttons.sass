@@ -16,6 +16,16 @@
     +maxwidth($mobail)
         height: 30px
         width: 130px
+    &:disabled
+        background: $green
+        opacity: 0.6
+        color: $white
+        cursor: default
+        &:hover
+            background: $green
+            opacity: 0.6
+            color: $white
+
 
 .user-button
     width: 120px
@@ -105,16 +115,4 @@
     &__text
         margin-left: 3px
         @include style-text(18px, 2px, $openSans, $green, 100%, 300, false)
-
-.disabled
-    background: $green
-    opacity: 0.6
-    color: $white
-    cursor: default
-    &:hover
-        background: $green
-        opacity: 0.6
-        color: $white
-
-
 

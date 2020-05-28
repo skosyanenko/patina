@@ -31,6 +31,7 @@ class FormManager extends Component {
         });
 
         api === 'reviews' ? values.user = Auth.userInfo.id : '';
+
         return this.postToDB(values);
     };
 
@@ -86,7 +87,7 @@ class FormManager extends Component {
                 <Transition in={success} timeout={50}>
                     { state =>
                         <div className={`form__success ` + state}>
-                            Форма успешно отправлена!
+                            {this.props.successTitle}
                         </div>
                     }
                 </Transition>

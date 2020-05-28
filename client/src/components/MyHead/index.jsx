@@ -21,6 +21,7 @@ const MyHead = ({ title, description, link, robots }) => {
               <meta property="og:image" content={`${API}/public/sharing/patina.jpg`}/>
               <meta name="robots" content={robots}/>
               <link rel="alternate" href={API} hrefLang="ru"/>
+              <meta name="google-site-verification" content="nPFyCJ2mic6IdQreBa26g07v_RGW1VZ7CczxQocITMI" />
               <script data-ad-client="ca-pub-5165499495824246" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
           </Head>
     )

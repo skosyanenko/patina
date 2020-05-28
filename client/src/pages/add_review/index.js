@@ -22,6 +22,7 @@ const AddReviewForm = () => {
                     button={'Добавить'}
                     classPrefix={''}
                     api={'reviews'}
+                    successTitle={'Форма успешно отправлена!'}
                 />
                 :
                 <div className="add-review">

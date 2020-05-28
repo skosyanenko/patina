@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import InputText from './Input';
@@ -18,17 +18,33 @@ const HookForm = (props) => {
 
     const initialState = {
         captcha: '',
-        isActive: false
+        isDisabled: false
     };
 
     const [state, setState] = useState(initialState);
 
     useEffect(() => {
+        if (props.api !== 'auth/local/register') {
+            setState({
+                ...state,
+                captcha: 'Не страница регистрации!'
+            })
+        }
+    }, [props])
+
+    useEffect(() => {
         setState({
             ...state,
-            isActive: Object.keys(errors).length > 0 && state.captcha.length > 0
+            isDisabled: Object.keys(errors).length > 0
         })
-    }, [errors, state])
+    }, [Object.keys(errors).length])
+
+    useEffect(() => {
+        setState({
+            ...state,
+            isDisabled: state.captcha === null || state.captcha.length === 0
+        })
+    }, [state.captcha])
 
     const typeSwitcher = type => {
         switch(type) {
@@ -59,7 +75,7 @@ const HookForm = (props) => {
 
     return (
         <form className={`form-wrapper form ${props.classAnimate}`}
-              onSubmit={ handleSubmit(props.onSubmit) }
+              onSubmit={handleSubmit(props.onSubmit)}
         >
             <div className="form">
                 { props.fields && props.fields.map((field, key) => {
@@ -88,7 +104,11 @@ const HookForm = (props) => {
                     </div>
                     || ''
                 }
-                <button type="submit" disabled={state.isActive} className={`button button-green ${props.classPrefix} ${state.isActive && 'disabled'}`}>
+                <button
+                    type="submit"
+                    disabled={state.isDisabled}
+                    className={`button button-green ${props.classPrefix} `}
+                >
                     { props.button }
                 </button>
             </div>
