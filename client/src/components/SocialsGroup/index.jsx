@@ -5,7 +5,6 @@ import Auth from 'services/Authorization';
 import axios from 'axios';
 
 const { API_URL } = process.env;
-const { API } = process.env;
 
 class Socials extends Component {
     state = {
@@ -90,14 +89,14 @@ class Socials extends Component {
             <div className="socials" itemProp="sharedContent" itemScope itemType="http://schema.org/WebPage">
                 <a target="_blank"
                    rel="noopener noreferrer"
-                   href={`https://vk.com/share.php?url=${API}${router.asPath}`}
+                   href={`https://vk.com/share.php?url=https://the-patina.ru${router.asPath}`}
                    itemProp="url"
                 >
                     <div className="socials__vk" itemProp="headline" content="vk.com"/>
                 </a>
                 <a target="_blank"
                    rel="noopener noreferrer"
-                   href={`https://t.me/share/url?url=${API}${router.asPath}`}
+                   href={`https://t.me/share/url?url=https://the-patina.ru${router.asPath}`}
                    itemProp="url"
                 >
                     <div className="socials__tg" itemProp="headline" content="t.me"/>
