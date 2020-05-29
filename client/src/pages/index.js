@@ -7,7 +7,7 @@ import MainTimeline from 'components/ComponentsIndex/TimeLine';
 import MyHead from 'components/MyHead';
 import axios from 'axios';
 
-const PatinaPage =({ serverBooks, serverCharts, serverReviews, serverNews, articlesView_2, articlesView_3, articlesView_4, toggleModal }) => (
+const PatinaPage =({ books, charts, articlesView_2, articlesView_3, articlesView_4, toggleModal }) => (
     <>
         <MyHead
             title={'Patina — литературный журнал. Новинки книг, подборки, рецензии'}
@@ -54,7 +54,7 @@ const PatinaPage =({ serverBooks, serverCharts, serverReviews, serverNews, artic
             </div>
             <Title title={'Книги'} subtitle={'книжная полка'}/>
             <Books
-                books={serverBooks}
+                books={books}
                 toggleModal={toggleModal}
             />
             <Title title={'Что нового'} subtitle={'новости из мира литературы'}/>
@@ -65,48 +65,37 @@ const PatinaPage =({ serverBooks, serverCharts, serverReviews, serverNews, artic
                 toggleModal={toggleModal}
             />
             <Title title={'Топы'} subtitle={'подборки книг на различные темы'}/>
-            <Tops charts={serverCharts}/>
-            <MainTimeline
-                books={serverBooks}
-                reviews={serverReviews}
-                charts={serverCharts}
-                articles={serverNews}
-            />
+            <Tops charts={charts}/>
+            <MainTimeline/>
         </>
     </>
 );
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const { API_URL } = process.env;
 
-    const serverBooks = await axios.get(`${API_URL}/books?_limit=10`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const books = await axios.get(`${API_URL}/books?_limit=10`)
+        .then(res => res.data);
 
-    const serverCharts = await axios.get(`${API_URL}/charts?_limit=10`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
-
-    const serverReviews = await axios.get(`${API_URL}/reviews?_limit=5`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
-
-    const serverNews = await axios.get(`${API_URL}/articles?_limit=5`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const charts = await axios.get(`${API_URL}/charts?_limit=10`)
+        .then(res => res.data);
 
     const articlesView_2 = await axios.get(`${API_URL}/articles?viewType_in=2&_limit=1`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
+        .then(res => res.data);
     const articlesView_3 = await axios.get(`${API_URL}/articles?viewType_in=3&_limit=2`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
+        .then(res => res.data);
     const articlesView_4 = await axios.get(`${API_URL}/articles?viewType_in=4&_limit=4`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
+        .then(res => res.data);
 
     return {
-        props: { serverBooks, serverCharts, serverReviews, serverNews, articlesView_2, articlesView_3, articlesView_4 }};
+        props: {
+            books,
+            charts,
+            articlesView_2,
+            articlesView_3,
+            articlesView_4
+        }
+    }
 }
 
 export default PatinaPage;

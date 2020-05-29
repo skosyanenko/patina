@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "gsap": "^2.0.2",
+    "immer": "^6.0.9",
     "lodash.sortby": "^4.7.0",
     "markdown-it": "^10.0.0",
     "next": "9.3.5",
@@ -37,7 +38,9 @@
     "react-typed": "^1.2.0",
     "sass": "^1.26.3",
     "slick-carousel": "^1.8.1",
+    "swr": "^0.2.2",
     "typeface-roboto": "0.0.75",
+    "use-immer": "^0.4.0",
     "vanilla-tilt": "^1.7.0"
   },
   "devDependencies": {}

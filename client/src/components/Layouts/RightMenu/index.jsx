@@ -1,54 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import useSWR from 'swr';
 
-class RightMenu extends Component {
-    state = {
-        randomBooks: []
-    };
+const { API_URL } = process.env;
 
-	componentDidMount() {
-        this.getItems();
-	};
+const RightMenu = () => {
+    const fetchItems = url => axios.get(url)
+        .then(res => res.data.map(item => ({
+            id: item.id,
+            title: item.title
+        }))
+    );
 
-	getItems = () => {
-        const { API_URL } = process.env;
+    const { data, error } = useSWR(`${API_URL}/books?_limit=10`, fetchItems);
 
-	    axios.get(`${API_URL}/books?_limit=10`)
-            .then(res => {
-                res.data &&
-                this.setState({
-                    randomBooks: res.data
-                })
-            })
-            .catch(err => {
-                console.log('Ошибка получения элементов из бд' + err)
-            });
-    };
+    if (error || !data) console.log('Ошибка получения рандомных книг из бд ' + error);
 
-    render() {
-        const { randomBooks } = this.state;
-
-        return (
-            <div className="content">
-                <div className="content__wrapper">
-                    <div className="content__title">
-                        содержание
-                    </div>
-                    { randomBooks && randomBooks.map((item, key) => (
-                        <Fragment key={key}>
-                            <Link href={'/books/[id]'} as={`/books/${item.id}`}>
-                                <a className="content__item">
-                                    <span className="content__item-title">{item.title}</span>
-                                    <span className="content__item-num">{key + 1}</span>
-                                </a>
-                            </Link>
-                        </Fragment>
-                    ))}
+    return (
+        <div className="content">
+            <div className="content__wrapper">
+                <div className="content__title">
+                    содержание
                 </div>
+                { data && data.map((item, key) => (
+                    <Fragment key={key}>
+                        <Link href={'/books/[id]'} as={`/books/${item.id}`}>
+                            <a className="content__item">
+                                <span className="content__item-title">{item.title}</span>
+                                <span className="content__item-num">{key + 1}</span>
+                            </a>
+                        </Link>
+                    </Fragment>
+                ))}
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default RightMenu;

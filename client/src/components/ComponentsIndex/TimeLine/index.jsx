@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useImmer } from 'use-immer';
+import axios from 'axios';
+import useSWR from 'swr';
 import sortBy from 'lodash.sortby';
 import Slider from 'react-slick';
 import { returnDatePublish } from 'config/config';
 import TimelineDot from './Components/TimelineDot';
 
-class MainTimeline extends Component {
-    state = {
-        events: [],
-        isActive: 0
-    };
+const { API_URL } = process.env;
 
-    componentDidMount() {
-        this.setState({
-            events: sortBy(this.getItems(), item => item.date)
-        })
-    };
+const MainTimeline = () => {
+    const types = ['books', 'charts', 'reviews', 'articles'];
 
-    getItems = () => {
-        const  { books, charts, reviews, articles } = this.props;
-        const array = {'books': books, 'charts': charts, 'reviews': reviews, 'articles': articles};
+    const [active, setActive] = useState(0);
 
-        return Object.keys(array).flatMap(item =>
-            array[item].slice(0, 5).map(({title, id, created_at}) => {
-                return {
-                    title,
-                    id,
-                    date: returnDatePublish(created_at),
-                    type: item
+    const [events, setEvents] = useImmer([]);
+
+    const getItems = (url, type) => {
+        axios.get(url)
+            .then(res => {
+                if (res.status === 200 ) {
+                    res.data.forEach(item => {
+                        setEvents(draft => {
+                            draft.push({
+                                id: item.id,
+                                title: item.title,
+                                date: returnDatePublish(item.created_at),
+                                type: type
+                            })
+                        })
+                    });
                 }
             })
-        )
+            .catch(err => {
+                console.log('Ошибка получения элементов из бд' + err)
+            })
     };
 
-    handleClick = key => {
-        this.setState({ isActive: key });
-    };
+    types.forEach(async type => {
+        await useSWR([`${API_URL}/${type}?_limit=5`, type], (url, type) => getItems(url, type));
+    });
 
-    render() {
-        const { events, isActive } = this.state;
-
-        const settings = {
+    const settings = {
             infinite: false,
             swipeToSlide: true,
             slidesToShow: 9,
@@ -66,23 +68,22 @@ class MainTimeline extends Component {
             ]
         };
 
-        return (
-            <div className="timeline">
-                <span className="line"/>
-                <Slider {...settings}>
-                    {events.map((item, key) => (
-                        <TimelineDot
-                            item={item}
-                            key={key}
-                            index={key}
-                            handleClick={() => this.handleClick(key)}
-                            isActive={isActive}
-                        />
-                    ))}
-                </Slider>
-            </div>
-        );
-    }
+    return (
+        <div className="timeline">
+            <span className="line"/>
+            <Slider {...settings}>
+                {events.length && sortBy(events, item => item.date).map((item, key) => (
+                    <TimelineDot
+                        item={item}
+                        key={key}
+                        index={key}
+                        handleClick={() => setActive(key)}
+                        isActive={active}
+                    />
+                ))}
+            </Slider>
+        </div>
+    );
 }
 
 export default MainTimeline;

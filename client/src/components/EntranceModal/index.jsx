@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import InputText from 'components/Forms/Input';
 import entry from 'components/Forms/Fields/entry.json';
 
-Modal.setAppElement('#app');
 
 const EntranceModal = ({ isOpen, toggleModal }) => {
     const { handleSubmit, register, errors } = useForm();
@@ -25,6 +24,8 @@ const EntranceModal = ({ isOpen, toggleModal }) => {
     const onSubmit = values => {
         userLogin(values);
     };
+
+    Modal.setAppElement('#app');
 
     const userLogin = values => {
         const { API_URL } = process.env;
