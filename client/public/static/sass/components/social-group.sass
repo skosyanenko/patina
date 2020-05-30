@@ -28,34 +28,33 @@
         cursor: pointer
         position: relative
         transition: all 1s ease
-
         &:hover
-            &:before
-                width: 101px
-                padding: 6px 20px
-                bottom: 35px
-                left: -13px
-                content: 'В закладки'
-                @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
-                position: absolute
-                background: $green
+            .socials__bookmark-before
                 opacity: 0.6
-                border-radius: 5px
-                z-index: 100000
-                +maxwidth($tablet)
-                    bottom: 31px
-                    left: -16px
-                +maxwidth($mobail)
-                    display: none
 
+        &-before
+            position: absolute
+            width: 101px
+            padding: 6px 20px
+            bottom: 35px
+            left: -13px
+            @include style-text(17px, 0, $openSans, $white, 100%, 300, false)
+            background: $green
+            opacity: 0
+            border-radius: 5px
+            z-index: 100000
+            +maxwidth($tablet)
+                bottom: 31px
+                left: -16px
+            +maxwidth($mobail)
+                display: none
             &:after
                 width: 3px
                 height: 1px
-                bottom: 17px
-                left: 6px
+                left: 19px
+                bottom: -18px
                 content: ''
                 position: absolute
-                opacity: 0.6
                 border: 6px solid transparent
                 border-top: 12px solid $green
                 z-index: 100000

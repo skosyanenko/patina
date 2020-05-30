@@ -4,26 +4,45 @@ import Typed from 'react-typed';
 import Socials from 'components/SocialsGroup';
 import MyRating from 'components/MyRating';
 import Auth from 'services/Authorization';
+import axios from 'axios';
 
-const BookInform = ({ idContent, titleContent, description, image, bookmarked, weight, categories, votes, toggleModal }) => {
+const { API_URL } = process.env;
+
+const BookInform = ({ idContent, titleContent, description, image, weight, categories, toggleModal }) => {
     const initialState = {
-        isEntered: false
+        bookmarked: [],
+        votes: []
     };
+
+    const [state, setState] = useState(initialState);
+
+    const [isEntered, setIsEntered] = useState(false);
+
+    const { bookmarked, votes } = state;
+
+    useEffect(() => {
+        getDynamicContent();
+    }, [idContent]);
 
     useEffect(() => {
         if ( Auth.token && Auth.token.length > 0) {
-            setState({
-                isEntered: true
-            })
+            setIsEntered(true)
         } else {
-            setState({
-                isEntered: false
-            })
+            setIsEntered(false)
         }
     }, [Auth]);
 
-    const [state, setState] = useState(initialState);
-    const { isEntered } = state;
+    const getDynamicContent = () => {
+        axios.get(`${API_URL}/books/${idContent}`)
+            .then(res => {
+                if (res.status === 200 ) {
+                    setState({
+                        bookmarked: res.data.bookmarked,
+                        votes: res.data.votes
+                    })
+                }
+            })
+    };
 
     return (
         <div className="book-inform">
@@ -51,25 +70,25 @@ const BookInform = ({ idContent, titleContent, description, image, bookmarked, w
                     toggleModal={toggleModal}
                 />
                 <Socials
-                    idContent={idContent}
+                    bookId={idContent}
                     titleContent={titleContent}
                     description={description}
-                    bookmarked={bookmarked}
                     image={image}
                     weight={weight}
                     toggleModal={toggleModal}
                     isBookmarks={true}
+                    bookmarked={bookmarked}
                 />
                 <div className="button-write-review">
                     <div className="button-write-review__img"/>
                     <Typed className="button-write-review__animate"
-                           strings={['. . .']}
-                           typeSpeed={100}
-                           backSpeed={0}
-                           startDelay={300}
-                           showCursor={false}
-                           backDelay={1}
-                           loop={true}
+                        strings={['. . .']}
+                        typeSpeed={100}
+                        backSpeed={0}
+                        startDelay={300}
+                        showCursor={false}
+                        backDelay={1}
+                        loop={true}
                     />
                     {isEntered
                         ?

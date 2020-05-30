@@ -43,51 +43,49 @@ class Books extends Component {
                     asNavFor={this.state.nav2}
                     className="books-slider"
                 >
-                    { books && books.map(({ title, categories, shortDescription, id, coverImage, bookmarked, bookImage, weight, votes }, key) => (
-                    <div className="books"
-                         key={key}
-                         itemType="https://schema.org/Book"
-                         itemProp="book itemReviewed"
-                         itemScope
-                    >
-                        <div className="books__text">
-                            <Link href={'/books/[id]'} as={`/books/${id}`}>
-                                <a className="books__text-title" itemProp="name">{title}</a>
-                            </Link>
-                                <BookInform
-                                    idContent={id}
-                                    titleContent={title}
-                                    description={shortDescription}
-                                    bookmarked={bookmarked}
-                                    image={bookImage}
-                                    weight={weight}
-                                    categories={categories}
-                                    votes={votes}
-                                    toggleModal={toggleModal}
-                                />
-                            <p className="books__text-description" itemProp="description">
-                                {shortDescription}
-                            </p>
-                            <Link href={'/books/[id]'} as={`/books/${id}`}>
-                                <a className="button button-white">Подробнее</a>
-                            </Link>
-                        </div>
-                        <div className="books__wrapper">
-                            <div className="books__arrow">
-                                <svg className="books__arrow-prev"  onClick={this.previous}>
-                                    <use href="/icons/sprite.svg#arrow"/>
-                                </svg>
+                    { books && books.map(({ title, categories, shortDescription, id, coverImage, bookImage, weight, votes }, key) => (
+                        <div className="books"
+                             key={key}
+                             itemType="https://schema.org/Book"
+                             itemProp="book itemReviewed"
+                             itemScope
+                        >
+                            <div className="books__text">
+                                <Link href={'/books/[id]'} as={`/books/${id}`}>
+                                    <a className="books__text-title" itemProp="name">{title}</a>
+                                </Link>
+                                    <BookInform
+                                        idContent={id}
+                                        titleContent={title}
+                                        description={shortDescription}
+                                        image={bookImage}
+                                        weight={weight}
+                                        categories={categories}
+                                        toggleModal={toggleModal}
+                                    />
+                                <p className="books__text-description" itemProp="description">
+                                    {shortDescription}
+                                </p>
+                                <Link href={'/books/[id]'} as={`/books/${id}`}>
+                                    <a className="button button-white">Подробнее</a>
+                                </Link>
                             </div>
-                            <Link href={'/books/[id]'} as={`/books/${id}`}>
-                                <a className="books__img">{coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}</a>
-                            </Link>
-                            <div className="books__arrow">
-                                <svg className="books__arrow-next" onClick={this.next}>
-                                    <use href="/icons/sprite.svg#arrow"/>
-                                </svg>
+                            <div className="books__wrapper">
+                                <div className="books__arrow">
+                                    <svg className="books__arrow-prev"  onClick={this.previous}>
+                                        <use href="/icons/sprite.svg#arrow"/>
+                                    </svg>
+                                </div>
+                                <Link href={'/books/[id]'} as={`/books/${id}`}>
+                                    <a className="books__img">{coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}</a>
+                                </Link>
+                                <div className="books__arrow">
+                                    <svg className="books__arrow-next" onClick={this.next}>
+                                        <use href="/icons/sprite.svg#arrow"/>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     ))}
                 </Slider>
                 <div className="books__numb">

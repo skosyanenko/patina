@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import Auth from 'services/Authorization';
@@ -6,119 +6,88 @@ import axios from 'axios';
 
 const { API_URL } = process.env;
 
-class Socials extends Component {
-    state = {
-        isSave: false,
-        bookmarks: [],
-        userId: Auth.userInfo.id
-    };
+const Socials = ({ router, isBookmarks, bookmarked, toggleModal, bookId, titleContent, description, image, weight }) => {
+    const userId = Auth.userInfo.id;
 
-    componentDidMount() {
-        const userId = Auth.userInfo.id;
-        const { bookmarked } = this.props;
+    const [state, setState] = useState(false);
 
+    useEffect(() => {
         if (Auth.isAuth) {
-            this.setState({
-                bookmarks: bookmarked,
-                isSave: bookmarked && bookmarked.some(item => item.user === userId) || false,
-            })
+            setState(bookmarked && bookmarked.some(item => item.user === userId) || false)
         }
-    };
+    }, [bookmarked]);
 
-    componentDidUpdate(prevProps, prevState) {
-        const userId = Auth.userInfo.id;
-        const { bookmarked } = this.props;
-
-        if (Auth.isAuth && prevProps.bookmarked !== bookmarked) {
-            this.setState({
-                bookmarks: bookmarked,
-                isSave: bookmarked.some(item => item.user === userId) || false,
-            })
-        }
-    };
-
-    handleClick = () => {
-        const { isSave, bookmarks, userId } = this.state;
-        const { toggleModal } = this.props;
-
+    const handleClick = () => {
         if (!Auth.isAuth) return toggleModal(true);
 
-        if (isSave) {
-            bookmarks && bookmarks.forEach(item => {
-                if (item.user === userId) return this.deleteBookMark(item.id);
+        if (state) {
+            bookmarked && bookmarked.forEach(item => {
+                if (item.user === userId) return deleteBookMark(item.id);
             })
         } else {
-            return this.saveBookmark();
+            return saveBookmark();
         }
     };
 
-    saveBookmark = () => {
-        const { idContent, titleContent, description, image, weight } = this.props;
+    const saveBookmark = () => {
         const options = Auth.token && {headers: { Authorization: `Bearer ${Auth.token}`}};
         const data = {
             bookmarks: {title: titleContent, bookImage: image, description: description, weight: weight}
         };
 
-        axios.post(`${API_URL}/books/${idContent}/bookmark`, data, options)
+        axios.post(`${API_URL}/books/${bookId}/bookmark`, data, options)
             .then(res => {
                 res.status === 200 &&
-                  this.setState(state => ({isSave: !state.isSave}));
+                setState(true);
             })
-            .catch(err => {
-                console.log('Ошибка при отправке формы, попробуйте позже!' + err);
-            });
     };
 
-    deleteBookMark = (id) => {
+    const deleteBookMark = (id) => {
         const options = Auth.token && {headers: { Authorization: `Bearer ${Auth.token}`}};
+
         axios.delete(`${API_URL}/bookmarks/${id}`, options)
             .then(res => {
                 res.status === 200 &&
-                this.setState(state => ({isSave: !state.isSave}));
+                setState(false);
             })
-            .catch(err => {
-                console.log('Ошибка при отправке формы, попробуйте позже!' + err);
-            });
     };
 
-    render() {
-        const { isSave } = this.state;
-        const { router, isBookmarks } = this.props;
-
-        return (
-            <div className="socials" itemProp="sharedContent" itemScope itemType="http://schema.org/WebPage">
-                <a target="_blank"
-                   rel="noopener noreferrer"
-                   href={`https://vk.com/share.php?url=https://the-patina.ru${router.asPath}`}
-                   itemProp="url"
+    return (
+        <div className="socials" itemProp="sharedContent" itemScope itemType="http://schema.org/WebPage">
+            <a target="_blank"
+                rel="noopener noreferrer"
+                href={`https://vk.com/share.php?url=https://the-patina.ru${router.asPath}`}
+                itemProp="url"
+            >
+                <div className="socials__vk" itemProp="headline" content="vk.com"/>
+            </a>
+            <a target="_blank"
+                rel="noopener noreferrer"
+                href={`https://t.me/share/url?url=https://the-patina.ru${router.asPath}`}
+                itemProp="url"
+            >
+                <div className="socials__tg" itemProp="headline" content="t.me"/>
+            </a>
+            {isBookmarks &&
+                <div
+                    className="socials__bookmark"
+                    onClick={handleClick}
                 >
-                    <div className="socials__vk" itemProp="headline" content="vk.com"/>
-                </a>
-                <a target="_blank"
-                   rel="noopener noreferrer"
-                   href={`https://t.me/share/url?url=https://the-patina.ru${router.asPath}`}
-                   itemProp="url"
-                >
-                    <div className="socials__tg" itemProp="headline" content="t.me"/>
-                </a>
-                {isBookmarks &&
-                    <div
-                        className="socials__bookmark"
-                        onClick={this.handleClick}
-                    >
-                        <svg className={`${isSave && 'active'}`}>
-                            <use href="/icons/sprite.svg#bookmark"/>
-                        </svg>
+                    <svg className={`${state && 'active'}`}>
+                        <use href="/icons/sprite.svg#bookmark"/>
+                    </svg>
+                    <div className="socials__bookmark-before">
+                        {state ? 'Добавлено' : 'В закладки'}
                     </div>
-                    || ''
-                }
-            </div>
-        );
-    }
+                </div>
+                || ''
+            }
+        </div>
+    );
 }
 
 Socials.propTypes = {
-    isBookmarks:     PropTypes.bool.isRequired
+    isBookmarks: PropTypes.bool.isRequired
 };
 
 export default withRouter(Socials);

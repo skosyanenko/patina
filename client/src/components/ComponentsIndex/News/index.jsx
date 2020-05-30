@@ -7,22 +7,6 @@ import NewsLink from 'components/ComponentsNews/NewsLink';
 class News extends Component {
     state = {
         articles: []
-    }
-
-    componentDidMount() {
-        this.setState({
-            articles: this.getItems()
-        })
-    };
-
-    getItems = () => {
-        const { articles_2, articles_3, articles_4 } = this.props;
-        const articles = [articles_2, articles_3, articles_4];
-        return articles.flatMap(item =>
-            item.map(elem => {
-                return elem;
-            })
-        )
     };
 
     viewSwitcher = view => {
@@ -39,12 +23,13 @@ class News extends Component {
     };
 
     render() {
-        const { articles } = this.state;
-        const { toggleModal } = this.props;
+        const { toggleModal, articles_2, articles_3, articles_4 } = this.props;
+
+        const articles = [articles_2, articles_3, articles_4];
 
         return (
             <div className="main-news news">
-                { articles && articles.map((item, key) => {
+                { articles && articles.length && articles.flat().map((item, key) => {
                     const Component = this.viewSwitcher(item.viewType);
                     const datePublish = new Date(item.created_at).toLocaleDateString();
                     return(

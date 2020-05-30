@@ -13,9 +13,7 @@ const RightMenu = () => {
         }))
     );
 
-    const { data, error } = useSWR(`${API_URL}/books?_limit=10`, fetchItems);
-
-    if (error || !data) console.log('Ошибка получения рандомных книг из бд ' + error);
+    const { data } = useSWR(`${API_URL}/books?_limit=10`, fetchItems);
 
     return (
         <div className="content">

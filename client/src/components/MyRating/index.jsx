@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rating } from '@material-ui/lab';
 import { withStyles } from '@material-ui/core';
 import axios from 'axios';
@@ -6,71 +6,56 @@ import Auth from 'services/Authorization';
 
 const { API_URL } = process.env;
 
-class MyRating extends  Component {
-    state = {
+const MyRating = ({ bookId, votes, toggleModal }) => {
+    const initialState = {
         isVote: false,
-        votes:  [],
+        voted:  [],
         mediumVote: 0,
         counters: 0,
         activeVote: 0
     };
 
-    componentDidMount() {
-        const { votes } = this.props;
-        this.setState({
+    const [state, setState] = useState(initialState);
+
+    const { isVote, voted, mediumVote, counters, activeVote } = state;
+
+    useEffect(() => {
+        setState({
+            voted: votes && votes,
             isVote: votes && votes.some(item => item.user === Auth.userInfo.id) || false,
-            votes: votes,
             counters: votes && votes.length || 0,
-            mediumVote: votes && this.getMediumVote() ,
+            mediumVote: votes && getMediumVote(votes) ,
             activeVote: votes && votes.map(item => item.user === Auth.userInfo.id && item.vote) || 0
         })
-    };
+    }, [votes])
 
-    componentDidUpdate(prevProps, prevState) {
-        const { votes } = this.props;
-        if (prevProps.votes !== votes) {
-            this.setState({
-                isVote: votes && votes.some(item => item.user === Auth.userInfo.id) || false,
-                votes: votes,
-                counters: votes && this.props.votes.length || 0,
-                mediumVote: votes && this.getMediumVote() ,
-                activeVote: votes && votes.map(item => item.user === Auth.userInfo.id && item.vote) || 0
-            })
-        }
-    };
+    const getMediumVote = (voted) => {
+        const votesNumber = voted.map(item => item.vote);
 
-    getMediumVote = () => {
-        const { votes } = this.props;
-        const votesNumber = votes.map(item => item.vote);
-
-        if (votes.length > 0) {
-            return (votesNumber.reduce((acc, curr) => acc + curr, 0) / votes.length).toFixed(2);
+        if (voted.length > 0) {
+            return (votesNumber.reduce((acc, curr) => acc + curr, 0) / voted.length).toFixed(2);
         } else {
             return 0;
         }
     };
 
-    handleClick = (value) => {
-        const { toggleModal } = this.props;
-        const { isVote, votes } = this.state;
-
+    const handleClick = (value) => {
         const userId = Auth.userInfo.id;
 
         if (!Auth.isAuth) return toggleModal(true);
 
         if (isVote) {
-            votes && votes.forEach(item => {
+            voted && voted.forEach(item => {
                 if (item.user === userId) {
                     return item.vote;
                 }
             });
         } else {
-            this.addVote(value);
+            addVote(value);
         }
     };
 
-    addVote = (value) => {
-        const { bookId } = this.props;
+    const addVote = (value) => {
         const options = Auth.token && {
             headers: { Authorization: `Bearer ${Auth.token}` }};
 
@@ -81,54 +66,52 @@ class MyRating extends  Component {
                         id: res.data.id,
                         user: Auth.userInfo.id
                     };
-                    this.setState(state => ({
+                    setState(state => ({
+                        ...state,
                         isVote: !state.isVote,
-                        votes: [...state.votes, vote],
+                        voted: [...state.voted, vote],
                         counters: state.counters + 1,
                         mediumVote: (state.mediumVote + value) / (state.counters + 1)
                     }));
                 }
             })
             .catch(err => console.log('Ошибка при отправке формы, попробуйте позже!' + err));
-    }
+    };
 
-    render() {
-        const { activeVote, isVote, mediumVote, counters } = this.state;
+    const StyledRating = withStyles({
+        iconFilled: {
+            color: ' rgba(38, 77, 75, 1)',
+        },
+        iconHover: {
+            color: '#264d4b',
+        },
+    })(Rating);
 
-        const StyledRating = withStyles({
-            iconFilled: {
-                color: ' rgba(38, 77, 75, 1)',
-            },
-            iconHover: {
-                color: '#264d4b',
-            },
-        })(Rating);
-
-        return(
-            <div className="rating">
-                <div className="rating__wrap">
-                    <StyledRating
-                        name="hover-feedback"
-                        value={activeVote[0] > 0 ? +activeVote[0] : +mediumVote}
-                        precision={0.5}
-                        size="large"
-                        onChange={(event, newValue) => {this.handleClick(newValue)}}
-                        disabled={isVote}
-                    />
-                </div>
-                <div className={`rating__text ${isVote && ' active'}`}>Ваш голос учтен!</div>
-                <div className="rating__rate"
-                     itemType="http://schema.org/AggregateRating"
-                     itemProp="aggregateRating"
-                     itemScope
-                >
-                    <span itemProp="ratingValue" content="4.78">{mediumVote} </span>
-                    /
-                    <span itemProp="ratingCount" content="20"> {counters}</span>
-                </div>
+    return(
+        <div className="rating">
+            <div className="rating__wrap">
+                <StyledRating
+                    name="hover-feedback"
+                    value={activeVote[0] > 0 ? +activeVote[0] : +mediumVote}
+                    precision={0.5}
+                    size="large"
+                    onChange={(event, newValue) => {handleClick(newValue)}}
+                    disabled={isVote}
+                />
             </div>
-        )
-    }
+            <div className={`rating__text ${isVote && ' active'}`}>Ваш голос учтен!</div>
+            <div
+                className="rating__rate"
+                itemType="http://schema.org/AggregateRating"
+                itemProp="aggregateRating"
+                itemScope
+            >
+                <span itemProp="ratingValue" content="4.78">{mediumVote} </span>
+                /
+                <span itemProp="ratingCount" content="20"> {counters}</span>
+            </div>
+        </div>
+    );
 }
 
 export default MyRating;
