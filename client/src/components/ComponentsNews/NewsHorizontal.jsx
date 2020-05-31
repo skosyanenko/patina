@@ -7,7 +7,7 @@ import TimeToRead from 'components/TimeToRead';
 const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, date, toggleModal }) => (
     <div className="news-horizontal">
         <div className="news-horizontal__wrapper">
-            <Link href={'/news/[id]'} as={`/news/${id}`}>
+            <Link href={'/articles/[id]'} as={`/articles/${id}`}>
                 <a className="news-horizontal__link">
                     <div className="news-horizontal__link-img">
                         {cover && <img src={`${cover.url}`} alt=""/>}
@@ -26,14 +26,14 @@ const NewsHorizontal = ({ item: {id, cover, title, description, likes, views}, d
             />
             <div className="news-horizontal__wrapper-wrap">
                 {description && <TimeToRead textLength={counterLetters(description)}/>}
-                <Link href={'/news/[id]'} as={`/news/${id}`}>
+                <Link href={'/articles/[id]'} as={`/articles/${id}`}>
                     <a className="button button-white">Подробнее</a>
                 </Link>
             </div>
         </div>
         </div>
         <div className="news-horizontal__description">
-            <Link href={'/news/[id]'} as={`/news/${id}`}>
+            <Link href={'/articles/[id]'} as={`/articles/${id}`}>
                 <a className="news-horizontal__title">{title}</a>
             </Link>
             <span className="news-horizontal__text"
