@@ -16,8 +16,8 @@ class NewsDetail extends Component {
     };
 
     componentDidMount() {
-        const { serverData } = this.props;
-        this.updateViews(serverData.id, serverData.views);
+        const { article } = this.props;
+        this.updateViews(article.id, article.views);
     };
 
     updateViews = (id, views) => {
