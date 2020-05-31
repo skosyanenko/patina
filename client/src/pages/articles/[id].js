@@ -52,7 +52,7 @@ class NewsDetail extends Component {
 
                 <div className="container container--new" itemType="http://schema.org/NewsArticle http://schema.org/CreativeWork" itemScope>
                     <div className="image">
-                        <Link href={'/news'} >
+                        <Link href={'/articles'} >
                             <a className="backwards backwards--news"/>
                         </Link>
                         { view ? <h1 className="article__title-horizontal" itemProp="headline name">{title}</h1> : ''}
