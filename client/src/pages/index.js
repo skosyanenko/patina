@@ -80,8 +80,10 @@ export async function getStaticProps() {
             {
                 id: item.id,
                 title: item.title,
+                weight: item.weight,
                 shortDescription: item.shortDescription,
                 coverImage: item.coverImage,
+                bookImage: item.bookImage,
                 categories: item.categories
             }))
 

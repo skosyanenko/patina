@@ -25,7 +25,7 @@ const BooksDetail = ({ router, toggleModal, book: {authors, bookImage, categorie
     useEffect(() => {
         axios.get(`${process.env.API_URL}/books/${router.query.id}`)
             .then(res => {
-                setCurrBook({ currentBook: res.data })
+                setCurrBook(res.data)
             })
             .catch(err => console.log(err));
     }, [router.query.id]);
@@ -76,12 +76,12 @@ const BooksDetail = ({ router, toggleModal, book: {authors, bookImage, categorie
                                 </div>
                         </div>
                         <BookInform
-                            idContent={id}
-                            titleContent={title}
-                            description={shortDescription}
-                            weight={weight}
-                            image={bookImage}
-                            categories={categories}
+                            idContent={id || currBook.id}
+                            titleContent={title || currBook.title}
+                            description={shortDescription || currBook.shortDescription}
+                            weight={weight || currBook.weight}
+                            image={bookImage || currBook.bookImage}
+                            categories={categories || currBook.categories}
                             toggleModal={toggleModal}
                         />
                     </div>

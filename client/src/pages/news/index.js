@@ -13,8 +13,8 @@ import MyHead from 'components/MyHead';
 
 class NewsList extends Component {
     componentDidMount() {
-        const { setData, serverData } = this.props;
-        setData({data: serverData});
+        const { setData, articles } = this.props;
+        setData({data: articles});
     };
 
     viewSwitcher = view => {
@@ -79,15 +79,13 @@ class NewsList extends Component {
     }
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/articles?_sort=created_at:DESC`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
+    const resArticles = await axios.get(`${API_URL}/articles`)
+    const articles = await resArticles.data;
 
-    return { props: { serverData } };
-
+    return { props: {articles} }
 }
 
 export default paginationWrap(NewsList, 8, [8, 16, 24]);

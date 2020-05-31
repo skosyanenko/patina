@@ -7,7 +7,7 @@ import Socials from 'components/SocialsGroup';
 import CommentBlock from 'components/CommentBlock';
 import MyHead from 'components/MyHead';
 
-const ChartsDetail = ({ currentChart: {title, description, books, id, comments} }) => {
+const ChartsDetail = ({ chart: {title, description, books, id} }) => {
     return(
         <>
             <MyHead
@@ -70,21 +70,36 @@ const ChartsDetail = ({ currentChart: {title, description, books, id, comments} 
             <CommentBlock
                 idContent={id}
                 typeContent={'charts'}
-                comments={comments}
             />
         </div>
         </>
     );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
     const { API_URL } = process.env;
 
-    const currentChart = await axios.get(`${API_URL}/charts/${params.id}`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const res = await axios.get(`${API_URL}/charts`)
+    const charts = await res.data
 
-    return { props: { currentChart } };
+    const paths = charts.map(chart => `/charts/${chart.id}`)
+
+    return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+    const { API_URL } = process.env;
+
+    const res = await axios.get(`${API_URL}/charts/${params.id}`)
+    const chart = await res.data &&
+        {
+            id: res.data.id,
+            title: res.data.title,
+            description: res.data.description,
+            books: res.data.books
+        };
+
+    return { props: { chart } }
 }
 
 export default ChartsDetail;

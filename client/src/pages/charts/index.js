@@ -18,8 +18,8 @@ class ChartsList extends Component {
             'max-glare': 0.5
         });
 
-        const { setData, serverData } = this.props;
-        setData({ data: serverData });
+        const { setData, charts } = this.props;
+        setData({ data: charts });
     };
 
     render() {
@@ -98,14 +98,18 @@ class ChartsList extends Component {
     }
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/charts`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const resCharts = await axios.get(`${API_URL}/charts`)
+    const charts = await resCharts.data &&
+        resCharts.data.map(item => (
+            {
+                id: item.id,
+                title: item.title
+            }))
 
-    return { props: { serverData } };
+    return { props: {charts} }
 }
 
 export default paginationWrap(ChartsList, 10, [10, 20, 30]);

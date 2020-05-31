@@ -40,10 +40,15 @@
 
     &__text
         margin-top: 15px
-        @include style-text(16px, 0, $openSans, $darkgray, 120%, 300, false)
+        @include style-text(16px, 0, $openSans, $darkgray, 125%, 300, false)
         display: flex
         flex-direction: column
         text-align: justify
+        overflow: hidden
+        text-overflow: ellipsis
+        display: -webkit-box
+        -webkit-line-clamp: 4
+        -webkit-box-orient: vertical
         +maxwidth($mobail)
             font-size: 14px
 

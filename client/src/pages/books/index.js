@@ -20,8 +20,8 @@ class BooksList extends Component {
     };
 
     componentDidMount() {
-        const { setData, serverData } = this.props;
-        setData({ data: serverData });
+        const { setData, books } = this.props;
+        setData({ data: books });
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -201,14 +201,19 @@ class BooksList extends Component {
     }
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/books?_limit=400`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const resBooks = await axios.get(`${API_URL}/books?_limit=500`)
+    const books = await resBooks.data &&
+        resBooks.data.map(item => (
+        {
+            id: item.id,
+            title: item.title,
+            authors: item.authors,
+        }))
 
-    return { props: { serverData } };
+    return { props: {books} }
 }
 
 export default paginationWrap(BooksList, 9, [9, 18, 27]);

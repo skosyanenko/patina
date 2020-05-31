@@ -102,6 +102,7 @@ const MyApp = ({ Component, pageProps, router }) => {
                         <Component
                             {...pageProps}
                             toggleModal={setUnknownModal}
+                            router={router}
                         />
                     </main>
                 </CSSTransition>

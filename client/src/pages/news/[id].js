@@ -38,7 +38,7 @@ class NewsDetail extends Component {
 
     render() {
         const { viewsUpdate } = this.state;
-        const { toggleModal, serverData: {title, description, cover, viewType, likes, views, id, created_at, comments } } = this.props;
+        const { toggleModal, article: {title, description, cover, viewType, views, id, created_at } } = this.props;
         const view = viewType === 1 || viewType === 2 || viewType === 3;
 
         return (
@@ -75,7 +75,6 @@ class NewsDetail extends Component {
 
                             <div className="article__wrapper-nav">
                                 <Icons
-                                    likes={likes}
                                     idContent={id}
                                     typeContent={'articles'}
                                     views={viewsUpdate}
@@ -95,21 +94,30 @@ class NewsDetail extends Component {
                 <CommentBlock
                     idContent={id}
                     typeContent={'articles'}
-                    comments={comments}
                 />
             </>
         )
     }
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
     const { API_URL } = process.env;
 
-    const serverData = await axios.get(`${API_URL}/articles/${params.id}`)
-        .then(res => res.data)
-        .catch(err => console.log(err));
+    const res = await axios.get(`${API_URL}/articles`)
+    const articles = await res.data
 
-    return { props: { serverData } };
+    const paths = articles.map(article => `/articles/${article.id}`)
+
+    return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+    const { API_URL } = process.env;
+
+    const res = await axios.get(`${API_URL}/articles/${params.id}`)
+    const article = await res.data;
+
+    return { props: { article } }
 }
 
 export default NewsDetail;
