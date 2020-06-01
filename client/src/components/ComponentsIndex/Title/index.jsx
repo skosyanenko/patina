@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const Title = ({ title, subtitle }) => {
   return (
       <div className="main__wrap">
-          <h1 className="main__wrap-title">{title}</h1>
-          <h2 className="main__wrap-subtitle">{subtitle}</h2>
+          <span className="main__wrap-title">{title}</span>
+          <span className="main__wrap-subtitle">{subtitle}</span>
       </div>
   )
 };
