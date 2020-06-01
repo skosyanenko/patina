@@ -50,9 +50,7 @@ class Tops extends PureComponent {
                                         <LazyLoadComponent id="bookPicture">
                                             <picture>
                                                 <source media="(max-width: 1920px)" srcSet={`${image.url}`}/>
-                                                <source media="(min-width: 991px)" srcSet={`${image.formats.medium.url}`}/>
-                                                <source media="(min-width: 767px)" srcSet={`${image.formats.small.url}`}/>
-                                                <source media="(min-width: 565px)" srcSet={`${image.formats.small.url}`}/>
+                                                <source media="(max-width: 767px)" srcSet={`${image.formats.small.url}`}/>
                                                 <img src={`${image.url}`} alt="" itemProp="image"/>
                                             </picture>
                                         </LazyLoadComponent>

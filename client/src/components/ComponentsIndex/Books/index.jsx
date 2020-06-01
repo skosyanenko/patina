@@ -83,9 +83,7 @@ class Books extends PureComponent {
                                             <LazyLoadComponent id="bookPicture">
                                                 <picture id="bookPicture">
                                                     <source media="(min-width: 1920px)" srcSet={`${coverImage.formats.medium.url}`}/>
-                                                    <source media="(min-width: 991px)" srcSet={`${coverImage.formats.small.url}`}/>
-                                                    <source media="(min-width: 767px)" srcSet={`${coverImage.formats.small.url}`}/>
-                                                    <source media="(min-width: 565px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                    <source media="(max-width: 767px)" srcSet={`${coverImage.formats.small.url}`}/>
                                                     <img src={`${coverImage.formats.medium.url}`} alt="" itemProp="image"/>
                                                 </picture>
                                             </LazyLoadComponent>
