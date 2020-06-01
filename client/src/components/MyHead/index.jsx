@@ -20,6 +20,13 @@ const MyHead = ({ title, description, link, robots }) => {
               <meta name="robots" content={robots}/>
               <link rel="alternate" href={'https://the-patina.ru/'} hrefLang="ru"/>
               <meta name="google-site-verification" content="nPFyCJ2mic6IdQreBa26g07v_RGW1VZ7CczxQocITMI" />
+              <link rel="preload" href="/static/fonts/WaverlyCF-Thin.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/WaverlyCF-Light.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/WaverlyCF-Medium.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/WaverlyCF-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/WaverlyCF-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/OpenSansCondensed-Light.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/OpenSansCondensed-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
               <script data-ad-client="ca-pub-5165499495824246" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
           </Head>
     )
