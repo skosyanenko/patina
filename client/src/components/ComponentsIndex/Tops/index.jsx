@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import Socials from 'components/SocialsGroup';
 
-class Tops extends Component {
+class Tops extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,7 +45,13 @@ class Tops extends Component {
                         >
                             <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                 <a className="tops__wrapper-img">
-                                    {image && <img src={`${image.url}`} alt="" itemProp="image"/>}
+                                    {image &&
+                                        <picture>
+                                            <source media="(min-width: 991px)" srcSet={`${image.formats.medium.url}`}/>
+                                            <source media="(min-width: 767px)" srcSet={`${image.formats.small.url}`}/>
+                                            <img src={`${image.url}`} alt="" itemProp="image"/>
+                                        </picture>
+                                    }
                                 </a>
                             </Link>
                             <div className="tops__text">

@@ -86,4 +86,4 @@ const MainTimeline = () => {
     );
 }
 
-export default MainTimeline;
+export default  React.memo(MainTimeline);

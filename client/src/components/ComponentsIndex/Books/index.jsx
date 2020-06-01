@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import BookInform from 'components/BookInform';
 
-class Books extends Component {
+class Books extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
