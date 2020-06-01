@@ -31,8 +31,9 @@ class BtnScrollToTop extends Component {
         const { inactive } = this.state;
 
         return (
-            <div className={`scroll-top ${inactive ? 'show' : ''}`}
-                 onClick={() => {this.scrollToTop()}}
+            <div
+                className={`scroll-top ${inactive ? 'show' : ''}`}
+                onClick={() => {this.scrollToTop()}}
             >
                 <div className="scroll-top__icon"/>
             </div>
