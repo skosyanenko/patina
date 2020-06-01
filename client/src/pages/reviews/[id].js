@@ -17,6 +17,7 @@ const ReviewsDetail = ({ err, currentReview, serverDataAuthors, toggleModal }) =
                 description={currentReview.description}
                 link={`/reviews/${currentReview.id}`}
                 robots={'all'}
+                fontOne={'/static/fonts/IZVESTIA.ttf'}
             />
             <>
                 <Link href={'/reviews'}>

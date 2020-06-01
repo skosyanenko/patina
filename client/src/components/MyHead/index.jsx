@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-const MyHead = ({ title, description, link, robots }) => {
+const MyHead = ({ title, description, link, robots, fontOne, fontTwo, adSense }) => {
     return (
           <Head>
               <title>{title}</title>
@@ -25,9 +25,11 @@ const MyHead = ({ title, description, link, robots }) => {
               <link rel="preload" href="/static/fonts/WaverlyCF-Medium.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
               <link rel="preload" href="/static/fonts/WaverlyCF-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
               <link rel="preload" href="/static/fonts/WaverlyCF-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
-              <link rel="preload" href="/static/fonts/OpenSansCondensed-Light.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
-              <link rel="preload" href="/static/fonts/OpenSansCondensed-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
-              <script data-ad-client="ca-pub-5165499495824246" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
+              <link rel="preload" href="/static/fonts/OpenSansCondensed-Light.ttf" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/OpenSansCondensed-Bold.ttf" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              {fontOne && <link rel="preload" href={fontOne} as="font" type="font/woff2" crossOrigin="anonymous"/>}
+              {fontTwo && <link rel="preload" href={fontTwo} as="font" type="font/woff2" crossOrigin="anonymous"/>}
+              {adSense && <script data-ad-client="ca-pub-5165499495824246" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>}
           </Head>
     )
 }

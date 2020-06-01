@@ -14,6 +14,7 @@ const PatinaPage =({ books, charts, articlesView_2, articlesView_3, articlesView
             description={'Литературный журнал «Patina». Здесь можно найти новости книжного мира, новинки книг, получить интересную подборку, найти книгу для себя, опубликовать рецензию на книгу'}
             link={'/'}
             robots={'all'}
+            adSense={true}
         />
         <>
             <div className="patina">

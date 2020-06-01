@@ -104,6 +104,8 @@ class EventsList extends Component {
                     description={'Мероприятия в Ростове-на-Дону, связанные с литературной тематикой'}
                     link={'/events'}
                     robots={'all'}
+                    fontOne={'/static/fonts/Cheque-Regular.woff2'}
+                    fontTwo={'/static/fonts/Cheque-Black.woff2'}
                 />
                 <>
                     <div className="events-wrap">

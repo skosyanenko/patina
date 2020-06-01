@@ -44,6 +44,7 @@ class ReviewsList extends Component {
                     description={'Рецензи на книги различных авторов и жанров'}
                     link={'/reviews'}
                     robots={'all'}
+                    fontOne={'/static/fonts/IZVESTIA.ttf'}
                 />
                 <>
                     <TitleOfPage
