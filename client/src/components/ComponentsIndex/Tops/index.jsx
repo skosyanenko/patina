@@ -47,7 +47,7 @@ class Tops extends PureComponent {
                                 <a className="tops__wrapper-img">
                                     {image &&
                                         <picture>
-                                            <source media="(min-width: 991px)" srcSet={`${image.formats.medium.url}`}/>
+                                            <source media="(min-width: 991px)" srcSet={`${image.formats.small.url}`}/>
                                             <source media="(min-width: 767px)" srcSet={`${image.formats.small.url}`}/>
                                             <img src={`${image.url}`} alt="" itemProp="image"/>
                                         </picture>

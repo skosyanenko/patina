@@ -77,7 +77,15 @@ class Books extends PureComponent {
                                     </svg>
                                 </div>
                                 <Link href={'/books/[id]'} as={`/books/${id}`}>
-                                    <a className="books__img">{coverImage && <img src={`${coverImage.url}`} alt="" itemProp="image"/>}</a>
+                                    <a className="books__img">
+                                        {coverImage &&
+                                            <picture>
+                                                <source media="(min-width: 991px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                <source media="(min-width: 767px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                <img src={`${coverImage.formats.medium.url}`} alt="" itemProp="image"/>
+                                            </picture>
+                                        }
+                                    </a>
                                 </Link>
                                 <div className="books__arrow">
                                     <svg className="books__arrow-next" onClick={this.next}>
