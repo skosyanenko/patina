@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import BookInform from 'components/BookInform';
 
 class Books extends PureComponent {
@@ -79,13 +80,15 @@ class Books extends PureComponent {
                                 <Link href={'/books/[id]'} as={`/books/${id}`}>
                                     <a className="books__img">
                                         {coverImage &&
-                                            <picture>
-                                                <source media="(min-width: 1920px)" srcSet={`${coverImage.formats.medium.url}`}/>
-                                                <source media="(min-width: 991px)" srcSet={`${coverImage.formats.small.url}`}/>
-                                                <source media="(min-width: 767px)" srcSet={`${coverImage.formats.small.url}`}/>
-                                                <source media="(min-width: 565px)" srcSet={`${coverImage.formats.small.url}`}/>
-                                                <img src={`${coverImage.formats.medium.url}`} alt="" itemProp="image"/>
-                                            </picture>
+                                            <LazyLoadComponent id="bookPicture">
+                                                <picture id="bookPicture">
+                                                    <source media="(min-width: 1920px)" srcSet={`${coverImage.formats.medium.url}`}/>
+                                                    <source media="(min-width: 991px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                    <source media="(min-width: 767px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                    <source media="(min-width: 565px)" srcSet={`${coverImage.formats.small.url}`}/>
+                                                    <img src={`${coverImage.formats.medium.url}`} alt="" itemProp="image"/>
+                                                </picture>
+                                            </LazyLoadComponent>
                                         }
                                     </a>
                                 </Link>

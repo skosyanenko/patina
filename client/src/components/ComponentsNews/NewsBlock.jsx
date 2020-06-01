@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Icons from 'components/Icons';
 import TimeToRead from 'components/TimeToRead';
 
@@ -7,7 +8,7 @@ const NewsBlock = ({ item: {id, cover, likes, views, title, description},  textL
     <div className="news-block">
         <Link href={'/articles/[id]'} as={`/articles/${id}`}>
             <div className="news-block__img">
-                {cover && <img src={`${cover.url}`} alt=""/>}
+                {cover && <LazyLoadImage src={`${cover.url}`} alt=""/>}
             </div>
         </Link>
         <Link href={'/articles/[id]'} as={`/articles/${id}`}>

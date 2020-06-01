@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import Socials from 'components/SocialsGroup';
 
 class Tops extends PureComponent {
@@ -46,13 +47,15 @@ class Tops extends PureComponent {
                             <Link href={'/charts/[id]'} as={`/charts/${id}`}>
                                 <a className="tops__wrapper-img">
                                     {image &&
-                                        <picture>
-                                            <source media="(max-width: 1920px)" srcSet={`${image.url}`}/>
-                                            <source media="(min-width: 991px)" srcSet={`${image.formats.medium.url}`}/>
-                                            <source media="(min-width: 767px)" srcSet={`${image.formats.small.url}`}/>
-                                            <source media="(min-width: 565px)" srcSet={`${image.formats.small.url}`}/>
-                                            <img src={`${image.url}`} alt="" itemProp="image"/>
-                                        </picture>
+                                        <LazyLoadComponent id="bookPicture">
+                                            <picture>
+                                                <source media="(max-width: 1920px)" srcSet={`${image.url}`}/>
+                                                <source media="(min-width: 991px)" srcSet={`${image.formats.medium.url}`}/>
+                                                <source media="(min-width: 767px)" srcSet={`${image.formats.small.url}`}/>
+                                                <source media="(min-width: 565px)" srcSet={`${image.formats.small.url}`}/>
+                                                <img src={`${image.url}`} alt="" itemProp="image"/>
+                                            </picture>
+                                        </LazyLoadComponent>
                                     }
                                 </a>
                             </Link>

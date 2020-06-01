@@ -27,6 +27,7 @@ const MyHead = ({ title, description, link, robots, fontOne, fontTwo, adSense })
               <link rel="preload" href="/static/fonts/WaverlyCF-ExtraBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
               <link rel="preload" href="/static/fonts/OpenSansCondensed-Light.ttf" as="font" type="font/woff2" crossOrigin="anonymous"/>
               <link rel="preload" href="/static/fonts/OpenSansCondensed-Bold.ttf" as="font" type="font/woff2" crossOrigin="anonymous"/>
+              <link rel="preload" href="/static/fonts/Vogue.otf" as="font" type="font/otf" crossOrigin="anonymous"/>
               {fontOne && <link rel="preload" href={fontOne} as="font" type="font/woff2" crossOrigin="anonymous"/>}
               {fontTwo && <link rel="preload" href={fontTwo} as="font" type="font/woff2" crossOrigin="anonymous"/>}
               {adSense && <script data-ad-client="ca-pub-5165499495824246" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>}

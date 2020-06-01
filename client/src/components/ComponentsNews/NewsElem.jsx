@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const NewsElem = ({ item: {id, cover, title, description} }) => (
     <div className="news-elem">
@@ -13,7 +14,7 @@ const NewsElem = ({ item: {id, cover, title, description} }) => (
         </div>
         <Link href={'/articles/[id]'} as={`/articles/${id}`}>
             <div className="news-elem__img">
-                {cover && <img src={`${cover.url}`} alt=""/>}
+                {cover && <LazyLoadImage src={`${cover.url}`} alt=""/>}
             </div>
         </Link>
     </div>
