@@ -59,7 +59,7 @@
             max-width: 155px
             width: 100%
             margin-left: 15px
-            @include style-text-events(34px, 6px, $waverly, $white, 100%, 100, true, true)
+            @include style-text(34px, 6px, $waverly, $white, 100%, 100, true)
             +maxwidth($tablet)
                 margin-left: 10px
             +maxwidth($mobail)
@@ -70,7 +70,7 @@
         display: flex
 
         &-text
-            @include style-text-events(80px, 10px, $cheque, $white, 75%, bold, true, true)
+            @include style-text(80px, 10px, $cheque, $white, 75%, bold, true)
             +maxwidth($sm-mobail)
                 margin: auto 0
 
@@ -79,7 +79,7 @@
             display: flex
             flex-direction: column
             justify-content: space-between
-            @include style-text-events(26px, 4px, $waverly, $white, 100%, 100, true, true)
+            @include style-text(26px, 4px, $waverly, $white, 100%, 100, true)
             +maxwidth($desktop)
                 margin-left: 10px
             +maxwidth($tablet)
@@ -98,10 +98,10 @@
 
         &-text
             margin-left: auto
-            @include style-text-events(80px, 10px, $cheque, $white, 75%, bold, true, true)
+            @include style-text(80px, 10px, $cheque, $white, 75%, bold, true)
             +maxwidth($sm-mobail)
                 margin-left: 0
 
         &-date
-            @include style-text-events(48px, 4px, $waverly, $white, 100%, 100, true, true)
+            @include style-text(48px, 4px, $waverly, $white, 100%, 100, true)
 

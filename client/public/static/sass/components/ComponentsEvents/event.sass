@@ -130,7 +130,9 @@
                 left: 35px
 
         &-digit
-            @include style-text-events(72px, 10px, $cheque, $darkgray, 75%, 300, false, false)
+            @include style-text(72px, 10px, $cheque, $darkgray, 75%, 300, false)
+            +maxwidth($sm-mobail)
+                font-size: 42px
 
     &__text
         margin-left: 50px
@@ -143,11 +145,13 @@
             margin-left: 30px
 
         &-day
-            @include style-text-events(18px, 2px, $waverlyExtra, $darkgray, 100%, 50, false, false)
+            @include style-text(18px, 2px, $waverlyExtra, $darkgray, 100%, 50, false)
+            +maxwidth($sm-mobail)
+                font-size: 16px
 
         &-time
             margin-top: 10px
-            @include style-text-events(14px, 0, $waverly, $darkgray, 100%, 100, false, false)
+            @include style-text(14px, 0, $waverly, $darkgray, 100%, 100, false)
             +maxwidth($tablet)
                 margin-top: 7px
 
@@ -161,14 +165,16 @@
             margin-top: 10px
 
         &-title
-            @include style-text-events(18px, 2px, $waverlyExtra, $black, 100%, 500, false, false)
+            @include style-text(18px, 2px, $waverlyExtra, $black, 100%, 500, false)
             max-width: 270px
             +maxwidth($tablet)
                 max-width: 100%
+            +maxwidth($sm-mobail)
+                font-size: 14px
 
         &-text
             margin-top: 7px
-            @include style-text-events(14px, 0, $waverly, $darkgray, 100%, 100, false, false)
+            @include style-text(14px, 0, $waverly, $darkgray, 100%, 100, false)
             text-overflow: ellipsis
             max-width: 270px
             overflow: hidden

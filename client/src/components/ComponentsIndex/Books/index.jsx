@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import BookInform from 'components/BookInform';
 
-class Books extends PureComponent {
+class Books extends Component {
     constructor(props) {
         super(props);
         this.state = {

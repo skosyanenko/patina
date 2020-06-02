@@ -49,20 +49,7 @@ $cheque: 'Cheque'
             +maxwidth($sm-mobail)
                 font-size: $size - $step * 3
 
-@mixin style-text-events($size, $step, $font, $color, $line-height, $weight, $mob, $sm-mob)
-    font: $weight $size $font
-    line-height: $line-height
-    color: $color
-    +maxwidth($desktop)
-        font-size: $size - $step
-    +maxwidth($tablet)
-        font-size: $size - $step * 2
-        @if ($mob == true)
-            +maxwidth($mobail)
-                font-size: $size - $step * 3
-        @if ($sm-mob == true)
-            +maxwidth($mobail)
-                font-size: $size - $step * 3
+
 
 
 
