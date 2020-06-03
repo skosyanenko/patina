@@ -1,34 +1,32 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { withRouter } from 'next/router';
+import React, { useState, Fragment } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
-import useSWR from 'swr';
 import ReactMarkdown from 'react-markdown';
 import { letters, returnAuthor, returnDate } from 'config/config';
 import BookInform from 'components/BookInform';
 import CommentBlock from 'components/CommentBlock';
 import ModalFilms from 'components/ModalFilms';
 import MyHead from 'components/MyHead';
+import UndefinedPage from 'pages/404';
+import LinkToReview from 'components/LinkToReview';
 
 const { API_URL } = process.env;
 
-const BooksDetail = ({ router, toggleModal, book: {authors, bookImage, categories, title, fullDescription, shortDescription, readLink, films, id, weight} }) => {
+const BooksDetail = ({ router, toggleModal, book }) => {
     const [modal, setModal] = useState(false);
 
-    const [currBook, setCurrBook] = useState({});
+    const { isFallback } = useRouter();
 
-    const getReviews = url => axios.get(url)
-        .then(res => res.data.reviews);
+    if (!isFallback && !book) {
+        return <UndefinedPage/>;
+    }
 
-    const { data } = useSWR(`${API_URL}/books/${id}`, getReviews);
+    if (router.isFallback) {
+        return '';
+    }
 
-    useEffect(() => {
-        axios.get(`${process.env.API_URL}/books/${router.query.id}`)
-            .then(res => {
-                setCurrBook(res.data)
-            })
-            .catch(err => console.log(err));
-    }, [router.query.id]);
+    const { authors, bookImage, categories, title, fullDescription, shortDescription, readLink, films, id, weight } = book;
 
     const letterSubstr = (name, index) => {
         const arr = name.split(' ');
@@ -76,12 +74,12 @@ const BooksDetail = ({ router, toggleModal, book: {authors, bookImage, categorie
                                 </div>
                         </div>
                         <BookInform
-                            idContent={id || currBook.id}
-                            titleContent={title || currBook.title}
-                            description={shortDescription || currBook.shortDescription}
-                            weight={weight || currBook.weight}
-                            image={bookImage || currBook.bookImage}
-                            categories={categories || currBook.categories}
+                            idContent={id}
+                            titleContent={title}
+                            description={shortDescription}
+                            weight={weight}
+                            image={bookImage}
+                            categories={categories}
                             toggleModal={toggleModal}
                         />
                     </div>
@@ -94,11 +92,7 @@ const BooksDetail = ({ router, toggleModal, book: {authors, bookImage, categorie
                         />
                         <div className="description__buttons">
                             { readLink && <a href={readLink} className="button button-white">Читать</a>}
-                            { data && data.length > 0 &&
-                                <Link href={'/reviews/[id]'} as={`/reviews/${data[0].id}`}>
-                                    <a className="button button-green">Рецензии</a>
-                                </Link>
-                            }
+                            <LinkToReview idContent={id}/>
                             { films != null && films.length > 0 &&
                                 <div className="button button-green" onClick={() => setModal(true)}>Экранизации</div>
                             }
@@ -125,7 +119,7 @@ export async function getStaticPaths() {
 
     const paths = books.map(book => `/books/${book.id}`)
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 }
 
 export async function getStaticProps({ params }) {
@@ -145,5 +139,5 @@ export async function getStaticProps({ params }) {
     return { props: { book } }
 }
 
-export default withRouter(BooksDetail);
+export default BooksDetail;
 

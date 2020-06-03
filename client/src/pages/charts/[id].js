@@ -1,13 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { returnAuthor } from 'config/config';
 import Socials from 'components/SocialsGroup';
 import CommentBlock from 'components/CommentBlock';
 import MyHead from 'components/MyHead';
+import UndefinedPage from 'pages/404';
 
-const ChartsDetail = ({ chart: {title, description, books, id} }) => {
+const ChartsDetail = ({ router, chart }) => {
+    const { isFallback } = useRouter();
+
+    if (!isFallback && !chart) {
+        return <UndefinedPage/>;
+    }
+
+    if (router.isFallback) {
+        return '';
+    }
+
+    const { title, description, books, id } = chart;
+
     return(
         <>
             <MyHead
@@ -84,7 +98,7 @@ export async function getStaticPaths() {
 
     const paths = charts.map(chart => `/charts/${chart.id}`)
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 }
 
 export async function getStaticProps({ params }) {
