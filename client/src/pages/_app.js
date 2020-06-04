@@ -13,6 +13,7 @@ import BtnScrollToTop from 'components/BtnScrollToTop';
 import Auth from 'services/Authorization';
 import '../../public/static/sass/project.sass';
 import 'react-markdown-editor-lite/lib/index.css';
+import * as gtag from 'services/gtag';
 
 
 Router.events.on('routeChangeStart', (url) => {
@@ -37,6 +38,16 @@ const MyApp = ({ Component, pageProps, router }) => {
     const [unknownModal, setUnknownModal] = useState(false);
 
     const { isAnimate, toggle, header, menu } = state;
+
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            gtag.pageview(url)
+        }
+        Router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            Router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, []);
 
     useEffect(() => {
 

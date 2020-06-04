@@ -23,6 +23,7 @@ const AddReviewForm = () => {
                     classPrefix={''}
                     api={'reviews'}
                     successTitle={'Форма успешно отправлена!'}
+                    category={'Review'}
                 />
                 :
                 <div className="add-review">

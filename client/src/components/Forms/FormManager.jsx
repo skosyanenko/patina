@@ -5,6 +5,7 @@ import axios from 'axios';
 import HookForm from './HookForm';
 import ModalError from './ModalError';
 import Auth from 'services/Authorization';
+import * as gtag from 'services/gtag';
 
 class FormManager extends Component {
     state = {
@@ -14,7 +15,7 @@ class FormManager extends Component {
     };
 
     onSubmit = values => {
-	    const { fields, api } = this.props;
+	    const { fields, api, category, title } = this.props;
 	    const { avatar } = this.state;
 
 	    Object.keys(values).map(key => {
@@ -32,12 +33,20 @@ class FormManager extends Component {
 
         api === 'reviews' ? values.user = Auth.userInfo.id : '';
 
+        if (api === 'auth/local/register' || api === 'reviews') {
+            gtag.event({
+                action: 'submit_form',
+                category: category,
+                label: title,
+            })
+        }
+
         return this.postToDB(values);
     };
 
     postToDB = data => {
         const { API_URL } = process.env;
-        const {method, api} = this.props;
+        const { method, api } = this.props;
         const apiMethod = method || 'post';
         const options = Auth.token && {
             headers: { Authorization: `Bearer ${Auth.token}` }

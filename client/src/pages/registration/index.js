@@ -54,6 +54,7 @@ class RegistrationForm extends Component {
                         classPrefix={'btn-registration'}
                         api={'auth/local/register'}
                         successTitle={'Регистрация прошла успешно, форма отправлена!'}
+                        category={'Registration'}
                     />
                 }
             </>
