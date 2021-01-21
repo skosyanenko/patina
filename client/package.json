@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "gsap": "^2.0.2",
-    "immer": "^6.0.9",
+    "immer": "^8.0.1",
     "lodash.sortby": "^4.7.0",
     "markdown-it": "^10.0.0",
     "next": "^9.4.4",
